@@ -2,7 +2,7 @@
 Name=XDvi
 Comment=DVI X11 previewer
 Comment[pl]=Przeglądarka DVI pod X11
-Icon=text.xpm
+Icon=xdvi.xpm
 Exec=xdvi &
 Terminal=0
 Type=Application
