@@ -6,6 +6,6 @@ Icon=xdvi.png
 Exec=xdvi
 Terminal=false
 Type=Application
-Categories=Graphics;X-Viewer
+Categories=Graphics;Viewer;
 Encoding=UTF-8
 # vi: encoding=utf-8
