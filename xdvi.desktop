@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=XDvi
 Comment=DVI X11 previewer
-Comment[pl]=Przegl±darka DVI pod X11
+Comment[pl]=PrzeglÄ…darka DVI pod X11
 Icon=text.xpm
 Exec=xdvi &
 Terminal=0
 Type=Application
+# vi: encoding=utf-8
