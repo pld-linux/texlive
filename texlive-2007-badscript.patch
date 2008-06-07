@@ -1,0 +1,153 @@
+--- TeX/texk/tetex/allcm.badscript	2006-05-24 16:15:36.000000000 -0700
++++ TeX/texk/tetex/allcm	2006-05-24 16:18:47.000000000 -0700
+@@ -14,7 +14,7 @@
+ test -n "${ZSH_VERSION+set}" && alias -g '${1+"$@"}'='"$@"'
+ 
+ progname=`basename $0`
+-tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/$progname.$$
++tmpdir=`mktemp -d ${TMP-/tmp}/$progname.XXXXXX`
+ 
+ case "$progname" in
+   allec)
+@@ -81,11 +81,6 @@
+   exit 1
+ ' 1 2 3 7 13 15
+ 
+-(umask 077; mkdir "$tmpdir") || {
+-  echo "$progname: failed to create temp directory." >&2
+-  exit 1
+-}
+-
+ cd $tmpdir || exit 1
+ echo >&2
+ echo "---------------------------------------------------------------------" >&2
+--- TeX/texk/tetex/fmtutil.badscript	2006-05-24 16:19:21.000000000 -0700
++++ TeX/texk/tetex/fmtutil	2006-05-24 16:22:26.000000000 -0700
+@@ -108,8 +108,6 @@
+ 
+   trap 'cleanup 1' 1 2 3 7 13 15
+   needsCleanup=true
+-  (umask 077; mkdir "$tmpdir") \
+-    || abort "could not create directory \`$tmpdir'"
+ }
+ 
+ ###############################################################################
+@@ -355,7 +353,7 @@
+   need_find_hyphenfile=false
+   cfgparam=
+   cfgmaint=
+-  tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/$progname.$$
++  tmpdir=`mktemp -d ${TMP-/tmp}/$progname.XXXXXX`
+   verboseFlag=true
+ 
+   # mktexfmtMode: if called as mktexfmt, set to true. Will echo the generated
+--- TeX/texk/tetex/texconfig.badscript	2006-05-24 16:22:54.000000000 -0700
++++ TeX/texk/tetex/texconfig	2006-05-24 16:24:18.000000000 -0700
+@@ -37,7 +37,7 @@
+   TEXMFDBS TEXMFINI TEXMFSCRIPTS TEXPICTS TEXPKS TEXPOOL TEXPSHEADERS
+   TEXSOURCES TFMFONTS TRFONTS TTFONTS VFFONTS WEB2C WEBINPUTS
+ "
+-tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/tctmp.$$
++tmpdir=`mktemp -d "${TMP-/tmp}/$progname.XXXXXX"` || exit 1
+ needsCleanup=false
+ lastUpdatedFile=
+ 
+@@ -216,8 +216,6 @@
+ 
+   trap 'cleanup 1' 1 2 3 7 13 15
+   needsCleanup=true
+-  (umask 077; mkdir "$tmpdir") \
+-    || abort "could not create directory \`$tmpdir'"
+ }
+ 
+ ###############################################################################
+--- TeX/texk/tetex/texlinks.badscript	2005-08-28 12:45:59.000000000 -0700
++++ TeX/texk/tetex/texlinks	2006-05-24 16:31:25.000000000 -0700
+@@ -100,8 +100,6 @@
+ 
+   trap 'cleanup 1' 1 2 3 7 13 15
+   needsCleanup=true
+-  (umask 077; mkdir "$tmpdir") \
+-    || abort "could not create directory \`$tmpdir'"
+ }
+ 
+ 
+@@ -192,7 +190,7 @@
+ upd_symlinkdir()
+ {
+   search_symlinkdir || return 0
+-  for i in `sed 's@ .*@@' cnf_file_ln.$$`; do
++  for i in `sed 's@ .*@@' $tmpdir/cnf_file_ln`; do
+     install_link "$selfautoloc/$i" "$symlinkdir/$i"
+   done
+ }
+@@ -236,12 +234,12 @@
+   test -f "$cnf_file" || abort "config file \`$cnf' not found"
+ 
+ 
+-  tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/texlinks.$$
++  tmpdir=`mktemp -d ${TMP-/tmp}/$progname.XXXXXX` || exit 1
+   setupTmpDir
+   cd "$tmpdir" || cleanup 1
+ 
+   sed '/^[ 	]*#/d; /^[ 	]*$/d' $cnf_file \
+-    | awk '{print $1, $2}' > cnf_file_ln.$$
++    | awk '{print $1, $2}' > $tmpdir/cnf_file_ln
+ 
+   if test -z "$dirs"; then
+     if test $multiplatform = true; then
+@@ -259,8 +257,8 @@
+   for d in $dirs; do
+     kpseaccess -w $d \
+       || { errmsg "$d: no write permissions. Skipping..."; continue; }
+-    # cnf_file_ln.$$ has lines with "format engine" pairs
+-    set x `cat cnf_file_ln.$$`; shift
++    # $tmpdir/cnf_file_ln has lines with "format engine" pairs
++    set x `cat $tmpdir/cnf_file_ln`; shift
+     while test $# != 0; do
+       fmt=$1; engine=$2; shift; shift
+ 
+--- TeX/texk/tetex/updmap.badscript	2006-05-24 16:32:13.000000000 -0700
++++ TeX/texk/tetex/updmap	2006-05-24 16:33:51.000000000 -0700
+@@ -769,7 +769,6 @@
+ 
+   trap 'cleanup 1' 1 2 3 7 13 15
+   needsCleanup=true
+-  mkdir "$tmpdir" || abort "could not create directory \`$tmpdir'"
+ }
+ 
+ ###############################################################################
+@@ -1296,7 +1295,8 @@
+   dvipsoutputdir=; pdftexoutputdir=; dvipdfmoutputdir=
+   : ${TEXMFMAIN=`kpsewhich -var-value=TEXMFMAIN`}
+ 
+-  tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/$progname.$$
++  tmpdir=`mktemp -d ${TMP-/tmp}/$progname.XXXXXX` || \
++       abort "could not create directory"
+   tmp1=$tmpdir/a
+   tmp2=$tmpdir/b
+   tmp3=$tmpdir/c
+--- TeX/texk/dviljk/dvihp.badscript	2006-05-24 16:43:13.000000000 -0700
++++ TeX/texk/dviljk/dvihp	2006-05-24 16:47:10.000000000 -0700
+@@ -7,9 +7,7 @@
+ : ${SPOOL=lpr}          # used to print an LJ file
+ : ${TMPDIR=${TEMP-${TMP-/tmp}}} # for the dvicopy output
+ 
+-tmpdir="${TMPDIR}"/dvihp$$
+-(umask 077; mkdir "$tmpdir") \
+-  || { echo "cannot create directory \`$tmpdir'."; exit 1; }
++tmpdir=`mktemp -d ${TMPDIR}/dvihp.XXXXXX` || { echo "cannot create secure temporary directory."; exit 1; }
+ 
+ trap '
+   cd "${TMPDIR}"
+--- TeX/texk/dvipdfm/dvipdft.badscript	2006-05-24 16:48:16.000000000 -0700
++++ TeX/texk/dvipdfm/dvipdft	2006-05-24 16:51:53.000000000 -0700
+@@ -31,7 +31,7 @@
+        $progname --help
+        $progname --version"
+ 
+-tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/$progname.$$
++tmpdir=`mktemp -d ${TMP-/tmp}/$progname.XXXXXX`
+ 
+ quoteit()
+ {

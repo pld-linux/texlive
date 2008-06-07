@@ -1,0 +1,50 @@
+--- configure
++++ configure	2006-01-17 17:25:04.000000000 +0100
+@@ -3920,6 +3920,7 @@
+     char *p = testbuf;
+     int i;
+     int version_num;
++    memset(p, 0, sizeof(testbuf));
+     /* T1_GetLibIdent() might return something like '0.8-beta2';
+        convert the leading numbers to a single digit: */
+     for (i = 0; i < BUFLEN; i++) {
+--- libs/configure
++++ libs/configure	2006-01-17 17:24:15.000000000 +0100
+@@ -1728,6 +1728,7 @@
+     char *p = testbuf;
+     int i;
+     int version_num;
++    memset(p, 0, sizeof(testbuf));
+     /* T1_GetLibIdent() might return something like '0.8-beta2';
+        convert the leading numbers to a single digit: */
+     for (i = 0; i < BUFLEN; i++) {
+--- libs/t1lib/t1lib.ac
++++ libs/t1lib/t1lib.ac	2006-01-17 17:26:13.000000000 +0100
+@@ -45,6 +45,7 @@
+     char *p = testbuf;
+     int i;
+     int version_num;
++    memset(p, 0, sizeof(testbuf));
+     /* T1_GetLibIdent() might return something like '0.8-beta2';
+        convert the leading numbers to a single digit: */
+     for (i = 0; i < BUFLEN; i++) {
+--- texk/dvipng/configure
++++ texk/dvipng/configure	2006-01-17 17:24:52.000000000 +0100
+@@ -2659,6 +2659,7 @@
+     char *p = testbuf;
+     int i;
+     int version_num;
++    memset(p, 0, sizeof(testbuf));
+     /* T1_GetLibIdent() might return something like '0.8-beta2';
+        convert the leading numbers to a single digit: */
+     for (i = 0; i < BUFLEN; i++) {
+--- texk/xdvik/configure
++++ texk/xdvik/configure	2006-01-17 17:24:32.000000000 +0100
+@@ -4227,6 +4227,7 @@
+     char *p = testbuf;
+     int i;
+     int version_num;
++    memset(p, 0, sizeof(testbuf));
+     /* T1_GetLibIdent() might return something like '0.8-beta2';
+        convert the leading numbers to a single digit: */
+     for (i = 0; i < BUFLEN; i++) {
