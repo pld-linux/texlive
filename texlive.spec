@@ -36,7 +36,9 @@ Source0:	http://tug.org/svn/texlive/branches/branch2008/Master/source/%{name}-%{
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
+Patch0:		%{name}-am.patch
 URL:		http://www.tug.org/texlive/
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	clisp
@@ -47,7 +49,10 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel
 BuildRequires:	freetype1-devel
 BuildRequires:	gd-devel >= 2.0.33
+BuildRequires:	libtool
 BuildRequires:	libpng-devel >= 1.2.8
+# should this be somewhere in clisp?
+BuildRequires:	libsigsegv
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	rpm-perlprov
@@ -3093,6 +3098,14 @@ Fonty Xy-pic.
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
 lzma -dc %{SOURCE0} | tar xf - -C ..
+%patch0 -p1
+
+cd libs/teckit
+cat ax*.m4 > acinclude.m4
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 
 %build
 find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
