@@ -29,7 +29,6 @@ Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
 Release:	0.1
-Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
 Source0:	http://tug.org/svn/texlive/branches/branch2008/Master/source/%{name}-%{version}-source.tar.lzma
