@@ -3106,6 +3106,7 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 	--with-fonts-dir=/var/cache/fonts \
 	--with-ncurses \
 	--with-system-freetype2 \
+	--with-freetype2-include=%{_includedir}/freetype2 \
 	--with-system-gd \
 	--with-system-ncurses \
 	--with-system-pnglib \
