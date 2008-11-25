@@ -3096,7 +3096,6 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 
 %build
 find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
-CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %configure \
 	--disable-multiplatform \
 	--disable-static \
