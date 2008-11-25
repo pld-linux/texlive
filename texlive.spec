@@ -39,8 +39,11 @@ Source6:	xdvi.png
 URL:		http://www.tug.org/texlive/
 BuildRequires:	automake
 BuildRequires:	bison
+BuildRequires:	clisp
 BuildRequires:	ed
+BuildRequires:	expat-devel
 BuildRequires:	flex
+BuildRequires:	fontconfig-devel
 BuildRequires:	gd-devel >= 2.0.33
 BuildRequires:	libpng-devel >= 1.2.8
 BuildRequires:	libstdc++-devel
@@ -50,7 +53,11 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	texinfo
 BuildRequires:	unzip
+BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libXaw-devel
+BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xorg-lib-libXpm-devel
+BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	zlib-devel >= 1.2.1
 Requires:	%{name}-dirs-fonts
 Requires:	%{name}-fonts-cm = %{epoch}:%{version}-%{release}
@@ -3084,37 +3091,21 @@ Fonty Xy-pic.
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
 lzma -dc %{SOURCE0} | tar xf - -C ..
-# install -d texmf
-# tar xzf %{SOURCE1} -C texmf
-
-# xltxtra in XeTeX needs fixltx2e >= 2006/03/24
-# cp -a %{SOURCE8} texmf/tex/latex/base
-
-#%patch0 -p1
-##%patch1  -p1
-#%patch2 -p1
-#%patch3 -p1
-#%patch4 -p1
-#%patch5 -p1
-#%patch6 -p1
-#%patch7 -p1
-#%patch8 -p1
-#%patch9 -p1
-#%patch10 -p1
-#%patch11 -p1
 
 %build
 find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
-%configure2_13 \
+%configure \
 	--disable-multiplatform \
 	--disable-static \
 	--enable-a4 \
 	--enable-gf \
 	--enable-ipc \
 	--enable-shared \
+	--with-fontconfig \
 	--with-fonts-dir=/var/cache/fonts \
 	--with-ncurses \
+	--with-system-freetype2 \
 	--with-system-gd \
 	--with-system-ncurses \
 	--with-system-pnglib \
@@ -3126,24 +3117,7 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 	--without-t1utils \
 	--without-texinfo
 
-rm -f texk/{tetex,dvipsk}/*.info*
-cd texk/dvipsk
-makeinfo dvips.texi
-cd ../..
-
-cd texk/tetex
-makeinfo latex2e.texi
-cd ../..
-
 %{__make}
-
-cd texk/kpathsea
-makeinfo kpathsea.texi
-cd ../..
-
-cd texk/web2c/doc
-makeinfo web2c.texi
-cd ../../..
 
 %install
 rm -rf $RPM_BUILD_ROOT
