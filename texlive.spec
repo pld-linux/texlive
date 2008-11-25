@@ -44,6 +44,8 @@ BuildRequires:	ed
 BuildRequires:	expat-devel
 BuildRequires:	flex
 BuildRequires:	fontconfig-devel
+BuildRequires:	freetype-devel
+BuildRequires:	freetype1-devel
 BuildRequires:	gd-devel >= 2.0.33
 BuildRequires:	libpng-devel >= 1.2.8
 BuildRequires:	libstdc++-devel
@@ -3105,6 +3107,8 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 	--with-fontconfig \
 	--with-fonts-dir=/var/cache/fonts \
 	--with-ncurses \
+	--with-system-freetype \
+	--with-freetype-include=%{_includedir}/freetype \
 	--with-system-freetype2 \
 	--with-freetype2-include=%{_includedir}/freetype2 \
 	--with-system-gd \
