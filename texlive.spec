@@ -3133,7 +3133,8 @@ find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 	--with-xdvi-x-toolkit=xaw \
 	--without-dialog \
 	--without-t1utils \
-	--without-texinfo
+	--without-texinfo \
+	--without-xindy
 
 %{__make}
 
