@@ -17,8 +17,15 @@
 #
 # TeXLive specific TODO:
 # - summary/description correcting (all languages)
+# - solve xindy case, it doesn't build with tetext, and probably won't with texlive
+#   until larm1000 font found (xindy option)
+# - texk/web2c doesn't build (luatex option)
+#
 #
 %include	/usr/lib/rpm/macros.perl
+#
+%bcond_with	bootstrap
+#
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
@@ -60,6 +67,18 @@ BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
 BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	texinfo
+%if %{with bootstrap}
+BuildRequires:	tetex-format-latex
+BuildRequires:	tetex-format-pdflatex
+BuildRequires:	tetex-tex-babel
+BuildRequires:	tetex-latex-cyrillic
+%else
+# fill with future texlive BR. guesses ones for now
+BuildRequires:	texlive-format-latex
+BuildRequires:	texlive-format-pdflatex
+BuildRequires:	texlive-tex-babel
+BuildRequires:	texlive-latex-cyrillic
+%endif
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libXaw-devel
@@ -3111,6 +3130,10 @@ cat ax*.m4 > acinclude.m4
 %build
 find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 %configure \
+%if %{with bootstrap}
+	--without-xindy \
+	--without-luatex \
+%endif
 	--disable-multiplatform \
 	--disable-static \
 	--enable-a4 \
@@ -3133,8 +3156,7 @@ find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 	--with-xdvi-x-toolkit=xaw \
 	--without-dialog \
 	--without-t1utils \
-	--without-texinfo \
-	--without-xindy
+	--without-texinfo
 
 %{__make}
 
