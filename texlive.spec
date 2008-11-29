@@ -16,7 +16,7 @@
 # - merge all above with configure switch "--enable-fhs" and send it to TE
 #
 # TeXLive specific TODO:
-# - summary/description correctong (all languages)
+# - summary/description correcting (all languages)
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	TeX typesetting system and MetaFont font formatter
@@ -45,6 +45,7 @@ BuildRequires:	clisp
 BuildRequires:	ed
 BuildRequires:	expat-devel
 BuildRequires:	flex
+BuildRequires:	ffcall-devel
 BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel
 BuildRequires:	freetype1-devel
