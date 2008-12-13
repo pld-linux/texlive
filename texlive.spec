@@ -30,6 +30,7 @@ Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
 Summary(fr.UTF-8):	Systéme de compostion TeX et formatteur de MetaFontes
+Summary(hu.UTF-8):	TeX szövegszedő rendszer és MetaFont font formázó
 Summary(pl.UTF-8):	System składu publikacji TeX oraz formater fontów MetaFont
 Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
@@ -51,16 +52,16 @@ BuildRequires:	bison
 BuildRequires:	clisp
 BuildRequires:	ed
 BuildRequires:	expat-devel
-BuildRequires:	flex
 BuildRequires:	ffcall-devel
+BuildRequires:	flex
 BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel
 BuildRequires:	freetype1-devel
 BuildRequires:	gd-devel >= 2.0.33
 # or maybe to %if %{with bootstrap} section?
-BuildRequires:  kpathsea
-BuildRequires:	libtool
+BuildRequires:	kpathsea
 BuildRequires:	libpng-devel >= 1.2.8
+BuildRequires:	libtool
 # should this be somewhere in clisp?
 BuildRequires:	libsigsegv
 BuildRequires:	libstdc++-devel
@@ -72,21 +73,21 @@ BuildRequires:	texinfo
 %if %{with bootstrap}
 BuildRequires:	tetex-format-latex
 BuildRequires:	tetex-format-pdflatex
-BuildRequires:	tetex-tex-babel
 BuildRequires:	tetex-latex-cyrillic
+BuildRequires:	tetex-tex-babel
 %else
-# fill with future texlive BR. guesses ones for now
 BuildRequires:	texlive-format-latex
 BuildRequires:	texlive-format-pdflatex
-BuildRequires:	texlive-tex-babel
 BuildRequires:	texlive-latex-cyrillic
+BuildRequires:	texlive-tex-babel
+# fill with future texlive BR. guesses ones for now
 %endif
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libXaw-devel
 BuildRequires:	xorg-lib-libXext-devel
-BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	zlib-devel >= 1.2.1
 Requires:	%{name}-dirs-fonts
 Requires:	%{name}-fonts-cm = %{epoch}:%{version}-%{release}
@@ -136,12 +137,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoreq 'perl(path_tre)'
 
 %description
-teTeX is an implementation of TeX for Linux or UNIX systems. TeX takes
-a text file and a set of formatting commands as input and creates a
-typesetter independent .dvi (DeVice Independent) file as output.
-Usually, TeX is used in conjunction with a higher level formatting
-package like LaTeX or PlainTeX, since TeX by itself is not very
-user-friendly.
+TeXLive is an implementation of TeX for Linux or UNIX systems. TeX
+takes a text file and a set of formatting commands as input and
+creates a typesetter independent .dvi (DeVice Independent) file as
+output. Usually, TeX is used in conjunction with a higher level
+formatting package like LaTeX or PlainTeX, since TeX by itself is not
+very user-friendly.
 
 %description -l es.UTF-8
 Tex formata archivos de texto y órdenes para una salida independiente
@@ -159,6 +160,14 @@ TeX formate un fichier de commandes et de texte mélandés, et produit
 un fichier de indépendant de toute plate-forme (appelé DVI, qui est un
 raccourci pour Device Independant). Les possibilités de TeX et son
 langage sont décrites dans l'ouvrage TeXbook, de Knuth.
+
+%description -l hu.UTF-8
+TeXLive a TeX egy implementációja Linux és UNIX rendszerekre. TeX egy
+egyszerű szövegfájlt fogad bemenetként, és formázó parancsok
+segítségével a szövegszedő egy független .dvi (DeVice Independent)
+fájlt készít. A TeX-et leginkább magasabb szintű formázó parancsokkal
+kiegészítve használják, mint pl. LaTeX-hel vagy PlainTeX-hel, mivel a
+TeX önmaga nem túlzottan "felhasználóbarát".
 
 %description -l pl.UTF-8
 TeX formatuje przygotowany tekst oraz komendy i produkuje niezależny
@@ -3146,9 +3155,9 @@ find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 	--with-fonts-dir=/var/cache/fonts \
 	--with-ncurses \
 	--with-system-freetype \
-	--with-freetype-include=%{_includedir}/freetype \
+	--with-freetype-include=/usr/include/freetype \
 	--with-system-freetype2 \
-	--with-freetype2-include=%{_includedir}/freetype2 \
+	--with-freetype2-include=/usr/include/freetype2 \
 	--with-system-gd \
 	--with-system-ncurses \
 	--with-system-pnglib \
