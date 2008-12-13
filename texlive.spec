@@ -58,8 +58,6 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel
 BuildRequires:	freetype1-devel
 BuildRequires:	gd-devel >= 2.0.33
-# or maybe to %if %{with bootstrap} section?
-BuildRequires:	kpathsea
 BuildRequires:	libpng-devel >= 1.2.8
 BuildRequires:	libtool
 # should this be somewhere in clisp?
@@ -68,6 +66,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
+BuildRequires:	sed >= 4.0
 BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	texinfo
 %if %{with bootstrap}
@@ -3169,6 +3168,7 @@ find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 	--without-t1utils \
 	--without-texinfo
 
+%{__sed} -i "s@libkpathsea.a@libkpathsea.so@g" texk/lcdf-typetools/otftotfm/Makefile
 %{__make}
 
 %install
