@@ -57,6 +57,8 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel
 BuildRequires:	freetype1-devel
 BuildRequires:	gd-devel >= 2.0.33
+# or maybe to %if %{with bootstrap} section?
+BuildRequires:  kpathsea
 BuildRequires:	libtool
 BuildRequires:	libpng-devel >= 1.2.8
 # should this be somewhere in clisp?
