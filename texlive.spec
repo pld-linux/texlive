@@ -3169,6 +3169,7 @@ find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 	--without-texinfo
 
 %{__sed} -i "s@libkpathsea.a@libkpathsea.so@g" texk/lcdf-typetools/otftotfm/Makefile
+%{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk/*.c
 %{__make}
 
 %install
