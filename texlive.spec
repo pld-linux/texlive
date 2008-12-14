@@ -45,6 +45,7 @@ Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
 Patch0:		%{name}-am.patch
+Patch1:		%{name}-20080816-otftotfm-Makefile.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -3129,6 +3130,7 @@ Fonty Xy-pic.
 %setup -q -c -T -n %{name}-%{version}-source
 lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch0 -p1
+%patch1 -p1
 
 cd libs/teckit
 cat ax*.m4 > acinclude.m4
@@ -3139,10 +3141,7 @@ cat ax*.m4 > acinclude.m4
 
 %build
 find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
-
 %{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk/*.c
-%{__sed} -i "s@LIBKPATHSEA =.*@LIBKPATHSEA = $(top_builddir)/../../texk/kpathsea/.libs/libkpathsea.so@g" texk/lcdf-typetools/otftotfm/Makefile.in
-%{__sed} -i "s@LIBKPATHSEA_DEP =.*@LIBKPATHSEA_DEP = $(top_builddir)/../../texk/kpathsea/.libs/libkpathsea.so@g" texk/lcdf-typetools/otftotfm/Makefile.in
 
 %configure \
 %if %{with bootstrap}
