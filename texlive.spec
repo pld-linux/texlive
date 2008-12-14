@@ -45,7 +45,7 @@ Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
 Patch0:		%{name}-am.patch
-Patch1:		%{name}-20080816-otftotfm-Makefile.patch
+Patch1:		%{name}-20080816-kpathsea-ar.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
