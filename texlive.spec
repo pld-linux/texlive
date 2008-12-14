@@ -4445,9 +4445,9 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.dat
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/preload.cfg
 
-%dir %{texmf}/dist/dvips
-%dir %{texmf}/dist/dvips/config
-%dir %{texmf}/dist/dvips/tetex
+%dir %{texmf}/dvips
+%dir %{texmf}/dvips/config
+%dir %{texmf}/dvips/tetex
 
 %attr(1777,root,root) /var/cache/fonts
 
