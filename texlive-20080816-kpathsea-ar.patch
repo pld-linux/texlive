@@ -13,8 +13,8 @@
  $(kpathsea): $(objects)
  	$(kpathsea_link) -rpath $(libdir) -version-info @KPSE_LT_VERS@ $(objects)
  
-+libar: .libs/libkpathsea.so
-+	$(AR) q .libs/libkpathsea.a .libs/libkpathsea.so
++libar: kpsewhich
++	$(AR) q .libs/libkpathsea.a .libs/libkpathsea.so.4.1.0
 +
  # First null out comments and leading/trailing whitespace, then remove
  # lines that define invalid C identifiers, then remove blank lines and
