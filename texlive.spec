@@ -3182,6 +3182,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT%{_desktopdir} \
 	$RPM_BUILD_ROOT%{_pixmapsdir} \
+	$RPM_BUILD_ROOT%{_mandir}/man5 \
 	$RPM_BUILD_ROOT/var/cache/fonts \
 	$RPM_BUILD_ROOT/etc/cron.daily\
 	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap
@@ -3193,7 +3194,8 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 #	-e "s|/var/cache/fonts|$RPM_BUILD_ROOT/var/cache/fonts|g;" \
 #	texmf/web2c/texmf.cnf
 
-cp -a texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
+install -d $RPM_BUILD_ROOT%{texmf}
+cp -a texlive-20080822-texmf/texmf{,-dist,-doc} $RPM_BUILD_ROOT%{texmf}
 
 install -d $RPM_BUILD_ROOT%{texmf}/fonts/opentype/public
 
@@ -3235,7 +3237,7 @@ install %{SOURCE4} $RPM_BUILD_ROOT/etc/cron.daily/tetex
 install %{SOURCE5} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
 
-bzip2 -dc %{SOURCE3} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+# bzip2 -dc %{SOURCE3} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 # in separate spec
 rm -rf $RPM_BUILD_ROOT%{texmf}/tex/latex/{beamer,pgf,xcolor}
@@ -3261,8 +3263,8 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
 
 # move format logs to BUILD, so $RPM_BUILD_ROOT is not polluted
 # and we can still analyze them
-install -d format-logs
-mv -fv $RPM_BUILD_ROOT%{fmtdir}/*.log format-logs
+# install -d format-logs
+# mv -fv $RPM_BUILD_ROOT%{fmtdir}/*.log format-logs
 
 %clean
 rm -rf $RPM_BUILD_ROOT
