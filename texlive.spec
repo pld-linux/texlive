@@ -3194,8 +3194,13 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 #	-e "s|/var/cache/fonts|$RPM_BUILD_ROOT/var/cache/fonts|g;" \
 #	texmf/web2c/texmf.cnf
 
-install -d $RPM_BUILD_ROOT%{texmf}
-cp -a texlive-20080822-texmf/texmf{,-dist,-doc} $RPM_BUILD_ROOT%{texmf}
+install -d $RPM_BUILD_ROOT%{texmf}/{dist,doc}
+cp -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
+cp -a texlive-20080822-texmf/texmf-dist/fonts/* $RPM_BUILD_ROOT%{texmf}/fonts
+cp -a texlive-20080822-texmf/texmf-dist/dvips $RPM_BUILD_ROOT%{texmf}
+cp -a texlive-20080822-texmf/texmf-dist/tex $RPM_BUILD_ROOT%{texmf}
+# cp -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmf}/dist
+cp -a texlive-20080822-texmf/texmf-doc/* $RPM_BUILD_ROOT%{texmf}/doc
 
 install -d $RPM_BUILD_ROOT%{texmf}/fonts/opentype/public
 
@@ -4440,9 +4445,9 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.dat
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/preload.cfg
 
-%dir %{texmf}/dvips
-%dir %{texmf}/dvips/config
-%dir %{texmf}/dvips/tetex
+%dir %{texmf}/dist/dvips
+%dir %{texmf}/dist/dvips/config
+%dir %{texmf}/dist/dvips/tetex
 
 %attr(1777,root,root) /var/cache/fonts
 
