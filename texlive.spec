@@ -41,6 +41,8 @@ License:	distributable
 Group:		Applications/Publishing/TeX
 Source0:	http://tug.org/svn/texlive/branches/branch2008/Master/source/%{name}-%{version}-source.tar.lzma
 # Source0-md5:	554287c3e458da776edd684506048d45
+Source1:	ftp://tug.org/texlive/historic/2008/%{name}-20080822-texmf.tar.lzma
+# Source1-md5:	fa74072e1344e8390eb156bcda61a8b2
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
@@ -3129,6 +3131,7 @@ Fonty Xy-pic.
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
 lzma -dc %{SOURCE0} | tar xf - -C ..
+lzma -dc %{SOURCE1} | tar xf - -C .
 %patch0 -p1
 %patch1 -p1
 
@@ -3190,7 +3193,7 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 #	-e "s|/var/cache/fonts|$RPM_BUILD_ROOT/var/cache/fonts|g;" \
 #	texmf/web2c/texmf.cnf
 
-cp -a texmf $RPM_BUILD_ROOT%{texmf}
+cp -a texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
 
 install -d $RPM_BUILD_ROOT%{texmf}/fonts/opentype/public
 
