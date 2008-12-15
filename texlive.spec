@@ -1379,22 +1379,22 @@ LaTeX Cyrillic support.
 %description latex-cyrillic -l pl.UTF-8
 Obsługa cyrylicy dla LaTeXa.
 
-%package latex-dstroke
-Summary:	LaTeX doublestroke font
-Summary(pl.UTF-8):	Podwójnie kreślony font dla LaTeXa
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-dstroke = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-
-%description latex-dstroke
-Doublestroke font for typesetting the mathematical symbols for the
-natural numbers, whole numbers, rational numbers, real numbers and
-complex numbers.
-
-%description latex-dstroke -l pl.UTF-8
-Podwójnie kreślony font do składania symboli matematycznych liczb
-naturalnych, całkowitych, wymiernych, rzeczywistych i zespolonych.
+# %package latex-dstroke
+# Summary:	LaTeX doublestroke font
+# Summary(pl.UTF-8):	Podwójnie kreślony font dla LaTeXa
+# Group:		Applications/Publishing/TeX
+# Requires(post,postun):	%{_bindir}/texhash
+# Requires:	%{name}-fonts-dstroke = %{epoch}:%{version}-%{release}
+# Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+# 
+# %description latex-dstroke
+# Doublestroke font for typesetting the mathematical symbols for the
+# natural numbers, whole numbers, rational numbers, real numbers and
+# complex numbers.
+# 
+# %description latex-dstroke -l pl.UTF-8
+# Podwójnie kreślony font do składania symboli matematycznych liczb
+# naturalnych, całkowitych, wymiernych, rzeczywistych i zespolonych.
 
 %package latex-jknappen
 Summary:	Miscellaneous packages by Joerg Knappen
@@ -2350,17 +2350,17 @@ Czech/Slovak-tuned MetaFont Computer Modern fonts.
 Fonty MetaFont Computer Modern zmodyfikowane pod kątem języków
 czeskiego i słowackiego.
 
-%package fonts-dstroke
-Summary:	Doublestroke font for typesetting the mathematical symbols
-Summary(pl.UTF-8):	Podwójnie kreślony font do składania symboli matematycznych
-Group:		Fonts
-Requires:	%{name}-dirs-fonts
-
-%description fonts-dstroke
-Doublestroke font for typesetting the mathematical symbols.
-
-%description fonts-dstroke -l pl.UTF-8
-Podwójnie kreślony font do składania symboli matematycznych.
+# %package fonts-dstroke
+# Summary:	Doublestroke font for typesetting the mathematical symbols
+# Summary(pl.UTF-8):	Podwójnie kreślony font do składania symboli matematycznych
+# Group:		Fonts
+# Requires:	%{name}-dirs-fonts
+# 
+# %description fonts-dstroke
+# Doublestroke font for typesetting the mathematical symbols.
+# 
+# %description fonts-dstroke -l pl.UTF-8
+# Podwójnie kreślony font do składania symboli matematycznych.
 
 %package fonts-ecc
 Summary:	Sources for the European Concrete fonts
@@ -2881,17 +2881,17 @@ Czech/Slovak-tuned MetaFont Computer Modern fonts.
 Fonty MetaFont Computer Modern zmodyfikowane pod kątem języków
 czeskiego i słowackiego.
 
-%package fonts-type1-dstroke
-Summary:	Doublestroke Type1 font for typesetting the mathematical symbols
-Summary(pl.UTF-8):	Podwójnie kreślony font Type1 do składania symboli matematycznych
-Group:		Fonts
-Requires:	%{name}-dirs-fonts
-
-%description fonts-type1-dstroke
-Doublestroke Type1 font for typesetting the mathematical symbols.
-
-%description fonts-type1-dstroke -l pl.UTF-8
-Podwójnie kreślony font Type1 do składania symboli matematycznych.
+# %package fonts-type1-dstroke
+# Summary:	Doublestroke Type1 font for typesetting the mathematical symbols
+# Summary(pl.UTF-8):	Podwójnie kreślony font Type1 do składania symboli matematycznych
+# Group:		Fonts
+# Requires:	%{name}-dirs-fonts
+# 
+# %description fonts-type1-dstroke
+# Doublestroke Type1 font for typesetting the mathematical symbols.
+# 
+# %description fonts-type1-dstroke -l pl.UTF-8
+# Podwójnie kreślony font Type1 do składania symboli matematycznych.
 
 %package fonts-type1-eurosym
 Summary:	The new European currency symbol for the Euro
@@ -2957,17 +2957,17 @@ wolnodostępnego edytora fontów FontForge <http://fontforge.sf.net/>.
 Dane dla kerningu w tych fontach pochodzą z ulepszonych metryk
 Palatino Waltera Schmidta.
 
-%package fonts-type1-tt2001
-Summary:	Type1 tt2001 family fonts
-Summary(pl.UTF-8):	Fonty Type1 z rodziny tt2001
-Group:		Applications/Publishing/TeX
-Requires:	%{name}-dirs-fonts
-
-%description fonts-type1-tt2001
-Type1 tt2001 famliy fonts.
-
-%description fonts-type1-tt2001 -l pl.UTF-8
-Fonty Type1 z rodziny tt2001.
+# %package fonts-type1-tt2001
+# Summary:	Type1 tt2001 family fonts
+# Summary(pl.UTF-8):	Fonty Type1 z rodziny tt2001
+# Group:		Applications/Publishing/TeX
+# Requires:	%{name}-dirs-fonts
+# 
+# %description fonts-type1-tt2001
+# Type1 tt2001 famliy fonts.
+# 
+# %description fonts-type1-tt2001 -l pl.UTF-8
+# Fonty Type1 z rodziny tt2001.
 
 %package fonts-type1-lm
 Summary:	Type1 Latin Modern family fonts
@@ -3068,17 +3068,17 @@ PX fonts.
 %description fonts-type1-px -l pl.UTF-8
 Fonty PX.
 
-%package fonts-type1-qfonts
-Summary:	Quasi fonts
-Summary(pl.UTF-8):	Fonty Quasi
-Group:		Fonts
-Requires:	%{name}-dirs-fonts
-
-%description fonts-type1-qfonts
-Quasi fonts.
-
-%description fonts-type1-qfonts -l pl.UTF-8
-Fonty Quasi.
+# %package fonts-type1-qfonts
+# Summary:	Quasi fonts
+# Summary(pl.UTF-8):	Fonty Quasi
+# Group:		Fonts
+# Requires:	%{name}-dirs-fonts
+# 
+# %description fonts-type1-qfonts
+# Quasi fonts.
+# 
+# %description fonts-type1-qfonts -l pl.UTF-8
+# Fonty Quasi.
 
 %package fonts-type1-tx
 Summary:	TX fonts
@@ -3659,11 +3659,11 @@ fi
 %postun latex-cyrillic
 %texhash
 
-%post latex-dstroke
-%texhash
+# %post latex-dstroke
+# %texhash
 
-%postun latex-dstroke
-%texhash
+# %postun latex-dstroke
+# %texhash
 
 %post latex-jknappen
 %texhash
@@ -4001,11 +4001,11 @@ fi
 %postun fonts-cs
 %texhash
 
-%post fonts-dstroke
-%texhash
+# %post fonts-dstroke
+# %texhash
 
-%postun fonts-dstroke
-%texhash
+# %postun fonts-dstroke
+# %texhash
 
 %post fonts-ecc
 %texhash
@@ -4223,11 +4223,11 @@ fi
 %postun fonts-type1-cs
 %texhash
 
-%post fonts-type1-dstroke
-%texhash
+# %post fonts-type1-dstroke
+# %texhash
 
-%postun fonts-type1-dstroke
-%texhash
+# %postun fonts-type1-dstroke
+# %texhash
 
 %post fonts-type1-eurosym
 %texhash
@@ -4277,11 +4277,11 @@ fi
 %postun fonts-type1-px
 %texhash
 
-%post fonts-type1-qfonts
-%texhash
+# %post fonts-type1-qfonts
+# %texhash
 
-%postun fonts-type1-qfonts
-%texhash
+# %postun fonts-type1-qfonts
+# %texhash
 
 %post fonts-type1-tx
 %texhash
@@ -5528,9 +5528,9 @@ fi
 %doc %{texmf}/doc/latex/cyrillic
 %{texmf}/tex/latex/cyrillic
 
-%files latex-dstroke
-%defattr(644,root,root,755)
-%{texmf}/tex/latex/dstroke
+# %files latex-dstroke
+# %defattr(644,root,root,755)
+# %{texmf}/tex/latex/dstroke
 
 %files latex-jknappen
 %defattr(644,root,root,755)
@@ -5875,11 +5875,11 @@ fi
 %{texmf}/fonts/source/public/cs
 %{texmf}/fonts/tfm/public/cs
 
-%files fonts-dstroke
-%defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/dstroke
-%{texmf}/fonts/source/public/dstroke
-%{texmf}/fonts/tfm/public/dstroke
+# %files fonts-dstroke
+# %defattr(644,root,root,755)
+# %doc %{texmf}/doc/fonts/dstroke
+# %{texmf}/fonts/source/public/dstroke
+# %{texmf}/fonts/tfm/public/dstroke
 
 %files fonts-ecc
 %defattr(644,root,root,755)
@@ -6090,30 +6090,30 @@ fi
 
 %files fonts-type1-bluesky
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/bluesky
-%{texmf}/dvips/bluesky
-%{texmf}/fonts/type1/bluesky
+# %doc %{texmf}/doc/fonts/bluesky
+# %{texmf}/dvips/bluesky
+%{texmf}/dist/fonts/type1/bluesky
 
 %files fonts-type1-cc-pl
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/polish/cc-plps
-%{texmf}/fonts/type1/public/cc-pl
+%doc %{texmf}/dist/doc/fonts/cc-pl
+%{texmf}/dist/fonts/type1/public/cc-pl
 
 %files fonts-type1-cmcyr
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/cmcyr
+%{texmf}/dist/fonts/type1/public/cmcyr
 
 %files fonts-type1-cs
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/cs
+%{texmf}/dist/fonts/type1/public/cs
 
-%files fonts-type1-dstroke
-%defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/dstroke
+# %files fonts-type1-dstroke
+# %defattr(644,root,root,755)
+# %{texmf}/fonts/type1/public/dstroke
 
 %files fonts-type1-eurosym
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/eurosym
+%{texmf}/dist/fonts/type1/public/eurosym
 
 %files fonts-type1-hoekwater
 %defattr(644,root,root,755)
@@ -6121,22 +6121,22 @@ fi
 
 %files fonts-type1-fpl
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/fpl
-%{texmf}/fonts/afm/public/fpl
-%{texmf}/fonts/type1/public/fpl
+%doc %{texmf}/dist/doc/fonts/fpl
+%{texmf}/dist/fonts/afm/public/fpl
+%{texmf}/dist/fonts/type1/public/fpl
 
 %files fonts-type1-lm
 %defattr(644,root,root,755)
-%{texmf}/fonts/afm/public/lm
-%{texmf}/fonts/type1/public/lm
+%{texmf}/dist/fonts/afm/public/lm
+%{texmf}/dist/fonts/type1/public/lm
 
 %files fonts-type1-marvosym
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/marvosym
+%{texmf}/dist/fonts/type1/public/marvosym
 
 %files fonts-type1-mathpazo
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/mathpazo
+# %doc %{texmf}/doc/fonts/mathpazo
 %{texmf}/dist/fonts/afm/public/mathpazo
 %{texmf}/dist/fonts/type1/public/mathpazo
 
@@ -6146,24 +6146,24 @@ fi
 
 %files fonts-type1-pl
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/polish/plpsfont
+# %doc %{texmf}/doc/fonts/polish/plpsfont
 %{texmf}/dist/fonts/type1/public/pl
 
 %files fonts-type1-px
 %defattr(644,root,root,755)
 %{texmf}/dist/fonts/type1/public/pxfonts
 
-%files fonts-type1-qfonts
-%defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/public/qfonts
+# %files fonts-type1-qfonts
+# %defattr(644,root,root,755)
+# %{texmf}/dist/fonts/type1/public/qfonts
 
 %files fonts-type1-tx
 %defattr(644,root,root,755)
 %{texmf}/dist/fonts/type1/public/txfonts
 
-%files fonts-type1-tt2001
-%defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/tt2001
+# %files fonts-type1-tt2001
+# %defattr(644,root,root,755)
+# %{texmf}/fonts/type1/public/tt2001
 
 %files fonts-type1-urw
 %defattr(644,root,root,755)
@@ -6171,7 +6171,7 @@ fi
 
 %files fonts-type1-vnr
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/public/vnr
+%{texmf}/dist/fonts/type1/vntex/vnr
 
 %files fonts-type1-xypic
 %defattr(644,root,root,755)
