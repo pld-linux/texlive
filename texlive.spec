@@ -3196,10 +3196,10 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 
 install -d $RPM_BUILD_ROOT%{texmf}/{dist,doc}
 cp -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
-cp -a texlive-20080822-texmf/texmf-dist/fonts/* $RPM_BUILD_ROOT%{texmf}/fonts
+# cp -a texlive-20080822-texmf/texmf-dist/fonts/* $RPM_BUILD_ROOT%{texmf}/fonts
 cp -a texlive-20080822-texmf/texmf-dist/dvips $RPM_BUILD_ROOT%{texmf}
 cp -a texlive-20080822-texmf/texmf-dist/tex $RPM_BUILD_ROOT%{texmf}
-# cp -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmf}/dist
+cp -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmf}/dist
 cp -a texlive-20080822-texmf/texmf-doc/* $RPM_BUILD_ROOT%{texmf}/doc
 
 install -d $RPM_BUILD_ROOT%{texmf}/fonts/opentype/public
@@ -4329,9 +4329,10 @@ fi
 %doc %{texmf}/doc/tetex.png
 %dir %{texmf}/doc/cstex
 %doc %{texmf}/doc/fontinst
-%dir %{texmf}/doc/fonts
-%doc %{texmf}/doc/fonts/fontname
-%dir %{texmf}/doc/fonts/polish
+# There isn't doc/fonts directory
+# %dir %{texmf}/doc/fonts
+# %doc %{texmf}/doc/fonts/fontname
+# %dir %{texmf}/doc/fonts/polish
 %dir %{texmf}/doc/generic
 %doc %{texmf}/doc/generic/nohyph
 %doc %{texmf}/doc/generic/tex-ps
@@ -5910,9 +5911,9 @@ fi
 
 %files fonts-hoekwater
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/hoekwater
-%{texmf}/fonts/tfm/hoekwater
-%{texmf}/fonts/map/dvips/tetex/hoekwater.map
+# %doc %{texmf}/dist/doc/fonts/hoekwater
+%{texmf}/dist/fonts/tfm/hoekwater
+%{texmf}/dist/fonts/map/dvips/tetex/hoekwater.map
 
 %files fonts-jknappen
 %defattr(644,root,root,755)
@@ -6116,7 +6117,7 @@ fi
 
 %files fonts-type1-hoekwater
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/hoekwater
+%{texmf}/dist/fonts/type1/hoekwater
 
 %files fonts-type1-fpl
 %defattr(644,root,root,755)
@@ -6136,29 +6137,29 @@ fi
 %files fonts-type1-mathpazo
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/fonts/mathpazo
-%{texmf}/fonts/afm/public/mathpazo
-%{texmf}/fonts/type1/public/mathpazo
+%{texmf}/dist/fonts/afm/public/mathpazo
+%{texmf}/dist/fonts/type1/public/mathpazo
 
 %files fonts-type1-omega
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/omega
+%{texmf}/dist/fonts/type1/public/omega
 
 %files fonts-type1-pl
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/fonts/polish/plpsfont
-%{texmf}/fonts/type1/public/pl
+%{texmf}/dist/fonts/type1/public/pl
 
 %files fonts-type1-px
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/pxfonts
+%{texmf}/dist/fonts/type1/public/pxfonts
 
 %files fonts-type1-qfonts
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/qfonts
+%{texmf}/dist/fonts/type1/public/qfonts
 
 %files fonts-type1-tx
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/txfonts
+%{texmf}/dist/fonts/type1/public/txfonts
 
 %files fonts-type1-tt2001
 %defattr(644,root,root,755)
@@ -6166,13 +6167,13 @@ fi
 
 %files fonts-type1-urw
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/urw
+%{texmf}/dist/fonts/type1/urw
 
 %files fonts-type1-vnr
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/public/vnr
+%{texmf}/dist/fonts/type1/public/vnr
 
 %files fonts-type1-xypic
 %defattr(644,root,root,755)
 %{texmf}/dvips/xypic
-%{texmf}/fonts/type1/public/xypic
+%{texmf}/dist/fonts/type1/public/xypic
