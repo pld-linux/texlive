@@ -5417,7 +5417,7 @@ fi
 
 %files latex-antp
 %defattr(644,root,root,755)
-%{texmf}/tex/latex/antp
+%{texmf}/dist/tex/latex/antp
 
 %files latex-antt
 %defattr(644,root,root,755)
@@ -5783,10 +5783,10 @@ fi
 %files fonts-antp
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/fonts/polish/antp
-%{texmf}/fonts/enc/dvips/antp
-%{texmf}/fonts/map/dvips/antp
-%{texmf}/fonts/afm/public/antp
-%{texmf}/fonts/tfm/public/antp
+%{texmf}/dist/fonts/enc/dvips/antp
+%{texmf}/dist/fonts/map/dvips/antp
+%{texmf}/dist/fonts/afm/public/antp
+%{texmf}/dist/fonts/tfm/public/antp
 
 %files fonts-antt
 %defattr(644,root,root,755)
@@ -6046,47 +6046,47 @@ fi
 
 %files fonts-vnr
 %defattr(644,root,root,755)
-%{texmf}/fonts/map/dvips/vntex
-%{texmf}/fonts/source/public/vnr
-%{texmf}/fonts/tfm/public/vnr
+%{texmf}/dist/fonts/map/dvips/vntex
+%{texmf}/dist/fonts/source/vntex/vnr
+%{texmf}/dist/fonts/tfm/vntex/vnr
 
 %files fonts-wasy
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/wasy
-%{texmf}/fonts/tfm/public/wasy
+%{texmf}/dist/fonts/source/public/wasy
+%{texmf}/dist/fonts/tfm/public/wasy
 
 %files fonts-xypic
 %defattr(644,root,root,755)
-%{texmf}/fonts/map/dvips/xypic
-%{texmf}/fonts/afm/public/xypic
-%{texmf}/fonts/source/public/xypic
-%{texmf}/fonts/tfm/public/xypic
+%{texmf}/dist/fonts/map/dvips/xypic
+%{texmf}/dist/fonts/afm/public/xypic
+%{texmf}/dist/fonts/source/public/xypic
+%{texmf}/dist/fonts/tfm/public/xypic
 
 %files fonts-yandy
 %defattr(644,root,root,755)
-%{texmf}/fonts/afm/yandy
-%{texmf}/fonts/source/yandy
-%{texmf}/fonts/tfm/yandy
-%{texmf}/fonts/vf/yandy
+# %{texmf}/fonts/afm/yandy
+%{texmf}/dist/source/fonts/eurofont/marvosym/tfmfiles/yandy
+# %{texmf}/fonts/tfm/yandy
+# %{texmf}/fonts/vf/yandy
 
 %files fonts-type1-antp
 %defattr(644,root,root,755)
-%{texmf}/dvips/antp
-%{texmf}/fonts/type1/public/antp
+%{texmf}/dist/dvips/antp
+%{texmf}/dist/fonts/type1/public/antp
 
 %files fonts-type1-antt
 %defattr(644,root,root,755)
-%{texmf}/dvips/antt
-%{texmf}/fonts/type1/public/antt
+# %{texmf}/dvips/antt
+%{texmf}/dist/fonts/type1/public/antt
 
 %files fonts-type1-belleek
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/belleek
-%{texmf}/fonts/type1/public/belleek
+%doc %{texmf}/dist/doc/fonts/belleek
+%{texmf}/dist/fonts/type1/public/belleek
 
 %files fonts-type1-bitstream
 %defattr(644,root,root,755)
-%{texmf}/fonts/type1/bitstrea
+%{texmf}/dist/fonts/type1/bitstrea
 
 %files fonts-type1-bluesky
 %defattr(644,root,root,755)
