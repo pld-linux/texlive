@@ -6022,27 +6022,27 @@ fi
 
 %files fonts-stmaryrd
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/stmaryrd
-%{texmf}/fonts/source/public/stmaryrd
-%{texmf}/fonts/tfm/public/stmaryrd
+%doc %{texmf}/dist/doc/fonts/stmaryrd
+%{texmf}/dist/source/fonts/stmaryrd
+%{texmf}/dist/fonts/tfm/public/stmaryrd
 
 %files fonts-tx
 %defattr(644,root,root,755)
-%{texmf}/fonts/map/dvips/tetex/txfonts.map
-%{texmf}/fonts/afm/public/txfonts
-%{texmf}/fonts/tfm/public/txfonts
-%{texmf}/fonts/vf/public/txfonts
+%{texmf}/dist/fonts/map/dvips/txfonts/txfonts.map
+%{texmf}/dist/fonts/afm/public/txfonts
+%{texmf}/dist/fonts/tfm/public/txfonts
+%{texmf}/dist/fonts/vf/public/txfonts
 
 %files fonts-urw
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/urw
-%{texmf}/fonts/afm/urw
+# %doc %{texmf}/doc/fonts/urw
+%{texmf}/dist/fonts/afm/urw
 
 %files fonts-urwvn
 %defattr(644,root,root,755)
-%{texmf}/fonts/tfm/public/urwvn
-%{texmf}/fonts/type1/public/urwvn
-%{texmf}/fonts/vf/public/urwvn
+%{texmf}/dist/fonts/tfm/vntex/urwvn
+%{texmf}/dist/fonts/type1/vntex/urwvn
+%{texmf}/dist/fonts/vf/vntex/urwvn
 
 %files fonts-vnr
 %defattr(644,root,root,755)
