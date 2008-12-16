@@ -1959,18 +1959,18 @@ QuasiPalatino and PX fonts typesetting support.
 %description tex-qpx -l pl.UTF-8
 Wsparcie dla składu fontami QuasiPalatino i PX.
 
-%package tex-qtx
+%package tex-qtxqpx
 Summary:	QuasiTimes and TX fonts typesetting support
 Summary(pl.UTF-8):	Wsparcie dla składu fontami QuasiTimes i TX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-qtx = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-qtxqpx = %{epoch}:%{version}-%{release}
 
-%description tex-qtx
+%description tex-qtxqpx
 QuasiTimes and TX fonts typesetting support.
 
-%description tex-qtx -l pl.UTF-8
+%description tex-qtxqpx -l pl.UTF-8
 Wsparcie dla składu fontami QuasiTimes i TX.
 
 %package tex-ruhyphen
@@ -2654,7 +2654,7 @@ Additional fonts for QPX package.
 %description fonts-qpx -l pl.UTF-8
 Dodatkowe fonty dla pakietu QPX.
 
-%package fonts-qtx
+%package fonts-qtxqpx
 Summary:	Additional fonts for QTX package
 Summary(pl.UTF-8):	Dodatkowe fonty dla pakietu QTX
 Group:		Fonts
@@ -2662,10 +2662,10 @@ Requires:	%{name}-dirs-fonts
 Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
 
-%description fonts-qtx
+%description fonts-qtxqpx
 Additional fonts for QTX package.
 
-%description fonts-qtx -l pl.UTF-8
+%description fonts-qtxqpx -l pl.UTF-8
 Dodatkowe fonty dla pakietu QTX.
 
 %package fonts-rsfs
@@ -3839,10 +3839,10 @@ fi
 %postun tex-qpx
 %texhash
 
-%post tex-qtx
+%post tex-qtxqpx
 %texhash
 
-%postun tex-qtx
+%postun tex-qtxqpx
 %texhash
 
 %post tex-ruhyphen
@@ -4121,10 +4121,10 @@ fi
 %postun fonts-qpx
 %texhash
 
-%post fonts-qtx
+%post fonts-qtxqpx
 %texhash
 
-%postun fonts-qtx
+%postun fonts-qtxqpx
 %texhash
 
 %post fonts-rsfs
@@ -5713,7 +5713,7 @@ fi
 %doc %{texmf}/doc/fonts/polish/qpx
 %{texmf}/tex/generic/qpx
 
-%files tex-qtx
+%files tex-qtxqpx
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/fonts/polish/qtx
 %{texmf}/tex/generic/qtx
@@ -6005,20 +6005,20 @@ fi
 %{texmf}/fonts/afm/public/qfonts
 %{texmf}/fonts/tfm/public/qfonts
 
-%files fonts-qpx
-%defattr(644,root,root,755)
-%{texmf}/fonts/tfm/public/qpx
-%{texmf}/fonts/vf/public/qpx
+# %files fonts-qpx
+# %defattr(644,root,root,755)
+# %{texmf}/fonts/tfm/public/qpx
+# %{texmf}/fonts/vf/public/qpx
 
-%files fonts-qtx
+%files fonts-qtxqpx
 %defattr(644,root,root,755)
-%{texmf}/fonts/tfm/public/qtx
-%{texmf}/fonts/vf/public/qtx
+%{texmf}/dist/fonts/tfm/public/qtxqpx
+%{texmf}/dist/fonts/vf/public/qtxqpx
 
 %files fonts-rsfs
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/rsfs
-%{texmf}/fonts/tfm/public/rsfs
+%{texmf}/dist/fonts/source/public/rsfs
+%{texmf}/dist/fonts/tfm/public/rsfs
 
 %files fonts-stmaryrd
 %defattr(644,root,root,755)
