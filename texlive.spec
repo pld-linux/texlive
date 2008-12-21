@@ -2203,17 +2203,17 @@ Sans serif blackboard bold for LaTeX.
 %description fonts-bbold -l pl.UTF-8
 Tablicowy tłusty font sans serif dla LaTeXa.
 
-%package fonts-bh
-Summary:	Bold & Heavy Fonts
-Summary(pl.UTF-8):	Fonty Bold i Heavy
-Group:		Fonts
-Requires:	%{name}-dirs-fonts
+# %package fonts-bh
+# Summary:	Bold & Heavy Fonts
+# Summary(pl.UTF-8):	Fonty Bold i Heavy
+# Group:		Fonts
+# Requires:	%{name}-dirs-fonts
 
-%description fonts-bh
-Bold & Heavy Fonts.
+# %description fonts-bh
+# Bold & Heavy Fonts.
 
-%description fonts-bh -l pl.UTF-8
-Fonty Bold i Heavy.
+# %description fonts-bh -l pl.UTF-8
+# Fonty Bold i Heavy.
 
 %package fonts-bitstream
 Summary:	Bitstream fonts
@@ -2351,17 +2351,17 @@ Czech/Slovak-tuned MetaFont Computer Modern fonts.
 Fonty MetaFont Computer Modern zmodyfikowane pod kątem języków
 czeskiego i słowackiego.
 
-# %package fonts-dstroke
-# Summary:	Doublestroke font for typesetting the mathematical symbols
-# Summary(pl.UTF-8):	Podwójnie kreślony font do składania symboli matematycznych
-# Group:		Fonts
-# Requires:	%{name}-dirs-fonts
-# 
-# %description fonts-dstroke
-# Doublestroke font for typesetting the mathematical symbols.
-# 
-# %description fonts-dstroke -l pl.UTF-8
-# Podwójnie kreślony font do składania symboli matematycznych.
+%package fonts-dstroke
+Summary:	Doublestroke font for typesetting the mathematical symbols
+Summary(pl.UTF-8):	Podwójnie kreślony font do składania symboli matematycznych
+Group:		Fonts
+Requires:	%{name}-dirs-fonts
+
+%description fonts-dstroke
+Doublestroke font for typesetting the mathematical symbols.
+
+%description fonts-dstroke -l pl.UTF-8
+Podwójnie kreślony font do składania symboli matematycznych.
 
 %package fonts-ecc
 Summary:	Sources for the European Concrete fonts
@@ -3930,11 +3930,11 @@ fi
 %postun fonts-bbold
 %texhash
 
-%post fonts-bh
-%texhash
+# %post fonts-bh
+# %texhash
 
-%postun fonts-bh
-%texhash
+# %postun fonts-bh
+# %texhash
 
 %post fonts-bitstream
 %texhash
@@ -4002,11 +4002,11 @@ fi
 %postun fonts-cs
 %texhash
 
-# %post fonts-dstroke
-# %texhash
+%post fonts-dstroke
+%texhash
 
-# %postun fonts-dstroke
-# %texhash
+%postun fonts-dstroke
+%texhash
 
 %post fonts-ecc
 %texhash
@@ -5759,31 +5759,51 @@ fi
 
 %files tex-xkeyval
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/xkeyval
+%doc %{texmfdist}/doc/latex/xkeyval
+%{texmfdist}/source/latex/xkeyval
+%{texmfdist}/tex/generic/xkeyval
+%{texmfdist}/tex/latex/xkeyval
 %{texmf}/tex/generic/xkeyval
+%{texmf}/tex/latex/xkeyval
+
 
 %files fonts-adobe
 %defattr(644,root,root,755)
-%{texmf}/fonts/afm/adobe
-%{texmf}/fonts/tfm/adobe
-%{texmf}/fonts/vf/adobe
+%{texmfdist}/fonts/type1/adobe
+%{texmfdist}/fonts/afm/adobe
+%{texmfdist}/fonts/tfm/adobe
+%{texmfdist}/fonts/vf/adobe
+%{texmfdist}/tex4ht/ht-fonts/unicode/adobe
+%{texmfdist}/tex4ht/ht-fonts/alias/adobe
+%{texmfdist}/tex4ht/ht-fonts/share/adobe
 
 %files fonts-ae
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/ae
-%{texmf}/fonts/tfm/public/ae
-%{texmf}/fonts/vf/public/ae
+%doc %{texmfdist}/doc/fonts/ae
+%{texmfdist}/fonts/tfm/public/ae
+%{texmfdist}/fonts/vf/public/ae
+%{texmfdist}/source/fonts/ae
+%{texmfdist}/tex4ht/ht-fonts/unicode/ae
+%{texmfdist}/tex4ht/ht-fonts/alias/ae
+
 
 %files fonts-ams
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/amsfonts
-%{texmf}/fonts/map/dvips/ams
-%{texmf}/fonts/source/ams
-%{texmf}/fonts/tfm/ams
+%{texmfdist}/bibtex/bst/ams
+%{texmfdist}/bibtex/bib/ams
+%{texmfdist}/dvips/ams
+%{texmfdist}/fonts/source/public/ams
+%{texmfdist}/fonts/type1/bluesky/ams
+%{texmfdist}/fonts/afm/bluesky/ams
+%{texmfdist}/fonts/tfm/public/ams
+%{texmfdist}/fonts/map/dvips/ams
+%{texmfdist}/tex4ht/ht-fonts/unicode/ams
+%{texmfdist}/tex4ht/ht-fonts/alias/ams
+%{texmf}/dvips/ams
 
 %files fonts-antp
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/polish/antp
+%doc %{texmf}/doc/fonts/antp
 %{texmfdist}/fonts/enc/dvips/antp
 %{texmfdist}/fonts/map/dvips/antp
 %{texmfdist}/fonts/afm/public/antp
@@ -5791,42 +5811,63 @@ fi
 
 %files fonts-antt
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/antt
-%{texmf}/fonts/enc/dvips/antt
-%{texmf}/fonts/map/dvips/antt
-%{texmf}/fonts/afm/public/antt
-%{texmf}/fonts/tfm/public/antt
+%doc %{texmfdist}/doc/fonts/antt
+%{texmfdist}/fonts/afm/public/antt
+%{texmfdist}/fonts/opentype/public/antt
+%{texmfdist}/fonts/enc/dvips/antt
+%{texmfdist}/fonts/tfm/public/antt
+%{texmfdist}/fonts/map/dvips/antt
+%{texmfdist}/tex/plain/antt
+%{texmfdist}/tex/latex/antt
+%{texmfdist}/tex4ht/ht-fonts/unicode/antt
+%{texmfdist}/tex4ht/ht-fonts/alias/antt
+%{texmf}/tex/latex/antt
+%{texmf}/tex/plain/antt
 
 %files fonts-bbm
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/bbm
-%{texmf}/fonts/tfm/public/bbm
+%doc %{texmfdist}/doc/fonts/bbm
+%{texmfdist}/fonts/source/public/bbm
+%{texmfdist}/fonts/tfm/public/bbm
+%{texmfdist}/source/latex/bbm
+%{texmfdist}/tex/latex/bbm
+%{texmf}/tex/latex/bbm
 
 %files fonts-bbold
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/bbold
-%{texmf}/fonts/tfm/public/bbold
+%doc %{texmfdist}/doc/latex/bbold
+%{texmfdist}/fonts/source/public/bbold
+%{texmfdist}/fonts/tfm/public/bbold
+%{texmfdist}/source/latex/bbold
+%{texmfdist}/tex/latex/bbold
+%{texmf}/tex/latex/bbold
 
-%files fonts-bh
-%defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/bh
-%{texmf}/fonts/tfm/bh
-%{texmf}/fonts/vf/bh
+# %files fonts-bh
+# %defattr(644,root,root,755)
+# %doc %{texmf}/doc/fonts/bh
+# %{texmf}/fonts/tfm/bh
+# %{texmf}/fonts/vf/bh
 
 %files fonts-bitstream
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/charter
-%{texmf}/fonts/afm/bitstrea
-%{texmf}/fonts/tfm/bitstrea
-%{texmf}/fonts/vf/bitstrea
+%{texmfdist}/fonts/afm/bitstrea
+%{texmfdist}/fonts/tfm/bitstrea
+%{texmfdist}/fonts/vf/bitstrea
+%{texmfdist}/tex4ht/ht-fonts/unicode/bitstrea
+%{texmfdist}/tex4ht/ht-fonts/alias/bitstrea
 
 %files fonts-cbgreek
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/cbgreek
-%{texmf}/fonts/source/public/cbgreek
+%{texmfdist}/tex4ht/ht-fonts/unicode/cbgreek
 
 %files fonts-cc-pl
 %defattr(644,root,root,755)
+%{texmfdist}/fonts/source/public/cc-pl
+%{texmfdist}/fonts/enc/dvips/cc-pl
+%{texmfdist}/fonts/tfm/public/cc-pl
+%{texmfdist}/fonts/map/dvips/cc-pl
+%{texmfdist}/tex4ht/ht-fonts/alias/cc-pl
+
 %doc %{texmf}/doc/fonts/polish/cc-pl
 %{texmf}/fonts/enc/dvips/cc-pl
 %{texmf}/fonts/map/dvips/cc-pl
@@ -5835,64 +5876,107 @@ fi
 
 %files fonts-cg
 %defattr(644,root,root,755)
-%{texmf}/fonts/tfm/cg
-%{texmf}/fonts/vf/cg
+%{texmfdist}/fonts/tfm/cg
+%{texmfdist}/fonts/vf/cg
 
 %files fonts-cm
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/fonts/cm
-%{texmf}/fonts/source/public/cm
-%{texmf}/fonts/tfm/public/cm
-%{texmf}/fonts/source/public/cm-bold
+%{texmfdist}/doc/fonts/cm
+%{texmfdist}/dvips/cm
+%{texmfdist}/fonts/source/public/cm
+%{texmfdist}/fonts/afm/bluesky/cm
+%{texmfdist}/fonts/tfm/public/cm
+%{texmfdist}/fonts/pk/ljfour/public/cm
+%{texmfdist}/fonts/map/dvips/cm
+%{texmfdist}/tex4ht/ht-fonts/unicode/cm
+%{texmfdist}/tex4ht/ht-fonts/iso8859/1/cm
+%{texmfdist}/tex4ht/ht-fonts/iso8859/5/cm
+%{texmfdist}/tex4ht/ht-fonts/alias/cm
+%{texmfdist}/tex4ht/ht-fonts/win/1251/cm
+%{texmfdist}/tex4ht/ht-fonts/css/emacspeak/cm
+%{texmf}/dvips/cm
+
 
 %files fonts-cmbright
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/cmbright
-%{texmf}/fonts/tfm/public/cmbright
+%doc %{texmfdist}/doc/latex/cmbright
+%{texmfdist}/fonts/source/public/cmbright
+%{texmfdist}/fonts/tfm/public/cmbright
+%{texmfdist}/source/latex/cmbright
+%{texmfdist}/tex/latex/cmbright
+%{texmf}/tex/latex/cmbright
 
 %files fonts-cmcyr
 %defattr(644,root,root,755)
-%{texmf}/fonts/tfm/public/cmcyr
-%{texmf}/fonts/vf/public/cmcyr
+%doc %{texmfdist}/doc/fonts/cmcyr
+%{texmfdist}/fonts/source/public/cmcyr
+%{texmfdist}/fonts/type1/public/cmcyr
+%{texmfdist}/fonts/tfm/public/cmcyr
+%{texmfdist}/fonts/vf/public/cmcyr
+%{texmfdist}/fonts/map/dvips/cmcyr
+%{texmfdist}/tex4ht/ht-fonts/unicode/cyrillic/cmcyr
+%{texmfdist}/tex4ht/ht-fonts/iso8859/5/cyrillic/cmcyr
+%{texmfdist}/tex4ht/ht-fonts/alias/cyrillic/cmcyr
+%{texmfdist}/tex4ht/ht-fonts/win/1251/cyrillic/cmcyr
 
 %files fonts-cmextra
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/cmextra
-%{texmf}/fonts/tfm/public/cmextra
+%{texmfdist}/fonts/source/public/cmextra
+%{texmfdist}/fonts/tfm/public/cmextra
 
 %files fonts-concmath
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/concmath
-%{texmf}/fonts/tfm/public/concmath
+%doc %{texmfdist}/doc/fonts/concmath
+%doc %{texmfdist}/doc/latex/concmath
+%{texmfdist}/fonts/source/public/concmath
+%{texmfdist}/fonts/tfm/public/concmath
+%{texmfdist}/source/latex/concmath
+%{texmfdist}/tex/latex/concmath
+%{texmf}/tex/latex/concmath
 
 %files fonts-concrete
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/concrete
-%{texmf}/fonts/tfm/public/concrete
+%doc %{texmfdist}/doc/fonts/concrete
+%{texmfdist}/fonts/source/public/concrete
+%{texmfdist}/fonts/tfm/public/concrete
+%{texmfdist}/tex4ht/ht-fonts/unicode/concrete
+%{texmfdist}/tex4ht/ht-fonts/alias/concrete
 
 %files fonts-cs
 %defattr(644,root,root,755)
+%{texmfdist}/dvips/cs
+%{texmfdist}/fonts/source/public/cs
+%{texmfdist}/fonts/enc/dvips/cs
+%{texmfdist}/fonts/tfm/public/cs
+%{texmfdist}/fonts/map/dvips/cs
+%{texmfdist}/tex4ht/ht-fonts/unicode/cs
+%{texmfdist}/tex4ht/ht-fonts/alias/cs
+%{texmf}/dvips/cs
+%{texmf}/scripts/texlive/tlmgrgui/lang/cs
+
 %doc %{texmf}/doc/fonts/cs
 %{texmf}/fonts/source/public/cs
 %{texmf}/fonts/tfm/public/cs
 
-# %files fonts-dstroke
-# %defattr(644,root,root,755)
-# %doc %{texmf}/doc/fonts/dstroke
-# %{texmf}/fonts/source/public/dstroke
-# %{texmf}/fonts/tfm/public/dstroke
+%files fonts-dstroke
+%{texmfdist}/tex4ht/ht-fonts/unicode/dstroke
 
 %files fonts-ecc
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/ecc
-%{texmf}/fonts/source/public/ecc
-%{texmf}/fonts/tfm/public/ecc
+%doc %{texmfdist}/doc/fonts/ecc
+%{texmfdist}/fonts/source/public/ecc
+%{texmfdist}/fonts/tfm/public/ecc
 
 %files fonts-eurosym
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/eurosym
-%{texmf}/fonts/source/public/eurosym
-%{texmf}/fonts/tfm/public/eurosym
+%doc %{texmfdist}/doc/fonts/eurosym
+%{texmfdist}/fonts/source/public/eurosym
+%{texmfdist}/fonts/tfm/public/eurosym
+%{texmfdist}/fonts/map/dvips/eurosym
+%{texmfdist}/source/fonts/eurosym
+%{texmfdist}/tex/latex/eurosym
+%{texmf}/tex/latex/eurosym
 
 %files fonts-eulervm
 %defattr(644,root,root,755)
