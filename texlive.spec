@@ -1959,18 +1959,18 @@ QuasiPalatino and PX fonts typesetting support.
 %description tex-qpx -l pl.UTF-8
 Wsparcie dla składu fontami QuasiPalatino i PX.
 
-%package tex-qtxqpx
+%package tex-qpxqtx
 Summary:	QuasiTimes and TX fonts typesetting support
 Summary(pl.UTF-8):	Wsparcie dla składu fontami QuasiTimes i TX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-qtxqpx = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-qpxqtx = %{epoch}:%{version}-%{release}
 
-%description tex-qtxqpx
+%description tex-qpxqtx
 QuasiTimes and TX fonts typesetting support.
 
-%description tex-qtxqpx -l pl.UTF-8
+%description tex-qpxqtx -l pl.UTF-8
 Wsparcie dla składu fontami QuasiTimes i TX.
 
 %package tex-ruhyphen
@@ -2654,7 +2654,7 @@ Additional fonts for QPX package.
 %description fonts-qpx -l pl.UTF-8
 Dodatkowe fonty dla pakietu QPX.
 
-%package fonts-qtxqpx
+%package fonts-qpxqtx
 Summary:	Additional fonts for QTX package
 Summary(pl.UTF-8):	Dodatkowe fonty dla pakietu QTX
 Group:		Fonts
@@ -2662,10 +2662,10 @@ Requires:	%{name}-dirs-fonts
 Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
 
-%description fonts-qtxqpx
+%description fonts-qpxqtx
 Additional fonts for QTX package.
 
-%description fonts-qtxqpx -l pl.UTF-8
+%description fonts-qpxqtx -l pl.UTF-8
 Dodatkowe fonty dla pakietu QTX.
 
 %package fonts-rsfs
@@ -3839,10 +3839,10 @@ fi
 %postun tex-qpx
 %texhash
 
-%post tex-qtxqpx
+%post tex-qpxqtx
 %texhash
 
-%postun tex-qtxqpx
+%postun tex-qpxqtx
 %texhash
 
 %post tex-ruhyphen
@@ -4121,10 +4121,10 @@ fi
 %postun fonts-qpx
 %texhash
 
-%post fonts-qtxqpx
+%post fonts-qpxqtx
 %texhash
 
-%postun fonts-qtxqpx
+%postun fonts-qpxqtx
 %texhash
 
 %post fonts-rsfs
@@ -5713,7 +5713,7 @@ fi
 %doc %{texmf}/doc/fonts/polish/qpx
 %{texmf}/tex/generic/qpx
 
-%files tex-qtxqpx
+%files tex-qpxqtx
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/fonts/polish/qtx
 %{texmf}/tex/generic/qtx
@@ -5981,39 +5981,56 @@ fi
 
 %files fonts-pl
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/polish/pl
+%doc %{texmf}/dist/doc/fonts/pl
+%{texmf}/dist/dvips/pl
+%{texmf}/dist/fonts/source/public/pl
+%{texmf}/dist/fonts/type1/public/pl
+%{texmf}/dist/fonts/afm/public/pl
+%{texmf}/dist/fonts/enc/dvips/pl
+%{texmf}/dist/fonts/tfm/public/pl
+%{texmf}/dist/fonts/map/dvips/pl
+%{texmf}/dist/tex4ht/ht-fonts/unicode/pl
+%{texmf}/dist/tex4ht/ht-fonts/alias/pl
 %{texmf}/dvips/pl
-%{texmf}/fonts/enc/dvips/pl
-%{texmf}/fonts/map/dvips/pl
-%{texmf}/fonts/source/public/pl
-%{texmf}/fonts/afm/public/pl
-%{texmf}/fonts/tfm/public/pl
+%{texmf}/scripts/texlive/tlmgrgui/lang/pl
 
 %files fonts-px
 %defattr(644,root,root,755)
-%{texmf}/fonts/map/dvips/tetex/pxfonts.map
-%{texmf}/fonts/afm/public/pxfonts
-%{texmf}/fonts/tfm/public/pxfonts
-%{texmf}/fonts/vf/public/pxfonts
+%doc %{texmf}/dist/doc/fonts/pxfonts
+%doc %{texmf}/doc/doc/english/free-math-font-survey/source/pxfonts.tex
+%doc %{texmf}/doc/doc/english/free-math-font-survey/images/pxfonts.png
+%dir %{texmf}/dist/fonts/map/dvips/pxfonts
+%dir %{texmf}/dist/tex/latex/pxfonts
+%{texmf}/dist/fonts/map/dvips/pxfonts/pxfonts.map
+%{texmf}/dist/fonts/afm/public/pxfonts
+%{texmf}/dist/fonts/tfm/public/pxfonts
+%{texmf}/dist/fonts/type1/public/pxfonts
+%{texmf}/dist/fonts/vf/public/pxfonts
+%{texmf}/dist/fonts/map/dvips/pxfonts/pxfonts.map
+%{texmf}/dist/tex4ht/ht-fonts/unicode/pxfonts
+%{texmf}/dist/tex4ht/ht-fonts/alias/pxfonts
+%{texmf}/tex/latex/pxfonts/pxfonts.sty
+%{texmf}/dist/tex/latex/pxfonts/pxfonts.sty
 
 %files fonts-qfonts
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/polish/qfonts
-%{texmf}/fonts/enc/dvips/qfonts
-%{texmf}/fonts/map/dvips/qfonts
-%{texmf}/dvips/qfonts
-%{texmf}/fonts/afm/public/qfonts
-%{texmf}/fonts/tfm/public/qfonts
+%{texmf}/dist/tex4ht/ht-fonts/alias/qfonts
+# %doc %{texmf}/doc/fonts/polish/qfonts
+# %{texmf}/fonts/enc/dvips/qfonts
+# %{texmf}/fonts/map/dvips/qfonts
+# %{texmf}/dvips/qfonts
+# %{texmf}/fonts/afm/public/qfonts
+# %{texmf}/fonts/tfm/public/qfonts
 
 # %files fonts-qpx
 # %defattr(644,root,root,755)
 # %{texmf}/fonts/tfm/public/qpx
 # %{texmf}/fonts/vf/public/qpx
 
-%files fonts-qtxqpx
+%files fonts-qpxqtx
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/tfm/public/qtxqpx
-%{texmf}/dist/fonts/vf/public/qtxqpx
+%{texmf}/dist/fonts/tfm/public/qpxqtx
+%{texmf}/dist/fonts/vf/public/qpxqtx
 
 %files fonts-rsfs
 %defattr(644,root,root,755)
@@ -6058,7 +6075,7 @@ fi
 %files fonts-xypic
 %defattr(644,root,root,755)
 %{texmf}/dist/fonts/map/dvips/xypic
-%{texmf}/dist/fonts/afm/public/xypic
+# %{texmf}/dist/fonts/afm/public/xypic
 %{texmf}/dist/fonts/source/public/xypic
 %{texmf}/dist/fonts/tfm/public/xypic
 
