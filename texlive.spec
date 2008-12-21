@@ -130,6 +130,7 @@ Obsoletes:	tetex-tex-vietnam
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		texmf	%{_datadir}/texmf
+%define		texmfdist %{texmf}/dist
 %define		fmtdir	/var/lib/texmf/web2c
 %define		texhash	[ ! -x %{_bindir}/texhash ] || %{_bindir}/texhash 1>&2;
 %define		_localstatedir	/var/lib/texmf
@@ -3199,7 +3200,7 @@ cp -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
 # cp -a texlive-20080822-texmf/texmf-dist/fonts/* $RPM_BUILD_ROOT%{texmf}/fonts
 cp -a texlive-20080822-texmf/texmf-dist/dvips $RPM_BUILD_ROOT%{texmf}
 cp -a texlive-20080822-texmf/texmf-dist/tex $RPM_BUILD_ROOT%{texmf}
-cp -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmf}/dist
+cp -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmfdist}
 cp -a texlive-20080822-texmf/texmf-doc/* $RPM_BUILD_ROOT%{texmf}/doc
 
 install -d $RPM_BUILD_ROOT%{texmf}/fonts/opentype/public
@@ -5417,7 +5418,7 @@ fi
 
 %files latex-antp
 %defattr(644,root,root,755)
-%{texmf}/dist/tex/latex/antp
+%{texmfdist}/tex/latex/antp
 
 %files latex-antt
 %defattr(644,root,root,755)
@@ -5783,10 +5784,10 @@ fi
 %files fonts-antp
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/fonts/polish/antp
-%{texmf}/dist/fonts/enc/dvips/antp
-%{texmf}/dist/fonts/map/dvips/antp
-%{texmf}/dist/fonts/afm/public/antp
-%{texmf}/dist/fonts/tfm/public/antp
+%{texmfdist}/fonts/enc/dvips/antp
+%{texmfdist}/fonts/map/dvips/antp
+%{texmfdist}/fonts/afm/public/antp
+%{texmfdist}/fonts/tfm/public/antp
 
 %files fonts-antt
 %defattr(644,root,root,755)
@@ -5895,126 +5896,179 @@ fi
 
 %files fonts-eulervm
 %defattr(644,root,root,755)
-#%doc %{texmf}/doc/fonts/eulervm
-%{texmf}/fonts/tfm/public/eulervm
-%{texmf}/fonts/vf/public/eulervm
+%doc %{texmfdist}/doc/latex/eulervm
+%{texmfdist}/fonts/tfm/public/eulervm
+%{texmfdist}/fonts/vf/public/eulervm
+%{texmfdist}/source/latex/eulervm
+%{texmfdist}/tex/latex/eulervm
+%{texmf}/tex/latex/eulervm
 
 %files fonts-euxm
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/euxm
-%{texmf}/fonts/tfm/public/euxm
+%{texmfdist}/fonts/source/public/euxm
+%{texmfdist}/fonts/tfm/public/euxm
 
 %files fonts-gothic
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/gothic
-%{texmf}/fonts/tfm/public/gothic
+%{texmfdist}/doc/fonts/gothic
+%{texmfdist}/dvips/gothic
+%{texmfdist}/fonts/source/public/gothic
+%{texmfdist}/fonts/type1/public/gothic
+%{texmfdist}/fonts/afm/public/gothic
+%{texmfdist}/fonts/tfm/public/gothic
+%{texmfdist}/fonts/vf/public/gothic
+%{texmfdist}/fonts/map/dvips/gothic
+%{texmf}/dvips/gothic
 
 %files fonts-hoekwater
 %defattr(644,root,root,755)
-# %doc %{texmf}/dist/doc/fonts/hoekwater
-%{texmf}/dist/fonts/tfm/hoekwater
-%{texmf}/dist/fonts/map/dvips/tetex/hoekwater.map
+%{texmfdist}/fonts/tfm/hoekwater
+%{texmfdist}/fonts/truetype/hoekwater
+%{texmfdist}/fonts/type1/hoekwater
+%{texmfdist}/fonts/afm/hoekwater
+%{texmfdist}/fonts/tfm/hoekwater
 
 %files fonts-jknappen
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/jknappen
-%{texmf}/fonts/tfm/jknappen
+%{texmfdist}/fonts/source/jknappen
+%{texmfdist}/fonts/tfm/jknappen
+%{texmfdist}/tex4ht/ht-fonts/unicode/jknappen
+%{texmfdist}/tex4ht/ht-fonts/alias/jknappen
 
 %files fonts-latex
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/latex
-%{texmf}/fonts/tfm/public/latex
-%{texmf}/fonts/source/public/esint
+%doc %{texmfdist}/doc/latex/esint
+%{texmfdist}/fonts/source/public/esint
+%{texmfdist}/fonts/tfm/public/esint
+%{texmfdist}/source/latex/esint
+%{texmfdist}/tex/latex/esint
+%{texmf}/tex/latex/esint
 
 %files fonts-lh
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/lh
-%{texmf}/fonts/source/lh
-#%{texmf}/fonts/tfm/lh
+%doc %{texmfdist}/doc/fonts/lh
+%{texmfdist}/fonts/source/lh
+%{texmfdist}/metapost/support/charlib/LH
+%{texmfdist}/source/fonts/lh
+%{texmfdist}/source/latex/lh
+%{texmfdist}/tex4ht/ht-fonts/koi/8r/lh
+%{texmfdist}/tex4ht/ht-fonts/unicode/lh
+%{texmfdist}/tex4ht/ht-fonts/iso8859/5/lh
+%{texmfdist}/tex4ht/ht-fonts/alias/lh
+%{texmfdist}/tex4ht/ht-fonts/win/1251/lh
 
 %files fonts-lm
 %defattr(644,root,root,755)
-%{texmf}/fonts/tfm/public/lm
+%doc %{texmfdist}/doc/fonts/lm
+%{texmfdist}/fonts/type1/public/lm
+%{texmfdist}/fonts/afm/public/lm
+%{texmfdist}/fonts/opentype/public/lm
+%{texmfdist}/fonts/enc/dvips/lm
+%{texmfdist}/fonts/tfm/public/lm
+%{texmfdist}/fonts/map/dvips/lm
+%{texmfdist}/fonts/map/dvipdfm/lm
+%{texmfdist}/source/fonts/lm
+%{texmfdist}/tex/latex/lm
+%{texmfdist}/tex4ht/ht-fonts/unicode/lm
+%{texmfdist}/tex4ht/ht-fonts/alias/lm
+%{texmf}/tex/latex/lm
 
 %files fonts-marvosym
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/marvosym
-%{texmf}/fonts/afm/public/marvosym
-%{texmf}/fonts/tfm/public/marvosym
+%doc %{texmfdist}/doc/latex/marvosym
+%{texmfdist}/fonts/type1/public/marvosym
+%{texmfdist}/fonts/afm/public/marvosym
+%{texmfdist}/fonts/tfm/public/marvosym
+%{texmfdist}/fonts/map/dvips/marvosym
+%{texmfdist}/source/fonts/eurofont/marvosym
+%{texmfdist}/tex/latex/marvosym
+%{texmfdist}/tex4ht/ht-fonts/unicode/marvosym
+%{texmfdist}/tex4ht/ht-fonts/alias/marvosym
+%{texmf}/tex/latex/marvosym
 
 %files fonts-mflogo
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/mflogo
-%{texmf}/fonts/tfm/public/mflogo
+%doc %{texmfdist}/doc/latex/mflogo
+%{texmfdist}/fonts/source/public/mflogo
+%{texmfdist}/fonts/type1/hoekwater/mflogo
+%{texmfdist}/fonts/afm/hoekwater/mflogo
+%{texmfdist}/fonts/tfm/public/mflogo
+%{texmfdist}/fonts/map/dvips/mflogo
+%{texmfdist}/source/latex/mflogo
+%{texmfdist}/tex/latex/mflogo
+%{texmfdist}/tex4ht/ht-fonts/unicode/mflogo
+%{texmf}/tex/latex/mflogo
 
 %files fonts-misc
 %defattr(644,root,root,755)
-%{texmf}/fonts/source/public/misc
-%{texmf}/fonts/tfm/public/misc
+%doc %{texmfdist}/doc/latex/marvosym/mac/oztex/tex-font/misc
+%{texmfdist}/fonts/source/public/misc
+%{texmfdist}/fonts/tfm/public/misc
+%{texmfdist}/fonts/misc
 
 %files fonts-monotype
 %defattr(644,root,root,755)
-#%{texmf}/fonts/tfm/monotype
-#%{texmf}/fonts/vf/monotype
+%{texmfdist}/fonts/tfm/monotype
+%{texmfdist}/fonts/vf/monotype
 
 %files fonts-omega
-%defattr(644,root,root,755)
-#%dir %{texmf}/fonts/ocp
-#%dir %{texmf}/fonts/ocp/public
-#%{texmf}/fonts/ocp/public/oinuit
-%dir %{texmf}/fonts/ofm
-%dir %{texmf}/fonts/ofm/public
-%{texmf}/fonts/ofm/public/*
-%dir %{texmf}/fonts/ovf
-%dir %{texmf}/fonts/ovf/public
-%{texmf}/fonts/ovf/public/*
-%dir %{texmf}/fonts/ovp
-%dir %{texmf}/fonts/ovp/public
-%{texmf}/fonts/ovp/public/*
-%{texmf}/fonts/afm/public/omega
-%{texmf}/fonts/tfm/public/omega
+%doc %{texmfdist}/doc/omega
+%{texmfdist}/dvips/omega
+%{texmfdist}/fonts/ofm/public/omega
+%{texmfdist}/fonts/type1/public/omega
+%{texmfdist}/fonts/afm/public/omega
+%{texmfdist}/fonts/ovp/public/omega
+%{texmfdist}/fonts/tfm/public/omega
+%{texmfdist}/fonts/ovf/public/omega
+%{texmfdist}/fonts/map/dvips/omega
+%dir %{texmfdist}/omega
+%dir %{texmfdist}/omega/otp
+%dir %{texmfdist}/omega/ocp
+%{texmfdist}/omega/ocp/omega
+%{texmfdist}/omega/otp/omega
+%{texmfdist}/tex/plain/omega
+%{texmf}/dvips/omega
+%{texmf}/tex/plain/omega
 
 %files fonts-pazo
 %defattr(644,root,root,755)
-%{texmf}/fonts/tfm/public/pazo
-%{texmf}/fonts/vf/public/pazo
+%{texmfdist}/tex4ht/ht-fonts/alias/pazo
 
 %files fonts-pl
 %defattr(644,root,root,755)
-%doc %{texmf}/dist/doc/fonts/pl
-%{texmf}/dist/dvips/pl
-%{texmf}/dist/fonts/source/public/pl
-%{texmf}/dist/fonts/type1/public/pl
-%{texmf}/dist/fonts/afm/public/pl
-%{texmf}/dist/fonts/enc/dvips/pl
-%{texmf}/dist/fonts/tfm/public/pl
-%{texmf}/dist/fonts/map/dvips/pl
-%{texmf}/dist/tex4ht/ht-fonts/unicode/pl
-%{texmf}/dist/tex4ht/ht-fonts/alias/pl
+%doc %{texmfdist}/doc/fonts/pl
+%{texmfdist}/dvips/pl
+%{texmfdist}/fonts/source/public/pl
+%{texmfdist}/fonts/type1/public/pl
+%{texmfdist}/fonts/afm/public/pl
+%{texmfdist}/fonts/enc/dvips/pl
+%{texmfdist}/fonts/tfm/public/pl
+%{texmfdist}/fonts/map/dvips/pl
+%{texmfdist}/tex4ht/ht-fonts/unicode/pl
+%{texmfdist}/tex4ht/ht-fonts/alias/pl
 %{texmf}/dvips/pl
 %{texmf}/scripts/texlive/tlmgrgui/lang/pl
 
 %files fonts-px
 %defattr(644,root,root,755)
-%doc %{texmf}/dist/doc/fonts/pxfonts
+%doc %{texmfdist}/doc/fonts/pxfonts
 %doc %{texmf}/doc/doc/english/free-math-font-survey/source/pxfonts.tex
 %doc %{texmf}/doc/doc/english/free-math-font-survey/images/pxfonts.png
-%dir %{texmf}/dist/fonts/map/dvips/pxfonts
-%dir %{texmf}/dist/tex/latex/pxfonts
-%{texmf}/dist/fonts/map/dvips/pxfonts/pxfonts.map
-%{texmf}/dist/fonts/afm/public/pxfonts
-%{texmf}/dist/fonts/tfm/public/pxfonts
-%{texmf}/dist/fonts/type1/public/pxfonts
-%{texmf}/dist/fonts/vf/public/pxfonts
-%{texmf}/dist/fonts/map/dvips/pxfonts/pxfonts.map
-%{texmf}/dist/tex4ht/ht-fonts/unicode/pxfonts
-%{texmf}/dist/tex4ht/ht-fonts/alias/pxfonts
+%dir %{texmfdist}/fonts/map/dvips/pxfonts
+%dir %{texmfdist}/tex/latex/pxfonts
+%{texmfdist}/fonts/map/dvips/pxfonts/pxfonts.map
+%{texmfdist}/fonts/afm/public/pxfonts
+%{texmfdist}/fonts/tfm/public/pxfonts
+%{texmfdist}/fonts/type1/public/pxfonts
+%{texmfdist}/fonts/vf/public/pxfonts
+%{texmfdist}/tex4ht/ht-fonts/unicode/pxfonts
+%{texmfdist}/tex4ht/ht-fonts/alias/pxfonts
 %{texmf}/tex/latex/pxfonts/pxfonts.sty
-%{texmf}/dist/tex/latex/pxfonts/pxfonts.sty
+%{texmfdist}/tex/latex/pxfonts/pxfonts.sty
 
 %files fonts-qfonts
 %defattr(644,root,root,755)
-%{texmf}/dist/tex4ht/ht-fonts/alias/qfonts
+%{texmfdist}/tex4ht/ht-fonts/alias/qfonts
 # %doc %{texmf}/doc/fonts/polish/qfonts
 # %{texmf}/fonts/enc/dvips/qfonts
 # %{texmf}/fonts/map/dvips/qfonts
@@ -6029,100 +6083,100 @@ fi
 
 %files fonts-qpxqtx
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/tfm/public/qpxqtx
-%{texmf}/dist/fonts/vf/public/qpxqtx
+%{texmfdist}/fonts/tfm/public/qpxqtx
+%{texmfdist}/fonts/vf/public/qpxqtx
 
 %files fonts-rsfs
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/source/public/rsfs
-%{texmf}/dist/fonts/tfm/public/rsfs
+%{texmfdist}/fonts/source/public/rsfs
+%{texmfdist}/fonts/tfm/public/rsfs
 
 %files fonts-stmaryrd
 %defattr(644,root,root,755)
-%doc %{texmf}/dist/doc/fonts/stmaryrd
-%{texmf}/dist/source/fonts/stmaryrd
-%{texmf}/dist/fonts/tfm/public/stmaryrd
+%doc %{texmfdist}/doc/fonts/stmaryrd
+%{texmfdist}/source/fonts/stmaryrd
+%{texmfdist}/fonts/tfm/public/stmaryrd
 
 %files fonts-tx
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/map/dvips/txfonts/txfonts.map
-%{texmf}/dist/fonts/afm/public/txfonts
-%{texmf}/dist/fonts/tfm/public/txfonts
-%{texmf}/dist/fonts/vf/public/txfonts
+%{texmfdist}/fonts/map/dvips/txfonts/txfonts.map
+%{texmfdist}/fonts/afm/public/txfonts
+%{texmfdist}/fonts/tfm/public/txfonts
+%{texmfdist}/fonts/vf/public/txfonts
 
 %files fonts-urw
 %defattr(644,root,root,755)
 # %doc %{texmf}/doc/fonts/urw
-%{texmf}/dist/fonts/afm/urw
+%{texmfdist}/fonts/afm/urw
 
 %files fonts-urwvn
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/tfm/vntex/urwvn
-%{texmf}/dist/fonts/type1/vntex/urwvn
-%{texmf}/dist/fonts/vf/vntex/urwvn
+%{texmfdist}/fonts/tfm/vntex/urwvn
+%{texmfdist}/fonts/type1/vntex/urwvn
+%{texmfdist}/fonts/vf/vntex/urwvn
 
 %files fonts-vnr
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/map/dvips/vntex
-%{texmf}/dist/fonts/source/vntex/vnr
-%{texmf}/dist/fonts/tfm/vntex/vnr
+%{texmfdist}/fonts/map/dvips/vntex
+%{texmfdist}/fonts/source/vntex/vnr
+%{texmfdist}/fonts/tfm/vntex/vnr
 
 %files fonts-wasy
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/source/public/wasy
-%{texmf}/dist/fonts/tfm/public/wasy
+%{texmfdist}/fonts/source/public/wasy
+%{texmfdist}/fonts/tfm/public/wasy
 
 %files fonts-xypic
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/map/dvips/xypic
-# %{texmf}/dist/fonts/afm/public/xypic
-%{texmf}/dist/fonts/source/public/xypic
-%{texmf}/dist/fonts/tfm/public/xypic
+%{texmfdist}/fonts/map/dvips/xypic
+# %{texmfdist}/fonts/afm/public/xypic
+%{texmfdist}/fonts/source/public/xypic
+%{texmfdist}/fonts/tfm/public/xypic
 
 %files fonts-yandy
 %defattr(644,root,root,755)
 # %{texmf}/fonts/afm/yandy
-%{texmf}/dist/source/fonts/eurofont/marvosym/tfmfiles/yandy
+%{texmfdist}/source/fonts/eurofont/marvosym/tfmfiles/yandy
 # %{texmf}/fonts/tfm/yandy
 # %{texmf}/fonts/vf/yandy
 
 %files fonts-type1-antp
 %defattr(644,root,root,755)
-%{texmf}/dist/dvips/antp
-%{texmf}/dist/fonts/type1/public/antp
+%{texmfdist}/dvips/antp
+%{texmfdist}/fonts/type1/public/antp
 
 %files fonts-type1-antt
 %defattr(644,root,root,755)
 # %{texmf}/dvips/antt
-%{texmf}/dist/fonts/type1/public/antt
+%{texmfdist}/fonts/type1/public/antt
 
 %files fonts-type1-belleek
 %defattr(644,root,root,755)
-%doc %{texmf}/dist/doc/fonts/belleek
-%{texmf}/dist/fonts/type1/public/belleek
+%doc %{texmfdist}/doc/fonts/belleek
+%{texmfdist}/fonts/type1/public/belleek
 
 %files fonts-type1-bitstream
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/bitstrea
+%{texmfdist}/fonts/type1/bitstrea
 
 %files fonts-type1-bluesky
 %defattr(644,root,root,755)
 # %doc %{texmf}/doc/fonts/bluesky
 # %{texmf}/dvips/bluesky
-%{texmf}/dist/fonts/type1/bluesky
+%{texmfdist}/fonts/type1/bluesky
 
 %files fonts-type1-cc-pl
 %defattr(644,root,root,755)
-%doc %{texmf}/dist/doc/fonts/cc-pl
-%{texmf}/dist/fonts/type1/public/cc-pl
+%doc %{texmfdist}/doc/fonts/cc-pl
+%{texmfdist}/fonts/type1/public/cc-pl
 
 %files fonts-type1-cmcyr
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/public/cmcyr
+%{texmfdist}/fonts/type1/public/cmcyr
 
 %files fonts-type1-cs
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/public/cs
+%{texmfdist}/fonts/type1/public/cs
 
 # %files fonts-type1-dstroke
 # %defattr(644,root,root,755)
@@ -6130,53 +6184,53 @@ fi
 
 %files fonts-type1-eurosym
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/public/eurosym
+%{texmfdist}/fonts/type1/public/eurosym
 
 %files fonts-type1-hoekwater
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/hoekwater
+%{texmfdist}/fonts/type1/hoekwater
 
 %files fonts-type1-fpl
 %defattr(644,root,root,755)
-%doc %{texmf}/dist/doc/fonts/fpl
-%{texmf}/dist/fonts/afm/public/fpl
-%{texmf}/dist/fonts/type1/public/fpl
+%doc %{texmfdist}/doc/fonts/fpl
+%{texmfdist}/fonts/afm/public/fpl
+%{texmfdist}/fonts/type1/public/fpl
 
 %files fonts-type1-lm
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/afm/public/lm
-%{texmf}/dist/fonts/type1/public/lm
+%{texmfdist}/fonts/afm/public/lm
+%{texmfdist}/fonts/type1/public/lm
 
 %files fonts-type1-marvosym
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/public/marvosym
+%{texmfdist}/fonts/type1/public/marvosym
 
 %files fonts-type1-mathpazo
 %defattr(644,root,root,755)
 # %doc %{texmf}/doc/fonts/mathpazo
-%{texmf}/dist/fonts/afm/public/mathpazo
-%{texmf}/dist/fonts/type1/public/mathpazo
+%{texmfdist}/fonts/afm/public/mathpazo
+%{texmfdist}/fonts/type1/public/mathpazo
 
 %files fonts-type1-omega
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/public/omega
+%{texmfdist}/fonts/type1/public/omega
 
 %files fonts-type1-pl
 %defattr(644,root,root,755)
 # %doc %{texmf}/doc/fonts/polish/plpsfont
-%{texmf}/dist/fonts/type1/public/pl
+%{texmfdist}/fonts/type1/public/pl
 
 %files fonts-type1-px
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/public/pxfonts
+%{texmfdist}/fonts/type1/public/pxfonts
 
 # %files fonts-type1-qfonts
 # %defattr(644,root,root,755)
-# %{texmf}/dist/fonts/type1/public/qfonts
+# %{texmfdist}/fonts/type1/public/qfonts
 
 %files fonts-type1-tx
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/public/txfonts
+%{texmfdist}/fonts/type1/public/txfonts
 
 # %files fonts-type1-tt2001
 # %defattr(644,root,root,755)
@@ -6184,13 +6238,13 @@ fi
 
 %files fonts-type1-urw
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/urw
+%{texmfdist}/fonts/type1/urw
 
 %files fonts-type1-vnr
 %defattr(644,root,root,755)
-%{texmf}/dist/fonts/type1/vntex/vnr
+%{texmfdist}/fonts/type1/vntex/vnr
 
 %files fonts-type1-xypic
 %defattr(644,root,root,755)
 %{texmf}/dvips/xypic
-%{texmf}/dist/fonts/type1/public/xypic
+%{texmfdist}/fonts/type1/public/xypic
