@@ -4741,8 +4741,7 @@ fi
 
 %files -n kpathsea
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/programs/kpathsea.dvi
-%doc %{texmf}/doc/programs/kpathsea.pdf
+%doc %{texmf}/doc/kpathsea/kpathsea.pdf
 %attr(755,root,root) %{_bindir}/kpsepath
 %attr(755,root,root) %{_bindir}/kpsestat
 %attr(755,root,root) %{_bindir}/kpsetool
@@ -4764,11 +4763,13 @@ fi
 
 %files dvips
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/programs/dvips.dvi
-%doc %{texmf}/doc/programs/dvips.pdf
-%doc %{texmf}/doc/programs/dvipdfm.dvi
-%doc %{texmf}/doc/programs/dvipdfm.pdf
-%doc %{texmf}/doc/latex/psnfssx
+# %doc %{texmf}/doc/programs/dvips.dvi
+%doc %{texmf}/doc/dvips/*.pdf
+%doc %{texmf}/doc/dvips/*.tex
+# %doc %{texmf}/doc/programs/dvipdfm.dvi
+%doc %{texmf}/doc/dvipdfm/*.pdf
+%doc %{texmf}/doc/dvipdfm/*.tex
+# %doc %{texmf}/doc/latex/psnfssx
 %attr(755,root,root) %{_bindir}/dvips
 %attr(755,root,root) %{_bindir}/dvired
 %attr(755,root,root) %{_bindir}/dvitomp
@@ -4786,22 +4787,22 @@ fi
 %{_mandir}/man1/dvired.1*
 %{_mandir}/man1/dvitomp.1*
 %{_mandir}/man1/dvitype.1*
-%lang(fi) %{_mandir}/fi/man1/dvips.1*
+# %lang(fi) %{_mandir}/fi/man1/dvips.1*
 %{texmf}/dvips/base
-%{texmf}/dvips/misc
+# %{texmf}/dvips/misc
 %{texmf}/dvips/gsftopk
 %{texmf}/dvips/psfrag
 
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/dvips/config/config.ps
-%{texmf}/dvips/config/config.generic
+# %{texmf}/dvips/config/config.generic
 %{texmf}/dvips/tetex/config.*
 
-%{texmf}/fonts/enc/dvips/base
+%{texmfdist}/fonts/enc/dvips/base
 %{texmf}/fonts/enc/dvips/tetex/mtex.enc
 %{texmf}/fonts/map/dvipdfm
-%{texmf}/fonts/map/dvips/misc
-%{texmf}/fonts/map/dvips/tetex/bsr-interpolated.map
-%{texmf}/fonts/map/dvips/tetex/bsr.map
+# %{texmf}/fonts/map/dvips/misc
+# %{texmf}/fonts/map/dvips/tetex/bsr-interpolated.map
+# %{texmf}/fonts/map/dvips/tetex/bsr.map
 %{texmf}/fonts/map/dvips/tetex/dvipdfm35.map
 %{texmf}/fonts/map/dvips/tetex/dvips35.map
 %{texmf}/fonts/map/dvips/tetex/mathpple.map
@@ -4809,7 +4810,7 @@ fi
 %{texmf}/fonts/map/dvips/tetex/mt-plus.map
 %{texmf}/fonts/map/dvips/tetex/mt-yy.map
 %{texmf}/fonts/map/dvips/tetex/pdftex35.map
-%{texmf}/fonts/map/dvips/tetex/ttcmex.map
+%{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
 %{_localstatedir}/fonts/map/dvipdfm
 %{_localstatedir}/fonts/map/dvips
 
@@ -4829,13 +4830,13 @@ fi
 
 %files makeindex
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/makeindex
+%doc %{texmfdist}/doc/makeindex
 
 %attr(755,root,root) %{_bindir}/mkindex
 %attr(755,root,root) %{_bindir}/makeindex
 %attr(755,root,root) %{_bindir}/rumakeindex
 
-%{texmf}/makeindex
+%{texmfdist}/makeindex
 
 %{_mandir}/man1/makeindex.1*
 %{_mandir}/man1/mkindex.1*
@@ -4852,16 +4853,17 @@ fi
 %attr(755,root,root) %{_bindir}/mktexmf
 %attr(755,root,root) %{_bindir}/mktexpk
 %attr(755,root,root) %{_bindir}/mktextfm
-%{texmf}/metafont
-%dir %{texmf}/mft
-%{texmf}/mft/cmbase.mft
-%{texmf}/mft/e.mft
-%{texmf}/mft/mplain.mft
-%{texmf}/mft/plain.mft
-%{texmf}/mft/pl.mft
-%{fmtdir}/mf.base
+%{texmfdist}/metafont
+%dir %{texmfdist}/mft
+%dir %{texmfdist}/mft/base
+#%{texmf}/mft/cmbase.mft
+# %{texmf}/mft/e.mft
+%{texmfdist}/mft/base/mplain.mft
+%{texmfdist}/mft/base/plain.mft
+# %{texmf}/mft/pl.mft
+# %{fmtdir}/mf.base
 #%{texmf}/web2c/mf-nowin.base
-%{texmf}/web2c/mf.pool
+# %{texmf}/web2c/mf.pool
 #%{texmf}/web2c/mfw.base
 
 %{_mandir}/man1/mf.1*
@@ -4874,18 +4876,18 @@ fi
 
 %files metapost
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/metapost
+%doc %{texmfdist}/doc/metapost
 %attr(755,root,root) %{_bindir}/mpost
 %attr(755,root,root) %{_bindir}/mpto
 #%attr(755,root,root) %{_bindir}/virmpost
 #%attr(755,root,root) %{_bindir}/inimpost
-%dir %{texmf}/metapost
-%{texmf}/metapost/base
-%{texmf}/metapost/config
-%{texmf}/metapost/mfpic
-%{texmf}/metapost/misc
-%{texmf}/metapost/support
-%{texmf}/web2c/mp.pool
+%dir %{texmfdist}/metapost
+%{texmfdist}/metapost/base
+%{texmfdist}/metapost/config
+%{texmfdist}/metapost/mfpic
+%{texmfdist}/metapost/misc
+%{texmfdist}/metapost/support
+# %{texmf}/web2c/mp.pool
 %{fmtdir}/mpost.mem
 %{_mandir}/man1/mpost.1*
 %{_mandir}/man1/mpto.1*
@@ -4899,7 +4901,7 @@ fi
 
 %files texdoctk
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/texdoctk
+# %doc %{texmf}/doc/texdoctk
 %attr(755,root,root) %{_bindir}/texdoctk
 %{texmf}/texdoctk
 
@@ -4923,35 +4925,35 @@ fi
 %files -n xdvi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/xdvi
-%attr(755,root,root) %{_bindir}/xdvi-xaw.bin
+# %attr(755,root,root) %{_bindir}/xdvi-xaw.bin
 #%attr(755,root,root) %{_bindir}/xdvi-motif.bin
-%attr(755,root,root) %{_bindir}/xdvizilla
+# %attr(755,root,root) %{_bindir}/xdvizilla
 %{_mandir}/man1/xdvi.1*
-%{_mandir}/man1/xdvizilla.1*
+# %{_mandir}/man1/xdvizilla.1*
 %{_desktopdir}/xdvi.desktop
 %{_pixmapsdir}/xdvi.png
 %{texmf}/xdvi
 
 %files pdftex
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/pdftex
-%doc %{texmf}/doc/programs/pdfcrop.txt
+%doc %{texmfdist}/doc/pdftex
+# %doc %{texmf}/doc/programs/pdfcrop.txt
 %attr(755,root,root) %{_bindir}/epstopdf
 %attr(755,root,root) %{_bindir}/pdftex
-%attr(755,root,root) %{_bindir}/pdfxtex
+# %attr(755,root,root) %{_bindir}/pdfxtex
 %attr(755,root,root) %{_bindir}/pdfcrop
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftexconfig.tex
 %{_localstatedir}/fonts/map/pdftex
-%dir %{texmf}/fonts/map/pdftex
-%dir %{texmf}/fonts/map/pdftex/cmttf
-%{texmf}/fonts/map/pdftex/cmttf/cmttf.map
-%{texmf}/web2c/pdfetex-pl.pool
-%{texmf}/web2c/pdfetex.pool
-%{texmf}/web2c/pdfxtex.pool
-%{texmf}/scripts/pdfcrop
+# %dir %{texmf}/fonts/map/pdftex
+# %dir %{texmf}/fonts/map/pdftex/cmttf
+# %{texmf}/fonts/map/pdftex/cmttf/cmttf.map
+# %{texmf}/web2c/pdfetex-pl.pool
+# %{texmf}/web2c/pdfetex.pool
+# %{texmf}/web2c/pdfxtex.pool
+%{texmfdist}/scripts/pdfcrop
 %{_mandir}/man1/epstopdf.1*
 %{_mandir}/man1/pdftex.1*
-%{_mandir}/man1/pdfxtex.1*
+# %{_mandir}/man1/pdfxtex.1*
 
 %files omega
 %defattr(644,root,root,755)
@@ -4973,14 +4975,14 @@ fi
 %attr(755,root,root) %{_bindir}/outocp
 %attr(755,root,root) %{_bindir}/ovf2ovp
 %attr(755,root,root) %{_bindir}/ovp2ovf
-%{texmf}/dvips/omega/config.omega
-%{texmf}/dvips/omega/omega.cfg
-%{texmf}/fonts/map/dvips/omega
+%{texmfdist}/dvips/omega/config.omega
+%{texmfdist}/dvips/omega/omega.cfg
+%{texmfdist}/fonts/map/dvips/omega
 %{texmf}/tex/lambda
-%{texmf}/omega/ocp
-%{texmf}/omega/otp
-%{texmf}/web2c/omega.pool
-%{texmf}/web2c/aleph.pool
+%{texmfdist}/omega/ocp
+%{texmfdist}/omega/otp
+# %{texmf}/web2c/omega.pool
+# %{texmf}/web2c/aleph.pool
 #%{_mandir}/man1/lambda.1*
 %{_mandir}/man1/mkocp.1*
 %{_mandir}/man1/mkofm.1*
@@ -4999,8 +5001,8 @@ fi
 
 %files plain
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/plain
-%{texmf}/tex/plain
+%doc %{texmfdist}/doc/plain
+%{texmfdist}/tex/plain
 #%{texmf}/web2c/plain.mem
 #%{texmf}/web2c/plain.base
 
@@ -5019,14 +5021,15 @@ fi
 
 %files mex
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/polish/mex
-%dir %{texmf}/tex/mex
-%dir %{texmf}/tex/mex/base
-%{texmf}/tex/mex/base/mex1.tex
-%{texmf}/tex/mex/base/mex2.tex
-%{texmf}/tex/mex/base/mex.tex
-%dir %{texmf}/tex/mex/config
-%{texmf}/tex/mex/config/mexconf.tex
+# %doc %{texmf}/doc/polish/mex
+%dir %{texmfdist}/tex/mex
+%dir %{texmfdist}/tex/mex/base
+%{texmfdist}/tex/mex/base/mex1.tex
+%{texmfdist}/tex/mex/base/mex2.tex
+%{texmfdist}/tex/mex/base/mex.tex
+%dir %{texmfdist}/tex/mex/config
+%{texmfdist}/tex/mex/base/mexconf.tex
+
 
 %files format-mex
 %defattr(644,root,root,755)
@@ -5056,30 +5059,30 @@ fi
 
 %files format-amstex
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/amstex
+%doc %{texmfdist}/doc/amstex
+%{texmfdist}/tex/amstex
 %attr(755,root,root) %{_bindir}/amstex
 %{_mandir}/man1/amstex.1*
-%lang(fi) %{_mandir}/fi/man1/amstex.1*
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/amstex.fmt
+# %lang(fi) %{_mandir}/fi/man1/amstex.1*
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/amstex.fmt
 
-%files format-pdfamstex
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/pdfamstex
+# %files format-pdfamstex
+# %defattr(644,root,root,755)
+# %attr(755,root,root) %{_bindir}/pdfamstex
 #%{texmf}/pdftex/amstex
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfamstex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfamstex.fmt
 
 %files csplain
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/cstex/README-cspsfont
-%doc %{texmf}/doc/cstex/cs-fonts.doc
-%doc %{texmf}/doc/cstex/cscorr.tab
-%doc %{texmf}/doc/cstex/csplain.doc
-%doc %{texmf}/doc/cstex/parpozn.tex
-%doc %{texmf}/doc/cstex/test8z.tex
-%doc %{texmf}/doc/cstex/testlat.tex
+%doc %{texmfdist}/doc/cslatex/base/README-cspsfont
+%doc %{texmfdist}/doc/cslatex/base/cs-fonts.doc
+%doc %{texmfdist}/doc/cslatex/base/cscorr.tab
+%doc %{texmfdist}/doc/cslatex/base/csplain.doc
+%doc %{texmfdist}/doc/cslatex/base/parpozn.tex
+%doc %{texmfdist}/doc/cslatex/base/test8z.tex
+%doc %{texmfdist}/doc/cslatex/base/testlat.tex
 %attr(755,root,root) %{_bindir}/csplain
-%{texmf}/tex/csplain
-%{texmf}/tex/generic/csplain
+%{texmfdist}/tex/csplain
 
 %files format-csplain
 %defattr(644,root,root,755)
@@ -5092,8 +5095,8 @@ fi
 
 %files cslatex
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/cstex/INSTALL.cslatex
-%doc %{texmf}/doc/cstex/README.cslatex
+# %doc %{texmf}/doc/cstex/INSTALL.cslatex
+# %doc %{texmf}/doc/cstex/README.cslatex
 %{texmf}/tex/cslatex
 %{texmf}/tex/latex/cslatex
 
