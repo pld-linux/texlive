@@ -5107,32 +5107,32 @@ fi
 %attr(755,root,root) %{_bindir}/pdfcslatex
 %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfcslatex.fmt
 
-%files cyrplain
-%defattr(644,root,root,755)
-%doc %{texmf}/doc/cyrplain
-%{texmf}/tex/cyrplain
+# %files cyrplain
+# %defattr(644,root,root,755)
+# %doc %{texmf}/doc/cyrplain
+# %{texmf}/tex/cyrplain
 
-%files format-cyrplain
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/cyrtex
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cyrtex.fmt
+# %files format-cyrplain
+# %defattr(644,root,root,755)
+# %attr(755,root,root) %{_bindir}/cyrtex
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cyrtex.fmt
 
-%files format-cyramstex
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/cyramstex
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cyramstex.fmt
+# %files format-cyramstex
+# %defattr(644,root,root,755)
+# %attr(755,root,root) %{_bindir}/cyramstex
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cyramstex.fmt
 
-%files format-cyrtexinfo
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/cyrtexinfo
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cyrtexinfo.fmt
+# %files format-cyrtexinfo
+# %defattr(644,root,root,755)
+# %attr(755,root,root) %{_bindir}/cyrtexinfo
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cyrtexinfo.fmt
 
 %files eplain
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/etex
-%doc %{texmf}/doc/eplain
-%{texmf}/tex/plain/etex
-%{texmf}/tex/eplain
+%doc %{texmfdist}/doc/etex
+%doc %{texmfdist}/doc/eplain
+%{texmfdist}/tex/plain/etex
+%{texmfdist}/tex/eplain
 
 %files format-eplain
 %defattr(644,root,root,755)
@@ -5155,16 +5155,16 @@ fi
 %attr(755,root,root) %{_bindir}/texfont
 %attr(755,root,root) %{_bindir}/texshow
 %attr(755,root,root) %{_bindir}/texutil
-%{_mandir}/man1/fdf2tex.1*
+# %{_mandir}/man1/fdf2tex.1*
 %{_mandir}/man1/texfind.1*
 %{_mandir}/man1/texfont.1*
 %{_mandir}/man1/texutil.1*
-%{_mandir}/man1/texshow.1*
-%{texmfdist}/context/config/texexec.ini
+# %{_mandir}/man1/texshow.1*
+# %{texmfdist}/context/config/texexec.ini
 %{texmfdist}/context/config/texexec.rme
 %{texmfdist}/context/data
 %{texmfdist}/fonts/enc/dvips/context
-%{texmfdist}/fonts/map/dvips/context
+# %{texmfdist}/fonts/map/dvips/context
 %{texmfdist}/metapost/context
 %{texmfdist}/scripts/context
 %{texmfdist}/tex/latex/context
@@ -5174,7 +5174,7 @@ fi
 %{texmfdist}/tex/context/extra
 %{texmfdist}/tex/context/foxet
 %{texmfdist}/tex/context/interface
-%{texmfdist}/tex/context/maths
+# %{texmfdist}/tex/context/maths
 %{texmfdist}/tex/context/sample
 %{texmfdist}/tex/context/user
 %{texmfdist}/tex/generic/context
@@ -5222,9 +5222,9 @@ fi
 %defattr(644,root,root,755)
 %{_mandir}/man1/latex.1*
 %{_mandir}/man1/pslatex.1*
-%lang(fi) %{_mandir}/fi/man1/latex.1*
-%lang(pl) %{_mandir}/pl/man1/latex.1*
-%{_infodir}/latex.info*
+# %lang(fi) %{_mandir}/fi/man1/latex.1*
+# %lang(pl) %{_mandir}/pl/man1/latex.1*
+# %{_infodir}/latex.info*
 
 %dir %{texmf}/tex/latex
 
@@ -5417,7 +5417,6 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/amscls
 %doc %{texmfdist}/doc/latex/amsmath
-%doc %{texmfdist}/doc/latex/amsfonts
 %doc %{texmfdist}/doc/latex/onlyamsmath
 %{texmfdist}/tex/latex/amscls
 %{texmfdist}/tex/latex/amsmath
@@ -5440,13 +5439,13 @@ fi
 
 %files latex-bbold
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/bbold
-%{texmf}/tex/latex/bbold
+%doc %{texmfdist}/doc/latex/bbold
+%{texmfdist}/tex/latex/bbold
+%{texmfdist}/source/latex/bbold
 
 %files latex-bibtex
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/bibtex/base
-%doc %{texmfdist}/bibtex/bib/README
 %doc %{texmfdist}/doc/latex/adrconv
 %doc %{texmfdist}/doc/latex/bibtopic
 %doc %{texmfdist}/doc/latex/bibunits
@@ -5655,11 +5654,8 @@ fi
 
 %files latex-psnfss
 %doc %{texmfdist}/doc/latex/psnfss
-%{texmfdist}/doc/latex/psnfss/psnfss2e.pdf
 %{texmfdist}/fonts/map/dvips/psnfss
-%{texmfdist}/fonts/map/dvips/psnfss/psnfss.map
 %{texmfdist}/source/latex/psnfss
-%{texmfdist}/source/latex/psnfss/psnfss2e.tex
 %{texmfdist}/source/latex/latex-tds/tex/psnfss2e.drv
 %{texmfdist}/tex/latex/psnfss
 
@@ -5810,8 +5806,6 @@ fi
 %{texmfdist}/tex/generic/babel/spanish.sty
 %{texmfdist}/tex/generic/babel/spanish.ldf
 %{texmfdist}/tex/latex/spanish-mx
-%{texmfdist}/tex/latex/spanish-mx/spanishmx.sty
-%{texmfdist}/tex/latex/spanish-mx/spanishmx.ldf
 %{texmfdist}/tex/latex/custom-bib/spanish.mbs
 %{texmfdist}/tex/latex/babelbib/spanish.bdf
 %{texmfdist}/tex/latex/apacite/spanish.apc
@@ -5924,12 +5918,8 @@ fi
 
 %files fonts-bbold
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/bbold 
 %{texmfdist}/fonts/source/public/bbold
 %{texmfdist}/fonts/tfm/public/bbold
-%{texmfdist}/source/latex/bbold
-%{texmfdist}/tex/latex/bbold
-%{texmfdist}/tex/latex/bbold
 
 # %files fonts-bh
 # %defattr(644,root,root,755)
@@ -5964,8 +5954,7 @@ fi
 
 %files fonts-cm
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/cm
-%{texmfdist}/doc/fonts/cm
+%doc %{texmfdist}/doc/fonts/cm
 %{texmfdist}/dvips/cm
 %{texmfdist}/fonts/source/public/cm
 %{texmfdist}/fonts/afm/bluesky/cm
@@ -6036,9 +6025,6 @@ fi
 %{texmfdist}/tex4ht/ht-fonts/unicode/cs
 %{texmfdist}/tex4ht/ht-fonts/alias/cs
 %{texmfdist}/dvips/cs
-%{texmfdist}/scripts/texlive/tlmgrgui/lang/cs
-
-%doc %{texmfdist}/doc/fonts/cs
 %{texmfdist}/fonts/source/public/cs
 %{texmfdist}/fonts/tfm/public/cs
 
