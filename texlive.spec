@@ -1380,22 +1380,22 @@ LaTeX Cyrillic support.
 %description latex-cyrillic -l pl.UTF-8
 Obsługa cyrylicy dla LaTeXa.
 
-# %package latex-dstroke
-# Summary:	LaTeX doublestroke font
-# Summary(pl.UTF-8):	Podwójnie kreślony font dla LaTeXa
-# Group:		Applications/Publishing/TeX
-# Requires(post,postun):	%{_bindir}/texhash
-# Requires:	%{name}-fonts-dstroke = %{epoch}:%{version}-%{release}
-# Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-# 
-# %description latex-dstroke
-# Doublestroke font for typesetting the mathematical symbols for the
-# natural numbers, whole numbers, rational numbers, real numbers and
-# complex numbers.
-# 
-# %description latex-dstroke -l pl.UTF-8
-# Podwójnie kreślony font do składania symboli matematycznych liczb
-# naturalnych, całkowitych, wymiernych, rzeczywistych i zespolonych.
+%package latex-dstroke
+Summary:	LaTeX doublestroke font
+Summary(pl.UTF-8):	Podwójnie kreślony font dla LaTeXa
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-fonts-dstroke = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-dstroke
+Doublestroke font for typesetting the mathematical symbols for the
+natural numbers, whole numbers, rational numbers, real numbers and
+complex numbers.
+
+%description latex-dstroke -l pl.UTF-8
+Podwójnie kreślony font do składania symboli matematycznych liczb
+naturalnych, całkowitych, wymiernych, rzeczywistych i zespolonych.
 
 %package latex-jknappen
 Summary:	Miscellaneous packages by Joerg Knappen
@@ -2203,17 +2203,17 @@ Sans serif blackboard bold for LaTeX.
 %description fonts-bbold -l pl.UTF-8
 Tablicowy tłusty font sans serif dla LaTeXa.
 
-# %package fonts-bh
-# Summary:	Bold & Heavy Fonts
-# Summary(pl.UTF-8):	Fonty Bold i Heavy
-# Group:		Fonts
-# Requires:	%{name}-dirs-fonts
+%package fonts-bh
+Summary:	Bold & Heavy Fonts
+Summary(pl.UTF-8):	Fonty Bold i Heavy
+Group:		Fonts
+Requires:	%{name}-dirs-fonts
 
-# %description fonts-bh
-# Bold & Heavy Fonts.
+%description fonts-bh
+Bold & Heavy Fonts.
 
-# %description fonts-bh -l pl.UTF-8
-# Fonty Bold i Heavy.
+%description fonts-bh -l pl.UTF-8
+Fonty Bold i Heavy.
 
 %package fonts-bitstream
 Summary:	Bitstream fonts
@@ -2882,17 +2882,17 @@ Czech/Slovak-tuned MetaFont Computer Modern fonts.
 Fonty MetaFont Computer Modern zmodyfikowane pod kątem języków
 czeskiego i słowackiego.
 
-# %package fonts-type1-dstroke
-# Summary:	Doublestroke Type1 font for typesetting the mathematical symbols
-# Summary(pl.UTF-8):	Podwójnie kreślony font Type1 do składania symboli matematycznych
-# Group:		Fonts
-# Requires:	%{name}-dirs-fonts
-# 
-# %description fonts-type1-dstroke
-# Doublestroke Type1 font for typesetting the mathematical symbols.
-# 
-# %description fonts-type1-dstroke -l pl.UTF-8
-# Podwójnie kreślony font Type1 do składania symboli matematycznych.
+%package fonts-type1-dstroke
+Summary:	Doublestroke Type1 font for typesetting the mathematical symbols
+Summary(pl.UTF-8):	Podwójnie kreślony font Type1 do składania symboli matematycznych
+Group:		Fonts
+Requires:	%{name}-dirs-fonts
+
+%description fonts-type1-dstroke
+Doublestroke Type1 font for typesetting the mathematical symbols.
+
+%description fonts-type1-dstroke -l pl.UTF-8
+Podwójnie kreślony font Type1 do składania symboli matematycznych.
 
 %package fonts-type1-eurosym
 Summary:	The new European currency symbol for the Euro
@@ -2958,17 +2958,17 @@ wolnodostępnego edytora fontów FontForge <http://fontforge.sf.net/>.
 Dane dla kerningu w tych fontach pochodzą z ulepszonych metryk
 Palatino Waltera Schmidta.
 
-# %package fonts-type1-tt2001
-# Summary:	Type1 tt2001 family fonts
-# Summary(pl.UTF-8):	Fonty Type1 z rodziny tt2001
-# Group:		Applications/Publishing/TeX
-# Requires:	%{name}-dirs-fonts
-# 
-# %description fonts-type1-tt2001
-# Type1 tt2001 famliy fonts.
-# 
-# %description fonts-type1-tt2001 -l pl.UTF-8
-# Fonty Type1 z rodziny tt2001.
+%package fonts-type1-tt2001
+Summary:	Type1 tt2001 family fonts
+Summary(pl.UTF-8):	Fonty Type1 z rodziny tt2001
+Group:		Applications/Publishing/TeX
+Requires:	%{name}-dirs-fonts
+
+%description fonts-type1-tt2001
+Type1 tt2001 famliy fonts.
+
+%description fonts-type1-tt2001 -l pl.UTF-8
+Fonty Type1 z rodziny tt2001.
 
 %package fonts-type1-lm
 Summary:	Type1 Latin Modern family fonts
@@ -3069,17 +3069,17 @@ PX fonts.
 %description fonts-type1-px -l pl.UTF-8
 Fonty PX.
 
-# %package fonts-type1-qfonts
-# Summary:	Quasi fonts
-# Summary(pl.UTF-8):	Fonty Quasi
-# Group:		Fonts
-# Requires:	%{name}-dirs-fonts
-# 
-# %description fonts-type1-qfonts
-# Quasi fonts.
-# 
-# %description fonts-type1-qfonts -l pl.UTF-8
-# Fonty Quasi.
+%package fonts-type1-qfonts
+Summary:	Quasi fonts
+Summary(pl.UTF-8):	Fonty Quasi
+Group:		Fonts
+Requires:	%{name}-dirs-fonts
+
+%description fonts-type1-qfonts
+Quasi fonts.
+
+%description fonts-type1-qfonts -l pl.UTF-8
+Fonty Quasi.
 
 %package fonts-type1-tx
 Summary:	TX fonts
