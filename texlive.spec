@@ -3223,16 +3223,16 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
 #touch $RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap/maps.lst
 
-#%{__make} init \
-#	prefix=$RPM_BUILD_ROOT%{_prefix} \
-#	bindir=$RPM_BUILD_ROOT%{_bindir} \
-#	mandir=$RPM_BUILD_ROOT%{_mandir} \
-#	libdir=$RPM_BUILD_ROOT%{_libdir} \
-#	datadir=$RPM_BUILD_ROOT%{_datadir} \
-#	infodir=$RPM_BUILD_ROOT%{_infodir} \
-#	includedir=$RPM_BUILD_ROOT%{_includedir} \
-#	sbindir=$RPM_BUILD_ROOT%{_sbindir} \
-#	texmf=$RPM_BUILD_ROOT%{texmf}
+# %{__make} init \
+# 	prefix=$RPM_BUILD_ROOT%{_prefix} \
+# 	bindir=$RPM_BUILD_ROOT%{_bindir} \
+# 	mandir=$RPM_BUILD_ROOT%{_mandir} \
+# 	libdir=$RPM_BUILD_ROOT%{_libdir} \
+# 	datadir=$RPM_BUILD_ROOT%{_datadir} \
+# 	infodir=$RPM_BUILD_ROOT%{_infodir} \
+# 	includedir=$RPM_BUILD_ROOT%{_includedir} \
+# 	sbindir=$RPM_BUILD_ROOT%{_sbindir} \
+# 	texmf=$RPM_BUILD_ROOT%{texmf}
 
 perl -pi \
 	-e "s|$RPM_BUILD_ROOT||g;" \
@@ -4588,20 +4588,22 @@ fi
 %files dirs-fonts
 %defattr(644,root,root,755)
 %dir %{texmf}
+%dir %{texmfdist}
 %dir %{texmf}/fonts
-%dir %{texmf}/fonts/afm
-%dir %{texmf}/fonts/afm/public
 %dir %{texmf}/fonts/opentype
 %dir %{texmf}/fonts/opentype/public
-%dir %{texmf}/fonts/pk
-%dir %{texmf}/fonts/source
-%dir %{texmf}/fonts/source/public
-%dir %{texmf}/fonts/tfm
-%dir %{texmf}/fonts/tfm/public
-%dir %{texmf}/fonts/type1
-%dir %{texmf}/fonts/type1/public
-%dir %{texmf}/fonts/vf
-%dir %{texmf}/fonts/vf/public
+%dir %{texmfdist}/fonts
+%dir %{texmfdist}/fonts/afm
+%dir %{texmfdist}/fonts/afm/public
+%dir %{texmfdist}/fonts/pk
+%dir %{texmfdist}/fonts/source
+%dir %{texmfdist}/fonts/source/public
+%dir %{texmfdist}/fonts/tfm
+%dir %{texmfdist}/fonts/tfm/public
+%dir %{texmfdist}/fonts/type1
+%dir %{texmfdist}/fonts/type1/public
+%dir %{texmfdist}/fonts/vf
+%dir %{texmfdist}/fonts/vf/public
 
 %files doc-Catalogue
 %defattr(644,root,root,755)
@@ -5548,11 +5550,8 @@ fi
 
 %files latex-lucidabr
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/lucida
-%{texmf}/fonts/map/dvips/lucida
-%{texmf}/fonts/map/dvips/tetex/lucidabr-o.map
-%{texmf}/tex/latex/lucidabr
-%{texmf}/tex/latex/lucida
+%{texmfdist}/vtex/config/lucidabr-k.ali
+%{texmfdist}/vtex/config/lucidabr.ali
 
 %files latex-lineno
 %defattr(644,root,root,755)
@@ -5565,139 +5564,167 @@ fi
 
 %files latex-mathpple
 %defattr(644,root,root,755)
-%{texmf}/tex/latex/mathpple
+%{texmfdist}/tex4ht/ht-fonts/alias/mathpple
 
 %files latex-mathtime
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/mathtime
-%doc %{texmf}/doc/fonts/mathtime
-%{texmf}/tex/latex/mathtime
+%{texmfdist}/tex4ht/ht-fonts/symbol/mathtime
+%{texmfdist}/tex4ht/ht-fonts/unicode/mathtime
+%{texmfdist}/tex4ht/ht-fonts/iso8859/1/mathtime
+%{texmfdist}/tex4ht/ht-fonts/alias/mathtime
+%{texmfdist}/tex4ht/ht-fonts/aliase/mathtime
 
 %files latex-microtype
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/microtype
-%{texmf}/tex/latex/microtype
+%doc %{texmfdist}/doc/latex/microtype
+%{texmfdist}/source/latex/microtype
+%{texmfdist}/tex/latex/microtype
 
 %files latex-mflogo
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/mflogo
-%{texmf}/tex/latex/mflogo
+%doc %{texmfdist}/doc/latex/mflogo
+%{texmfdist}/tex/latex/mflogo
 
 %files latex-mfnfss
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/mfnfss
-%{texmf}/tex/latex/mfnfss
+%{texmfdist}/source/latex/mfnfss
+%{texmfdist}/tex/latex/mfnfss
+
 
 %files latex-minitoc
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/minitoc
-%{texmf}/tex/latex/minitoc
+%doc %{texmfdist}/doc/latex/minitoc
+%{texmfdist}/bibtex/bst/minitoc
+%{texmfdist}/makeindex/minitoc
+%{texmfdist}/scripts/minitoc
+%{texmfdist}/source/latex/minitoc
+%{texmfdist}/tex/latex/minitoc
+
 
 %files latex-mltex
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/mltex
-%{texmf}/tex/latex/mltex
+%doc %{texmfdist}/doc/latex/mltex
+%{texmfdist}/tex/latex/mltex
 
-%files latex-palatcm
-%defattr(644,root,root,755)
-%{texmf}/tex/latex/palatcm
+
+# %files latex-palatcm
+# %defattr(644,root,root,755)
+# %{texmf}/tex/latex/palatcm
 
 %files latex-psnfss
-%defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/psnfss
-%{texmf}/fonts/enc/dvips/psnfss
-%{texmf}/fonts/enc/dvips/psnfssx
-%{texmf}/fonts/map/dvips/psnfss
-%{texmf}/fonts/map/dvips/psnfssx
-%{texmf}/tex/latex/psnfss
-%{texmf}/tex/latex/psnfssx
+%doc %{texmfdist}/doc/latex/psnfss
+%{texmfdist}/doc/latex/psnfss/psnfss2e.pdf
+%{texmfdist}/fonts/map/dvips/psnfss
+%{texmfdist}/fonts/map/dvips/psnfss/psnfss.map
+%{texmfdist}/source/latex/psnfss
+%{texmfdist}/source/latex/psnfss/psnfss2e.tex
+%{texmfdist}/source/latex/latex-tds/tex/psnfss2e.drv
+%{texmfdist}/tex/latex/psnfss
+
 
 %files latex-pxfonts
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/pxfonts
-%{texmf}/tex/latex/pxfonts
+%doc %{texmfdist}/doc/fonts/pxfonts
+%{texmfdist}/tex/latex/pxfonts
+%{texmfdist}/fonts/type1/public/pxfonts
+%{texmfdist}/fonts/afm/public/pxfonts
+%{texmfdist}/fonts/tfm/public/pxfonts
+%{texmfdist}/fonts/vf/public/pxfonts
+%{texmfdist}/fonts/map/dvips/pxfonts
+%{texmfdist}/tex4ht/ht-fonts/unicode/pxfonts
+%{texmfdist}/tex4ht/ht-fonts/alias/pxfonts
+
 
 %files latex-qfonts
 %defattr(644,root,root,755)
-%{texmf}/tex/latex/qfonts
+%{texmfdist}/tex4ht/ht-fonts/alias/qfonts
 
 %files latex-txfonts
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/txfonts
-%{texmf}/tex/latex/txfonts
+%doc %{texmfdist}/doc/fonts/txfonts
+%{texmfdist}/fonts/type1/public/txfonts
+%{texmfdist}/fonts/afm/public/txfonts
+%{texmfdist}/fonts/enc/dvips/txfonts
+%{texmfdist}/fonts/tfm/public/txfonts
+%{texmfdist}/fonts/vf/public/txfonts
+%{texmfdist}/fonts/map/dvips/txfonts
+%{texmfdist}/tex/latex/txfonts
+%{texmfdist}/tex4ht/ht-fonts/unicode/txfonts
+%{texmfdist}/tex4ht/ht-fonts/alias/txfonts
+
 
 %files latex-umlaute
 %defattr(644,root,root,755)
 %{texmf}/tex/latex/umlaute
 
-%files latex-urwvn
-%defattr(644,root,root,755)
-%{texmf}/tex/latex/urwvn
+# %files latex-urwvn
+# %defattr(644,root,root,755)
 
 %files latex-wasysym
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/wasysym
-%{texmf}/tex/latex/wasysym
+%doc %{texmfdist}/doc/latex/wasysym
+%{texmfdist}/tex/latex/wasysym
+%{texmfdist}/source/latex/wasysym
 
 %files format-latex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/latex
 %attr(755,root,root) %{_bindir}/pslatex
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/latex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/latex.fmt
 
 %files format-pdflatex
 %defattr(644,root,root,755)
 #%{texmf}/pdftex/latex/config
-#%dir %{texmf}/pdftex/latex
+# %dir %{texmf}/pdftex/latex
 %attr(755,root,root) %{_bindir}/pdflatex
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdflatex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdflatex.fmt
 #%{_mandir}/man1/pdflatex.1*
 
-%files platex
-%defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/platex
-%dir %{texmf}/tex/platex
-%{texmf}/tex/platex/config
-%{texmf}/tex/latex/platex
+# %files platex
+# %defattr(644,root,root,755)
+# %doc %{texmf}/doc/latex/platex
+# %dir %{texmf}/tex/platex
+# %{texmf}/tex/platex/config
+# %{texmf}/tex/latex/platex
 
-%files format-platex
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/platex
+# %files format-platex
+# %defattr(644,root,root,755)
+# %attr(755,root,root) %{_bindir}/platex
 #%attr(755,root,root) %{_bindir}/platex-pl
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/platex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/platex.fmt
 #%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/platex-pl.fmt
 
-%files format-pdfplatex
-%defattr(644,root,root,755)
+# %files format-pdfplatex
+# %defattr(644,root,root,755)
 #%dir %{texmf}/pdftex/platex
 #%{texmf}/pdftex/platex/config
-%attr(755,root,root) %{_bindir}/pdfplatex
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfplatex.fmt
+# %attr(755,root,root) %{_bindir}/pdfplatex
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfplatex.fmt
 
 %files tex-babel
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/babel
-%{texmf}/tex/generic/babel
+%doc %{texmfdist}/doc/generic/babel
+%{texmfdist}/tex/generic/babel
 
 %files tex-german
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/german
-%{texmf}/tex/generic/german
+%doc %{texmfdist}/doc/generic/german
+%{texmfdist}/tex/generic/german
 
 %files tex-mfpic
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/mfpic
-%{texmf}/tex/generic/mfpic
+%doc %{texmfdist}/doc/generic/mfpic
+%{texmfdist}/tex/generic/mfpic
 
 %files tex-misc
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/localloc
-%doc %{texmf}/doc/generic/multido
-%doc %{texmf}/doc/generic/tap
+%doc %{texmfdist}/doc/latex/localloc
+%doc %{texmfdist}/doc/generic/multido
+%doc %{texmfdist}/doc/generic/tap
 
-%{texmf}/tex/generic/eijkhout
-%{texmf}/tex/generic/multido
-#%{texmf}/tex/generic/misc
+%{texmfdist}/tex/generic/eijkhout
+%{texmfdist}/tex/generic/multido
+%{texmfdist}/tex/generic/misc
 
 %files tex-pictex
 %defattr(644,root,root,755)
@@ -5705,57 +5732,76 @@ fi
 
 %files tex-pstricks
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/pstricks
-%{texmf}/dvips/pstricks
-%{texmf}/tex/generic/pstricks
+%doc %{texmfdist}/doc/generic/pstricks
+%{texmfdist}/dvips/pstricks
+%{texmfdist}/tex/generic/pstricks
 
-%files tex-qpx
-%defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/polish/qpx
-%{texmf}/tex/generic/qpx
+# %files tex-qpx
+# %defattr(644,root,root,755)
+# %doc %{texmf}/doc/fonts/polish/qpx
+# %{texmf}/tex/generic/qpx
 
 %files tex-qpxqtx
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/polish/qtx
-%{texmf}/tex/generic/qtx
+%doc %{texmfdist}/doc/fonts/qpxqtx
+%{texmfdist}/fonts/tfm/public/qpxqtx
+%{texmfdist}/fonts/vf/public/qpxqtx
+%{texmfdist}/tex/generic/qpxqtx
+%{texmf}/tex/generic/qpxqtx
 
 %files tex-ruhyphen
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/ruhyphen
-%{texmf}/tex/generic/ruhyphen
+%{texmfdist}/tex/generic/ruhyphen
+%{texmfdist}/source/generic/ruhyphen
 
 %files tex-spanish
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/spanish
-%{texmf}/tex/generic/spanishb
+%doc %{texmfdist}/doc/latex/spanish-mx
+%{texmfdist}/source/generic/babel/spanish.ins
+%{texmfdist}/source/generic/babel/spanish.dtx
+%{texmfdist}/source/latex/polyglot/langs/spanish.ld
+%{texmfdist}/source/latex/polyglot/langs/spanish.ot1
+%{texmfdist}/source/latex/mapcodes/spanish.map
+%{texmfdist}/source/latex/mapcodes/spanish.dtx
+%{texmfdist}/tex/texsis/base/Spanish.txs
+%{texmfdist}/tex/generic/tex4ht/spanish.4ht
+%{texmfdist}/tex/generic/babel/spanish.sty
+%{texmfdist}/tex/generic/babel/spanish.ldf
+%{texmfdist}/tex/latex/spanish-mx
+%{texmfdist}/tex/latex/spanish-mx/spanishmx.sty
+%{texmfdist}/tex/latex/spanish-mx/spanishmx.ldf
+%{texmfdist}/tex/latex/custom-bib/spanish.mbs
+%{texmfdist}/tex/latex/babelbib/spanish.bdf
+%{texmfdist}/tex/latex/apacite/spanish.apc
+%{texmfdist}/tex/latex/dvdcoll/dcl/spanish.dcl
 
 %files tex-texdraw
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/texdraw
-%{texmf}/tex/generic/texdraw
+%doc %{texmfdist}/doc/texdraw
+%{texmfdist}/tex/generic/texdraw
 
 %files tex-thumbpdf
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/thumbpdf
+%doc %{texmfdist}/doc/generic/thumbpdf
 %attr(755,root,root) %{_bindir}/thumbpdf
-%{texmf}/tex/generic/thumbpdf
-%{texmf}/scripts/thumbpdf
+%{texmfdist}/tex/generic/thumbpdf
+%{texmfdist}/scripts/thumbpdf
 %{_mandir}/man1/thumbpdf.1*
 
 %files tex-ukrhyph
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/ukrhyph
-%{texmf}/tex/generic/ukrhyph
+%doc %{texmfdist}/doc/generic/ukrhyph
+%{texmfdist}/tex/generic/ukrhyph
 
 %files latex-vietnam
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/vntex
-%{texmf}/tex/latex/vietnam
+%doc %{texmfdist}/doc/generic/vntex
+%{texmfdist}/tex/latex/vntex
 
 %files tex-xypic
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/generic/xypic
-%{texmf}/tex/generic/xypic
+%doc %{texmfdist}/doc/generic/xypic
+%{texmfdist}/tex/generic/xypic
 
 %files tex-xkeyval
 %defattr(644,root,root,755)
@@ -5803,11 +5849,12 @@ fi
 
 %files fonts-antp
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/antp
+%doc %{texmfdist}/doc/fonts/antp
 %{texmfdist}/fonts/enc/dvips/antp
 %{texmfdist}/fonts/map/dvips/antp
 %{texmfdist}/fonts/afm/public/antp
 %{texmfdist}/fonts/tfm/public/antp
+%{texmfdist}/dvips/antp
 
 %files fonts-antt
 %defattr(644,root,root,755)
@@ -5867,12 +5914,6 @@ fi
 %{texmfdist}/fonts/tfm/public/cc-pl
 %{texmfdist}/fonts/map/dvips/cc-pl
 %{texmfdist}/tex4ht/ht-fonts/alias/cc-pl
-
-%doc %{texmf}/doc/fonts/polish/cc-pl
-%{texmf}/fonts/enc/dvips/cc-pl
-%{texmf}/fonts/map/dvips/cc-pl
-%{texmf}/fonts/source/public/cc-pl
-%{texmf}/fonts/tfm/public/cc-pl
 
 %files fonts-cg
 %defattr(644,root,root,755)
@@ -5952,12 +5993,12 @@ fi
 %{texmfdist}/fonts/map/dvips/cs
 %{texmfdist}/tex4ht/ht-fonts/unicode/cs
 %{texmfdist}/tex4ht/ht-fonts/alias/cs
-%{texmf}/dvips/cs
-%{texmf}/scripts/texlive/tlmgrgui/lang/cs
+%{texmfdist}/dvips/cs
+%{texmfdist}/scripts/texlive/tlmgrgui/lang/cs
 
-%doc %{texmf}/doc/fonts/cs
-%{texmf}/fonts/source/public/cs
-%{texmf}/fonts/tfm/public/cs
+%doc %{texmfdist}/doc/fonts/cs
+%{texmfdist}/fonts/source/public/cs
+%{texmfdist}/fonts/tfm/public/cs
 
 %files fonts-dstroke
 %{texmfdist}/tex4ht/ht-fonts/unicode/dstroke
@@ -6006,11 +6047,9 @@ fi
 
 %files fonts-hoekwater
 %defattr(644,root,root,755)
-%{texmfdist}/fonts/tfm/hoekwater
-%{texmfdist}/fonts/truetype/hoekwater
-%{texmfdist}/fonts/type1/hoekwater
 %{texmfdist}/fonts/afm/hoekwater
 %{texmfdist}/fonts/tfm/hoekwater
+%{texmfdist}/fonts/truetype/hoekwater
 
 %files fonts-jknappen
 %defattr(644,root,root,755)
@@ -6195,9 +6234,11 @@ fi
 
 %files fonts-urwvn
 %defattr(644,root,root,755)
+%{texmfdist}/fonts/afm/vntex/urwvn
 %{texmfdist}/fonts/tfm/vntex/urwvn
 %{texmfdist}/fonts/type1/vntex/urwvn
 %{texmfdist}/fonts/vf/vntex/urwvn
+%{texmfdist}/tex4ht/ht-fonts/alias/vntex/urwvn
 
 %files fonts-vnr
 %defattr(644,root,root,755)
