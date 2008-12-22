@@ -20,6 +20,7 @@
 # - solve xindy case, it doesn't build with tetext, and probably won't with texlive
 #   until larm1000 font found (xindy option)
 # - texk/web2c doesn't build (luatex option)
+# - %files latex-bibtex-revtex4
 #
 #
 %include	/usr/lib/rpm/macros.perl
@@ -5144,12 +5145,12 @@ fi
 
 %files context
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/context
-%doc %{texmf}/doc/polish/context
-%dir %{texmf}/context
-%dir %{texmf}/context/config
-%dir %{texmf}/tex/context
-%dir %{texmf}/tex/context/config
+%doc %{texmfdist}/doc/context
+# %doc %{texmf}/doc/polish/context
+%dir %{texmfdist}/context
+%dir %{texmfdist}/context/config
+%dir %{texmfdist}/tex/context
+%dir %{texmfdist}/tex/context/config
 %attr(755,root,root) %{_bindir}/texfind
 %attr(755,root,root) %{_bindir}/texfont
 %attr(755,root,root) %{_bindir}/texshow
@@ -5159,25 +5160,25 @@ fi
 %{_mandir}/man1/texfont.1*
 %{_mandir}/man1/texutil.1*
 %{_mandir}/man1/texshow.1*
-%{texmf}/context/config/texexec.ini
-%{texmf}/context/config/texexec.rme
-%{texmf}/context/data
-%{texmf}/fonts/enc/dvips/context
-%{texmf}/fonts/map/dvips/context
-%{texmf}/metapost/context
-%{texmf}/scripts/context
-%{texmf}/tex/latex/context
-%{texmf}/tex/context/base
-%{texmf}/tex/context/bib
-%{texmf}/tex/context/config/cont-usr.tex
-%{texmf}/tex/context/extra
-%{texmf}/tex/context/foxet
-%{texmf}/tex/context/interface
-%{texmf}/tex/context/maths
-%{texmf}/tex/context/sample
-%{texmf}/tex/context/user
-%{texmf}/tex/generic/context
-%{texmf}/bibtex/bst/context
+%{texmfdist}/context/config/texexec.ini
+%{texmfdist}/context/config/texexec.rme
+%{texmfdist}/context/data
+%{texmfdist}/fonts/enc/dvips/context
+%{texmfdist}/fonts/map/dvips/context
+%{texmfdist}/metapost/context
+%{texmfdist}/scripts/context
+%{texmfdist}/tex/latex/context
+%{texmfdist}/tex/context/base
+%{texmfdist}/tex/context/bib
+%{texmfdist}/tex/context/config/cont-usr.tex
+%{texmfdist}/tex/context/extra
+%{texmfdist}/tex/context/foxet
+%{texmfdist}/tex/context/interface
+%{texmfdist}/tex/context/maths
+%{texmfdist}/tex/context/sample
+%{texmfdist}/tex/context/user
+%{texmfdist}/tex/generic/context
+%{texmfdist}/bibtex/bst/context
 
 # no fmt, so commented out
 #%files format-context-cz
@@ -5228,80 +5229,84 @@ fi
 %dir %{texmf}/tex/latex
 
 %{texmf}/tex/latex/SIunits
-%{texmf}/tex/latex/a4wide
+%{texmfdist}/tex/latex/ltxmisc/a4wide.sty
 %{texmf}/tex/latex/abstract
 %{texmf}/tex/latex/acronym
 %{texmf}/tex/latex/adrconv
 %{texmf}/tex/latex/aeguill
 %{texmf}/tex/latex/anysize
 %{texmf}/tex/latex/appendix
-%{texmf}/tex/latex/bar
+%{texmfdist}/tex/latex/misc209/bar.sty
 %{texmf}/tex/latex/base
 %{texmf}/tex/latex/beton
 %{texmf}/tex/latex/bezos
-%{texmf}/tex/latex/bold-extra
+%{texmfdist}/tex/latex/ltxmisc/bold-extra.sty
 %{texmf}/tex/latex/booktabs
-%{texmf}/tex/latex/boxedminipage
+%{texmfdist}/tex/generic/tex4ht/boxedminipage.4ht
+%{texmfdist}/tex/latex/ltxmisc/boxedminipage.sty
 %{texmf}/tex/latex/calrsfs
-%{texmf}/tex/latex/cancel
-%{texmf}/tex/latex/capt-of
+%{texmfdist}/tex/latex/ltxmisc/cancel.sty
+%{texmfdist}/tex/latex/ltxmisc/capt-of.sty
 %{texmf}/tex/latex/caption
 %{texmf}/tex/latex/ccaption
 %{texmf}/tex/latex/changebar
 %{texmf}/tex/latex/chappg
-%{texmf}/tex/latex/chngpage
-%{texmf}/tex/latex/citesort
+%{texmfdist}/tex/latex/ltxmisc/chngpage.sty
+# %{texmf}/tex/latex/citesort
 %{texmf}/tex/latex/cmap
 %{texmf}/tex/latex/comment
-%{texmf}/tex/latex/concrete
+%{texmfdist}/tex/latex/ltxmisc/concrete.sty
 %{texmf}/tex/latex/config
 %{texmf}/tex/latex/crop
 %{texmf}/tex/latex/currvita
 %{texmf}/tex/latex/curves
 %{texmf}/tex/latex/dinbrief
 %{texmf}/tex/latex/draftcopy
-%{texmf}/tex/latex/dvilj
+# %{texmf}/tex/latex/dvilj
 %{texmf}/tex/latex/dvipdfm
-%{texmf}/tex/latex/eclbip
+# %{texmf}/tex/latex/eclbip
 %{texmf}/tex/latex/eepic
 %{texmf}/tex/latex/endfloat
-%{texmf}/tex/latex/endnotes
+%{texmfdist}/tex/generic/tex4ht/endnotes.4ht
+%{texmfdist}/tex/latex/ltxmisc/endnotes.sty
 %{texmf}/tex/latex/enumitem
-%{texmf}/tex/latex/eo
+# %{texmf}/tex/latex/eo
 %{texmf}/tex/latex/eso-pic
-%{texmf}/tex/latex/etex
+%{texmf}/tex/plain/etex
 %{texmf}/tex/latex/esint
 %{texmf}/tex/latex/euler
 %{texmf}/tex/latex/eulervm
 %{texmf}/tex/latex/eurosym
 %{texmf}/tex/latex/exam
-%{texmf}/tex/latex/example
+# %{texmf}/tex/latex/example
 %{texmf}/tex/latex/extsizes
 %{texmf}/tex/latex/fancybox
 %{texmf}/tex/latex/fancyhdr
-%{texmf}/tex/latex/fancyheadings
+%{texmfdist}/tex/latex/hyper/fancyheadings.hyp
+%{texmfdist}/tex/latex/fancyhdr/fancyheadings.sty
 %{texmf}/tex/latex/fancyvrb
-%{texmf}/tex/latex/fguill
+# %{texmf}/tex/latex/fguill
 %{texmf}/tex/latex/filecontents
 %{texmf}/tex/latex/float
-%{texmf}/tex/latex/floatflt
-%{texmf}/tex/latex/fnpara
+# %{texmf}/tex/latex/floatflt
+%{texmfdist}/tex/generic/tex4ht/floatflt.4ht
+%{texmfdist}/tex/latex/ltxmisc/fnpara.sty
 %{texmf}/tex/latex/fontinst
 %{texmf}/tex/latex/footmisc
 %{texmf}/tex/latex/footnpag
 %{texmf}/tex/latex/fp
-%{texmf}/tex/latex/framed
+%{texmfdist}/tex/latex/ltxmisc/framed.sty
 %{texmf}/tex/latex/g-brief
 %{texmf}/tex/latex/geometry
 %{texmf}/tex/latex/germbib
-%{texmf}/tex/latex/gletter
+# %{texmf}/tex/latex/gletter
 %{texmf}/tex/latex/graphics
-%{texmf}/tex/latex/greek
-%{texmf}/tex/latex/hangcaption
-%{texmf}/tex/latex/here
+%{texmfdist}/tex/latex/greektex
+%{texmfdist}/tex/latex/misc209/hangcaption.sty
+# %{texmf}/tex/latex/here
 %{texmf}/tex/latex/hyperref
 %{texmf}/tex/latex/hyphenat
-%{texmf}/tex/latex/import
+%{texmfdist}/tex/latex/ltxmisc/import.sty
 %{texmf}/tex/latex/index
 %{texmf}/tex/latex/koma-script
 %{texmf}/tex/latex/labels
@@ -5318,51 +5323,52 @@ fi
 %{texmf}/tex/latex/moreverb
 %{texmf}/tex/latex/mparhack
 %{texmf}/tex/latex/ms
-%{texmf}/tex/latex/mt11p
+# %{texmf}/tex/latex/mt11p
 %{texmf}/tex/latex/multibib
-%{texmf}/tex/latex/multibox
-%{texmf}/tex/latex/multind
+%{texmfdist}/tex/latex/misc209/multibox.sty
+%{texmfdist}/tex/generic/tex4ht/multind.4ht
+%{texmfdist}/tex/latex/misc209/multind.sty
 %{texmf}/tex/latex/multirow
 %{texmf}/tex/latex/mwcls
 %{texmf}/tex/latex/natbib
-%{texmf}/tex/latex/nextpage
+%{texmfdist}/tex/latex/ltxmisc/nextpage.sty
 %{texmf}/tex/latex/ntheorem
 %{texmf}/tex/latex/nomencl
 %{texmf}/tex/latex/ntgclass
 %{texmf}/tex/latex/oberdiek
-%{texmf}/tex/latex/optional
+%{texmfdist}/tex/latex/ltxmisc/optional.sty
 %{texmf}/tex/latex/overpic
 %{texmf}/tex/latex/paralist
-%{texmf}/tex/latex/parskip
+%{texmfdist}/tex/latex/ltxmisc/parskip.sty
 %{texmf}/tex/latex/pb-diagram
 %{texmf}/tex/latex/pdfpages
 %{texmf}/tex/latex/picinpar
-%{texmf}/tex/latex/picins
+%{texmfdist}/tex/generic/tex4ht/picins.4ht
 %{texmf}/tex/latex/pict2e
 %{texmf}/tex/latex/placeins
-%{texmf}/tex/latex/portland
+%{texmfdist}/tex/latex/misc209/portland.sty
 %{texmf}/tex/latex/preprint
 %{texmf}/tex/latex/preview
 %{texmf}/tex/latex/program
-%{texmf}/tex/latex/ps4pdf
-%{texmf}/tex/latex/psboxit
+%{texmfdist}/scripts/pst-pdf/ps4pdf
+%{texmf}/tex/latex/misc209/psboxit.sty
 %{texmf}/tex/latex/psfrag
 %{texmf}/tex/latex/pslatex
-%{texmf}/tex/latex/pstricks
-%{texmf}/tex/latex/relsize
-%{texmf}/tex/latex/revtex4
+%{texmf}/tex/generic/pstricks
+# %{texmf}/tex/latex/relsize
+%{texmf}/tex/latex/revtex
 %{texmf}/tex/latex/rotating
 %{texmf}/tex/latex/rotfloat
 %{texmf}/tex/latex/scale
 %{texmf}/tex/latex/sectsty
-%{texmf}/tex/latex/selectp
+# %{texmf}/tex/latex/selectp
 %{texmf}/tex/latex/seminar
 %{texmf}/tex/latex/setspace
-%{texmf}/tex/latex/shadow
-%{texmf}/tex/latex/shapepar
+# %{texmf}/tex/latex/shadow
+%{texmf}/tex/generic/shapepar
 %{texmf}/tex/latex/showdim
 %{texmf}/tex/latex/showlabels
-%{texmf}/tex/latex/showtags
+# %{texmf}/tex/latex/showtags
 %{texmf}/tex/latex/sidecap
 %{texmf}/tex/latex/slashbox
 %{texmf}/tex/latex/soul
@@ -5372,36 +5378,36 @@ fi
 %{texmf}/tex/latex/subfigure
 %{texmf}/tex/latex/supertabular
 %{texmf}/tex/latex/t2
-%{texmf}/tex/latex/tabls
-%{texmf}/tex/latex/texmacs
+# %{texmf}/tex/latex/tabls
+# %{texmf}/tex/latex/texmacs
 %{texmf}/tex/latex/textfit
-%{texmf}/tex/latex/textmerg
+%{texmf}/tex/generic/textmerg
 %{texmf}/tex/latex/textpos
-%{texmf}/tex/latex/threeparttable
+# %{texmf}/tex/latex/threeparttable
 %{texmf}/tex/latex/titlesec
 %{texmf}/tex/latex/tocbibind
 %{texmf}/tex/latex/tocloft
 %{texmf}/tex/latex/tools
 %{texmf}/tex/latex/totpages
-%{texmf}/tex/latex/treesvr
+# %{texmf}/tex/latex/treesvr
 %{texmf}/tex/latex/type1cm
-%{texmf}/tex/latex/ulem
+# %{texmf}/tex/latex/ulem
 %{texmf}/tex/latex/units
 %{texmf}/tex/latex/upquote
-%{texmf}/tex/latex/url
+# %{texmf}/tex/latex/url
 %{texmf}/tex/latex/vmargin
-%{texmf}/tex/latex/vpage
+# %{texmf}/tex/latex/vpage
 %{texmf}/tex/latex/was
 %{texmf}/tex/latex/wrapfig
 %{texmf}/tex/latex/xkeyval
 %{texmf}/tex/latex/xtab
 %{texmf}/tex/latex/yfonts
-%{texmf}/tex/latex/version
+# %{texmf}/tex/latex/version
 
 %files latex-algorithms
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/algorithms
-%{texmf}/tex/latex/algorithms
+%doc %{texmfdist}/doc/latex/algorithms
+%{texmfdist}/tex/latex/algorithms
 
 %files latex-ae
 %defattr(644,root,root,755)
@@ -5409,14 +5415,15 @@ fi
 
 %files latex-ams
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/amscls
-%doc %{texmf}/doc/latex/amsmath
-%doc %{texmf}/doc/latex/amsfonts
-%doc %{texmf}/doc/latex/onlyamsmath
-%{texmf}/tex/latex/amscls
-%{texmf}/tex/latex/amsmath
-%{texmf}/tex/latex/amsfonts
-%{texmf}/tex/latex/onlyamsmath
+%doc %{texmfdist}/doc/latex/amscls
+%doc %{texmfdist}/doc/latex/amsmath
+%doc %{texmfdist}/doc/latex/amsfonts
+%doc %{texmfdist}/doc/latex/onlyamsmath
+%{texmfdist}/tex/latex/amscls
+%{texmfdist}/tex/latex/amsmath
+%{texmfdist}/tex/latex/amsfonts
+%{texmfdist}/tex/latex/onlyamsmath
+%{texmfdist}/source/latex/onlyamsmath
 
 %files latex-antp
 %defattr(644,root,root,755)
@@ -5428,8 +5435,8 @@ fi
 
 %files latex-bbm
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/bbm
-%{texmf}/tex/latex/bbm
+%doc %{texmfdist}/doc/fonts/bbm
+%{texmfdist}/tex/latex/bbm
 
 %files latex-bbold
 %defattr(644,root,root,755)
@@ -5438,75 +5445,92 @@ fi
 
 %files latex-bibtex
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/bibtex/base
-%doc %{texmf}/bibtex/bib/README
-%doc %{texmf}/doc/latex/bibtopic
-%doc %{texmf}/doc/latex/bibunits
-%doc %{texmf}/doc/latex/footbib
-%dir %{texmf}/doc/bibtex
-%dir %{texmf}/bibtex
-%dir %{texmf}/bibtex/bib
-%dir %{texmf}/bibtex/bst
+%doc %{texmfdist}/doc/bibtex/base
+%doc %{texmfdist}/bibtex/bib/README
+%doc %{texmfdist}/doc/latex/adrconv
+%doc %{texmfdist}/doc/latex/bibtopic
+%doc %{texmfdist}/doc/latex/bibunits
+%doc %{texmfdist}/doc/latex/natbib
+%doc %{texmfdist}/doc/latex/footbib
+%dir %{texmfdist}/doc/bibtex
+%dir %{texmfdist}/bibtex
+%dir %{texmfdist}/bibtex/bib
+%dir %{texmfdist}/bibtex/bst
 
 %attr(755,root,root) %{_bindir}/bibtex
 %attr(755,root,root) %{_bindir}/rubibtex
 
-%{texmf}/bibtex/bib/base
-%{texmf}/bibtex/bst/adrconv
-%{texmf}/bibtex/bst/base
-%{texmf}/bibtex/bst/misc
-%{texmf}/bibtex/bst/natbib
-%{texmf}/tex/latex/bibtopic
-%{texmf}/tex/latex/bibunits
-%{texmf}/tex/latex/footbib
+%{texmfdist}/bibtex/bst/base
+%{texmfdist}/bibtex/csf/base
+%{texmfdist}/bibtex/bib/base
+%{texmfdist}/bibtex/bst/adrconv
+%{texmfdist}/bibtex/bib/adrconv
+%{texmfdist}/source/latex/adrconv
+%{texmfdist}/tex/latex/adrconv
+# %{texmf}/bibtex/bst/misc
+%{texmfdist}/bibtex/bst/natbib
+%{texmfdist}/tex/latex/natbib
+%{texmfdist}/tex/latex/bibtopic
+%{texmfdist}/source/latex/bibunits
+%{texmfdist}/tex/latex/bibunits
+%{texmfdist}/source/latex/footbib
+%{texmfdist}/tex/latex/footbib
 
 %{_mandir}/man1/bibtex.1*
 %{_mandir}/man1/rubibtex.1*
 
 %files latex-bibtex-ams
 %defattr(644,root,root,755)
-%{texmf}/bibtex/bib/ams
-%{texmf}/bibtex/bst/ams
+%{texmfdist}/bibtex/bst/ams
+%{texmfdist}/bibtex/bib/ams
 
 %files latex-bibtex-pl
 %defattr(644,root,root,755)
-%{texmf}/bibtex/bib/plbib
-%{texmf}/bibtex/bst/plbib
+%{texmfdist}/bibtex/bib/gustlib/plbib.bib
 
 %files latex-bibtex-german
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/bibtex/bibgerm
-%{texmf}/bibtex/bst/germbib
+%doc %{texmfdist}/doc/bibtex/germbib
+%{texmfdist}/bibtex/bst/germbib
+%{texmfdist}/tex/latex/germbib
 
 %files latex-bibtex-revtex4
 %defattr(644,root,root,755)
-%{texmf}/bibtex/bst/revtex4
+%doc %{texmfdist}/doc/latex/revtex/revtex4.pdf
+%{texmfdist}/source/latex/revtex/revtex4.dtx
+%{texmfdist}/source/latex/revtex/revtex4.ins
+%{texmfdist}/tex/latex/revtex/revtex4.cls
 
 %files latex-bibtex-jurabib
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/jurabib
-%{texmf}/bibtex/bst/jurabib
-%{texmf}/tex/latex/jurabib
+%doc %{texmfdist}/doc/latex/jurabib
+%{texmfdist}/bibtex/bst/jurabib
+%{texmfdist}/bibtex/bib/jurabib
+%{texmfdist}/source/latex/jurabib
+%{texmfdist}/tex/latex/jurabib
 
 %files latex-bibtex-dk
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/dk-bib
-%{texmf}/bibtex/bst/dk-bib
-%{texmf}/tex/latex/dk-bib
+%doc %{texmfdist}/doc/latex/dk-bib
+%{texmfdist}/bibtex/bst/dk-bib
+%{texmfdist}/bibtex/csf/dk-bib
+%{texmfdist}/bibtex/bib/dk-bib
+%{texmfdist}/source/latex/dk-bib
+%{texmfdist}/tex/latex/dk-bib
 
-%files latex-bibtex-nor
-%defattr(644,root,root,755)
-%{texmf}/bibtex/bst/norbib
+# %files latex-bibtex-nor
+# %defattr(644,root,root,755)
+# %{texmf}/bibtex/bst/norbib
 
 %files latex-carlisle
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/carlisle
-%{texmf}/tex/latex/carlisle
+%doc %{texmfdist}/doc/latex/carlisle
+%{texmfdist}/tex/latex/carlisle
 
 %files latex-ccfonts
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/ccfonts
-%{texmf}/tex/latex/ccfonts
+%doc %{texmfdist}/doc/latex/ccfonts
+%{texmfdist}/tex/latex/ccfonts
 
 %files latex-cite
 %defattr(644,root,root,755)
@@ -5514,8 +5538,9 @@ fi
 
 %files latex-cmbright
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/cmbright
-%{texmf}/tex/latex/cmbright
+%doc %{texmfdist}/doc/latex/cmbright
+%{texmfdist}/tex/latex/cmbright
+
 
 %files latex-concmath
 %defattr(644,root,root,755)
@@ -5899,12 +5924,12 @@ fi
 
 %files fonts-bbold
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/bbold
+%doc %{texmfdist}/doc/latex/bbold 
 %{texmfdist}/fonts/source/public/bbold
 %{texmfdist}/fonts/tfm/public/bbold
 %{texmfdist}/source/latex/bbold
 %{texmfdist}/tex/latex/bbold
-%{texmf}/tex/latex/bbold
+%{texmfdist}/tex/latex/bbold
 
 # %files fonts-bh
 # %defattr(644,root,root,755)
