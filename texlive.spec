@@ -5523,13 +5523,21 @@ fi
 
 %files latex-custom-bib
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/custom-bib
-%{texmf}/tex/latex/custom-bib
+%doc %{texmfdist}/doc/latex/custom-bib
+%{texmfdist}/source/latex/custom-bib
+%{texmfdist}/tex/latex/custom-bib
 
 %files latex-cyrillic
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/cyrillic
-%{texmf}/tex/latex/cyrillic
+%doc %{texmfdist}/doc/latex/cyrillic
+%{texmfdist}/source/latex/cyrillic
+%{texmfdist}/tex/latex/cyrillic
+%{texmfdist}/tex4ht/ht-fonts/symbol/cyrillic
+%{texmfdist}/tex4ht/ht-fonts/unicode/cyrillic
+%{texmfdist}/tex4ht/ht-fonts/unicode/ams/cyrillic
+%{texmfdist}/tex4ht/ht-fonts/iso8859/5/cyrillic
+%{texmfdist}/tex4ht/ht-fonts/alias/cyrillic
+%{texmfdist}/tex4ht/ht-fonts/win/1251/cyrillic
 
 # %files latex-dstroke
 # %defattr(644,root,root,755)
@@ -5537,16 +5545,24 @@ fi
 
 %files latex-jknappen
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/jknappen
-%doc %{texmf}/doc/fonts/ec
-%{texmf}/tex/latex/jknappen
+%doc %{texmfdist}/fonts/source/jknappen
+%{texmfdist}/fonts/tfm/jknappen
+%{texmfdist}/tex4ht/ht-fonts/unicode/jknappen
+%{texmfdist}/tex4ht/ht-fonts/alias/jknappen
 
 %files latex-lm
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/fonts/lm
-%{texmf}/tex/latex/lm
-%{texmf}/fonts/enc/dvips/lm
-%{texmf}/fonts/map/dvips/lm
+%doc %{texmfdist}/doc/fonts/lm
+%{texmfdist}/tex/latex/lm
+%{texmfdist}/fonts/afm/public/lm
+%{texmfdist}/fonts/enc/dvips/lm
+%{texmfdist}/fonts/map/dvips/lm
+%{texmfdist}/fonts/map/dvipdfm/lm
+%{texmfdist}/fonts/opentype/public/lm
+%{texmfdist}/fonts/tfm/public/lm
+%{texmfdist}/source/fonts/lm
+%{texmfdist}/tex4ht/ht-fonts/unicode/lm
+%{texmfdist}/tex4ht/ht-fonts/alias/lm
 
 %files latex-lucidabr
 %defattr(644,root,root,755)
@@ -5555,8 +5571,9 @@ fi
 
 %files latex-lineno
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/latex/lineno
-%{texmf}/tex/latex/lineno
+%doc %{texmfdist}/doc/latex/lineno
+%{texmfdist}/tex/latex/lineno
+
 
 %files latex-marvosym
 %defattr(644,root,root,755)
