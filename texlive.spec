@@ -3930,11 +3930,11 @@ fi
 %postun fonts-bbold
 %texhash
 
-# %post fonts-bh
-# %texhash
+%post fonts-bh
+%texhash
 
-# %postun fonts-bh
-# %texhash
+%postun fonts-bh
+%texhash
 
 %post fonts-bitstream
 %texhash
@@ -4224,11 +4224,11 @@ fi
 %postun fonts-type1-cs
 %texhash
 
-# %post fonts-type1-dstroke
-# %texhash
+%post fonts-type1-dstroke
+%texhash
 
-# %postun fonts-type1-dstroke
-# %texhash
+%postun fonts-type1-dstroke
+%texhash
 
 %post fonts-type1-eurosym
 %texhash
@@ -4278,11 +4278,11 @@ fi
 %postun fonts-type1-px
 %texhash
 
-# %post fonts-type1-qfonts
-# %texhash
+%post fonts-type1-qfonts
+%texhash
 
-# %postun fonts-type1-qfonts
-# %texhash
+%postun fonts-type1-qfonts
+%texhash
 
 %post fonts-type1-tx
 %texhash
