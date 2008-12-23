@@ -205,6 +205,7 @@ Katalog TeXa.
 
 %package doc-tug-faq
 Summary:	TeX User Group FAQ
+Summary(hu.UTF-8):      TeX felhasználók FAQ-ja
 Summary(pl.UTF-8):	FAQ Grupy Użytkowników TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
@@ -216,11 +217,15 @@ Obsoletes:	tetex-doc-uktug-faq
 %description doc-tug-faq
 TeX User Group FAQ.
 
+%description doc-tug-faq -l hu.UTF8
+TeX felhasználók FAQ-ja.
+
 %description doc-tug-faq -l pl.UTF-8
 FAQ Grupy Użytkowników TeXa.
 
 %package doc-latex
 Summary:	Basic LaTeX packages documentation
+Summary(hu.UTF-8):      Az alap LaTeX csomagok dokumentációja
 Summary(pl.UTF-8):	Podstawowa dokumentacja do pakietów LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
@@ -229,12 +234,16 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 %description doc-latex
 Basic LaTeX packages documentation.
 
+%description doc-latex -l hu.UTF-8
+Az alap LaTeX csomagok dokumentációja
+
 %description doc-latex -l pl.UTF-8
 Podstawowa dokumentacja do pakietów LaTeXa.
 
 # # libraries #
 %package -n kpathsea
 Summary:	File name lookup library
+Summary(hu.UTF-8):      Fájlnév-kereső könyvtár
 Summary(pl.UTF-8):	Biblioteka szukająca nazw plików
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
@@ -243,12 +252,16 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 %description -n kpathsea
 File name lookup library.
 
+%description -n kpathsea -l hu.UTF-8
+Fájlnév-kereső könyvtár.
+
 %description -n kpathsea -l pl.UTF-8
 Biblioteka szukająca nazw plików.
 
 %package -n kpathsea-devel
 Summary:	Kpathsea library filename lookup header files and documentation
 Summary(es.UTF-8):	Bibliotecas y archivos de inclusión para desarrollo TeX
+Summary(hu.UTF-8):      Kpathsea fájlnév-kereső könyvtár header fájljai és dokumentációja
 Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumetacja kpathsea
 Summary(pt_BR.UTF-8):	Bibliotecas e headers para desenvolvimento TeX
 Group:		Development/Libraries
@@ -260,6 +273,9 @@ Kpathsea library filename lookup header files and documentation.
 %description -n kpathsea-devel -l es.UTF-8
 Bibliotecas, archivos de inclusión, etc, para que puedas desarrollar
 aplicaciones TeX.
+
+%description -n kpathsea-devel -l hu.UTF-8
+Kpathsea fájlnév-kereső könyvtár header fájljai és dokumentációja.
 
 %description -n kpathsea-devel -l pl.UTF-8
 Pliki nagłówkowe oraz dokumentacja biblioteki kpathsea.
