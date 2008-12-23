@@ -1,6 +1,8 @@
 # TODO:
 # MAIN TODO:
 # - context: consider more splitting, check dependencies
+# - check unpackaged files
+# - maybe more splits (e.g. latex subpackages)
 # - omega: consider more splitting, check dependencies
 # - tdphp: is it really useful?
 # - allow using Type1 fonts in others applications (symlink to
