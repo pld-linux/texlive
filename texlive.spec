@@ -4894,7 +4894,7 @@ fi
 %files mptopdf
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mptopdf
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/mptopdf.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/mptopdf.fmt
 
 %files texdoctk
 %defattr(644,root,root,755)
@@ -4991,10 +4991,10 @@ fi
 %{_mandir}/man1/ovf2ovp.1*
 %{_mandir}/man1/ovp2ovf.1*
 
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/aleph.fmt
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/lambda.fmt
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/lamed.fmt
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/omega.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/aleph.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/lambda.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/lamed.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/omega.fmt
 
 %files plain
 %defattr(644,root,root,755)
@@ -5005,16 +5005,16 @@ fi
 
 %files format-plain
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/tex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/tex.fmt
 #%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/plain.fmt
 
 %files format-pdftex
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdftex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdftex.fmt
 
 %files format-pdfetex
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfetex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfetex.fmt
 
 %files mex
 %defattr(644,root,root,755)
@@ -5032,20 +5032,20 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mex
 %{texmf}/tex/mex/config/mex.ini
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/mex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/mex.fmt
 
 %files format-pdfmex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdfmex
 %{texmf}/tex/mex/config/pdfmex.ini
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfmex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfmex.fmt
 
 %files format-utf8mex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/utf8mex
 #%doc %{texmf}/doc/mex/utf8mex
 %{texmf}/tex/mex/utf8mex
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/utf8mex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/utf8mex.fmt
 
 %files amstex
 %defattr(644,root,root,755)
@@ -5083,12 +5083,12 @@ fi
 
 %files format-csplain
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/csplain.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/csplain.fmt
 
 %files format-pdfcsplain
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdfcsplain
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfcsplain.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfcsplain.fmt
 
 %files cslatex
 %defattr(644,root,root,755)
@@ -5100,12 +5100,12 @@ fi
 %files format-cslatex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/cslatex
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cslatex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cslatex.fmt
 
 %files format-pdfcslatex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdfcslatex
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfcslatex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfcslatex.fmt
 
 # %files cyrplain
 # %defattr(644,root,root,755)
@@ -5140,8 +5140,8 @@ fi
 %attr(755,root,root) %{_bindir}/etex
 %{_mandir}/man1/eplain.1*
 %{_mandir}/man1/etex.1*
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/eplain.fmt
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/etex.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/eplain.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/etex.fmt
 
 %files context
 %defattr(644,root,root,755)
@@ -5190,17 +5190,17 @@ fi
 %files format-context-de
 %defattr(644,root,root,755)
 %{texmf}/tex/context/config/cont-de.ini
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-de.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-de.fmt
 #%{_mandir}/man1/cont-de.1*
 
 %files format-context-en
 %defattr(644,root,root,755)
 %{texmf}/tex/context/config/cont-en.ini
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-en.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-en.fmt
 #%{_mandir}/man1/cont-en.1*
 # what is the difference betwen uk and en in this particular situation?
 %{texmf}/tex/context/config/cont-uk.ini
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-uk.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-uk.fmt
 
 # no fmt, so commented out
 #%files format-context-it
@@ -5210,7 +5210,7 @@ fi
 %files format-context-nl
 %defattr(644,root,root,755)
 %{texmf}/tex/context/config/cont-nl.ini
-%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-nl.fmt
+# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-nl.fmt
 #%{_mandir}/man1/cont-nl.1*
 
 # no fmt, so commented out
@@ -5256,7 +5256,7 @@ fi
 %{texmfdist}/tex/latex/cmap
 %{texmfdist}/tex/latex/comment
 %{texmfdist}/tex/latex/ltxmisc/concrete.sty
-%{texmft}/tex/latex/config
+%{texmf}/tex/latex/config
 %{texmfdist}/tex/latex/crop
 %{texmfdist}/tex/latex/currvita
 %{texmfdist}/tex/latex/curves
