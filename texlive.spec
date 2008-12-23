@@ -3188,7 +3188,8 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT/var/cache/fonts \
 	$RPM_BUILD_ROOT/etc/cron.daily\
 	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap\
-	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map
+	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map\
+	$RPM_BUILD_ROOT%{fmtdir}
 
 # commented out because of following (non-fatal) error:
 # Can't open texmf/web2c/texmf.cnf: No such file or directory.
@@ -4425,10 +4426,11 @@ fi
 #%verify(not md5 mtime size) %config(noreplace) /etc/sysconfig/tetex-updmap/maps.lst
 
 %ghost %{texmf}/ls-R
+%ghost %{texmfdist}/ls-R
 %dir %{_localstatedir}
 %dir %{_localstatedir}/fonts
 %dir %{_localstatedir}/fonts/map
-%ghost %{_localstatedir}/ls-R
+# %ghost %{_localstatedir}/ls-R
 
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/fmtutil.cnf
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktex.cnf
