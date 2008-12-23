@@ -3187,7 +3187,8 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT%{_mandir}/man5 \
 	$RPM_BUILD_ROOT/var/cache/fonts \
 	$RPM_BUILD_ROOT/etc/cron.daily\
-	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap
+	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap\
+	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map
 
 # commented out because of following (non-fatal) error:
 # Can't open texmf/web2c/texmf.cnf: No such file or directory.
@@ -3198,7 +3199,6 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 
 install -d $RPM_BUILD_ROOT%{texmf}/{dist,doc}
 cp -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
-# cp -a texlive-20080822-texmf/texmf-dist/fonts/* $RPM_BUILD_ROOT%{texmf}/fonts
 cp -a texlive-20080822-texmf/texmf-dist/dvips $RPM_BUILD_ROOT%{texmf}
 cp -a texlive-20080822-texmf/texmf-dist/tex $RPM_BUILD_ROOT%{texmf}
 cp -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmfdist}
@@ -4482,7 +4482,7 @@ fi
 %dir %{texmf}/web2c
 %{texmf}/web2c/*.tcx
 %dir %{fmtdir}
-%{fmtdir}/metafun.mem
+# %{fmtdir}/metafun.mem
 #%{texmf}/web2c/tex-pl.pool
 # %{texmf}/web2c/tex.pool
 %dir %{texmf}/fonts/map
@@ -4808,8 +4808,8 @@ fi
 %{texmf}/fonts/map/dvips/tetex/mt-yy.map
 %{texmf}/fonts/map/dvips/tetex/pdftex35.map
 %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
-%{_localstatedir}/fonts/map/dvipdfm
-%{_localstatedir}/fonts/map/dvips
+# %{_localstatedir}/fonts/map/dvipdfm
+# %{_localstatedir}/fonts/map/dvips
 
 %dir %{texmf}/dvipdfm
 %{texmf}/dvipdfm/config
@@ -4885,7 +4885,7 @@ fi
 %{texmfdist}/metapost/misc
 %{texmfdist}/metapost/support
 # %{texmf}/web2c/mp.pool
-%{fmtdir}/mpost.mem
+# %{fmtdir}/mpost.mem
 %{_mandir}/man1/mpost.1*
 %{_mandir}/man1/mpto.1*
 #%{_mandir}/man1/inimpost.1*
@@ -4940,7 +4940,7 @@ fi
 # %attr(755,root,root) %{_bindir}/pdfxtex
 %attr(755,root,root) %{_bindir}/pdfcrop
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftexconfig.tex
-%{_localstatedir}/fonts/map/pdftex
+# %{_localstatedir}/fonts/map/pdftex
 # %dir %{texmf}/fonts/map/pdftex
 # %dir %{texmf}/fonts/map/pdftex/cmttf
 # %{texmf}/fonts/map/pdftex/cmttf/cmttf.map
@@ -5283,7 +5283,6 @@ fi
 %{texmfdist}/tex/latex/fancybox
 %{texmfdist}/tex/latex/fancyhdr
 %{texmfdist}/tex/latex/hyper/fancyheadings.hyp
-%{texmfdist}/tex/latex/fancyhdr/fancyheadings.sty
 %{texmfdist}/tex/latex/fancyvrb
 # %{texmfdist}/tex/latex/fguill
 %{texmfdist}/tex/latex/filecontents
