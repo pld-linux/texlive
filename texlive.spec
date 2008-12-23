@@ -290,6 +290,7 @@ Summary:	DVI to PostScript converter
 Summary(de.UTF-8):	dvi-Postscript-Konvertierungsprogramm
 Summary(es.UTF-8):	Convertidor dvi para postscript
 Summary(fr.UTF-8):	Convertisseur dvi vers PostScript
+Summary(hu.UTF-8):	DVI-ből PosctScript-be konvertáló
 Summary(pl.UTF-8):	Konwerter plików DVI do PostScriptu
 Summary(pt_BR.UTF-8):	Conversor dvi para postscript
 Summary(tr.UTF-8):	dvi'dan postscript'e dönüştürücü
@@ -316,6 +317,11 @@ enviando el resultado directamente a la impresora láser.
 %description dvips -l fr.UTF-8
 Le programme dvips convertit les fichiers DVI en PostScript, en
 envoyant normalement le résultat directement sur une imprimante Laser.
+
+%description dvips -l hu.UTF-8
+A dvips program egy TeX által készített DVI-fájlból PostScript
+állományt készít, amelyet a legtöbb esetben közvetlenül a 
+lézernyomtatóra küldhetsz.
 
 %description dvips -l pl.UTF-8
 Program dvips bierze plik DVI wygenerowany przez TeXa (lub jakiś inny
