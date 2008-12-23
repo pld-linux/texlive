@@ -4318,8 +4318,10 @@ fi
 %files
 %defattr(644,root,root,755)
 %docdir %{texmf}/doc
+%docdir %{texmfdist}/doc
 %dir %{texmf}/doc
-%doc %{texmf}/LICENSE.texmf
+%dir %{texmfdist}/doc
+# %doc %{texmf}/LICENSE.texmf
 # %doc %{texmf}/ChangeLog
 %doc %{texmf}/doc/README
 # %doc %{texmf}/doc/README.knuth
@@ -4482,13 +4484,13 @@ fi
 %dir %{fmtdir}
 %{fmtdir}/metafun.mem
 #%{texmf}/web2c/tex-pl.pool
-%{texmf}/web2c/tex.pool
+# %{texmf}/web2c/tex.pool
 %dir %{texmf}/fonts/map
 %dir %{texmf}/fonts/map/dvips
 #%{texmf}/fonts/map/dvips/updmap/ps2pk.map
 %dir %{texmf}/fonts/map/dvips/tetex
 %{texmf}/fonts/map/dvips/tetex/ps2pk35.map
-%{texmf}/fonts/map/fontname
+%{texmfdist}/fonts/map/fontname
 %dir %{texmf}/fonts/enc
 %dir %{texmf}/fonts/enc/dvips
 %dir %{texmf}/fonts/enc/dvips/tetex
@@ -4566,11 +4568,11 @@ fi
 %{_mandir}/man1/ps2pk.1*
 %{_mandir}/man1/tangle.1*
 %{_mandir}/man1/tex.1*
-%{_mandir}/man1/texdoc.1*
+# %{_mandir}/man1/texdoc.1*
 %{_mandir}/man1/texexec.1*
 %{_mandir}/man1/texlinks.1*
 #%{_mandir}/man1/texhash.1*
-%{_mandir}/man1/texi2html.1*
+# %{_mandir}/man1/texi2html.1*
 %{_mandir}/man1/tftopl.1*
 %{_mandir}/man1/ttf2afm.1*
 %{_mandir}/man1/tie.1*
@@ -4602,13 +4604,13 @@ fi
 %dir %{texmfdist}/fonts/vf
 %dir %{texmfdist}/fonts/vf/public
 
-%files doc-Catalogue
-%defattr(644,root,root,755)
-%{texmf}/doc/help/Catalogue
+# %files doc-Catalogue
+# %defattr(644,root,root,755)
+# %{texmf}/doc/help/Catalogue
 
-%files doc-tug-faq
-%defattr(644,root,root,755)
-%{texmf}/doc/help/faq/uktug-faq
+# %files doc-tug-faq
+# %defattr(644,root,root,755)
+# %{texmf}/doc/help/faq/uktug-faq
 
 %files doc-latex
 %defattr(644,root,root,755)
@@ -4618,7 +4620,7 @@ fi
 %{texmfdist}/doc/latex/aeguill
 %{texmfdist}/doc/latex/anysize
 %{texmfdist}/doc/latex/appendix
-%{texmfdist}/doc/latex/bar
+# %{texmfdist}/doc/latex/bar
 %{texmfdist}/doc/latex/base
 %{texmfdist}/doc/latex/beton
 %{texmfdist}/doc/latex/bezos
@@ -4635,11 +4637,11 @@ fi
 %{texmfdist}/doc/latex/curves
 %{texmfdist}/doc/latex/dinbrief
 %{texmfdist}/doc/latex/draftcopy
-%{texmfdist}/doc/latex/eclbip
+# %{texmfdist}/doc/latex/eclbip
 %{texmfdist}/doc/latex/eepic
 %{texmfdist}/doc/latex/endfloat
 %{texmfdist}/doc/latex/enumitem
-%{texmfdist}/doc/latex/eo
+# %{texmfdist}/doc/latex/eo
 %{texmfdist}/doc/latex/esint
 %{texmfdist}/doc/latex/eso-pic
 %{texmfdist}/doc/latex/euler
@@ -4651,18 +4653,18 @@ fi
 %{texmfdist}/doc/latex/fancyvrb
 %{texmfdist}/doc/latex/filecontents
 %{texmfdist}/doc/latex/float
-%{texmfdist}/doc/latex/floatflt
+# %{texmfdist}/doc/latex/floatflt
 %{texmfdist}/doc/latex/footmisc
 %{texmfdist}/doc/latex/footnpag
 %{texmfdist}/doc/latex/fp
 %{texmfdist}/doc/latex/g-brief
-%{texmfdist}/doc/latex/general
+# %{texmfdist}/doc/latex/general
 %{texmfdist}/doc/latex/geometry
-%{texmfdist}/doc/latex/germbib
+# %{texmfdist}/doc/latex/germbib
 %{texmfdist}/doc/latex/graphics
 %{texmfdist}/doc/latex/hyperref
 %{texmfdist}/doc/latex/hyphenat
-%{texmfdist}/doc/latex/images
+# %{texmfdist}/doc/latex/images
 %{texmfdist}/doc/latex/index
 %{texmfdist}/doc/latex/koma-script
 %{texmfdist}/doc/latex/labels
@@ -4672,14 +4674,14 @@ fi
 %{texmfdist}/doc/latex/lettrine
 %{texmfdist}/doc/latex/listings
 %{texmfdist}/doc/latex/ltabptch
-%{texmfdist}/doc/latex/mathcomp
+# %{texmfdist}/doc/latex/mathcomp
 %{texmfdist}/doc/latex/mdwtools
 %{texmfdist}/doc/latex/memoir
 %{texmfdist}/doc/latex/mh
 %{texmfdist}/doc/latex/moreverb
 %{texmfdist}/doc/latex/mparhack
 %{texmfdist}/doc/latex/ms
-%{texmfdist}/doc/latex/mt11p
+# %{texmfdist}/doc/latex/mt11p
 %{texmfdist}/doc/latex/multibib
 %{texmfdist}/doc/latex/mwcls
 %{texmfdist}/doc/latex/natbib
@@ -4692,22 +4694,22 @@ fi
 %{texmfdist}/doc/latex/pb-diagram
 %{texmfdist}/doc/latex/pdfpages
 %{texmfdist}/doc/latex/picinpar
-%{texmfdist}/doc/latex/picins
+# %{texmfdist}/doc/latex/picins
 %{texmfdist}/doc/latex/pict2e
 %{texmfdist}/doc/latex/placeins
 %{texmfdist}/doc/latex/preprint
 %{texmfdist}/doc/latex/preview
 %{texmfdist}/doc/latex/program
-%{texmfdist}/doc/latex/ps4pdf
+# %{texmfdist}/doc/latex/ps4pdf
 %{texmfdist}/doc/latex/psfrag
-%{texmfdist}/doc/latex/pslatex
-%{texmfdist}/doc/latex/revtex4
+# %{texmfdist}/doc/latex/pslatex
+%{texmfdist}/doc/latex/revtex
 %{texmfdist}/doc/latex/rotating
 %{texmfdist}/doc/latex/rotfloat
 %{texmfdist}/doc/latex/scale
 %{texmfdist}/doc/latex/sectsty
 %{texmfdist}/doc/latex/seminar
-%{texmfdist}/doc/latex/shapepar
+# %{texmfdist}/doc/latex/shapepar
 %{texmfdist}/doc/latex/showlabels
 %{texmfdist}/doc/latex/sidecap
 %{texmfdist}/doc/latex/SIunits
@@ -4716,17 +4718,17 @@ fi
 %{texmfdist}/doc/latex/stdclsdv
 %{texmfdist}/doc/latex/subfig
 %{texmfdist}/doc/latex/subfigure
-%{texmfdist}/doc/latex/supertab
-%{texmfdist}/doc/latex/tex-refs
+# %{texmfdist}/doc/latex/supertab
+# %{texmfdist}/doc/latex/tex-refs
 %{texmfdist}/doc/latex/textfit
-%{texmfdist}/doc/latex/textmerg
+# %{texmfdist}/doc/latex/textmerg
 %{texmfdist}/doc/latex/textpos
 %{texmfdist}/doc/latex/titlesec
 %{texmfdist}/doc/latex/tocbibind
 %{texmfdist}/doc/latex/tocloft
 %{texmfdist}/doc/latex/tools
 %{texmfdist}/doc/latex/totpages
-%{texmfdist}/doc/latex/treesvr
+# %{texmfdist}/doc/latex/treesvr
 %{texmfdist}/doc/latex/type1cm
 %{texmfdist}/doc/latex/units
 %{texmfdist}/doc/latex/vmargin
@@ -4761,11 +4763,9 @@ fi
 %files dvips
 %defattr(644,root,root,755)
 # %doc %{texmf}/doc/programs/dvips.dvi
-%doc %{texmf}/doc/dvips/*.pdf
-%doc %{texmf}/doc/dvips/*.tex
+%doc %{texmf}/doc/dvips/*
 # %doc %{texmf}/doc/programs/dvipdfm.dvi
-%doc %{texmf}/doc/dvipdfm/*.pdf
-%doc %{texmf}/doc/dvipdfm/*.tex
+%doc %{texmf}/doc/dvipdfm/*
 # %doc %{texmf}/doc/latex/psnfssx
 %attr(755,root,root) %{_bindir}/dvips
 %attr(755,root,root) %{_bindir}/dvired
@@ -4954,9 +4954,9 @@ fi
 
 %files omega
 %defattr(644,root,root,755)
-%doc %{texmf}/doc/omega
-%dir %{texmf}/omega
-%dir %{texmf}/dvips/omega
+%doc %{texmfdist}/doc/omega
+%dir %{texmfdist}/omega
+%dir %{texmfdist}/dvips/omega
 %attr(755,root,root) %{_bindir}/aleph
 %attr(755,root,root) %{_bindir}/lambda
 %attr(755,root,root) %{_bindir}/mkocp
@@ -5256,14 +5256,14 @@ fi
 %{texmfdist}/tex/latex/cmap
 %{texmfdist}/tex/latex/comment
 %{texmfdist}/tex/latex/ltxmisc/concrete.sty
-%{texmfdist}/tex/latex/config
+%{texmft}/tex/latex/config
 %{texmfdist}/tex/latex/crop
 %{texmfdist}/tex/latex/currvita
 %{texmfdist}/tex/latex/curves
 %{texmfdist}/tex/latex/dinbrief
 %{texmfdist}/tex/latex/draftcopy
 # %{texmfdist}/tex/latex/dvilj
-%{texmfdist}/tex/latex/dvipdfm
+%{texmf}/tex/latex/dvipdfm
 # %{texmfdist}/tex/latex/eclbip
 %{texmfdist}/tex/latex/eepic
 %{texmfdist}/tex/latex/endfloat
@@ -6024,9 +6024,6 @@ fi
 %{texmfdist}/fonts/map/dvips/cs
 %{texmfdist}/tex4ht/ht-fonts/unicode/cs
 %{texmfdist}/tex4ht/ht-fonts/alias/cs
-%{texmfdist}/dvips/cs
-%{texmfdist}/fonts/source/public/cs
-%{texmfdist}/fonts/tfm/public/cs
 
 %files fonts-dstroke
 %{texmfdist}/tex4ht/ht-fonts/unicode/dstroke
