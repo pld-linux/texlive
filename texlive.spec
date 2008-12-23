@@ -3252,6 +3252,9 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 # 	sbindir=$RPM_BUILD_ROOT%{_sbindir} \
 # 	texmf=$RPM_BUILD_ROOT%{texmf}
 
+%{__mv} $RPM_BUILD_ROOT/usr/{texmf/*,share/texmf}
+%{__mv} $RPM_BUILD_ROOT/usr/{texmf-dist/*,share/texmf/dist}
+
 perl -pi \
 	-e "s|$RPM_BUILD_ROOT||g;" \
 	$RPM_BUILD_ROOT%{texmf}/web2c/texmf.cnf
