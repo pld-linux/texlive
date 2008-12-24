@@ -4435,6 +4435,7 @@ fi
 # %doc %{texmf}/doc/fonts/fontname
 # %dir %{texmf}/doc/fonts/polish
 %dir %{texmf}/doc/generic
+%dir %{texmfdist}/doc/generic
 # %dir %{texmf}/doc/help
 # %doc %{texmf}/doc/help/csname.txt
 # %doc %{texmf}/doc/help/ctan
@@ -4567,11 +4568,18 @@ fi
 %dir %{texmf}/tex/generic/config
 %{texmf}/tex/generic/encodings
 %doc %{texmfdist}/doc/generic/enctex
-%{texmfdist}/tex/generic/enctex
+%dir %{texmfdist}/tex/generic
+%dir %{texmfdist}/tex/generic/genmisc
+%dir %{texmfdist}/tex/generic/misc
+%dir %{texmfdist}/tex/generic/tex4ht
+%dir %{texmfdist}/tex/generic/enctex
+%dir %{texmfdist}/tex/latex
+%dir %{texmfdist}/tex/latex/ltxmisc
 %{texmf}/tex/generic/epsf
 # %doc %{texmf}/doc/generic/hyphen
 %{texmf}/tex/generic/hyphen
 #%{texmf}/tex/generic/letterspacing
+%doc %{texmfdist}/doc/latex
 %doc %{texmfdist}/doc/latex/localloc
 %{texmfdist}/tex/latex/localloc
 %{texmf}/tex/generic/misc/null*
@@ -4597,6 +4605,11 @@ fi
 %dir %{texmf}/fonts/enc
 %dir %{texmf}/fonts/enc/dvips
 %dir %{texmf}/fonts/enc/dvips/tetex
+%dir %{texmfdist}/fonts
+%dir %{texmfdist}/fonts/enc
+%dir %{texmfdist}/fonts/enc/dvips
+%dir %{texmfdist}/fonts/enc/dvips/tetex
+%dir %{texmfdist}/fonts/map/dvips/vntex
 %{texmf}/fonts/enc/dvips/tetex/09fbbfac.enc
 %{texmf}/fonts/enc/dvips/tetex/0ef0afca.enc
 %{texmf}/fonts/enc/dvips/tetex/10037936.enc
@@ -6058,6 +6071,17 @@ fi
 %files fonts-cm
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/cm
+%dir %{texmfdist}/doc/fonts
+%dir %{texmfdist}/dvips
+%dir %{texmfdist}/fonts/afm/bluesky
+%dir %{texmfdist}/fonts/map/dvips
+%dir %{texmfdist}/fonts/pk/ljfour/public
+%dir %{texmfdist}/tex4ht/ht-fonts/alias
+%dir %{texmfdist}/tex4ht/ht-fonts/css/emacspeak
+%dir %{texmfdist}/tex4ht/ht-fonts/iso8859/1
+%dir %{texmfdist}/tex4ht/ht-fonts/iso8859/5
+%dir %{texmfdist}/tex4ht/ht-fonts/unicode
+%dir %{texmfdist}/tex4ht/ht-fonts/win/1251
 %{texmfdist}/dvips/cm
 %{texmfdist}/fonts/source/public/cm
 %{texmfdist}/fonts/afm/bluesky/cm
