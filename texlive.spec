@@ -4608,7 +4608,6 @@ fi
 %dir %{texmfdist}/fonts
 %dir %{texmfdist}/fonts/enc
 %dir %{texmfdist}/fonts/enc/dvips
-%dir %{texmfdist}/fonts/enc/dvips/tetex
 %dir %{texmfdist}/fonts/map/dvips/vntex
 %{texmf}/fonts/enc/dvips/tetex/09fbbfac.enc
 %{texmf}/fonts/enc/dvips/tetex/0ef0afca.enc
