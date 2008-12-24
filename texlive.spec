@@ -4579,8 +4579,8 @@ fi
 # %doc %{texmf}/doc/generic/hyphen
 %{texmf}/tex/generic/hyphen
 #%{texmf}/tex/generic/letterspacing
-%doc %{texmfdist}/doc/latex
-%doc %{texmfdist}/doc/latex/localloc
+%dir %{texmfdist}/doc/latex
+%dir %{texmfdist}/doc/latex/localloc
 %{texmfdist}/tex/latex/localloc
 %{texmf}/tex/generic/misc/null*
 %{texmfdist}/tex/generic/tex4ht/path.4ht
