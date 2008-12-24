@@ -3194,6 +3194,33 @@ A filter to strip TeX commands from a .tex file.
 Egy szűrő, amely .tex fájlokból szűri ki a TeX parancsokat.
 
 
+%package dviutils
+Summary:	Various DVI utils
+Summary(hu.UTF-8):	Vegyes DVI eszközök
+Group:		Applications/Publishing/TeX
+
+%description dviutils
+This package contains various DVI utils.
+
+%description dviutils -l hu.UTF-8
+Ez a csomag mindenféle DVI eszközt tartalmaz.
+
+%package epsutils
+Summary:	Various EPS utils
+Group:		Applications/Publishing/TeX
+
+%description epsutils
+Various EPS (Encapsulated PostScript) utils.
+
+
+%package filters
+Summary:	Various filters
+Group:		Applications/Publishing/TeX
+
+%description filters
+Various filters.
+
+
 %package uncategorized-utils
 Summary:	Uncategorized utils
 Group:		Applications/Publishing/TeX
@@ -3242,7 +3269,7 @@ find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 	--with-system-pnglib \
 	--with-system-t1lib \
 	--with-system-zlib \
-	--with-texmf-dir=../../texmf \
+	--with-texmf-dir=texlive-20080822-texmf \
 	--with-xdvi-x-toolkit=xaw \
 	--without-dialog \
 	--without-t1utils \
@@ -6502,7 +6529,48 @@ fi
 %attr(755,root,root) %{_bindir}/detex
 %{_mandir}/man1/detex*
 
+
+%files dviutils
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/dt2dv
+%attr(755,root,root) %{_bindir}/dv2dt
+%attr(755,root,root) %{_bindir}/dvi2tty
+%attr(755,root,root) %{_bindir}/dviasm
+%attr(755,root,root) %{_bindir}/dvibook
+%attr(755,root,root) %{_bindir}/dviconcat
+%attr(755,root,root) %{_bindir}/dvidvi
+%attr(755,root,root) %{_bindir}/dvigif
+%attr(755,root,root) %{_bindir}/dvipdfmx
+%attr(755,root,root) %{_bindir}/dvipos
+%attr(755,root,root) %{_bindir}/dviselect
+%attr(755,root,root) %{_bindir}/dvitodvi
+%{_mandir}/man1/dt2dv*
+%{_mandir}/man1/dv2dt*
+%{_mandir}/man1/dvi2tty*
+%{_mandir}/man1/dvibook*
+%{_mandir}/man1/dviconcat*
+%{_mandir}/man1/dvidvi*
+%{_mandir}/man1/dvigif*
+%{_mandir}/man1/dvipos*
+%{_mandir}/man1/dviselect*
+%{_mandir}/man1/dvitodvi*
+
+%files epsutils
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/epsffit
+%attr(755,root,root) %{_bindir}/epspdf
+%attr(755,root,root) %{_bindir}/epspdftk
+%{texmfdist}/scripts/epspdf
+%{_mandir}/man1/epsffit*
+%doc %{texmfdist}/doc/epspdf
+
+%files filters
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/fix*
+%{_mandir}/man1/fix*
+
 %files uncategorized-utils
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/devnag
 %attr(755,root,root) %{_bindir}/disdvi
+%attr(755,root,root) %{_bindir}/exatools
