@@ -23,6 +23,7 @@
 #   until larm1000 font found (xindy option)
 # - texk/web2c doesn't build (luatex option)
 # - %files latex-bibtex-revtex4
+# - Check CEF/cjk!
 #
 #
 %include	/usr/lib/rpm/macros.perl
@@ -192,6 +193,7 @@ aygıtından bağımsız bir çıktı (DeVice Independent - DVI) oluşturur.
 TeX'in becerileri ve dizgi dili, dili geliştiren Knuth'un 'The
 TeXbook' başlıklı kitabında anlatılmaktadır.
 
+
 %package doc-Catalogue
 Summary:	TeX Catalogue
 Summary(pl.UTF-8):	Katalog TeXa
@@ -207,7 +209,7 @@ Katalog TeXa.
 
 %package doc-tug-faq
 Summary:	TeX User Group FAQ
-Summary(hu.UTF-8):      TeX felhasználók FAQ-ja
+Summary(hu.UTF-8):	TeX felhasználók FAQ-ja
 Summary(pl.UTF-8):	FAQ Grupy Użytkowników TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
@@ -227,7 +229,7 @@ FAQ Grupy Użytkowników TeXa.
 
 %package doc-latex
 Summary:	Basic LaTeX packages documentation
-Summary(hu.UTF-8):      Az alap LaTeX csomagok dokumentációja
+Summary(hu.UTF-8):	Az alap LaTeX csomagok dokumentációja
 Summary(pl.UTF-8):	Podstawowa dokumentacja do pakietów LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
@@ -245,7 +247,7 @@ Podstawowa dokumentacja do pakietów LaTeXa.
 # # libraries #
 %package -n kpathsea
 Summary:	File name lookup library
-Summary(hu.UTF-8):      Fájlnév-kereső könyvtár
+Summary(hu.UTF-8):	Fájlnév-kereső könyvtár
 Summary(pl.UTF-8):	Biblioteka szukająca nazw plików
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
@@ -263,7 +265,7 @@ Biblioteka szukająca nazw plików.
 %package -n kpathsea-devel
 Summary:	Kpathsea library filename lookup header files and documentation
 Summary(es.UTF-8):	Bibliotecas y archivos de inclusión para desarrollo TeX
-Summary(hu.UTF-8):      Kpathsea fájlnév-kereső könyvtár header fájljai és dokumentációja
+Summary(hu.UTF-8):	Kpathsea fájlnév-kereső könyvtár header fájljai és dokumentációja
 Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumetacja kpathsea
 Summary(pt_BR.UTF-8):	Bibliotecas e headers para desenvolvimento TeX
 Group:		Development/Libraries
@@ -322,7 +324,7 @@ envoyant normalement le résultat directement sur une imprimante Laser.
 
 %description dvips -l hu.UTF-8
 A dvips program egy TeX által készített DVI-fájlból PostScript
-állományt készít, amelyet a legtöbb esetben közvetlenül a 
+állományt készít, amelyet a legtöbb esetben közvetlenül a
 lézernyomtatóra küldhetsz.
 
 %description dvips -l pl.UTF-8
@@ -3154,6 +3156,51 @@ Xy-pic fonts.
 %description fonts-type1-xypic -l pl.UTF-8
 Fonty Xy-pic.
 
+
+# TeXLive-specific packages - there wasn't before...
+%package afm2pl
+Summary:	Convert an Adobe font metric file to a TeX font property list
+Group:		Fonts
+
+%description afm2pl
+Convert an Adobe font metric file to a TeX font property list.
+
+
+%package bbox
+Summary:	bbox prints the bounding box of images
+Group:		Applications/Publishing/TeX
+
+%description bbox
+bbox reads a rawppm or rawpbm file and prints out the bounding box of
+the image.
+
+%package cefutils
+Summary:	In cefutils there are CEF-compatible utils
+Group:		Applications/Publishing/TeX
+
+%description cefutils
+In cefutils there are CEF-compatible (Chinese Encoding Framework)
+utils.
+
+%package detex
+Summary:	A filter to strip TeX commands from a .tex file
+Summary(hu.UTF-8):	Egy szűrő, amely .tex fájlokból szűri ki a TeX parancsokat
+Group:		Applications/Publishing/TeX
+
+%description detex
+A filter to strip TeX commands from a .tex file.
+
+%description detex -l hu.UTF-8
+Egy szűrő, amely .tex fájlokból szűri ki a TeX parancsokat.
+
+
+%package uncategorized-utils
+Summary:	Uncategorized utils
+Group:		Applications/Publishing/TeX
+
+%description uncategorized-utils
+Uncategorized utilities. Needs check and categorizing.
+
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
 lzma -dc %{SOURCE0} | tar xf - -C ..
@@ -3260,8 +3307,8 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 # 	sbindir=$RPM_BUILD_ROOT%{_sbindir} \
 # 	texmf=$RPM_BUILD_ROOT%{texmf}
 
-%{__rm} -r $RPM_BUILD_ROOT/usr/texmf
-%{__rm} -r $RPM_BUILD_ROOT/usr/texmf-dist/*
+%{__rm} -r $RPM_BUILD_ROOT%{_prefix}/texmf
+%{__rm} -r $RPM_BUILD_ROOT%{_prefix}/texmf-dist/*
 
 perl -pi \
 	-e "s|$RPM_BUILD_ROOT||g;" \
@@ -5681,6 +5728,7 @@ fi
 # %{texmf}/tex/latex/palatcm
 
 %files latex-psnfss
+%defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/psnfss
 %{texmfdist}/fonts/map/dvips/psnfss
 %{texmfdist}/source/latex/psnfss
@@ -6054,6 +6102,7 @@ fi
 %{texmfdist}/tex4ht/ht-fonts/alias/cs
 
 %files fonts-dstroke
+%defattr(644,root,root,755)
 %{texmfdist}/tex4ht/ht-fonts/unicode/dstroke
 
 %files fonts-ecc
@@ -6188,6 +6237,7 @@ fi
 %{texmfdist}/fonts/vf/monotype
 
 %files fonts-omega
+%defattr(644,root,root,755)
 %doc %{texmfdist}/doc/omega
 %{texmfdist}/dvips/omega
 %{texmfdist}/fonts/ofm/public/omega
@@ -6426,3 +6476,33 @@ fi
 %defattr(644,root,root,755)
 %{texmf}/dvips/xypic
 %{texmfdist}/fonts/type1/public/xypic
+
+# TeXLive-specific
+
+%files afm2pl
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/afm2pl
+%{_mandir}/man1/afm2pl*
+
+%files bbox
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/bbox
+%{_mandir}/man1/bbox*
+
+%files cefutils
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/cef*
+%{texmf}/tex/latex/cjk/CEF
+%doc %{texmfdist}/doc/latex/cjk/doc
+%doc %{texmfdist}/doc/latex/cjk/examples
+%{texmfdist}/source/latex/cjk/utils/CEFconv
+
+%files detex
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/detex
+%{_mandir}/man1/detex*
+
+%files uncategorized-utils
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/devnag
+%attr(755,root,root) %{_bindir}/disdvi
