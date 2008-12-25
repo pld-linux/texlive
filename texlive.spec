@@ -1053,6 +1053,7 @@ Ten pakiet zawiera podstawowe pliki.
 Summary:	Control the typesetting of the abstract environment
 Summary(hu.UTF-8):	Az "abstract" környezet szedésének irányítása
 Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
 
 %description latex-abstract
 Control the typesetting of the abstract environment.
@@ -1445,6 +1446,7 @@ naturalnych, całkowitych, wymiernych, rzeczywistych i zespolonych.
 Summary:	The exam document class attempts to make it easy for even a LaTeX novice to prepare exams
 Summary(hu.UTF-8):	Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a feladatsorok készítése
 Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
 
 %description latex-exam
 The exam document class attempts to make it easy for even a LaTeX
@@ -1505,6 +1507,7 @@ tymi wszystkimi plikami. Autorem jest Bogusław Jackowski.
 Summary:	Reference last page for "Page N of M" type footers
 Summary(hu.UTF-8):	Az utolsó oldalra hivatkozás "N/M. oldal" típusú lábfejekhez
 Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
 
 %description latex-lastpage
 Reference last page for Page N of M type footers.
@@ -1698,6 +1701,7 @@ autorstwa Michaela J. Fergusona.
 Summary:	Enhanced theorem environment
 Summary(hu.UTF-8):	Bővített tétel környezet
 Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
 
 %description latex-ntheorem
 Enhanced theorem environment.
@@ -1779,6 +1783,7 @@ TeXu, zachowując przydatność dla aplikacji windowsowych.
 Summary:	The SIunits package can be used to standardise the use of units in your writings
 Summary(hu.UTF-8):	Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget
 Group:		Applications/Publishing/TeX
+Requires(post,postun):	/usr/bin/texhash
 
 %description latex-SIunits
 The SIunits package can be used to standardise the use of units in
@@ -3723,6 +3728,12 @@ fi
 %fixinfodir
 %texhash
 
+%post latex-abstract
+%texhash
+
+%postun latex-abstract
+%texhash
+
 %post latex-ae
 %texhash
 
@@ -3843,6 +3854,12 @@ fi
 # %postun latex-dstroke
 # %texhash
 
+%post latex-exam
+%texhash
+
+%postun latex-exam
+%texhash
+
 %post latex-jknappen
 %texhash
 
@@ -3850,6 +3867,12 @@ fi
 %texhash
 
 %post latex-lm
+%texhash
+
+%post latex-lastpage
+%texhash
+
+%postun latex-lastpage
 %texhash
 
 %postun latex-lm
@@ -3903,6 +3926,12 @@ fi
 %postun latex-mltex
 %texhash
 
+%post latex-ntheorem
+%texhash
+
+%postun latex-ntheorem
+%texhash
+
 %post latex-palatcm
 %texhash
 
@@ -3925,6 +3954,12 @@ fi
 %texhash
 
 %postun latex-qfonts
+%texhash
+
+%post latex-SIunits
+%texhash
+
+%postun latex-SIunits
 %texhash
 
 %post latex-txfonts
