@@ -1049,6 +1049,18 @@ dających użytkownikom wygodne, predefiniowane formaty dokumentów.
 
 Ten pakiet zawiera podstawowe pliki.
 
+%package latex-abstract
+Summary:	Control the typesetting of the abstract environment
+Summary(hu.UTF-8):	Az "abstract" környezet szedésének irányítása
+Group:		Applications/Publishing/TeX
+
+%description latex-abstract
+Control the typesetting of the abstract environment.
+
+%description latex-abstract -l hu.UTF-8
+Az "abstract" környezet szedésének irányítása.
+
+
 %package latex-ae
 Summary:	Virtual fonts for PDF-files with T1 encoded CMR-fonts
 Summary(pl.UTF-8):	Wirtualne fonty dla plików PDF z fontami CMR o kodowaniu T1
@@ -1489,6 +1501,17 @@ QX (qx-*.tfm); kodowaniu TeX'n'ANSI zwanemu także LY1
 (ts1-*.tfm). Zakłada się, że potencjalny użytkownik wie, co zrobić z
 tymi wszystkimi plikami. Autorem jest Bogusław Jackowski.
 
+%package latex-lastpage
+Summary:	Reference last page for "Page N of M" type footers
+Summary(hu.UTF-8):	Az utolsó oldalra hivatkozás "N/M. oldal" típusú lábfejekhez
+Group:		Applications/Publishing/TeX
+
+%description latex-lastpage
+Reference last page for Page N of M type footers.
+
+%description latex-lastpage -l hu.UTF-8
+Az utolsó oldalra hivatkozás "N/M. oldal" típusú lábfejekhez.
+
 %package latex-lineno
 Summary:	Line numbers on paragraphs
 Summary(pl.UTF-8):	Numery linii dla paragrafów
@@ -1670,6 +1693,17 @@ Ferguson.
 %description latex-mltex -l pl.UTF-8
 Wsparcie dla MLTeXa - rozszerzenia TeXa z obsługą wielu języków,
 autorstwa Michaela J. Fergusona.
+
+%package latex-ntheorem
+Summary:	Enhanced theorem environment
+Summary(hu.UTF-8):	Bővített tétel környezet
+Group:		Applications/Publishing/TeX
+
+%description latex-ntheorem
+Enhanced theorem environment.
+
+%description latex-ntheorem -l hu.UTF-8
+Bővített tétel környezet
 
 %package latex-palatcm
 Summary:	Palatino + Computer Modern math fonts for LaTeX
@@ -4814,7 +4848,6 @@ fi
 # %{texmfdist}/doc/latex/tex-refs
 # %{texmfdist}/doc/latex/textmerg
 # %{texmfdist}/doc/latex/treesvr
-%{texmfdist}/doc/latex/abstract
 %{texmfdist}/doc/latex/acronym
 %{texmfdist}/doc/latex/adrconv
 %{texmfdist}/doc/latex/aeguill
@@ -4860,7 +4893,6 @@ fi
 %{texmfdist}/doc/latex/index
 %{texmfdist}/doc/latex/koma-script
 %{texmfdist}/doc/latex/labels
-%{texmfdist}/doc/latex/lastpage
 %{texmfdist}/doc/latex/layouts
 %{texmfdist}/doc/latex/leftidx
 %{texmfdist}/doc/latex/lettrine
@@ -4877,7 +4909,6 @@ fi
 %{texmfdist}/doc/latex/natbib
 %{texmfdist}/doc/latex/nomencl
 %{texmfdist}/doc/latex/ntgclass
-%{texmfdist}/doc/latex/ntheorem
 %{texmfdist}/doc/latex/oberdiek
 %{texmfdist}/doc/latex/overpic
 %{texmfdist}/doc/latex/paralist
@@ -5440,7 +5471,6 @@ fi
 %{texmfdist}/tex/generic/tex4ht/multind.4ht
 %{texmfdist}/tex/generic/tex4ht/picins.4ht
 %{texmfdist}/tex/generic/textmerg
-%{texmfdist}/tex/latex/abstract
 %{texmfdist}/tex/latex/acronym
 %{texmfdist}/tex/latex/adrconv
 %{texmfdist}/tex/latex/aeguill
@@ -5491,7 +5521,6 @@ fi
 %{texmfdist}/tex/latex/index
 %{texmfdist}/tex/latex/koma-script
 %{texmfdist}/tex/latex/labels
-%{texmfdist}/tex/latex/lastpage
 %{texmfdist}/tex/latex/layouts
 %{texmfdist}/tex/latex/leftidx
 %{texmfdist}/tex/latex/lettrine
@@ -5530,7 +5559,6 @@ fi
 %{texmfdist}/tex/latex/natbib
 %{texmfdist}/tex/latex/nomencl
 %{texmfdist}/tex/latex/ntgclass
-%{texmfdist}/tex/latex/ntheorem
 %{texmfdist}/tex/latex/oberdiek
 %{texmfdist}/tex/latex/overpic
 %{texmfdist}/tex/latex/paralist
@@ -5581,6 +5609,11 @@ fi
 %{texmfdist}/tex/plain/etex
 %{texmf}/tex/latex/config
 %{texmf}/tex/latex/dvipdfm
+
+%files latex-abstract
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/abstract
+%{texmfdist}/tex/latex/abstract
 
 %files latex-algorithms
 %defattr(644,root,root,755)
@@ -5757,6 +5790,11 @@ fi
 %{texmfdist}/tex4ht/ht-fonts/unicode/jknappen
 %{texmfdist}/tex4ht/ht-fonts/alias/jknappen
 
+%files latex-lastpage
+%defattr(644,root,root,755)
+%{texmfdist}/tex/latex/lastpage
+%doc %{texmfdist}/doc/latex/lastpage
+
 %files latex-lm
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/lm
@@ -5830,6 +5868,10 @@ fi
 %doc %{texmfdist}/doc/latex/mltex
 %{texmfdist}/tex/latex/mltex
 
+%files latex-ntheorem
+%defattr(644,root,root,755)
+%{texmfdist}/tex/latex/ntheorem
+%doc %{texmfdist}/doc/latex/ntheorem
 
 # %files latex-palatcm
 # %defattr(644,root,root,755)
