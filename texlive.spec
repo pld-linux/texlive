@@ -25,6 +25,10 @@
 # - %files latex-bibtex-revtex4
 # - Check CEF/cjk!
 #
+# Subpackages TODO:
+# check deps the following subpackages:
+# - latex-exam
+# - latex-SIunits
 #
 %include	/usr/lib/rpm/macros.perl
 #
@@ -1425,6 +1429,20 @@ complex numbers.
 Podwójnie kreślony font do składania symboli matematycznych liczb
 naturalnych, całkowitych, wymiernych, rzeczywistych i zespolonych.
 
+%package latex-exam
+Summary:	The exam document class attempts to make it easy for even a LaTeX novice to prepare exams
+Summary(hu.UTF-8):	Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a feladatsorok készítése
+Group:		Applications/Publishing/TeX
+
+%description latex-exam
+The exam document class attempts to make it easy for even a LaTeX
+novice to prepare exams.
+
+%description latex-exam -l hu.UTF-8
+Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a
+feladatsorok készítése.
+
+
 %package latex-jknappen
 Summary:	Miscellaneous packages by Joerg Knappen
 Summary(pl.UTF-8):	Różne pakiety autorstwa Joerga Knappena
@@ -1729,7 +1747,8 @@ Summary(hu.UTF-8):	Az SIunits csomag a mennyiségek egységes írásában nyújt
 Group:		Applications/Publishing/TeX
 
 %description latex-SIunits
-The SIunits package can be used to standardise the use of units in your writings.
+The SIunits package can be used to standardise the use of units in
+your writings.
 
 %description latex-SIunits -l hu.UTF-8
 Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget.
@@ -4824,7 +4843,6 @@ fi
 %{texmfdist}/doc/latex/eso-pic
 %{texmfdist}/doc/latex/euler
 %{texmfdist}/doc/latex/eulervm
-%{texmfdist}/doc/latex/exam
 %{texmfdist}/doc/latex/extsizes
 %{texmfdist}/doc/latex/fancybox
 %{texmfdist}/doc/latex/fancyhdr
@@ -5452,7 +5470,6 @@ fi
 %{texmfdist}/tex/latex/euler
 %{texmfdist}/tex/latex/eulervm
 %{texmfdist}/tex/latex/eurosym
-%{texmfdist}/tex/latex/exam
 %{texmfdist}/tex/latex/extsizes
 %{texmfdist}/tex/latex/fancybox
 %{texmfdist}/tex/latex/fancyhdr
@@ -5727,6 +5744,11 @@ fi
 # %files latex-dstroke
 # %defattr(644,root,root,755)
 # %{texmf}/tex/latex/dstroke
+
+%files latex-exam
+%defattr(644,root,root,755)
+%{texmfdist}/doc/latex/exam
+%{texmfdist}/tex/latex/exam
 
 %files latex-jknappen
 %defattr(644,root,root,755)
