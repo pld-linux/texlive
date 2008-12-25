@@ -135,6 +135,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		texmf	%{_datadir}/texlive-texmf
 %define		texmfdist %{texmf}-dist
+%define		texmfdoc %{texmf}-doc
 %define		fmtdir	/var/lib/texmf/web2c
 %define		texhash	[ ! -x %{_bindir}/texhash ] || %{_bindir}/texhash 1>&2;
 %define		_localstatedir	/var/lib/texmf
@@ -3303,12 +3304,12 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 #	-e "s|/var/cache/fonts|$RPM_BUILD_ROOT/var/cache/fonts|g;" \
 #	texmf/web2c/texmf.cnf
 
-install -d $RPM_BUILD_ROOT%{texmf}/doc $RPM_BUILD_ROOT%{texmfdist}
-cp -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
-cp -a texlive-20080822-texmf/texmf-dist/dvips $RPM_BUILD_ROOT%{texmf}
-cp -a texlive-20080822-texmf/texmf-dist/tex $RPM_BUILD_ROOT%{texmf}
-cp -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmfdist}
-cp -a texlive-20080822-texmf/texmf-doc/* $RPM_BUILD_ROOT%{texmf}/doc
+install -d $RPM_BUILD_ROOT%{texmf} $RPM_BUILD_ROOT%{texmfdist} $RPM_BUILD_ROOT%{texmfdoc}
+%{__cp} -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
+# cp -a texlive-20080822-texmf/texmf-dist/dvips $RPM_BUILD_ROOT%{texmf}
+# cp -a texlive-20080822-texmf/texmf-dist/tex $RPM_BUILD_ROOT%{texmf}
+%{__cp} -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmfdist}
+# %{__cp} -a texlive-20080822-texmf/texmf-doc/* $RPM_BUILD_ROOT%{texmfdoc}
 
 install -d $RPM_BUILD_ROOT%{texmf}/fonts/opentype/public
 
@@ -4426,23 +4427,13 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%docdir %{texmf}/doc
-%docdir %{texmfdist}/doc
-%dir %{texmf}/doc
-%dir %{texmfdist}/doc
 # %doc %{texmf}/LICENSE.texmf
 # %doc %{texmf}/ChangeLog
-%doc %{texmf}/doc/README
 # %doc %{texmf}/doc/README.knuth
-%dir %{texmf}/doc/tetex
-%doc %{texmf}/doc/tetex/TETEXDOC.*
-%doc %{texmf}/doc/tetex/teTeX-FAQ
 # There isn't doc/fonts directory
 # %dir %{texmf}/doc/fonts
 # %doc %{texmf}/doc/fonts/fontname
 # %dir %{texmf}/doc/fonts/polish
-%dir %{texmf}/doc/generic
-%dir %{texmfdist}/doc/generic
 # %dir %{texmf}/doc/help
 # %doc %{texmf}/doc/help/csname.txt
 # %doc %{texmf}/doc/help/ctan
@@ -4458,9 +4449,12 @@ fi
 # %doc %{texmf}/doc/programs/cwebman.dvi
 # %doc %{texmf}/doc/programs/dvipng.*
 # %doc %{texmf}/doc/knuth
-
 #%attr(755,root,root) %{_bindir}/MakeTeXPK
 #%attr(755,root,root) %{_bindir}/access
+
+# ***********
+# executables
+# ***********
 %attr(755,root,root) %{_bindir}/a2ping
 %attr(755,root,root) %{_bindir}/afm2tfm
 %attr(755,root,root) %{_bindir}/allcm
@@ -4541,6 +4535,12 @@ fi
 %dir %{_localstatedir}/fonts/map
 # %ghost %{_localstatedir}/ls-R
 
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/cslatex/base/fonttext.cfg
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.dat
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/latex/base/fontmath.cfg
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/latex/base/fonttext.cfg
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/latex/base/preload.cfg
+
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/fmtutil.cnf
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktex.cnf
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktex.opt
@@ -4548,16 +4548,6 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktexnam.opt
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/texmf.cnf
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/updmap.cfg
-
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/latex/base/fontmath.cfg
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/cslatex/base/fonttext.cfg
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/latex/base/fonttext.cfg
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.dat
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/latex/base/preload.cfg
-
-%dir %{texmf}/dvips
-%dir %{texmf}/dvips/config
-%dir %{texmf}/dvips/tetex
 
 %attr(1777,root,root) /var/cache/fonts
 
@@ -4567,60 +4557,61 @@ fi
 #%{texmf}/updates.dat
 
 # %{texmf}/aliases
-%dir %{texmf}/scripts
-%dir %{texmf}/tex
-%{texmf}/tex/fontinst
-%dir %{texmf}/tex/generic
-%dir %{texmf}/tex/generic/misc
 # %{texmf}/tex/generic/bghyph
-%dir %{texmf}/tex/generic/config
-%dir %{texmf}/tex/cslatex
-%dir %{texmf}/tex/cslatex/base
-%{texmf}/tex/generic/encodings
-%doc %{texmfdist}/doc/generic/enctex
+# %doc %{texmf}/doc/generic/hyphen
+#%{texmf}/tex/generic/letterspacing
+
+# ***********
+# Directories
+# ***********
+%dir %{fmtdir}
+
+%dir %{texmfdist}/doc
+%dir %{texmfdist}/doc/generic
+%dir %{texmfdist}/doc/generic/enctex
+%dir %{texmfdist}/doc/latex
+%dir %{texmfdist}/doc/latex/localloc
+%dir %{texmf}/doc
+%dir %{texmf}/doc/generic
+%dir %{texmf}/doc/tetex
+
+%dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/generic
+%dir %{texmfdist}/tex/generic/enctex
 %dir %{texmfdist}/tex/generic/genmisc
 %dir %{texmfdist}/tex/generic/misc
 %dir %{texmfdist}/tex/generic/tex4ht
-%dir %{texmfdist}/tex/generic/enctex
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/ltxmisc
-%{texmf}/tex/generic/epsf
-# %doc %{texmf}/doc/generic/hyphen
-%{texmf}/tex/generic/hyphen
-#%{texmf}/tex/generic/letterspacing
-%dir %{texmfdist}/doc/latex
-%dir %{texmfdist}/doc/latex/localloc
-%{texmfdist}/tex/latex/localloc
-%{texmf}/tex/generic/misc/null*
-%{texmfdist}/tex/generic/tex4ht/path.4ht
-%{texmfdist}/tex/latex/ltxmisc/path.sty
-%{texmfdist}/tex/generic/genmisc/random.tex
-%{texmf}/tex/generic/tap
-%{texmf}/tex/generic/tex-ps
-%{texmfdist}/tex/generic/misc/texnames.sty
-%{texmf}/tex/texinfo
-%dir %{texmf}/web2c
-%{texmf}/web2c/*.tcx
-%dir %{fmtdir}
-# %{fmtdir}/metafun.mem
-#%{texmf}/web2c/tex-pl.pool
-# %{texmf}/web2c/tex.pool
-%dir %{texmf}/fonts/map
-%dir %{texmf}/fonts/map/dvips
-#%{texmf}/fonts/map/dvips/updmap/ps2pk.map
-%dir %{texmf}/fonts/map/dvips/tetex
-%{texmf}/fonts/map/dvips/tetex/ps2pk35.map
-# %dir %{texmfdist}/fonts
-# %dir %{texmfdist}/fonts/map
-# %dir %{texmfdist}/fonts/map/fontname
+%dir %{texmf}/dvips
+%dir %{texmf}/dvips/config
+%dir %{texmf}/dvips/tetex
 %dir %{texmf}/fonts/enc
 %dir %{texmf}/fonts/enc/dvips
 %dir %{texmf}/fonts/enc/dvips/tetex
-%dir %{texmfdist}/fonts
-%dir %{texmfdist}/fonts/enc
-%dir %{texmfdist}/fonts/enc/dvips
-%dir %{texmfdist}/fonts/map/dvips/vntex
+%dir %{texmf}/fonts/map
+%dir %{texmf}/fonts/map/dvips
+%dir %{texmf}/fonts/map/dvips/tetex
+%dir %{texmf}/scripts
+%dir %{texmf}/tex
+%dir %{texmf}/tex/cslatex
+%dir %{texmf}/tex/cslatex/base
+%dir %{texmf}/tex/generic
+%dir %{texmf}/tex/generic/config
+%dir %{texmf}/tex/generic/misc
+%dir %{texmf}/web2c
+
+# Docs
+%doc %{texmf}/doc/README
+%doc %{texmf}/doc/tetex/TETEXDOC.*
+%doc %{texmf}/doc/tetex/teTeX-FAQ
+
+# %{texmf}/fonts/map/dvips/tetex/contnav.map
+# %{texmf}/fonts/map/dvips/tetex/lumath-o.map
+%{texmfdist}/fonts/map/dvips/vntex/urwvn.map
+%{texmfdist}/fonts/enc/dvips/vntex/t5.enc
+
+# Main fonts from TeTeX
 %{texmf}/fonts/enc/dvips/tetex/09fbbfac.enc
 %{texmf}/fonts/enc/dvips/tetex/0ef0afca.enc
 %{texmf}/fonts/enc/dvips/tetex/10037936.enc
@@ -4632,14 +4623,28 @@ fi
 %{texmf}/fonts/enc/dvips/tetex/bbad153f.enc
 %{texmf}/fonts/enc/dvips/tetex/d9b29452.enc
 %{texmf}/fonts/enc/dvips/tetex/f7b6d320.enc
+%{texmf}/fonts/map/dvips/tetex/ps2pk35.map
 
-%dir %{texmfdist}/fonts/enc/dvips/vntex
-%{texmfdist}/fonts/enc/dvips/vntex/t5.enc
+%{texmfdist}/tex/generic/genmisc/random.tex
+%{texmfdist}/tex/generic/misc/texnames.sty
+%{texmfdist}/tex/generic/tex4ht/path.4ht
+%{texmfdist}/tex/latex/localloc
+%{texmfdist}/tex/latex/ltxmisc/path.sty
+%{texmf}/tex/fontinst
+%{texmf}/tex/generic/encodings
+%{texmf}/tex/generic/epsf
+%{texmf}/tex/generic/hyphen
+%{texmf}/tex/generic/misc/null*
+%{texmf}/tex/generic/tap
+%{texmf}/tex/generic/tex-ps
+%{texmf}/tex/texinfo
 
-# %{texmf}/fonts/map/dvips/tetex/contnav.map
-# %{texmf}/fonts/map/dvips/tetex/lumath-o.map
-# %dir %{texmf}/fonts/map/dvips/urwvn
-%{texmfdist}/fonts/map/dvips/vntex/urwvn.map
+# %{fmtdir}/metafun.mem
+#%{texmf}/web2c/tex-pl.pool
+# %{texmf}/web2c/tex.pool
+#%{texmf}/fonts/map/dvips/updmap/ps2pk.map
+
+%{texmf}/web2c/*.tcx
 
 # %lang(fi) %{_mandir}/fi/man1/afm2tfm.1*
 # %lang(fi) %{_mandir}/fi/man1/allcm.1*
@@ -4651,15 +4656,22 @@ fi
 # %lang(pl) %{_mandir}/pl/man1/newer.1*
 #%{_mandir}/man1/MakeTeXPK.1*
 #%{_mandir}/man1/access.1*
+#%{_mandir}/man1/allec.1*
 #%{_mandir}/man1/fontexport.1*
 #%{_mandir}/man1/fontimport.1*
 #%{_mandir}/man1/initex.1*
+#%{_mandir}/man1/mktexfmt.1*
 #%{_mandir}/man1/t1mapper.1*
+#%{_mandir}/man1/texdoc.1*
+#%{_mandir}/man1/texhash.1*
+#%{_mandir}/man1/texi2html.1*
 #%{_mandir}/man1/virtex.1*
+#%{_mandir}/man8/fmtutil.8*
 #%{_mandir}/man8/mkfontdesc.8*
+#%{_mandir}/man8/texlinks.8*
+
 %{_mandir}/man1/afm2tfm.1*
 %{_mandir}/man1/allcm.1*
-#%{_mandir}/man1/allec.1*
 %{_mandir}/man1/allneeded.1*
 %{_mandir}/man1/ctie.1*
 %{_mandir}/man1/cweb.1*
@@ -4680,7 +4692,6 @@ fi
 %{_mandir}/man1/mag.1*
 %{_mandir}/man1/makempx.1*
 %{_mandir}/man1/makempy.1*
-#%{_mandir}/man1/mktexfmt.1*
 %{_mandir}/man1/mktexlsr.1*
 %{_mandir}/man1/newer.1*
 %{_mandir}/man1/patgen.1*
@@ -4695,35 +4706,33 @@ fi
 %{_mandir}/man1/ps2pk.1*
 %{_mandir}/man1/tangle.1*
 %{_mandir}/man1/tex.1*
-# %{_mandir}/man1/texdoc.1*
 %{_mandir}/man1/texexec.1*
 %{_mandir}/man1/texlinks.1*
-#%{_mandir}/man1/texhash.1*
-# %{_mandir}/man1/texi2html.1*
 %{_mandir}/man1/tftopl.1*
-%{_mandir}/man1/ttf2afm.1*
 %{_mandir}/man1/tie.1*
+%{_mandir}/man1/ttf2afm.1*
 %{_mandir}/man1/updmap.1*
 %{_mandir}/man1/vftovp.1*
 %{_mandir}/man1/vptovf.1*
 %{_mandir}/man1/weave.1*
 %{_mandir}/man5/fmtutil.cnf.5*
-#%{_mandir}/man8/fmtutil.8*
-#%{_mandir}/man8/texlinks.8*
+
 
 %files dirs-fonts
 %defattr(644,root,root,755)
-%dir %{texmf}
-%dir %{texmfdist}
-%dir %{texmf}/fonts
-%dir %{texmf}/fonts/opentype
-%dir %{texmf}/fonts/opentype/public
+%dir %{texmfdist}/doc/latex/marvosym/mac/oztex/tex-font
 %dir %{texmfdist}/fonts
 %dir %{texmfdist}/fonts/afm
 %dir %{texmfdist}/fonts/afm/public
+%dir %{texmfdist}/fonts/enc
+%dir %{texmfdist}/fonts/enc/dvips
+%dir %{texmfdist}/fonts/enc/dvips/vntex
 %dir %{texmfdist}/fonts/map
+%dir %{texmfdist}/fonts/map/dvips
+%dir %{texmfdist}/fonts/map/dvips/vntex
 %dir %{texmfdist}/fonts/map/fontname
 %dir %{texmfdist}/fonts/pk
+%dir %{texmfdist}/fonts/pk/ljfour
 %dir %{texmfdist}/fonts/source
 %dir %{texmfdist}/fonts/source/public
 %dir %{texmfdist}/fonts/tfm
@@ -4732,16 +4741,16 @@ fi
 %dir %{texmfdist}/fonts/type1/public
 %dir %{texmfdist}/fonts/vf
 %dir %{texmfdist}/fonts/vf/public
-%dir %{texmfdist}/fonts/pk/ljfour
-%dir %{texmfdist}/tex4ht/ht-fonts
-%dir %{texmfdist}/tex4ht/ht-fonts/css
-%dir %{texmfdist}/tex4ht/ht-fonts/iso8859
 %dir %{texmfdist}/source
 %dir %{texmfdist}/source/fonts
 %dir %{texmfdist}/source/latex
-%dir %{texmfdist}/doc/latex/marvosym/mac/oztex/tex-font
+%dir %{texmfdist}/tex4ht/ht-fonts
+%dir %{texmfdist}/tex4ht/ht-fonts/css
+%dir %{texmfdist}/tex4ht/ht-fonts/iso8859
 %dir %{texmfdist}/tex4ht/ht-fonts/win
-
+%dir %{texmf}/fonts
+%dir %{texmf}/fonts/opentype
+%dir %{texmf}/fonts/opentype/public
 
 # %files doc-Catalogue
 # %defattr(644,root,root,755)
@@ -5372,7 +5381,6 @@ fi
 
 %dir %{texmf}/tex/latex
 %dir %{texmf}/tex/latex/base
-%dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/hyper
 %dir %{texmfdist}/tex/latex/misc209
