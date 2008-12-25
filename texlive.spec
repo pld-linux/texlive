@@ -3246,11 +3246,11 @@ cat ax*.m4 > acinclude.m4
 find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 %{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk/*.c
 cd texk/kpathsea
-%{__sed} -i 's/^TEXMFMAIN =.*/TEXMFMAIN = %{texmf}/' texmf.cnf
-%{__sed} -i 's/^TEXMFDIST =.*/TEXMFDIST = %{texmfdist}/' texmf.cnf
-%{__sed} -i 's/^TEXMFLOCAL =.*/TEXMFLOCAL = %{texmf}/' texmf.cnf
-%{__sed} -i 's/^TEXMFSYSVAR =.*/TEXMFSYSVAR = %{_localstatedir}/' texmf.cnf
-%{__sed} -i 's/^TEXMFSYSCONFIG =.*/TEXMFSYSCONFIG = %{_sysconfdir}/%{name}' texmf.cnf
+%{__sed} -i 's@^TEXMFMAIN =.*@TEXMFMAIN = %{texmf}@' texmf.cnf
+%{__sed} -i 's@^TEXMFDIST =.*@TEXMFDIST = %{texmfdist}@' texmf.cnf
+%{__sed} -i 's@^TEXMFLOCAL =.*@TEXMFLOCAL = %{texmf}@' texmf.cnf
+%{__sed} -i 's@^TEXMFSYSVAR =.*@TEXMFSYSVAR = %{_localstatedir}@' texmf.cnf
+%{__sed} -i 's@^TEXMFSYSCONFIG =.*@TEXMFSYSCONFIG = %{_sysconfdir}/%{name}@' texmf.cnf
 cd ../..
 
 %configure \
