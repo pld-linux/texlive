@@ -3335,7 +3335,7 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 # 	texmf=$RPM_BUILD_ROOT%{texmf}
 
 %{__rm} -r $RPM_BUILD_ROOT%{_prefix}/texmf
-%{__rm} -r $RPM_BUILD_ROOT%{_prefix}/texmf-dist/*
+%{__rm} -r $RPM_BUILD_ROOT%{_prefix}/texmf-dist
 
 perl -pi \
 	-e "s|$RPM_BUILD_ROOT||g;" \
@@ -4564,8 +4564,11 @@ fi
 %dir %{texmf}/tex
 %{texmf}/tex/fontinst
 %dir %{texmf}/tex/generic
+%dir %{texmf}/tex/generic/misc
 # %{texmf}/tex/generic/bghyph
 %dir %{texmf}/tex/generic/config
+%dir %{texmf}/tex/cslatex
+%dir %{texmf}/tex/cslatex/base
 %{texmf}/tex/generic/encodings
 %doc %{texmfdist}/doc/generic/enctex
 %dir %{texmfdist}/tex/generic
@@ -4601,7 +4604,9 @@ fi
 #%{texmf}/fonts/map/dvips/updmap/ps2pk.map
 %dir %{texmf}/fonts/map/dvips/tetex
 %{texmf}/fonts/map/dvips/tetex/ps2pk35.map
-%{texmfdist}/fonts/map/fontname
+# %dir %{texmfdist}/fonts
+# %dir %{texmfdist}/fonts/map
+# %dir %{texmfdist}/fonts/map/fontname
 %dir %{texmf}/fonts/enc
 %dir %{texmf}/fonts/enc/dvips
 %dir %{texmf}/fonts/enc/dvips/tetex
@@ -4709,6 +4714,8 @@ fi
 %dir %{texmfdist}/fonts
 %dir %{texmfdist}/fonts/afm
 %dir %{texmfdist}/fonts/afm/public
+%dir %{texmfdist}/fonts/map
+%dir %{texmfdist}/fonts/map/fontname
 %dir %{texmfdist}/fonts/pk
 %dir %{texmfdist}/fonts/source
 %dir %{texmfdist}/fonts/source/public
@@ -4718,6 +4725,16 @@ fi
 %dir %{texmfdist}/fonts/type1/public
 %dir %{texmfdist}/fonts/vf
 %dir %{texmfdist}/fonts/vf/public
+%dir %{texmfdist}/fonts/pk/ljfour
+%dir %{texmfdist}/tex4ht/ht-fonts
+%dir %{texmfdist}/tex4ht/ht-fonts/css
+%dir %{texmfdist}/tex4ht/ht-fonts/iso8859
+%dir %{texmfdist}/source
+%dir %{texmfdist}/source/fonts
+%dir %{texmfdist}/source/latex
+%dir %{texmfdist}/doc/latex/marvosym/mac/oztex/tex-font
+%dir %{texmfdist}/tex4ht/ht-fonts/win
+
 
 # %files doc-Catalogue
 # %defattr(644,root,root,755)
@@ -4855,6 +4872,7 @@ fi
 
 %files -n kpathsea
 %defattr(644,root,root,755)
+%dir %{texmf}/doc/kpathsea
 %doc %{texmf}/doc/kpathsea/kpathsea.pdf
 %attr(755,root,root) %{_bindir}/kpsepath
 %attr(755,root,root) %{_bindir}/kpsestat
@@ -5341,7 +5359,15 @@ fi
 # %lang(pl) %{_mandir}/pl/man1/latex.1*
 # %{_infodir}/latex.info*
 
+%dir %{texmf}/tex/latex
+%dir %{texmf}/tex/latex/base
+%dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/latex
+%dir %{texmfdist}/tex/latex/hyper
+%dir %{texmfdist}/tex/latex/misc209
+%dir %{texmfdist}/tex/plain
+%dir %{texmfdist}/scripts
+%dir %{texmfdist}/scripts/pst-pdf
 
 %{texmfdist}/tex/latex/SIunits
 %{texmfdist}/tex/latex/ltxmisc/a4wide.sty
