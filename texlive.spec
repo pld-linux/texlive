@@ -1722,6 +1722,19 @@ fontach URW++ rozpowszechnianych z Ghostscriptem. Fonty są kodowane
 zgodnie z układem QX, który ułatwia skład wielojęzyczny i techniczny w
 TeXu, zachowując przydatność dla aplikacji windowsowych.
 
+
+%package latex-SIunits
+Summary:	The SIunits package can be used to standardise the use of units in your writings
+Summary(hu.UTF-8):	Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget
+Group:		Applications/Publishing/TeX
+
+%description latex-SIunits
+The SIunits package can be used to standardise the use of units in your writings.
+
+%description latex-SIunits -l hu.UTF-8
+Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget.
+
+
 %package latex-urwvn
 Summary:	URWVN fonts
 Summary(pl.UTF-8):	Fonty URWVN
@@ -4867,7 +4880,6 @@ fi
 %{texmfdist}/doc/latex/seminar
 %{texmfdist}/doc/latex/showlabels
 %{texmfdist}/doc/latex/sidecap
-%{texmfdist}/doc/latex/SIunits
 %{texmfdist}/doc/latex/slashbox
 %{texmfdist}/doc/latex/soul
 %{texmfdist}/doc/latex/stdclsdv
@@ -5361,101 +5373,104 @@ fi
 #%defattr(644,root,root,755)
 #%%{texmf}/tex/context/config/cont-ro.ini
 
+
 %files latex
 %defattr(644,root,root,755)
-%{_mandir}/man1/latex.1*
-%{_mandir}/man1/pslatex.1*
 # %lang(fi) %{_mandir}/fi/man1/latex.1*
 # %lang(pl) %{_mandir}/pl/man1/latex.1*
 # %{_infodir}/latex.info*
+%{_mandir}/man1/latex.1*
+%{_mandir}/man1/pslatex.1*
 
-%dir %{texmf}/tex/latex
-%dir %{texmf}/tex/latex/base
+%dir %{texmfdist}/scripts
+%dir %{texmfdist}/scripts/pst-pdf
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/hyper
 %dir %{texmfdist}/tex/latex/misc209
 %dir %{texmfdist}/tex/plain
-%dir %{texmfdist}/scripts
-%dir %{texmfdist}/scripts/pst-pdf
+%dir %{texmf}/tex/latex
+%dir %{texmf}/tex/latex/base
 
-%{texmfdist}/tex/latex/SIunits
-%{texmfdist}/tex/latex/ltxmisc/a4wide.sty
+# %{texmfdist}/tex/latex/citesort
+# %{texmfdist}/tex/latex/dvilj
+# %{texmfdist}/tex/latex/eclbip
+# %{texmfdist}/tex/latex/eo
+# %{texmfdist}/tex/latex/example
+# %{texmfdist}/tex/latex/fguill
+# %{texmfdist}/tex/latex/floatflt
+# %{texmfdist}/tex/latex/gletter
+# %{texmfdist}/tex/latex/here
+# %{texmfdist}/tex/latex/mt11p
+# %{texmfdist}/tex/latex/relsize
+# %{texmfdist}/tex/latex/selectp
+# %{texmfdist}/tex/latex/shadow
+# %{texmfdist}/tex/latex/showtags
+# %{texmfdist}/tex/latex/tabls
+# %{texmfdist}/tex/latex/texmacs
+# %{texmfdist}/tex/latex/threeparttable
+# %{texmfdist}/tex/latex/treesvr
+# %{texmfdist}/tex/latex/ulem
+# %{texmfdist}/tex/latex/url
+# %{texmf}/tex/latex/version
+# %{texmf}/tex/latex/vpage
+%{texmfdist}/scripts/pst-pdf/ps4pdf
+%{texmfdist}/tex/generic/pstricks
+%{texmfdist}/tex/generic/shapepar
+%{texmfdist}/tex/generic/tex4ht/boxedminipage.4ht
+%{texmfdist}/tex/generic/tex4ht/endnotes.4ht
+%{texmfdist}/tex/generic/tex4ht/floatflt.4ht
+%{texmfdist}/tex/generic/tex4ht/multind.4ht
+%{texmfdist}/tex/generic/tex4ht/picins.4ht
+%{texmfdist}/tex/generic/textmerg
 %{texmfdist}/tex/latex/abstract
 %{texmfdist}/tex/latex/acronym
 %{texmfdist}/tex/latex/adrconv
 %{texmfdist}/tex/latex/aeguill
 %{texmfdist}/tex/latex/anysize
 %{texmfdist}/tex/latex/appendix
-%{texmfdist}/tex/latex/misc209/bar.sty
 %{texmfdist}/tex/latex/base
 %{texmfdist}/tex/latex/beton
 %{texmfdist}/tex/latex/bezos
-%{texmfdist}/tex/latex/ltxmisc/bold-extra.sty
 %{texmfdist}/tex/latex/booktabs
-%{texmfdist}/tex/generic/tex4ht/boxedminipage.4ht
-%{texmfdist}/tex/latex/ltxmisc/boxedminipage.sty
 %{texmfdist}/tex/latex/calrsfs
-%{texmfdist}/tex/latex/ltxmisc/cancel.sty
-%{texmfdist}/tex/latex/ltxmisc/capt-of.sty
 %{texmfdist}/tex/latex/caption
 %{texmfdist}/tex/latex/ccaption
 %{texmfdist}/tex/latex/changebar
 %{texmfdist}/tex/latex/chappg
-%{texmfdist}/tex/latex/ltxmisc/chngpage.sty
-# %{texmfdist}/tex/latex/citesort
 %{texmfdist}/tex/latex/cmap
 %{texmfdist}/tex/latex/comment
-%{texmfdist}/tex/latex/ltxmisc/concrete.sty
-%{texmf}/tex/latex/config
 %{texmfdist}/tex/latex/crop
 %{texmfdist}/tex/latex/currvita
 %{texmfdist}/tex/latex/curves
 %{texmfdist}/tex/latex/dinbrief
 %{texmfdist}/tex/latex/draftcopy
-# %{texmfdist}/tex/latex/dvilj
-%{texmf}/tex/latex/dvipdfm
-# %{texmfdist}/tex/latex/eclbip
 %{texmfdist}/tex/latex/eepic
 %{texmfdist}/tex/latex/endfloat
-%{texmfdist}/tex/generic/tex4ht/endnotes.4ht
-%{texmfdist}/tex/latex/ltxmisc/endnotes.sty
 %{texmfdist}/tex/latex/enumitem
-# %{texmfdist}/tex/latex/eo
-%{texmfdist}/tex/latex/eso-pic
-%{texmfdist}/tex/plain/etex
 %{texmfdist}/tex/latex/esint
+%{texmfdist}/tex/latex/eso-pic
 %{texmfdist}/tex/latex/euler
 %{texmfdist}/tex/latex/eulervm
 %{texmfdist}/tex/latex/eurosym
 %{texmfdist}/tex/latex/exam
-# %{texmfdist}/tex/latex/example
 %{texmfdist}/tex/latex/extsizes
 %{texmfdist}/tex/latex/fancybox
 %{texmfdist}/tex/latex/fancyhdr
-%{texmfdist}/tex/latex/hyper/fancyheadings.hyp
 %{texmfdist}/tex/latex/fancyvrb
-# %{texmfdist}/tex/latex/fguill
 %{texmfdist}/tex/latex/filecontents
 %{texmfdist}/tex/latex/float
-# %{texmfdist}/tex/latex/floatflt
-%{texmfdist}/tex/generic/tex4ht/floatflt.4ht
-%{texmfdist}/tex/latex/ltxmisc/fnpara.sty
 %{texmfdist}/tex/latex/fontinst
 %{texmfdist}/tex/latex/footmisc
 %{texmfdist}/tex/latex/footnpag
 %{texmfdist}/tex/latex/fp
-%{texmfdist}/tex/latex/ltxmisc/framed.sty
 %{texmfdist}/tex/latex/g-brief
 %{texmfdist}/tex/latex/geometry
 %{texmfdist}/tex/latex/germbib
-# %{texmfdist}/tex/latex/gletter
 %{texmfdist}/tex/latex/graphics
 %{texmfdist}/tex/latex/greektex
-%{texmfdist}/tex/latex/misc209/hangcaption.sty
-# %{texmfdist}/tex/latex/here
+%{texmfdist}/tex/latex/hyper/fancyheadings.hyp
 %{texmfdist}/tex/latex/hyperref
 %{texmfdist}/tex/latex/hyphenat
-%{texmfdist}/tex/latex/ltxmisc/import.sty
 %{texmfdist}/tex/latex/index
 %{texmfdist}/tex/latex/koma-script
 %{texmfdist}/tex/latex/labels
@@ -5465,59 +5480,62 @@ fi
 %{texmfdist}/tex/latex/lettrine
 %{texmfdist}/tex/latex/listings
 %{texmfdist}/tex/latex/ltabptch
+%{texmfdist}/tex/latex/ltxmisc/a4wide.sty
+%{texmfdist}/tex/latex/ltxmisc/bold-extra.sty
+%{texmfdist}/tex/latex/ltxmisc/boxedminipage.sty
+%{texmfdist}/tex/latex/ltxmisc/cancel.sty
+%{texmfdist}/tex/latex/ltxmisc/capt-of.sty
+%{texmfdist}/tex/latex/ltxmisc/chngpage.sty
+%{texmfdist}/tex/latex/ltxmisc/concrete.sty
+%{texmfdist}/tex/latex/ltxmisc/endnotes.sty
+%{texmfdist}/tex/latex/ltxmisc/fnpara.sty
+%{texmfdist}/tex/latex/ltxmisc/framed.sty
+%{texmfdist}/tex/latex/ltxmisc/import.sty
+%{texmfdist}/tex/latex/ltxmisc/nextpage.sty
+%{texmfdist}/tex/latex/ltxmisc/optional.sty
+%{texmfdist}/tex/latex/ltxmisc/parskip.sty
 %{texmfdist}/tex/latex/mathcomp
 %{texmfdist}/tex/latex/mdwtools
 %{texmfdist}/tex/latex/memoir
 %{texmfdist}/tex/latex/mh
+%{texmfdist}/tex/latex/misc209/bar.sty
+%{texmfdist}/tex/latex/misc209/hangcaption.sty
+%{texmfdist}/tex/latex/misc209/multibox.sty
+%{texmfdist}/tex/latex/misc209/multind.sty
+%{texmfdist}/tex/latex/misc209/portland.sty
+%{texmfdist}/tex/latex/misc209/psboxit.sty
 %{texmfdist}/tex/latex/moreverb
 %{texmfdist}/tex/latex/mparhack
 %{texmfdist}/tex/latex/ms
-# %{texmfdist}/tex/latex/mt11p
 %{texmfdist}/tex/latex/multibib
-%{texmfdist}/tex/latex/misc209/multibox.sty
-%{texmfdist}/tex/generic/tex4ht/multind.4ht
-%{texmfdist}/tex/latex/misc209/multind.sty
 %{texmfdist}/tex/latex/multirow
 %{texmfdist}/tex/latex/mwcls
 %{texmfdist}/tex/latex/natbib
-%{texmfdist}/tex/latex/ltxmisc/nextpage.sty
-%{texmfdist}/tex/latex/ntheorem
 %{texmfdist}/tex/latex/nomencl
 %{texmfdist}/tex/latex/ntgclass
+%{texmfdist}/tex/latex/ntheorem
 %{texmfdist}/tex/latex/oberdiek
-%{texmfdist}/tex/latex/ltxmisc/optional.sty
 %{texmfdist}/tex/latex/overpic
 %{texmfdist}/tex/latex/paralist
-%{texmfdist}/tex/latex/ltxmisc/parskip.sty
 %{texmfdist}/tex/latex/pb-diagram
 %{texmfdist}/tex/latex/pdfpages
 %{texmfdist}/tex/latex/picinpar
-%{texmfdist}/tex/generic/tex4ht/picins.4ht
 %{texmfdist}/tex/latex/pict2e
 %{texmfdist}/tex/latex/placeins
-%{texmfdist}/tex/latex/misc209/portland.sty
 %{texmfdist}/tex/latex/preprint
 %{texmfdist}/tex/latex/preview
 %{texmfdist}/tex/latex/program
-%{texmfdist}/scripts/pst-pdf/ps4pdf
-%{texmfdist}/tex/latex/misc209/psboxit.sty
 %{texmfdist}/tex/latex/psfrag
 %{texmfdist}/tex/latex/pslatex
-%{texmfdist}/tex/generic/pstricks
-# %{texmfdist}/tex/latex/relsize
 %{texmfdist}/tex/latex/revtex
 %{texmfdist}/tex/latex/rotating
 %{texmfdist}/tex/latex/rotfloat
 %{texmfdist}/tex/latex/scale
 %{texmfdist}/tex/latex/sectsty
-# %{texmfdist}/tex/latex/selectp
 %{texmfdist}/tex/latex/seminar
 %{texmfdist}/tex/latex/setspace
-# %{texmfdist}/tex/latex/shadow
-%{texmfdist}/tex/generic/shapepar
 %{texmfdist}/tex/latex/showdim
 %{texmfdist}/tex/latex/showlabels
-# %{texmfdist}/tex/latex/showtags
 %{texmfdist}/tex/latex/sidecap
 %{texmfdist}/tex/latex/slashbox
 %{texmfdist}/tex/latex/soul
@@ -5527,31 +5545,25 @@ fi
 %{texmfdist}/tex/latex/subfigure
 %{texmfdist}/tex/latex/supertabular
 %{texmfdist}/tex/latex/t2
-# %{texmfdist}/tex/latex/tabls
-# %{texmfdist}/tex/latex/texmacs
 %{texmfdist}/tex/latex/textfit
-%{texmfdist}/tex/generic/textmerg
 %{texmfdist}/tex/latex/textpos
-# %{texmfdist}/tex/latex/threeparttable
 %{texmfdist}/tex/latex/titlesec
 %{texmfdist}/tex/latex/tocbibind
 %{texmfdist}/tex/latex/tocloft
 %{texmfdist}/tex/latex/tools
 %{texmfdist}/tex/latex/totpages
-# %{texmfdist}/tex/latex/treesvr
 %{texmfdist}/tex/latex/type1cm
-# %{texmfdist}/tex/latex/ulem
 %{texmfdist}/tex/latex/units
 %{texmfdist}/tex/latex/upquote
-# %{texmfdist}/tex/latex/url
 %{texmfdist}/tex/latex/vmargin
-# %{texmf}/tex/latex/vpage
 %{texmfdist}/tex/latex/was
 %{texmfdist}/tex/latex/wrapfig
 %{texmfdist}/tex/latex/xkeyval
 %{texmfdist}/tex/latex/xtab
 %{texmfdist}/tex/latex/yfonts
-# %{texmf}/tex/latex/version
+%{texmfdist}/tex/plain/etex
+%{texmf}/tex/latex/config
+%{texmf}/tex/latex/dvipdfm
 
 %files latex-algorithms
 %defattr(644,root,root,755)
@@ -5826,6 +5838,11 @@ fi
 %files latex-qfonts
 %defattr(644,root,root,755)
 %{texmfdist}/tex4ht/ht-fonts/alias/qfonts
+
+%files latex-SIunits
+%defattr(644,root,root,755)
+%{texmfdist}/tex/latex/SIunits
+%{texmfdist}/doc/latex/SIunits
 
 %files latex-txfonts
 %defattr(644,root,root,755)
