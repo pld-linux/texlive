@@ -133,8 +133,8 @@ Obsoletes:	tetex-tex-hyphen
 Obsoletes:	tetex-tex-vietnam
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		texmf	%{_datadir}/texmf
-%define		texmfdist %{texmf}/dist
+%define		texmf	%{_datadir}/texlive-texmf
+%define		texmfdist %{texmf}-dist
 %define		fmtdir	/var/lib/texmf/web2c
 %define		texhash	[ ! -x %{_bindir}/texhash ] || %{_bindir}/texhash 1>&2;
 %define		_localstatedir	/var/lib/texmf
@@ -3244,7 +3244,14 @@ cat ax*.m4 > acinclude.m4
 
 %build
 find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
+pushd texk/kpathsea
 %{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk/*.c
+%{__sed} -i 's/^TEXMFMAIN =.*/TEXMFMAIN = %{texmf}/' texmf.cnf
+%{__sed} -i 's/^TEXMFDIST =.*/TEXMFDIST = %{texmfdist}/' texmf.cnf
+%{__sed} -i 's/^TEXMFLOCAL =.*/TEXMFLOCAL = %{texmf}/' texmf.cnf
+%{__sed} -i 's/^TEXMFSYSVAR =.*/TEXMFSYSVAR = %{_localstatedir}/' texmf.cnf
+%{__sed} -i 's/^TEXMFSYSCONFIG =.*/TEXMFSYSCONFIG = %{_sysconfdir}/%{name}' texmf.cnf
+popd
 
 %configure \
 %if %{with bootstrap}
@@ -3269,7 +3276,7 @@ find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 	--with-system-pnglib \
 	--with-system-t1lib \
 	--with-system-zlib \
-	--with-texmf-dir=texlive-20080822-texmf \
+	--with-texmf-dir=../../texmf \
 	--with-xdvi-x-toolkit=xaw \
 	--without-dialog \
 	--without-t1utils \
@@ -3296,7 +3303,7 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 #	-e "s|/var/cache/fonts|$RPM_BUILD_ROOT/var/cache/fonts|g;" \
 #	texmf/web2c/texmf.cnf
 
-install -d $RPM_BUILD_ROOT%{texmf}/{dist,doc}
+install -d $RPM_BUILD_ROOT%{texmf}/doc $RPM_BUILD_ROOT%{texmfdist}
 cp -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
 cp -a texlive-20080822-texmf/texmf-dist/dvips $RPM_BUILD_ROOT%{texmf}
 cp -a texlive-20080822-texmf/texmf-dist/tex $RPM_BUILD_ROOT%{texmf}
@@ -4946,6 +4953,10 @@ fi
 
 %dir %{texmf}/dvipdfm
 %{texmf}/dvipdfm/config
+%dir %{texmfdist}/fonts/map/dvips/cmex
+%dir %{texmf}/doc/dvipdfm
+%dir %{texmf}/doc/dvips
+
 
 %files dvilj
 %defattr(644,root,root,755)
