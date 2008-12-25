@@ -137,7 +137,7 @@ Obsoletes:	tetex-tex-hyphen
 Obsoletes:	tetex-tex-vietnam
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		texmf	%{_datadir}/texlive-texmf
+%define		texmf	%{_datadir}/texmf
 %define		texmfdist %{texmf}-dist
 %define		texmfdoc %{texmf}-doc
 %define		fmtdir	/var/lib/texmf/web2c
@@ -3303,7 +3303,6 @@ Uncategorized utilities. Needs check and categorizing.
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
 lzma -dc %{SOURCE0} | tar xf - -C ..
-lzma -dc %{SOURCE1} | tar xf - -C .
 %patch0 -p1
 %patch1 -p1
 
@@ -3348,7 +3347,6 @@ cd ../..
 	--with-system-pnglib \
 	--with-system-t1lib \
 	--with-system-zlib \
-	--with-texmf-dir=../../texmf \
 	--with-xdvi-x-toolkit=xaw \
 	--without-dialog \
 	--without-t1utils \
@@ -3368,6 +3366,15 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map\
 	$RPM_BUILD_ROOT%{fmtdir}
 
+lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-dist $RPM_BUILD_ROOT%{texmfdist}
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-doc $RPM_BUILD_ROOT%{texmfdoc}
+%{__mv} $RPM_BUILD_ROOT%{texmfdist}/dvips/* $RPM_BUILD_ROOT%{texmf}
+%{__mv} $RPM_BUILD_ROOT%{texmfdist}/tex/* $RPM_BUILD_ROOT%{texmf}
+# This is an empty directory
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf
+
 # commented out because of following (non-fatal) error:
 # Can't open texmf/web2c/texmf.cnf: No such file or directory.
 #perl -pi \
@@ -3375,11 +3382,9 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 #	-e "s|/var/cache/fonts|$RPM_BUILD_ROOT/var/cache/fonts|g;" \
 #	texmf/web2c/texmf.cnf
 
-install -d $RPM_BUILD_ROOT%{texmf} $RPM_BUILD_ROOT%{texmfdist} $RPM_BUILD_ROOT%{texmfdoc}
-%{__cp} -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
-# cp -a texlive-20080822-texmf/texmf-dist/dvips $RPM_BUILD_ROOT%{texmf}
-# cp -a texlive-20080822-texmf/texmf-dist/tex $RPM_BUILD_ROOT%{texmf}
-%{__cp} -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmfdist}
+# install -d $RPM_BUILD_ROOT%{texmf} $RPM_BUILD_ROOT%{texmfdist} $RPM_BUILD_ROOT%{texmfdoc}
+# %{__cp} -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
+# %{__cp} -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmfdist}
 # %{__cp} -a texlive-20080822-texmf/texmf-doc/* $RPM_BUILD_ROOT%{texmfdoc}
 
 install -d $RPM_BUILD_ROOT%{texmf}/fonts/opentype/public
@@ -6479,8 +6484,8 @@ fi
 %files fonts-px
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/pxfonts
-%doc %{texmf}/doc/doc/english/free-math-font-survey/source/pxfonts.tex
-%doc %{texmf}/doc/doc/english/free-math-font-survey/images/pxfonts.png
+# %doc %{texmf}/doc/doc/english/free-math-font-survey/source/pxfonts.tex
+# %doc %{texmf}/doc/doc/english/free-math-font-survey/images/pxfonts.png
 %dir %{texmfdist}/fonts/map/dvips/pxfonts
 %dir %{texmfdist}/tex/latex/pxfonts
 %{texmfdist}/fonts/map/dvips/pxfonts/pxfonts.map
