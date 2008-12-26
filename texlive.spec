@@ -19,8 +19,6 @@
 #
 # TeXLive specific TODO:
 # - MOST IMPORTANT!!! create *.fmt files, "fmtutil-sys --byfmt tex", maybe in %post sections (plain, latex, ...)
-# - set/fix the newly created fonts directory instead of ~/.texlive-2008 (to %fmtdir) (sed the texmf.cnf)
-# - create a 'texmf' user, who ownes %fmtdir, and set the binaries owner to 'texmf' and use sgid to binaries
 # - fix broken symlinks in /usr/bin
 # - summary/description correcting (all languages)
 # - solve xindy case, it doesn't build with tetext, and probably won't with texlive
@@ -3326,6 +3324,7 @@ cd texk/kpathsea
 %{__sed} -i 's@^TEXMFLOCAL =.*@TEXMFLOCAL = %{texmf}@' texmf.cnf
 %{__sed} -i 's@^TEXMFSYSVAR =.*@TEXMFSYSVAR = %{_localstatedir}@' texmf.cnf
 %{__sed} -i 's@^TEXMFSYSCONFIG =.*@TEXMFSYSCONFIG = %{_sysconfdir}/%{name}@' texmf.cnf
+%{__sed} -i 's@^TEXMFVAR =.*@TEXMFVAR = %{_localstatedir}@' texmf.cnf
 cd ../..
 
 %configure \
@@ -3374,8 +3373,6 @@ lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-dist $RPM_BUILD_ROOT%{texmfdist}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-doc $RPM_BUILD_ROOT%{texmfdoc}
-# %{__mv} $RPM_BUILD_ROOT%{texmfdist}/dvips/* $RPM_BUILD_ROOT%{texmf}
-# %{__mv} $RPM_BUILD_ROOT%{texmfdist}/tex/* $RPM_BUILD_ROOT%{texmf}
 # This is an empty directory
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf
 
@@ -4682,7 +4679,8 @@ fi
 # ***********
 # Directories
 # ***********
-%attr(2755,texmf,texmf) %dir %{fmtdir}
+%dir %{fmtdir}
+%dir %{_localstatedir}
 
 %dir %{texmfdist}/doc
 %dir %{texmfdist}/doc/generic
@@ -5118,7 +5116,7 @@ fi
 %attr(755,root,root) %{_bindir}/mf-nowin
 %attr(755,root,root) %{_bindir}/mft
 %attr(755,root,root) %{_bindir}/mktexmf
-%attr(755,root,root) %{_bindir}/mktexpk
+%attr(2755,texmf,texmf) %{_bindir}/mktexpk
 %attr(755,root,root) %{_bindir}/mktextfm
 %{texmfdist}/metafont
 %{texmfdist}/mft/base/mplain.mft
