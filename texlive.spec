@@ -18,6 +18,7 @@
 # - merge all above with configure switch "--enable-fhs" and send it to TE
 #
 # TeXLive specific TODO:
+# - fix broken symlinks in /usr/bin
 # - summary/description correcting (all languages)
 # - solve xindy case, it doesn't build with tetext, and probably won't with texlive
 #   until larm1000 font found (xindy option)
@@ -5049,11 +5050,14 @@ fi
 %{texmfdist}/dvips/psfrag
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/dvips/config/config.ps
 %{texmfdist}/fonts/enc/dvips/base
+%{texmfdist}/fonts/map/dvips/allrunes
 %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
 %{texmf}/dvipdfm/config
 %{texmf}/dvips/tetex/config.*
 %{texmf}/fonts/enc/dvips/tetex/mtex.enc
+%{texmf}/fonts/map
 %{texmf}/fonts/map/dvipdfm
+%{texmf}/fonts/map/dvips
 %{texmf}/fonts/map/dvips/tetex/dvipdfm35.map
 %{texmf}/fonts/map/dvips/tetex/dvips35.map
 %{texmf}/fonts/map/dvips/tetex/mathpple.map
@@ -5165,10 +5169,10 @@ fi
 
 %files -n xdvi
 %defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/xdvi-xaw.bin
 #%attr(755,root,root) %{_bindir}/xdvi-motif.bin
 # %attr(755,root,root) %{_bindir}/xdvizilla
 # %{_mandir}/man1/xdvizilla.1*
+%attr(755,root,root) %{_bindir}/xdvi-xaw
 %attr(755,root,root) %{_bindir}/xdvi
 %{_mandir}/man1/xdvi.1*
 %{_desktopdir}/xdvi.desktop
