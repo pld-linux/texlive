@@ -18,6 +18,8 @@
 # - merge all above with configure switch "--enable-fhs" and send it to TE
 #
 # TeXLive specific TODO:
+# - MOST IMPORTANT!!! create *.fmt files, "fmtutil-sys --byfmt tex", maybe to %post section
+# - set/fix the newly created fonts directory instead of ~/.texlive-2008 (to %fmtdir)
 # - fix broken symlinks in /usr/bin
 # - summary/description correcting (all languages)
 # - solve xindy case, it doesn't build with tetext, and probably won't with texlive
