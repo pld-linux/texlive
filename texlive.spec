@@ -564,6 +564,7 @@ Summary:	TeX generating PDF files instead DVI
 Summary(pl.UTF-8):	TeX generujący pliki PDF zamiast DVI
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+Requires(post):	%{_bindir}/fmtutil-sys
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
 
@@ -601,6 +602,7 @@ Summary:	Plain TeX format basic files
 Summary(pl.UTF-8):	Podstawowe pliki dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+Requires(post):	%{_bindir}/fmtutil-sys
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description plain
@@ -996,6 +998,7 @@ Summary:	LaTeX macro package basic files
 Summary(pl.UTF-8):	Podstawowe pliki pakietu makr LaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+Requires(post):	%{_bindir}/fmtutil-sys
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-latex = %{epoch}:%{version}-%{release}
 # for misc/eurosym:
@@ -3558,6 +3561,7 @@ fi
 %texhash
 
 %post pdftex
+%{_bindir}/fmtutil-sys -byfmt pdftex
 %texhash
 
 %postun pdftex
@@ -3571,6 +3575,7 @@ fi
 
 %post plain
 %texhash
+%{_bindir}/fmtutil-sys -byfmt tex
 
 %postun plain
 %texhash
@@ -3734,6 +3739,7 @@ fi
 
 %post latex
 %fixinfodir
+%{_bindir}/fmtutil-sys -byfmt latex
 %texhash
 
 %postun latex
