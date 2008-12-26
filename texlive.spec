@@ -3467,6 +3467,8 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%groupadd -g 250 texmf
+%useradd -u 250 -r -d /dev/null -s /bin/false -g texmf
 %fixinfodir
 %texhash
 
@@ -3474,6 +3476,10 @@ rm -rf $RPM_BUILD_ROOT
 %fixinfodir
 if [ "$1" = "1" ]; then
 	%texhash
+fi
+if [ "$1" = "0" ]; then
+	%userremove texmf
+	%groupremove texmf
 fi
 
 %post doc-Catalogue
@@ -4676,7 +4682,7 @@ fi
 # ***********
 # Directories
 # ***********
-%dir %{fmtdir}
+%attr(2755,texmf,texmf) %dir %{fmtdir}
 
 %dir %{texmfdist}/doc
 %dir %{texmfdist}/doc/generic
