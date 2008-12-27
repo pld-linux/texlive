@@ -4708,6 +4708,9 @@ fi
 %dir %{fmtdir}
 %dir %{_localstatedir}
 
+%dir %{texmfdist}
+%dir %{texmf}
+
 %dir %{texmfdist}/doc
 %dir %{texmfdist}/doc/generic
 %dir %{texmfdist}/doc/generic/enctex
