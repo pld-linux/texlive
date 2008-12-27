@@ -3468,7 +3468,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %groupadd -g 250 texmf
-%useradd -u 250 -r -d /dev/null -s /bin/false -g texmf
+%useradd -u 250 -r -s /bin/false -g texmf
 %fixinfodir
 %texhash
 
@@ -3561,7 +3561,7 @@ fi
 %texhash
 
 %post pdftex
-%{_bindir}/fmtutil-sys -byfmt pdftex
+%{_bindir}/fmtutil-sys --byfmt pdftex
 %texhash
 
 %postun pdftex
@@ -3575,7 +3575,7 @@ fi
 
 %post plain
 %texhash
-%{_bindir}/fmtutil-sys -byfmt tex
+%{_bindir}/fmtutil-sys --byfmt tex
 
 %postun plain
 %texhash
@@ -3739,7 +3739,7 @@ fi
 
 %post latex
 %fixinfodir
-%{_bindir}/fmtutil-sys -byfmt latex
+%{_bindir}/fmtutil-sys --byfmt latex
 %texhash
 
 %postun latex
@@ -4651,9 +4651,9 @@ fi
 
 %ghost %{texmf}/ls-R
 %ghost %{texmfdist}/ls-R
-%dir %{_localstatedir}
-%dir %{_localstatedir}/fonts
-%dir %{_localstatedir}/fonts/map
+%attr(775,texmf,texmf) %dir %{_localstatedir}
+%attr(775,texmf,texmf) %dir %{_localstatedir}/fonts
+%attr(775,texmf,texmf) %dir %{_localstatedir}/fonts/map
 # %ghost %{_localstatedir}/ls-R
 
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/cslatex/base/fonttext.cfg
