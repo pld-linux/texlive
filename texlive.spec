@@ -563,8 +563,8 @@ visualizar arquivos dvi, como os produzidos por tex e latex.
 Summary:	TeX generating PDF files instead DVI
 Summary(pl.UTF-8):	TeX generujący pliki PDF zamiast DVI
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires(post):	%{_bindir}/fmtutil-sys
+Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
 
@@ -601,8 +601,8 @@ tekstu pisanego w obu kierunkach.
 Summary:	Plain TeX format basic files
 Summary(pl.UTF-8):	Podstawowe pliki dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires(post):	%{_bindir}/fmtutil-sys
+Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description plain
@@ -997,8 +997,8 @@ Holenderska wersja formatu ConTeXt.
 Summary:	LaTeX macro package basic files
 Summary(pl.UTF-8):	Podstawowe pliki pakietu makr LaTeX
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires(post):	%{_bindir}/fmtutil-sys
+Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-latex = %{epoch}:%{version}-%{release}
 # for misc/eurosym:
@@ -1446,6 +1446,20 @@ complex numbers.
 %description latex-dstroke -l pl.UTF-8
 Podwójnie kreślony font do składania symboli matematycznych liczb
 naturalnych, całkowitych, wymiernych, rzeczywistych i zespolonych.
+
+%package latex-enumitem
+Summary:	A package to customize the three basic lists
+Summary(hu.UTF-8):	Egy csomag, amivel testreszabhatod a három alapvető listát
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+
+%description latex-enumitem
+A package to customize the three basic lists (enumerate, itemize and
+description).
+
+%description latex-enumitem
+Egy csomag, amivel testreszabhatod a három alapvető listakörnyezetet
+(enumerate, itemize, description).
 
 %package latex-exam
 Summary:	The exam document class attempts to make it easy for even a LaTeX novice to prepare exams
@@ -3872,6 +3886,12 @@ fi
 # %postun latex-dstroke
 # %texhash
 
+%post latex-enumitem
+%texhash
+
+%postun latex-enumitem
+%texhash
+
 %post latex-exam
 %texhash
 
@@ -4923,7 +4943,6 @@ fi
 %{texmfdist}/doc/latex/draftcopy
 %{texmfdist}/doc/latex/eepic
 %{texmfdist}/doc/latex/endfloat
-%{texmfdist}/doc/latex/enumitem
 %{texmfdist}/doc/latex/esint
 %{texmfdist}/doc/latex/eso-pic
 %{texmfdist}/doc/latex/euler
@@ -5549,7 +5568,6 @@ fi
 %{texmfdist}/tex/latex/draftcopy
 %{texmfdist}/tex/latex/eepic
 %{texmfdist}/tex/latex/endfloat
-%{texmfdist}/tex/latex/enumitem
 %{texmfdist}/tex/latex/esint
 %{texmfdist}/tex/latex/eso-pic
 %{texmfdist}/tex/latex/euler
@@ -5832,6 +5850,11 @@ fi
 # %files latex-dstroke
 # %defattr(644,root,root,755)
 # %{texmf}/tex/latex/dstroke
+
+%files latex-enumitem
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/enumitem
+%{texmfdist}/tex/latex/enumitem
 
 %files latex-exam
 %defattr(644,root,root,755)
