@@ -110,6 +110,7 @@ Requires:	dialog
 Requires:	sed
 Requires:	sh-utils
 Requires:	textutils
+Requires:	texconfig
 Suggests:	tmpwatch
 Obsoletes:	tetex
 Obsoletes:	tetex-afm
@@ -563,7 +564,6 @@ visualizar arquivos dvi, como os produzidos por tex e latex.
 Summary:	TeX generating PDF files instead DVI
 Summary(pl.UTF-8):	TeX generujący pliki PDF zamiast DVI
 Group:		Applications/Publishing/TeX
-Requires(post):	%{_bindir}/fmtutil-sys
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
@@ -601,7 +601,6 @@ tekstu pisanego w obu kierunkach.
 Summary:	Plain TeX format basic files
 Summary(pl.UTF-8):	Podstawowe pliki dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
-Requires(post):	%{_bindir}/fmtutil-sys
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -997,7 +996,6 @@ Holenderska wersja formatu ConTeXt.
 Summary:	LaTeX macro package basic files
 Summary(pl.UTF-8):	Podstawowe pliki pakietu makr LaTeX
 Group:		Applications/Publishing/TeX
-Requires(post):	%{_bindir}/fmtutil-sys
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-latex = %{epoch}:%{version}-%{release}
@@ -3575,7 +3573,6 @@ fi
 %texhash
 
 %post pdftex
-%{_bindir}/fmtutil-sys --byfmt pdftex
 %texhash
 
 %postun pdftex
@@ -3589,7 +3586,6 @@ fi
 
 %post plain
 %texhash
-%{_bindir}/fmtutil-sys --byfmt tex
 
 %postun plain
 %texhash
@@ -3753,7 +3749,6 @@ fi
 
 %post latex
 %fixinfodir
-%{_bindir}/fmtutil-sys --byfmt latex
 %texhash
 
 %postun latex
@@ -4727,8 +4722,6 @@ fi
 %dir %{texmfdist}/tex/generic/genmisc
 %dir %{texmfdist}/tex/generic/misc
 %dir %{texmfdist}/tex/generic/tex4ht
-%dir %{texmfdist}/tex/latex
-%dir %{texmfdist}/tex/latex/ltxmisc
 %dir %{texmf}/dvips
 %dir %{texmf}/dvips/config
 %dir %{texmf}/dvips/tetex
@@ -4776,8 +4769,6 @@ fi
 %{texmfdist}/tex/generic/tap
 %{texmfdist}/tex/generic/tex-ps
 %{texmfdist}/tex/generic/tex4ht/path.4ht
-%{texmfdist}/tex/latex/localloc
-%{texmfdist}/tex/latex/ltxmisc/path.sty
 %{texmfdist}/tex/texinfo
 %{texmf}/tex/fontinst
 %{texmf}/tex/generic/hyphen
@@ -5516,6 +5507,7 @@ fi
 %dir %{texmfdist}/tex/plain
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/base
+%dir %{texmfdist}/tex/latex/ltxmisc
 
 # %{texmfdist}/tex/latex/citesort
 # %{texmfdist}/tex/latex/dvilj
@@ -5602,6 +5594,7 @@ fi
 %{texmfdist}/tex/latex/lettrine
 %{texmfdist}/tex/latex/listings
 %{texmfdist}/tex/latex/ltabptch
+%{texmfdist}/tex/latex/localloc
 %{texmfdist}/tex/latex/ltxmisc/a4wide.sty
 %{texmfdist}/tex/latex/ltxmisc/bold-extra.sty
 %{texmfdist}/tex/latex/ltxmisc/boxedminipage.sty
@@ -5616,6 +5609,7 @@ fi
 %{texmfdist}/tex/latex/ltxmisc/nextpage.sty
 %{texmfdist}/tex/latex/ltxmisc/optional.sty
 %{texmfdist}/tex/latex/ltxmisc/parskip.sty
+%{texmfdist}/tex/latex/ltxmisc/path.sty
 %{texmfdist}/tex/latex/mathcomp
 %{texmfdist}/tex/latex/mdwtools
 %{texmfdist}/tex/latex/memoir
