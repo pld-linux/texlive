@@ -5507,6 +5507,7 @@ fi
 %dir %{texmfdist}/tex/plain
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/base
+%dir %{texmfdist}/tex/latex/latexconfig
 %dir %{texmfdist}/tex/latex/ltxmisc
 
 # %{texmfdist}/tex/latex/citesort
@@ -5589,6 +5590,7 @@ fi
 %{texmfdist}/tex/latex/index
 %{texmfdist}/tex/latex/koma-script
 %{texmfdist}/tex/latex/labels
+%{texmfdist}/tex/latex/latexconfig
 %{texmfdist}/tex/latex/layouts
 %{texmfdist}/tex/latex/leftidx
 %{texmfdist}/tex/latex/lettrine
