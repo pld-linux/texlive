@@ -1450,6 +1450,7 @@ Summary:	A package to customize the three basic lists
 Summary(hu.UTF-8):	Egy csomag, amivel testreszabhatod a három alapvető listát
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
 
 %description latex-enumitem
 A package to customize the three basic lists (enumerate, itemize and
@@ -1464,6 +1465,7 @@ Summary:	The exam document class attempts to make it easy for even a LaTeX novic
 Summary(hu.UTF-8):	Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a feladatsorok készítése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
 
 %description latex-exam
 The exam document class attempts to make it easy for even a LaTeX
@@ -1719,6 +1721,7 @@ Summary:	Enhanced theorem environment
 Summary(hu.UTF-8):	Bővített tétel környezet
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
 
 %description latex-ntheorem
 Enhanced theorem environment.
@@ -1801,6 +1804,7 @@ Summary:	The SIunits package can be used to standardise the use of units in your
 Summary(hu.UTF-8):	Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
+Requires:	%{name}-latex
 
 %description latex-SIunits
 The SIunits package can be used to standardise the use of units in
@@ -3441,7 +3445,7 @@ perl -pi \
 	-e "s|$RPM_BUILD_ROOT||g;" \
 	$RPM_BUILD_ROOT%{texmf}/web2c/texmf.cnf
 
-install %{SOURCE4} $RPM_BUILD_ROOT/etc/cron.daily/tetex
+install %{SOURCE4} $RPM_BUILD_ROOT/etc/cron.daily/texlive
 
 install %{SOURCE5} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
