@@ -662,8 +662,8 @@ Summary(pl.UTF-8):	Podstawowe pliki dla format MeX Plain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	tetex-fonts-pl = %{epoch}:%{version}-%{release}
-Requires:	tetex-plain = %{epoch}:%{version}-%{release}
+Requires:	texlive-fonts-pl = %{epoch}:%{version}-%{release}
+Requires:	texlive-plain = %{epoch}:%{version}-%{release}
 
 %description mex
 MeX Plain Format basic files.
@@ -676,7 +676,7 @@ Summary:	MeX Plain Format
 Summary(pl.UTF-8):	Format MeX Plain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	tetex-mex = %{epoch}:%{version}-%{release}
+Requires:	texlive-mex = %{epoch}:%{version}-%{release}
 
 %description format-mex
 MeX Plain Format.
@@ -3479,8 +3479,8 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%groupadd -g 250 texmf
-%useradd -u 250 -r -s /bin/false -g texmf
+# %groupadd -g 250 texmf
+# %useradd -u 250 -r -s /bin/false -g texmf
 %fixinfodir
 %texhash
 
@@ -3489,10 +3489,10 @@ rm -rf $RPM_BUILD_ROOT
 if [ "$1" = "1" ]; then
 	%texhash
 fi
-if [ "$1" = "0" ]; then
-	%userremove texmf
-	%groupremove texmf
-fi
+# if [ "$1" = "0" ]; then
+# 	%userremove texmf
+#	%groupremove texmf
+#fi
 
 %post doc-Catalogue
 %texhash
