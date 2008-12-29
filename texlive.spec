@@ -3530,6 +3530,8 @@ lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-doc $RPM_BUILD_ROOT%{texmfdoc}
 # This is an empty directory
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf
+# Useless binary
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/texmf-dist/doc/latex/splitindex/splitindex{.exe,-Linux-i386,-OpenBSD-i386}
 
 # commented out because of following (non-fatal) error:
 # Can't open texmf/web2c/texmf.cnf: No such file or directory.
