@@ -1824,6 +1824,19 @@ Ferguson.
 Wsparcie dla MLTeXa - rozszerzenia TeXa z obsługą wielu języków,
 autorstwa Michaela J. Fergusona.
 
+%package latex-multienum
+Summary:	Multi-column enumerated lists
+Summary(hu.UTF-8):	Többoszlopos számozott listák
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-multienum
+Multi-column enumerated lists.
+
+%description latex-multienum -l hu.UTF-8
+Többoszlopos számozott listák.
+
 %package latex-ntheorem
 Summary:	Enhanced theorem environment
 Summary(hu.UTF-8):	Bővített tétel környezet
@@ -1912,7 +1925,7 @@ Summary:	The SIunits package can be used to standardise the use of units in your
 Summary(hu.UTF-8):	Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex-ams
 
 %description latex-SIunits
 The SIunits package can be used to standardise the use of units in
@@ -1953,12 +1966,13 @@ Obsługa fontów TX w LaTeXu.
 %package latex-ucs
 Summary:	This package contains support for using UTF-8 as input encoding in LaTeX documents
 Summary(hu.UTF-8):	Ez a csomag lehetővé teszi UTF-8 kódolást a LaTeX dokumentumokban
-Group:		Applicactions/Publishing/TeX
+Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex
 
 %description latex-ucs
-This package contains support for using UTF-8 as input encoding in LaTeX documents.
+This package contains support for using UTF-8 as input encoding in
+LaTeX documents.
 
 %description latex-ucs -l hu.UTF-8
 Ez a csomag lehetővé teszi UTF-8 kódolást a LaTeX dokumentumokban.
@@ -4129,6 +4143,12 @@ fi
 %postun latex-mltex
 %texhash
 
+%post latex-multienum
+%texhash
+
+%postun latex-multienum
+%texhash
+
 %post latex-ntheorem
 %texhash
 
@@ -6146,6 +6166,13 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/mltex
 %{texmfdist}/tex/latex/mltex
+
+%files latex-multienum
+%defattr(644,root,root,755)
+%dir %{texmfdist}/doc/latex/multenum
+%{texmfdist}/doc/latex/multenum
+%dir %{texmfdist}/tex/latex/multenum
+%{texmfdist}/tex/latex/multenum
 
 %files latex-ntheorem
 %defattr(644,root,root,755)
