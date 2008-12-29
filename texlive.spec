@@ -18,8 +18,7 @@
 # - merge all above with configure switch "--enable-fhs" and send it to TE
 #
 # TeXLive specific TODO:
-# - MOST IMPORTANT!!! create *.fmt files, "fmtutil-sys --byfmt tex", maybe in %post sections (plain, latex, ...)
-# - fix broken symlinks in /usr/bin
+# - fix broken symlinks in /usr/bin (see line 3564)
 # - summary/description correcting (all languages)
 # - solve xindy case, it doesn't build with tetext, and probably won't with texlive
 #   until larm1000 font found (xindy option)
@@ -3558,6 +3557,14 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 	texmf=$RPM_BUILD_ROOT%{texmf} \
 	texmfsysvar=$RPM_BUILD_ROOT%{_localstatedir} \
 	texmfsysconfig=$RPM_BUILD_ROOT%{texmf}
+
+# Fix broken symlinks
+# CURDIR=$(pwd)
+# cd $RPM_BUILD_ROOT%{_bindir}
+# for file in $(file * | grep broken | awk -F ":" {'print $1'}); do
+# 	ln -sf $(readlink $file | %{__sed} "s@\.\.@/usr/share@") $file
+# done
+# cd $CURDIR
 
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
 #touch $RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap/maps.lst
