@@ -4664,9 +4664,6 @@ fi
 
 %ghost %{texmf}/ls-R
 %ghost %{texmfdist}/ls-R
-%attr(775,texmf,texmf) %dir %{_localstatedir}
-%attr(775,texmf,texmf) %dir %{_localstatedir}/fonts
-%attr(775,texmf,texmf) %dir %{_localstatedir}/fonts/map
 # %ghost %{_localstatedir}/ls-R
 
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/cslatex/base/fonttext.cfg
@@ -4699,6 +4696,8 @@ fi
 # Directories
 # ***********
 %attr(1777,root,root) %dir %{_localstatedir}
+%attr(1777,root,root) %dir %{_localstatedir}/fonts
+%attr(1777,root,root) %dir %{_localstatedir}/fonts/map
 %attr(1777,root,root) %dir %{fmtdir}
 
 %dir %{texmfdist}
@@ -5133,7 +5132,7 @@ fi
 %attr(755,root,root) %{_bindir}/mf-nowin
 %attr(755,root,root) %{_bindir}/mft
 %attr(755,root,root) %{_bindir}/mktexmf
-%attr(2755,texmf,texmf) %{_bindir}/mktexpk
+%attr(755,root,root) %{_bindir}/mktexpk
 %attr(755,root,root) %{_bindir}/mktextfm
 %{texmfdist}/metafont
 %{texmfdist}/mft/base/mplain.mft
