@@ -1064,12 +1064,11 @@ Control the typesetting of the abstract environment.
 %description latex-abstract -l hu.UTF-8
 Az "abstract" környezet szedésének irányítása.
 
-
 %package latex-adrconv
 Summary:	BibTeX styles to implement an address database
 Summary(hu.UTF-8):	BibTeX stílusok cím-adatbázis megvalósításához
 Group:		Applications/Publishing/TeX
-Requires(pst,postun):	%{_bindir}/texhash
+Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex
 
 %description latex-adrconv
@@ -1192,7 +1191,6 @@ Extra control of appendices.
 %description latex-appendix -l hu.UTF-8
 Az appendixek nagyobb irányítása.
 
-
 %package latex-bbm
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
 Summary(pl.UTF-8):	Tablicowy wariant fontów Computer Modern z obsługą LaTeXa
@@ -1237,6 +1235,19 @@ Bibliography management for LaTeX.
 
 %description latex-bibtex -l pl.UTF-8
 Zarządzanie bibliografią dla LaTeXa.
+
+%package latex-bezos
+Summary:	Packages by Javier Bezos (additional math tools)
+Summary(hu.UTF-8):	Javier Bezos csomagjai (további matematikai eszközök)
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-bezos
+Packages by Javier Bezos (additional math tools).
+
+%description latex-bezos
+Javier Bezos csomagjai (további matematikai eszközök).
 
 %package latex-bibtex-ams
 Summary:	BibTeX style files for American Mathematical Society publications
@@ -1342,6 +1353,34 @@ Extended BibTeX citation support for the humanities and legal texts.
 Rozszerzona obsługa cytowania BibTeXa do tekstów humanistycznych i
 prawniczych.
 
+
+%package latex-booktabs
+Summary:	Publication quality tables in LaTeX
+Summary(hu.UTF-8):	Nyomdai minőségű táblázatok LaTeX-ben
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-booktabs
+Publication quality tables in LaTeX.
+
+%description latex-booktabs -l hu.UTF-8
+Nyomdai minőségű táblázatok LaTeX-ben.
+
+
+%package latex-caption
+Summary:	Customising captions in floating environments
+Summary(hu.UTF-8):	Feliratok testreszabása úszó környezetekben
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-caption
+Customising captions in floating environments.
+
+%description latex-caption -l hu.UTF-8
+Feliratok testreszabása úszó környezetekben.
+
 %package latex-carlisle
 Summary:	Miscellaneous small packages by David Carlisle
 Summary(pl.UTF-8):	Różne małe pakiety autorstwa Davida Carlisle
@@ -1409,6 +1448,19 @@ kształtów oraz fonty niezbędne do składu matematycznego, włącznie z
 symbolami AMS. Ten zestaw dostarcza wszystkie niezbędne pliki do
 używania fontów w LaTeXu.
 
+%package latex-comment
+Summary:	Selectively include/excludes portions of text
+Summary(hu.UTF-8):	A szöveg részeinek beillesztése/kihagyása
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-comment
+Selectively include/excludes portions of text.
+
+%description latex-comment -l hu.UTF-8
+A szöveg részeinek beillesztése/kihagyása.
+
 %package latex-concmath
 Summary:	LaTeX package and font definition files to access the Concrete math fonts
 Summary(pl.UTF-8):	Pakiet LaTeXa i pliki definicji fontów udostępniające fonty matematyczne Concrete
@@ -1427,6 +1479,32 @@ Pakiet LaTeXa i pliki definicji fontów udostępniające fonty
 matematyczne Concrete wywodzące się z fontów matematycznych Computer
 Modern poprzez zastosowanie parametrów fontów tekstowych Concrete
 Roman.
+
+%package latex-currvita
+Summary:	Typeset a curriculum vitae
+Summary(hu.UTF-8):	Önéletrajzok írása
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-currvita
+Typeset a curriculum vitae.
+
+%description latex-currvita -l hu.UTF-8
+Önéletrajzok írása.
+
+%package latex-curves
+Summary:	Curves for LaTeX picture environment
+Summary(hu.UTF-8):	Görbék LaTeX picture környezetébe
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-curves
+Curves for LaTeX picture environment.
+
+%description latex-curves -l hu.UTF-8
+Görbék LaTeX picture környezetébe.
 
 %package latex-custom-bib
 Summary:	Customized BibTeX styles for LaTeX
@@ -3835,6 +3913,12 @@ fi
 %postun latex-bbold
 %texhash
 
+%post latex-bezos
+%texhash
+
+%postun latex-bezos
+%texhash
+
 %post latex-bibtex
 %texhash
 
@@ -3871,6 +3955,19 @@ fi
 %postun latex-bibtex-jurabib
 %texhash
 
+%post latex-booktabs
+%texhash
+
+%postun latex-booktabs
+%texhash
+
+
+%post latex-caption
+%texhash
+
+%postun latex-caption
+%texhash
+
 %post latex-carlisle
 %texhash
 
@@ -3895,10 +3992,30 @@ fi
 %postun latex-cmbright
 %texhash
 
+
+%post latex-comment
+%texhash
+
+%postun latex-comment
+%texhash
+
 %post latex-concmath
 %texhash
 
 %postun latex-concmath
+%texhash
+
+%post latex-currvita
+%texhash
+
+%postun latex-currvita
+%texhash
+
+
+%post latex-curves
+%texhash
+
+%postun latex-curves
 %texhash
 
 %post latex-custom-bib
@@ -4956,18 +5073,12 @@ fi
 %{texmfdist}/doc/latex/anysize
 %{texmfdist}/doc/latex/base
 %{texmfdist}/doc/latex/beton
-%{texmfdist}/doc/latex/bezos
-%{texmfdist}/doc/latex/booktabs
-%{texmfdist}/doc/latex/caption
 %{texmfdist}/doc/latex/carlisle
 %{texmfdist}/doc/latex/ccaption
 %{texmfdist}/doc/latex/changebar
 %{texmfdist}/doc/latex/chappg
-%{texmfdist}/doc/latex/comment
 %{texmfdist}/doc/latex/concmath
 %{texmfdist}/doc/latex/crop
-%{texmfdist}/doc/latex/currvita
-%{texmfdist}/doc/latex/curves
 %{texmfdist}/doc/latex/dinbrief
 %{texmfdist}/doc/latex/draftcopy
 %{texmfdist}/doc/latex/eepic
@@ -5581,18 +5692,12 @@ fi
 %{texmfdist}/tex/latex/anysize
 %{texmfdist}/tex/latex/base
 %{texmfdist}/tex/latex/beton
-%{texmfdist}/tex/latex/bezos
-%{texmfdist}/tex/latex/booktabs
 %{texmfdist}/tex/latex/calrsfs
-%{texmfdist}/tex/latex/caption
 %{texmfdist}/tex/latex/ccaption
 %{texmfdist}/tex/latex/changebar
 %{texmfdist}/tex/latex/chappg
 %{texmfdist}/tex/latex/cmap
-%{texmfdist}/tex/latex/comment
 %{texmfdist}/tex/latex/crop
-%{texmfdist}/tex/latex/currvita
-%{texmfdist}/tex/latex/curves
 %{texmfdist}/tex/latex/dinbrief
 %{texmfdist}/tex/latex/draftcopy
 %{texmfdist}/tex/latex/eepic
@@ -5769,6 +5874,11 @@ fi
 %{texmfdist}/tex/latex/bbold
 %{texmfdist}/source/latex/bbold
 
+%files latex-bezos
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/bezos
+%{texmfdist}/tex/latex/bezos
+
 %files latex-bibtex
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/bibtex/base
@@ -5847,6 +5957,16 @@ fi
 # %defattr(644,root,root,755)
 # %{texmf}/bibtex/bst/norbib
 
+%files latex-booktabs
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/booktabs
+%{texmfdist}/tex/latex/booktabs
+
+%files latex-caption
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/caption
+%{texmfdist}/tex/latex/caption
+
 %files latex-carlisle
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/carlisle
@@ -5866,10 +5986,24 @@ fi
 %doc %{texmfdist}/doc/latex/cmbright
 %{texmfdist}/tex/latex/cmbright
 
+%files latex-comment
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/comment
+%{texmfdist}/tex/latex/comment
 
 %files latex-concmath
 %defattr(644,root,root,755)
 %{texmfdist}/tex/latex/concmath
+
+%files latex-currvita
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/currvita
+%{texmfdist}/tex/latex/currvita
+
+%files latex-curves
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/curves
+%{texmfdist}/tex/latex/curves
 
 %files latex-custom-bib
 %defattr(644,root,root,755)
