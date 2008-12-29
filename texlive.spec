@@ -1950,6 +1950,19 @@ TX fonts LaTeX support.
 %description latex-txfonts -l pl.UTF-8
 Obsługa fontów TX w LaTeXu.
 
+%package latex-ucs
+Summary:	This package contains support for using UTF-8 as input encoding in LaTeX documents
+Summary(hu.UTF-8):	Ez a csomag lehetővé teszi UTF-8 kódolást a LaTeX dokumentumokban
+Group:		Applicactions/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-ucs
+This package contains support for using UTF-8 as input encoding in LaTeX documents.
+
+%description latex-ucs -l hu.UTF-8
+Ez a csomag lehetővé teszi UTF-8 kódolást a LaTeX dokumentumokban.
+
 %package latex-umlaute
 Summary:	An interface to inputenc for using alternate input encodings
 Summary(pl.UTF-8):	Interfejs inputenc do używania alternatywnych kodowań wejściowych
@@ -4158,6 +4171,12 @@ fi
 %postun latex-txfonts
 %texhash
 
+%post latex-ucs
+%texhash
+
+%postun latex-ucs
+%texhash
+
 %post latex-umlaute
 %texhash
 
@@ -6181,6 +6200,12 @@ fi
 %{texmfdist}/tex4ht/ht-fonts/unicode/txfonts
 %{texmfdist}/tex4ht/ht-fonts/alias/txfonts
 
+%files latex-ucs
+%defattr(644,root,root,755)
+%dir %{texmfdist}/doc/latex/ucs
+%doc %{texmfdist}/doc/latex/ucs
+%dir %{texmfdist}/tex/latex/ucs
+%{texmfdist}/tex/latex/ucs
 
 %files latex-umlaute
 %defattr(644,root,root,755)
