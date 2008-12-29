@@ -6390,10 +6390,20 @@ fi
 %files fonts-latex
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/esint
+%dir %{texmfdist}/fonts/source/public/latex-fonts
+%dir %{texmfdist}/fonts/type1/bluesky/latex-fonts
+%dir %{texmfdist}/fonts/afm/bluesky/latex-fonts
+%dir %{texmfdist}/fonts/tfm/public/latex-fonts
+%dir %{texmfdist}/fonts/map/dvips/latex-fonts
 %{texmfdist}/fonts/source/public/esint
 %{texmfdist}/fonts/tfm/public/esint
 %{texmfdist}/source/latex/esint
 %{texmfdist}/tex/latex/esint
+%{texmfdist}/fonts/source/public/latex-fonts
+%{texmfdist}/fonts/type1/bluesky/latex-fonts
+%{texmfdist}/fonts/afm/bluesky/latex-fonts
+%{texmfdist}/fonts/tfm/public/latex-fonts
+%{texmfdist}/fonts/map/dvips/latex-fonts
 
 %files fonts-lh
 %defattr(644,root,root,755)
