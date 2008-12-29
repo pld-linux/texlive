@@ -999,6 +999,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-latex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-ruhyphen
+Requires:	%{name}-tex-ukrhyph
 # for misc/eurosym:
 Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-koma-script
@@ -4872,8 +4874,10 @@ fi
 %dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/cslatex
 %dir %{texmfdist}/tex/generic
+%dir %{texmfdist}/tex/generic/dehyph-exptl
 %dir %{texmfdist}/tex/generic/enctex
 %dir %{texmfdist}/tex/generic/genmisc
+%dir %{texmfdist}/tex/generic/hyph-utf8
 %dir %{texmfdist}/tex/generic/misc
 %dir %{texmfdist}/tex/generic/tex4ht
 %dir %{texmf}/dvips
@@ -4915,8 +4919,10 @@ fi
 %{texmf}/fonts/enc/dvips/tetex/f7b6d320.enc
 %{texmf}/fonts/map/dvips/tetex/ps2pk35.map
 
+%{texmfdist}/tex/generic/dehyph-exptl
 %{texmfdist}/tex/generic/encodings
 %{texmfdist}/tex/generic/epsf
+%{texmfdist}/tex/generic/hyph-utf8
 %{texmfdist}/tex/generic/genmisc/random.tex
 %{texmfdist}/tex/generic/misc/null*
 %{texmfdist}/tex/generic/misc/texnames.sty
