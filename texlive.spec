@@ -109,8 +109,8 @@ Requires:	awk
 Requires:	dialog
 Requires:	sed
 Requires:	sh-utils
-Requires:	textutils
 Requires:	texconfig
+Requires:	textutils
 Suggests:	tmpwatch
 Obsoletes:	tetex
 Obsoletes:	tetex-afm
@@ -1065,6 +1065,20 @@ Control the typesetting of the abstract environment.
 Az "abstract" környezet szedésének irányítása.
 
 
+%package latex-adrconv
+Summary:	BibTeX styles to implement an address database
+Summary(hu.UTF-8):	BibTeX stílusok cím-adatbázis megvalósításához
+Group:		Applications/Publishing/TeX
+Requires(pst,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-adrconv
+BibTeX styles to implement an address database.
+
+%description latex-adrconv -l hu.UTF-8
+BibTeX stílusok cím-adatbázis megvalósításához.
+
+
 %package latex-ae
 Summary:	Virtual fonts for PDF-files with T1 encoded CMR-fonts
 Summary(pl.UTF-8):	Wirtualne fonty dla plików PDF z fontami CMR o kodowaniu T1
@@ -1164,6 +1178,20 @@ typographer Zygfryd Gardzielewski, reconstructed and digitized as Type
 Antykwa Toruńska to krój szeryfowy opracowany niedawno przez polskiego
 typografa Zygfryda Gardzielewskiego, zrekonstruowany i przerobiony na
 postać cyfrową jako Type 1.
+
+%package latex-appendix
+Summary:	Extra control of appendices
+Summary(hu.UTF-8):	Az appendixek nagyobb irányítása
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-appendix
+Extra control of appendices.
+
+%description latex-appendix -l hu.UTF-8
+Az appendixek nagyobb irányítása.
+
 
 %package latex-bbm
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
@@ -3759,6 +3787,12 @@ fi
 %postun latex-abstract
 %texhash
 
+%post latex-adrconv
+%texhash
+
+%postun latex-adrconv
+%texhash
+
 %post latex-ae
 %texhash
 
@@ -3781,6 +3815,12 @@ fi
 %texhash
 
 %postun latex-antt
+%texhash
+
+%post latex-appendix
+%texhash
+
+%postun latex-appendix
 %texhash
 
 %post latex-bbm
@@ -4912,10 +4952,8 @@ fi
 # %{texmfdist}/doc/latex/textmerg
 # %{texmfdist}/doc/latex/treesvr
 %{texmfdist}/doc/latex/acronym
-%{texmfdist}/doc/latex/adrconv
 %{texmfdist}/doc/latex/aeguill
 %{texmfdist}/doc/latex/anysize
-%{texmfdist}/doc/latex/appendix
 %{texmfdist}/doc/latex/base
 %{texmfdist}/doc/latex/beton
 %{texmfdist}/doc/latex/bezos
@@ -5539,10 +5577,8 @@ fi
 %{texmfdist}/tex/generic/tex4ht/picins.4ht
 %{texmfdist}/tex/generic/textmerg
 %{texmfdist}/tex/latex/acronym
-%{texmfdist}/tex/latex/adrconv
 %{texmfdist}/tex/latex/aeguill
 %{texmfdist}/tex/latex/anysize
-%{texmfdist}/tex/latex/appendix
 %{texmfdist}/tex/latex/base
 %{texmfdist}/tex/latex/beton
 %{texmfdist}/tex/latex/bezos
@@ -5684,6 +5720,11 @@ fi
 %doc %{texmfdist}/doc/latex/abstract
 %{texmfdist}/tex/latex/abstract
 
+%files latex-adrconv
+%defattr(644,root,root,755)
+%{texmfdist}/tex/latex/adrconv
+%{texmfdist}/doc/latex/adrconv
+
 %files latex-algorithms
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/algorithms
@@ -5711,6 +5752,11 @@ fi
 %files latex-antt
 %defattr(644,root,root,755)
 %{texmfdist}/tex/latex/antt
+
+%files latex-appendix
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/appendix
+%{texmfdist}/tex/latex/appendix
 
 %files latex-bbm
 %defattr(644,root,root,755)
