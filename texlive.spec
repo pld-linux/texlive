@@ -4862,7 +4862,7 @@ fi
 %attr(755,root,root) %{texmf}/web2c/mktexdir
 %attr(755,root,root) %{texmf}/web2c/mktexupd
 
-%attr(750,root,root) /etc/cron.daily/tetex
+%attr(750,root,root) /etc/cron.daily/texlive
 
 #%dir /etc/sysconfig/tetex-updmap
 #%verify(not md5 mtime size) %config(noreplace) /etc/sysconfig/tetex-updmap/maps.lst
