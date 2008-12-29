@@ -1,8 +1,10 @@
 # TODO:
-# MAIN TODO:
-# - context: consider more splitting, check dependencies
+# MAIN TODO (sort by importnce):
+# - need more %dir (poldek says it missed)
 # - check unpackaged files
+# - check and fix "File listed twice" messages
 # - maybe more splits (e.g. latex subpackages)
+# - context: consider more splitting, check dependencies
 # - omega: consider more splitting, check dependencies
 # - tdphp: is it really useful?
 # - allow using Type1 fonts in others applications (symlink to
