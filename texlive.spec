@@ -47,7 +47,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.8
+Release:	0.8.1
 License:	distributable
 Group:		Applications/Publishing/TeX
 Source0:	http://tug.org/svn/texlive/branches/branch2008/Master/source/%{name}-%{version}-source.tar.lzma
@@ -108,9 +108,10 @@ Requires:	%{name}-fonts-misc = %{epoch}:%{version}-%{release}
 Requires:	%{name}-metafont = %{epoch}:%{version}-%{release}
 Requires:	awk
 Requires:	dialog
+Requires:	kpathsea = %{version}-%{release}
 Requires:	sed
 Requires:	sh-utils
-Requires:	texconfig
+Requires:	texconfig = %{version}-%{release}
 Requires:	textutils
 Suggests:	tmpwatch
 Obsoletes:	tetex
@@ -3566,7 +3567,7 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 # CURDIR=$(pwd)
 # cd $RPM_BUILD_ROOT%{_bindir}
 # for file in $(file * | grep broken | awk -F ":" {'print $1'}); do
-# 	ln -sf $(readlink $file | %{__sed} "s@\.\.@/usr/share@") $file
+# ln -sf $(readlink $file | %{__sed} "s@\.\.@%{_datadir}@") $file
 # done
 # cd $CURDIR
 
@@ -5088,6 +5089,7 @@ fi
 %dir %{texmfdist}/source
 %dir %{texmfdist}/source/fonts
 %dir %{texmfdist}/source/latex
+%dir %{texmfdist}/tex4ht
 %dir %{texmfdist}/tex4ht/ht-fonts
 %dir %{texmfdist}/tex4ht/ht-fonts/css
 %dir %{texmfdist}/tex4ht/ht-fonts/iso8859
@@ -5703,14 +5705,16 @@ fi
 
 %dir %{texmfdist}/scripts
 %dir %{texmfdist}/scripts/pst-pdf
+%dir %{texmfdist}/source/generic
 %dir %{texmfdist}/tex/latex
-%dir %{texmfdist}/tex/latex/hyper
-%dir %{texmfdist}/tex/latex/misc209
-%dir %{texmfdist}/tex/plain
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/base
+%dir %{texmfdist}/tex/latex/hyper
 %dir %{texmfdist}/tex/latex/latexconfig
 %dir %{texmfdist}/tex/latex/ltxmisc
+%dir %{texmfdist}/tex/latex/misc209
+%dir %{texmfdist}/tex/plain
+%dir %{texmf}/tex/latex
 
 # %{texmfdist}/tex/latex/citesort
 # %{texmfdist}/tex/latex/dvilj
@@ -6685,6 +6689,8 @@ fi
 %files fonts-marvosym
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/marvosym
+%dir %{texmfdist}/source/fonts/eurofont
+%dir %{texmfdist}/source/fonts/eurofont/marvosym
 %{texmfdist}/fonts/type1/public/marvosym
 %{texmfdist}/fonts/afm/public/marvosym
 %{texmfdist}/fonts/tfm/public/marvosym
