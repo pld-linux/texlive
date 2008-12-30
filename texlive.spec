@@ -205,6 +205,166 @@ aygıtından bağımsız bir çıktı (DeVice Independent - DVI) oluşturur.
 TeX'in becerileri ve dizgi dili, dili geliştiren Knuth'un 'The
 TeXbook' başlıklı kitabında anlatılmaktadır.
 
+%package doc
+Summary:	Documentation for TeX Live
+Group:		Documentation
+
+%description doc
+Assorted useful documentation for TeX Live.
+
+%package doc-bg
+Summary:	Bulgarian documentation for TeX Live
+Group:		Documentation
+
+%description doc-bg
+Assorted useful Bulgarian documentation for TeX Live.
+
+%package doc-cs
+Summary:	Czech documentation for TeX Live
+Group:		Documentation
+
+%description doc-cs
+Assorted useful Czech documentation for TeX Live.
+
+%package doc-de
+Summary:	German documentation for TeX Live
+Group:		Documentation
+
+%description doc-de
+Assorted useful German documentation for TeX Live.
+
+%package doc-el
+Summary:	Greek documentation for TeX Live
+Group:		Documentation
+
+%description doc-el
+Assorted useful Greek documentation for TeX Live.
+
+%package doc-es
+Summary:	Spanish documentation for TeX Live
+Group:		Documentation
+
+%description doc-es
+Assorted useful Spanish documentation for TeX Live.
+
+%package doc-fi
+Summary:	Finnish documentation for TeX Live
+Group:		Documentation
+
+%description doc-fi
+Assorted useful Finnish documentation for TeX Live.
+
+%package doc-fr
+Summary:	French documentation for TeX Live
+Group:		Documentation
+
+%description doc-fr
+Assorted useful French documentation for TeX Live.
+
+%package doc-it
+Summary:	Italian documentation for TeX Live
+Group:		Documentation
+
+%description doc-it
+Assorted useful Italian documentation for TeX Live.
+
+%package doc-ja
+Summary:	Japanese documentation for TeX Live
+Group:		Documentation
+
+%description doc-ja
+Assorted useful Japanese documentation for TeX Live.
+
+%package doc-ko
+Summary:	Korean documentation for TeX Live
+Group:		Documentation
+
+%description doc-ko
+Assorted useful Korean documentation for TeX Live.
+
+%package doc-mn
+Summary:	Mongolian documentation for TeX Live
+Group:		Documentation
+
+%description doc-mn
+Assorted useful Mongolian documentation for TeX Live.
+
+%package doc-nl
+Summary:	Dutch documentation for TeX Live
+Group:		Documentation
+
+%description doc-nl
+Assorted useful Dutch documentation for TeX Live.
+
+%package doc-pl
+Summary:	Polish documentation for TeX Live
+Group:		Documentation
+
+%description doc-pl
+Assorted useful Polish documentation for TeX Live.
+
+%package doc-pt
+Summary:	Portuguese documentation for TeX Live
+Group:		Documentation
+
+%description doc-pt
+Assorted useful Portuguese documentation for TeX Live.
+
+%package doc-ru
+Summary:	Russian documentation for TeX Live
+Group:		Documentation
+
+%description doc-ru
+Assorted useful Russian documentation for TeX Live.
+
+%package doc-sk
+Summary:	Slovak documentation for TeX Live
+Group:		Documentation
+
+%description doc-sk
+Assorted useful Slovak documentation for TeX Live.
+
+%package doc-sl
+Summary:	Slovenian documentation for TeX Live
+Group:		Documentation
+
+%description doc-sl
+Assorted useful Slovenian documentation for TeX Live.
+
+%package doc-th
+Summary:	Thai documentation for TeX Live
+Group:		Documentation
+
+%description doc-th
+Assorted useful Thai documentation for TeX Live.
+
+%package doc-tr
+Summary:	Turkish documentation for TeX Live
+Group:		Documentation
+
+%description doc-tr
+Assorted useful Turkish documentation for TeX Live.
+
+%package doc-uk
+Summary:	Ukrainian documentation for TeX Live
+Group:		Documentation
+
+%description doc-uk
+Assorted useful Ukrainian documentation for TeX Live.
+
+%package doc-vi
+Summary:	Vietnamese documentation for TeX Live
+Group:		Documentation
+
+%description doc-vi
+Assorted useful Vietnamese documentation for TeX Live.
+
+%package doc-zh_CN
+Summary:	Chinese documentation for TeX Live
+Group:		Documentation
+
+%description doc-zh_CN
+Assorted useful Chinese documentation for TeX Live.
 
 %package doc-Catalogue
 Summary:	TeX Catalogue
@@ -3985,6 +4145,16 @@ Group:		Applications/Publishing/TeX
 %description uncategorized-utils
 Uncategorized utilities. Needs check and categorizing.
 
+%package tex4ht
+Summary:	LaTeX and TeX for hypertext
+Group:		Applications/Publishing/TeX
+
+%description tex4ht
+A converter from TeX and LaTeX to hypertext (HTML, XML, etc.),
+providing a configurable (La)TeX-based authoring system for hypertext.
+When converting to XML, you can use MathML instead of images for
+equation representation.
+
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
 lzma -dc %{SOURCE0} | tar xf - -C ..
@@ -5457,7 +5627,6 @@ fi
 %dir %{texmfdist}/tex/generic/genmisc
 %dir %{texmfdist}/tex/generic/hyph-utf8
 %dir %{texmfdist}/tex/generic/misc
-%dir %{texmfdist}/tex/generic/tex4ht
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/base
 %dir %{texmf}/dvips
@@ -5509,7 +5678,6 @@ fi
 %{texmfdist}/tex/generic/misc/texnames.sty
 %{texmfdist}/tex/generic/tap
 %{texmfdist}/tex/generic/tex-ps
-%{texmfdist}/tex/generic/tex4ht/path.4ht
 %{texmfdist}/tex/texinfo
 %{texmf}/tex/fontinst
 %{texmf}/tex/generic/hyphen
@@ -5619,14 +5787,101 @@ fi
 %dir %{texmfdist}/source
 %dir %{texmfdist}/source/fonts
 %dir %{texmfdist}/source/latex
-%dir %{texmfdist}/tex4ht
-%dir %{texmfdist}/tex4ht/ht-fonts
-%dir %{texmfdist}/tex4ht/ht-fonts/css
-%dir %{texmfdist}/tex4ht/ht-fonts/iso8859
-%dir %{texmfdist}/tex4ht/ht-fonts/win
 %dir %{texmf}/fonts
 %dir %{texmf}/fonts/opentype
 %dir %{texmf}/fonts/opentype/public
+
+%files doc
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/english
+
+%files doc-bg
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/bulgarian
+
+%files doc-cs
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/czechslovak
+
+%files doc-de
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/german
+
+%files doc-el
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/greek
+
+%files doc-es
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/spanish
+
+%files doc-fi
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/finnish
+
+%files doc-fr
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/french
+
+%files doc-it
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/italian
+
+%files doc-ja
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/japanese
+
+%files doc-ko
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/korean
+
+%files doc-mn
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/mongolian
+
+%files doc-nl
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/dutch
+
+%files doc-pl
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/polish
+
+%files doc-pt
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/portuguese
+
+%files doc-ru
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/russian
+
+%files doc-sk
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/slovak
+
+%files doc-sl
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/slovenian
+
+%files doc-th
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/thai
+
+%files doc-tr
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/turkish
+
+%files doc-uk
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/ukrainian
+
+%files doc-vi
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/vietnamese
+
+%files doc-zh_CN
+%defattr(644,root,root,755)
+%{texmfdoc}/doc/chinese
 
 # %files doc-Catalogue
 # %defattr(644,root,root,755)
@@ -6506,11 +6761,6 @@ fi
 %{texmfdist}/scripts/pst-pdf/ps4pdf
 %{texmfdist}/tex/generic/pstricks
 %{texmfdist}/tex/generic/shapepar
-%{texmfdist}/tex/generic/tex4ht/boxedminipage.4ht
-%{texmfdist}/tex/generic/tex4ht/endnotes.4ht
-%{texmfdist}/tex/generic/tex4ht/floatflt.4ht
-%{texmfdist}/tex/generic/tex4ht/multind.4ht
-%{texmfdist}/tex/generic/tex4ht/picins.4ht
 %{texmfdist}/tex/generic/textmerg
 %{texmfdist}/tex/latex/12many
 %{texmfdist}/tex/latex/AkkTeX
@@ -7365,12 +7615,6 @@ fi
 %doc %{texmfdist}/doc/latex/cyrillic
 %{texmfdist}/source/latex/cyrillic
 %{texmfdist}/tex/latex/cyrillic
-%{texmfdist}/tex4ht/ht-fonts/symbol/cyrillic
-%{texmfdist}/tex4ht/ht-fonts/unicode/cyrillic
-%{texmfdist}/tex4ht/ht-fonts/unicode/ams/cyrillic
-%{texmfdist}/tex4ht/ht-fonts/iso8859/5/cyrillic
-%{texmfdist}/tex4ht/ht-fonts/alias/cyrillic
-%{texmfdist}/tex4ht/ht-fonts/win/1251/cyrillic
 
 # %files latex-dstroke
 # %defattr(644,root,root,755)
@@ -7390,8 +7634,6 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/fonts/source/jknappen
 %{texmfdist}/fonts/tfm/jknappen
-%{texmfdist}/tex4ht/ht-fonts/unicode/jknappen
-%{texmfdist}/tex4ht/ht-fonts/alias/jknappen
 
 %files latex-lastpage
 %defattr(644,root,root,755)
@@ -7409,8 +7651,6 @@ fi
 %{texmfdist}/fonts/opentype/public/lm
 %{texmfdist}/fonts/tfm/public/lm
 %{texmfdist}/source/fonts/lm
-%{texmfdist}/tex4ht/ht-fonts/unicode/lm
-%{texmfdist}/tex4ht/ht-fonts/alias/lm
 
 %files latex-lucidabr
 %defattr(644,root,root,755)
@@ -7427,17 +7667,11 @@ fi
 %defattr(644,root,root,755)
 %{texmfdist}/tex/latex/marvosym
 
-%files latex-mathpple
-%defattr(644,root,root,755)
-%{texmfdist}/tex4ht/ht-fonts/alias/mathpple
+#%files latex-mathpple
+#%defattr(644,root,root,755)
 
-%files latex-mathtime
-%defattr(644,root,root,755)
-%{texmfdist}/tex4ht/ht-fonts/symbol/mathtime
-%{texmfdist}/tex4ht/ht-fonts/unicode/mathtime
-%{texmfdist}/tex4ht/ht-fonts/iso8859/1/mathtime
-%{texmfdist}/tex4ht/ht-fonts/alias/mathtime
-%{texmfdist}/tex4ht/ht-fonts/aliase/mathtime
+#%files latex-mathtime
+#%defattr(644,root,root,755)
 
 %files latex-microtype
 %defattr(644,root,root,755)
@@ -7454,7 +7688,6 @@ fi
 %defattr(644,root,root,755)
 %{texmfdist}/source/latex/mfnfss
 %{texmfdist}/tex/latex/mfnfss
-
 
 %files latex-minitoc
 %defattr(644,root,root,755)
@@ -7504,18 +7737,14 @@ fi
 %{texmfdist}/fonts/tfm/public/pxfonts
 %{texmfdist}/fonts/vf/public/pxfonts
 %{texmfdist}/fonts/map/dvips/pxfonts
-%{texmfdist}/tex4ht/ht-fonts/unicode/pxfonts
-%{texmfdist}/tex4ht/ht-fonts/alias/pxfonts
 
-
-%files latex-qfonts
-%defattr(644,root,root,755)
-%{texmfdist}/tex4ht/ht-fonts/alias/qfonts
+#%files latex-qfonts
+#%defattr(644,root,root,755)
 
 %files latex-SIunits
 %defattr(644,root,root,755)
-%{texmfdist}/tex/latex/SIunits
 %{texmfdist}/doc/latex/SIunits
+%{texmfdist}/tex/latex/SIunits
 
 %files latex-txfonts
 %defattr(644,root,root,755)
@@ -7527,14 +7756,11 @@ fi
 %{texmfdist}/fonts/vf/public/txfonts
 %{texmfdist}/fonts/map/dvips/txfonts
 %{texmfdist}/tex/latex/txfonts
-%{texmfdist}/tex4ht/ht-fonts/unicode/txfonts
-%{texmfdist}/tex4ht/ht-fonts/alias/txfonts
 
 %files latex-ucs
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/ucs
-%dir %{texmfdist}/tex/latex/ucs
-%{texmfdist}/tex/latex/ucs/*
+%{texmfdist}/tex/latex/ucs
 
 %files latex-umlaute
 %defattr(644,root,root,755)
@@ -7647,7 +7873,6 @@ fi
 %{texmfdist}/source/latex/mapcodes/spanish.map
 %{texmfdist}/source/latex/mapcodes/spanish.dtx
 %{texmfdist}/tex/texsis/base/Spanish.txs
-%{texmfdist}/tex/generic/tex4ht/spanish.4ht
 %{texmfdist}/tex/generic/babel/spanish.sty
 %{texmfdist}/tex/generic/babel/spanish.ldf
 %{texmfdist}/tex/latex/spanish-mx
@@ -7697,9 +7922,6 @@ fi
 %{texmfdist}/fonts/afm/adobe
 %{texmfdist}/fonts/tfm/adobe
 %{texmfdist}/fonts/vf/adobe
-%{texmfdist}/tex4ht/ht-fonts/unicode/adobe
-%{texmfdist}/tex4ht/ht-fonts/alias/adobe
-%{texmfdist}/tex4ht/ht-fonts/share/adobe
 
 %files fonts-ae
 %defattr(644,root,root,755)
@@ -7707,9 +7929,6 @@ fi
 %{texmfdist}/fonts/tfm/public/ae
 %{texmfdist}/fonts/vf/public/ae
 %{texmfdist}/source/fonts/ae
-%{texmfdist}/tex4ht/ht-fonts/unicode/ae
-%{texmfdist}/tex4ht/ht-fonts/alias/ae
-
 
 %files fonts-ams
 %defattr(644,root,root,755)
@@ -7721,8 +7940,6 @@ fi
 %{texmfdist}/fonts/afm/bluesky/ams
 %{texmfdist}/fonts/tfm/public/ams
 %{texmfdist}/fonts/map/dvips/ams
-%{texmfdist}/tex4ht/ht-fonts/unicode/ams
-%{texmfdist}/tex4ht/ht-fonts/alias/ams
 
 %files fonts-antp
 %defattr(644,root,root,755)
@@ -7743,8 +7960,6 @@ fi
 %{texmfdist}/fonts/map/dvips/antt
 %{texmfdist}/tex/plain/antt
 %{texmfdist}/tex/latex/antt
-%{texmfdist}/tex4ht/ht-fonts/unicode/antt
-%{texmfdist}/tex4ht/ht-fonts/alias/antt
 
 %files fonts-bbm
 %defattr(644,root,root,755)
@@ -7770,12 +7985,9 @@ fi
 %{texmfdist}/fonts/afm/bitstrea
 %{texmfdist}/fonts/tfm/bitstrea
 %{texmfdist}/fonts/vf/bitstrea
-%{texmfdist}/tex4ht/ht-fonts/unicode/bitstrea
-%{texmfdist}/tex4ht/ht-fonts/alias/bitstrea
 
-%files fonts-cbgreek
-%defattr(644,root,root,755)
-%{texmfdist}/tex4ht/ht-fonts/unicode/cbgreek
+#%files fonts-cbgreek
+#%defattr(644,root,root,755)
 
 %files fonts-cc-pl
 %defattr(644,root,root,755)
@@ -7783,7 +7995,6 @@ fi
 %{texmfdist}/fonts/enc/dvips/cc-pl
 %{texmfdist}/fonts/tfm/public/cc-pl
 %{texmfdist}/fonts/map/dvips/cc-pl
-%{texmfdist}/tex4ht/ht-fonts/alias/cc-pl
 
 %files fonts-cg
 %defattr(644,root,root,755)
@@ -7798,25 +8009,12 @@ fi
 %dir %{texmfdist}/fonts/afm/bluesky
 %dir %{texmfdist}/fonts/map/dvips
 %dir %{texmfdist}/fonts/pk/ljfour/public
-%dir %{texmfdist}/tex4ht/ht-fonts/alias
-%dir %{texmfdist}/tex4ht/ht-fonts/css/emacspeak
-%dir %{texmfdist}/tex4ht/ht-fonts/iso8859/1
-%dir %{texmfdist}/tex4ht/ht-fonts/iso8859/5
-%dir %{texmfdist}/tex4ht/ht-fonts/unicode
-%dir %{texmfdist}/tex4ht/ht-fonts/win/1251
 %{texmfdist}/dvips/cm
 %{texmfdist}/fonts/source/public/cm
 %{texmfdist}/fonts/afm/bluesky/cm
 %{texmfdist}/fonts/tfm/public/cm
 %{texmfdist}/fonts/pk/ljfour/public/cm
 %{texmfdist}/fonts/map/dvips/cm
-%{texmfdist}/tex4ht/ht-fonts/unicode/cm
-%{texmfdist}/tex4ht/ht-fonts/iso8859/1/cm
-%{texmfdist}/tex4ht/ht-fonts/iso8859/5/cm
-%{texmfdist}/tex4ht/ht-fonts/alias/cm
-%{texmfdist}/tex4ht/ht-fonts/win/1251/cm
-%{texmfdist}/tex4ht/ht-fonts/css/emacspeak/cm
-
 
 %files fonts-cmbright
 %defattr(644,root,root,755)
@@ -7834,10 +8032,6 @@ fi
 %{texmfdist}/fonts/tfm/public/cmcyr
 %{texmfdist}/fonts/vf/public/cmcyr
 %{texmfdist}/fonts/map/dvips/cmcyr
-%{texmfdist}/tex4ht/ht-fonts/unicode/cyrillic/cmcyr
-%{texmfdist}/tex4ht/ht-fonts/iso8859/5/cyrillic/cmcyr
-%{texmfdist}/tex4ht/ht-fonts/alias/cyrillic/cmcyr
-%{texmfdist}/tex4ht/ht-fonts/win/1251/cyrillic/cmcyr
 
 %files fonts-cmextra
 %defattr(644,root,root,755)
@@ -7858,8 +8052,6 @@ fi
 %doc %{texmfdist}/doc/fonts/concrete
 %{texmfdist}/fonts/source/public/concrete
 %{texmfdist}/fonts/tfm/public/concrete
-%{texmfdist}/tex4ht/ht-fonts/unicode/concrete
-%{texmfdist}/tex4ht/ht-fonts/alias/concrete
 
 %files fonts-cs
 %defattr(644,root,root,755)
@@ -7868,12 +8060,9 @@ fi
 %{texmfdist}/fonts/enc/dvips/cs
 %{texmfdist}/fonts/tfm/public/cs
 %{texmfdist}/fonts/map/dvips/cs
-%{texmfdist}/tex4ht/ht-fonts/unicode/cs
-%{texmfdist}/tex4ht/ht-fonts/alias/cs
 
-%files fonts-dstroke
-%defattr(644,root,root,755)
-%{texmfdist}/tex4ht/ht-fonts/unicode/dstroke
+#%files fonts-dstroke
+#%defattr(644,root,root,755)
 
 %files fonts-ecc
 %defattr(644,root,root,755)
@@ -7924,8 +8113,6 @@ fi
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/source/jknappen
 %{texmfdist}/fonts/tfm/jknappen
-%{texmfdist}/tex4ht/ht-fonts/unicode/jknappen
-%{texmfdist}/tex4ht/ht-fonts/alias/jknappen
 
 %files fonts-latex
 %defattr(644,root,root,755)
@@ -7952,11 +8139,6 @@ fi
 %{texmfdist}/metapost/support/charlib/LH
 %{texmfdist}/source/fonts/lh
 %{texmfdist}/source/latex/lh
-%{texmfdist}/tex4ht/ht-fonts/koi/8r/lh
-%{texmfdist}/tex4ht/ht-fonts/unicode/lh
-%{texmfdist}/tex4ht/ht-fonts/iso8859/5/lh
-%{texmfdist}/tex4ht/ht-fonts/alias/lh
-%{texmfdist}/tex4ht/ht-fonts/win/1251/lh
 
 %files fonts-lm
 %defattr(644,root,root,755)
@@ -7970,8 +8152,6 @@ fi
 %{texmfdist}/fonts/map/dvipdfm/lm
 %{texmfdist}/source/fonts/lm
 %{texmfdist}/tex/latex/lm
-%{texmfdist}/tex4ht/ht-fonts/unicode/lm
-%{texmfdist}/tex4ht/ht-fonts/alias/lm
 
 %files fonts-marvosym
 %defattr(644,root,root,755)
@@ -7985,8 +8165,6 @@ fi
 %{texmfdist}/fonts/map/dvips/marvosym
 %{texmfdist}/source/fonts/eurofont/marvosym/*
 %{texmfdist}/tex/latex/marvosym
-%{texmfdist}/tex4ht/ht-fonts/unicode/marvosym
-%{texmfdist}/tex4ht/ht-fonts/alias/marvosym
 
 %files fonts-mflogo
 %defattr(644,root,root,755)
@@ -7998,7 +8176,6 @@ fi
 %{texmfdist}/fonts/map/dvips/mflogo
 %{texmfdist}/source/latex/mflogo
 %{texmfdist}/tex/latex/mflogo
-%{texmfdist}/tex4ht/ht-fonts/unicode/mflogo
 
 %files fonts-misc
 %defattr(644,root,root,755)
@@ -8030,9 +8207,8 @@ fi
 %{texmfdist}/omega/otp/omega
 %{texmfdist}/tex/plain/omega
 
-%files fonts-pazo
-%defattr(644,root,root,755)
-%{texmfdist}/tex4ht/ht-fonts/alias/pazo
+#%files fonts-pazo
+#%defattr(644,root,root,755)
 
 %files fonts-pl
 %defattr(644,root,root,755)
@@ -8044,8 +8220,6 @@ fi
 %{texmfdist}/fonts/enc/dvips/pl
 %{texmfdist}/fonts/tfm/public/pl
 %{texmfdist}/fonts/map/dvips/pl
-%{texmfdist}/tex4ht/ht-fonts/unicode/pl
-%{texmfdist}/tex4ht/ht-fonts/alias/pl
 %{texmf}/scripts/texlive/tlmgrgui/lang/pl
 
 %files fonts-px
@@ -8060,13 +8234,10 @@ fi
 %{texmfdist}/fonts/tfm/public/pxfonts
 %{texmfdist}/fonts/type1/public/pxfonts
 %{texmfdist}/fonts/vf/public/pxfonts
-%{texmfdist}/tex4ht/ht-fonts/unicode/pxfonts
-%{texmfdist}/tex4ht/ht-fonts/alias/pxfonts
 %{texmfdist}/tex/latex/pxfonts/pxfonts.sty
 
-%files fonts-qfonts
-%defattr(644,root,root,755)
-%{texmfdist}/tex4ht/ht-fonts/alias/qfonts
+#%files fonts-qfonts
+#%defattr(644,root,root,755)
 # %doc %{texmf}/doc/fonts/polish/qfonts
 # %{texmf}/fonts/enc/dvips/qfonts
 # %{texmf}/fonts/map/dvips/qfonts
@@ -8113,7 +8284,6 @@ fi
 %{texmfdist}/fonts/tfm/vntex/urwvn
 %{texmfdist}/fonts/type1/vntex/urwvn
 %{texmfdist}/fonts/vf/vntex/urwvn
-%{texmfdist}/tex4ht/ht-fonts/alias/vntex/urwvn
 
 %files fonts-vnr
 %defattr(644,root,root,755)
@@ -8319,3 +8489,8 @@ fi
 %attr(755,root,root) %{_bindir}/devnag
 %attr(755,root,root) %{_bindir}/disdvi
 %attr(755,root,root) %{_bindir}/exatools
+
+%files tex4ht
+%defattr(644,root,root,755)
+%{texmfdist}/tex/generic/tex4ht
+%{texmfdist}/tex4ht
