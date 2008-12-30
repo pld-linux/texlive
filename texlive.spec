@@ -108,7 +108,7 @@ Requires:	%{name}-fonts-misc = %{epoch}:%{version}-%{release}
 Requires:	%{name}-metafont = %{epoch}:%{version}-%{release}
 Requires:	awk
 Requires:	dialog
-Requires:	kpathsea = %{version}-%{release}
+Requires:	%{name}-kpathsea = %{version}-%{release}
 Requires:	sed
 Requires:	sh-utils
 Requires:	texconfig = %{version}-%{release}
@@ -255,7 +255,7 @@ Az alap LaTeX csomagok dokumentációja
 Podstawowa dokumentacja do pakietów LaTeXa.
 
 # # libraries #
-%package -n kpathsea
+%package kpathsea
 Summary:	File name lookup library
 Summary(hu.UTF-8):	Fájlnév-kereső könyvtár
 Summary(pl.UTF-8):	Biblioteka szukająca nazw plików
@@ -263,38 +263,38 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
-%description -n kpathsea
+%description kpathsea
 File name lookup library.
 
-%description -n kpathsea -l hu.UTF-8
+%description kpathsea -l hu.UTF-8
 Fájlnév-kereső könyvtár.
 
-%description -n kpathsea -l pl.UTF-8
+%description kpathsea -l pl.UTF-8
 Biblioteka szukająca nazw plików.
 
-%package -n kpathsea-devel
+%package kpathsea-devel
 Summary:	Kpathsea library filename lookup header files and documentation
 Summary(es.UTF-8):	Bibliotecas y archivos de inclusión para desarrollo TeX
 Summary(hu.UTF-8):	Kpathsea fájlnév-kereső könyvtár header fájljai és dokumentációja
 Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumetacja kpathsea
 Summary(pt_BR.UTF-8):	Bibliotecas e headers para desenvolvimento TeX
 Group:		Development/Libraries
-Requires:	kpathsea = %{epoch}:%{version}-%{release}
+Requires:	%{name}-kpathsea = %{epoch}:%{version}-%{release}
 
-%description -n kpathsea-devel
+%description kpathsea-devel
 Kpathsea library filename lookup header files and documentation.
 
-%description -n kpathsea-devel -l es.UTF-8
+%description kpathsea-devel -l es.UTF-8
 Bibliotecas, archivos de inclusión, etc, para que puedas desarrollar
 aplicaciones TeX.
 
-%description -n kpathsea-devel -l hu.UTF-8
+%description kpathsea-devel -l hu.UTF-8
 Kpathsea fájlnév-kereső könyvtár header fájljai és dokumentációja.
 
-%description -n kpathsea-devel -l pl.UTF-8
+%description kpathsea-devel -l pl.UTF-8
 Pliki nagłówkowe oraz dokumentacja biblioteki kpathsea.
 
-%description -n kpathsea-devel -l pt_BR.UTF-8
+%description kpathsea-devel -l pt_BR.UTF-8
 Bibliotecas, headers e outros componentes que podem ser utilizados
 para desenvolver aplicações TeX.
 
@@ -3677,20 +3677,20 @@ fi
 %postun doc-tug-faq
 %texhash
 
-%post -n kpathsea
+%post kpathsea
 /sbin/ldconfig
 %fixinfodir
 %texhash
 
-%postun -n kpathsea
+%postun kpathsea
 /sbin/ldconfig
 %fixinfodir
 %texhash
 
-%post -n kpathsea-devel
+%post kpathsea-devel
 %texhash
 
-%postun -n kpathsea-devel
+%postun kpathsea-devel
 %texhash
 
 %post dvips
@@ -5243,7 +5243,7 @@ fi
 %{texmfdist}/doc/latex/xtab
 %{texmfdist}/doc/latex/yfonts
 
-%files -n kpathsea
+%files kpathsea
 %defattr(644,root,root,755)
 #%{_mandir}/man1/kpsexpand.1*
 #%{_mandir}/man1/kpsepath.1*
