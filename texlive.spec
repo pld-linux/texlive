@@ -106,10 +106,10 @@ BuildRequires:	zlib-devel >= 1.2.1
 Requires:	%{name}-dirs-fonts
 Requires:	%{name}-fonts-cm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-misc = %{epoch}:%{version}-%{release}
-Requires:	kpathsea = %{epoch}:%{version}-%{release}
 Requires:	%{name}-metafont = %{epoch}:%{version}-%{release}
 Requires:	awk
 Requires:	dialog
+Requires:	kpathsea = %{epoch}:%{version}-%{release}
 Requires:	sed
 Requires:	sh-utils
 Requires:	texconfig = %{version}-%{release}
@@ -4950,6 +4950,7 @@ fi
 
 %dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/cslatex
+%dir %{texmfdist}/tex/cslatex/base
 %dir %{texmfdist}/tex/generic
 %dir %{texmfdist}/tex/generic/dehyph-exptl
 %dir %{texmfdist}/tex/generic/enctex
