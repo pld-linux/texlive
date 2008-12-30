@@ -6084,6 +6084,7 @@ fi
 %dir %{texmfdist}/bibtex
 %dir %{texmfdist}/bibtex/bib
 %dir %{texmfdist}/bibtex/bst
+%dir %{texmfdist}/bibtex/csf
 
 %attr(755,root,root) %{_bindir}/bibtex
 %attr(755,root,root) %{_bindir}/rubibtex
