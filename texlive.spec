@@ -112,7 +112,7 @@ Requires:	dialog
 Requires:	kpathsea = %{epoch}:%{version}-%{release}
 Requires:	sed
 Requires:	sh-utils
-Requires:	texconfig = %{version}-%{release}
+Requires:	texconfig = %{epoch}:%{version}-%{release}
 Requires:	textutils
 Suggests:	tmpwatch
 Obsoletes:	tetex
@@ -6820,6 +6820,7 @@ fi
 %doc %{texmfdist}/doc/latex/marvosym
 %dir %{texmfdist}/source/fonts/eurofont
 %dir %{texmfdist}/source/fonts/eurofont/marvosym
+%dir %{texmfdist}/tex/latex
 %{texmfdist}/fonts/type1/public/marvosym
 %{texmfdist}/fonts/afm/public/marvosym
 %{texmfdist}/fonts/tfm/public/marvosym
