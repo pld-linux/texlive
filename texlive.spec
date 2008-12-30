@@ -4811,7 +4811,6 @@ fi
 # %doc %{texmf}/doc/help/unixtex.ftp
 # %dir %{texmf}/doc/help/faq
 # %doc %{texmf}/doc/images
-# %dir %{texmf}/doc/latex
 # %dir %{texmf}/doc/polish
 # %doc %{texmf}/doc/polish/*.html
 # %dir %{texmf}/doc/programs
@@ -5737,8 +5736,6 @@ fi
 %dir %{texmfdist}/tex/latex/base
 %dir %{texmfdist}/tex/latex/hyper
 %dir %{texmfdist}/tex/latex/latexconfig
-%dir %{texmfdist}/tex/latex/ltxmisc
-%dir %{texmfdist}/tex/latex/misc209
 %dir %{texmfdist}/tex/plain
 %dir %{texmf}/tex/latex
 
@@ -5793,11 +5790,31 @@ fi
 %{texmfdist}/tex/latex/euler
 %{texmfdist}/tex/latex/eulervm
 %{texmfdist}/tex/latex/eurosym
+%{texmfdist}/tex/latex/expl3
+%{texmfdist}/tex/latex/export
+%{texmfdist}/tex/latex/extarrows
+%{texmfdist}/tex/latex/extpfeil
+%{texmfdist}/tex/latex/extract
 %{texmfdist}/tex/latex/extsizes
+%{texmfdist}/tex/latex/facsimile
+%{texmfdist}/tex/latex/faktor
 %{texmfdist}/tex/latex/fancybox
 %{texmfdist}/tex/latex/fancyhdr
+%{texmfdist}/tex/latex/fancynum
+%{texmfdist}/tex/latex/fancyref
+%{texmfdist}/tex/latex/fancytooltips
 %{texmfdist}/tex/latex/fancyvrb
+%{texmfdist}/tex/latex/fax
+%{texmfdist}/tex/latex/fc
+%{texmfdist}/tex/latex/feyn
+%{texmfdist}/tex/latex/feynmf
+%{texmfdist}/tex/latex/fge
+%{texmfdist}/tex/latex/figbib
+%{texmfdist}/tex/latex/figsize
 %{texmfdist}/tex/latex/filecontents
+%{texmfdist}/tex/latex/fink
+%{texmfdist}/tex/latex/fixfoot
+%{texmfdist}/tex/latex/fixme
 %{texmfdist}/tex/latex/float
 %{texmfdist}/tex/latex/fontinst
 %{texmfdist}/tex/latex/footmisc
@@ -5821,31 +5838,18 @@ fi
 %{texmfdist}/tex/latex/listings
 %{texmfdist}/tex/latex/ltabptch
 %{texmfdist}/tex/latex/localloc
-%{texmfdist}/tex/latex/ltxmisc/a4wide.sty
-%{texmfdist}/tex/latex/ltxmisc/bold-extra.sty
-%{texmfdist}/tex/latex/ltxmisc/boxedminipage.sty
-%{texmfdist}/tex/latex/ltxmisc/cancel.sty
-%{texmfdist}/tex/latex/ltxmisc/capt-of.sty
-%{texmfdist}/tex/latex/ltxmisc/chngpage.sty
-%{texmfdist}/tex/latex/ltxmisc/concrete.sty
-%{texmfdist}/tex/latex/ltxmisc/endnotes.sty
-%{texmfdist}/tex/latex/ltxmisc/fnpara.sty
-%{texmfdist}/tex/latex/ltxmisc/framed.sty
-%{texmfdist}/tex/latex/ltxmisc/import.sty
-%{texmfdist}/tex/latex/ltxmisc/nextpage.sty
-%{texmfdist}/tex/latex/ltxmisc/optional.sty
-%{texmfdist}/tex/latex/ltxmisc/parskip.sty
-%{texmfdist}/tex/latex/ltxmisc/path.sty
+%{texmfdist}/tex/latex/ltxmisc
 %{texmfdist}/tex/latex/mathcomp
 %{texmfdist}/tex/latex/mdwtools
 %{texmfdist}/tex/latex/memoir
 %{texmfdist}/tex/latex/mh
-%{texmfdist}/tex/latex/misc209/bar.sty
-%{texmfdist}/tex/latex/misc209/hangcaption.sty
-%{texmfdist}/tex/latex/misc209/multibox.sty
-%{texmfdist}/tex/latex/misc209/multind.sty
-%{texmfdist}/tex/latex/misc209/portland.sty
-%{texmfdist}/tex/latex/misc209/psboxit.sty
+%{texmfdist}/tex/latex/misc209
+%{texmfdist}/tex/latex/mmap
+%{texmfdist}/tex/latex/mnsymbol
+%{texmfdist}/tex/latex/moderncv
+%{texmfdist}/tex/latex/modroman
+%{texmfdist}/tex/latex/mongolian-babel
+%{texmfdist}/tex/latex/montex
 %{texmfdist}/tex/latex/moreverb
 %{texmfdist}/tex/latex/mparhack
 %{texmfdist}/tex/latex/ms
@@ -5853,6 +5857,15 @@ fi
 %{texmfdist}/tex/latex/multirow
 %{texmfdist}/tex/latex/mwcls
 %{texmfdist}/tex/latex/natbib
+%{texmfdist}/tex/latex/ncclatex
+%{texmfdist}/tex/latex/ncctools
+%{texmfdist}/tex/latex/ncntrsbk
+%{texmfdist}/tex/latex/nddiss
+%{texmfdist}/tex/latex/newalg
+%{texmfdist}/tex/latex/newfile
+%{texmfdist}/tex/latex/newlfm
+%{texmfdist}/tex/latex/newspaper
+%{texmfdist}/tex/latex/newthm
 %{texmfdist}/tex/latex/nomencl
 %{texmfdist}/tex/latex/ntgclass
 %{texmfdist}/tex/latex/oberdiek
@@ -5886,22 +5899,112 @@ fi
 %{texmfdist}/tex/latex/subfigure
 %{texmfdist}/tex/latex/supertabular
 %{texmfdist}/tex/latex/t2
+%{texmfdist}/tex/latex/t-angles
+%{texmfdist}/tex/latex/tableaux
+%{texmfdist}/tex/latex/tablists
+%{texmfdist}/tex/latex/tablor
+%{texmfdist}/tex/latex/tabto-ltx
+%{texmfdist}/tex/latex/tabulary
+%{texmfdist}/tex/latex/tabvar
+%{texmfdist}/tex/latex/talk
+%{texmfdist}/tex/latex/taupin
+%{texmfdist}/tex/latex/tcldoc
+%{texmfdist}/tex/latex/tdsfrmath
+%{texmfdist}/tex/latex/technics
+%{texmfdist}/tex/latex/ted
+%{texmfdist}/tex/latex/tengwarscript
+%{texmfdist}/tex/latex/tensor
+%{texmfdist}/tex/latex/teubner
+%{texmfdist}/tex/latex/tex-gyre
+%{texmfdist}/tex/latex/texilikecover
+%{texmfdist}/tex/latex/texlogos
+%{texmfdist}/tex/latex/texmate
+%{texmfdist}/tex/latex/texpower
+%{texmfdist}/tex/latex/texshade
+%{texmfdist}/tex/latex/textcase
 %{texmfdist}/tex/latex/textfit
+%{texmfdist}/tex/latex/textopo
+%{texmfdist}/tex/latex/textpath
 %{texmfdist}/tex/latex/textpos
+%{texmfdist}/tex/latex/theoremref
+%{texmfdist}/tex/latex/thesis-titlepage-fhac
+%{texmfdist}/tex/latex/thinsp
+%{texmfdist}/tex/latex/thmtools
+%{texmfdist}/tex/latex/thumb
+%{texmfdist}/tex/latex/thuthesis
+%{texmfdist}/tex/latex/ticket
+%{texmfdist}/tex/latex/tikz-inet
+%{texmfdist}/tex/latex/times
+%{texmfdist}/tex/latex/timesht
+%{texmfdist}/tex/latex/tipa
+%{texmfdist}/tex/latex/titlefoot
 %{texmfdist}/tex/latex/titlesec
+%{texmfdist}/tex/latex/titling
 %{texmfdist}/tex/latex/tocbibind
 %{texmfdist}/tex/latex/tocloft
 %{texmfdist}/tex/latex/tools
 %{texmfdist}/tex/latex/totpages
 %{texmfdist}/tex/latex/type1cm
+%{texmfdist}/tex/latex/undertilde
 %{texmfdist}/tex/latex/units
+%{texmfdist}/tex/latex/unitsdef
+%{texmfdist}/tex/latex/universa
+%{texmfdist}/tex/latex/unroman
+%{texmfdist}/tex/latex/upmethodology
 %{texmfdist}/tex/latex/upquote
+%{texmfdist}/tex/latex/varindex
+%{texmfdist}/tex/latex/varsfromjobname
+%{texmfdist}/tex/latex/vector
+%{texmfdist}/tex/latex/velthuis
+%{texmfdist}/tex/latex/verse
+%{texmfdist}/tex/latex/versions
+%{texmfdist}/tex/latex/vhistory
+%{texmfdist}/tex/latex/vita
 %{texmfdist}/tex/latex/vmargin
+%{texmfdist}/tex/latex/volumes
+%{texmfdist}/tex/latex/vpe
+%{texmfdist}/tex/latex/vrsion
+%{texmfdist}/tex/latex/vwcol
+%{texmfdist}/tex/latex/vxu
+%{texmfdist}/tex/latex/wallpaper
+%{texmfdist}/tex/latex/warning
+%{texmfdist}/tex/latex/warpcol
 %{texmfdist}/tex/latex/was
+%{texmfdist}/tex/latex/williams
+%{texmfdist}/tex/latex/wnri
+%{texmfdist}/tex/latex/wordlike
 %{texmfdist}/tex/latex/wrapfig
+%{texmfdist}/tex/latex/wsuipa
+%{texmfdist}/tex/latex/xargs
+%{texmfdist}/tex/latex/xcolor
+%{texmfdist}/tex/latex/xdoc
+%{texmfdist}/tex/latex/xfor
+%{texmfdist}/tex/latex/xifthen
 %{texmfdist}/tex/latex/xkeyval
+%{texmfdist}/tex/latex/xmpincl
+%{texmfdist}/tex/latex/xnewcommand
+%{texmfdist}/tex/latex/xoptarg
+%{texmfdist}/tex/latex/xpackages
+%{texmfdist}/tex/latex/xq
+%{texmfdist}/tex/latex/xskak
+%{texmfdist}/tex/latex/xstring
 %{texmfdist}/tex/latex/xtab
+%{texmfdist}/tex/latex/xtcapts
+%{texmfdist}/tex/latex/xyling
+%{texmfdist}/tex/latex/xytree
+%{texmfdist}/tex/latex/yafoot
 %{texmfdist}/tex/latex/yfonts
+%{texmfdist}/tex/latex/yhmath
+%{texmfdist}/tex/latex/yi4latex
+%{texmfdist}/tex/latex/york-thesis
+%{texmfdist}/tex/latex/youngtab
+%{texmfdist}/tex/latex/yplan
+%{texmfdist}/tex/latex/zapfchan
+%{texmfdist}/tex/latex/zapfding
+%{texmfdist}/tex/latex/zed-csp
+%{texmfdist}/tex/latex/zefonts
+%{texmfdist}/tex/latex/ziffer
+%{texmfdist}/tex/latex/zwgetfdate
 %{texmfdist}/tex/plain/etex
 %{texmf}/tex/latex/config
 %{texmf}/tex/latex/dvipdfm
