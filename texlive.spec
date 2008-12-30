@@ -103,7 +103,7 @@ BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	zlib-devel >= 1.2.1
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-cm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-misc = %{epoch}:%{version}-%{release}
 Requires:	%{name}-metafont = %{epoch}:%{version}-%{release}
@@ -1028,8 +1028,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-latex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-ruhyphen
-Requires:	%{name}-tex-ukrhyph
+Requires:	%{name}-tex-ruhyphen = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-ukrhyph = %{epoch}:%{version}-%{release}
 # for misc/eurosym:
 Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-koma-script
@@ -1100,7 +1100,7 @@ Summary:	BibTeX styles to implement an address database
 Summary(hu.UTF-8):	BibTeX stílusok cím-adatbázis megvalósításához
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-adrconv
 BibTeX styles to implement an address database.
@@ -1214,7 +1214,7 @@ Summary:	Extra control of appendices
 Summary(hu.UTF-8):	Az appendixek nagyobb irányítása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-appendix
 Extra control of appendices.
@@ -1272,7 +1272,7 @@ Summary:	Packages by Javier Bezos (additional math tools)
 Summary(hu.UTF-8):	Javier Bezos csomagjai (további matematikai eszközök)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-bezos
 Packages by Javier Bezos (additional math tools).
@@ -1390,7 +1390,7 @@ Summary:	Publication quality tables in LaTeX
 Summary(hu.UTF-8):	Nyomdai minőségű táblázatok LaTeX-ben
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-booktabs
 Publication quality tables in LaTeX.
@@ -1404,7 +1404,7 @@ Summary:	Customising captions in floating environments
 Summary(hu.UTF-8):	Feliratok testreszabása úszó környezetekben
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-caption
 Customising captions in floating environments.
@@ -1484,7 +1484,7 @@ Summary:	Selectively include/excludes portions of text
 Summary(hu.UTF-8):	A szöveg részeinek beillesztése/kihagyása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-comment
 Selectively include/excludes portions of text.
@@ -1516,7 +1516,7 @@ Summary:	Typeset a curriculum vitae
 Summary(hu.UTF-8):	Önéletrajzok írása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-currvita
 Typeset a curriculum vitae.
@@ -1529,7 +1529,7 @@ Summary:	Curves for LaTeX picture environment
 Summary(hu.UTF-8):	Görbék LaTeX picture környezetébe
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-curves
 Curves for LaTeX picture environment.
@@ -1587,7 +1587,7 @@ Summary:	A package to customize the three basic lists
 Summary(hu.UTF-8):	Egy csomag, amivel testreszabhatod a három alapvető listát
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-enumitem
 A package to customize the three basic lists (enumerate, itemize and
@@ -1602,7 +1602,7 @@ Summary:	The exam document class attempts to make it easy for even a LaTeX novic
 Summary(hu.UTF-8):	Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a feladatsorok készítése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-exam
 The exam document class attempts to make it easy for even a LaTeX
@@ -1871,7 +1871,7 @@ Summary:	Enhanced theorem environment
 Summary(hu.UTF-8):	Bővített tétel környezet
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-ntheorem
 Enhanced theorem environment.
@@ -1954,7 +1954,7 @@ Summary:	The SIunits package can be used to standardise the use of units in your
 Summary(hu.UTF-8):	Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-latex-ams
+Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
 
 %description latex-SIunits
 The SIunits package can be used to standardise the use of units in
@@ -1997,7 +1997,7 @@ Summary:	This package contains support for using UTF-8 as input encoding in LaTe
 Summary(hu.UTF-8):	Ez a csomag lehetővé teszi UTF-8 kódolást a LaTeX dokumentumokban
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-ucs
 This package contains support for using UTF-8 as input encoding in
@@ -2406,7 +2406,7 @@ Katalogi fontów TeXa.
 Summary:	Adobe fonts
 Summary(pl.UTF-8):	Fonty Adobe
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-adobe
 Adobe fonts.
@@ -2418,7 +2418,7 @@ Fonty Adobe.
 Summary:	Virtual fonts for PDF-files with T1 encoded CMR-fonts
 Summary(pl.UTF-8):	Wirtualne fonty do plików PDF z fontami CMR o kodowaniu T1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-ae
 Virtual fonts for PDF-files with T1 encoded CMR-fonts.
@@ -2430,7 +2430,7 @@ Wirtualne fonty do plików PDF z fontami CMR o kodowaniu T1.
 Summary:	AMS fonts
 Summary(pl.UTF-8):	Fonty AMS
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-ams
 AMS fonts.
@@ -2442,7 +2442,7 @@ Fonty AMS.
 Summary:	Antykwa Poltawskiego, a Type 1 family of Polish traditional type
 Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-antp
 Antykwa Poltawskiego, a Type 1 family of Polish traditional type.
@@ -2455,7 +2455,7 @@ Type 1.
 Summary:	Antykwa Torunska, a Type 1 family of a Polish traditional type
 Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-antt
 Antykwa Torunska, a Type 1 family of a Polish traditional type.
@@ -2467,7 +2467,7 @@ Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1.
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
 Summary(pl.UTF-8):	Tablicowy wariant fontów Computer Modern ze wsparciem dla LaTeXa
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-bbm
 Blackboard variant fonts for Computer Modern, with LaTeX support.
@@ -2479,7 +2479,7 @@ Tablicowy wariant fontów Computer Modern ze wsparciem dla LaTeXa.
 Summary:	Sans serif blackboard bold for LaTeX
 Summary(pl.UTF-8):	Tablicowy tłusty font sans serif dla LaTeXa
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-bbold
 Sans serif blackboard bold for LaTeX.
@@ -2491,7 +2491,7 @@ Tablicowy tłusty font sans serif dla LaTeXa.
 Summary:	Bold & Heavy Fonts
 Summary(pl.UTF-8):	Fonty Bold i Heavy
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-bh
 Bold & Heavy Fonts.
@@ -2503,7 +2503,7 @@ Fonty Bold i Heavy.
 Summary:	Bitstream fonts
 Summary(pl.UTF-8):	Fonty Bitstream
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-bitstrea
 
 %description fonts-bitstream
@@ -2516,7 +2516,7 @@ Fonty Bitstream.
 Summary:	Complete set of Greek fonts
 Summary(pl.UTF-8):	Pełny zestaw fontów greckich
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-cbgreek
 Complete set of Greek fonts.
@@ -2528,7 +2528,7 @@ Pełny zestaw fontów greckich.
 Summary:	Polish version of Computer Concrete fonts
 Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-cc-pl
 Polish version of Computer Concrete fonts.
@@ -2540,7 +2540,7 @@ Polska wersja fontów Computer Concrete.
 Summary:	Compugraphic fonts
 Summary(pl.UTF-8):	Fonty Compugraphic
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-cg
 Compugraphic fonts.
@@ -2552,7 +2552,7 @@ Fonty Compugraphic.
 Summary:	Computer Modern fonts
 Summary(pl.UTF-8):	Fonty Computer Modern
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-cm
 Computer Modern fonts.
@@ -2564,7 +2564,7 @@ Fonty Computer Modern.
 Summary:	CM Bright fonts
 Summary(pl.UTF-8):	Fonty CM Bright
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-cmbright
 CM Bright fonts.
@@ -2576,7 +2576,7 @@ Fonty CM Bright.
 Summary:	Computer Modern fonts extended with Russian letters
 Summary(pl.UTF-8):	Fonty Computer Modern rozszerzone o litery rosyjskie
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-cmcyr
 Computer Modern fonts extended with Russian letters.
@@ -2588,7 +2588,7 @@ Fonty Computer Modern rozszerzone o litery rosyjskie.
 Summary:	Extra Computer Modern fonts, from the American Mathematical Society
 Summary(pl.UTF-8):	Dodatkowe fonty Computer Modern z AMS
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-cmextra
 Extra Computer Modern fonts, from the American Mathematical Society.
@@ -2600,7 +2600,7 @@ Dodatkowe fonty Computer Modern z AMS (American Mathematical Society).
 Summary:	Concrete Math fonts
 Summary(pl.UTF-8):	Fonty matematyczne Concrete Math
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-concmath
 Concrete Math fonts.
@@ -2612,7 +2612,7 @@ Fonty matematyczne Concrete Math.
 Summary:	Concrete Roman fonts
 Summary(pl.UTF-8):	Fonty Concrete Roman
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-concrete
 Concrete Roman fonts, designed by Donald E. Knuth, originally for use
@@ -2626,7 +2626,7 @@ przeznaczone do używania z fontami matematycznymi Euler.
 Summary:	Czech/Slovak-tuned MetaFont Computer Modern fonts
 Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i słowackiego
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-cs
 Czech/Slovak-tuned MetaFont Computer Modern fonts.
@@ -2639,7 +2639,7 @@ czeskiego i słowackiego.
 Summary:	Doublestroke font for typesetting the mathematical symbols
 Summary(pl.UTF-8):	Podwójnie kreślony font do składania symboli matematycznych
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-dstroke
 Doublestroke font for typesetting the mathematical symbols.
@@ -2651,7 +2651,7 @@ Podwójnie kreślony font do składania symboli matematycznych.
 Summary:	Sources for the European Concrete fonts
 Summary(pl.UTF-8):	Źródła dla fontów European Concrete
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-ecc
 The MetaFont sources and tfm files of the European Concrete Fonts.
@@ -2667,7 +2667,7 @@ tekstowymi fontami towarzyszącymi.
 Summary:	The new European currency symbol for the Euro
 Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-eurosym
 The new European currency symbol for the Euro implemented in Metafont,
@@ -2683,7 +2683,7 @@ różnych kształtów (normalnego, pochylonego, tłustego, szkicowanego).
 Summary:	The Virtual Euler Math fonts
 Summary(pl.UTF-8):	Fonty Virtual Euler Math
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-eulervm
 Euler-VM is a set of _virtual_ math fonts based on Euler and CM. This
@@ -2703,7 +2703,7 @@ matematycznych i może być dostępny używalny symbol \hslash.
 Summary:	Fonts similar to EUSM but with two more characters
 Summary(pl.UTF-8):	Fonty podobne do EUSM, ale z dwoma dodatkowymi znakami
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-euxm
 Fonts like EUSM but with two more characters needed for Concrete Math
@@ -2717,7 +2717,7 @@ dla Concrete Math dołączonego w fonts3 dystrybucji TeXLive.
 Summary:	Gothic and ornamental initial fonts by Yannis Haralambous
 Summary(pl.UTF-8):	Początkowe fonty gotyckie i ornamentowe Yannisa Haralambousa
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-gothic
 Gothic and ornamental initial fonts by Yannis Haralambous.
@@ -2729,7 +2729,7 @@ Początkowe fonty gotyckie i ornamentowe Yannisa Haralambousa.
 Summary:	Converted mflogo font
 Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-hoekwater
 Fonts originally created in MetaFont, transformed to PostScript by
@@ -2745,7 +2745,7 @@ stmaryrd, wasy, wasy2, xipa.
 Summary:	Miscellaneous packages by Joerg Knappen
 Summary(pl.UTF-8):	Różne pakiety autorstwa Joerga Knappena
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-jknappen
 Miscellaneous macros, mostly for making use of extra fonts, by Joerg
@@ -2759,7 +2759,7 @@ Knappena. Zawiera sgmlcmpt.
 Summary:	Basic LaTeX fonts
 Summary(pl.UTF-8):	Podstawowe fonty dla LaTeXa
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-latex
 Basic LaTeX fonts.
@@ -2771,7 +2771,7 @@ Podstawowe fonty dla LaTeXa.
 Summary:	Olga Lapko's LH fonts
 Summary(pl.UTF-8):	Fonty LH Olgi Lapko
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-lh
 The lh fonts for the `T2'/X2 encodings (for cyrillic languages).
@@ -2783,7 +2783,7 @@ Fonty lh dla kodowań `T2'/X2 (dla języków zapisywanych cyrylicą).
 Summary:	Latin Modern family fonts
 Summary(pl.UTF-8):	Fonty z rodziny Latin Modern
 Group:		Applications/Publishing/TeX
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -2811,7 +2811,7 @@ tymi wszystkimi plikami. Autorem jest Bogusław Jackowski.
 Summary:	Martin Vogel's Symbol (marvosym) font
 Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -2833,7 +2833,7 @@ krawieckie; znak CE i inne.
 Summary:	Logo fonts
 Summary(pl.UTF-8):	Fonty logo
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-mflogo
 Logo fonts.
@@ -2845,7 +2845,7 @@ Fonty logo.
 Summary:	Miscellaneous fonts
 Summary(pl.UTF-8):	Różne fonty
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-misc
 Miscellaneous fonts.
@@ -2857,7 +2857,7 @@ Fonty różne.
 Summary:	Monotype fonts
 Summary(pl.UTF-8):	Fonty Monotype
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-monotype
 Monotype fonts.
@@ -2869,7 +2869,7 @@ Fonty Monotype.
 Summary:	Fonts for Omega - extended unicode TeX
 Summary(pl.UTF-8):	Fonty dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-omega
 Fonts for Omega - extended unicode TeX.
@@ -2881,7 +2881,7 @@ Fonty dla Omegi - TeXa ze wsparciem dla unikodu.
 Summary:	Pazo fonts
 Summary(pl.UTF-8):	Fonty Pazo
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-pazo
 Pazo fonts.
@@ -2893,7 +2893,7 @@ Fonty Pazo.
 Summary:	Polish fonts
 Summary(pl.UTF-8):	Polskie fonty
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-pl
 Polish fonts.
@@ -2905,7 +2905,7 @@ Polskie fonty.
 Summary:	PX fonts
 Summary(pl.UTF-8):	Fonty PX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-px
 PX fonts.
@@ -2917,7 +2917,7 @@ Fonty PX.
 Summary:	Quasi fonts
 Summary(pl.UTF-8):	Fonty Quasi
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-qfonts
 Quasi fonts.
@@ -2929,7 +2929,7 @@ Fonty Quasi.
 Summary:	Additional fonts for QPX package
 Summary(pl.UTF-8):	Dodatkowe fonty dla pakietu QPX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-px = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
 
@@ -2943,7 +2943,7 @@ Dodatkowe fonty dla pakietu QPX.
 Summary:	Additional fonts for QTX package
 Summary(pl.UTF-8):	Dodatkowe fonty dla pakietu QTX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
 
@@ -2957,7 +2957,7 @@ Dodatkowe fonty dla pakietu QTX.
 Summary:	Fonts of uppercase script letters for scientific and mathematical typesetting
 Summary(pl.UTF-8):	Fonty wielkich liter pisanych do składania dokumentów naukowych i matematycznych
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-rsfs
 Fonts of uppercase script letters for use as symbols in scientific and
@@ -2975,7 +2975,7 @@ matematycznym foncie TeXowym symbol.
 Summary:	St Mary Road symbols for functional programming
 Summary(pl.UTF-8):	Symbole St Mary Road do programowania funkcyjnego
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-stmaryrd
 St Mary Road symbols for functional programming.
@@ -2987,7 +2987,7 @@ Symbole St Mary Road do programowania funkcyjnego.
 Summary:	TX fonts
 Summary(pl.UTF-8):	Fonty TX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-tx
 TX fonts.
@@ -2999,7 +2999,7 @@ Fonty TX.
 Summary:	URW fonts
 Summary(pl.UTF-8):	Fonty URW
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-urw
 URW fonts.
@@ -3011,7 +3011,7 @@ Fonty URW.
 Summary:	URWVN fonts
 Summary(pl.UTF-8):	Fonty URWVN
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-urwvn
 URWVN fonts.
@@ -3023,7 +3023,7 @@ Fonty URWVN.
 Summary:	VNR fonts
 Summary(pl.UTF-8):	Fonty VNR
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-vnr
 VNR fonts.
@@ -3035,7 +3035,7 @@ Fonty VNR.
 Summary:	Waldis symbol fonts
 Summary(pl.UTF-8):	Fonty Waldis symbol
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-wasy
 Waldis symbol fonts.
@@ -3047,7 +3047,7 @@ Fonty Waldis symbol.
 Summary:	Xy-pic fonts
 Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-xypic
 Xy-pic fonts.
@@ -3059,7 +3059,7 @@ Fonty Xy-pic.
 Summary:	European Modern fonts from Y&Y
 Summary(pl.UTF-8):	Fonty European Modern od Y&Y
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-yandy
 European Modern fonts from Y&Y.
@@ -3071,7 +3071,7 @@ Fonty European Modern od Y&Y.
 Summary:	Antykwa Poltawskiego, a Type 1 family of Polish traditional type
 Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-antp
 Antykwa Poltawskiego, a Type 1 family of Polish traditional type.
@@ -3084,7 +3084,7 @@ Type 1.
 Summary:	Antykwa Torunska, a Type 1 family of a Polish traditional type
 Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-antt
 Antykwa Torunska, a Type 1 family of a Polish traditional type.
@@ -3096,7 +3096,7 @@ Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1.
 Summary:	Free replacement for basic MathTime fonts
 Summary(pl.UTF-8):	Wolnodostępny zamiennik podstawowych fontów MathTime
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-belleek
 Free replacement for basic MathTime fonts.
@@ -3108,7 +3108,7 @@ Wolnodostępny zamiennik podstawowych fontów MathTime.
 Summary:	Bitstream fonts
 Summary(pl.UTF-8):	Fonty Bitstream
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-bitstrea
 
 %description fonts-type1-bitstream
@@ -3121,7 +3121,7 @@ Fonty Bitstream.
 Summary:	Computer Modern family fonts
 Summary(pl.UTF-8):	Fonty z rodziny Computer Modern
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-bluesky
 Computer Modern family fonts.
@@ -3133,7 +3133,7 @@ Fonty z rodzony Computer Modern.
 Summary:	Polish version of Computer Concrete fonts
 Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-cc-pl
 Polish version of Computer Concrete fonts.
@@ -3145,7 +3145,7 @@ Polska wersja fontów Computer Concrete.
 Summary:	Computer Modern fonts extended with Russian letters
 Summary(pl.UTF-8):	Fonty Computer Modern rozszerzone o litery rosyjskie
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-cmcyr
 Computer Modern fonts extended with Russian letters.
@@ -3157,7 +3157,7 @@ Fonty Computer Modern rozszerzone o litery rosyjskie.
 Summary:	Czech/Slovak-tuned MetaFont Computer Modern fonts
 Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i słowackiego
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-cs
 Czech/Slovak-tuned MetaFont Computer Modern fonts.
@@ -3170,7 +3170,7 @@ czeskiego i słowackiego.
 Summary:	Doublestroke Type1 font for typesetting the mathematical symbols
 Summary(pl.UTF-8):	Podwójnie kreślony font Type1 do składania symboli matematycznych
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-dstroke
 Doublestroke Type1 font for typesetting the mathematical symbols.
@@ -3182,7 +3182,7 @@ Podwójnie kreślony font Type1 do składania symboli matematycznych.
 Summary:	The new European currency symbol for the Euro
 Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-eurosym
 The new European currency symbol for the Euro implemented in Metafont,
@@ -3198,7 +3198,7 @@ różnych kształtów (normalnego, pochylonego, tłustego, szkicowanego).
 Summary:	Converted mflogo font
 Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-hoekwater
 Fonts originally created in MetaFont, transformed to PostScript by
@@ -3214,7 +3214,7 @@ stmaryrd, wasy, wasy2, xipa.
 Summary:	SC/OsF fonts for URW Palladio L
 Summary(pl.UTF-8):	Fonty SC/OsF dla URW Palladio L
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-fpl
 The FPL Fonts provide a set of SC/OsF fonts for URW Palladio L which
@@ -3246,7 +3246,7 @@ Palatino Waltera Schmidta.
 Summary:	Type1 tt2001 family fonts
 Summary(pl.UTF-8):	Fonty Type1 z rodziny tt2001
 Group:		Applications/Publishing/TeX
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-tt2001
 Type1 tt2001 famliy fonts.
@@ -3258,7 +3258,7 @@ Fonty Type1 z rodziny tt2001.
 Summary:	Type1 Latin Modern family fonts
 Summary(pl.UTF-8):	Fonty Type1 z rodziny Latin Modern
 Group:		Applications/Publishing/TeX
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -3286,7 +3286,7 @@ tymi wszystkimi plikami. Autorem jest Bogusław Jackowski.
 Summary:	Martin Vogel's Symbol (marvosym) font
 Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -3308,7 +3308,7 @@ krawieckie; znak CE i inne.
 Summary:	Pazo Math fonts
 Summary(pl.UTF-8):	Fonty matematyczne Pazo Math
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-mathpazo
 Pazo Math fonts.
@@ -3320,7 +3320,7 @@ Fonty matematyczne Pazo Math.
 Summary:	Type1 fonts for Omega - extended unicode TeX
 Summary(pl.UTF-8):	Fonty Type1 dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-omega
 Type1 fonts for Omega - extended unicode TeX.
@@ -3332,7 +3332,7 @@ Fonty Type1 dla Omegi - TeXa ze wsparciem dla unikodu.
 Summary:	Polish fonts
 Summary(pl.UTF-8):	Polskie fonty
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-pl
@@ -3345,7 +3345,7 @@ Polskie fonty.
 Summary:	PX fonts
 Summary(pl.UTF-8):	Fonty PX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-px
 PX fonts.
@@ -3357,7 +3357,7 @@ Fonty PX.
 Summary:	Quasi fonts
 Summary(pl.UTF-8):	Fonty Quasi
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-qfonts
 Quasi fonts.
@@ -3369,7 +3369,7 @@ Fonty Quasi.
 Summary:	TX fonts
 Summary(pl.UTF-8):	Fonty TX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-tx
 TX fonts.
@@ -3381,7 +3381,7 @@ Fonty TX.
 Summary:	URW fonts
 Summary(pl.UTF-8):	Fonty URW
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-urw
 URW fonts.
@@ -3393,7 +3393,7 @@ Fonty URW.
 Summary:	Type1 VNR fonts
 Summary(pl.UTF-8):	Fonty Type1 VNR
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-vnr
 Type1 VNR fonts.
@@ -3405,7 +3405,7 @@ Fonty Type1 VNR.
 Summary:	Xy-pic fonts
 Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
-Requires:	%{name}-dirs-fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
 %description fonts-type1-xypic
 Xy-pic fonts.
