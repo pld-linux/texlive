@@ -5260,7 +5260,7 @@ fi
 %{_mandir}/man1/kpsetool.1*
 %{_mandir}/man1/kpsewhich.1*
 
-%files -n kpathsea-devel
+%files kpathsea-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkpathsea.so
 %{_includedir}/kpathsea
