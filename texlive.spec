@@ -4958,6 +4958,8 @@ fi
 %dir %{texmfdist}/tex/generic/hyph-utf8
 %dir %{texmfdist}/tex/generic/misc
 %dir %{texmfdist}/tex/generic/tex4ht
+%dir %{texmfdist}/tex/latex
+%dir %{texmfdist}/tex/latex/base
 %dir %{texmf}/dvips
 %dir %{texmf}/dvips/config
 %dir %{texmf}/dvips/tetex
