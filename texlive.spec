@@ -1,6 +1,7 @@
 # TODO:
 # MAIN TODO (sort by importnce):
 # - need more %dir (poldek says it missed)
+# - texlive-format-pdflatex deps
 # - check unpackaged files
 # - pl updates
 # - maybe more splits (e.g. latex subpackages)
