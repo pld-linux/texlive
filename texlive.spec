@@ -589,6 +589,502 @@ plików DVI, produkowanych przez TeXa i LaTeXa.
 xdvi é um programa que roda no sistema X Window. É usado para
 visualizar arquivos dvi, como os produzidos por tex e latex.
 
+%package -n xindy
+Summary:	Xindy creates sorted and tagged index from raw index
+Summary(hu.UTF-8):	Xindy rendezett és cimkézett indexet készít nyers indexekből
+Group:		Applications/Publishing/TeX
+
+%description -n xindy
+Xindy creates sorted and tagged index from raw index.
+
+%description -n xindy -l hu.UTF-8
+Xindy rendezett és cimkézett indexet készít nyers indexekből.
+
+%package -n xindy-albanian
+Summary:	Xindy albanian language
+Summary(hu.UTF-8):	Xindy albán nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-albanian
+Xindy albanian language
+
+%description -n xindy-albanian -l hu.UTF-8
+Xindy albán nyelv
+
+%package -n xindy-belarusian
+Summary:	Xindy belarusian language
+Summary(hu.UTF-8):	Xindy belorusz nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-belarusian
+Xindy belarusian language
+
+%description -n xindy-belarusian -l hu.UTF-8
+Xindy belorusz nyelv
+
+%package -n xindy-bulgarian
+Summary:	Xindy bulgarian language
+Summary(hu.UTF-8):	Xindy bolgár nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-bulgarian
+Xindy bulgarian language
+
+%description -n xindy-bulgarian -l hu.UTF-8
+Xindy bolgár nyelv
+
+%package -n xindy-croatian
+Summary:	Xindy croatian language
+Summary(hu.UTF-8):	Xindy horvát nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-croatian
+Xindy croatian language
+
+%description -n xindy-croatian -l hu.UTF-8
+Xindy horvát nyelv
+
+%package -n xindy-czech
+Summary:	Xindy czech language
+Summary(hu.UTF-8):	Xindy cseh nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-czech
+Xindy czech language
+
+%description -n xindy-czech -l hu.UTF-8
+Xindy cseh nyelv
+
+%package -n xindy-danish
+Summary:	Xindy danish language
+Summary(hu.UTF-8):	Xindy dán nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-danish
+Xindy danish language
+
+%description -n xindy-danish -l hu.UTF-8
+Xindy dán nyelv
+
+%package -n xindy-dutch
+Summary:	Xindy dutch language
+Summary(hu.UTF-8):	Xindy holland nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-dutch
+Xindy dutch language
+
+%description -n xindy-dutch -l hu.UTF-8
+Xindy holland nyelv
+
+%package -n xindy-english
+Summary:	Xindy english language
+Summary(hu.UTF-8):	Xindy angol nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-english
+Xindy english language
+
+%description -n xindy-english -l hu.UTF-8
+Xindy angol nyelv
+
+%package -n xindy-esperanto
+Summary:	Xindy esperanto language
+Summary(hu.UTF-8):	Xindy eszperantó nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-esperanto
+Xindy esperanto language
+
+%description -n xindy-esperanto -l hu.UTF-8
+Xindy eszperantó nyelv
+
+%package -n xindy-estonian
+Summary:	Xindy estonian language
+Summary(hu.UTF-8):	Xindy észt nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-estonian
+Xindy estonian language
+
+%description -n xindy-estonian -l hu.UTF-8
+Xindy észt nyelv
+
+%package -n xindy-finnish
+Summary:	Xindy finnish language
+Summary(hu.UTF-8):	Xindy finn nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-finnish
+Xindy finnish language
+
+%description -n xindy-finnish -l hu.UTF-8
+Xindy finn nyelv
+
+%package -n xindy-french
+Summary:	Xindy french language
+Summary(hu.UTF-8):	Xindy francia nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-french
+Xindy french language
+
+%description -n xindy-french -l hu.UTF-8
+Xindy francia nyelv
+
+%package -n xindy-general
+Summary:	Xindy general language
+Summary(hu.UTF-8):	Xindy általános nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-general
+Xindy general language
+
+%description -n xindy-general -l hu.UTF-8
+Xindy általános nyelv
+
+%package -n xindy-georgian
+Summary:	Xindy georgian language
+Summary(hu.UTF-8):	Xindy georgian nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-georgian
+Xindy georgian language
+
+%description -n xindy-georgian -l hu.UTF-8
+Xindy georgian nyelv
+
+%package -n xindy-german
+Summary:	Xindy german language
+Summary(hu.UTF-8):	Xindy német nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-german
+Xindy german language
+
+%description -n xindy-german -l hu.UTF-8
+Xindy német nyelv
+
+%package -n xindy-greek
+Summary:	Xindy greek language
+Summary(hu.UTF-8):	Xindy görög nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-greek
+Xindy greek language
+
+%description -n xindy-greek -l hu.UTF-8
+Xindy görög nyelv
+
+%package -n xindy-gypsy
+Summary:	Xindy gypsy language
+Summary(hu.UTF-8):	Xindy cigány nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-gypsy
+Xindy gypsy language
+
+%description -n xindy-gypsy -l hu.UTF-8
+Xindy cigány nyelv
+
+%package -n xindy-hausa
+Summary:	Xindy hausa language
+Summary(hu.UTF-8):	Xindy hausa nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-hausa
+Xindy hausa language
+
+%description -n xindy-hausa -l hu.UTF-8
+Xindy hausa nyelv
+
+%package -n xindy-hebrew
+Summary:	Xindy hebrew language
+Summary(hu.UTF-8):	Xindy héber nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-hebrew
+Xindy hebrew language
+
+%description -n xindy-hebrew -l hu.UTF-8
+Xindy héber nyelv
+
+%package -n xindy-hungarian
+Summary:	Xindy hungarian language
+Summary(hu.UTF-8):	Xindy magyar nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-hungarian
+Xindy hungarian language
+
+%description -n xindy-hungarian -l hu.UTF-8
+Xindy magyar nyelv
+
+%package -n xindy-icelandic
+Summary:	Xindy icelandic language
+Summary(hu.UTF-8):	Xindy izlandi nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-icelandic
+Xindy icelandic language
+
+%description -n xindy-icelandic -l hu.UTF-8
+Xindy izlandi nyelv
+
+%package -n xindy-italian
+Summary:	Xindy italian language
+Summary(hu.UTF-8):	Xindy olasz nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-italian
+Xindy italian language
+
+%description -n xindy-italian -l hu.UTF-8
+Xindy olasz nyelv
+
+%package -n xindy-klingon
+Summary:	Xindy klingon language
+Summary(hu.UTF-8):	Xindy klingon nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-klingon
+Xindy klingon language
+
+%description -n xindy-klingon -l hu.UTF-8
+Xindy klingon nyelv
+
+%package -n xindy-kurdish
+Summary:	Xindy kurdish language
+Summary(hu.UTF-8):	Xindy kurd nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-kurdish
+Xindy kurdish language
+
+%description -n xindy-kurdish -l hu.UTF-8
+Xindy kurd nyelv
+
+%package -n xindy-latin
+Summary:	Xindy latin language
+Summary(hu.UTF-8):	Xindy latin nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-latin
+Xindy latin language
+
+%description -n xindy-latin -l hu.UTF-8
+Xindy latin nyelv
+
+%package -n xindy-latvian
+Summary:	Xindy latvian language
+Summary(hu.UTF-8):	Xindy lett nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-latvian
+Xindy latvian language
+
+%description -n xindy-latvian -l hu.UTF-8
+Xindy lett nyelv
+
+%package -n xindy-lithuanian
+Summary:	Xindy lithuanian language
+Summary(hu.UTF-8):	Xindy litván nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-lithuanian
+Xindy lithuanian language
+
+%description -n xindy-lithuanian -l hu.UTF-8
+Xindy litván nyelv
+
+%package -n xindy-lower-sorbian
+Summary:	Xindy lower-sorbian language
+Summary(hu.UTF-8):	Xindy lower-sorbian nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-lower-sorbian
+Xindy lower-sorbian language
+
+%description -n xindy-lower-sorbian -l hu.UTF-8
+Xindy lower-sorbian nyelv
+
+%package -n xindy-macedonian
+Summary:	Xindy macedonian language
+Summary(hu.UTF-8):	Xindy macedón nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-macedonian
+Xindy macedonian language
+
+%description -n xindy-macedonian -l hu.UTF-8
+Xindy macedón nyelv
+
+%package -n xindy-mongolian
+Summary:	Xindy mongolian language
+Summary(hu.UTF-8):	Xindy mongol nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-mongolian
+Xindy mongolian language
+
+%description -n xindy-mongolian -l hu.UTF-8
+Xindy mongol nyelv
+
+%package -n xindy-norwegian
+Summary:	Xindy norwegian language
+Summary(hu.UTF-8):	Xindy norvég nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-norwegian
+Xindy norwegian language
+
+%description -n xindy-norwegian -l hu.UTF-8
+Xindy norvég nyelv
+
+%package -n xindy-polish
+Summary:	Xindy polish language
+Summary(hu.UTF-8):	Xindy lengyel nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-polish
+Xindy polish language
+
+%description -n xindy-polish -l hu.UTF-8
+Xindy lengyel nyelv
+
+%package -n xindy-portuguese
+Summary:	Xindy portuguese language
+Summary(hu.UTF-8):	Xindy portugál nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-portuguese
+Xindy portuguese language
+
+%description -n xindy-portuguese -l hu.UTF-8
+Xindy portugál nyelv
+
+%package -n xindy-romanian
+Summary:	Xindy romanian language
+Summary(hu.UTF-8):	Xindy román nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-romanian
+Xindy romanian language
+
+%description -n xindy-romanian -l hu.UTF-8
+Xindy román nyelv
+
+%package -n xindy-russian
+Summary:	Xindy russian language
+Summary(hu.UTF-8):	Xindy orosz nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-russian
+Xindy russian language
+
+%description -n xindy-russian -l hu.UTF-8
+Xindy orosz nyelv
+
+%package -n xindy-serbian
+Summary:	Xindy serbian language
+Summary(hu.UTF-8):	Xindy szerb nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-serbian
+Xindy serbian language
+
+%description -n xindy-serbian -l hu.UTF-8
+Xindy szerb nyelv
+
+%package -n xindy-slovak
+Summary:	Xindy slovak language
+Summary(hu.UTF-8):	Xindy szlovák nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-slovak
+Xindy slovak language
+
+%description -n xindy-slovak -l hu.UTF-8
+Xindy szlovák nyelv
+
+%package -n xindy-slovenian
+Summary:	Xindy slovenian language
+Summary(hu.UTF-8):	Xindy szlovén nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-slovenian
+Xindy slovenian language
+
+%description -n xindy-slovenian -l hu.UTF-8
+Xindy szlovén nyelv
+
+%package -n xindy-spanish
+Summary:	Xindy spanish language
+Summary(hu.UTF-8):	Xindy spanyol nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-spanish
+Xindy spanish language
+
+%description -n xindy-spanish -l hu.UTF-8
+Xindy spanyol nyelv
+
+%package -n xindy-swedish
+Summary:	Xindy swedish language
+Summary(hu.UTF-8):	Xindy svéd nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-swedish
+Xindy swedish language
+
+%description -n xindy-swedish -l hu.UTF-8
+Xindy svéd nyelv
+
+%package -n xindy-turkish
+Summary:	Xindy turkish language
+Summary(hu.UTF-8):	Xindy török nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-turkish
+Xindy turkish language
+
+%description -n xindy-turkish -l hu.UTF-8
+Xindy török nyelv
+
+%package -n xindy-ukrainian
+Summary:	Xindy ukrainian language
+Summary(hu.UTF-8):	Xindy ukrán nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-ukrainian
+Xindy ukrainian language
+
+%description -n xindy-ukrainian -l hu.UTF-8
+Xindy ukrán nyelv
+
+%package -n xindy-upper-sorbian
+Summary:	Xindy upper-sorbian language
+Summary(hu.UTF-8):	Xindy upper-sorbian nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-upper-sorbian
+Xindy upper-sorbian language
+
+%description -n xindy-upper-sorbian -l hu.UTF-8
+Xindy upper-sorbian nyelv
+
+%package -n xindy-vietnamese
+Summary:	Xindy vietnamese language
+Summary(hu.UTF-8):	Xindy vietnám nyelv
+Group:		Applications/Publishing/TeX
+
+%description -n xindy-vietnamese
+Xindy vietnamese language
+
+%description -n xindy-vietnamese -l hu.UTF-8
+Xindy vietnám nyelv
+
+
 %package pdftex
 Summary:	TeX generating PDF files instead DVI
 Summary(pl.UTF-8):	TeX generujący pliki PDF zamiast DVI
@@ -5426,6 +5922,246 @@ fi
 %{texmf}/texconfig/tcfmgr.map
 %{texmf}/texconfig/v
 %{texmf}/texconfig/x
+
+%files -n xindy
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy
+%dir %{texmf}/xindy/base
+%dir %{texmf}/xindy/class
+%dir %{texmf}/xindy/lang
+%dir %{texmf}/xindy/ord
+%dir %{texmf}/xindy/rules
+%dir %{texmf}/xindy/styles
+%dir %{texmf}/xindy/tex
+%doc %{texmf}/doc/xindy
+%{texmf}/xindy/base/*
+%{texmf}/xindy/class/*
+%{texmf}/xindy/ord/*
+%{texmf}/xindy/rules/*
+%{texmf}/xindy/styles/*
+%{texmf}/xindy/tex/*
+
+%files -n xindy-albanian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/albanian
+%{texmf}/xindy/lang/albanian/*
+
+%files -n xindy-belarusian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/belarusian
+%{texmf}/xindy/lang/belarusian/*
+
+%files -n xindy-bulgarian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/bulgarian
+%{texmf}/xindy/lang/bulgarian/*
+
+%files -n xindy-croatian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/croatian
+%{texmf}/xindy/lang/croatian/*
+
+%files -n xindy-czech
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/czech
+%{texmf}/xindy/lang/czech/*
+
+%files -n xindy-danish
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/danish
+%{texmf}/xindy/lang/danish/*
+
+%files -n xindy-dutch
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/dutch
+%{texmf}/xindy/lang/dutch/*
+
+%files -n xindy-english
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/english
+%{texmf}/xindy/lang/english/*
+
+%files -n xindy-esperanto
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/esperanto
+%{texmf}/xindy/lang/esperanto/*
+
+%files -n xindy-estonian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/estonian
+%{texmf}/xindy/lang/estonian/*
+
+%files -n xindy-finnish
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/finnish
+%{texmf}/xindy/lang/finnish/*
+
+%files -n xindy-french
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/french
+%{texmf}/xindy/lang/french/*
+
+%files -n xindy-general
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/general
+%{texmf}/xindy/lang/general/*
+
+%files -n xindy-georgian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/georgian
+%{texmf}/xindy/lang/georgian/*
+
+%files -n xindy-german
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/german
+%{texmf}/xindy/lang/german/*
+
+%files -n xindy-greek
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/greek
+%{texmf}/xindy/lang/greek/*
+
+%files -n xindy-gypsy
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/gypsy
+%{texmf}/xindy/lang/gypsy/*
+
+%files -n xindy-hausa
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/hausa
+%{texmf}/xindy/lang/hausa/*
+
+%files -n xindy-hebrew
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/hebrew
+%{texmf}/xindy/lang/hebrew/*
+
+%files -n xindy-hungarian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/hungarian
+%{texmf}/xindy/lang/hungarian/*
+
+%files -n xindy-icelandic
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/icelandic
+%{texmf}/xindy/lang/icelandic/*
+
+%files -n xindy-italian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/italian
+%{texmf}/xindy/lang/italian/*
+
+%files -n xindy-klingon
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/klingon
+%{texmf}/xindy/lang/klingon/*
+
+%files -n xindy-kurdish
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/kurdish
+%{texmf}/xindy/lang/kurdish/*
+
+%files -n xindy-latin
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/latin
+%{texmf}/xindy/lang/latin/*
+
+%files -n xindy-latvian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/latvian
+%{texmf}/xindy/lang/latvian/*
+
+%files -n xindy-lithuanian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/lithuanian
+%{texmf}/xindy/lang/lithuanian/*
+
+%files -n xindy-lower-sorbian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/lower-sorbian
+%{texmf}/xindy/lang/lower-sorbian/*
+
+%files -n xindy-macedonian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/macedonian
+%{texmf}/xindy/lang/macedonian/*
+
+%files -n xindy-mongolian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/mongolian
+%{texmf}/xindy/lang/mongolian/*
+
+%files -n xindy-norwegian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/norwegian
+%{texmf}/xindy/lang/norwegian/*
+
+%files -n xindy-polish
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/polish
+%{texmf}/xindy/lang/polish/*
+
+%files -n xindy-portuguese
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/portuguese
+%{texmf}/xindy/lang/portuguese/*
+
+%files -n xindy-romanian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/romanian
+%{texmf}/xindy/lang/romanian/*
+
+%files -n xindy-russian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/russian
+%{texmf}/xindy/lang/russian/*
+
+%files -n xindy-serbian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/serbian
+%{texmf}/xindy/lang/serbian/*
+
+%files -n xindy-slovak
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/slovak
+%{texmf}/xindy/lang/slovak/*
+
+%files -n xindy-slovenian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/slovenian
+%{texmf}/xindy/lang/slovenian/*
+
+%files -n xindy-spanish
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/spanish
+%{texmf}/xindy/lang/spanish/*
+
+%files -n xindy-swedish
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/swedish
+%{texmf}/xindy/lang/swedish/*
+
+%files -n xindy-turkish
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/turkish
+%{texmf}/xindy/lang/turkish/*
+
+%files -n xindy-ukrainian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/ukrainian
+%{texmf}/xindy/lang/ukrainian/*
+
+%files -n xindy-upper-sorbian
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/upper-sorbian
+%{texmf}/xindy/lang/upper-sorbian/*
+
+%files -n xindy-vietnamese
+%defattr(644,root,root,755)
+%dir %{texmf}/xindy/lang/vietnamese
+%{texmf}/xindy/lang/vietnamese/*
+
+
 
 %files -n xdvi
 %defattr(644,root,root,755)
