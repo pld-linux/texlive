@@ -2,7 +2,6 @@
 # MAIN TODO (sort by importnce):
 # - need more %dir (poldek says it missed)
 # - check unpackaged files
-# - check and fix "File listed twice" messages
 # - maybe more splits (e.g. latex subpackages)
 # - context: consider more splitting, check dependencies
 # - omega: consider more splitting, check dependencies
@@ -4970,10 +4969,10 @@ fi
 %{texmf}/fonts/enc/dvips/tetex/f7b6d320.enc
 %{texmf}/fonts/map/dvips/tetex/ps2pk35.map
 
-%{texmfdist}/tex/generic/dehyph-exptl
+%{texmfdist}/tex/generic/dehyph-exptl/*
 %{texmfdist}/tex/generic/encodings
 %{texmfdist}/tex/generic/epsf
-%{texmfdist}/tex/generic/hyph-utf8
+%{texmfdist}/tex/generic/hyph-utf8/*
 %{texmfdist}/tex/generic/genmisc/random.tex
 %{texmfdist}/tex/generic/misc/null*
 %{texmfdist}/tex/generic/misc/texnames.sty
@@ -5285,9 +5284,10 @@ fi
 %{texmf}/dvipdfm/config
 %{texmf}/dvips/tetex/config.*
 %{texmf}/fonts/enc/dvips/tetex/mtex.enc
-%{texmf}/fonts/map
-%{texmf}/fonts/map/dvipdfm
-%{texmf}/fonts/map/dvips
+# %{texmf}/fonts/map
+%dir %{texmf}/fonts/map/dvipdfm
+%dir %{texmf}/fonts/map/dvips
+%dir %{texmf}/fonts/map/dvips/tetex
 %{texmf}/fonts/map/dvips/tetex/dvipdfm35.map
 %{texmf}/fonts/map/dvips/tetex/dvips35.map
 %{texmf}/fonts/map/dvips/tetex/mathpple.map
@@ -5707,7 +5707,6 @@ fi
 %dir %{texmfdist}/scripts/pst-pdf
 %dir %{texmfdist}/source/generic
 %dir %{texmfdist}/tex/latex
-%dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/base
 %dir %{texmfdist}/tex/latex/hyper
 %dir %{texmfdist}/tex/latex/latexconfig
@@ -5750,7 +5749,7 @@ fi
 %{texmfdist}/tex/latex/acronym
 %{texmfdist}/tex/latex/aeguill
 %{texmfdist}/tex/latex/anysize
-%{texmfdist}/tex/latex/base
+%{texmfdist}/tex/latex/base/*
 %{texmfdist}/tex/latex/beton
 %{texmfdist}/tex/latex/calrsfs
 %{texmfdist}/tex/latex/ccaption
@@ -5788,7 +5787,7 @@ fi
 %{texmfdist}/tex/latex/index
 %{texmfdist}/tex/latex/koma-script
 %{texmfdist}/tex/latex/labels
-%{texmfdist}/tex/latex/latexconfig
+%{texmfdist}/tex/latex/latexconfig/*
 %{texmfdist}/tex/latex/layouts
 %{texmfdist}/tex/latex/leftidx
 %{texmfdist}/tex/latex/lettrine
@@ -6184,10 +6183,9 @@ fi
 
 %files latex-multienum
 %defattr(644,root,root,755)
-%dir %{texmfdist}/doc/latex/multenum
-%{texmfdist}/doc/latex/multenum
+%doc %{texmfdist}/doc/latex/multenum
 %dir %{texmfdist}/tex/latex/multenum
-%{texmfdist}/tex/latex/multenum
+%{texmfdist}/tex/latex/multenum/*
 
 %files latex-ntheorem
 %defattr(644,root,root,755)
@@ -6244,10 +6242,9 @@ fi
 
 %files latex-ucs
 %defattr(644,root,root,755)
-%dir %{texmfdist}/doc/latex/ucs
 %doc %{texmfdist}/doc/latex/ucs
 %dir %{texmfdist}/tex/latex/ucs
-%{texmfdist}/tex/latex/ucs
+%{texmfdist}/tex/latex/ucs/*
 
 %files latex-umlaute
 %defattr(644,root,root,755)
@@ -6652,11 +6649,11 @@ fi
 %{texmfdist}/fonts/tfm/public/esint
 %{texmfdist}/source/latex/esint
 %{texmfdist}/tex/latex/esint
-%{texmfdist}/fonts/source/public/latex-fonts
-%{texmfdist}/fonts/type1/bluesky/latex-fonts
-%{texmfdist}/fonts/afm/bluesky/latex-fonts
-%{texmfdist}/fonts/tfm/public/latex-fonts
-%{texmfdist}/fonts/map/dvips/latex-fonts
+%{texmfdist}/fonts/source/public/latex-fonts/*
+%{texmfdist}/fonts/type1/bluesky/latex-fonts/*
+%{texmfdist}/fonts/afm/bluesky/latex-fonts/*
+%{texmfdist}/fonts/tfm/public/latex-fonts/*
+%{texmfdist}/fonts/map/dvips/latex-fonts/*
 
 %files fonts-lh
 %defattr(644,root,root,755)
@@ -6695,7 +6692,7 @@ fi
 %{texmfdist}/fonts/afm/public/marvosym
 %{texmfdist}/fonts/tfm/public/marvosym
 %{texmfdist}/fonts/map/dvips/marvosym
-%{texmfdist}/source/fonts/eurofont/marvosym
+%{texmfdist}/source/fonts/eurofont/marvosym/*
 %{texmfdist}/tex/latex/marvosym
 %{texmfdist}/tex4ht/ht-fonts/unicode/marvosym
 %{texmfdist}/tex4ht/ht-fonts/alias/marvosym
