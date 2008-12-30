@@ -47,7 +47,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.8.1
+Release:	0.8.2
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -1528,6 +1528,9 @@ Requires:	%{name}-tex-ruhyphen = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-ukrhyph = %{epoch}:%{version}-%{release}
 # for misc/eurosym:
 Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
+Requires:	%{name}-format-pdftex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
+Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-koma-script
 Obsoletes:	tetex-latex-SIunits
 Obsoletes:	tetex-latex-caption
@@ -5462,6 +5465,7 @@ fi
 %dir %{texmf}/fonts/enc
 %dir %{texmf}/fonts/enc/dvips
 %dir %{texmf}/fonts/enc/dvips/tetex
+%dir %{texmf}/fonts/map/dvips/updmap
 %dir %{texmf}/fonts/map
 %dir %{texmf}/fonts/map/dvips
 %dir %{texmf}/fonts/map/dvips/tetex
@@ -5512,7 +5516,7 @@ fi
 # %{fmtdir}/metafun.mem
 #%{texmf}/web2c/tex-pl.pool
 # %{texmf}/web2c/tex.pool
-#%{texmf}/fonts/map/dvips/updmap/ps2pk.map
+%{texmf}/fonts/map/dvips/updmap/*
 
 %{texmf}/web2c/*.tcx
 
