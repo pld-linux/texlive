@@ -1755,6 +1755,18 @@ Control the typesetting of the abstract environment.
 %description latex-abstract -l hu.UTF-8
 Az "abstract" környezet szedésének irányítása.
 
+%package latex-accfonts
+Summary:	Utilities to derive new fonts from existing ones
+Summary(hu.UTF-8):	Eszközök új betűtípusok származtatására már létezőkből
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+
+%description latex-accfonts
+Utilities to derive new fonts from existing ones.
+
+%description latex-accfonts -l hu.UTF-8
+Eszközök új betűtípusok származtatására már létezőkből.
+
 %package latex-adrconv
 Summary:	BibTeX styles to implement an address database
 Summary(hu.UTF-8):	BibTeX stílusok cím-adatbázis megvalósításához
@@ -2272,6 +2284,19 @@ novice to prepare exams.
 Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a
 feladatsorok készítése.
 
+%package latex-gbrief
+Summary:	Letter document class
+Summary(hu.UTF-8):	Levél dokumentumosztály
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-gbrief
+Letter document class.
+
+%description latex-gbrief -l hu.UTF-8
+Levél dokumentumosztály.
+
 
 %package latex-jknappen
 Summary:	Miscellaneous packages by Joerg Knappen
@@ -2288,6 +2313,13 @@ Knappen, including sgmlcmpt.
 %description latex-jknappen -l pl.UTF-8
 Różne makra, głównie do używania dodatkowych fontów autorstwa Joerga
 Knappena. Zawiera sgmlcmpt.
+
+%package latex-leftidx
+Summary:	Left and right subscripts and superscripts in math mode
+Summary(hu.UTF-8):	Bal és jobboldali alsó és felső indexek matematikai módban
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %package latex-lm
 Summary:	LaTeX styles for Latin Modern family fonts
@@ -2525,6 +2557,20 @@ Multi-column enumerated lists.
 
 %description latex-multienum -l hu.UTF-8
 Többoszlopos számozott listák.
+
+
+%package latex-moreverb
+Summary:	Extended verbatim
+Summary(hu.UTF-8):	Kiterjesztett verbatim
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-moreverb
+Extended verbatim.
+
+%description latex-moreverb -l hu.UTF-8
+Kiterjesztett verbatim.
 
 %package latex-ntheorem
 Summary:	Enhanced theorem environment
@@ -4603,6 +4649,12 @@ fi
 %postun latex-abstract
 %texhash
 
+%post latex-accfonts
+%texhash
+
+%postun latex-accfonts
+%texhash
+
 %post latex-adrconv
 %texhash
 
@@ -4786,10 +4838,22 @@ fi
 %postun latex-exam
 %texhash
 
+%post latex-gbrief
+%texhash
+
+%postun latex-gbrief
+%texhash
+
 %post latex-jknappen
 %texhash
 
 %postun latex-jknappen
+%texhash
+
+%post latex-leftidx
+%texhash
+
+%postun latex-leftidx
 %texhash
 
 %post latex-lm
@@ -4850,6 +4914,12 @@ fi
 %texhash
 
 %postun latex-mltex
+%texhash
+
+%post latex-moreverb
+%texhash
+
+%postun latex-moreverb
 %texhash
 
 %post latex-multienum
@@ -5939,7 +6009,6 @@ fi
 %{texmfdist}/doc/latex/footmisc
 %{texmfdist}/doc/latex/footnpag
 %{texmfdist}/doc/latex/fp
-%{texmfdist}/doc/latex/g-brief
 %{texmfdist}/doc/latex/geometry
 %{texmfdist}/doc/latex/graphics
 %{texmfdist}/doc/latex/hyperref
@@ -5948,14 +6017,12 @@ fi
 %{texmfdist}/doc/latex/koma-script
 %{texmfdist}/doc/latex/labels
 %{texmfdist}/doc/latex/layouts
-%{texmfdist}/doc/latex/leftidx
 %{texmfdist}/doc/latex/lettrine
 %{texmfdist}/doc/latex/listings
 %{texmfdist}/doc/latex/ltabptch
 %{texmfdist}/doc/latex/mdwtools
 %{texmfdist}/doc/latex/memoir
 %{texmfdist}/doc/latex/mh
-%{texmfdist}/doc/latex/moreverb
 %{texmfdist}/doc/latex/mparhack
 %{texmfdist}/doc/latex/ms
 %{texmfdist}/doc/latex/multibib
@@ -6774,7 +6841,6 @@ fi
 %{texmfdist}/tex/latex/a0poster
 %{texmfdist}/tex/latex/aastex
 %{texmfdist}/tex/latex/abc
-%{texmfdist}/tex/latex/accfonts
 %{texmfdist}/tex/latex/achemso
 %{texmfdist}/tex/latex/acmconf
 %{texmfdist}/tex/latex/acmtrans
@@ -7132,7 +7198,6 @@ fi
 %{texmfdist}/tex/latex/fullpict
 %{texmfdist}/tex/latex/functan
 %{texmfdist}/tex/latex/fundus
-%{texmfdist}/tex/latex/g-brief
 %{texmfdist}/tex/latex/gaceta
 %{texmfdist}/tex/latex/galois
 %{texmfdist}/tex/latex/gastex
@@ -7242,7 +7307,6 @@ fi
 %{texmfdist}/tex/latex/labels
 %{texmfdist}/tex/latex/latexconfig
 %{texmfdist}/tex/latex/layouts
-%{texmfdist}/tex/latex/leftidx
 %{texmfdist}/tex/latex/lettrine
 %{texmfdist}/tex/latex/listings
 %{texmfdist}/tex/latex/ltabptch
@@ -7259,7 +7323,6 @@ fi
 %{texmfdist}/tex/latex/modroman
 %{texmfdist}/tex/latex/mongolian-babel
 %{texmfdist}/tex/latex/montex
-%{texmfdist}/tex/latex/moreverb
 %{texmfdist}/tex/latex/mparhack
 %{texmfdist}/tex/latex/ms
 %{texmfdist}/tex/latex/multibib
@@ -7422,6 +7485,10 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/abstract
 %{texmfdist}/tex/latex/abstract
+
+%files latex-accfonts
+%defattr(644,root,root,755)
+%{texmfdist}/tex/latex/accfonts
 
 %files latex-adrconv
 %defattr(644,root,root,755)
@@ -7627,8 +7694,13 @@ fi
 
 %files latex-exam
 %defattr(644,root,root,755)
-%{texmfdist}/doc/latex/exam
+%doc %{texmfdist}/doc/latex/exam
 %{texmfdist}/tex/latex/exam
+
+%files latex-gbrief
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/g-brief
+%{texmfdist}/tex/latex/g-brief
 
 %files latex-jknappen
 %defattr(644,root,root,755)
@@ -7637,8 +7709,13 @@ fi
 
 %files latex-lastpage
 %defattr(644,root,root,755)
-%{texmfdist}/tex/latex/lastpage
 %doc %{texmfdist}/doc/latex/lastpage
+%{texmfdist}/tex/latex/lastpage
+
+%files latex-leftidx
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/leftidx
+%{texmfdist}/tex/latex/leftidx
 
 %files latex-lm
 %defattr(644,root,root,755)
@@ -7703,6 +7780,11 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/mltex
 %{texmfdist}/tex/latex/mltex
+
+%files latex-moreverb
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/moreverb
+%{texmfdist}/tex/latex/moreverb
 
 %files latex-multienum
 %defattr(644,root,root,755)
