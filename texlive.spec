@@ -8705,5 +8705,27 @@ fi
 
 %files tex4ht
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/ht
+%attr(755,root,root) %{_bindir}/htcontext
+%attr(755,root,root) %{_bindir}/htlatex
+%attr(755,root,root) %{_bindir}/htmex
+%attr(755,root,root) %{_bindir}/httex
+%attr(755,root,root) %{_bindir}/httexi
+%attr(755,root,root) %{_bindir}/htxelatex
+%attr(755,root,root) %{_bindir}/htxetex
+%attr(755,root,root) %{_bindir}/mk4ht
+%attr(755,root,root) %{_bindir}/t4ht
+%attr(755,root,root) %{_bindir}/tex4ht
+%{texmfdist}/scripts/tex4ht
 %{texmfdist}/tex/generic/tex4ht
+%dir %{texmfdist}/scripts/tex4ht
+%attr(755,root,root) %{texmfdist}/scripts/tex4ht/ht.sh
+%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htcontext.sh
+%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htlatex.sh
+%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htmex.sh
+%attr(755,root,root) %{texmfdist}/scripts/tex4ht/httex.sh
+%attr(755,root,root) %{texmfdist}/scripts/tex4ht/httexi.sh
+%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxelatex.sh
+%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxetex.sh
+%attr(755,root,root) %{texmfdist}/scripts/tex4ht/mk4ht.pl
 %{texmfdist}/tex4ht
