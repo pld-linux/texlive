@@ -3183,6 +3183,14 @@ Antykwa Torunska, a Type 1 family of a Polish traditional type.
 %description fonts-antt -l pl.UTF-8
 Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1.
 
+%package fonts-arphic
+Summary:	Arphic fonts
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-arphic
+Arphic fonts.
+
 %package fonts-bbm
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
 Summary(pl.UTF-8):	Tablicowy wariant fontów Computer Modern ze wsparciem dla LaTeXa
@@ -3715,6 +3723,14 @@ TX fonts.
 %description fonts-tx -l pl.UTF-8
 Fonty TX.
 
+%package fonts-uhc
+Summary:	UHC fonts
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-uhc
+UHC fonts.
+
 %package fonts-urw
 Summary:	URW fonts
 Summary(pl.UTF-8):	Fonty URW
@@ -3750,6 +3766,14 @@ VNR fonts.
 
 %description fonts-vnr -l pl.UTF-8
 Fonty VNR.
+
+%package fonts-wadalab
+Summary:	Wadalab fonts
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-wadalab
+Wadalab fonts.
 
 %package fonts-wasy
 Summary:	Waldis symbol fonts
@@ -3811,6 +3835,14 @@ Antykwa Torunska, a Type 1 family of a Polish traditional type.
 
 %description fonts-type1-antt -l pl.UTF-8
 Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1.
+
+%package fonts-type1-arphic
+Summary:	Type1 Arphic fonts
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-type1-arphic
+Type1 Arphic fonts.
 
 %package fonts-type1-belleek
 Summary:	Free replacement for basic MathTime fonts
@@ -4097,6 +4129,14 @@ TX fonts.
 %description fonts-type1-tx -l pl.UTF-8
 Fonty TX.
 
+%package fonts-type1-uhc
+Summary:	Type1 UHC fonts
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-type1-uhc
+Type1 UHC fonts.
+
 %package fonts-type1-urw
 Summary:	URW fonts
 Summary(pl.UTF-8):	Fonty URW
@@ -4120,6 +4160,14 @@ Type1 VNR fonts.
 
 %description fonts-type1-vnr -l pl.UTF-8
 Fonty Type1 VNR.
+
+%package fonts-type1-wadalab
+Summary:	Type1 Wadalab fonts
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-type1-wadalab
+Type1 Wadalab fonts.
 
 %package fonts-type1-xypic
 Summary:	Xy-pic fonts
@@ -8089,6 +8137,13 @@ fi
 %{texmfdist}/tex/plain/antt
 %{texmfdist}/tex/latex/antt
 
+%files fonts-arphic
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/fonts/arphic
+%{texmfdist}/fonts/afm/arphic
+%{texmfdist}/fonts/tfm/arphic
+%{texmfdist}/fonts/vf/arphic
+
 %files fonts-bbm
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/bbm
@@ -8401,10 +8456,18 @@ fi
 %{texmfdist}/fonts/tfm/public/txfonts
 %{texmfdist}/fonts/vf/public/txfonts
 
+%files fonts-uhc
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/fonts/uhc
+%{texmfdist}/fonts/afm/uhc
+%{texmfdist}/fonts/tfm/uhc
+%{texmfdist}/fonts/vf/uhc
+
 %files fonts-urw
 %defattr(644,root,root,755)
-# %doc %{texmf}/doc/fonts/urw
 %{texmfdist}/fonts/afm/urw
+%{texmfdist}/fonts/tfm/urw
+%{texmfdist}/fonts/vf/urw
 
 %files fonts-urwvn
 %defattr(644,root,root,755)
@@ -8418,6 +8481,13 @@ fi
 %{texmfdist}/fonts/map/dvips/vntex
 %{texmfdist}/fonts/source/vntex/vnr
 %{texmfdist}/fonts/tfm/vntex/vnr
+
+%files fonts-wadalab
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/fonts/wadalab
+%{texmfdist}/fonts/afm/wadalab
+%{texmfdist}/fonts/tfm/wadalab
+%{texmfdist}/fonts/vf/wadalab
 
 %files fonts-wasy
 %defattr(644,root,root,755)
@@ -8447,6 +8517,10 @@ fi
 %defattr(644,root,root,755)
 # %{texmf}/dvips/antt
 %{texmfdist}/fonts/type1/public/antt
+
+%files fonts-type1-arphic
+%defattr(644,root,root,755)
+%{texmfdist}/fonts/type1/arphic
 
 %files fonts-type1-belleek
 %defattr(644,root,root,755)
@@ -8534,6 +8608,10 @@ fi
 # %defattr(644,root,root,755)
 # %{texmf}/fonts/type1/public/tt2001
 
+%files fonts-type1-uhc
+%defattr(644,root,root,755)
+%{texmfdist}/fonts/type1/uhc
+
 %files fonts-type1-urw
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/type1/urw
@@ -8541,6 +8619,10 @@ fi
 %files fonts-type1-vnr
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/type1/vntex/vnr
+
+%files fonts-type1-wadalab
+%defattr(644,root,root,755)
+%{texmfdist}/fonts/type1/wadalab
 
 %files fonts-type1-xypic
 %defattr(644,root,root,755)
