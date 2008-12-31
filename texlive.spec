@@ -2321,6 +2321,12 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
+%description latex-leftidx
+Left and right subscripts and superscripts in math mode.
+
+%description latex-leftidx -l hu.UTF-8
+Bal és jobboldali alsó és felső indexek matematikai módban.
+
 %package latex-lm
 Summary:	LaTeX styles for Latin Modern family fonts
 Summary(pl.UTF-8):	Style LaTeXa dla fontów z rodziny Latin Modern
