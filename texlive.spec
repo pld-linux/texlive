@@ -5837,23 +5837,37 @@ fi
 %dir %{texmfdist}/fonts
 %dir %{texmfdist}/fonts/afm
 %dir %{texmfdist}/fonts/afm/public
+%dir %{texmfdist}/fonts/afm/vntex 
 %dir %{texmfdist}/fonts/enc
 %dir %{texmfdist}/fonts/enc/dvips
 %dir %{texmfdist}/fonts/enc/dvips/vntex
 %dir %{texmfdist}/fonts/map
+%dir %{texmfdist}/fonts/map/dvipdfm
 %dir %{texmfdist}/fonts/map/dvips
 %dir %{texmfdist}/fonts/map/dvips/vntex
 %dir %{texmfdist}/fonts/map/fontname
+%dir %{texmfdist}/fonts/ofm
+%dir %{texmfdist}/fonts/ofm/public
+%dir %{texmfdist}/fonts/ovf
+%dir %{texmfdist}/fonts/ovf/public
+%dir %{texmfdist}/fonts/ovp
+%dir %{texmfdist}/fonts/ovp/public
+%dir %{texmfdist}/fonts/opentype
+%dir %{texmfdist}/fonts/opentype/public
 %dir %{texmfdist}/fonts/pk
 %dir %{texmfdist}/fonts/pk/ljfour
 %dir %{texmfdist}/fonts/source
 %dir %{texmfdist}/fonts/source/public
+%dir %{texmfdist}/fonts/source/vntex
 %dir %{texmfdist}/fonts/tfm
 %dir %{texmfdist}/fonts/tfm/public
+%dir %{texmfdist}/fonts/tfm/vntex 
 %dir %{texmfdist}/fonts/type1
 %dir %{texmfdist}/fonts/type1/public
+%dir %{texmfdist}/fonts/type1/vntex
 %dir %{texmfdist}/fonts/vf
 %dir %{texmfdist}/fonts/vf/public
+%dir %{texmfdist}/fonts/vf/vntex
 %dir %{texmfdist}/source
 %dir %{texmfdist}/source/fonts
 %dir %{texmfdist}/source/latex
@@ -6640,6 +6654,7 @@ fi
 
 %files csplain
 %defattr(644,root,root,755)
+%dir %{texmfdist}/doc/cslatex/base
 %doc %{texmfdist}/doc/cslatex/base/README-cspsfont
 %doc %{texmfdist}/doc/cslatex/base/cs-fonts.doc
 %doc %{texmfdist}/doc/cslatex/base/cscorr.tab
@@ -7894,6 +7909,7 @@ fi
 
 %files tex-babel
 %defattr(644,root,root,755)
+%dir %{texmfdist}/source/generic/babel
 %doc %{texmfdist}/doc/generic/babel
 %{texmfdist}/tex/generic/babel
 
@@ -7948,6 +7964,12 @@ fi
 %files tex-spanish
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/spanish-mx
+%dir %{texmfdist}/source/latex/mapcodes
+%dir %{texmfdist}/source/latex/polyglot/langs
+%dir %{texmfdist}/tex/latex/apacite
+%dir %{texmfdist}/tex/latex/babelbib
+%dir %{texmfdist}/tex/latex/dvdcoll/dcl
+%dir %{texmfdist}/tex/texsis/base
 %{texmfdist}/source/generic/babel/spanish.ins
 %{texmfdist}/source/generic/babel/spanish.dtx
 %{texmfdist}/source/latex/polyglot/langs/spanish.ld
@@ -8516,6 +8538,9 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/cef*
 %dir %{texmfdist}/tex/latex/cjk
+%dir %{texmfdist}/doc/latex/cjk
+%dir %{texmfdist}/source/latex/cjk
+%dir %{texmfdist}/source/latex/cjk/utils
 %{texmfdist}/tex/latex/cjk/CEF
 %doc %{texmfdist}/doc/latex/cjk/doc
 %doc %{texmfdist}/doc/latex/cjk/examples
