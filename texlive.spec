@@ -2056,6 +2056,14 @@ Extended BibTeX citation support for the humanities and legal texts.
 Rozszerzona obsługa cytowania BibTeXa do tekstów humanistycznych i
 prawniczych.
 
+%package latex-bibtex-vancouver
+Summary:	Bibliographic style file for Biomedical Journals
+Group:		Applications/Publication/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%package latex-bibtex-vancouver
+Bibliographic style file for Biomedical Journals.
 
 %package latex-booktabs
 Summary:	Publication quality tables in LaTeX
@@ -7643,6 +7651,16 @@ fi
 # %files latex-bibtex-nor
 # %defattr(644,root,root,755)
 # %{texmf}/bibtex/bst/norbib
+
+%files latex-bibtex-vancouver
+%defattr(644,root,root,755)
+%dir %{texmfdist}/bibtex/bib/vancouver
+%dir %{texmfdist}/doc/bibtex/vancouver/README
+%{texmfdist}/bibtex/bib/vancouver/vancouver.bib
+%{texmfdist}/bibtex/bst/vancouver/vancouver.bst
+%doc %{texmfdist}/doc/bibtex/vancouver/README
+%doc %{texmfdist}/doc/bibtex/vancouver/vancouver.pdf
+%doc %{texmfdist}/doc/bibtex/vancouver/vancouver.tex
 
 %files latex-booktabs
 %defattr(644,root,root,755)
