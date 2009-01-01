@@ -2966,6 +2966,19 @@ Text and character manipulation in PSTricks.
 %description latex-pst-text -l hu.UTF-8
 Szöveg és karakter manipulációk PSTricks-szel.
 
+%package latex-pst-uncategorized
+Summary:	Other uncategorized PSTricks packages
+Summary(hu.UTF-8):	Néhány kategorizálatlan PSTricks csomag
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-uncategorized
+Other uncategorized PSTricks packages.
+
+%description latex-pst-uncategorized -l hu.UTF-8
+Néhány kategorizálatlan PSTricks csomag.
+
 %package latex-pxfonts
 Summary:	PX fonts LaTeX support
 Summary(pl.UTF-8):	Obsługa fontów PX w LaTeXu
@@ -5568,6 +5581,13 @@ fi
 %postun latex-pst-text
 %texhash
 
+%post latex-pst-uncategorized
+%texhash
+
+%postun latex-pst-uncategorized
+
+%texhash
+
 %postun latex-pxfonts
 %texhash
 
@@ -6929,12 +6949,15 @@ fi
 %doc %{texmf}/doc/xindy
 %dir %{texmf}/xindy
 %dir %{texmf}/xindy/lang
+%dir %{texmf}/scripts
+%{texmf}/scripts/xindy
 %{texmf}/xindy/base
 %{texmf}/xindy/class
 %{texmf}/xindy/ord
 %{texmf}/xindy/rules
 %{texmf}/xindy/styles
 %{texmf}/xindy/tex
+
 
 %files -n xindy-albanian
 %defattr(644,root,root,755)
@@ -8723,6 +8746,142 @@ fi
 %{texmfdist}/dvips/pst-text/pst-text.pro
 %{texmfdist}/tex/generic/pst-text
 %{texmfdist}/tex/latex/pst-text
+
+%files latex-pst-uncategorized
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-3d
+%doc %{texmfdist}/doc/generic/pst-asr
+%doc %{texmfdist}/doc/generic/pst-bar
+%doc %{texmfdist}/doc/generic/pst-barcode
+%doc %{texmfdist}/doc/generic/pst-blur
+%doc %{texmfdist}/doc/generic/pst-coil
+%doc %{texmfdist}/doc/generic/pst-cox
+%doc %{texmfdist}/doc/generic/pst-cox/pst-coxcoor
+%doc %{texmfdist}/doc/generic/pst-cox/pst-coxeterp
+%doc %{texmfdist}/doc/generic/pst-dbicons
+%doc %{texmfdist}/doc/generic/pst-eps
+%doc %{texmfdist}/doc/generic/pst-fill
+%doc %{texmfdist}/doc/generic/pst-geo
+%doc %{texmfdist}/doc/generic/pst-ghsb
+%doc %{texmfdist}/doc/generic/pst-gr3d
+%doc %{texmfdist}/doc/generic/pst-grad
+%doc %{texmfdist}/doc/generic/pst-jtree
+%doc %{texmfdist}/doc/generic/pst-labo
+%doc %{texmfdist}/doc/generic/pst-lens
+%doc %{texmfdist}/doc/generic/pst-light3d
+%doc %{texmfdist}/doc/generic/pst-osci
+%doc %{texmfdist}/doc/generic/pst-pad
+%doc %{texmfdist}/doc/generic/pst-pdgr
+%doc %{texmfdist}/doc/generic/pst-poly
+%doc %{texmfdist}/doc/generic/pst-qtree
+%doc %{texmfdist}/doc/generic/pst-slpe
+%doc %{texmfdist}/doc/generic/pst-solides3d
+%doc %{texmfdist}/doc/generic/pst-solides3d/doc-en
+%doc %{texmfdist}/doc/generic/pst-solides3d/doc
+%doc %{texmfdist}/doc/generic/pst-soroban
+%doc %{texmfdist}/doc/generic/pst-spectra
+%doc %{texmfdist}/doc/generic/pst-stru
+%doc %{texmfdist}/doc/generic/pst-uml
+%doc %{texmfdist}/doc/generic/pst-vue3d
+%doc %{texmfdist}/doc/latex/auto-pst-pdf
+%doc %{texmfdist}/doc/latex/pst-pdf
+%{texmfdist}/dvips/pst-barcode
+%{texmfdist}/dvips/pst-blur
+%{texmfdist}/dvips/pst-coil
+%{texmfdist}/dvips/pst-cox
+%{texmfdist}/dvips/pst-eucl
+%{texmfdist}/dvips/pst-geo
+%{texmfdist}/dvips/pst-ghsb
+%{texmfdist}/dvips/pst-grad
+%{texmfdist}/dvips/pst-light3d
+%{texmfdist}/dvips/pst-slpe
+%{texmfdist}/dvips/pst-solides3d
+%{texmfdist}/dvips/pst-spectra
+%{texmfdist}/dvips/pst-vue3d
+%{texmfdist}/scripts/pst-pdf
+%{texmfdist}/source/generic/pst-3d
+%{texmfdist}/source/generic/pst-3dplot
+%{texmfdist}/source/generic/pst-barcode
+%{texmfdist}/source/generic/pst-blur
+%{texmfdist}/source/generic/pst-circ
+%{texmfdist}/source/generic/pst-coil
+%{texmfdist}/source/generic/pst-dbicons
+%{texmfdist}/source/generic/pst-diffraction
+%{texmfdist}/source/generic/pst-eps
+%{texmfdist}/source/generic/pst-fill
+%{texmfdist}/source/generic/pst-fractal
+%{texmfdist}/source/generic/pst-fun
+%{texmfdist}/source/generic/pst-func
+%{texmfdist}/source/generic/pst-lens
+%{texmfdist}/source/generic/pst-light3d
+%{texmfdist}/source/generic/pst-optic
+%{texmfdist}/source/generic/pst-pad
+%{texmfdist}/source/generic/pst-pdgr
+%{texmfdist}/source/generic/pst-slpe
+%{texmfdist}/source/generic/pst-soroban
+%{texmfdist}/source/generic/pst-text
+%{texmfdist}/source/generic/pst-uml
+%{texmfdist}/source/generic/pst-vue3d
+%{texmfdist}/source/latex/auto-pst-pdf
+%{texmfdist}/source/latex/pst-gr3d
+%{texmfdist}/source/latex/pst-pdf
+%{texmfdist}/source/latex/pst-poly
+%{texmfdist}/tex/generic/pst-3d
+%{texmfdist}/tex/generic/pst-asr
+%{texmfdist}/tex/generic/pst-barcode
+%{texmfdist}/tex/generic/pst-blur
+%{texmfdist}/tex/generic/pst-coil
+%{texmfdist}/tex/generic/pst-cox
+%{texmfdist}/tex/generic/pst-eps
+%{texmfdist}/tex/generic/pst-fill
+%{texmfdist}/tex/generic/pst-geo
+%{texmfdist}/tex/generic/pst-ghsb
+%{texmfdist}/tex/generic/pst-gr3d
+%{texmfdist}/tex/generic/pst-grad
+%{texmfdist}/tex/generic/pst-jtree
+%{texmfdist}/tex/generic/pst-labo
+%{texmfdist}/tex/generic/pst-lens
+%{texmfdist}/tex/generic/pst-light3d
+%{texmfdist}/tex/generic/pst-osci
+%{texmfdist}/tex/generic/pst-pad
+%{texmfdist}/tex/generic/pst-pdgr
+%{texmfdist}/tex/generic/pst-poly
+%{texmfdist}/tex/generic/pst-qtree
+%{texmfdist}/tex/generic/pst-slpe
+%{texmfdist}/tex/generic/pst-solides3d
+%{texmfdist}/tex/generic/pst-spectra
+%{texmfdist}/tex/generic/pst-stru
+%{texmfdist}/tex/generic/pst-vue3d
+%{texmfdist}/tex/latex/pst-3d
+%{texmfdist}/tex/latex/pst-asr
+%{texmfdist}/tex/latex/pst-barcode
+%{texmfdist}/tex/latex/pst-blur
+%{texmfdist}/tex/latex/pst-coil
+%{texmfdist}/tex/latex/pst-cox
+%{texmfdist}/tex/latex/pst-dbicons
+%{texmfdist}/tex/latex/pst-eps
+%{texmfdist}/tex/latex/pst-fill
+%{texmfdist}/tex/latex/pst-geo
+%{texmfdist}/tex/latex/pst-ghsb
+%{texmfdist}/tex/latex/pst-gr3d
+%{texmfdist}/tex/latex/pst-grad
+%{texmfdist}/tex/latex/pst-jtree
+%{texmfdist}/tex/latex/pst-labo
+%{texmfdist}/tex/latex/pst-lens
+%{texmfdist}/tex/latex/pst-light3d
+%{texmfdist}/tex/latex/pst-osci
+%{texmfdist}/tex/latex/pst-pad
+%{texmfdist}/tex/latex/pst-pdf
+%{texmfdist}/tex/latex/pst-pdgr
+%{texmfdist}/tex/latex/pst-poly
+%{texmfdist}/tex/latex/pst-qtree
+%{texmfdist}/tex/latex/pst-slpe
+%{texmfdist}/tex/latex/pst-solides3d
+%{texmfdist}/tex/latex/pst-soroban
+%{texmfdist}/tex/latex/pst-spectra
+%{texmfdist}/tex/latex/pst-stru
+%{texmfdist}/tex/latex/pst-uml
+%{texmfdist}/tex/latex/pst-vue3d
 
 %files latex-psnfss
 %defattr(644,root,root,755)
