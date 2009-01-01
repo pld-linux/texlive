@@ -2711,6 +2711,32 @@ Makró csomag rajzok készítéséhez közvetlenül TeX-ben és LaTeX-ben.
 %description latex-pgf -l pl.UTF-8
 Pakiet makr do tworzenia grafiki bezpośrednio z TeXa i LaTeXa.
 
+%package latex-prosper
+Summary:	LaTeX class for high quality slides
+Summary(hu.UTF-8):	LaTeX osztály jó minőségű fóliák készítéséhez
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-prosper
+LaTeX class for high quality slides.
+
+%description latex-prosper -l hu.UTF-8
+LaTeX osztály jó minőségű fóliák készítéséhez.
+
+%package latex-pseudocode
+Summary:	LaTeX enviroment for specifying algorithms in a natural way
+Summary(hu.UTF-8):	LaTeX környezet algoritmusok bevitelére
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-pseudocode
+LaTeX enviroment for specifying algorithms in a natural way.
+
+%description latex-pseudocode -l hu.UTF-8
+LaTeX környezet algoritmusok bevitelére.
+
 %package latex-psnfss
 Summary:	LaTeX font support for common PostScript fonts
 Summary(pl.UTF-8):	Obsługa popularnych fontów postscriptowych w LaTeXu
@@ -2728,6 +2754,45 @@ PostScript fonts.
 %description latex-psnfss -l pl.UTF-8
 LaTeXowe pliki definicji fontów, makra i metryki fontów dla
 popularnych fontów postscriptowych.
+
+%package latex-pst-eucl
+Summary:	Euclidian geometry with pstricks
+Summary(hu.UTF-8):	Euklidészi geometria a pstricks használatával
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-eucl
+Euclidian geometry with pstricks.
+
+%description latex-pst-eucl -l hu.UTF-8
+Euklidészi geometria a pstricks használatával.
+
+%package latex-pst-fr3d
+Summary:	Draw 3-dimensional framed boxes using PSTricks
+Summary(hu.UTF-8):	Háromdimenziós dobozok PSTricks segítségével
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-fr3d
+Draw 3-dimensional framed boxes using PSTricks.
+
+%description latex-pst-fr3d -l hu.UTF-8
+Háromdimenziós dobozok PSTricks segítségével.
+
+%package latex-pst-fractal
+Summary:	Draw fractal sets using PSTricks
+Summary(hu.UTF-8):	Fraktálok rajzolása PSTricks segítségével
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-fractal
+Draw fractal sets using PSTricks.
+
+%description latex-pst-fractal -l hu.UTF-8
+Fraktálok rajzolása PSTricks segítségével.
 
 %package latex-pxfonts
 Summary:	PX fonts LaTeX support
@@ -5214,10 +5279,40 @@ fi
 %postun latex-pgf
 %texhash
 
+%post latex-prosper
+%texhash
+
+%postun latex-prosper
+%texhash
+
+%post latex-pseudocode
+%texhash
+
+%postun latex-pseudocode
+%texhash
+
 %post latex-psnfss
 %texhash
 
 %postun latex-psnfss
+%texhash
+
+%post latex-pst-eucl
+%texhash
+
+%postun latex-pst-eucl
+%texhash
+
+%post latex-pst-fr3d
+%texhash
+
+%postun latex-pst-fr3d
+%texhash
+
+%post latex-pst-fractal
+%texhash
+
+%postun latex-pst-fractal
 %texhash
 
 %post latex-pxfonts
@@ -8263,6 +8358,36 @@ fi
 %{texmfdist}/tex/latex/pgfopts
 %{texmfdist}/tex/latex/pgfplots
 
+%files latex-prosper
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/prosper
+%{texmfdist}/tex/latex/prosper
+
+%files latex-pseudocode
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/pseudocode
+%{texmfdist}/tex/latex/pseudocode
+
+%files latex-pst-eucl
+%defattr(644,root,root,755)
+%{texmfdist}/tex/generic/pst-eucl
+%{texmfdist}/tex/latex/pst-eucl
+%doc %{texmfdist}/doc/generic/pst-eucl
+
+%files latex-pst-fr3d
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-fr3d
+%{texmfdist}/source/generic/pst-fr3d
+%{texmfdist}/tex/generic/pst-fr3d
+%{texmfdist}/tex/latex/pst-fr3d
+
+%files latex-pst-fractal
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-fractal
+%{texmfdist}/dvips/pst-fractal
+%{texmfdist}/tex/generic/pst-fractal
+%{texmfdist}/tex/latex/pst-fractal
+
 %files latex-psnfss
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/psnfss
@@ -8270,7 +8395,6 @@ fi
 %{texmfdist}/source/latex/psnfss
 %{texmfdist}/source/latex/latex-tds/tex/psnfss2e.drv
 %{texmfdist}/tex/latex/psnfss
-
 
 %files latex-pxfonts
 %defattr(644,root,root,755)
