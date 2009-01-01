@@ -1,5 +1,6 @@
 # TODO:
 # MAIN TODO (sort by importnce):
+# - fix broken symlinks in /usr/bin (see section %install)
 # - need more %dir (poldek says it missed)
 # - texlive-format-pdflatex deps
 # - check unpackaged files
@@ -21,7 +22,6 @@
 # - merge all above with configure switch "--enable-fhs" and send it to TE
 #
 # TeXLive specific TODO:
-# - fix broken symlinks in /usr/bin (see line 3564)
 # - summary/description correcting (all languages)
 # - texk/web2c doesn't build (luatex option)
 # - %files latex-bibtex-revtex4
@@ -46,7 +46,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.8.3
+Release:	0.9
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -4766,11 +4766,6 @@ lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 #	-e "s|/var/cache/fonts|$RPM_BUILD_ROOT/var/cache/fonts|g;" \
 #	texmf/web2c/texmf.cnf
 
-# install -d $RPM_BUILD_ROOT%{texmf} $RPM_BUILD_ROOT%{texmfdist} $RPM_BUILD_ROOT%{texmfdoc}
-# %{__cp} -a texlive-20080822-texmf/texmf/* $RPM_BUILD_ROOT%{texmf}
-# %{__cp} -a texlive-20080822-texmf/texmf-dist/* $RPM_BUILD_ROOT%{texmfdist}
-# %{__cp} -a texlive-20080822-texmf/texmf-doc/* $RPM_BUILD_ROOT%{texmfdoc}
-
 install -d $RPM_BUILD_ROOT%{texmf}/fonts/opentype/public
 
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
@@ -4789,12 +4784,12 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 	texmfsysconfig=$RPM_BUILD_ROOT%{texmf}
 
 # Fix broken symlinks
-# CURDIR=$(pwd)
-# cd $RPM_BUILD_ROOT%{_bindir}
-# for file in $(file * | grep broken | awk -F ":" {'print $1'}); do
-# ln -sf $(readlink $file | %{__sed} "s@\.\.@%{_datadir}@") $file
-# done
-# cd $CURDIR
+CURDIR=$(pwd)
+cd $RPM_BUILD_ROOT%{_bindir}
+for file in $(file * | grep broken | awk -F ":" {'print $1'}); do
+	ln -sf $(readlink $file | %{__sed} "s@\.\.@\.\./share@") $file
+done
+cd $CURDIR
 
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
 #touch $RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap/maps.lst
