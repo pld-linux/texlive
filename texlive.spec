@@ -1689,7 +1689,7 @@ Requires:	%{name}-tex-ruhyphen = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-ukrhyph = %{epoch}:%{version}-%{release}
 # for misc/eurosym:
 Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
-Requires:	%{name}-format-pdftex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-koma-script
@@ -6867,6 +6867,8 @@ fi
 
 %files latex
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/latex
+%attr(755,root,root) %{_bindir}/pslatex
 # %lang(fi) %{_mandir}/fi/man1/latex.1*
 # %lang(pl) %{_mandir}/pl/man1/latex.1*
 # %{_infodir}/latex.info*
@@ -7944,10 +7946,8 @@ fi
 %{texmfdist}/tex/latex/wasysym
 %{texmfdist}/source/latex/wasysym
 
-%files format-latex
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/latex
-%attr(755,root,root) %{_bindir}/pslatex
+# %files format-latex
+# %defattr(644,root,root,755)
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/latex.fmt
 
 %files format-pdflatex
