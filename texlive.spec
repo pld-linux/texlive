@@ -1747,8 +1747,8 @@ Ten pakiet zawiera podstawowe pliki.
 Summary:	Generalising mathematical index sets
 Summary(hu.UTF-8):	A matematikai halmazok indexelésének általánosítása
 Group:		Applications/Publishing/TeX
-Requires:	%{name}-latex
 Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-12many
 Generalising mathematical index sets.
@@ -1760,8 +1760,8 @@ A matematikai halmazok indexelésének általánosítása.
 Summary:	Control the typesetting of the abstract environment
 Summary(hu.UTF-8):	Az "abstract" környezet szedésének irányítása
 Group:		Applications/Publishing/TeX
-Requires:	%{name}-latex
 Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-abstract
 Control the typesetting of the abstract environment.
@@ -1908,6 +1908,19 @@ Extra control of appendices.
 %description latex-appendix -l hu.UTF-8
 Az appendixek nagyobb irányítása.
 
+%package latex-backgammon
+Summary:	LaTeX package to documenting backgammon games
+Summary(hu.UTF-8):	LaTeX csomag backgammon játékok dokumentálására
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-backgammon
+LaTeX package to documenting backgammon games.
+
+%description latex-backgammon -l hu.UTF-8
+LaTeX csomag backgammon játékok dokumentálására
+
 %package latex-bbm
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
 Summary(pl.UTF-8):	Tablicowy wariant fontów Computer Modern z obsługą LaTeXa
@@ -1964,6 +1977,19 @@ Bibliography management for LaTeX.
 
 %description latex-bibtex -l pl.UTF-8
 Zarządzanie bibliografią dla LaTeXa.
+
+%package latex-beamer
+Summary:	A LaTeX class for producing presentations and slides
+Summary(hu.UTF-8):	LaTeX dokumentumosztály prezentációk és fóliák készítéséhez
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-beamer
+A LaTeX class for producing presentations and slides.
+
+%description latex-beamer -l hu.UTF-8
+LaTeX dokumentumosztály prezentációk és fóliák készítéséhez.
 
 %package latex-bezos
 Summary:	Packages by Javier Bezos (additional math tools)
@@ -2702,8 +2728,8 @@ TeXu, zachowując przydatność dla aplikacji windowsowych.
 Summary:	Package to typeset SI units, numbers and angles
 Summary(hu.UTF-8):	Csomag SI egységek, számok és szögek szedésére
 Group:		Applications/Publishing/TeX
-Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
 Requires(post,postun):	/usr/bin/texhash
+Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
 
 %description latex-SIstyle
 Package to typeset SI units, numbers and angles.
@@ -4479,8 +4505,8 @@ install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
 # bzip2 -dc %{SOURCE3} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 # in separate spec
-rm -rf $RPM_BUILD_ROOT%{texmf}/tex/latex/{beamer,pgf,xcolor}
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/latex/{beamer,pgf,xcolor}
+# rm -rf $RPM_BUILD_ROOT%{texmf}/tex/latex/{pgf,xcolor}
+# rm -rf $RPM_BUILD_ROOT%{texmf}/doc/latex/{pgf,xcolor}
 
 # not included in package
 rm -f $RPM_BUILD_ROOT%{texmf}/doc/fonts/oldgerman/COPYING
@@ -4833,6 +4859,12 @@ fi
 %postun latex-appendix
 %texhash
 
+%post latex-backgammon
+%texhash
+
+%postun latex-backgammon
+%texhash
+
 %post latex-bardiag
 %texhash
 
@@ -4849,6 +4881,12 @@ fi
 %texhash
 
 %postun latex-bbold
+%texhash
+
+%post latex-beamer
+%texhash
+
+%postun latex-beamer
 %texhash
 
 %post latex-bezos
@@ -7058,15 +7096,12 @@ fi
 %{texmfdist}/tex/latex/autotab
 %{texmfdist}/tex/latex/avantgar
 %{texmfdist}/tex/latex/babelbib
-%{texmfdist}/tex/latex/backgammon
 %{texmfdist}/tex/latex/bangtex
 %{texmfdist}/tex/latex/barcodes
 %{texmfdist}/tex/latex/base
 %{texmfdist}/tex/latex/bayer
 %{texmfdist}/tex/latex/bbding
 %{texmfdist}/tex/latex/bbm-macros
-%{texmfdist}/tex/latex/beamer-contrib
-%{texmfdist}/tex/latex/beamer
 %{texmfdist}/tex/latex/begriff
 %{texmfdist}/tex/latex/bengali
 %{texmfdist}/tex/latex/bera
@@ -7702,6 +7737,11 @@ fi
 %doc %{texmfdist}/doc/latex/appendix
 %{texmfdist}/tex/latex/appendix
 
+%files latex-backgammon
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/backgammon
+%{texmfdist}/tex/latex/backgammon
+
 %files latex-bardiag
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/bardiag
@@ -7717,6 +7757,12 @@ fi
 %doc %{texmfdist}/doc/latex/bbold
 %{texmfdist}/tex/latex/bbold
 %{texmfdist}/source/latex/bbold
+
+%files latex-beamer
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/beamer
+%{texmfdist}/tex/latex/beamer-contrib
+%{texmfdist}/tex/latex/beamer
 
 %files latex-bezos
 %defattr(644,root,root,755)
@@ -7805,7 +7851,6 @@ fi
 %files latex-bibtex-vancouver
 %defattr(644,root,root,755)
 %dir %{texmfdist}/bibtex/bib/vancouver
-%dir %{texmfdist}/doc/bibtex/vancouver/README
 %{texmfdist}/bibtex/bib/vancouver/vancouver.bib
 %{texmfdist}/bibtex/bst/vancouver/vancouver.bst
 %doc %{texmfdist}/doc/bibtex/vancouver/README
