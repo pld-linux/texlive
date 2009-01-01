@@ -2668,6 +2668,25 @@ Palatino + Computer Modern math fonts for LaTeX.
 %description latex-palatcm -l pl.UTF-8
 Fonty matematyczne Palatino i Computer Modern dla LaTeXa.
 
+%package latex-pgf
+Summary:	The TeX Portable Graphic Format
+Summary(hu.UTF-8):	TeX Portable Graphic Formátum
+Summary(pl.UTF-8):	Przenośny format grafiki dla TeXa
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Obsoletes:	tetex-pgf
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-xcolor = %{epoch}:%{version}-%{release}
+
+%description latex-pgf
+A macro package for creating graphics directly in TeX and LaTeX.
+
+%description latex-pgf -l hu.UTF-8
+Makró csomag rajzok készítéséhez közvetlenül TeX-ben és LaTeX-ben.
+
+%description latex-pgf -l pl.UTF-8
+Pakiet makr do tworzenia grafiki bezpośrednio z TeXa i LaTeXa.
+
 %package latex-psnfss
 Summary:	LaTeX font support for common PostScript fonts
 Summary(pl.UTF-8):	Obsługa popularnych fontów postscriptowych w LaTeXu
@@ -2845,6 +2864,33 @@ m.in.: symbole join box, diamond, leadsto, sqsubset, lhd, rhd, apple,
 ocircle invneg, logof, varint, male, female, phone, clock, lightning,
 pointer, sun, bell, permil, smiley oraz różne symbole elektryczne,
 kształty, nuty, okręgi, znaki, symbole astronomiczne itp.
+
+%package latex-xcolor
+Summary:	Allows for access to color tints, shades, tones etc
+Summary(hu.UTF-8):	Hozzáférés színekhez, tónusokhoz, átmenetekhez, stb.
+Summary(pl.UTF-8):	Pozwala na dostęp do odcieni, gradientów itp.
+Group:		Applications/Publishing/TeX
+Obsoletes:	tetex-latex-xcolor
+
+%description
+`xcolor' provides easy driver-independent access to several kinds of
+color tints, shades, tones, and mixes of arbitrary colors. It allows
+to select a document-wide target color model and offers tools for
+automatic color schemes, conversion between eight color models, and
+alternating table row colors.
+
+%description latex-xcolor -l hu.UTF-8
+`xcolor' egy egyszerű meghajtó-független hozzáférést biztosít
+színekhez, átmenetekhez, tónusokhóz, és a színek korlátlan
+keverékéhez. Lehetőséged van a teljes dokumentumra érvényes szín
+modell kiválasztásához és a színmodellek közötti konverzióra.
+
+%description latex-xcolor -l pl.UTF-8
+`xcolor' dostarcza łatwego, niezależnego od urządzenia dostępu do
+wielu rodzai cieniowania, tonów i połączeń dowolnych kolorów. Pozwala
+na wybór modelu koloru dla całego dokumentu i oferuje narzędzia dla
+schematów kolorów, konwersji między ośmioma modelami kolorów oraz
+naprzemiennych kolorów w tabelach.
 
 %package format-latex
 Summary:	LaTeX macro package
@@ -5126,6 +5172,12 @@ fi
 %postun latex-palatcm
 %texhash
 
+%post latex-pgf
+%texhash
+
+%postun latex-pgf
+%texhash
+
 %post latex-psnfss
 %texhash
 
@@ -5184,6 +5236,12 @@ fi
 %texhash
 
 %postun latex-wasysym
+%texhash
+
+%post latex-xcolor
+%texhash
+
+%postun latex-xcolor
 %texhash
 
 %post format-latex
@@ -8035,6 +8093,13 @@ fi
 # %defattr(644,root,root,755)
 # %{texmf}/tex/latex/palatcm
 
+%files latex-pgf
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pgf
+%{texmfdist}/tex/latex/pgf
+%{texmfdist}/tex/latex/pgfopts
+%{texmfdist}/tex/latex/pgfplots
+
 %files latex-psnfss
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/psnfss
@@ -8101,6 +8166,12 @@ fi
 %doc %{texmfdist}/doc/latex/wasysym
 %{texmfdist}/tex/latex/wasysym
 %{texmfdist}/source/latex/wasysym
+
+%files latex-xcolor
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/xcolor
+%{texmfdist}/dvips/xcolor/xcolor.pro
+%{texmfdist}/source/latex/xcolor
 
 # %files format-latex
 # %defattr(644,root,root,755)
