@@ -1743,10 +1743,24 @@ dających użytkownikom wygodne, predefiniowane formaty dokumentów.
 
 Ten pakiet zawiera podstawowe pliki.
 
+%package latex-12many
+Summary:	Generalising mathematical index sets
+Summary(hu.UTF-8):	A matematikai halmazok indexelésének általánosítása
+Group:		Applications/Publishing/TeX
+Requires:	%{name}-latex
+Requires(post,postun):	%{_bindir}/texhash
+
+%description latex-12many
+Generalising mathematical index sets.
+
+%description latex-12many -l hu.UTF-8
+A matematikai halmazok indexelésének általánosítása.
+
 %package latex-abstract
 Summary:	Control the typesetting of the abstract environment
 Summary(hu.UTF-8):	Az "abstract" környezet szedésének irányítása
 Group:		Applications/Publishing/TeX
+Requires:	%{name}-latex
 Requires(post,postun):	%{_bindir}/texhash
 
 %description latex-abstract
@@ -1907,6 +1921,18 @@ Blackboard variant fonts for Computer Modern, with LaTeX support.
 
 %description latex-bbm -l pl.UTF-8
 Tablicowy wariant fontów Computer Modern z obsługą LaTeXa.
+
+%package latex-bardiag
+Summary:	LateX package for drawing bar diagrams
+Summary(pl.UTF-8):	LaTeX csomag oszlopdiagramok rajzolására
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+
+%description latex-bardiag
+LateX package for drawing bar diagrams.
+
+%description latex-bardiag -l hu.UTF-8
+LaTeX csomag oszlopdiagramok rajzolására.
 
 %package latex-bbold
 Summary:	Sans serif blackboard bold for LaTeX
@@ -2672,6 +2698,18 @@ fontach URW++ rozpowszechnianych z Ghostscriptem. Fonty są kodowane
 zgodnie z układem QX, który ułatwia skład wielojęzyczny i techniczny w
 TeXu, zachowując przydatność dla aplikacji windowsowych.
 
+%package latex-SIstyle
+Summary:	Package to typeset SI units, numbers and angles
+Summary(hu.UTF-8):	Csomag SI egységek, számok és szögek szedésére
+Group:		Applications/Publishing/TeX
+Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
+Requires(post,postun):	/usr/bin/texhash
+
+%description latex-SIstyle
+Package to typeset SI units, numbers and angles.
+
+%description latex-SIstyle -l hu.UTF-8
+Csomag SI egységek, számok és szögek szedésére.
 
 %package latex-SIunits
 Summary:	The SIunits package can be used to standardise the use of units in your writings
@@ -2687,6 +2725,17 @@ your writings.
 %description latex-SIunits -l hu.UTF-8
 Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget.
 
+%package latex-Tabbing
+Summary:	Tabbing with accented letters
+Summary(hu.UTF-8):	Tabbing környezet ékezetes betűk használatával
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	/usr/bin/texhash
+
+%description latex-Tabbing
+Tabbing with accented letters.
+
+%description latex-Tabbing -l hu.UTF-8
+Tabbing környezet ékezetes betűk használatával.
 
 %package latex-urwvn
 Summary:	URWVN fonts
@@ -4730,6 +4779,12 @@ fi
 %fixinfodir
 %texhash
 
+%post latex-12many
+%texhash
+
+%postun latex-12many
+%texhash
+
 %post latex-abstract
 %texhash
 
@@ -4776,6 +4831,12 @@ fi
 %texhash
 
 %postun latex-appendix
+%texhash
+
+%post latex-bardiag
+%texhash
+
+%postun latex-bardiag
 %texhash
 
 %post latex-bbm
@@ -5045,10 +5106,22 @@ fi
 %postun latex-qfonts
 %texhash
 
+%post latex-SIstyle
+%texhash
+
+%postun latex-SIstyle
+%texhash
+
 %post latex-SIunits
 %texhash
 
 %postun latex-SIunits
+%texhash
+
+%post latex-Tabbing
+%texhash
+
+%postun latex-Tabbing
 %texhash
 
 %post latex-txfonts
@@ -6988,7 +7061,6 @@ fi
 %{texmfdist}/tex/latex/backgammon
 %{texmfdist}/tex/latex/bangtex
 %{texmfdist}/tex/latex/barcodes
-%{texmfdist}/tex/latex/bardiag
 %{texmfdist}/tex/latex/base
 %{texmfdist}/tex/latex/bayer
 %{texmfdist}/tex/latex/bbding
@@ -7578,6 +7650,11 @@ fi
 %{texmf}/tex/latex/config
 %{texmf}/tex/latex/dvipdfm
 
+%files latex-12many
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/12many
+%{texmfdist}/source/latex/12many
+
 %files latex-abstract
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/abstract
@@ -7624,6 +7701,11 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/appendix
 %{texmfdist}/tex/latex/appendix
+
+%files latex-bardiag
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/bardiag
+%{texmfdist}/tex/latex/bardiag
 
 %files latex-bbm
 %defattr(644,root,root,755)
@@ -7930,10 +8012,21 @@ fi
 #%files latex-qfonts
 #%defattr(644,root,root,755)
 
+%files latex-SIstyle
+%defattr(644,root,root,755)
+%{texmfdist}/doc/latex/SIstyle
+%{texmfdist}/source/latex/SIstyle
+
 %files latex-SIunits
 %defattr(644,root,root,755)
 %{texmfdist}/doc/latex/SIunits
 %{texmfdist}/tex/latex/SIunits
+%{texmfdist}/source/latex/SIunits
+
+%files latex-Tabbing
+%defattr(644,root,root,755)
+%{texmfdist}/source/latex/Tabbing
+%{texmfdist}/doc/latex/Tabbing
 
 %files latex-txfonts
 %defattr(644,root,root,755)
