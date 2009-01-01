@@ -2755,6 +2755,72 @@ PostScript fonts.
 LaTeXowe pliki definicji fontów, makra i metryki fontów dla
 popularnych fontów postscriptowych.
 
+%package latex-pst-2dplot
+Summary:	A PSTricks package for drawing 2D curves
+Summary(hu.UTF-8):	PSTricks csomag kétdimenziós görbék rajzolásához
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-2dplot
+A PSTricks package for drawing 2D curves.
+
+%description latex-pst-2dplot -l hu.UTF-8
+PSTricks csomag kétdimenziós görbék rajzolásához.
+
+%package latex-pst-3dplot
+Summary:	Draw 3d curves and graphs using PSTricks
+Summary(hu.UTF-8):	3D-s görbék és grafikonok PSTricks-szel
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-3dplot
+Draw 3d curves and graphs using PSTricks.
+
+%description latex-pst-3dplot -l hu.UTF-8
+3D-s görbék és grafikonok PSTricks-szel.
+
+
+%package latex-pst-bar
+Summary:	Produces bar charts using pstricks
+Summary(hu.UTF-8):	Oszlopdiagramok pstricks-szel
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-bar
+Produces bar charts using pstricks.
+
+%description latex-pst-bar -l hu.UTF-8
+Oszlopdiagramok pstricks-szel.
+
+%package latex-pst-circ
+Summary:	PSTricks package for drawing electric circuits
+Summary(hu.UTF-8):	PSTricks csomag elektromos áramkörök rajzolásához
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-circ
+PSTricks package for drawing electric circuits.
+
+%description latex-pst-circ -l hu.UTF-8
+PSTricks csomag elektromos áramkörök rajzolásához.
+
+%package latex-pst-diffraction
+Summary:	Print diffraction patterns from various apertures
+Summary(hu.UTF-8):	Diffrakciós képek különböző eszközökön
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-diffraction
+Print diffraction patterns from various apertures.
+
+%description latex-pst-diffraction -l hu.UTF-8
+Diffrakciós képek különböző eszközökön.
+
 %package latex-pst-eucl
 Summary:	Euclidian geometry with pstricks
 Summary(hu.UTF-8):	Euklidészi geometria a pstricks használatával
@@ -2767,6 +2833,33 @@ Euclidian geometry with pstricks.
 
 %description latex-pst-eucl -l hu.UTF-8
 Euklidészi geometria a pstricks használatával.
+
+
+%package latex-pst-fun
+Summary:	Draw "funny" objects with PSTricks
+Summary(hu.UTF-8):	"Vicces" rajzok PSTricks-szel
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-fun
+Draw "funny" objects with PSTricks.
+
+%description latex-pst-fun -l hu.UTF-8
+"Vicces" rajzok PSTricks-szel
+
+%package latex-pst-func
+Summary:	PSTricks package for plotting mathematical functions
+Summary(hu.UTF-8):	PSTricks csomag matematikai függvények ábrázolásához
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-func
+PSTricks package for plotting mathematical functions.
+
+%description latex-pst-eucl -l hu.UTF-8
+PSTricks csomag matematikai függvények ábrázolásához.
 
 %package latex-pst-fr3d
 Summary:	Draw 3-dimensional framed boxes using PSTricks
@@ -2793,6 +2886,85 @@ Draw fractal sets using PSTricks.
 
 %description latex-pst-fractal -l hu.UTF-8
 Fraktálok rajzolása PSTricks segítségével.
+
+%package latex-pst-infixplot
+Summary:	Using pstricks plotting capacities with infix expressions rather than RPN
+Summary(hu.UTF-8):	Infix kifejezések ábrázolása
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-infixplot
+Using pstricks plotting capacities with infix expressions rather than
+RPN.
+
+%description latex-pst-infixplot -l hu.UTF-8
+Infix kifejezések ábrázolása.
+
+%package latex-pst-math
+Summary:	Enhancement of PostScript math operators to use with pstricks
+Summary(hu.UTF-8):	PostScript matematikai operátorok bővítése pstricks-szel
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-math
+Enhancement of PostScript math operators to use with pstricks.
+
+%description latex-pst-math -l hu.UTF-8
+PostScript matematikai operátorok bővítése pstricks-szel.
+
+%package latex-pst-ob3d
+Summary:	Three dimensional objects using PSTricks
+Summary(hu.UTF-8):	Háromdimenziós objektumok PSTricks-szel
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-ob3d
+Three dimensional objects using PSTricks.
+
+%description latex-pst-ob3d -l hu.UTF-8
+Háromdimenziós objektumok PSTricks-szel.
+
+%package latex-pst-optexp
+Summary:	Drawing optical experimental setups
+Summary(hu.UTF-8):	Optikai összeállítások rajzolása
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-optexp
+Drawing optical experimental setups.
+
+%description latex-pst-optexp -l hu.UTF-8
+Optikai összeállítások rajzolása.
+
+%package latex-pst-optic
+Summary:	Drawing optics diagrams
+Summary(hu.UTF-8):	Optikai ábrák rajzolása
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-optic
+Drawing optics diagrams.
+
+%description latex-pst-optic -l hu.UTF-8
+Optikai ábrák rajzolása.
+
+%package latex-pst-text
+Summary:	Text and character manipulation in PSTricks
+Summary(hu.UTF-8):	Szöveg és karakter manipulációk PSTricks-szel
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+
+%description latex-pst-text
+Text and character manipulation in PSTricks.
+
+%description latex-pst-text -l hu.UTF-8
+Szöveg és karakter manipulációk PSTricks-szel.
 
 %package latex-pxfonts
 Summary:	PX fonts LaTeX support
@@ -5297,10 +5469,58 @@ fi
 %postun latex-psnfss
 %texhash
 
+%post latex-pst-2dplot
+%texhash
+
+%postun latex-pst-2dplot
+%texhash
+
+%post latex-pst-3dplot
+%texhash
+
+%postun latex-pst-3dplot
+%texhash
+
+%post latex-pst-bar
+%texhash
+
+%postun latex-pst-bar
+%texhash
+
+%post latex-pst-circ
+%texhash
+
+%postun latex-pst-circ
+%texhash
+
 %post latex-pst-eucl
 %texhash
 
 %postun latex-pst-eucl
+%texhash
+
+%post latex-pst-diffraction
+%texhash
+
+%postun latex-pst-diffraction
+%texhash
+
+%post latex-pst-fun
+%texhash
+
+%postun latex-pst-fun
+%texhash
+
+%post latex-pst-func
+%texhash
+
+%postun latex-pst-func
+%texhash
+
+%post latex-pst-infixplot
+%texhash
+
+%postun latex-pst-infixplot
 %texhash
 
 %post latex-pst-fr3d
@@ -5316,6 +5536,36 @@ fi
 %texhash
 
 %post latex-pxfonts
+%texhash
+
+%post latex-pst-math
+%texhash
+
+%postun latex-pst-math
+%texhash
+
+%post latex-pst-ob3d
+%texhash
+
+%postun latex-pst-ob3d
+%texhash
+
+%post latex-pst-optic
+%texhash
+
+%postun latex-pst-optic
+%texhash
+
+%post latex-pst-optexp
+%texhash
+
+%postun latex-pst-optexp
+%texhash
+
+%post latex-pst-text
+%texhash
+
+%postun latex-pst-text
 %texhash
 
 %postun latex-pxfonts
@@ -8368,11 +8618,63 @@ fi
 %doc %{texmfdist}/doc/latex/pseudocode
 %{texmfdist}/tex/latex/pseudocode
 
+%files latex-pst-2dplot
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-2dplot
+%{texmfdist}/tex/latex/pst-2dplot
+
+%files latex-pst-3dplot
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-3dplot
+%{texmfdist}/dvips/pst-3dplot
+%{texmfdist}/tex/generic/pst-3dplot
+%{texmfdist}/tex/latex/pst-3dplot
+
+%files latex-pst-bar
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-3dplot
+%{texmfdist}/dvips/pst-bar
+%{texmfdist}/tex/generic/pst-bar
+%{texmfdist}/tex/latex/pst-bar
+
+%files latex-pst-circ
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-circ
+%{texmfdist}/dvips/pst-circ
+%{texmfdist}/tex/generic/pst-circ
+%{texmfdist}/tex/latex/pst-circ
+
+%files latex-pst-diffraction
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-diffraction
+%{texmfdist}/tex/generic/pst-diffraction
+%{texmfdist}/tex/latex/pst-diffraction
+
 %files latex-pst-eucl
 %defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-eucl
 %{texmfdist}/tex/generic/pst-eucl
 %{texmfdist}/tex/latex/pst-eucl
-%doc %{texmfdist}/doc/generic/pst-eucl
+
+%files latex-pst-fun
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-fun
+%{texmfdist}/dvips/pst-fun
+%{texmfdist}/tex/generic/pst-fun
+%{texmfdist}/tex/latex/pst-fun
+
+%files latex-pst-func
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-func
+%{texmfdist}/dvips/pst-func
+%{texmfdist}/tex/generic/pst-func
+%{texmfdist}/tex/latex/pst-func
+
+%files latex-pst-infixplot
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-infixplot
+%{texmfdist}/tex/generic/pst-infixplot
+%{texmfdist}/tex/latex/pst-infixplot
 
 %files latex-pst-fr3d
 %defattr(644,root,root,755)
@@ -8387,6 +8689,40 @@ fi
 %{texmfdist}/dvips/pst-fractal
 %{texmfdist}/tex/generic/pst-fractal
 %{texmfdist}/tex/latex/pst-fractal
+
+%files latex-pst-math
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-math
+%{texmfdist}/dvips/pst-math
+%{texmfdist}/tex/generic/pst-math
+%{texmfdist}/tex/latex/pst-math
+
+%files latex-pst-ob3d
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-ob3d
+%{texmfdist}/source/generic/pst-ob3d
+%{texmfdist}/tex/generic/pst-ob3d
+%{texmfdist}/tex/latex/pst-ob3d
+
+%files latex-pst-optexp
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-optexp
+%{texmfdist}/dvips/pst-optexp
+%{texmfdist}/tex/generic/pst-optexp
+%{texmfdist}/tex/latex/pst-optexp
+
+%files latex-pst-optic
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-optic
+%{texmfdist}/tex/generic/pst-optic
+%{texmfdist}/tex/latex/pst-optic
+
+%files latex-pst-text
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-text
+%{texmfdist}/dvips/pst-text/pst-text.pro
+%{texmfdist}/tex/generic/pst-text
+%{texmfdist}/tex/latex/pst-text
 
 %files latex-psnfss
 %defattr(644,root,root,755)
