@@ -23,8 +23,6 @@
 # TeXLive specific TODO:
 # - fix broken symlinks in /usr/bin (see line 3564)
 # - summary/description correcting (all languages)
-# - solve xindy case, it doesn't build with tetext, and probably won't with texlive
-#   until larm1000 font found (xindy option)
 # - texk/web2c doesn't build (luatex option)
 # - %files latex-bibtex-revtex4
 # - Check CEF/cjk!
@@ -2487,6 +2485,19 @@ Pozwala ograniczyć wysuwanie znaku i/lub rozszerzanie fontu do
 określonego zbioru fontów oraz skonfigurować mikrotypograficzne
 aspekty fontów w prosty i elastyczny sposób. Dostarczone są ustawienia
 dla różnych fontów.
+
+%package latex-musictex
+Summary:	Typesetting music with TeX
+Summary(hu.UTF-8):	Zenék szedése TeX-hel
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-musictex
+Typesetting music with TeX.
+
+%description latex-musictex -l hu.UTF-8
+Zenék szedése TeX-hel.
 
 %package latex-lucidabr
 Summary:	Package to make Lucida Bright fonts usable with LaTeX
@@ -5179,6 +5190,12 @@ fi
 %postun latex-multienum
 %texhash
 
+%post latex-musictex
+%texhash
+
+%postun latex-musictex
+%texhash
+
 %post latex-ntheorem
 %texhash
 
@@ -5962,6 +5979,7 @@ fi
 %attr(1777,root,root) %dir %{fmtdir}
 
 %dir %{texmfdist}
+%doc %{texmfdist}/README
 %dir %{texmf}
 
 %dir %{texmfdist}/doc
@@ -8219,6 +8237,14 @@ fi
 %dir %{texmfdist}/tex/latex/multenum
 %{texmfdist}/tex/latex/multenum/*
 
+%files latex-musictex
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/musictex
+%{texmfdist}/fonts/source/public/musictex
+%{texmfdist}/fonts/tfm/public/musictex
+%{texmfdist}/tex/generic/musictex
+%{texmfdist}/tex/latex/musictex
+
 %files latex-ntheorem
 %defattr(644,root,root,755)
 %{texmfdist}/tex/latex/ntheorem
@@ -8231,6 +8257,8 @@ fi
 %files latex-pgf
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pgf
+%{texmfdist}/tex/generic/pgf
+%{texmfdist}/tex/generic/pgfplots
 %{texmfdist}/tex/latex/pgf
 %{texmfdist}/tex/latex/pgfopts
 %{texmfdist}/tex/latex/pgfplots
