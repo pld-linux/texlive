@@ -2058,12 +2058,16 @@ prawniczych.
 
 %package latex-bibtex-vancouver
 Summary:	Bibliographic style file for Biomedical Journals
+Summary(hu.UTF-8):	Irodalomjegyzék-stílus a Biomedical Journal-hoz
 Group:		Applications/Publication/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
-%package latex-bibtex-vancouver
+%description latex-bibtex-vancouver
 Bibliographic style file for Biomedical Journals.
+
+%description latex-bibtex-vancouver -l hu.UTF-8
+Irodalomjegyzék-stílus a Biomedical Journal-hoz.
 
 %package latex-booktabs
 Summary:	Publication quality tables in LaTeX
