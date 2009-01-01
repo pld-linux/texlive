@@ -2059,7 +2059,7 @@ prawniczych.
 %package latex-bibtex-vancouver
 Summary:	Bibliographic style file for Biomedical Journals
 Summary(hu.UTF-8):	Irodalomjegyzék-stílus a Biomedical Journal-hoz
-Group:		Applications/Publication/TeX
+Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
@@ -4267,6 +4267,27 @@ providing a configurable (La)TeX-based authoring system for hypertext.
 When converting to XML, you can use MathML instead of images for
 equation representation.
 
+%package xetex
+Summary:	Extended TeX / LaTeX version for unicode
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	/usr/bin/texhash
+Requires:	%{name}-fonts-misc = %{epoch}:%{version}-%{release}
+
+%description xetex
+XeTeX extends the TeX typesetting system (and macro packages such as
+LaTeX and ConTeXt) to have native support for the Unicode character
+set, including complex Asian scripts, and for OpenType and TrueType
+fonts.
+
+%package xmltex
+Summary:	TeX package for processing XML files
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	/usr/bin/texhash
+
+%description xmltex
+XMLTeX is a non-validating, namespace-aware XML parser written in TeX.
+It allows TeX to directly process XML files.
+
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
 lzma -dc %{SOURCE0} | tar xf - -C ..
@@ -5600,6 +5621,18 @@ fi
 %postun -n texconfig
 %texhash
 
+%post xetex
+%texhash
+
+%postun xetex
+%texhash
+
+%post xmltex
+%texhash
+
+%postun xmltex
+%texhash
+
 # Check the commented lines!!!
 
 %files
@@ -5659,7 +5692,6 @@ fi
 %attr(755,root,root) %{_bindir}/kpsewhere
 %attr(755,root,root) %{_bindir}/mag
 %attr(755,root,root) %{_bindir}/makempx
-%attr(755,root,root) %{_bindir}/makempy
 #%attr(755,root,root) %{_bindir}/mkfontdesc
 %attr(755,root,root) %{_bindir}/mktexfmt
 %attr(755,root,root) %{_bindir}/mktexlsr
@@ -5681,7 +5713,6 @@ fi
 #%attr(755,root,root) %{_bindir}/tetex-updmap
 %attr(755,root,root) %{_bindir}/tex
 %attr(755,root,root) %{_bindir}/texdoc
-%attr(755,root,root) %{_bindir}/texexec
 %attr(755,root,root) %{_bindir}/texhash
 # %attr(755,root,root) %{_bindir}/texi2html
 %attr(755,root,root) %{_bindir}/texlinks
@@ -5903,7 +5934,7 @@ fi
 %dir %{texmfdist}/fonts
 %dir %{texmfdist}/fonts/afm
 %dir %{texmfdist}/fonts/afm/public
-%dir %{texmfdist}/fonts/afm/vntex 
+%dir %{texmfdist}/fonts/afm/vntex
 %dir %{texmfdist}/fonts/enc
 %dir %{texmfdist}/fonts/enc/dvips
 %dir %{texmfdist}/fonts/enc/dvips/vntex
@@ -5927,7 +5958,7 @@ fi
 %dir %{texmfdist}/fonts/source/vntex
 %dir %{texmfdist}/fonts/tfm
 %dir %{texmfdist}/fonts/tfm/public
-%dir %{texmfdist}/fonts/tfm/vntex 
+%dir %{texmfdist}/fonts/tfm/vntex
 %dir %{texmfdist}/fonts/type1
 %dir %{texmfdist}/fonts/type1/public
 %dir %{texmfdist}/fonts/type1/vntex
@@ -6332,243 +6363,191 @@ fi
 
 %files -n xindy
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy
-%dir %{texmf}/xindy/base
-%dir %{texmf}/xindy/class
-%dir %{texmf}/xindy/lang
-%dir %{texmf}/xindy/ord
-%dir %{texmf}/xindy/rules
-%dir %{texmf}/xindy/styles
-%dir %{texmf}/xindy/tex
 %doc %{texmf}/doc/xindy
-%{texmf}/xindy/base/*
-%{texmf}/xindy/class/*
-%{texmf}/xindy/ord/*
-%{texmf}/xindy/rules/*
-%{texmf}/xindy/styles/*
-%{texmf}/xindy/tex/*
+%dir %{texmf}/xindy
+%dir %{texmf}/xindy/lang
+%{texmf}/xindy/base
+%{texmf}/xindy/class
+%{texmf}/xindy/ord
+%{texmf}/xindy/rules
+%{texmf}/xindy/styles
+%{texmf}/xindy/tex
 
 %files -n xindy-albanian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/albanian
-%{texmf}/xindy/lang/albanian/*
+%{texmf}/xindy/lang/albanian
 
 %files -n xindy-belarusian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/belarusian
-%{texmf}/xindy/lang/belarusian/*
+%{texmf}/xindy/lang/belarusian
 
 %files -n xindy-bulgarian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/bulgarian
-%{texmf}/xindy/lang/bulgarian/*
+%{texmf}/xindy/lang/bulgarian
 
 %files -n xindy-croatian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/croatian
-%{texmf}/xindy/lang/croatian/*
+%{texmf}/xindy/lang/croatian
 
 %files -n xindy-czech
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/czech
-%{texmf}/xindy/lang/czech/*
+%{texmf}/xindy/lang/czech
 
 %files -n xindy-danish
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/danish
-%{texmf}/xindy/lang/danish/*
+%{texmf}/xindy/lang/danish
 
 %files -n xindy-dutch
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/dutch
-%{texmf}/xindy/lang/dutch/*
+%{texmf}/xindy/lang/dutch
 
 %files -n xindy-english
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/english
-%{texmf}/xindy/lang/english/*
+%{texmf}/xindy/lang/english
 
 %files -n xindy-esperanto
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/esperanto
-%{texmf}/xindy/lang/esperanto/*
+%{texmf}/xindy/lang/esperanto
 
 %files -n xindy-estonian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/estonian
-%{texmf}/xindy/lang/estonian/*
+%{texmf}/xindy/lang/estonian
 
 %files -n xindy-finnish
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/finnish
-%{texmf}/xindy/lang/finnish/*
+%{texmf}/xindy/lang/finnish
 
 %files -n xindy-french
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/french
-%{texmf}/xindy/lang/french/*
+%{texmf}/xindy/lang/french
 
 %files -n xindy-general
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/general
-%{texmf}/xindy/lang/general/*
+%{texmf}/xindy/lang/general
 
 %files -n xindy-georgian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/georgian
-%{texmf}/xindy/lang/georgian/*
+%{texmf}/xindy/lang/georgian
 
 %files -n xindy-german
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/german
-%{texmf}/xindy/lang/german/*
+%{texmf}/xindy/lang/german
 
 %files -n xindy-greek
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/greek
-%{texmf}/xindy/lang/greek/*
+%{texmf}/xindy/lang/greek
 
 %files -n xindy-gypsy
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/gypsy
-%{texmf}/xindy/lang/gypsy/*
+%{texmf}/xindy/lang/gypsy
 
 %files -n xindy-hausa
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/hausa
-%{texmf}/xindy/lang/hausa/*
+%{texmf}/xindy/lang/hausa
 
 %files -n xindy-hebrew
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/hebrew
-%{texmf}/xindy/lang/hebrew/*
+%{texmf}/xindy/lang/hebrew
 
 %files -n xindy-hungarian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/hungarian
-%{texmf}/xindy/lang/hungarian/*
+%{texmf}/xindy/lang/hungarian
 
 %files -n xindy-icelandic
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/icelandic
-%{texmf}/xindy/lang/icelandic/*
+%{texmf}/xindy/lang/icelandic
 
 %files -n xindy-italian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/italian
-%{texmf}/xindy/lang/italian/*
+%{texmf}/xindy/lang/italian
 
 %files -n xindy-klingon
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/klingon
-%{texmf}/xindy/lang/klingon/*
+%{texmf}/xindy/lang/klingon
 
 %files -n xindy-kurdish
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/kurdish
-%{texmf}/xindy/lang/kurdish/*
+%{texmf}/xindy/lang/kurdish
 
 %files -n xindy-latin
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/latin
-%{texmf}/xindy/lang/latin/*
+%{texmf}/xindy/lang/latin
 
 %files -n xindy-latvian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/latvian
-%{texmf}/xindy/lang/latvian/*
+%{texmf}/xindy/lang/latvian
 
 %files -n xindy-lithuanian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/lithuanian
-%{texmf}/xindy/lang/lithuanian/*
+%{texmf}/xindy/lang/lithuanian
 
 %files -n xindy-lower-sorbian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/lower-sorbian
-%{texmf}/xindy/lang/lower-sorbian/*
+%{texmf}/xindy/lang/lower-sorbian
 
 %files -n xindy-macedonian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/macedonian
-%{texmf}/xindy/lang/macedonian/*
+%{texmf}/xindy/lang/macedonian
 
 %files -n xindy-mongolian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/mongolian
-%{texmf}/xindy/lang/mongolian/*
+%{texmf}/xindy/lang/mongolian
 
 %files -n xindy-norwegian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/norwegian
-%{texmf}/xindy/lang/norwegian/*
+%{texmf}/xindy/lang/norwegian
 
 %files -n xindy-polish
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/polish
-%{texmf}/xindy/lang/polish/*
+%{texmf}/xindy/lang/polish
 
 %files -n xindy-portuguese
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/portuguese
-%{texmf}/xindy/lang/portuguese/*
+%{texmf}/xindy/lang/portuguese
 
 %files -n xindy-romanian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/romanian
-%{texmf}/xindy/lang/romanian/*
+%{texmf}/xindy/lang/romanian
 
 %files -n xindy-russian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/russian
-%{texmf}/xindy/lang/russian/*
+%{texmf}/xindy/lang/russian
 
 %files -n xindy-serbian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/serbian
-%{texmf}/xindy/lang/serbian/*
+%{texmf}/xindy/lang/serbian
 
 %files -n xindy-slovak
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/slovak
-%{texmf}/xindy/lang/slovak/*
+%{texmf}/xindy/lang/slovak
 
 %files -n xindy-slovenian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/slovenian
-%{texmf}/xindy/lang/slovenian/*
+%{texmf}/xindy/lang/slovenian
 
 %files -n xindy-spanish
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/spanish
-%{texmf}/xindy/lang/spanish/*
+%{texmf}/xindy/lang/spanish
 
 %files -n xindy-swedish
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/swedish
-%{texmf}/xindy/lang/swedish/*
+%{texmf}/xindy/lang/swedish
 
 %files -n xindy-turkish
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/turkish
-%{texmf}/xindy/lang/turkish/*
+%{texmf}/xindy/lang/turkish
 
 %files -n xindy-ukrainian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/ukrainian
-%{texmf}/xindy/lang/ukrainian/*
+%{texmf}/xindy/lang/ukrainian
 
 %files -n xindy-upper-sorbian
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/upper-sorbian
-%{texmf}/xindy/lang/upper-sorbian/*
+%{texmf}/xindy/lang/upper-sorbian
 
 %files -n xindy-vietnamese
 %defattr(644,root,root,755)
-%dir %{texmf}/xindy/lang/vietnamese
-%{texmf}/xindy/lang/vietnamese/*
-
-
+%{texmf}/xindy/lang/vietnamese/
 
 %files -n xdvi
 %defattr(644,root,root,755)
@@ -6650,6 +6629,7 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/plain
 %{texmfdist}/tex/plain
+%exclude %{texmfdist}/tex/plain/config/xetex.ini
 #%{texmf}/web2c/plain.mem
 #%{texmf}/web2c/plain.base
 
@@ -6797,37 +6777,46 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/context
 # %doc %{texmf}/doc/polish/context
-%dir %{texmfdist}/context
-%dir %{texmfdist}/context/config
-%dir %{texmfdist}/tex/context
-%dir %{texmfdist}/tex/context/config
+%attr(755,root,root) %{_bindir}/context
+%attr(755,root,root) %{_bindir}/ctxtools
+%attr(755,root,root) %{_bindir}/exatools
+%attr(755,root,root) %{_bindir}/luatools
+%attr(755,root,root) %{_bindir}/makempy
+%attr(755,root,root) %{_bindir}/mpstools
+%attr(755,root,root) %{_bindir}/mtxrun
+%attr(755,root,root) %{_bindir}/mtxtools
+%attr(755,root,root) %{_bindir}/pdfthumb
+%attr(755,root,root) %{_bindir}/pdftools
+%attr(755,root,root) %{_bindir}/pdftrimwhite
+%attr(755,root,root) %{_bindir}/pstopdf
+%attr(755,root,root) %{_bindir}/rlxtools
+%attr(755,root,root) %{_bindir}/runtools
+%attr(755,root,root) %{_bindir}/texexec
 %attr(755,root,root) %{_bindir}/texfind
 %attr(755,root,root) %{_bindir}/texfont
+%attr(755,root,root) %{_bindir}/texmfstart
 %attr(755,root,root) %{_bindir}/texshow
+%attr(755,root,root) %{_bindir}/textools
 %attr(755,root,root) %{_bindir}/texutil
+%attr(755,root,root) %{_bindir}/tmftools
+%attr(755,root,root) %{_bindir}/xmltools
 # %{_mandir}/man1/fdf2tex.1*
 %{_mandir}/man1/texfind.1*
 %{_mandir}/man1/texfont.1*
 %{_mandir}/man1/texutil.1*
 # %{_mandir}/man1/texshow.1*
-# %{texmfdist}/context/config/texexec.ini
-%{texmfdist}/context/config/texexec.rme
-%{texmfdist}/context/data
+%{texmfdist}/context
 %{texmfdist}/fonts/enc/dvips/context
 # %{texmfdist}/fonts/map/dvips/context
 %{texmfdist}/metapost/context
 %{texmfdist}/scripts/context
-%{texmfdist}/tex/latex/context
-%{texmfdist}/tex/context/base
-%{texmfdist}/tex/context/bib
-%{texmfdist}/tex/context/config/cont-usr.tex
-%{texmfdist}/tex/context/extra
-%{texmfdist}/tex/context/foxet
-%{texmfdist}/tex/context/interface
-# %{texmfdist}/tex/context/maths
-%{texmfdist}/tex/context/sample
-%{texmfdist}/tex/context/user
+%{texmfdist}/tex/context
+%exclude %{texmfdist}/tex/context/config/cont-de.ini
+%exclude %{texmfdist}/tex/context/config/cont-en.ini
+%exclude %{texmfdist}/tex/context/config/cont-nl.ini
+%exclude %{texmfdist}/tex/context/config/cont-uk.ini
 %{texmfdist}/tex/generic/context
+%{texmfdist}/tex/latex/context
 %{texmfdist}/bibtex/bst/context
 
 # no fmt, so commented out
@@ -7388,7 +7377,12 @@ fi
 %{texmfdist}/tex/latex/jurarsp
 %{texmfdist}/tex/latex/koma-script
 %{texmfdist}/tex/latex/labels
-%{texmfdist}/tex/latex/latexconfig
+%dir %{texmfdist}/tex/latex/latexconfig
+%{texmfdist}/tex/latex/latexconfig/latex.ini
+%{texmfdist}/tex/latex/latexconfig/lualatex.ini
+%{texmfdist}/tex/latex/latexconfig/mllatex.ini
+%{texmfdist}/tex/latex/latexconfig/pdflatex.ini
+%{texmfdist}/tex/latex/latexconfig/pdflualatex.ini
 %{texmfdist}/tex/latex/layouts
 %{texmfdist}/tex/latex/lettrine
 %{texmfdist}/tex/latex/listings
@@ -8705,7 +8699,6 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/devnag
 %attr(755,root,root) %{_bindir}/disdvi
-%attr(755,root,root) %{_bindir}/exatools
 
 %files tex4ht
 %defattr(644,root,root,755)
@@ -8720,7 +8713,7 @@ fi
 %attr(755,root,root) %{_bindir}/mk4ht
 %attr(755,root,root) %{_bindir}/t4ht
 %attr(755,root,root) %{_bindir}/tex4ht
-%{texmfdist}/scripts/tex4ht
+%{texmf}/scripts/tex4ht
 %{texmfdist}/tex/generic/tex4ht
 %dir %{texmfdist}/scripts/tex4ht
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/ht.sh
@@ -8733,3 +8726,27 @@ fi
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxetex.sh
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/mk4ht.pl
 %{texmfdist}/tex4ht
+
+%files xetex
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/xdvipdfmx
+%attr(755,root,root) %{_bindir}/xelatex
+%attr(755,root,root) %{_bindir}/xetex
+%{texmf}/fmtutil/format.xetex.cnf
+%doc %{texmfdist}/doc/xelatex
+%doc %{texmfdist}/doc/xetex
+%{texmfdist}/scripts/xetex
+%{texmfdist}/tex/generic/ifxetex
+%{texmfdist}/tex/generic/xetexconfig
+%{texmfdist}/tex/latex/latexconfig/xelatex.ini
+%{texmfdist}/tex/plain/config/xetex.ini
+%{texmfdist}/tex/xelatex
+%{texmfdist}/tex/xetex
+
+%files xmltex
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/xmltex
+%attr(755,root,root) %{_bindir}/pdfxmltex
+%attr(755,root,root) %{_bindir}/xmltex
+%{texmfdist}/tex/xmltex
+%{texmf}/fmtutil/format.xmltex.cnf
