@@ -6649,17 +6649,17 @@ fi
 #%{texmf}/web2c/plain.mem
 #%{texmf}/web2c/plain.base
 
-%files format-plain
-%defattr(644,root,root,755)
+# %files format-plain
+# %defattr(644,root,root,755)
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/tex.fmt
 #%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/plain.fmt
 
-%files format-pdftex
-%defattr(644,root,root,755)
+# %files format-pdftex
+# %defattr(644,root,root,755)
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdftex.fmt
 
-%files format-pdfetex
-%defattr(644,root,root,755)
+# %files format-pdfetex
+# %defattr(644,root,root,755)
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfetex.fmt
 
 %files mex
