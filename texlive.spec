@@ -5866,14 +5866,11 @@ fi
 # %lang(pl) %{_mandir}/pl/man1/newer.1*
 #%{_mandir}/man1/MakeTeXPK.1*
 #%{_mandir}/man1/access.1*
-#%{_mandir}/man1/allec.1*
 #%{_mandir}/man1/fontexport.1*
 #%{_mandir}/man1/fontimport.1*
 #%{_mandir}/man1/initex.1*
-#%{_mandir}/man1/mktexfmt.1*
 #%{_mandir}/man1/t1mapper.1*
 #%{_mandir}/man1/texdoc.1*
-#%{_mandir}/man1/texhash.1*
 #%{_mandir}/man1/texi2html.1*
 #%{_mandir}/man1/virtex.1*
 #%{_mandir}/man8/fmtutil.8*
@@ -5882,8 +5879,11 @@ fi
 
 %{_mandir}/man1/afm2tfm.1*
 %{_mandir}/man1/allcm.1*
+%{_mandir}/man1/allec.1*
 %{_mandir}/man1/allneeded.1*
+%{_mandir}/man1/ctangle.1*
 %{_mandir}/man1/ctie.1*
+%{_mandir}/man1/cweave.1*
 %{_mandir}/man1/cweb.1*
 %{_mandir}/man1/dmp.1*
 %{_mandir}/man1/dvipdft.1*
@@ -5903,6 +5903,7 @@ fi
 %{_mandir}/man1/mag.1*
 %{_mandir}/man1/makempx.1*
 %{_mandir}/man1/makempy.1*
+%{_mandir}/man1/mktexfmt.1*
 %{_mandir}/man1/mktexlsr.1*
 %{_mandir}/man1/newer.1*
 %{_mandir}/man1/patgen.1*
@@ -5918,15 +5919,18 @@ fi
 %{_mandir}/man1/tangle.1*
 %{_mandir}/man1/tex.1*
 %{_mandir}/man1/texexec.1*
+%{_mandir}/man1/texhash.1*
 %{_mandir}/man1/texlinks.1*
 %{_mandir}/man1/tftopl.1*
 %{_mandir}/man1/tie.1*
 %{_mandir}/man1/ttf2afm.1*
 %{_mandir}/man1/updmap.1*
+%{_mandir}/man1/updmap-sys.1*
 %{_mandir}/man1/vftovp.1*
 %{_mandir}/man1/vptovf.1*
 %{_mandir}/man1/weave.1*
 %{_mandir}/man5/fmtutil.cnf.5*
+%{_mandir}/man5/updmap.cfg.5*
 
 
 %files dirs-fonts
@@ -6184,8 +6188,6 @@ fi
 
 %files -n kpathsea
 %defattr(644,root,root,755)
-#%{_mandir}/man1/kpsexpand.1*
-#%{_mandir}/man1/kpsepath.1*
 %dir %{texmf}/doc/kpathsea
 %doc %{texmf}/doc/kpathsea/kpathsea.pdf
 %attr(755,root,root) %{_bindir}/kpsepath
@@ -6195,6 +6197,8 @@ fi
 %attr(755,root,root) %{_bindir}/kpsexpand
 %attr(755,root,root) %{_libdir}/libkpathsea.so.*
 %{_libdir}/libkpathsea.la
+%{_mandir}/man1/kpsexpand.1*
+%{_mandir}/man1/kpsepath.1*
 %{_mandir}/man1/kpsestat.1*
 %{_mandir}/man1/kpsetool.1*
 %{_mandir}/man1/kpsewhich.1*
@@ -6314,6 +6318,7 @@ fi
 %{texmfdist}/mft/base/mplain.mft
 %{texmfdist}/mft/base/plain.mft
 %{_mandir}/man1/mf.1*
+%{_mandir}/man1/mf-nowin.1*
 %{_mandir}/man1/mft.1*
 %{_mandir}/man1/mktexmf.1*
 %{_mandir}/man1/mktexpk.1*
@@ -6342,6 +6347,7 @@ fi
 %files mptopdf
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mptopdf
+%{_mandir}/man1/mptopdf.1*
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/mptopdf.fmt
 
 %files texdoctk
@@ -6360,6 +6366,7 @@ fi
 %attr(755,root,root) %{_bindir}/texconfig-sys
 %attr(755,root,root) %{texmf}/texconfig/tcfmgr
 %{_mandir}/man1/texconfig.1*
+%{_mandir}/man1/texconfig-sys.1*
 %{texmf}/texconfig/g
 %{texmf}/texconfig/generic
 %{texmf}/texconfig/tcfmgr.map
@@ -6591,7 +6598,6 @@ fi
 %defattr(644,root,root,755)
 # %{texmf}/web2c/omega.pool
 # %{texmf}/web2c/aleph.pool
-#%{_mandir}/man1/lambda.1*
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/aleph.fmt
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/lambda.fmt
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/lamed.fmt
@@ -6620,9 +6626,13 @@ fi
 %{texmfdist}/omega/ocp
 %{texmfdist}/omega/otp
 %{texmfdist}/tex/lambda
+%{_mandir}/man1/lambda.1*
 %{_mandir}/man1/mkocp.1*
 %{_mandir}/man1/mkofm.1*
 %{_mandir}/man1/omega.1*
+%{_mandir}/man1/odvicopy.1*
+%{_mandir}/man1/odvips.1*
+%{_mandir}/man1/odvitype.1*
 %{_mandir}/man1/ofm2opl.1*
 %{_mandir}/man1/opl2ofm.1*
 %{_mandir}/man1/otp2ocp.1*
@@ -6806,8 +6816,13 @@ fi
 %attr(755,root,root) %{_bindir}/tmftools
 %attr(755,root,root) %{_bindir}/xmltools
 # %{_mandir}/man1/fdf2tex.1*
+%{_mandir}/man1/ctxtools.1*
+%{_mandir}/man1/pdftools.1*
+%{_mandir}/man1/pstopdf.1*
 %{_mandir}/man1/texfind.1*
 %{_mandir}/man1/texfont.1*
+%{_mandir}/man1/texmfstart.1*
+%{_mandir}/man1/textools.1*
 %{_mandir}/man1/texutil.1*
 # %{_mandir}/man1/texshow.1*
 %{texmfdist}/context
@@ -7958,8 +7973,8 @@ fi
 #%{texmf}/pdftex/latex/config
 # %dir %{texmf}/pdftex/latex
 %attr(755,root,root) %{_bindir}/pdflatex
+%{_mandir}/man1/pdflatex.1*
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdflatex.fmt
-#%{_mandir}/man1/pdflatex.1*
 
 # %files platex
 # %defattr(644,root,root,755)
