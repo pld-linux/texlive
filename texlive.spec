@@ -5891,6 +5891,7 @@ fi
 %{_mandir}/man1/e2pall.1*
 %{_mandir}/man1/ebb.1*
 %{_mandir}/man1/fmtutil.1*
+%{_mandir}/man1/fmtutil-sys.1*
 %{_mandir}/man1/fontinst.1*
 %{_mandir}/man1/gftodvi.1*
 %{_mandir}/man1/gftopk.1*
@@ -6271,6 +6272,10 @@ fi
 %attr(755,root,root) %{_bindir}/dvilj6
 %{_mandir}/man1/dvihp.1*
 %{_mandir}/man1/dvilj.1*
+%{_mandir}/man1/dvilj2p.1*
+%{_mandir}/man1/dvilj4.1*
+%{_mandir}/man1/dvilj4l.1*
+%{_mandir}/man1/dvilj6.1*
 
 %files makeindex
 %defattr(644,root,root,755)
