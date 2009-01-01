@@ -2108,12 +2108,25 @@ Extended BibTeX citation support for the humanities and legal texts.
 Rozszerzona obsługa cytowania BibTeXa do tekstów humanistycznych i
 prawniczych.
 
+%package latex-bibtex-styles
+Summary:	Various BibTeX styles
+Summary(hu.UTF-8):	Vegyes BibTeX stílusok
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
+
+%description latex-bibtex-styles
+Various BibTeX styles.
+
+%description latex-bibtex-styles -l hu.UTF-8
+Vegyes BibTeX stílusok.
+
 %package latex-bibtex-vancouver
 Summary:	Bibliographic style file for Biomedical Journals
 Summary(hu.UTF-8):	Irodalomjegyzék-stílus a Biomedical Journal-hoz
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 
 %description latex-bibtex-vancouver
 Bibliographic style file for Biomedical Journals.
@@ -2674,9 +2687,9 @@ Summary(hu.UTF-8):	TeX Portable Graphic Formátum
 Summary(pl.UTF-8):	Przenośny format grafiki dla TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Obsoletes:	tetex-pgf
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-xcolor = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-pgf
 
 %description latex-pgf
 A macro package for creating graphics directly in TeX and LaTeX.
@@ -4975,6 +4988,12 @@ fi
 %texhash
 
 %postun latex-bibtex-jurabib
+%texhash
+
+%post latex-bibtex-styles
+%texhash
+
+%postun latex-bibtex-styles
 %texhash
 
 %post latex-booktabs
@@ -7905,6 +7924,122 @@ fi
 # %files latex-bibtex-nor
 # %defattr(644,root,root,755)
 # %{texmf}/bibtex/bst/norbib
+
+%files latex-bibtex-styles
+%defattr(644,root,root,755)
+%{texmfdist}/bibtex/bib/IEEEtran
+%{texmfdist}/bibtex/bib/abstyles
+%{texmfdist}/bibtex/bib/achemso
+%{texmfdist}/bibtex/bib/acmtrans
+%{texmfdist}/bibtex/bib/aiaa
+%{texmfdist}/bibtex/bib/apacite
+%{texmfdist}/bibtex/bib/asaetr
+%{texmfdist}/bibtex/bib/ascelike
+%{texmfdist}/bibtex/bib/beebe
+%{texmfdist}/bibtex/bib/bibhtml
+%{texmfdist}/bibtex/bib/bibtopic
+%{texmfdist}/bibtex/bib/biocon
+%{texmfdist}/bibtex/bib/computational-complexity
+%{texmfdist}/bibtex/bib/din1505
+%{texmfdist}/bibtex/bib/directory
+%{texmfdist}/bibtex/bib/dtk
+%{texmfdist}/bibtex/bib/figbib
+%{texmfdist}/bibtex/bib/frankenstein
+%{texmfdist}/bibtex/bib/gatech-thesis
+%{texmfdist}/bibtex/bib/geomsty
+%{texmfdist}/bibtex/bib/gloss
+%{texmfdist}/bibtex/bib/harvard
+%{texmfdist}/bibtex/bib/ieeepes
+%{texmfdist}/bibtex/bib/ijmart
+%{texmfdist}/bibtex/bib/imac
+%{texmfdist}/bibtex/bib/index
+%{texmfdist}/bibtex/bib/lsc
+%{texmfdist}/bibtex/bib/msc
+%{texmfdist}/bibtex/bib/nostarch
+%{texmfdist}/bibtex/bib/philosophersimprint
+%{texmfdist}/bibtex/bib/revtex
+%{texmfdist}/bibtex/bib/spie
+%{texmfdist}/bibtex/bib/urlbst
+%{texmfdist}/bibtex/bst/IEEEtran
+%{texmfdist}/bibtex/bst/abstyles
+%{texmfdist}/bibtex/bst/achemso
+%{texmfdist}/bibtex/bst/acmtrans
+%{texmfdist}/bibtex/bst/afthesis
+%{texmfdist}/bibtex/bst/aguplus
+%{texmfdist}/bibtex/bst/aiaa
+%{texmfdist}/bibtex/bst/aichej
+%{texmfdist}/bibtex/bst/ametsoc
+%{texmfdist}/bibtex/bst/apacite
+%{texmfdist}/bibtex/bst/asaetr
+%{texmfdist}/bibtex/bst/ascelike
+%{texmfdist}/bibtex/bst/babelbib
+%{texmfdist}/bibtex/bst/beebe
+%{texmfdist}/bibtex/bst/bibhtml
+%{texmfdist}/bibtex/bst/chem-journal
+%{texmfdist}/bibtex/bst/chicago
+%{texmfdist}/bibtex/bst/computational-complexity
+%{texmfdist}/bibtex/bst/confproc
+%{texmfdist}/bibtex/bst/datatool
+%{texmfdist}/bibtex/bst/din1505
+%{texmfdist}/bibtex/bst/dinat
+%{texmfdist}/bibtex/bst/directory
+%{texmfdist}/bibtex/bst/dtk
+%{texmfdist}/bibtex/bst/dvdcoll
+%{texmfdist}/bibtex/bst/economic
+%{texmfdist}/bibtex/bst/elsevier-bib
+%{texmfdist}/bibtex/bst/fbs
+%{texmfdist}/bibtex/bst/figbib
+%{texmfdist}/bibtex/bst/finbib
+%{texmfdist}/bibtex/bst/frankenstein
+%{texmfdist}/bibtex/bst/gatech-thesis
+%{texmfdist}/bibtex/bst/gloss
+%{texmfdist}/bibtex/bst/gost
+%{texmfdist}/bibtex/bst/gustlib
+%{texmfdist}/bibtex/bst/harvard
+%{texmfdist}/bibtex/bst/hc
+%{texmfdist}/bibtex/bst/ieeepes
+%{texmfdist}/bibtex/bst/ijmart
+%{texmfdist}/bibtex/bst/ijqc
+%{texmfdist}/bibtex/bst/imac
+%{texmfdist}/bibtex/bst/index
+%{texmfdist}/bibtex/bst/inlinebib
+%{texmfdist}/bibtex/bst/iopart-num
+%{texmfdist}/bibtex/bst/jneurosci
+%{texmfdist}/bibtex/bst/jurarsp
+%{texmfdist}/bibtex/bst/kluwer
+%{texmfdist}/bibtex/bst/mciteplus
+%{texmfdist}/bibtex/bst/mslapa
+%{texmfdist}/bibtex/bst/multibib
+%{texmfdist}/bibtex/bst/munich
+%{texmfdist}/bibtex/bst/nature
+%{texmfdist}/bibtex/bst/nddiss
+%{texmfdist}/bibtex/bst/opcit
+%{texmfdist}/bibtex/bst/perception
+%{texmfdist}/bibtex/bst/revtex
+%{texmfdist}/bibtex/bst/rsc
+%{texmfdist}/bibtex/bst/savetrees
+%{texmfdist}/bibtex/bst/shipunov
+%{texmfdist}/bibtex/bst/smflatex
+%{texmfdist}/bibtex/bst/sort-by-letters
+%{texmfdist}/bibtex/bst/spie
+%{texmfdist}/bibtex/bst/stellenbosch
+%{texmfdist}/bibtex/bst/swebib
+%{texmfdist}/bibtex/bst/texsis
+%{texmfdist}/bibtex/bst/thuthesis
+%{texmfdist}/bibtex/bst/tugboat
+%{texmfdist}/bibtex/bst/urlbst
+%{texmfdist}/bibtex/csf/gost
+%doc %{texmfdist}/doc/bibtex/abstyles
+%doc %{texmfdist}/doc/bibtex/bibhtml
+%doc %{texmfdist}/doc/bibtex/dinat
+%doc %{texmfdist}/doc/bibtex/economic
+%doc %{texmfdist}/doc/bibtex/elsevier-bib
+%doc %{texmfdist}/doc/bibtex/gost
+%doc %{texmfdist}/doc/bibtex/ijqc
+%doc %{texmfdist}/doc/bibtex/iopart-num
+%doc %{texmfdist}/doc/generic/t2%{_sysconfdir}/rubibtex
+%doc %{texmfdist}/doc/latex/IEEEtran
+%{texmfdist}/source/bibtex/gost
 
 %files latex-bibtex-vancouver
 %defattr(644,root,root,755)
