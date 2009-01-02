@@ -1234,7 +1234,7 @@ Xindy upper-sorbian nyelv
 
 %package -n xindy-vietnamese
 Summary:	Xindy vietnamese language
-Summary(hu.UTF-8):	Xindy vietnám nyelv
+Summary(hu.UTF-8):	Xindy vietnámi nyelv
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-vietnamese
@@ -1246,6 +1246,7 @@ Xindy vietnám nyelv
 
 %package pdftex
 Summary:	TeX generating PDF files instead DVI
+Summary(hu.UTF-8):	PDF fájlok készítése DVI helyett TeX-ből
 Summary(pl.UTF-8):	TeX generujący pliki PDF zamiast DVI
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
@@ -1257,6 +1258,19 @@ TeX generating PDF files instead DVI.
 
 %description pdftex -l pl.UTF-8
 TeX generujący pliki PDF zamiast DVI.
+
+%package phyzzx
+Summary:	A TeX format for physicists
+Summary(hu.UTF-8):	TeX formátum fizikusoknak
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description phyzzx
+A TeX format for physicists.
+
+%description phyzzx -l hu.UTF-8
+TeX formátum fizikusoknak.
 
 %package omega
 Summary:	Extended unicode TeX
@@ -4071,7 +4085,8 @@ Summary:	Additional fonts for QTX package
 Summary(pl.UTF-8):	Dodatkowe fonty dla pakietu QTX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
+# I hope qpxqtx doesn't need qfonts
+# Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
 
 %description fonts-qpxqtx
@@ -4941,6 +4956,12 @@ fi
 %texhash
 
 %postun pdftex
+%texhash
+
+%post phyzzx
+%texhash
+
+%postun phyzzx
 %texhash
 
 %post omega
@@ -6350,6 +6371,7 @@ fi
 %dir %{texmf}/doc
 %dir %{texmf}/doc/generic
 %dir %{texmf}/doc/tetex
+%dir %{texmf}/fmtutil
 
 %dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/cslatex
@@ -6530,6 +6552,7 @@ fi
 %dir %{texmfdist}/fonts/tfm
 %dir %{texmfdist}/fonts/tfm/public
 %dir %{texmfdist}/fonts/tfm/vntex
+%dir %{texmfdist}/fonts/truetype
 %dir %{texmfdist}/fonts/type1
 %dir %{texmfdist}/fonts/type1/public
 %dir %{texmfdist}/fonts/type1/vntex
@@ -6545,6 +6568,7 @@ fi
 
 %files doc
 %defattr(644,root,root,755)
+%dir %{texmfdoc}/doc
 %{texmfdoc}/doc/english
 
 %files doc-bg
@@ -7159,9 +7183,18 @@ fi
 %attr(755,root,root) %{_bindir}/pdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftexconfig.tex
+%{texmf}/fmtutil/format.pdftex.cnf
 %{texmfdist}/scripts/pdfcrop
 %{_mandir}/man1/epstopdf.1*
 %{_mandir}/man1/pdftex.1*
+
+%files phyzzx
+%attr(755,root,root) %{_bindir}/phyzzx
+%dir %{texmfdist}/doc/phyzzx
+%dir %{texmfdist}/tex/phyzzx
+%doc %{texmfdist}/doc/phyzzx/base
+%{texmfdist}/tex/phyzzx/config
+%{texmf}/fmtutil/format.phyzzx.cnf
 
 %files omega
 %defattr(644,root,root,755)
@@ -7256,6 +7289,7 @@ fi
 %files format-utf8mex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/utf8mex
+%dir %{texmfdist}/doc/mex
 %doc %{texmfdist}/doc/mex/utf8mex
 %{texmfdist}/tex/mex/utf8mex
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/utf8mex.fmt
@@ -7284,6 +7318,7 @@ fi
 
 %files csplain
 %defattr(644,root,root,755)
+%dir %{texmfdist}/doc/cslatex
 %dir %{texmfdist}/doc/cslatex/base
 %doc %{texmfdist}/doc/cslatex/base/README-cspsfont
 %doc %{texmfdist}/doc/cslatex/base/cs-fonts.doc
@@ -7454,6 +7489,7 @@ fi
 # %lang(fi) %{_mandir}/fi/man1/latex.1*
 # %lang(pl) %{_mandir}/pl/man1/latex.1*
 # %{_infodir}/latex.info*
+%{texmf}/fmtutil/format.latex.cnf
 %{_mandir}/man1/latex.1*
 %{_mandir}/man1/pslatex.1*
 
@@ -8270,6 +8306,7 @@ fi
 
 %files latex-bibtex-pl
 %defattr(644,root,root,755)
+%dir %{texmfdist}/bibtex/bib/gustlib
 %{texmfdist}/bibtex/bib/gustlib/plbib.bib
 
 %files latex-bibtex-german
@@ -8280,6 +8317,7 @@ fi
 
 %files latex-bibtex-revtex4
 %defattr(644,root,root,755)
+%dir %{texmfdist}/source/latex/revtex
 %doc %{texmfdist}/doc/latex/revtex/revtex4.pdf
 %{texmfdist}/source/latex/revtex/revtex4.dtx
 %{texmfdist}/source/latex/revtex/revtex4.ins
@@ -8308,6 +8346,9 @@ fi
 
 %files latex-bibtex-styles
 %defattr(644,root,root,755)
+%dir %{texmfdist}/doc/generic/t2
+%dir %{texmfdist}/doc/generic/t2/etc
+%dir %{texmfdist}/source/bibtex
 %{texmfdist}/bibtex/bib/IEEEtran
 %{texmfdist}/bibtex/bib/abstyles
 %{texmfdist}/bibtex/bib/achemso
@@ -8418,13 +8459,15 @@ fi
 %doc %{texmfdist}/doc/bibtex/gost
 %doc %{texmfdist}/doc/bibtex/ijqc
 %doc %{texmfdist}/doc/bibtex/iopart-num
-%doc %{texmfdist}/doc/generic/t2%{_sysconfdir}/rubibtex
+%doc %{texmfdist}/doc/generic/t2/etc/rubibtex
 %doc %{texmfdist}/doc/latex/IEEEtran
 %{texmfdist}/source/bibtex/gost
 
 %files latex-bibtex-vancouver
 %defattr(644,root,root,755)
 %dir %{texmfdist}/bibtex/bib/vancouver
+%dir %{texmfdist}/bibtex/bst/vancouver
+%dir %{texmfdist}/doc/bibtex/vancouver
 %{texmfdist}/bibtex/bib/vancouver/vancouver.bib
 %{texmfdist}/bibtex/bst/vancouver/vancouver.bst
 %doc %{texmfdist}/doc/bibtex/vancouver/README
@@ -8539,6 +8582,7 @@ fi
 
 %files latex-lucidabr
 %defattr(644,root,root,755)
+%dir %{texmfdist}/vtex/config
 %{texmfdist}/vtex/config/lucidabr-k.ali
 %{texmfdist}/vtex/config/lucidabr.ali
 
@@ -8738,7 +8782,7 @@ fi
 %files latex-pst-text
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pst-text
-%{texmfdist}/dvips/pst-text/pst-text.pro
+%{texmfdist}/dvips/pst-text
 %{texmfdist}/tex/generic/pst-text
 %{texmfdist}/tex/latex/pst-text
 
@@ -8751,8 +8795,8 @@ fi
 %doc %{texmfdist}/doc/generic/pst-blur
 %doc %{texmfdist}/doc/generic/pst-coil
 %doc %{texmfdist}/doc/generic/pst-cox
-%doc %{texmfdist}/doc/generic/pst-cox/pst-coxcoor
-%doc %{texmfdist}/doc/generic/pst-cox/pst-coxeterp
+# %doc %{texmfdist}/doc/generic/pst-cox/pst-coxcoor
+# %doc %{texmfdist}/doc/generic/pst-cox/pst-coxeterp
 %doc %{texmfdist}/doc/generic/pst-dbicons
 %doc %{texmfdist}/doc/generic/pst-eps
 %doc %{texmfdist}/doc/generic/pst-fill
@@ -8771,8 +8815,8 @@ fi
 %doc %{texmfdist}/doc/generic/pst-qtree
 %doc %{texmfdist}/doc/generic/pst-slpe
 %doc %{texmfdist}/doc/generic/pst-solides3d
-%doc %{texmfdist}/doc/generic/pst-solides3d/doc-en
-%doc %{texmfdist}/doc/generic/pst-solides3d/doc
+# %doc %{texmfdist}/doc/generic/pst-solides3d/doc-en
+# %doc %{texmfdist}/doc/generic/pst-solides3d/doc
 %doc %{texmfdist}/doc/generic/pst-soroban
 %doc %{texmfdist}/doc/generic/pst-spectra
 %doc %{texmfdist}/doc/generic/pst-stru
@@ -8881,6 +8925,9 @@ fi
 %files latex-psnfss
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/psnfss
+%dir %{texmfdist}/source/latex
+%dir %{texmfdist}/source/latex/latex-tds
+%dir %{texmfdist}/source/latex/latex-tds/tex
 %{texmfdist}/fonts/map/dvips/psnfss
 %{texmfdist}/source/latex/psnfss
 %{texmfdist}/source/latex/latex-tds/tex/psnfss2e.drv
@@ -8947,7 +8994,7 @@ fi
 %files latex-xcolor
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/xcolor
-%{texmfdist}/dvips/xcolor/xcolor.pro
+%{texmfdist}/dvips/xcolor
 %{texmfdist}/source/latex/xcolor
 
 # %files format-latex
@@ -9041,10 +9088,12 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/spanish-mx
 %dir %{texmfdist}/source/latex/mapcodes
+%dir %{texmfdist}/source/latex/polyglot
 %dir %{texmfdist}/source/latex/polyglot/langs
 %dir %{texmfdist}/tex/latex/apacite
 %dir %{texmfdist}/tex/latex/babelbib
 %dir %{texmfdist}/tex/latex/dvdcoll/dcl
+%dir %{texmfdist}/tex/texsis
 %dir %{texmfdist}/tex/texsis/base
 %{texmfdist}/source/generic/babel/spanish.ins
 %{texmfdist}/source/generic/babel/spanish.dtx
@@ -9400,6 +9449,9 @@ fi
 %files fonts-pl
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/pl
+%dir %{texmf}/scripts/texlive
+%dir %{texmf}/scripts/texlive/tlmgrgui
+%dir %{texmf}/scripts/texlive/tlmgrgui/lang
 %{texmfdist}/dvips/pl
 %{texmfdist}/fonts/source/public/pl
 %{texmfdist}/fonts/type1/public/pl
