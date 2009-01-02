@@ -2432,7 +2432,7 @@ Laborjegyzőkönyvek szedése.
 
 %package latex-lcd
 Summary:	Alphanumerical LCD-style displays
-Summary(hu.UTF-8):	Alfanumerikus LCD-szerű kijelzés	
+Summary(hu.UTF-8):	Alfanumerikus LCD-szerű kijelzés
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex
@@ -2441,7 +2441,7 @@ Requires:	%{name}-latex
 Alphanumerical LCD-style displays.
 
 %description latex-lcd -l hu.UTF-8
-Alfanumerikus LCD-szerű kijelzés.	
+Alfanumerikus LCD-szerű kijelzés.
 
 %package latex-leaflet
 Summary:	Create small handouts (flyers)
@@ -2774,6 +2774,32 @@ Enhanced theorem environment.
 %description latex-ntheorem -l hu.UTF-8
 Bővített tétel környezet
 
+%package latex-other
+Summary:	Other LaTeX packages
+Summary(hu.UTF-8):	Néhány további LaTeX csomag
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-other
+Other LaTeX packages.
+
+%description latex-other -l hu.UTF-8
+Néhány további LaTeX csomag.
+
+%package latex-other-doc
+Summary:	Other LaTeX packages documentation
+Summary(hu.UTF-8):	Néhány további LaTeX csomag dokumentációja
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-other-doc
+Other LaTeX packages documentation.
+
+%description latex-other-doc -l hu.UTF-8
+Néhány további LaTeX csomag dokumentációja.
+
 %package latex-palatcm
 Summary:	Palatino + Computer Modern math fonts for LaTeX
 Summary(pl.UTF-8):	Fonty matematyczne Palatino i Computer Modern dla LaTeXa
@@ -2786,6 +2812,20 @@ Palatino + Computer Modern math fonts for LaTeX.
 
 %description latex-palatcm -l pl.UTF-8
 Fonty matematyczne Palatino i Computer Modern dla LaTeXa.
+
+
+%package latex-pdfslide
+Summary:	Presentation slides using pdftex
+Summary(hu.UTF-8):	Prezentáció készítése pdftex-hel
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-pdfslide
+Presentation slides using pdftex.
+
+%description latex-pdfslide -l hu.UTF-8
+Prezentáció készítése pdftex-hel.
 
 %package latex-pgf
 Summary:	The TeX Portable Graphic Format
@@ -2805,6 +2845,32 @@ Makró csomag rajzok készítéséhez közvetlenül TeX-ben és LaTeX-ben.
 
 %description latex-pgf -l pl.UTF-8
 Pakiet makr do tworzenia grafiki bezpośrednio z TeXa i LaTeXa.
+
+%package latex-polynom
+Summary:	Macros for manipulating polynomials
+Summary(hu.UTF-8):	Makrók polinomokkal való műveletekre
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-polynom
+Macros for manipulating polynomials.
+
+%description latex-polynom -l hu.UTF-8
+Makrók polinomokkal való műveletekre.
+
+%package latex-polynomial
+Summary:	Typeset (univariate) polynomials
+Summary(hu.UTF-8):	Egyváltozós polinomok szedése
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-polynomial
+Typeset (univariate) polynomials.
+
+%description latex-polynomial -l hu.UTF-8
+Egyváltozós polinomok szedése.
 
 %package latex-prosper
 Summary:	LaTeX class for high quality slides
@@ -3138,6 +3204,19 @@ your writings.
 
 %description latex-SIunits -l hu.UTF-8
 Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget.
+
+%package latex-siunitx
+Summary:	A comprehensive (SI) units package
+Summary(hu.UTF-8):	Egy minden részletre kiterjedő (SI) egységek kezelését végző csomag
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	/usr/bin/texhash
+Requires:	%{name}-latex
+
+%description latex-siunitx
+A comprehensive (SI) units package.
+
+%description latex-siunitx -l hu.UTF-8
+Egy minden részletre kiterjedő (SI) egységek kezelését végző csomag.
 
 %package latex-Tabbing
 Summary:	Tabbing with accented letters
@@ -5585,16 +5664,46 @@ fi
 %postun latex-ntheorem
 %texhash
 
+%post latex-other
+%texhash
+
+%postun latex-other
+%texhash
+
+%post latex-other-doc
+%texhash
+
+%postun latex-other-doc
+%texhash
+
 %post latex-palatcm
 %texhash
 
 %postun latex-palatcm
 %texhash
 
+%post latex-pdfslide
+%texhash
+
+%postun latex-pdfslide
+%texhash
+
 %post latex-pgf
 %texhash
 
 %postun latex-pgf
+%texhash
+
+%post latex-polynom
+%texhash
+
+%postun latex-polynom
+%texhash
+
+%post latex-polynomial
+%texhash
+
+%postun latex-polynomial
 %texhash
 
 %post latex-prosper
@@ -5740,6 +5849,12 @@ fi
 %texhash
 
 %postun latex-SIunits
+%texhash
+
+%post latex-siunitx
+%texhash
+
+%postun latex-siunitx
 %texhash
 
 %post latex-Tabbing
@@ -7306,6 +7421,7 @@ fi
 %{_mandir}/man1/pdftex.1*
 
 %files phyzzx
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/phyzzx
 %dir %{texmfdist}/doc/phyzzx
 %dir %{texmfdist}/tex/phyzzx
@@ -8808,9 +8924,1713 @@ fi
 %{texmfdist}/tex/latex/ntheorem
 %doc %{texmfdist}/doc/latex/ntheorem
 
+%files latex-other-doc
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/alatex/base
+%doc %{texmfdist}/doc/cslatex/base
+%doc %{texmfdist}/doc/fonts/armenian/examples/latex
+%doc %{texmfdist}/doc/fonts/frcursive/latex
+%doc %{texmfdist}/doc/fonts/itrans
+%doc %{texmfdist}/doc/fonts/iwona
+%doc %{texmfdist}/doc/fonts/kdgreek
+%doc %{texmfdist}/doc/fonts/kurier
+%doc %{texmfdist}/doc/fonts/yi4latex
+%doc %{texmfdist}/doc/generic/wsuipa/latex209
+%doc %{texmfdist}/doc/generic/wsuipa/latex2e
+%doc %{texmfdist}/doc/latex/ANUfinalexam
+%doc %{texmfdist}/doc/latex/AkkTeX
+%doc %{texmfdist}/doc/latex/ESIEEcv
+%doc %{texmfdist}/doc/latex/GuIT
+%doc %{texmfdist}/doc/latex/HA-prosper
+%doc %{texmfdist}/doc/latex/IEEEconf
+%doc %{texmfdist}/doc/latex/a0poster
+%doc %{texmfdist}/doc/latex/aastex
+%doc %{texmfdist}/doc/latex/abc
+%doc %{texmfdist}/doc/latex/achemso
+%doc %{texmfdist}/doc/latex/acmconf
+%doc %{texmfdist}/doc/latex/acmtrans
+%doc %{texmfdist}/doc/latex/active-conf
+%doc %{texmfdist}/doc/latex/addlines
+%doc %{texmfdist}/doc/latex/adrlist
+%doc %{texmfdist}/doc/latex/afthesis
+%doc %{texmfdist}/doc/latex/aguplus
+%doc %{texmfdist}/doc/latex/aiaa
+%doc %{texmfdist}/doc/latex/akletter
+%doc %{texmfdist}/doc/latex/alg
+%doc %{texmfdist}/doc/latex/algorithm2e
+%doc %{texmfdist}/doc/latex/algorithmicx
+%doc %{texmfdist}/doc/latex/alnumsec
+%doc %{texmfdist}/doc/latex/altfont
+%doc %{texmfdist}/doc/latex/ametsoc
+%doc %{texmfdist}/doc/latex/amsaddr
+%doc %{texmfdist}/doc/latex/amsrefs
+%doc %{texmfdist}/doc/latex/animate
+%doc %{texmfdist}/doc/latex/answers
+%doc %{texmfdist}/doc/latex/anyfontsize
+%doc %{texmfdist}/doc/latex/apa
+%doc %{texmfdist}/doc/latex/apacite
+%doc %{texmfdist}/doc/latex/ar
+%doc %{texmfdist}/doc/latex/arabi
+%doc %{texmfdist}/doc/latex/arabtex
+%doc %{texmfdist}/doc/latex/arcs
+%doc %{texmfdist}/doc/latex/arydshln
+%doc %{texmfdist}/doc/latex/asaetr
+%doc %{texmfdist}/doc/latex/ascelike
+%doc %{texmfdist}/doc/latex/assignment
+%doc %{texmfdist}/doc/latex/attachfile
+%doc %{texmfdist}/doc/latex/augie
+%doc %{texmfdist}/doc/latex/aurical
+%doc %{texmfdist}/doc/latex/authorindex
+%doc %{texmfdist}/doc/latex/autoarea
+%doc %{texmfdist}/doc/latex/autotab
+%doc %{texmfdist}/doc/latex/babelbib
+%doc %{texmfdist}/doc/latex/bangtex
+%doc %{texmfdist}/doc/latex/barcodes
+%doc %{texmfdist}/doc/latex/bayer
+%doc %{texmfdist}/doc/latex/bbm-macros
+%doc %{texmfdist}/doc/latex/beamer-contrib
+%doc %{texmfdist}/doc/latex/begriff
+%doc %{texmfdist}/doc/latex/betababel
+%doc %{texmfdist}/doc/latex/bez123
+%doc %{texmfdist}/doc/latex/bibarts
+%doc %{texmfdist}/doc/latex/bibleref
+%doc %{texmfdist}/doc/latex/biblist
+%doc %{texmfdist}/doc/latex/bibtopicprefix
+%doc %{texmfdist}/doc/latex/bigfoot
+%doc %{texmfdist}/doc/latex/binomexp
+%doc %{texmfdist}/doc/latex/biocon
+%doc %{texmfdist}/doc/latex/bizcard
+%doc %{texmfdist}/doc/latex/blindtext
+%doc %{texmfdist}/doc/latex/blowup
+%doc %{texmfdist}/doc/latex/boites
+%doc %{texmfdist}/doc/latex/boldtensors
+%doc %{texmfdist}/doc/latex/bookest
+%doc %{texmfdist}/doc/latex/booklet
+%doc %{texmfdist}/doc/latex/boxhandler
+%doc %{texmfdist}/doc/latex/bpchem
+%doc %{texmfdist}/doc/latex/braille
+%doc %{texmfdist}/doc/latex/breakurl
+%doc %{texmfdist}/doc/latex/brushscr
+%doc %{texmfdist}/doc/latex/bullcntr
+%doc %{texmfdist}/doc/latex/bussproofs
+%doc %{texmfdist}/doc/latex/bytefield
+%doc %{texmfdist}/doc/latex/calxxxx
+%doc %{texmfdist}/doc/latex/captcont
+%doc %{texmfdist}/doc/latex/casyl
+%doc %{texmfdist}/doc/latex/catechis
+%doc %{texmfdist}/doc/latex/cbcoptic
+%doc %{texmfdist}/doc/latex/cclicenses
+%doc %{texmfdist}/doc/latex/cd-cover
+%doc %{texmfdist}/doc/latex/cd
+%doc %{texmfdist}/doc/latex/cdpbundl
+%doc %{texmfdist}/doc/latex/cellspace
+%doc %{texmfdist}/doc/latex/changes
+%doc %{texmfdist}/doc/latex/chapterfolder
+%doc %{texmfdist}/doc/latex/chemcompounds
+%doc %{texmfdist}/doc/latex/chemcono
+%doc %{texmfdist}/doc/latex/chemstyle
+%doc %{texmfdist}/doc/latex/chessboard
+%doc %{texmfdist}/doc/latex/chessfss
+%doc %{texmfdist}/doc/latex/china2e
+%doc %{texmfdist}/doc/latex/chletter
+%doc %{texmfdist}/doc/latex/circ
+%doc %{texmfdist}/doc/latex/cite
+%doc %{texmfdist}/doc/latex/cjk
+%doc %{texmfdist}/doc/latex/classicthesis
+%doc %{texmfdist}/doc/latex/clefval
+%doc %{texmfdist}/doc/latex/cleveref
+%doc %{texmfdist}/doc/latex/clock
+%doc %{texmfdist}/doc/latex/clrscode
+%doc %{texmfdist}/doc/latex/cm-lgc
+%doc %{texmfdist}/doc/latex/cmap
+%doc %{texmfdist}/doc/latex/cmcyralt
+%doc %{texmfdist}/doc/latex/cmdstring
+%doc %{texmfdist}/doc/latex/cmll
+%doc %{texmfdist}/doc/latex/codepage
+%doc %{texmfdist}/doc/latex/colorinfo
+%doc %{texmfdist}/doc/latex/colortbl
+%doc %{texmfdist}/doc/latex/colorwav
+%doc %{texmfdist}/doc/latex/combine
+%doc %{texmfdist}/doc/latex/commath
+%doc %{texmfdist}/doc/latex/complexity
+%doc %{texmfdist}/doc/latex/computational-complexity
+%doc %{texmfdist}/doc/latex/concprog
+%doc %{texmfdist}/doc/latex/confproc
+%doc %{texmfdist}/doc/latex/constants
+%doc %{texmfdist}/doc/latex/contour
+%doc %{texmfdist}/doc/latex/cooking
+%doc %{texmfdist}/doc/latex/cool
+%doc %{texmfdist}/doc/latex/coollist
+%doc %{texmfdist}/doc/latex/coolstr
+%doc %{texmfdist}/doc/latex/cooltooltips
+%doc %{texmfdist}/doc/latex/coordsys
+%doc %{texmfdist}/doc/latex/courier-scaled
+%doc %{texmfdist}/doc/latex/courseoutline
+%doc %{texmfdist}/doc/latex/coursepaper
+%doc %{texmfdist}/doc/latex/coverpage
+%doc %{texmfdist}/doc/latex/covington
+%doc %{texmfdist}/doc/latex/crossreference
+%doc %{texmfdist}/doc/latex/crosswrd
+%doc %{texmfdist}/doc/latex/cryst
+%doc %{texmfdist}/doc/latex/csbulletin
+%doc %{texmfdist}/doc/latex/csquotes
+%doc %{texmfdist}/doc/latex/csvtools
+%doc %{texmfdist}/doc/latex/ctable
+%doc %{texmfdist}/doc/latex/ctib
+%doc %{texmfdist}/doc/latex/cuisine
+%doc %{texmfdist}/doc/latex/cursor
+%doc %{texmfdist}/doc/latex/curve
+%doc %{texmfdist}/doc/latex/curve2e
+%doc %{texmfdist}/doc/latex/cv
+%doc %{texmfdist}/doc/latex/cweb-latex
+%doc %{texmfdist}/doc/latex/cwpuzzle
+%doc %{texmfdist}/doc/latex/dashrule
+%doc %{texmfdist}/doc/latex/datatool
+%doc %{texmfdist}/doc/latex/dateiliste
+%doc %{texmfdist}/doc/latex/datenumber
+%doc %{texmfdist}/doc/latex/datetime
+%doc %{texmfdist}/doc/latex/dcpic
+%doc %{texmfdist}/doc/latex/delimtxt
+%doc %{texmfdist}/doc/latex/diagnose
+%doc %{texmfdist}/doc/latex/dialogl
+%doc %{texmfdist}/doc/latex/dichokey
+%doc %{texmfdist}/doc/latex/digiconfigs
+%doc %{texmfdist}/doc/latex/din1505
+%doc %{texmfdist}/doc/latex/directory
+%doc %{texmfdist}/doc/latex/disser
+%doc %{texmfdist}/doc/latex/dlfltxb
+%doc %{texmfdist}/doc/latex/dnaseq
+%doc %{texmfdist}/doc/latex/docmfp
+%doc %{texmfdist}/doc/latex/doi
+%doc %{texmfdist}/doc/latex/doipubmed
+%doc %{texmfdist}/doc/latex/dotarrow
+%doc %{texmfdist}/doc/latex/dottex
+%doc %{texmfdist}/doc/latex/dpfloat
+%doc %{texmfdist}/doc/latex/dprogress
+%doc %{texmfdist}/doc/latex/drac
+%doc %{texmfdist}/doc/latex/draftwatermark
+%doc %{texmfdist}/doc/latex/dramatist
+%doc %{texmfdist}/doc/latex/dtk
+%doc %{texmfdist}/doc/latex/dtxgallery
+%doc %{texmfdist}/doc/latex/duerer-latex
+%doc %{texmfdist}/doc/latex/dvdcoll
+%doc %{texmfdist}/doc/latex/dyntree
+%doc %{texmfdist}/doc/latex/eCards
+%doc %{texmfdist}/doc/latex/ean13isbn
+%doc %{texmfdist}/doc/latex/easy
+%doc %{texmfdist}/doc/latex/ebezier
+%doc %{texmfdist}/doc/latex/ebong
+%doc %{texmfdist}/doc/latex/ebsthesis
+%doc %{texmfdist}/doc/latex/ecclesiastic
+%doc %{texmfdist}/doc/latex/ecltree
+%doc %{texmfdist}/doc/latex/ecv
+%doc %{texmfdist}/doc/latex/ed
+%doc %{texmfdist}/doc/latex/edmac
+%doc %{texmfdist}/doc/latex/edmargin
+%doc %{texmfdist}/doc/latex/ednotes
+%doc %{texmfdist}/doc/latex/eemeir
+%doc %{texmfdist}/doc/latex/egameps
+%doc %{texmfdist}/doc/latex/egplot
+%doc %{texmfdist}/doc/latex/ellipsis
+%doc %{texmfdist}/doc/latex/elmath
+%doc %{texmfdist}/doc/latex/elpres
+%doc %{texmfdist}/doc/latex/elsarticle
+%doc %{texmfdist}/doc/latex/elsevier
+%doc %{texmfdist}/doc/latex/em
+%doc %{texmfdist}/doc/latex/emp
+%doc %{texmfdist}/doc/latex/emulateapj
+%doc %{texmfdist}/doc/latex/endheads
+%doc %{texmfdist}/doc/latex/engpron
+%doc %{texmfdist}/doc/latex/engrec
+%doc %{texmfdist}/doc/latex/environ
+%doc %{texmfdist}/doc/latex/envlab
+%doc %{texmfdist}/doc/latex/epigraph
+%doc %{texmfdist}/doc/latex/epiolmec
+%doc %{texmfdist}/doc/latex/epsdice
+%doc %{texmfdist}/doc/latex/epspdfconversion
+%doc %{texmfdist}/doc/latex/eqlist
+%doc %{texmfdist}/doc/latex/eqnarray
+%doc %{texmfdist}/doc/latex/eqparbox
+%doc %{texmfdist}/doc/latex/errata
+%doc %{texmfdist}/doc/latex/esdiff
+%doc %{texmfdist}/doc/latex/eskd
+%doc %{texmfdist}/doc/latex/eskdx
+%doc %{texmfdist}/doc/latex/esvect
+%doc %{texmfdist}/doc/latex/etaremune
+%doc %{texmfdist}/doc/latex/etex-pkg
+%doc %{texmfdist}/doc/latex/ethiop-t1
+%doc %{texmfdist}/doc/latex/ethiop
+%doc %{texmfdist}/doc/latex/etoolbox
+%doc %{texmfdist}/doc/latex/eukdate
+%doc %{texmfdist}/doc/latex/euproposal
+%doc %{texmfdist}/doc/latex/euro
+%doc %{texmfdist}/doc/latex/europecv
+%doc %{texmfdist}/doc/latex/eurosans
+%doc %{texmfdist}/doc/latex/everypage
+%doc %{texmfdist}/doc/latex/examdesign
+%doc %{texmfdist}/doc/latex/examplep
+%doc %{texmfdist}/doc/latex/exceltex
+%doc %{texmfdist}/doc/latex/exercise
+%doc %{texmfdist}/doc/latex/expdlist
+%doc %{texmfdist}/doc/latex/expl3
+%doc %{texmfdist}/doc/latex/export
+%doc %{texmfdist}/doc/latex/extarrows
+%doc %{texmfdist}/doc/latex/extpfeil
+%doc %{texmfdist}/doc/latex/extract
+%doc %{texmfdist}/doc/latex/facsimile
+%doc %{texmfdist}/doc/latex/faktor
+%doc %{texmfdist}/doc/latex/fancynum
+%doc %{texmfdist}/doc/latex/fancyref
+%doc %{texmfdist}/doc/latex/fancytooltips
+%doc %{texmfdist}/doc/latex/fax
+%doc %{texmfdist}/doc/latex/feynmf
+%doc %{texmfdist}/doc/latex/figbib
+%doc %{texmfdist}/doc/latex/figsize
+%doc %{texmfdist}/doc/latex/fink
+%doc %{texmfdist}/doc/latex/fixfoot
+%doc %{texmfdist}/doc/latex/fixme
+%doc %{texmfdist}/doc/latex/flabels
+%doc %{texmfdist}/doc/latex/flacards
+%doc %{texmfdist}/doc/latex/flagderiv
+%doc %{texmfdist}/doc/latex/flashcards
+%doc %{texmfdist}/doc/latex/flippdf
+%doc %{texmfdist}/doc/latex/floatrow
+%doc %{texmfdist}/doc/latex/flowfram
+%doc %{texmfdist}/doc/latex/fmp
+%doc %{texmfdist}/doc/latex/fmtcount
+%doc %{texmfdist}/doc/latex/fnbreak
+%doc %{texmfdist}/doc/latex/fncychap
+%doc %{texmfdist}/doc/latex/foekfont
+%doc %{texmfdist}/doc/latex/fonttable
+%doc %{texmfdist}/doc/latex/forarray
+%doc %{texmfdist}/doc/latex/forloop
+%doc %{texmfdist}/doc/latex/formlett
+%doc %{texmfdist}/doc/latex/formula
+%doc %{texmfdist}/doc/latex/formular
+%doc %{texmfdist}/doc/latex/fouridx
+%doc %{texmfdist}/doc/latex/frankenstein
+%doc %{texmfdist}/doc/latex/frenchle
+%doc %{texmfdist}/doc/latex/fribrief
+%doc %{texmfdist}/doc/latex/frletter
+%doc %{texmfdist}/doc/latex/frontespizio
+%doc %{texmfdist}/doc/latex/fullblck
+%doc %{texmfdist}/doc/latex/fullpict
+%doc %{texmfdist}/doc/latex/functan
+%doc %{texmfdist}/doc/latex/fundus
+%doc %{texmfdist}/doc/latex/gaceta
+%doc %{texmfdist}/doc/latex/galois
+%doc %{texmfdist}/doc/latex/gastex
+%doc %{texmfdist}/doc/latex/gatech-thesis
+%doc %{texmfdist}/doc/latex/gauss
+%doc %{texmfdist}/doc/latex/gb4e
+%doc %{texmfdist}/doc/latex/gcard
+%doc %{texmfdist}/doc/latex/gcite
+%doc %{texmfdist}/doc/latex/genmpage
+%doc %{texmfdist}/doc/latex/geomsty
+%doc %{texmfdist}/doc/latex/ginpenc
+%doc %{texmfdist}/doc/latex/gloss
+%doc %{texmfdist}/doc/latex/glossaries
+%doc %{texmfdist}/doc/latex/gmdoc
+%doc %{texmfdist}/doc/latex/gmeometric
+%doc %{texmfdist}/doc/latex/gmiflink
+%doc %{texmfdist}/doc/latex/gmutils
+%doc %{texmfdist}/doc/latex/gmverb
+%doc %{texmfdist}/doc/latex/gnuplottex
+%doc %{texmfdist}/doc/latex/graphicx-psmin
+%doc %{texmfdist}/doc/latex/greek-inputenc
+%doc %{texmfdist}/doc/latex/greekdates
+%doc %{texmfdist}/doc/latex/greektex
+%doc %{texmfdist}/doc/latex/grfpaste
+%doc %{texmfdist}/doc/latex/grnumalt
+%doc %{texmfdist}/doc/latex/grverb
+%doc %{texmfdist}/doc/latex/gu
+%doc %{texmfdist}/doc/latex/guitar
+%doc %{texmfdist}/doc/latex/guitbeamer
+%doc %{texmfdist}/doc/latex/hanging
+%doc %{texmfdist}/doc/latex/har2nat
+%doc %{texmfdist}/doc/latex/harmony
+%doc %{texmfdist}/doc/latex/harpoon
+%doc %{texmfdist}/doc/latex/harvard
+%doc %{texmfdist}/doc/latex/hc
+%doc %{texmfdist}/doc/latex/hep
+%doc %{texmfdist}/doc/latex/hepnames
+%doc %{texmfdist}/doc/latex/hepparticles
+%doc %{texmfdist}/doc/latex/hepthesis
+%doc %{texmfdist}/doc/latex/hepunits
+%doc %{texmfdist}/doc/latex/hexgame
+%doc %{texmfdist}/doc/latex/hhtensor
+%doc %{texmfdist}/doc/latex/histogr
+%doc %{texmfdist}/doc/latex/hitec
+%doc %{texmfdist}/doc/latex/hpsdiss
+%doc %{texmfdist}/doc/latex/hrlatex
+%doc %{texmfdist}/doc/latex/hvfloat
+%doc %{texmfdist}/doc/latex/hypdvips
+%doc %{texmfdist}/doc/latex/hyperref-docsrc
+%doc %{texmfdist}/doc/latex/hyperxmp
+%doc %{texmfdist}/doc/latex/ibycus-babel
+%doc %{texmfdist}/doc/latex/icsv
+%doc %{texmfdist}/doc/latex/ieeepes
+%doc %{texmfdist}/doc/latex/ifmslide
+%doc %{texmfdist}/doc/latex/ifplatform
+%doc %{texmfdist}/doc/latex/ijmart
+%doc %{texmfdist}/doc/latex/imac
+%doc %{texmfdist}/doc/latex/image-gallery
+%doc %{texmfdist}/doc/latex/imtekda
+%doc %{texmfdist}/doc/latex/inlinebib
+%doc %{texmfdist}/doc/latex/inlinedef
+%doc %{texmfdist}/doc/latex/interactiveworkbook
+%doc %{texmfdist}/doc/latex/inversepath
+%doc %{texmfdist}/doc/latex/invoice
+%doc %{texmfdist}/doc/latex/ipa
+%doc %{texmfdist}/doc/latex/iso
+%doc %{texmfdist}/doc/latex/iso10303
+%doc %{texmfdist}/doc/latex/isodate
+%doc %{texmfdist}/doc/latex/isodoc
+%doc %{texmfdist}/doc/latex/isorot
+%doc %{texmfdist}/doc/latex/itnumpar
+%doc %{texmfdist}/doc/latex/jeopardy
+%doc %{texmfdist}/doc/latex/jknapltx
+%doc %{texmfdist}/doc/latex/jneurosci
+%doc %{texmfdist}/doc/latex/jpsj
+%doc %{texmfdist}/doc/latex/jura
+%doc %{texmfdist}/doc/latex/juraabbrev
+%doc %{texmfdist}/doc/latex/juramisc
+%doc %{texmfdist}/doc/latex/jurarsp
+%doc %{texmfdist}/doc/latex/karnaugh
+%doc %{texmfdist}/doc/latex/kerkis
+%doc %{texmfdist}/doc/latex/kerntest
+%doc %{texmfdist}/doc/latex/kluwer
+%doc %{texmfdist}/doc/latex/labelcas
+%doc %{texmfdist}/doc/latex/lazylist
+%doc %{texmfdist}/doc/latex/lcyw
+%doc %{texmfdist}/doc/latex/leading
+%doc %{texmfdist}/doc/latex/ledmac
+%doc %{texmfdist}/doc/latex/lettre
+%doc %{texmfdist}/doc/latex/lexikon
+%doc %{texmfdist}/doc/latex/lgreek
+%doc %{texmfdist}/doc/latex/lhelp
+%doc %{texmfdist}/doc/latex/linguex
+%doc %{texmfdist}/doc/latex/lipsum
+%doc %{texmfdist}/doc/latex/listbib
+%doc %{texmfdist}/doc/latex/listliketab
+%doc %{texmfdist}/doc/latex/listofsymbols
+%doc %{texmfdist}/doc/latex/lkproof
+%doc %{texmfdist}/doc/latex/logic
+%doc %{texmfdist}/doc/latex/logpap
+%doc %{texmfdist}/doc/latex/lps
+%doc %{texmfdist}/doc/latex/lsc
+%doc %{texmfdist}/doc/latex/ltxindex
+%doc %{texmfdist}/doc/latex/mafr
+%doc %{texmfdist}/doc/latex/magyar
+%doc %{texmfdist}/doc/latex/mailing
+%doc %{texmfdist}/doc/latex/makebarcode
+%doc %{texmfdist}/doc/latex/makebox
+%doc %{texmfdist}/doc/latex/makecell
+%doc %{texmfdist}/doc/latex/makecmds
+%doc %{texmfdist}/doc/latex/makedtx
+%doc %{texmfdist}/doc/latex/makeglos
+%doc %{texmfdist}/doc/latex/makeplot
+%doc %{texmfdist}/doc/latex/manuscript
+%doc %{texmfdist}/doc/latex/maple
+%doc %{texmfdist}/doc/latex/marginnote
+%doc %{texmfdist}/doc/latex/mathdesign
+%doc %{texmfdist}/doc/latex/mathpazo
+%doc %{texmfdist}/doc/latex/maybemath
+%doc %{texmfdist}/doc/latex/mcaption
+%doc %{texmfdist}/doc/latex/mceinleger
+%doc %{texmfdist}/doc/latex/mcite
+%doc %{texmfdist}/doc/latex/mciteplus
+%doc %{texmfdist}/doc/latex/memexsupp
+%doc %{texmfdist}/doc/latex/mentis
+%doc %{texmfdist}/doc/latex/metaplot
+%doc %{texmfdist}/doc/latex/method
+%doc %{texmfdist}/doc/latex/metre
+%doc %{texmfdist}/doc/latex/mff
+%doc %{texmfdist}/doc/latex/mfpic4ode
+%doc %{texmfdist}/doc/latex/mftinc
+%doc %{texmfdist}/doc/latex/mhchem
+%doc %{texmfdist}/doc/latex/mhequ
+%doc %{texmfdist}/doc/latex/miller
+%doc %{texmfdist}/doc/latex/minipage-marginpar
+%doc %{texmfdist}/doc/latex/miniplot
+%doc %{texmfdist}/doc/latex/minutes
+%doc %{texmfdist}/doc/latex/mla-paper
+%doc %{texmfdist}/doc/latex/mlist
+%doc %{texmfdist}/doc/latex/mmap
+%doc %{texmfdist}/doc/latex/mnsymbol
+%doc %{texmfdist}/doc/latex/moderncv
+%doc %{texmfdist}/doc/latex/modroman
+%doc %{texmfdist}/doc/latex/mongolian-babel
+%doc %{texmfdist}/doc/latex/montex
+%doc %{texmfdist}/doc/latex/moresize
+%doc %{texmfdist}/doc/latex/movie15
+%doc %{texmfdist}/doc/latex/msc
+%doc %{texmfdist}/doc/latex/msg
+%doc %{texmfdist}/doc/latex/mslapa
+%doc %{texmfdist}/doc/latex/mtgreek
+%doc %{texmfdist}/doc/latex/multibbl
+%doc %{texmfdist}/doc/latex/multicap
+%doc %{texmfdist}/doc/latex/multirow
+%doc %{texmfdist}/doc/latex/munich
+%doc %{texmfdist}/doc/latex/musixlyr
+%doc %{texmfdist}/doc/latex/muthesis
+%doc %{texmfdist}/doc/latex/mxd
+%doc %{texmfdist}/doc/latex/mxedruli
+%doc %{texmfdist}/doc/latex/nag
+%doc %{texmfdist}/doc/latex/namespc
+%doc %{texmfdist}/doc/latex/nath
+%doc %{texmfdist}/doc/latex/nature
+%doc %{texmfdist}/doc/latex/ncclatex
+%doc %{texmfdist}/doc/latex/ncctools
+%doc %{texmfdist}/doc/latex/nddiss
+%doc %{texmfdist}/doc/latex/newalg
+%doc %{texmfdist}/doc/latex/newfile
+%doc %{texmfdist}/doc/latex/newlfm
+%doc %{texmfdist}/doc/latex/newspaper
+%doc %{texmfdist}/doc/latex/newvbtm
+%doc %{texmfdist}/doc/latex/niceframe
+%doc %{texmfdist}/doc/latex/nih
+%doc %{texmfdist}/doc/latex/noitcrul
+%doc %{texmfdist}/doc/latex/nomentbl
+%doc %{texmfdist}/doc/latex/nonfloat
+%doc %{texmfdist}/doc/latex/nostarch
+%doc %{texmfdist}/doc/latex/notes
+%doc %{texmfdist}/doc/latex/notes2bib
+%doc %{texmfdist}/doc/latex/nrc
+%doc %{texmfdist}/doc/latex/ntabbing
+%doc %{texmfdist}/doc/latex/numname
+%doc %{texmfdist}/doc/latex/numprint
+%doc %{texmfdist}/doc/latex/objectz
+%doc %{texmfdist}/doc/latex/ocr-latex
+%doc %{texmfdist}/doc/latex/octavo
+%doc %{texmfdist}/doc/latex/ogham
+%doc %{texmfdist}/doc/latex/ogonek
+%doc %{texmfdist}/doc/latex/opcit
+%doc %{texmfdist}/doc/latex/ordinalpt
+%doc %{texmfdist}/doc/latex/othello
+%doc %{texmfdist}/doc/latex/otibet
+%doc %{texmfdist}/doc/latex/outline
+%doc %{texmfdist}/doc/latex/outliner
+%doc %{texmfdist}/doc/latex/pagenote
+%doc %{texmfdist}/doc/latex/paper
+%doc %{texmfdist}/doc/latex/papercdcase
+%doc %{texmfdist}/doc/latex/papertex
+%doc %{texmfdist}/doc/latex/parallel
+%doc %{texmfdist}/doc/latex/paresse
+%doc %{texmfdist}/doc/latex/parrun
+%doc %{texmfdist}/doc/latex/pauldoc
+%doc %{texmfdist}/doc/latex/pbox
+%doc %{texmfdist}/doc/latex/pbsheet
+%doc %{texmfdist}/doc/latex/pdfcprot
+%doc %{texmfdist}/doc/latex/pdfscreen
+%doc %{texmfdist}/doc/latex/pdfsync
+%doc %{texmfdist}/doc/latex/pdftricks
+%doc %{texmfdist}/doc/latex/pdfwin
+%doc %{texmfdist}/doc/latex/pecha
+%doc %{texmfdist}/doc/latex/perception
+%doc %{texmfdist}/doc/latex/perltex
+%doc %{texmfdist}/doc/latex/permute
+%doc %{texmfdist}/doc/latex/petiteannonce
+%doc %{texmfdist}/doc/latex/petri-nets
+%doc %{texmfdist}/doc/latex/pgf-soroban
+%doc %{texmfdist}/doc/latex/pgfopts
+%doc %{texmfdist}/doc/latex/pgfplots
+%doc %{texmfdist}/doc/latex/philex
+%doc %{texmfdist}/doc/latex/philosophersimprint
+%doc %{texmfdist}/doc/latex/photo
+%doc %{texmfdist}/doc/latex/pinlabel
+%doc %{texmfdist}/doc/latex/pittetd
+%doc %{texmfdist}/doc/latex/plari
+%doc %{texmfdist}/doc/latex/plates
+%doc %{texmfdist}/doc/latex/play
+%doc %{texmfdist}/doc/latex/plweb
+%doc %{texmfdist}/doc/latex/pmgraph
+%doc %{texmfdist}/doc/latex/poemscol
+%doc %{texmfdist}/doc/latex/polski
+%doc %{texmfdist}/doc/latex/polyglot
+%doc %{texmfdist}/doc/latex/polytable
+%doc %{texmfdist}/doc/latex/postcards
+%doc %{texmfdist}/doc/latex/powerdot
+%doc %{texmfdist}/doc/latex/ppower4
+%doc %{texmfdist}/doc/latex/ppr-prv
+%doc %{texmfdist}/doc/latex/pracjourn
+%doc %{texmfdist}/doc/latex/prettyref
+%doc %{texmfdist}/doc/latex/proba
+%doc %{texmfdist}/doc/latex/probsoln
+%doc %{texmfdist}/doc/latex/procIAGssymp
+%doc %{texmfdist}/doc/latex/progkeys
+%doc %{texmfdist}/doc/latex/progress
+%doc %{texmfdist}/doc/latex/protex
+%doc %{texmfdist}/doc/latex/protocol
+%doc %{texmfdist}/doc/latex/psfragx
+%doc %{texmfdist}/doc/latex/psgo
+%doc %{texmfdist}/doc/latex/pspicture
+%doc %{texmfdist}/doc/latex/pst2pdf
+%doc %{texmfdist}/doc/latex/ptptex
+%doc %{texmfdist}/doc/latex/qcm
+%doc %{texmfdist}/doc/latex/qobitree
+%doc %{texmfdist}/doc/latex/qstest
+%doc %{texmfdist}/doc/latex/qsymbols
+%doc %{texmfdist}/doc/latex/qtree
+%doc %{texmfdist}/doc/latex/quotchap
+%doc %{texmfdist}/doc/latex/quotmark
+%doc %{texmfdist}/doc/latex/r_und_s
+%doc %{texmfdist}/doc/latex/randbild
+%doc %{texmfdist}/doc/latex/randtext
+%doc %{texmfdist}/doc/latex/rccol
+%doc %{texmfdist}/doc/latex/rcs
+%doc %{texmfdist}/doc/latex/rcsinfo
+%doc %{texmfdist}/doc/latex/recipecard
+%doc %{texmfdist}/doc/latex/rectopma
+%doc %{texmfdist}/doc/latex/refcheck
+%doc %{texmfdist}/doc/latex/refman
+%doc %{texmfdist}/doc/latex/refstyle
+%doc %{texmfdist}/doc/latex/regcount
+%doc %{texmfdist}/doc/latex/register
+%doc %{texmfdist}/doc/latex/relenc
+%doc %{texmfdist}/doc/latex/repeatindex
+%doc %{texmfdist}/doc/latex/rlepsf
+%doc %{texmfdist}/doc/latex/rmpage
+%doc %{texmfdist}/doc/latex/robustcommand
+%doc %{texmfdist}/doc/latex/robustindex
+%doc %{texmfdist}/doc/latex/romannum
+%doc %{texmfdist}/doc/latex/rotpages
+%doc %{texmfdist}/doc/latex/rsc
+%doc %{texmfdist}/doc/latex/rst
+%doc %{texmfdist}/doc/latex/rtkinenc
+%doc %{texmfdist}/doc/latex/rtklage
+%doc %{texmfdist}/doc/latex/sagetex
+%doc %{texmfdist}/doc/latex/sanskrit
+%doc %{texmfdist}/doc/latex/sauerj
+%doc %{texmfdist}/doc/latex/sauterfonts
+%doc %{texmfdist}/doc/latex/savefnmark
+%doc %{texmfdist}/doc/latex/savetrees
+%doc %{texmfdist}/doc/latex/scalebar
+%doc %{texmfdist}/doc/latex/schedule
+%doc %{texmfdist}/doc/latex/scientificpaper
+%doc %{texmfdist}/doc/latex/sciposter
+%doc %{texmfdist}/doc/latex/sciwordconv
+%doc %{texmfdist}/doc/latex/screenplay
+%doc %{texmfdist}/doc/latex/script
+%doc %{texmfdist}/doc/latex/sdrt
+%doc %{texmfdist}/doc/latex/sectionbox
+%doc %{texmfdist}/doc/latex/semantic
+%doc %{texmfdist}/doc/latex/semioneside
+%doc %{texmfdist}/doc/latex/seqsplit
+%doc %{texmfdist}/doc/latex/sf298
+%doc %{texmfdist}/doc/latex/sffms
+%doc %{texmfdist}/doc/latex/sfg
+%doc %{texmfdist}/doc/latex/sgame
+%doc %{texmfdist}/doc/latex/shadethm
+%doc %{texmfdist}/doc/latex/shipunov
+%doc %{texmfdist}/doc/latex/shorttoc
+%doc %{texmfdist}/doc/latex/show2e
+%doc %{texmfdist}/doc/latex/showexpl
+%doc %{texmfdist}/doc/latex/sides
+%doc %{texmfdist}/doc/latex/siggraph
+%doc %{texmfdist}/doc/latex/simplecv
+%doc %{texmfdist}/doc/latex/simplewick
+%doc %{texmfdist}/doc/latex/skak
+%doc %{texmfdist}/doc/latex/slantsc
+%doc %{texmfdist}/doc/latex/smalltableof
+%doc %{texmfdist}/doc/latex/smartref
+%doc %{texmfdist}/doc/latex/smflatex
+%doc %{texmfdist}/doc/latex/snapshot
+%doc %{texmfdist}/doc/latex/songbook
+%doc %{texmfdist}/doc/latex/sort-by-letters
+%doc %{texmfdist}/doc/latex/soyombo
+%doc %{texmfdist}/doc/latex/sparklines
+%doc %{texmfdist}/doc/latex/spie
+%doc %{texmfdist}/doc/latex/splitbib
+%doc %{texmfdist}/doc/latex/splitindex
+%doc %{texmfdist}/doc/latex/spotcolor
+%doc %{texmfdist}/doc/latex/sprite
+%doc %{texmfdist}/doc/latex/srcltx
+%doc %{texmfdist}/doc/latex/sseq
+%doc %{texmfdist}/doc/latex/ssqquote
+%doc %{texmfdist}/doc/latex/stage
+%doc %{texmfdist}/doc/latex/statistik
+%doc %{texmfdist}/doc/latex/stdpage
+%doc %{texmfdist}/doc/latex/stellenbosch
+%doc %{texmfdist}/doc/latex/stex
+%doc %{texmfdist}/doc/latex/stringstrings
+%doc %{texmfdist}/doc/latex/struktex
+%doc %{texmfdist}/doc/latex/sttools
+%doc %{texmfdist}/doc/latex/stubs
+%doc %{texmfdist}/doc/latex/subdepth
+%doc %{texmfdist}/doc/latex/subeqn
+%doc %{texmfdist}/doc/latex/subeqnarray
+%doc %{texmfdist}/doc/latex/subfloat
+%doc %{texmfdist}/doc/latex/substr
+%doc %{texmfdist}/doc/latex/sudoku
+%doc %{texmfdist}/doc/latex/sudokubundle
+%doc %{texmfdist}/doc/latex/sugconf
+%doc %{texmfdist}/doc/latex/supertabular
+%doc %{texmfdist}/doc/latex/susy
+%doc %{texmfdist}/doc/latex/svgcolor
+%doc %{texmfdist}/doc/latex/svn-multi
+%doc %{texmfdist}/doc/latex/svn
+%doc %{texmfdist}/doc/latex/svninfo
+%doc %{texmfdist}/doc/latex/swebib
+%doc %{texmfdist}/doc/latex/swimgraf
+%doc %{texmfdist}/doc/latex/synproof
+%doc %{texmfdist}/doc/latex/syntax
+%doc %{texmfdist}/doc/latex/syntrace
+%doc %{texmfdist}/doc/latex/synttree
+%doc %{texmfdist}/doc/latex/t-angles
+%doc %{texmfdist}/doc/latex/tableaux
+%doc %{texmfdist}/doc/latex/tablists
+%doc %{texmfdist}/doc/latex/tablor
+%doc %{texmfdist}/doc/latex/tabto-ltx
+%doc %{texmfdist}/doc/latex/tabulary
+%doc %{texmfdist}/doc/latex/tabvar
+%doc %{texmfdist}/doc/latex/talk
+%doc %{texmfdist}/doc/latex/tapir
+%doc %{texmfdist}/doc/latex/tcldoc
+%doc %{texmfdist}/doc/latex/tdsfrmath
+%doc %{texmfdist}/doc/latex/technics
+%doc %{texmfdist}/doc/latex/ted
+%doc %{texmfdist}/doc/latex/tengwarscript
+%doc %{texmfdist}/doc/latex/tensor
+%doc %{texmfdist}/doc/latex/teubner
+%doc %{texmfdist}/doc/latex/texmate
+%doc %{texmfdist}/doc/latex/texpower
+%doc %{texmfdist}/doc/latex/texshade
+%doc %{texmfdist}/doc/latex/textcase
+%doc %{texmfdist}/doc/latex/textopo
+%doc %{texmfdist}/doc/latex/theoremref
+%doc %{texmfdist}/doc/latex/thesis-titlepage-fhac
+%doc %{texmfdist}/doc/latex/thinsp
+%doc %{texmfdist}/doc/latex/thmtools
+%doc %{texmfdist}/doc/latex/thumb
+%doc %{texmfdist}/doc/latex/thuthesis
+%doc %{texmfdist}/doc/latex/ticket
+%doc %{texmfdist}/doc/latex/tikz-inet
+%doc %{texmfdist}/doc/latex/timesht
+%doc %{texmfdist}/doc/latex/titling
+%doc %{texmfdist}/doc/latex/tocvsec2
+%doc %{texmfdist}/doc/latex/todo
+%doc %{texmfdist}/doc/latex/tokenizer
+%doc %{texmfdist}/doc/latex/toolbox
+%doc %{texmfdist}/doc/latex/topfloat
+%doc %{texmfdist}/doc/latex/toptesi
+%doc %{texmfdist}/doc/latex/tpslifonts
+%doc %{texmfdist}/doc/latex/trajan
+%doc %{texmfdist}/doc/latex/translator
+%doc %{texmfdist}/doc/latex/tree-dvips
+%doc %{texmfdist}/doc/latex/trfsigns
+%doc %{texmfdist}/doc/latex/trivfloat
+%doc %{texmfdist}/doc/latex/trsym
+%doc %{texmfdist}/doc/latex/tufte-latex
+%doc %{texmfdist}/doc/latex/tugboat
+%doc %{texmfdist}/doc/latex/turnstile
+%doc %{texmfdist}/doc/latex/twoup
+%doc %{texmfdist}/doc/latex/typedref
+%doc %{texmfdist}/doc/latex/typogrid
+%doc %{texmfdist}/doc/latex/uaclasses
+%doc %{texmfdist}/doc/latex/ucthesis
+%doc %{texmfdist}/doc/latex/uebungsblatt
+%doc %{texmfdist}/doc/latex/uiucthesis
+%doc %{texmfdist}/doc/latex/ulsy
+%doc %{texmfdist}/doc/latex/umich-thesis
+%doc %{texmfdist}/doc/latex/uml
+%doc %{texmfdist}/doc/latex/umlaute
+%doc %{texmfdist}/doc/latex/umoline
+%doc %{texmfdist}/doc/latex/umthesis
+%doc %{texmfdist}/doc/latex/underlin
+%doc %{texmfdist}/doc/latex/undertilde
+%doc %{texmfdist}/doc/latex/unitsdef
+%doc %{texmfdist}/doc/latex/unroman
+%doc %{texmfdist}/doc/latex/upmethodology
+%doc %{texmfdist}/doc/latex/urlbst
+%doc %{texmfdist}/doc/latex/ushort
+%doc %{texmfdist}/doc/latex/uwthesis
+%doc %{texmfdist}/doc/latex/varindex
+%doc %{texmfdist}/doc/latex/varsfromjobname
+%doc %{texmfdist}/doc/latex/vector
+%doc %{texmfdist}/doc/latex/verse
+%doc %{texmfdist}/doc/latex/vhistory
+%doc %{texmfdist}/doc/latex/vita
+%doc %{texmfdist}/doc/latex/volumes
+%doc %{texmfdist}/doc/latex/vpe
+%doc %{texmfdist}/doc/latex/vrsion
+%doc %{texmfdist}/doc/latex/vwcol
+%doc %{texmfdist}/doc/latex/vxu
+%doc %{texmfdist}/doc/latex/wadalab
+%doc %{texmfdist}/doc/latex/wallpaper
+%doc %{texmfdist}/doc/latex/warpcol
+%doc %{texmfdist}/doc/latex/wnri
+%doc %{texmfdist}/doc/latex/wordlike
+%doc %{texmfdist}/doc/latex/xargs
+%doc %{texmfdist}/doc/latex/xdoc
+%doc %{texmfdist}/doc/latex/xfor
+%doc %{texmfdist}/doc/latex/xifthen
+%doc %{texmfdist}/doc/latex/xmpincl
+%doc %{texmfdist}/doc/latex/xnewcommand
+%doc %{texmfdist}/doc/latex/xoptarg
+%doc %{texmfdist}/doc/latex/xpackages
+%doc %{texmfdist}/doc/latex/xskak
+%doc %{texmfdist}/doc/latex/xstring
+%doc %{texmfdist}/doc/latex/xtcapts
+%doc %{texmfdist}/doc/latex/xyling
+%doc %{texmfdist}/doc/latex/xytree
+%doc %{texmfdist}/doc/latex/yafoot
+%doc %{texmfdist}/doc/latex/yhmath
+%doc %{texmfdist}/doc/latex/york-thesis
+%doc %{texmfdist}/doc/latex/yplan
+%doc %{texmfdist}/doc/latex/zed-csp
+%doc %{texmfdist}/doc/latex/zefonts
+%doc %{texmfdist}/doc/latex/ziffer
+%doc %{texmfdist}/doc/latex/zwgetfdate
+%doc %{texmfdist}/source/latex/hyperref/doc
+%doc %{texmfdist}/source/latex/koma-script/doc
+
+%files latex-other
+%defattr(644,root,root,755)
+%{texmfdist}/fonts/map/dvips/pslatex
+%{texmfdist}/fonts/source/public/yi4latex
+%{texmfdist}/fonts/tfm/public/pslatex
+%{texmfdist}/fonts/tfm/public/yi4latex
+%{texmfdist}/fonts/vf/public/pslatex
+%{texmfdist}/metapost/latexmp
+%{texmfdist}/metapost/makecirc
+%{texmfdist}/source/alatex/base
+%{texmfdist}/source/cslatex/base
+%{texmfdist}/source/generic/xypic
+%{texmfdist}/source/latex/ESIEEcv
+%{texmfdist}/source/latex/GuIT
+%{texmfdist}/source/latex/HA-prosper
+%{texmfdist}/source/latex/IEEEconf
+%{texmfdist}/source/latex/aastex
+%{texmfdist}/source/latex/abc
+%{texmfdist}/source/latex/abstract
+%{texmfdist}/source/latex/achemso
+%{texmfdist}/source/latex/acmconf
+%{texmfdist}/source/latex/acronym
+%{texmfdist}/source/latex/active-conf
+%{texmfdist}/source/latex/addlines
+%{texmfdist}/source/latex/adrlist
+%{texmfdist}/source/latex/aiaa
+%{texmfdist}/source/latex/alg
+%{texmfdist}/source/latex/alnumsec
+%{texmfdist}/source/latex/altfont
+%{texmfdist}/source/latex/amsaddr
+%{texmfdist}/source/latex/amscls
+%{texmfdist}/source/latex/amsfonts
+%{texmfdist}/source/latex/amsmath
+%{texmfdist}/source/latex/amsrefs
+%{texmfdist}/source/latex/answers
+%{texmfdist}/source/latex/apacite
+%{texmfdist}/source/latex/appendix
+%{texmfdist}/source/latex/arcs
+%{texmfdist}/source/latex/arydshln
+%{texmfdist}/source/latex/asaetr
+%{texmfdist}/source/latex/ascii
+%{texmfdist}/source/latex/attachfile
+%{texmfdist}/source/latex/augie/other
+%{texmfdist}/source/latex/augie/vtex
+%{texmfdist}/source/latex/babelbib
+%{texmfdist}/source/latex/backgammon
+%{texmfdist}/source/latex/barcodes
+%{texmfdist}/source/latex/base
+%{texmfdist}/source/latex/bayer
+%{texmfdist}/source/latex/bbding
+%{texmfdist}/source/latex/bbm-macros
+%{texmfdist}/source/latex/belleek
+%{texmfdist}/source/latex/bengali
+%{texmfdist}/source/latex/beton
+%{texmfdist}/source/latex/bez123
+%{texmfdist}/source/latex/bibarts
+%{texmfdist}/source/latex/bibleref
+%{texmfdist}/source/latex/biblist
+%{texmfdist}/source/latex/bibtopic
+%{texmfdist}/source/latex/bibtopicprefix
+%{texmfdist}/source/latex/bigfoot
+%{texmfdist}/source/latex/binomexp
+%{texmfdist}/source/latex/biocon
+%{texmfdist}/source/latex/bizcard
+%{texmfdist}/source/latex/blindtext
+%{texmfdist}/source/latex/blowup
+%{texmfdist}/source/latex/boites
+%{texmfdist}/source/latex/bookhands
+%{texmfdist}/source/latex/booklet
+%{texmfdist}/source/latex/booktabs
+%{texmfdist}/source/latex/bophook
+%{texmfdist}/source/latex/boxhandler
+%{texmfdist}/source/latex/bpchem
+%{texmfdist}/source/latex/braille
+%{texmfdist}/source/latex/breakurl
+%{texmfdist}/source/latex/brushscr
+%{texmfdist}/source/latex/bullcntr
+%{texmfdist}/source/latex/burmese
+%{texmfdist}/source/latex/bytefield
+%{texmfdist}/source/latex/captcont
+%{texmfdist}/source/latex/caption
+%{texmfdist}/source/latex/carlisle
+%{texmfdist}/source/latex/catechis
+%{texmfdist}/source/latex/ccaption
+%{texmfdist}/source/latex/ccfonts
+%{texmfdist}/source/latex/cclicenses
+%{texmfdist}/source/latex/cd-cover
+%{texmfdist}/source/latex/cd
+%{texmfdist}/source/latex/cdpbundl
+%{texmfdist}/source/latex/changebar
+%{texmfdist}/source/latex/changes
+%{texmfdist}/source/latex/chappg
+%{texmfdist}/source/latex/chapterfolder
+%{texmfdist}/source/latex/chemcompounds
+%{texmfdist}/source/latex/chemstyle
+%{texmfdist}/source/latex/chessboard
+%{texmfdist}/source/latex/chessfss
+%{texmfdist}/source/latex/chletter
+%{texmfdist}/source/latex/circ
+%{texmfdist}/source/latex/cjk/utils
+%{texmfdist}/source/latex/cjw
+%{texmfdist}/source/latex/clefval
+%{texmfdist}/source/latex/cleveref
+%{texmfdist}/source/latex/cmcyralt
+%{texmfdist}/source/latex/cmdtrack
+%{texmfdist}/source/latex/cmll
+%{texmfdist}/source/latex/cmsd
+%{texmfdist}/source/latex/codepage
+%{texmfdist}/source/latex/colortbl
+%{texmfdist}/source/latex/colorwav
+%{texmfdist}/source/latex/combine
+%{texmfdist}/source/latex/comment
+%{texmfdist}/source/latex/computational-complexity
+%{texmfdist}/source/latex/confproc
+%{texmfdist}/source/latex/constants
+%{texmfdist}/source/latex/contour
+%{texmfdist}/source/latex/cooking
+%{texmfdist}/source/latex/cool
+%{texmfdist}/source/latex/coollist
+%{texmfdist}/source/latex/coolstr
+%{texmfdist}/source/latex/cooltooltips
+%{texmfdist}/source/latex/coordsys
+%{texmfdist}/source/latex/coverpage
+%{texmfdist}/source/latex/crop
+%{texmfdist}/source/latex/crossreference
+%{texmfdist}/source/latex/crosswrd
+%{texmfdist}/source/latex/csvtools
+%{texmfdist}/source/latex/ctable
+%{texmfdist}/source/latex/ctib
+%{texmfdist}/source/latex/cuisine
+%{texmfdist}/source/latex/currvita
+%{texmfdist}/source/latex/curve
+%{texmfdist}/source/latex/curve2e
+%{texmfdist}/source/latex/curves
+%{texmfdist}/source/latex/cweb-latex
+%{texmfdist}/source/latex/cwpuzzle
+%{texmfdist}/source/latex/dashbox
+%{texmfdist}/source/latex/dashrule
+%{texmfdist}/source/latex/datatool
+%{texmfdist}/source/latex/dateiliste
+%{texmfdist}/source/latex/datenumber
+%{texmfdist}/source/latex/datetime
+%{texmfdist}/source/latex/decimal
+%{texmfdist}/source/latex/delimtxt
+%{texmfdist}/source/latex/diagnose
+%{texmfdist}/source/latex/dialogl
+%{texmfdist}/source/latex/dinbrief
+%{texmfdist}/source/latex/disser
+%{texmfdist}/source/latex/dnaseq
+%{texmfdist}/source/latex/docmfp
+%{texmfdist}/source/latex/doipubmed
+%{texmfdist}/source/latex/dotarrow
+%{texmfdist}/source/latex/dotseqn
+%{texmfdist}/source/latex/dottex
+%{texmfdist}/source/latex/dprogress
+%{texmfdist}/source/latex/drac
+%{texmfdist}/source/latex/draftcopy
+%{texmfdist}/source/latex/draftwatermark
+%{texmfdist}/source/latex/dramatist
+%{texmfdist}/source/latex/dtk
+%{texmfdist}/source/latex/dtxgallery
+%{texmfdist}/source/latex/dyntree
+%{texmfdist}/source/latex/eCards
+%{texmfdist}/source/latex/ebezier
+%{texmfdist}/source/latex/ebsthesis
+%{texmfdist}/source/latex/ecclesiastic
+%{texmfdist}/source/latex/ecv
+%{texmfdist}/source/latex/ed
+%{texmfdist}/source/latex/edmac
+%{texmfdist}/source/latex/edmargin
+%{texmfdist}/source/latex/eemeir
+%{texmfdist}/source/latex/egplot
+%{texmfdist}/source/latex/eiad
+%{texmfdist}/source/latex/ellipsis
+%{texmfdist}/source/latex/elmath
+%{texmfdist}/source/latex/elsarticle
+%{texmfdist}/source/latex/em
+%{texmfdist}/source/latex/emp
+%{texmfdist}/source/latex/endfloat
+%{texmfdist}/source/latex/endheads
+%{texmfdist}/source/latex/engpron
+%{texmfdist}/source/latex/engrec
+%{texmfdist}/source/latex/environ
+%{texmfdist}/source/latex/envlab
+%{texmfdist}/source/latex/epigraph
+%{texmfdist}/source/latex/epiolmec
+%{texmfdist}/source/latex/epsdice
+%{texmfdist}/source/latex/eqlist
+%{texmfdist}/source/latex/eqnarray
+%{texmfdist}/source/latex/eqparbox
+%{texmfdist}/source/latex/errata
+%{texmfdist}/source/latex/esdiff
+%{texmfdist}/source/latex/eskd
+%{texmfdist}/source/latex/eso-pic
+%{texmfdist}/source/latex/esvect
+%{texmfdist}/source/latex/etaremune
+%{texmfdist}/source/latex/ethiop
+%{texmfdist}/source/latex/eukdate
+%{texmfdist}/source/latex/euler
+%{texmfdist}/source/latex/euproposal
+%{texmfdist}/source/latex/euro
+%{texmfdist}/source/latex/everypage
+%{texmfdist}/source/latex/examdesign
+%{texmfdist}/source/latex/exercise
+%{texmfdist}/source/latex/expdlist
+%{texmfdist}/source/latex/expl3
+%{texmfdist}/source/latex/export
+%{texmfdist}/source/latex/extpfeil
+%{texmfdist}/source/latex/extract
+%{texmfdist}/source/latex/facsimile
+%{texmfdist}/source/latex/faktor
+%{texmfdist}/source/latex/fancynum
+%{texmfdist}/source/latex/fancyref
+%{texmfdist}/source/latex/fancytooltips
+%{texmfdist}/source/latex/fancyvrb
+%{texmfdist}/source/latex/feynmf
+%{texmfdist}/source/latex/figsize
+%{texmfdist}/source/latex/filecontents
+%{texmfdist}/source/latex/fink
+%{texmfdist}/source/latex/fixme
+%{texmfdist}/source/latex/flabels
+%{texmfdist}/source/latex/flagderiv
+%{texmfdist}/source/latex/flashcards
+%{texmfdist}/source/latex/flippdf
+%{texmfdist}/source/latex/float
+%{texmfdist}/source/latex/floatrow
+%{texmfdist}/source/latex/flowfram
+%{texmfdist}/source/latex/fmp
+%{texmfdist}/source/latex/fmtcount
+%{texmfdist}/source/latex/fnbreak
+%{texmfdist}/source/latex/foilhtml
+%{texmfdist}/source/latex/fonttable
+%{texmfdist}/source/latex/footmisc
+%{texmfdist}/source/latex/footnpag
+%{texmfdist}/source/latex/forarray
+%{texmfdist}/source/latex/forloop
+%{texmfdist}/source/latex/formula
+%{texmfdist}/source/latex/fouridx
+%{texmfdist}/source/latex/frankenstein
+%{texmfdist}/source/latex/frontespizio
+%{texmfdist}/source/latex/fullblck
+%{texmfdist}/source/latex/functan
+%{texmfdist}/source/latex/fundus
+%{texmfdist}/source/latex/g-brief
+%{texmfdist}/source/latex/galois
+%{texmfdist}/source/latex/gcite
+%{texmfdist}/source/latex/genmpage
+%{texmfdist}/source/latex/geometry
+%{texmfdist}/source/latex/geomsty
+%{texmfdist}/source/latex/ginpenc
+%{texmfdist}/source/latex/glossaries
+%{texmfdist}/source/latex/gnuplottex
+%{texmfdist}/source/latex/go
+%{texmfdist}/source/latex/graphics
+%{texmfdist}/source/latex/graphicx-psmin
+%{texmfdist}/source/latex/greekdates
+%{texmfdist}/source/latex/grnumalt
+%{texmfdist}/source/latex/grverb
+%{texmfdist}/source/latex/guitar
+%{texmfdist}/source/latex/hanging
+%{texmfdist}/source/latex/harvard
+%{texmfdist}/source/latex/hc
+%{texmfdist}/source/latex/hepthesis
+%{texmfdist}/source/latex/hhtensor
+%{texmfdist}/source/latex/hilowres
+%{texmfdist}/source/latex/histogr
+%{texmfdist}/source/latex/hpsdiss
+%{texmfdist}/source/latex/hrlatex
+%{texmfdist}/source/latex/hyper
+%{texmfdist}/source/latex/hyperref
+%{texmfdist}/source/latex/hyperxmp
+%{texmfdist}/source/latex/hyphenat
+%{texmfdist}/source/latex/ibycus-babel
+%{texmfdist}/source/latex/icsv
+%{texmfdist}/source/latex/ifmslide
+%{texmfdist}/source/latex/ifplatform
+%{texmfdist}/source/latex/ijmart
+%{texmfdist}/source/latex/imtekda
+%{texmfdist}/source/latex/index
+%{texmfdist}/source/latex/inlinedef
+%{texmfdist}/source/latex/inversepath
+%{texmfdist}/source/latex/iso
+%{texmfdist}/source/latex/iso10303
+%{texmfdist}/source/latex/isodate
+%{texmfdist}/source/latex/isodoc
+%{texmfdist}/source/latex/isorot
+%{texmfdist}/source/latex/isotope
+%{texmfdist}/source/latex/itnumpar
+%{texmfdist}/source/latex/jeopardy
+%{texmfdist}/source/latex/jura
+%{texmfdist}/source/latex/juraabbrev
+%{texmfdist}/source/latex/jurarsp
+%{texmfdist}/source/latex/kdgreek
+%{texmfdist}/source/latex/kerntest
+%{texmfdist}/source/latex/kluwer
+%{texmfdist}/source/latex/koma-script
+%{texmfdist}/source/latex/labelcas
+%{texmfdist}/source/latex/labels
+%{texmfdist}/source/latex/lastpage
+%{texmfdist}/source/latex/latex-tds
+%{texmfdist}/source/latex/layouts
+%{texmfdist}/source/latex/lcg
+%{texmfdist}/source/latex/lcyw
+%{texmfdist}/source/latex/leading
+%{texmfdist}/source/latex/ledmac
+%{texmfdist}/source/latex/leftidx
+%{texmfdist}/source/latex/lettrine
+%{texmfdist}/source/latex/lexikon
+%{texmfdist}/source/latex/lhcyr
+%{texmfdist}/source/latex/lhelp
+%{texmfdist}/source/latex/limap
+%{texmfdist}/source/latex/lipsum
+%{texmfdist}/source/latex/listbib
+%{texmfdist}/source/latex/listings
+%{texmfdist}/source/latex/listliketab
+%{texmfdist}/source/latex/localloc
+%{texmfdist}/source/latex/logpap
+%{texmfdist}/source/latex/lps
+%{texmfdist}/source/latex/ltxindex
+%{texmfdist}/source/latex/mailing
+%{texmfdist}/source/latex/makebox
+%{texmfdist}/source/latex/makecell
+%{texmfdist}/source/latex/makecmds
+%{texmfdist}/source/latex/makedtx
+%{texmfdist}/source/latex/makeplot
+%{texmfdist}/source/latex/manfnt
+%{texmfdist}/source/latex/manuscript
+%{texmfdist}/source/latex/mapcodes
+%{texmfdist}/source/latex/marginnote
+%{texmfdist}/source/latex/mathcomp
+%{texmfdist}/source/latex/mathpazo
+%{texmfdist}/source/latex/mcaption
+%{texmfdist}/source/latex/mcite
+%{texmfdist}/source/latex/mdwtools
+%{texmfdist}/source/latex/memoir
+%{texmfdist}/source/latex/mentis
+%{texmfdist}/source/latex/menu
+%{texmfdist}/source/latex/method
+%{texmfdist}/source/latex/metre
+%{texmfdist}/source/latex/mff
+%{texmfdist}/source/latex/mfpic4ode
+%{texmfdist}/source/latex/mftinc
+%{texmfdist}/source/latex/mh
+%{texmfdist}/source/latex/miller
+%{texmfdist}/source/latex/minipage-marginpar
+%{texmfdist}/source/latex/minutes
+%{texmfdist}/source/latex/mlist
+%{texmfdist}/source/latex/mnsymbol
+%{texmfdist}/source/latex/modroman
+%{texmfdist}/source/latex/mongolian-babel
+%{texmfdist}/source/latex/montex
+%{texmfdist}/source/latex/moresize
+%{texmfdist}/source/latex/moreverb
+%{texmfdist}/source/latex/mparhack
+%{texmfdist}/source/latex/ms
+%{texmfdist}/source/latex/msg
+%{texmfdist}/source/latex/mtgreek
+%{texmfdist}/source/latex/multibbl
+%{texmfdist}/source/latex/multibib
+%{texmfdist}/source/latex/multicap
+%{texmfdist}/source/latex/mwcls
+%{texmfdist}/source/latex/mxd
+%{texmfdist}/source/latex/nag
+%{texmfdist}/source/latex/namespc
+%{texmfdist}/source/latex/natbib
+%{texmfdist}/source/latex/ncctools
+%{texmfdist}/source/latex/nddiss
+%{texmfdist}/source/latex/newalg
+%{texmfdist}/source/latex/newfile
+%{texmfdist}/source/latex/newlfm
+%{texmfdist}/source/latex/newspaper
+%{texmfdist}/source/latex/newvbtm
+%{texmfdist}/source/latex/niceframe
+%{texmfdist}/source/latex/noitcrul
+%{texmfdist}/source/latex/nomencl
+%{texmfdist}/source/latex/nomentbl
+%{texmfdist}/source/latex/nonfloat
+%{texmfdist}/source/latex/nostarch
+%{texmfdist}/source/latex/notes
+%{texmfdist}/source/latex/notes2bib
+%{texmfdist}/source/latex/nrc
+%{texmfdist}/source/latex/ntgclass
+%{texmfdist}/source/latex/ntheorem
+%{texmfdist}/source/latex/numprint
+%{texmfdist}/source/latex/oberdiek
+%{texmfdist}/source/latex/objectz
+%{texmfdist}/source/latex/octavo
+%{texmfdist}/source/latex/ogonek
+%{texmfdist}/source/latex/oldstyle
+%{texmfdist}/source/latex/opcit
+%{texmfdist}/source/latex/ordinalpt
+%{texmfdist}/source/latex/othello
+%{texmfdist}/source/latex/otibet
+%{texmfdist}/source/latex/pacioli
+%{texmfdist}/source/latex/pageno
+%{texmfdist}/source/latex/pagenote
+%{texmfdist}/source/latex/paper
+%{texmfdist}/source/latex/papercdcase
+%{texmfdist}/source/latex/papertex
+%{texmfdist}/source/latex/paralist
+%{texmfdist}/source/latex/parallel
+%{texmfdist}/source/latex/paresse
+%{texmfdist}/source/latex/parrun
+%{texmfdist}/source/latex/patchcmd
+%{texmfdist}/source/latex/pauldoc
+%{texmfdist}/source/latex/pawpict
+%{texmfdist}/source/latex/pbox
+%{texmfdist}/source/latex/pbsheet
+%{texmfdist}/source/latex/pdfcprot
+%{texmfdist}/source/latex/pdfpages
+%{texmfdist}/source/latex/perltex
+%{texmfdist}/source/latex/permute
+%{texmfdist}/source/latex/petri-nets
+%{texmfdist}/source/latex/pgfopts
+%{texmfdist}/source/latex/pgfplots
+%{texmfdist}/source/latex/philosophersimprint
+%{texmfdist}/source/latex/photo
+%{texmfdist}/source/latex/pict2e
+%{texmfdist}/source/latex/pittetd
+%{texmfdist}/source/latex/plari
+%{texmfdist}/source/latex/play
+%{texmfdist}/source/latex/plweb
+%{texmfdist}/source/latex/poemscol
+%{texmfdist}/source/latex/polski
+%{texmfdist}/source/latex/polyglot
+%{texmfdist}/source/latex/polytable
+%{texmfdist}/source/latex/powerdot
+%{texmfdist}/source/latex/ppr-prv
+%{texmfdist}/source/latex/pracjourn
+%{texmfdist}/source/latex/preprint
+%{texmfdist}/source/latex/prettyref
+%{texmfdist}/source/latex/preview
+%{texmfdist}/source/latex/proba
+%{texmfdist}/source/latex/probsoln
+%{texmfdist}/source/latex/progkeys
+%{texmfdist}/source/latex/prosper
+%{texmfdist}/source/latex/protocol
+%{texmfdist}/source/latex/psfrag
+%{texmfdist}/source/latex/psfragx
+%{texmfdist}/source/latex/pslatex
+%{texmfdist}/source/latex/pspicture
+%{texmfdist}/source/latex/qcm
+%{texmfdist}/source/latex/qstest
+%{texmfdist}/source/latex/qsymbols
+%{texmfdist}/source/latex/quotchap
+%{texmfdist}/source/latex/quotmark
+%{texmfdist}/source/latex/randbild
+%{texmfdist}/source/latex/rccol
+%{texmfdist}/source/latex/rcs
+%{texmfdist}/source/latex/rcsinfo
+%{texmfdist}/source/latex/recipecard
+%{texmfdist}/source/latex/refman
+%{texmfdist}/source/latex/refstyle
+%{texmfdist}/source/latex/regcount
+%{texmfdist}/source/latex/register
+%{texmfdist}/source/latex/relenc
+%{texmfdist}/source/latex/revtex
+%{texmfdist}/source/latex/rmpage
+%{texmfdist}/source/latex/robustcommand
+%{texmfdist}/source/latex/romannum
+%{texmfdist}/source/latex/rotating
+%{texmfdist}/source/latex/rotfloat
+%{texmfdist}/source/latex/rsc
+%{texmfdist}/source/latex/rst
+%{texmfdist}/source/latex/rtkinenc
+%{texmfdist}/source/latex/sagetex
+%{texmfdist}/source/latex/sanskrit
+%{texmfdist}/source/latex/sauerj
+%{texmfdist}/source/latex/sauterfonts
+%{texmfdist}/source/latex/savefnmark
+%{texmfdist}/source/latex/savetrees
+%{texmfdist}/source/latex/scale
+%{texmfdist}/source/latex/scalebar
+%{texmfdist}/source/latex/schedule
+%{texmfdist}/source/latex/sciwordconv
+%{texmfdist}/source/latex/screenplay
+%{texmfdist}/source/latex/sectsty
+%{texmfdist}/source/latex/semantic
+%{texmfdist}/source/latex/semioneside
+%{texmfdist}/source/latex/seqsplit
+%{texmfdist}/source/latex/sf298
+%{texmfdist}/source/latex/sffms
+%{texmfdist}/source/latex/shorttoc
+%{texmfdist}/source/latex/show2e
+%{texmfdist}/source/latex/showexpl
+%{texmfdist}/source/latex/showlabels
+%{texmfdist}/source/latex/sidecap
+%{texmfdist}/source/latex/siggraph
+%{texmfdist}/source/latex/simplecv
+%{texmfdist}/source/latex/simplewick
+%{texmfdist}/source/latex/skull
+%{texmfdist}/source/latex/slantsc
+%{texmfdist}/source/latex/snapshot
+%{texmfdist}/source/latex/songbook
+%{texmfdist}/source/latex/soul
+%{texmfdist}/source/latex/splitbib
+%{texmfdist}/source/latex/splitindex
+%{texmfdist}/source/latex/srcltx
+%{texmfdist}/source/latex/sseq
+%{texmfdist}/source/latex/ssqquote
+%{texmfdist}/source/latex/stack
+%{texmfdist}/source/latex/statistik
+%{texmfdist}/source/latex/staves
+%{texmfdist}/source/latex/stdclsdv
+%{texmfdist}/source/latex/stdpage
+%{texmfdist}/source/latex/stellenbosch
+%{texmfdist}/source/latex/stex
+%{texmfdist}/source/latex/stringstrings
+%{texmfdist}/source/latex/struktex
+%{texmfdist}/source/latex/subdepth
+%{texmfdist}/source/latex/subeqn
+%{texmfdist}/source/latex/subeqnarray
+%{texmfdist}/source/latex/subfig
+%{texmfdist}/source/latex/subfigure
+%{texmfdist}/source/latex/subfloat
+%{texmfdist}/source/latex/sudoku
+%{texmfdist}/source/latex/sudokubundle
+%{texmfdist}/source/latex/supertabular
+%{texmfdist}/source/latex/svn-multi
+%{texmfdist}/source/latex/svn
+%{texmfdist}/source/latex/svninfo
+%{texmfdist}/source/latex/swimgraf
+%{texmfdist}/source/latex/syntrace
+%{texmfdist}/source/latex/synttree
+%{texmfdist}/source/latex/tablists
+%{texmfdist}/source/latex/tabulary
+%{texmfdist}/source/latex/tabvar
+%{texmfdist}/source/latex/talk
+%{texmfdist}/source/latex/tcldoc
+%{texmfdist}/source/latex/tdsfrmath
+%{texmfdist}/source/latex/technics
+%{texmfdist}/source/latex/ted
+%{texmfdist}/source/latex/tengwarscript
+%{texmfdist}/source/latex/tensor
+%{texmfdist}/source/latex/teubner
+%{texmfdist}/source/latex/texmate
+%{texmfdist}/source/latex/texpower
+%{texmfdist}/source/latex/texshade
+%{texmfdist}/source/latex/textcase
+%{texmfdist}/source/latex/textfit
+%{texmfdist}/source/latex/textopo
+%{texmfdist}/source/latex/textpos
+%{texmfdist}/source/latex/thesis-titlepage-fhac
+%{texmfdist}/source/latex/thmtools
+%{texmfdist}/source/latex/thumb
+%{texmfdist}/source/latex/thuthesis
+%{texmfdist}/source/latex/timesht
+%{texmfdist}/source/latex/titling
+%{texmfdist}/source/latex/tocbibind
+%{texmfdist}/source/latex/tocloft
+%{texmfdist}/source/latex/tocvsec2
+%{texmfdist}/source/latex/todo
+%{texmfdist}/source/latex/toolbox
+%{texmfdist}/source/latex/tools
+%{texmfdist}/source/latex/toptesi
+%{texmfdist}/source/latex/totpages
+%{texmfdist}/source/latex/trajan
+%{texmfdist}/source/latex/tree-dvips
+%{texmfdist}/source/latex/trfsigns
+%{texmfdist}/source/latex/trivfloat
+%{texmfdist}/source/latex/trsym
+%{texmfdist}/source/latex/tugboat
+%{texmfdist}/source/latex/turnstile
+%{texmfdist}/source/latex/twoup
+%{texmfdist}/source/latex/type1cm
+%{texmfdist}/source/latex/typedref
+%{texmfdist}/source/latex/typogrid
+%{texmfdist}/source/latex/uaclasses
+%{texmfdist}/source/latex/uiucthesis
+%{texmfdist}/source/latex/ulsy
+%{texmfdist}/source/latex/uml
+%{texmfdist}/source/latex/umlaute
+%{texmfdist}/source/latex/umoline
+%{texmfdist}/source/latex/underlin
+%{texmfdist}/source/latex/undertilde
+%{texmfdist}/source/latex/units
+%{texmfdist}/source/latex/unitsdef
+%{texmfdist}/source/latex/unroman
+%{texmfdist}/source/latex/upmethodology
+%{texmfdist}/source/latex/urlbst
+%{texmfdist}/source/latex/ushort
+%{texmfdist}/source/latex/varindex
+%{texmfdist}/source/latex/vector
+%{texmfdist}/source/latex/verse
+%{texmfdist}/source/latex/vmargin
+%{texmfdist}/source/latex/volumes
+%{texmfdist}/source/latex/vrsion
+%{texmfdist}/source/latex/vwcol
+%{texmfdist}/source/latex/vxu
+%{texmfdist}/source/latex/warning
+%{texmfdist}/source/latex/warpcol
+%{texmfdist}/source/latex/was
+%{texmfdist}/source/latex/wnri
+%{texmfdist}/source/latex/xargs
+%{texmfdist}/source/latex/xdoc
+%{texmfdist}/source/latex/xfor
+%{texmfdist}/source/latex/xmpincl
+%{texmfdist}/source/latex/xpackages
+%{texmfdist}/source/latex/xskak
+%{texmfdist}/source/latex/xtab
+%{texmfdist}/source/latex/xtcapts
+%{texmfdist}/source/latex/yafoot
+%{texmfdist}/source/latex/yfonts
+%{texmfdist}/source/latex/yhmath
+%{texmfdist}/source/latex/york-thesis
+%{texmfdist}/source/latex/youngtab
+%{texmfdist}/source/plain/jsmisc/xfig
+%{texmfdist}/source/xelatex
+%{texmfdist}/tex/alatex/base
+%{texmfdist}/tex/generic/enctex
+%{texmfdist}/tex/latex/kalender
+%{texmfdist}/tex/latex/karnaugh
+%{texmfdist}/tex/latex/kerkis
+%{texmfdist}/tex/latex/kerntest
+%{texmfdist}/tex/latex/kluwer
+%{texmfdist}/tex/latex/kpfonts
+%{texmfdist}/tex/latex/kurier
+%{texmfdist}/tex/latex/labelcas
+%{texmfdist}/tex/latex/lazylist
+%{texmfdist}/tex/latex/lcg
+%{texmfdist}/tex/latex/lcyw
+%{texmfdist}/tex/latex/leading
+%{texmfdist}/tex/latex/ledmac
+%{texmfdist}/tex/latex/lettre
+%{texmfdist}/tex/latex/levy
+%{texmfdist}/tex/latex/lexikon
+%{texmfdist}/tex/latex/lgreek
+%{texmfdist}/tex/latex/lhcyr
+%{texmfdist}/tex/latex/lhelp
+%{texmfdist}/tex/latex/libertine
+%{texmfdist}/tex/latex/limap
+%{texmfdist}/tex/latex/linearA
+%{texmfdist}/tex/latex/linguex
+%{texmfdist}/tex/latex/lipsum
+%{texmfdist}/tex/latex/listbib
+%{texmfdist}/tex/latex/listliketab
+%{texmfdist}/tex/latex/listofsymbols
+%{texmfdist}/tex/latex/lkproof
+%{texmfdist}/tex/latex/logic
+%{texmfdist}/tex/latex/logpap
+%{texmfdist}/tex/latex/lps
+%{texmfdist}/tex/latex/lsc
+%{texmfdist}/tex/latex/ltablex
+%{texmfdist}/tex/latex/ltxindex
+%{texmfdist}/tex/latex/lxfonts
+%{texmfdist}/tex/latex/ly1
+%{texmfdist}/tex/latex/mafr
+%{texmfdist}/tex/latex/mailing
+%{texmfdist}/tex/latex/makebarcode
+%{texmfdist}/tex/latex/makebox
+%{texmfdist}/tex/latex/makecell
+%{texmfdist}/tex/latex/makecmds
+%{texmfdist}/tex/latex/makedtx
+%{texmfdist}/tex/latex/makeglos
+%{texmfdist}/tex/latex/makeplot
+%{texmfdist}/tex/latex/manfnt
+%{texmfdist}/tex/latex/manuscript
+%{texmfdist}/tex/latex/mapcodes
+%{texmfdist}/tex/latex/maple
+%{texmfdist}/tex/latex/marginnote
+%{texmfdist}/tex/latex/mathdesign
+%{texmfdist}/tex/latex/maybemath
+%{texmfdist}/tex/latex/mcaption
+%{texmfdist}/tex/latex/mceinleger
+%{texmfdist}/tex/latex/mcite
+%{texmfdist}/tex/latex/mciteplus
+%{texmfdist}/tex/latex/memexsupp
+%{texmfdist}/tex/latex/mentis
+%{texmfdist}/tex/latex/menu
+%{texmfdist}/tex/latex/method
+%{texmfdist}/tex/latex/metre
+%{texmfdist}/tex/latex/mff
+%{texmfdist}/tex/latex/mfpic4ode
+%{texmfdist}/tex/latex/mftinc
+%{texmfdist}/tex/latex/mhchem
+%{texmfdist}/tex/latex/mhequ
+%{texmfdist}/tex/latex/mhs
+%{texmfdist}/tex/latex/miller
+%{texmfdist}/tex/latex/minipage-marginpar
+%{texmfdist}/tex/latex/miniplot
+%{texmfdist}/tex/latex/minutes
+%{texmfdist}/tex/latex/mla-paper
+%{texmfdist}/tex/latex/mlist
+%{texmfdist}/tex/latex/moresize
+%{texmfdist}/tex/latex/movie15
+%{texmfdist}/tex/latex/msc
+%{texmfdist}/tex/latex/msg
+%{texmfdist}/tex/latex/mslapa
+%{texmfdist}/tex/latex/mtgreek
+%{texmfdist}/tex/latex/multibbl
+%{texmfdist}/tex/latex/multicap
+%{texmfdist}/tex/latex/multido
+%{texmfdist}/tex/latex/muthesis
+%{texmfdist}/tex/latex/mxd
+%{texmfdist}/tex/latex/mxedruli
+%{texmfdist}/tex/latex/nag
+%{texmfdist}/tex/latex/namespc
+%{texmfdist}/tex/latex/nath
+%{texmfdist}/tex/latex/nature
+%{texmfdist}/tex/latex/newvbtm
+%{texmfdist}/tex/latex/niceframe
+%{texmfdist}/tex/latex/nih
+%{texmfdist}/tex/latex/noitcrul
+%{texmfdist}/tex/latex/nomentbl
+%{texmfdist}/tex/latex/nonfloat
+%{texmfdist}/tex/latex/nostarch
+%{texmfdist}/tex/latex/notes
+%{texmfdist}/tex/latex/notes2bib
+%{texmfdist}/tex/latex/nrc
+%{texmfdist}/tex/latex/ntabbing
+%{texmfdist}/tex/latex/numline
+%{texmfdist}/tex/latex/numname
+%{texmfdist}/tex/latex/numprint
+%{texmfdist}/tex/latex/objectz
+%{texmfdist}/tex/latex/ocr-latex
+%{texmfdist}/tex/latex/octavo
+%{texmfdist}/tex/latex/ogonek
+%{texmfdist}/tex/latex/oldstyle
+%{texmfdist}/tex/latex/opcit
+%{texmfdist}/tex/latex/ordinalpt
+%{texmfdist}/tex/latex/ot2cyr
+%{texmfdist}/tex/latex/othello
+%{texmfdist}/tex/latex/otibet
+%{texmfdist}/tex/latex/outline
+%{texmfdist}/tex/latex/outliner
+%{texmfdist}/tex/latex/pacioli
+%{texmfdist}/tex/latex/pageno
+%{texmfdist}/tex/latex/pagenote
+%{texmfdist}/tex/latex/palatino
+%{texmfdist}/tex/latex/paper
+%{texmfdist}/tex/latex/papercdcase
+%{texmfdist}/tex/latex/papertex
+%{texmfdist}/tex/latex/parallel
+%{texmfdist}/tex/latex/paresse
+%{texmfdist}/tex/latex/parrun
+%{texmfdist}/tex/latex/patchcmd
+%{texmfdist}/tex/latex/pauldoc
+%{texmfdist}/tex/latex/pawpict
+%{texmfdist}/tex/latex/pbox
+%{texmfdist}/tex/latex/pbsheet
+%{texmfdist}/tex/latex/pclnfss
+%{texmfdist}/tex/latex/pdfcprot
+%{texmfdist}/tex/latex/pdfscreen
+%{texmfdist}/tex/latex/pdftricks
+%{texmfdist}/tex/latex/pdfwin
+%{texmfdist}/tex/latex/pecha
+%{texmfdist}/tex/latex/perltex
+%{texmfdist}/tex/latex/permute
+%{texmfdist}/tex/latex/petiteannonce
+%{texmfdist}/tex/latex/petri-nets
+%{texmfdist}/tex/latex/pgf-soroban
+%{texmfdist}/tex/latex/phaistos
+%{texmfdist}/tex/latex/philex
+%{texmfdist}/tex/latex/philosophersimprint
+%{texmfdist}/tex/latex/phonetic
+%{texmfdist}/tex/latex/photo
+%{texmfdist}/tex/latex/pictex2
+%{texmfdist}/tex/latex/pinlabel
+%{texmfdist}/tex/latex/pittetd
+%{texmfdist}/tex/latex/plari
+%{texmfdist}/tex/latex/plates
+%{texmfdist}/tex/latex/play
+%{texmfdist}/tex/latex/plweb
+%{texmfdist}/tex/latex/pmgraph
+%{texmfdist}/tex/latex/poemscol
+%{texmfdist}/tex/latex/polski
+%{texmfdist}/tex/latex/polyglot
+%{texmfdist}/tex/latex/polytable
+%{texmfdist}/tex/latex/postcards
+%{texmfdist}/tex/latex/powerdot
+%{texmfdist}/tex/latex/ppower4
+%{texmfdist}/tex/latex/ppr-prv
+%{texmfdist}/tex/latex/pracjourn
+%{texmfdist}/tex/latex/prettyref
+%{texmfdist}/tex/latex/proba
+%{texmfdist}/tex/latex/probsoln
+%{texmfdist}/tex/latex/procIAGssymp
+%{texmfdist}/tex/latex/progkeys
+%{texmfdist}/tex/latex/progress
+%{texmfdist}/tex/latex/protex
+%{texmfdist}/tex/latex/protocol
+%{texmfdist}/tex/latex/psfragx
+%{texmfdist}/tex/latex/psgo
+%{texmfdist}/tex/latex/pspicture
+%{texmfdist}/tex/latex/pstricks-add
+%{texmfdist}/tex/latex/ptptex
+%{texmfdist}/tex/latex/qcm
+%{texmfdist}/tex/latex/qobitree
+%{texmfdist}/tex/latex/qstest
+%{texmfdist}/tex/latex/qsymbols
+%{texmfdist}/tex/latex/qtree
+%{texmfdist}/tex/latex/quotchap
+%{texmfdist}/tex/latex/quotmark
+%{texmfdist}/tex/latex/r_und_s
+%{texmfdist}/tex/latex/randbild
+%{texmfdist}/tex/latex/randtext
+%{texmfdist}/tex/latex/rccol
+%{texmfdist}/tex/latex/rcs
+%{texmfdist}/tex/latex/rcsinfo
+%{texmfdist}/tex/latex/recipecard
+%{texmfdist}/tex/latex/rectopma
+%{texmfdist}/tex/latex/refcheck
+%{texmfdist}/tex/latex/refman
+%{texmfdist}/tex/latex/refstyle
+%{texmfdist}/tex/latex/regcount
+%{texmfdist}/tex/latex/register
+%{texmfdist}/tex/latex/relenc
+%{texmfdist}/tex/latex/repeatindex
+%{texmfdist}/tex/latex/resume
+%{texmfdist}/tex/latex/rlepsf
+%{texmfdist}/tex/latex/rmpage
+%{texmfdist}/tex/latex/robustcommand
+%{texmfdist}/tex/latex/robustindex
+%{texmfdist}/tex/latex/romannum
+%{texmfdist}/tex/latex/rotpages
+%{texmfdist}/tex/latex/rsc
+%{texmfdist}/tex/latex/rst
+%{texmfdist}/tex/latex/rtkinenc
+%{texmfdist}/tex/latex/rtklage
+%{texmfdist}/tex/latex/sagetex
+%{texmfdist}/tex/latex/sanskrit
+%{texmfdist}/tex/latex/sauerj
+%{texmfdist}/tex/latex/sauterfonts
+%{texmfdist}/tex/latex/savefnmark
+%{texmfdist}/tex/latex/savesym
+%{texmfdist}/tex/latex/savetrees
+%{texmfdist}/tex/latex/scalebar
+%{texmfdist}/tex/latex/schedule
+%{texmfdist}/tex/latex/scientificpaper
+%{texmfdist}/tex/latex/sciposter
+%{texmfdist}/tex/latex/sciwordconv
+%{texmfdist}/tex/latex/screenplay
+%{texmfdist}/tex/latex/script
+%{texmfdist}/tex/latex/sdrt
+%{texmfdist}/tex/latex/sectionbox
+%{texmfdist}/tex/latex/semantic
+%{texmfdist}/tex/latex/semaphor
+%{texmfdist}/tex/latex/semioneside
+%{texmfdist}/tex/latex/seqsplit
+%{texmfdist}/tex/latex/sf298
+%{texmfdist}/tex/latex/sffms
+%{texmfdist}/tex/latex/sfg
+%{texmfdist}/tex/latex/sfmath
+%{texmfdist}/tex/latex/sgame
+%{texmfdist}/tex/latex/shadbox
+%{texmfdist}/tex/latex/shadethm
+%{texmfdist}/tex/latex/shipunov
+%{texmfdist}/tex/latex/shorttoc
+%{texmfdist}/tex/latex/show2e
+%{texmfdist}/tex/latex/showexpl
+%{texmfdist}/tex/latex/sides
+%{texmfdist}/tex/latex/siggraph
+%{texmfdist}/tex/latex/simplecv
+%{texmfdist}/tex/latex/simplewick
+%{texmfdist}/tex/latex/skak
+%{texmfdist}/tex/latex/skull
+%{texmfdist}/tex/latex/slantsc
+%{texmfdist}/tex/latex/smalltableof
+%{texmfdist}/tex/latex/smartref
+%{texmfdist}/tex/latex/smflatex
+%{texmfdist}/tex/latex/snapshot
+%{texmfdist}/tex/latex/songbook
+%{texmfdist}/tex/latex/soyombo
+%{texmfdist}/tex/latex/sparklines
+%{texmfdist}/tex/latex/spie
+%{texmfdist}/tex/latex/splitbib
+%{texmfdist}/tex/latex/splitindex
+%{texmfdist}/tex/latex/sprite
+%{texmfdist}/tex/latex/srcltx
+%{texmfdist}/tex/latex/sseq
+%{texmfdist}/tex/latex/ssqquote
+%{texmfdist}/tex/latex/stack
+%{texmfdist}/tex/latex/stage
+%{texmfdist}/tex/latex/statex2
+%{texmfdist}/tex/latex/statistik
+%{texmfdist}/tex/latex/staves
+%{texmfdist}/tex/latex/stdpage
+%{texmfdist}/tex/latex/stellenbosch
+%{texmfdist}/tex/latex/stex
+%{texmfdist}/tex/latex/stringstrings
+%{texmfdist}/tex/latex/struktex
+%{texmfdist}/tex/latex/sttools
+%{texmfdist}/tex/latex/stubs
+%{texmfdist}/tex/latex/subdepth
+%{texmfdist}/tex/latex/subeqn
+%{texmfdist}/tex/latex/subeqnarray
+%{texmfdist}/tex/latex/subfloat
+%{texmfdist}/tex/latex/substr
+%{texmfdist}/tex/latex/sudoku
+%{texmfdist}/tex/latex/sudokubundle
+%{texmfdist}/tex/latex/sugconf
+%{texmfdist}/tex/latex/susy
+%{texmfdist}/tex/latex/svgcolor
+%{texmfdist}/tex/latex/svn-multi
+%{texmfdist}/tex/latex/svn
+%{texmfdist}/tex/latex/svninfo
+%{texmfdist}/tex/latex/swimgraf
+%{texmfdist}/tex/latex/symbol
+%{texmfdist}/tex/latex/synproof
+%{texmfdist}/tex/latex/syntax
+%{texmfdist}/tex/latex/syntrace
+%{texmfdist}/tex/latex/synttree
+%{texmfdist}/tex/latex/timing
+%{texmfdist}/tex/latex/tocvsec2
+%{texmfdist}/tex/latex/todo
+%{texmfdist}/tex/latex/tokenizer
+%{texmfdist}/tex/latex/toolbox
+%{texmfdist}/tex/latex/topfloat
+%{texmfdist}/tex/latex/toptesi
+%{texmfdist}/tex/latex/tpslifonts
+%{texmfdist}/tex/latex/tracking
+%{texmfdist}/tex/latex/trajan
+%{texmfdist}/tex/latex/translator
+%{texmfdist}/tex/latex/tree-dvips
+%{texmfdist}/tex/latex/trfsigns
+%{texmfdist}/tex/latex/trivfloat
+%{texmfdist}/tex/latex/trsym
+%{texmfdist}/tex/latex/tufte-latex
+%{texmfdist}/tex/latex/tugboat
+%{texmfdist}/tex/latex/turnstile
+%{texmfdist}/tex/latex/twoup
+%{texmfdist}/tex/latex/typedref
+%{texmfdist}/tex/latex/typogrid
+%{texmfdist}/tex/latex/uaclasses
+%{texmfdist}/tex/latex/ucthesis
+%{texmfdist}/tex/latex/uebungsblatt
+%{texmfdist}/tex/latex/uhrzeit
+%{texmfdist}/tex/latex/uiucthesis
+%{texmfdist}/tex/latex/ulsy
+%{texmfdist}/tex/latex/umich-thesis
+%{texmfdist}/tex/latex/uml
+%{texmfdist}/tex/latex/umoline
+%{texmfdist}/tex/latex/umrand
+%{texmfdist}/tex/latex/umthesis
+%{texmfdist}/tex/latex/underlin
+%{texmfdist}/tex/latex/ushort
+%{texmfdist}/tex/latex/uwthesis
+
 # %files latex-palatcm
 # %defattr(644,root,root,755)
 # %{texmf}/tex/latex/palatcm
+
+%files latex-pdfslide
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/pdfslide
+%{texmfdist}/tex/latex/pdfslide
 
 %files latex-pgf
 %defattr(644,root,root,755)
@@ -8825,6 +10645,18 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/prosper
 %{texmfdist}/tex/latex/prosper
+
+%files latex-polynom
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/polynom
+%{texmfdist}/source/latex/polynom
+%{texmfdist}/tex/latex/polynom
+
+%files latex-polynomial
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/polynomial
+%{texmfdist}/source/latex/polynomial
+%{texmfdist}/tex/latex/polynomial
 
 %files latex-pseudocode
 %defattr(644,root,root,755)
@@ -9107,6 +10939,12 @@ fi
 %{texmfdist}/doc/latex/SIunits
 %{texmfdist}/tex/latex/SIunits
 %{texmfdist}/source/latex/SIunits
+
+%files latex-siunitx
+%defattr(644,root,root,755)
+%{texmfdist}/doc/latex/siunitx
+%{texmfdist}/tex/latex/siunitx
+%{texmfdist}/source/latex/siunitx
 
 %files latex-Tabbing
 %defattr(644,root,root,755)
