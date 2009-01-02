@@ -1259,6 +1259,29 @@ TeX generating PDF files instead DVI.
 %description pdftex -l pl.UTF-8
 TeX generujący pliki PDF zamiast DVI.
 
+%package psutils
+Summary:	PostScript Utilities
+Summary(hu.UTF-8):	PostScript eszközök
+Summary(pl.UTF-8):	Narzędzia do PostScriptu
+Obsoletes:	psutils
+Group:		Applications/Printing
+
+%description psutils
+This archive contains some utilities for manipulating PostScript
+documents. Page selection and rearrangement are supported, including
+arrangement into signatures for booklet printing, and page merging for
+n-up printing.
+
+%description psutils -l hu.UTF-8
+Ez a csomag jónéhány eszközt tartalmaz, amellyel a PostScript
+dokumentumok manipulálhatók. Oldal kijelölés és átrendezés támogatott,
+beleértve a booklet nyomtatáshoz való átrendezést is.
+
+%description psutils -l pl.UTF-8
+PSutils zawiera programy pomagające manipulować plikami PostScript,
+wybierać strony przeznaczone do wydruku, ich kolejność, układ.
+Pozwala także na łączenie różnych plików PostScript w całość.
+
 %package phyzzx
 Summary:	A TeX format for physicists
 Summary(hu.UTF-8):	TeX formátum fizikusoknak
@@ -12750,6 +12773,29 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/fix*
 %{_mandir}/man1/fix*
+
+%files psutils
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/extractres
+%attr(755,root,root) %{_bindir}/getafm
+%attr(755,root,root) %{_bindir}/includeres
+%attr(755,root,root) %{_bindir}/psbook
+%attr(755,root,root) %{_bindir}/psmerge
+%attr(755,root,root) %{_bindir}/psnup
+%attr(755,root,root) %{_bindir}/psresize
+%attr(755,root,root) %{_bindir}/psselect
+%attr(755,root,root) %{_bindir}/pstops
+%attr(755,root,root) %{_bindir}/showchar
+%{_mandir}/man1/extractres*
+%{_mandir}/man1/getafm*
+%{_mandir}/man1/includeres*
+%{_mandir}/man1/psbook*
+%{_mandir}/man1/psmerge*
+%{_mandir}/man1/psnup*
+%{_mandir}/man1/psresize*
+%{_mandir}/man1/psselect*
+%{_mandir}/man1/pstops*
+%{texmf}/dvips/psutils
 
 %files uncategorized-utils
 %defattr(644,root,root,755)
