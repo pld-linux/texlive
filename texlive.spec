@@ -7452,7 +7452,7 @@ fi
 # %{texmf}/web2c/pdfetex.pool
 # %{texmf}/web2c/pdfxtex.pool
 # %{_mandir}/man1/pdfxtex.1*
-%docdir %{texmfdist}/doc/pdftex
+%doc %{texmfdist}/doc/pdftex
 %attr(755,root,root) %{_bindir}/epstopdf
 %attr(755,root,root) %{_bindir}/pdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
@@ -7759,12 +7759,14 @@ fi
 
 %files latex
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
 %attr(755,root,root) %{_bindir}/pslatex
 # %lang(fi) %{_mandir}/fi/man1/latex.1*
 # %lang(pl) %{_mandir}/pl/man1/latex.1*
 # %{_infodir}/latex.info*
 %{texmf}/fmtutil/format.latex.cnf
+%{_mandir}/man1/lacheck.1*
 %{_mandir}/man1/latex.1*
 %{_mandir}/man1/pslatex.1*
 
@@ -12765,6 +12767,7 @@ fi
 %attr(755,root,root) %{_bindir}/epsffit
 %attr(755,root,root) %{_bindir}/epspdf
 %attr(755,root,root) %{_bindir}/epspdftk
+%attr(755,root,root) %{_bindir}/pst2pdf
 %{texmfdist}/scripts/epspdf
 %{_mandir}/man1/epsffit*
 %doc %{texmfdist}/doc/epspdf
@@ -12784,6 +12787,7 @@ fi
 %attr(755,root,root) %{_bindir}/psnup
 %attr(755,root,root) %{_bindir}/psresize
 %attr(755,root,root) %{_bindir}/psselect
+%attr(755,root,root) %{_bindir}/ps2eps
 %attr(755,root,root) %{_bindir}/pstops
 %attr(755,root,root) %{_bindir}/showchar
 %{_mandir}/man1/extractres*
@@ -12827,6 +12831,7 @@ fi
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxelatex.sh
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxetex.sh
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/mk4ht.pl
+%doc %{texmfdist}/doc/generic/tex4ht
 %{texmfdist}/tex4ht
 
 %files xetex
