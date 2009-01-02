@@ -1,6 +1,5 @@
 # TODO:
 # MAIN TODO (sort by importnce):
-# - fix broken symlinks in /usr/bin (see section %install)
 # - need more %dir (poldek says it missed)
 # - texlive-format-pdflatex deps
 # - check unpackaged files
@@ -46,7 +45,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.9
+Release:	0.9.5
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -4997,9 +4996,70 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 # Fix broken symlinks
 CURDIR=$(pwd)
 cd $RPM_BUILD_ROOT%{_bindir}
-for file in $(file * | grep broken | awk -F ":" {'print $1'}); do
-	ln -sf $(readlink $file | %{__sed} "s@\.\.@\.\./share@") $file
-done
+ln -sf ../share/texmf/scripts/a2ping/a2ping.pl a2ping
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/context context
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/ctxtools ctxtools
+ln -sf ../share/texmf-dist/scripts/dviasm/dviasm.py dviasm
+ln -sf ../share/texmf/scripts/tetex/e2pall.pl e2pall
+ln -sf ../share/texmf-dist/scripts/bengali/ebong.py ebong
+ln -sf ../share/texmf-dist/scripts/epspdf/epspdf epspdf
+ln -sf ../share/texmf-dist/scripts/epspdf/epspdftk epspdftk
+ln -sf ../share/texmf/scripts/epstopdf/epstopdf.pl epstopdf
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/exatools exatools
+ln -sf ../share/texmf/scripts/texlive/getnonfreefonts.pl getnonfreefonts
+ln -sf ../share/texmf/scripts/texlive/getnonfreefonts.pl getnonfreefonts-sys
+ln -sf ../share/texmf-dist/scripts/tex4ht/ht.sh ht
+ln -sf ../share/texmf-dist/scripts/tex4ht/htcontext.sh htcontext
+ln -sf ../share/texmf-dist/scripts/tex4ht/htlatex.sh htlatex
+ln -sf ../share/texmf-dist/scripts/tex4ht/htmex.sh htmex
+ln -sf ../share/texmf-dist/scripts/tex4ht/httex.sh httex
+ln -sf ../share/texmf-dist/scripts/tex4ht/httexi.sh httexi
+ln -sf ../share/texmf-dist/scripts/tex4ht/htxelatex.sh htxelatex
+ln -sf ../share/texmf-dist/scripts/tex4ht/htxetex.sh htxetex
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/luatools luatools
+ln -sf ../share/texmf-dist/scripts/glossaries/makeglossaries makeglossaries
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/makempy makempy
+ln -sf ../share/texmf-dist/scripts/tex4ht/mk4ht.pl mk4ht
+ln -sf ../share/texmf-dist/scripts/mkjobtexmf/mkjobtexmf.pl mkjobtexmf
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mpstools mpstools
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mptopdf mptopdf
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxrun mtxrun
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxtools mtxtools
+ln -sf ../share/texmf-dist/scripts/oberdiek/pdfatfi.pl pdfatfi
+ln -sf ../share/texmf-dist/scripts/pdfcrop/pdfcrop.pl pdfcrop
+ln -sf ../share/texmf-dist/scripts/ppower4/pdfthumb.texlua pdfthumb
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftools pdftools
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftrimwhite pdftrimwhite
+ln -sf ../share/texmf-dist/scripts/perltex/perltex.pl perltex
+ln -sf ../share/texmf/scripts/pkfix/pkfix.pl pkfix
+ln -sf ../share/texmf-dist/scripts/ppower4/ppower4.texlua ppower4
+ln -sf ../share/texmf/scripts/ps2eps/ps2eps.pl ps2eps
+ln -sf ../share/texmf-dist/scripts/pst-pdf/ps4pdf ps4pdf
+ln -sf ../share/texmf-dist/scripts/pst2pdf/pst2pdf.pl pst2pdf
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pstopdf pstopdf
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/rlxtools rlxtools
+ln -sf ../share/texmf/scripts/texlive/rungs.tlu rungs
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/runtools runtools
+ln -sf ../share/texmf/scripts/simpdftex/simpdftex simpdftex
+ln -sf ../share/texmf-dist/scripts/texcount/TeXcount.pl texcount
+ln -sf ../share/texmf/scripts/texlive/texdoc.tlu texdoc
+ln -sf ../share/texmf/scripts/tetex/texdoctk.pl texdoctk
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texexec texexec
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfont texfont
+ln -sf ../share/texmf-dist/scripts/context/ruby/texmfstart.rb texmfstart
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texshow texshow
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/textools textools
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texutil texutil
+ln -sf ../share/texmf-dist/scripts/thumbpdf/thumbpdf.pl thumbpdf
+ln -sf ../share/texmf/scripts/texlive/tlmgr.pl tlmgr
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/tmftools tmftools
+ln -sf ../share/texmf-dist/scripts/vpe/vpe.pl vpe
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/xmltools xmltools
+# file * | grep broken | awk -F ":" {'print $1'}
+# for file in $(file * | grep broken | awk -F ":" {'print $1'}); do
+# 	echo LINK ln -sf $(readlink $file | %{__sed} "s@\.\.@\.\./share@") $file
+# done
 cd $CURDIR
 
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
