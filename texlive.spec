@@ -9699,11 +9699,6 @@ fi
 
 %files latex-other
 %defattr(644,root,root,755)
-%{texmfdist}/fonts/map/dvips/pslatex
-%{texmfdist}/fonts/source/public/yi4latex
-%{texmfdist}/fonts/tfm/public/pslatex
-%{texmfdist}/fonts/tfm/public/yi4latex
-%{texmfdist}/fonts/vf/public/pslatex
 %{texmfdist}/metapost/latexmp
 %{texmfdist}/metapost/makecirc
 %{texmfdist}/source/alatex/base
@@ -11426,8 +11421,18 @@ fi
 %{texmfdist}/fonts/tfm/monotype
 %{texmfdist}/fonts/vf/monotype
 
+
 %files fonts-other
 %defattr(644,root,root,755)
+
+%doc %{texmfdist}/doc/fonts/yi4latex
+%{texmfdist}/fonts/source/public/yi4latex
+%{texmfdist}/fonts/tfm/public/yi4latex
+
+%{texmfdist}/fonts/tfm/public/pslatex
+%{texmfdist}/fonts/map/dvips/pslatex
+%{texmfdist}/fonts/vf/public/pslatex
+
 %doc %{texmfdist}/doc/fonts/allrunes
 %{texmfdist}/fonts/source/public/allrunes
 %{texmfdist}/fonts/tfm/public/allrunes
@@ -11577,20 +11582,21 @@ fi
 %{texmfdist}/fonts/tfm/public/burmese
 %{texmfdist}/fonts/type1/public/burmese
 
+%doc %{texmfdist}/doc/fonts/cns/cns40-1
+%doc %{texmfdist}/doc/fonts/cns/cns40-2
+%doc %{texmfdist}/doc/fonts/cns/cns40-3
+%doc %{texmfdist}/doc/fonts/cns/cns40-4
+%doc %{texmfdist}/doc/fonts/cns/cns40-5
+%doc %{texmfdist}/doc/fonts/cns/cns40-6
+%doc %{texmfdist}/doc/fonts/cns/cns40-7
+%doc %{texmfdist}/doc/fonts/cns/cns40-b5
 %{texmfdist}/fonts/tfm/cns/c0so12
-
 %{texmfdist}/fonts/tfm/cns/c1so12
-
 %{texmfdist}/fonts/tfm/cns/c2so12
-
 %{texmfdist}/fonts/tfm/cns/c3so12
-
 %{texmfdist}/fonts/tfm/cns/c4so12
-
 %{texmfdist}/fonts/tfm/cns/c5so12
-
 %{texmfdist}/fonts/tfm/cns/c6so12
-
 %{texmfdist}/fonts/tfm/cns/c7so12
 
 %{texmfdist}/fonts/enc/dvips/c90enc
@@ -11693,22 +11699,6 @@ fi
 %{texmfdist}/fonts/map/dvips/cm-super
 %{texmfdist}/fonts/map/vtex/cm-super
 %{texmfdist}/fonts/type1/public/cm-super
-
-%doc %{texmfdist}/doc/fonts/cns/cns40-1
-
-%doc %{texmfdist}/doc/fonts/cns/cns40-2
-
-%doc %{texmfdist}/doc/fonts/cns/cns40-3
-
-%doc %{texmfdist}/doc/fonts/cns/cns40-4
-
-%doc %{texmfdist}/doc/fonts/cns/cns40-5
-
-%doc %{texmfdist}/doc/fonts/cns/cns40-6
-
-%doc %{texmfdist}/doc/fonts/cns/cns40-7
-
-%doc %{texmfdist}/doc/fonts/cns/cns40-b5
 
 %{texmfdist}/fonts/tfm/vntex/comicsansvn
 %{texmfdist}/fonts/type1/vntex/comicsansvn
@@ -12025,12 +12015,14 @@ fi
 %{texmfdist}/fonts/tfm/public/initials
 %{texmfdist}/fonts/type1/public/initials
 
+%doc %{texmfdist}/doc/fonts/itrans
 %{texmfdist}/fonts/afm/public/itrans
 %{texmfdist}/fonts/source/public/itrans
 %{texmfdist}/fonts/tfm/public/itrans
 %{texmfdist}/fonts/truetype/public/itrans
 %{texmfdist}/fonts/type1/public/itrans
 
+%doc %{texmfdist}/doc/fonts/iwona
 %{texmfdist}/fonts/afm/public/iwona
 %{texmfdist}/fonts/enc/dvips/iwona
 %{texmfdist}/fonts/map/dvips/iwona
@@ -12041,6 +12033,7 @@ fi
 %{texmfdist}/fonts/enc/dvips/jmn
 %{texmfdist}/fonts/map/dvips/jmn
 
+%doc %{texmfdist}/doc/fonts/kdgreek
 %{texmfdist}/fonts/source/public/kdgreek
 %{texmfdist}/fonts/tfm/public/kdgreek
 
@@ -12063,6 +12056,7 @@ fi
 %{texmfdist}/fonts/type1/public/kpfonts
 %{texmfdist}/fonts/vf/public/kpfonts
 
+%doc %{texmfdist}/doc/fonts/kurier
 %{texmfdist}/fonts/afm/public/kurier
 %{texmfdist}/fonts/enc/dvips/kurier
 %{texmfdist}/fonts/map/dvips/kurier
