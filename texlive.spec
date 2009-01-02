@@ -2403,6 +2403,59 @@ Knappen, including sgmlcmpt.
 Różne makra, głównie do używania dodatkowych fontów autorstwa Joerga
 Knappena. Zawiera sgmlcmpt.
 
+%package latex-keystroke
+Summary:	Graphical representation of keys on keyboard
+Summary(hu.UTF-8):	A billentyűk grafikus megjelenítése
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-keystroke
+Graphical representation of keys on keyboard.
+
+%description latex-keystroke -l hu.UTF-8
+A billentyűk grafikus megjelenítése.
+
+
+%package latex-labbook
+Summary:	Typeset laboratory journals
+Summary(hu.UTF-8):	Laborjegyzőkönyvek szedése
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-labbook
+Typeset laboratory journals.
+
+%description latex-labbook -l hu.UTF-8
+Laborjegyzőkönyvek szedése.
+
+%package latex-lcd
+Summary:	Alphanumerical LCD-style displays
+Summary(hu.UTF-8):	Alfanumerikus LCD-szerű kijelzés	
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-lcd
+Alphanumerical LCD-style displays.
+
+%description latex-lcd -l hu.UTF-8
+Alfanumerikus LCD-szerű kijelzés.	
+
+%package latex-leaflet
+Summary:	Create small handouts (flyers)
+Summary(hu.UTF-8):	Kis "kézikönyvek" készítése (brossúrák)
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-leaflet
+Create small handouts (flyers).
+
+%description latex-leaflet -l hu.UTF-8
+Kis "kézikönyvek" készítése (brossúrák).
+
 %package latex-leftidx
 Summary:	Left and right subscripts and superscripts in math mode
 Summary(hu.UTF-8):	Bal és jobboldali alsó és felső indexek matematikai módban
@@ -2415,6 +2468,20 @@ Left and right subscripts and superscripts in math mode.
 
 %description latex-leftidx -l hu.UTF-8
 Bal és jobboldali alsó és felső indexek matematikai módban.
+
+
+%package latex-lewis
+Summary:	Draw Lewis structures (chemistry)
+Summary(hu.UTF-8):	Lewis struktúrák készítése (kémia)
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-lewis
+Draw Lewis structures (chemistry).
+
+%description latex-lewis -l hu.UTF-8
+Lewis struktúrák készítése (kémia).
 
 %package latex-lm
 Summary:	LaTeX styles for Latin Modern family fonts
@@ -2476,6 +2543,20 @@ Pakiet LaTeXa lineno.sty daje numery linii dla paragrafów. Po podziale
 paragrafu na linie przez TeXa do linii dołączane są ich numery z
 możliwością tworzenia odnośników poprzez mechanizm odnośników LaTeXa
 \ref i \pageref.
+
+
+%package latex-mathexam
+Summary:	Package for typesetting exams
+Summary(hu.UTF-8):	Vizsgák szedése
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-mathexam
+Package for typesetting exams.
+
+%description latex-mathexam -l hu.UTF-8
+Vizsgák szedése.
 
 %package latex-microtype
 Summary:	An interface to the micro-typographic extensions of pdfTeX
@@ -5378,10 +5459,40 @@ fi
 %postun latex-jknappen
 %texhash
 
+%post latex-keystroke
+%texhash
+
+%postun latex-keystroke
+%texhash
+
+%post latex-labbook
+%texhash
+
+%postun latex-labbook
+%texhash
+
+%post latex-lcd
+%texhash
+
+%postun latex-lcd
+%texhash
+
+%post latex-leaflet
+%texhash
+
+%postun latex-leaflet
+%texhash
+
 %post latex-leftidx
 %texhash
 
 %postun latex-leftidx
+%texhash
+
+%post latex-lewis
+%texhash
+
+%postun latex-lewis
 %texhash
 
 %post latex-lm
@@ -5406,6 +5517,12 @@ fi
 %texhash
 
 %postun latex-marvosym
+%texhash
+
+%post latex-mathexam
+%texhash
+
+%postun latex-mathexam
 %texhash
 
 %post latex-mathpple
@@ -8558,15 +8675,43 @@ fi
 %doc %{texmfdist}/fonts/source/jknappen
 %{texmfdist}/fonts/tfm/jknappen
 
+%files latex-keystroke
+%defattr(644,root,root,755)
+%{texmfdist}/tex/latex/keystroke
+%doc %{texmfdist}/doc/latex/keystroke
+
+%files latex-labbook
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/labbook
+%{texmfdist}/source/latex/labbook
+%{texmfdist}/tex/latex/labbook
+
 %files latex-lastpage
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/lastpage
 %{texmfdist}/tex/latex/lastpage
 
+%files latex-lcd
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/lcd
+%{texmfdist}/source/latex/lcd
+%{texmfdist}/tex/latex/lcd
+
+%files latex-leaflet
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/leaflet
+%{texmfdist}/source/latex/leaflet
+%{texmfdist}/tex/latex/leaflet
+
 %files latex-leftidx
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/leftidx
 %{texmfdist}/tex/latex/leftidx
+
+%files latex-lewis
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/lewis
+%{texmfdist}/tex/latex/lewis
 
 %files latex-lm
 %defattr(644,root,root,755)
@@ -8595,6 +8740,12 @@ fi
 %files latex-marvosym
 %defattr(644,root,root,755)
 %{texmfdist}/tex/latex/marvosym
+
+%files latex-mathexam
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/mathexam
+%{texmfdist}/source/latex/mathexam
+%{texmfdist}/tex/latex/mathexam
 
 #%files latex-mathpple
 #%defattr(644,root,root,755)
