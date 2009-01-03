@@ -5056,10 +5056,6 @@ ln -sf ../share/texmf/scripts/texlive/tlmgr.pl tlmgr
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/tmftools tmftools
 ln -sf ../share/texmf-dist/scripts/vpe/vpe.pl vpe
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/xmltools xmltools
-# file * | grep broken | awk -F ":" {'print $1'}
-# for file in $(file * | grep broken | awk -F ":" {'print $1'}); do
-# 	echo LINK ln -sf $(readlink $file | %{__sed} "s@\.\.@\.\./share@") $file
-# done
 cd $CURDIR
 
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
@@ -5078,6 +5074,8 @@ cd $CURDIR
 
 %{__rm} -r $RPM_BUILD_ROOT%{_prefix}/texmf
 %{__rm} -r $RPM_BUILD_ROOT%{_prefix}/texmf-dist
+# We don't need it
+%{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/man
 
 perl -pi \
 	-e "s|$RPM_BUILD_ROOT||g;" \
