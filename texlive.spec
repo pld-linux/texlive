@@ -1,10 +1,10 @@
 # TODO:
 # MAIN TODO (sort by importnce):
-# - need more %dir (poldek says it missed)
 # - texlive-format-pdflatex deps
-# - check unpackaged files
+# - check unpackaged files (only some files)
 # - pl updates
 # - maybe more splits (e.g. latex subpackages)
+# - see uncategorized and *other* subpackages and split
 # - context: consider more splitting, check dependencies
 # - omega: consider more splitting, check dependencies
 # - tdphp: is it really useful?
@@ -25,11 +25,6 @@
 # - texk/web2c doesn't build (luatex option)
 # - %files latex-bibtex-revtex4
 # - Check CEF/cjk!
-#
-# Subpackages TODO:
-# check deps the following subpackages:
-# - latex-exam
-# - latex-SIunits
 #
 %include	/usr/lib/rpm/macros.perl
 #
@@ -3714,6 +3709,7 @@ Rozszerzenie do pakietu keyval.
 %package dirs-fonts
 Summary:	TeX font directories
 Summary(pl.UTF-8):	Katalogi fontów TeXa
+Obsoletes:	tetex-dirs-fonts
 Group:		Fonts
 
 %description dirs-fonts
