@@ -1262,8 +1262,8 @@ TeX generujący pliki PDF zamiast DVI.
 Summary:	PostScript Utilities
 Summary(hu.UTF-8):	PostScript eszközök
 Summary(pl.UTF-8):	Narzędzia do PostScriptu
-Obsoletes:	psutils
 Group:		Applications/Printing
+Obsoletes:	psutils
 
 %description psutils
 This archive contains some utilities for manipulating PostScript
@@ -1278,8 +1278,8 @@ beleértve a booklet nyomtatáshoz való átrendezést is.
 
 %description psutils -l pl.UTF-8
 PSutils zawiera programy pomagające manipulować plikami PostScript,
-wybierać strony przeznaczone do wydruku, ich kolejność, układ.
-Pozwala także na łączenie różnych plików PostScript w całość.
+wybierać strony przeznaczone do wydruku, ich kolejność, układ. Pozwala
+także na łączenie różnych plików PostScript w całość.
 
 %package phyzzx
 Summary:	A TeX format for physicists
@@ -6902,6 +6902,7 @@ fi
 
 %files doc
 %defattr(644,root,root,755)
+%dir %{texmfdoc}
 %dir %{texmfdoc}/doc
 %{texmfdoc}/doc/english
 
@@ -8947,6 +8948,7 @@ fi
 
 %files latex-lucidabr
 %defattr(644,root,root,755)
+%dir %{texmfdist}/vtex
 %dir %{texmfdist}/vtex/config
 %{texmfdist}/vtex/config/lucidabr-k.ali
 %{texmfdist}/vtex/config/lucidabr.ali
@@ -9030,10 +9032,9 @@ fi
 
 %files latex-other-doc
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/alatex/base
+%doc %{texmfdist}/doc/alatex
 %doc %{texmfdist}/doc/cslatex/base
-%doc %{texmfdist}/doc/generic/wsuipa/latex209
-%doc %{texmfdist}/doc/generic/wsuipa/latex2e
+%doc %{texmfdist}/doc/generic/wsuipa
 %doc %{texmfdist}/doc/latex/ANUfinalexam
 %doc %{texmfdist}/doc/latex/AkkTeX
 %doc %{texmfdist}/doc/latex/ESIEEcv
@@ -9786,7 +9787,9 @@ fi
 %defattr(644,root,root,755)
 %{texmfdist}/metapost/latexmp
 %{texmfdist}/metapost/makecirc
+%dir %{texmfdist}/source/alatex
 %{texmfdist}/source/alatex/base
+%dir %{texmfdist}/source/cslatex
 %{texmfdist}/source/cslatex/base
 %{texmfdist}/source/generic/xypic
 %{texmfdist}/source/latex/ESIEEcv
@@ -9819,8 +9822,7 @@ fi
 %{texmfdist}/source/latex/asaetr
 %{texmfdist}/source/latex/ascii
 %{texmfdist}/source/latex/attachfile
-%{texmfdist}/source/latex/augie/other
-%{texmfdist}/source/latex/augie/vtex
+%{texmfdist}/source/latex/augie
 %{texmfdist}/source/latex/babelbib
 %{texmfdist}/source/latex/backgammon
 %{texmfdist}/source/latex/barcodes
@@ -10383,9 +10385,10 @@ fi
 %{texmfdist}/source/latex/yhmath
 %{texmfdist}/source/latex/york-thesis
 %{texmfdist}/source/latex/youngtab
+%dir %{texmfdist}/source/plain/jsmisc
 %{texmfdist}/source/plain/jsmisc/xfig
 %{texmfdist}/source/xelatex
-%{texmfdist}/tex/alatex/base
+%{texmfdist}/tex/alatex
 %{texmfdist}/tex/generic/enctex
 %{texmfdist}/tex/latex/kalender
 %{texmfdist}/tex/latex/karnaugh
@@ -11531,10 +11534,9 @@ fi
 %{texmfdist}/fonts/tfm/public/apl
 %{texmfdist}/source/fonts/apl
 
-%{texmfdist}/fonts/afm/arabi/arabeyes
-%{texmfdist}/fonts/tfm/arabi/arabeyes
-%{texmfdist}/fonts/type1/arabi/arabeyes
-
+%{texmfdist}/fonts/afm/arabi
+%{texmfdist}/fonts/tfm/arabi
+%{texmfdist}/fonts/type1/arabi
 %{texmfdist}/fonts/enc/dvips/arabi
 %{texmfdist}/fonts/map/dvips/arabi
 
@@ -11605,9 +11607,7 @@ fi
 %{texmfdist}/fonts/type1/public/aurical
 
 %{texmfdist}/fonts/map/dvips/avantgar
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/avantgar
 %{texmfdist}/fonts/tfm/urw35vf/avantgar
-%{texmfdist}/fonts/vf/cspsfonts-adobe/avantgar
 %{texmfdist}/fonts/vf/urw35vf/avantgar
 
 %{texmfdist}/fonts/source/public/backgammon
@@ -11651,9 +11651,7 @@ fi
 %{texmfdist}/fonts/source/public/bookhands
 
 %{texmfdist}/fonts/map/dvips/bookman
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/bookman
 %{texmfdist}/fonts/tfm/urw35vf/bookman
-%{texmfdist}/fonts/vf/cspsfonts-adobe/bookman
 %{texmfdist}/fonts/vf/urw35vf/bookman
 
 %{texmfdist}/fonts/afm/public/brushscr
@@ -11667,22 +11665,8 @@ fi
 %{texmfdist}/fonts/tfm/public/burmese
 %{texmfdist}/fonts/type1/public/burmese
 
-%doc %{texmfdist}/doc/fonts/cns/cns40-1
-%doc %{texmfdist}/doc/fonts/cns/cns40-2
-%doc %{texmfdist}/doc/fonts/cns/cns40-3
-%doc %{texmfdist}/doc/fonts/cns/cns40-4
-%doc %{texmfdist}/doc/fonts/cns/cns40-5
-%doc %{texmfdist}/doc/fonts/cns/cns40-6
-%doc %{texmfdist}/doc/fonts/cns/cns40-7
-%doc %{texmfdist}/doc/fonts/cns/cns40-b5
-%{texmfdist}/fonts/tfm/cns/c0so12
-%{texmfdist}/fonts/tfm/cns/c1so12
-%{texmfdist}/fonts/tfm/cns/c2so12
-%{texmfdist}/fonts/tfm/cns/c3so12
-%{texmfdist}/fonts/tfm/cns/c4so12
-%{texmfdist}/fonts/tfm/cns/c5so12
-%{texmfdist}/fonts/tfm/cns/c6so12
-%{texmfdist}/fonts/tfm/cns/c7so12
+%doc %{texmfdist}/doc/fonts/cns
+%{texmfdist}/fonts/tfm/cns
 
 %{texmfdist}/fonts/enc/dvips/c90enc
 
@@ -11792,13 +11776,13 @@ fi
 %{texmfdist}/fonts/tfm/vntex/concretevn
 %{texmfdist}/fonts/type1/vntex/concretevn
 
-%{texmfdist}/fonts/map/pdftex/context
-
-%{texmfdist}/fonts/afm/ibm/courier
+%{texmfdist}/fonts/afm/ibm
+%{texmfdist}/fonts/tfm/ibm
+%{texmfdist}/fonts/vf/ibm
 %{texmfdist}/fonts/map/dvips/courier
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/courier
 %{texmfdist}/fonts/tfm/urw35vf/courier
-%{texmfdist}/fonts/vf/cspsfonts-adobe/courier
+%{texmfdist}/fonts/tfm/cspsfonts-adobe
+%{texmfdist}/fonts/vf/cspsfonts-adobe
 %{texmfdist}/fonts/vf/urw35vf/courier
 
 %doc %{texmfdist}/doc/fonts/croatian
@@ -11837,8 +11821,6 @@ fi
 %doc %{texmfdist}/doc/fonts/dingbat
 %{texmfdist}/fonts/tfm/public/dingbat
 %{texmfdist}/source/fonts/dingbat
-
-%{texmfdist}/source/fonts/malayalam/dng
 
 %doc %{texmfdist}/doc/fonts/doublestroke
 %{texmfdist}/fonts/map/dvips/doublestroke
@@ -11904,9 +11886,6 @@ fi
 %doc %{texmfdist}/doc/fonts/eurofont
 %{texmfdist}/fonts/map/dvips/eurofont
 %{texmfdist}/source/fonts/eurofont
-
-%{texmfdist}/fonts/tfm/arabi/farsiweb
-%{texmfdist}/fonts/type1/arabi/farsiweb
 
 %doc %{texmfdist}/doc/fonts/feyn
 %{texmfdist}/fonts/source/public/feyn
@@ -12060,14 +12039,12 @@ fi
 %{texmfdist}/fonts/source/public/hands
 %{texmfdist}/fonts/tfm/public/hands
 
-%{texmfdist}/fonts/afm/jmn/hans
-%{texmfdist}/fonts/tfm/jmn/hans
-%{texmfdist}/fonts/type1/jmn/hans
+%{texmfdist}/fonts/afm/jmn
+%{texmfdist}/fonts/tfm/jmn
+%{texmfdist}/fonts/type1/jmn
 
 %{texmfdist}/fonts/map/dvips/helvetic
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/helvetic
 %{texmfdist}/fonts/tfm/urw35vf/helvetic
-%{texmfdist}/fonts/vf/cspsfonts-adobe/helvetic
 %{texmfdist}/fonts/vf/urw35vf/helvetic
 
 %doc %{texmfdist}/doc/fonts/hfbright
@@ -12134,6 +12111,7 @@ fi
 %{texmfdist}/fonts/tfm/public/kixfont
 
 %doc %{texmfdist}/doc/fonts/kpfonts
+%dir %{texmfdist}/fonts/map/public
 %{texmfdist}/fonts/afm/public/kpfonts
 %{texmfdist}/fonts/map/public/kpfonts
 %{texmfdist}/fonts/source/public/kpfonts
@@ -12193,23 +12171,14 @@ fi
 %{texmfdist}/fonts/tfm/public/mathpazo
 %{texmfdist}/fonts/vf/public/mathpazo
 
-%{texmfdist}/fonts/afm/mathdesign/mdbch
-%{texmfdist}/fonts/tfm/mathdesign/mdbch
-%{texmfdist}/fonts/type1/mathdesign/mdbch
-%{texmfdist}/fonts/vf/mathdesign/mdbch
-
-%{texmfdist}/fonts/afm/mathdesign/mdput
-%{texmfdist}/fonts/tfm/mathdesign/mdput
-%{texmfdist}/fonts/type1/mathdesign/mdput
-%{texmfdist}/fonts/vf/mathdesign/mdput
-
-%{texmfdist}/fonts/afm/mathdesign/mdugm
-%{texmfdist}/fonts/tfm/mathdesign/mdugm
-%{texmfdist}/fonts/type1/mathdesign/mdugm
-%{texmfdist}/fonts/vf/mathdesign/mdugm
+%{texmfdist}/fonts/afm/mathdesign
+%{texmfdist}/fonts/tfm/mathdesign
+%{texmfdist}/fonts/type1/mathdesign
+%{texmfdist}/fonts/vf/mathdesign
 
 %{texmfdist}/fonts/enc/dvips/mnsymbol
 %{texmfdist}/fonts/map/dvips/mnsymbol
+%dir %{texmfdist}/fonts/map/vtex
 %{texmfdist}/fonts/map/vtex/mnsymbol
 %{texmfdist}/fonts/opentype/public/mnsymbol
 %{texmfdist}/fonts/source/public/mnsymbol
@@ -12240,9 +12209,7 @@ fi
 %{texmfdist}/fonts/tfm/public/mxedruli
 
 %{texmfdist}/fonts/map/dvips/ncntrsbk
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/ncntrsbk
 %{texmfdist}/fonts/tfm/urw35vf/ncntrsbk
-%{texmfdist}/fonts/vf/cspsfonts-adobe/ncntrsbk
 %{texmfdist}/fonts/vf/urw35vf/ncntrsbk
 
 %{texmfdist}/fonts/source/public/niceframe
@@ -12297,9 +12264,7 @@ fi
 %{texmfdist}/fonts/tfm/public/pacioli
 
 %{texmfdist}/fonts/map/dvips/palatino
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/palatino
 %{texmfdist}/fonts/tfm/urw35vf/palatino
-%{texmfdist}/fonts/vf/cspsfonts-adobe/palatino
 %{texmfdist}/fonts/vf/urw35vf/palatino
 
 %doc %{texmfdist}/doc/fonts/phaistos
@@ -12317,7 +12282,7 @@ fi
 %{texmfdist}/fonts/tfm/public/phonetic
 %{texmfdist}/source/fonts/phonetic
 
-%{texmfdist}/source/fonts/malayalam/preproc
+%{texmfdist}/source/fonts/malayalam
 
 %{texmfdist}/fonts/source/public/punk
 %{texmfdist}/fonts/tfm/public/punk
@@ -12371,7 +12336,6 @@ fi
 %{texmfdist}/fonts/source/public/stmaryrd
 
 %{texmfdist}/fonts/map/dvips/symbol
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/symbol
 %{texmfdist}/fonts/tfm/urw35vf/symbol
 
 %{texmfdist}/fonts/afm/public/tabvar
@@ -12379,7 +12343,6 @@ fi
 %{texmfdist}/fonts/tfm/public/tabvar
 %{texmfdist}/fonts/type1/public/tabvar
 
-%{texmfdist}/source/fonts/malayalam/tamil
 
 %{texmfdist}/fonts/source/public/tapir
 %{texmfdist}/fonts/type1/public/tapir
@@ -12399,15 +12362,10 @@ fi
 %{texmfdist}/fonts/tfm/public/tex-gyre
 %{texmfdist}/fonts/type1/public/tex-gyre
 
-%{texmfdist}/fonts/afm/ibm/times
 %{texmfdist}/fonts/map/dvips/times
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/times
 %{texmfdist}/fonts/tfm/urw35vf/times
-%{texmfdist}/fonts/vf/cspsfonts-adobe/times
 %{texmfdist}/fonts/vf/urw35vf/times
 
-%{texmfdist}/fonts/tfm/ibm/timesnew
-%{texmfdist}/fonts/vf/ibm/timesnew
 
 %doc %{texmfdist}/doc/fonts/timing
 %{texmfdist}/fonts/source/public/timing
@@ -12454,8 +12412,8 @@ fi
 %{texmfdist}/fonts/type1/public/velthuis
 
 %{texmfdist}/fonts/enc/dvips/vntex
-%{texmfdist}/fonts/enc/pdftex/vntex
-%{texmfdist}/fonts/map/pdftex/vntex
+%{texmfdist}/fonts/enc/pdftex
+%{texmfdist}/fonts/map/pdftex
 
 %{texmfdist}/fonts/afm/vntex/vntopia
 %{texmfdist}/fonts/tfm/vntex/vntopia
@@ -12493,13 +12451,10 @@ fi
 %{texmfdist}/fonts/vf/public/yhmath
 
 %{texmfdist}/fonts/map/dvips/zapfchan
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/zapfchan
 %{texmfdist}/fonts/tfm/urw35vf/zapfchan
-%{texmfdist}/fonts/vf/cspsfonts-adobe/zapfchan
 %{texmfdist}/fonts/vf/urw35vf/zapfchan
 
 %{texmfdist}/fonts/map/dvips/zapfding
-%{texmfdist}/fonts/tfm/cspsfonts-adobe/zapfding
 %{texmfdist}/fonts/tfm/urw35vf/zapfding
 
 %{texmfdist}/dvips/zefonts
