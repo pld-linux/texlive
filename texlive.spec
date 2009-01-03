@@ -45,7 +45,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.9.5
+Release:	0.9.6
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -10385,6 +10385,7 @@ fi
 %{texmfdist}/source/latex/yhmath
 %{texmfdist}/source/latex/york-thesis
 %{texmfdist}/source/latex/youngtab
+%dir %{texmfdist}/source/plain
 %dir %{texmfdist}/source/plain/jsmisc
 %{texmfdist}/source/plain/jsmisc/xfig
 %{texmfdist}/source/xelatex
@@ -11607,8 +11608,6 @@ fi
 %{texmfdist}/fonts/type1/public/aurical
 
 %{texmfdist}/fonts/map/dvips/avantgar
-%{texmfdist}/fonts/tfm/urw35vf/avantgar
-%{texmfdist}/fonts/vf/urw35vf/avantgar
 
 %{texmfdist}/fonts/source/public/backgammon
 %{texmfdist}/fonts/tfm/public/backgammon
@@ -11626,7 +11625,7 @@ fi
 %{texmfdist}/fonts/tfm/public/bbding
 
 %{texmfdist}/fonts/map/dvips/belleek
-%{texmfdist}/fonts/truetype/public/belleek
+%{texmfdist}/fonts/truetype/public
 
 %{texmfdist}/fonts/source/public/bengali
 %{texmfdist}/fonts/tfm/public/bengali
@@ -11651,8 +11650,6 @@ fi
 %{texmfdist}/fonts/source/public/bookhands
 
 %{texmfdist}/fonts/map/dvips/bookman
-%{texmfdist}/fonts/tfm/urw35vf/bookman
-%{texmfdist}/fonts/vf/urw35vf/bookman
 
 %{texmfdist}/fonts/afm/public/brushscr
 %{texmfdist}/fonts/map/dvips/brushscr
@@ -11780,10 +11777,8 @@ fi
 %{texmfdist}/fonts/tfm/ibm
 %{texmfdist}/fonts/vf/ibm
 %{texmfdist}/fonts/map/dvips/courier
-%{texmfdist}/fonts/tfm/urw35vf/courier
 %{texmfdist}/fonts/tfm/cspsfonts-adobe
 %{texmfdist}/fonts/vf/cspsfonts-adobe
-%{texmfdist}/fonts/vf/urw35vf/courier
 
 %doc %{texmfdist}/doc/fonts/croatian
 %{texmfdist}/fonts/source/public/croatian
@@ -12044,8 +12039,6 @@ fi
 %{texmfdist}/fonts/type1/jmn
 
 %{texmfdist}/fonts/map/dvips/helvetic
-%{texmfdist}/fonts/tfm/urw35vf/helvetic
-%{texmfdist}/fonts/vf/urw35vf/helvetic
 
 %doc %{texmfdist}/doc/fonts/hfbright
 %{texmfdist}/fonts/afm/public/hfbright
@@ -12081,7 +12074,6 @@ fi
 %{texmfdist}/fonts/afm/public/itrans
 %{texmfdist}/fonts/source/public/itrans
 %{texmfdist}/fonts/tfm/public/itrans
-%{texmfdist}/fonts/truetype/public/itrans
 %{texmfdist}/fonts/type1/public/itrans
 
 %doc %{texmfdist}/doc/fonts/iwona
@@ -12209,8 +12201,6 @@ fi
 %{texmfdist}/fonts/tfm/public/mxedruli
 
 %{texmfdist}/fonts/map/dvips/ncntrsbk
-%{texmfdist}/fonts/tfm/urw35vf/ncntrsbk
-%{texmfdist}/fonts/vf/urw35vf/ncntrsbk
 
 %{texmfdist}/fonts/source/public/niceframe
 %{texmfdist}/fonts/tfm/public/niceframe
@@ -12264,8 +12254,6 @@ fi
 %{texmfdist}/fonts/tfm/public/pacioli
 
 %{texmfdist}/fonts/map/dvips/palatino
-%{texmfdist}/fonts/tfm/urw35vf/palatino
-%{texmfdist}/fonts/vf/urw35vf/palatino
 
 %doc %{texmfdist}/doc/fonts/phaistos
 %{texmfdist}/fonts/afm/public/phaistos
@@ -12336,7 +12324,6 @@ fi
 %{texmfdist}/fonts/source/public/stmaryrd
 
 %{texmfdist}/fonts/map/dvips/symbol
-%{texmfdist}/fonts/tfm/urw35vf/symbol
 
 %{texmfdist}/fonts/afm/public/tabvar
 %{texmfdist}/fonts/map/dvips/tabvar
@@ -12352,7 +12339,7 @@ fi
 %{texmfdist}/fonts/tfm/public/tengwarscript
 %{texmfdist}/fonts/vf/public/tengwarscript
 
-%{texmfdist}/source/fonts/pclnfss/tests
+%{texmfdist}/source/fonts/pclnfss
 
 %doc %{texmfdist}/doc/fonts/tex-gyre
 %{texmfdist}/fonts/afm/public/tex-gyre
@@ -12363,8 +12350,6 @@ fi
 %{texmfdist}/fonts/type1/public/tex-gyre
 
 %{texmfdist}/fonts/map/dvips/times
-%{texmfdist}/fonts/tfm/urw35vf/times
-%{texmfdist}/fonts/vf/urw35vf/times
 
 
 %doc %{texmfdist}/doc/fonts/timing
@@ -12436,8 +12421,6 @@ fi
 %{texmfdist}/fonts/source/public/xbmc
 %{texmfdist}/fonts/tfm/public/xbmc
 
-%{texmfdist}/fonts/truetype/public/xepersian
-
 %doc %{texmfdist}/doc/fonts/xq
 %{texmfdist}/fonts/source/public/xq
 %{texmfdist}/fonts/tfm/public/xq
@@ -12451,11 +12434,9 @@ fi
 %{texmfdist}/fonts/vf/public/yhmath
 
 %{texmfdist}/fonts/map/dvips/zapfchan
-%{texmfdist}/fonts/tfm/urw35vf/zapfchan
-%{texmfdist}/fonts/vf/urw35vf/zapfchan
+%{texmfdist}/fonts/tfm/urw35vf
 
 %{texmfdist}/fonts/map/dvips/zapfding
-%{texmfdist}/fonts/tfm/urw35vf/zapfding
 
 %{texmfdist}/dvips/zefonts
 %{texmfdist}/fonts/map/dvips/zefonts
