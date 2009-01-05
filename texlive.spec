@@ -1727,6 +1727,7 @@ Requires:	%{name}-tex-ukrhyph = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
+Suggests:	%{name}-fonts-jknappen
 Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-koma-script
 Obsoletes:	tetex-latex-SIunits
@@ -3709,8 +3710,8 @@ Rozszerzenie do pakietu keyval.
 %package dirs-fonts
 Summary:	TeX font directories
 Summary(pl.UTF-8):	Katalogi fontów TeXa
-Obsoletes:	tetex-dirs-fonts
 Group:		Fonts
+Obsoletes:	tetex-dirs-fonts
 
 %description dirs-fonts
 TeX font directories.
