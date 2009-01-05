@@ -6221,10 +6221,10 @@ fi
 %postun fonts-cmextra
 %texhash
 
-%post fonts-super
+%post fonts-cmsuper
 %texhash
 
-%postun fonts-super
+%postun fonts-cmsuper
 %texhash
 
 %post fonts-concmath
