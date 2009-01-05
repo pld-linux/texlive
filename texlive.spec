@@ -40,7 +40,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.9.6
+Release:	0.9.7
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -203,6 +203,13 @@ Group:		Applications/Publishing/TeX
 
 %description other-utils
 Other utilities.
+
+%package other-utils-doc
+Summary:	Other utilities documentation
+Group:		Applications/Publishing/TeX
+
+%description other-utils-doc
+Other utilities documentation.
 
 %package doc
 Summary:	Documentation for TeX Live
@@ -3905,10 +3912,10 @@ Summary(hu.UTF-8):	CM Super betűtípus
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 
-%description fonts-cmbright
+%description fonts-cmsuper
 CM Super fonts.
 
-%description fonts-cmbright -l hu.UTF-8
+%description fonts-cmsuper -l hu.UTF-8
 CM Super betűtípus
 
 
