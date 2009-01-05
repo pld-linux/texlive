@@ -3899,6 +3899,19 @@ CM Bright fonts.
 %description fonts-cmbright -l pl.UTF-8
 Fonty CM Bright.
 
+%package fonts-cmsuper
+Summary:	CM Super fonts
+Summary(hu.UTF-8):	CM Super betűtípus
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-cmbright
+CM Super fonts.
+
+%description fonts-cmbright -l hu.UTF-8
+CM Super betűtípus
+
+
 %package fonts-cmcyr
 Summary:	Computer Modern fonts extended with Russian letters
 Summary(pl.UTF-8):	Fonty Computer Modern rozszerzone o litery rosyjskie
@@ -6206,6 +6219,12 @@ fi
 %texhash
 
 %postun fonts-cmextra
+%texhash
+
+%post fonts-super
+%texhash
+
+%postun fonts-super
 %texhash
 
 %post fonts-concmath
@@ -11503,6 +11522,15 @@ fi
 %{texmfdist}/fonts/source/public/cmextra
 %{texmfdist}/fonts/tfm/public/cmextra
 
+%files fonts-cmsuper
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/fonts/cm-super
+%{texmfdist}/fonts/afm/public/cm-super
+%{texmfdist}/fonts/enc/dvips/cm-super
+%{texmfdist}/fonts/map/dvips/cm-super
+%{texmfdist}/fonts/map/vtex/cm-super
+%{texmfdist}/fonts/type1/public/cm-super
+
 %files fonts-concmath
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/concmath
@@ -11903,12 +11931,6 @@ fi
 %{texmfdist}/fonts/source/public/cmpica
 %{texmfdist}/fonts/tfm/public/cmpica
 
-%doc %{texmfdist}/doc/fonts/cm-super
-%{texmfdist}/fonts/afm/public/cm-super
-%{texmfdist}/fonts/enc/dvips/cm-super
-%{texmfdist}/fonts/map/dvips/cm-super
-%{texmfdist}/fonts/map/vtex/cm-super
-%{texmfdist}/fonts/type1/public/cm-super
 
 %{texmfdist}/fonts/tfm/vntex/comicsansvn
 %{texmfdist}/fonts/type1/vntex/comicsansvn
