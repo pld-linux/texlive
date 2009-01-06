@@ -1,4 +1,9 @@
 # TODO:
+#
+# MOST IMPORTANT:
+# Processing files: texlive-fonts-uhc-20080816-0.9.7
+# Memory fault 
+#
 # MAIN TODO (sort by importnce):
 # - texlive-format-pdflatex deps
 # - check unpackaged files (only some files)
@@ -5100,7 +5105,7 @@ cd $CURDIR
 %{__rm} -r $RPM_BUILD_ROOT%{_prefix}/texmf-dist
 # We don't need it
 %{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/man
-%{__rm} -r $RPM_BUILD_ROOT%{texmfdoc}%source
+%{__rm} -r $RPM_BUILD_ROOT%{texmfdoc}/source
 
 perl -pi \
 	-e "s|$RPM_BUILD_ROOT||g;" \
