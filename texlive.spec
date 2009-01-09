@@ -7669,6 +7669,7 @@ fi
 # %{texmf}/web2c/pdfetex.pool
 # %{texmf}/web2c/pdfxtex.pool
 # %{_mandir}/man1/pdfxtex.1*
+%dir %{texmf}/fonts/map/pdftex
 %doc %{texmfdist}/doc/pdftex
 %attr(755,root,root) %{_bindir}/epstopdf
 %attr(755,root,root) %{_bindir}/pdfcrop
