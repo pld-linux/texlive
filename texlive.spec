@@ -41,7 +41,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.9.7
+Release:	0.9.8
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -6740,6 +6740,8 @@ fi
 %dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/cslatex
 %dir %{texmfdist}/tex/cslatex/base
+%dir %{texmfdist}/tex/fontinst
+%dir %{texmfdist}/tex/fontinst/misc
 %dir %{texmfdist}/tex/generic
 %dir %{texmfdist}/tex/generic/dehyph-exptl
 %dir %{texmfdist}/tex/generic/enctex
@@ -7010,6 +7012,7 @@ fi
 %dir %{texmfdist}/fonts/map/dvips
 %dir %{texmfdist}/fonts/map/dvips/vntex
 %dir %{texmfdist}/fonts/map/fontname
+%dir %{texmfdist}/fonts/map/vtex
 %dir %{texmfdist}/fonts/ofm
 %dir %{texmfdist}/fonts/ofm/public
 %dir %{texmfdist}/fonts/ovf
