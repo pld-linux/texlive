@@ -1,9 +1,5 @@
 # TODO:
 #
-# MOST IMPORTANT:
-# Processing files: texlive-fonts-uhc-20080816-0.9.7
-# Memory fault 
-#
 # MAIN TODO (sort by importnce):
 # - texlive-format-pdflatex deps
 # - check unpackaged files (only some files)
@@ -6596,7 +6592,7 @@ fi
 # %doc %{texmf}/doc/README.knuth
 # There isn't doc/fonts directory
 %dir %{texmfdist}/doc/fonts
-%doc %{texmf}/doc/fontname
+%doc %{texmfdist}/doc/fontname
 # %dir %{texmf}/doc/fonts/polish
 # %dir %{texmf}/doc/help
 # %doc %{texmf}/doc/help/csname.txt
@@ -7321,7 +7317,7 @@ fi
 %{texmf}/dvips/getafm
 %{texmf}/dvips/gsftopk
 %{texmfdist}/dvips/psfrag
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/dvips/config/config.ps
+# %config(noreplace) %verify(not md5 mtime size) %{texmf}/dvips/config/config.ps
 %{texmfdist}/fonts/enc/dvips/base
 %{texmfdist}/fonts/map/dvips/allrunes
 %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
@@ -8702,7 +8698,7 @@ fi
 
 %files latex-accfonts
 %defattr(644,root,root,755)
-%doc%{texmfdist}/doc/fonts/accfonts
+%doc %{texmfdist}/doc/fonts/accfonts
 %{texmfdist}/tex/latex/accfonts
 
 %files latex-adrconv
