@@ -7322,6 +7322,7 @@ fi
 %{texmfdist}/fonts/map/dvips/allrunes
 %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
 %{texmfdist}/tex/generic/dvips
+%{texmfdist}/dvips
 %{texmf}/dvipdfm/config
 %{texmf}/dvips/tetex/config.*
 %{texmf}/fonts/enc/dvips/tetex/mtex.enc
@@ -7946,6 +7947,7 @@ fi
 %{texmfdist}/tex/latex/context
 %{texmfdist}/bibtex/bst/context
 %{texmf}/fmtutil/format.context.cnf
+%doc %{texmfdist}/doc/luatex
 
 # no fmt, so commented out
 #%files format-context-cz
