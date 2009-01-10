@@ -7677,6 +7677,7 @@ fi
 %attr(755,root,root) %{_bindir}/epstopdf
 %attr(755,root,root) %{_bindir}/pdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
+%attr(1777,root,root) %dir %{fmtdir}/pdftex
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftexconfig.tex
 %{texmf}/fmtutil/format.pdftex.cnf
 %{texmfdist}/scripts/pdfcrop
