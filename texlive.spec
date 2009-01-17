@@ -1734,6 +1734,7 @@ Requires:	%{name}-tex-ukrhyph = %{epoch}:%{version}-%{release}
 # for misc/eurosym:
 Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-fonts-jknappen
 Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
@@ -1764,7 +1765,7 @@ Obsoletes:	tetex-latex-natbib
 Obsoletes:	tetex-latex-ntgclass
 Obsoletes:	tetex-latex-oberdiek
 Obsoletes:	tetex-latex-pb-diagram
-Obsoletes:	tetex-latex-pstriks
+Obsoletes:	tetex-latex-pstricks
 Obsoletes:	tetex-latex-revtex4
 Obsoletes:	tetex-latex-seminar
 Obsoletes:	tetex-latex-t2
@@ -3537,7 +3538,7 @@ Summary:	PostScript macros for TeX
 Summary(pl.UTF-8):	Makra postscriptowe dla TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-misc = %{epoch}:%{version}-%{release}
 
 %description tex-pstricks
 An extensive collection of PostScript macros that is compatible with
