@@ -11311,7 +11311,7 @@ fi
 
 %files latex-variations
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/generic/variations/ALIRE
+%doc %{texmfdist}/doc/generic/variations
 %{texmfdist}/tex/generic/variations
 
 %files latex-wasysym
