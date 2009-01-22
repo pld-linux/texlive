@@ -657,7 +657,7 @@ Summary(pl.UTF-8):	Zestaw narzędzi MetaPost
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-matapost
+Obsoletes:	tetex-metapost
 
 %description metapost
 MetaPost.
@@ -667,6 +667,19 @@ MetaPost.
 
 %description metapost -l pl.UTF-8
 Zestaw narzędzi MetaPost.
+
+%package metapost-utils
+Summary:	Various tools for MetaPost
+Summary(hu.UTF-8):	Néhány plusz eszköz MetaPost-hoz
+Group:		Applications/Publishing/TeX
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires(post,postun):	%{_bindir}/texhash
+
+%description metapost-utils
+Various tools for MetaPost.
+
+%description metapost-utils -l hu.UTF-8
+Néhány plusz eszköz MetaPost-hoz.
 
 %package mptopdf
 Summary:	MetaPost to PDF converter
@@ -5256,6 +5269,12 @@ fi
 %postun metapost
 %texhash
 
+%post metapost-utils
+%texhash
+
+%postun metapost-utils
+%texhash
+
 %post mptopdf
 %texhash
 
@@ -7487,6 +7506,34 @@ fi
 %{_mandir}/man1/mpost.1*
 %{_mandir}/man1/mpto.1*
 %{texmf}/fmtutil/format.metapost.cnf
+
+%files metapost-utils
+%defattr(644,root,root,755)
+%{texmfdist}/metapost/automata
+%{texmfdist}/metapost/bbcard
+%{texmfdist}/metapost/blockdraw_mp
+%{texmfdist}/metapost/bpolynomial
+%{texmfdist}/metapost/cmarrows
+%{texmfdist}/metapost/dviincl
+%{texmfdist}/metapost/epsincl
+%{texmfdist}/metapost/expressg
+%{texmfdist}/metapost/exteps
+%{texmfdist}/metapost/featpost
+%{texmfdist}/metapost/feynmf
+%{texmfdist}/metapost/frcursive
+%{texmfdist}/metapost/hatching
+%{texmfdist}/metapost/metaobj
+%{texmfdist}/metapost/metaplot
+%{texmfdist}/metapost/metauml
+%{texmfdist}/metapost/mp3d
+%{texmfdist}/metapost/mpattern
+%{texmfdist}/metapost/nkarta
+%{texmfdist}/metapost/piechartmp
+%{texmfdist}/metapost/slideshow
+%{texmfdist}/metapost/splines
+%{texmfdist}/metapost/tabvar
+%{texmfdist}/metapost/textpath
+%{texmfdist}/metapost/venn
 
 %files mptopdf
 %defattr(644,root,root,755)
