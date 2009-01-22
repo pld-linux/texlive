@@ -623,6 +623,19 @@ plików wejściowych i wyjściowych podaje się w pliku stylu; domyślnie
 przyjmowany jest plik wejściowy w formacie idx, wygenerowany przez
 LaTeX.
 
+%package tex-mathdots
+Summary:	Commands to produce dots in math that respect font size
+Summary(hu.UTF-8):	Pontok előállítása matematikai módban a font méret figyelmbevételével
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-mathdots
+Commands to produce dots in math that respect font size.
+
+%description tex-mathdots -l hu.UTF-8
+Pontok előállítása matematikai módban a font méret figyelmbevételével.
+
 %package metafont
 Summary:	MetaFont
 Summary(hu.UTF-8):	MetaFont
@@ -1734,8 +1747,8 @@ Requires:	%{name}-tex-ukrhyph = %{epoch}:%{version}-%{release}
 # for misc/eurosym:
 Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-fonts-jknappen
 Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-koma-script
@@ -3670,6 +3683,15 @@ dla języka ukraińskiego z różnymi kodowaniami fontów z cyrylicą.
 Zawiera pakiety z implementacją reguł tradycyjnych, współczesnych i
 łączonych angielsko-ukraińskich.
 
+%package latex-variations
+Summary:	Typeset tables of variations of functions
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description latex-variations
+Typeset tables of variations of functions.
+
 %package latex-vietnam
 Summary:	Vietnamese language support
 Summary(pl.UTF-8):	Wsparcie dla języka wietnamskiego
@@ -4402,6 +4424,19 @@ VNR fonts.
 %description fonts-vnr -l pl.UTF-8
 Fonty VNR.
 
+%package fonts-urw35vf
+Summary:	urw35vf fonts
+Summary(hu.UTF-8):	urw35vf betűtípus
+Summary(pl.UTF-8):	Fonty urw35vf
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-urw35vf
+urw35vf fonts.
+
+%description fonts-urw35vf -l hu.UTF-8
+urw35vf betűtípus.
+
 %package fonts-wadalab
 Summary:	Wadalab fonts
 Group:		Fonts
@@ -4984,7 +5019,7 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT/etc/cron.daily\
 	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap\
 	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map\
-	$RPM_BUILD_ROOT%{fmtdir}
+	$RPM_BUILD_ROOT%{fmtdir}/pdftex
 
 lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
@@ -5201,6 +5236,12 @@ fi
 %texhash
 
 %postun makeindex
+%texhash
+
+%post tex-mathdots
+%texhash
+
+%postun tex-mathdots
 %texhash
 
 %post metafont
@@ -6002,6 +6043,12 @@ fi
 %postun latex-umlaute
 %texhash
 
+%post latex-variations
+%texhash
+
+%postun latex-variations
+%texhash
+
 %post latex-wasysym
 %texhash
 
@@ -6408,6 +6455,12 @@ fi
 %texhash
 
 %postun fonts-urw
+%texhash
+
+%post fonts-urw35vf
+%texhash
+
+%postun fonts-urw35vf
 %texhash
 
 %post fonts-vnr
@@ -7372,6 +7425,12 @@ fi
 %{_mandir}/man1/makeindex.1*
 %{_mandir}/man1/mkindex.1*
 %{_mandir}/man1/rumakeindex.1*
+
+%files tex-mathdots
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/mathdots
+%{texmfdist}/source/generic/mathdots
+%{texmfdist}/tex/generic/mathdots
 
 %files metafont
 %defattr(644,root,root,755)
@@ -9213,6 +9272,7 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/alatex
 %doc %{texmfdist}/doc/cslatex/base
+%doc %{texmfdist}/doc/generic/enctex
 %doc %{texmfdist}/doc/generic/wsuipa
 %doc %{texmfdist}/doc/latex/ANUfinalexam
 %doc %{texmfdist}/doc/latex/AkkTeX
@@ -11249,6 +11309,11 @@ fi
 # %files latex-urwvn
 # %defattr(644,root,root,755)
 
+%files latex-variations
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/variations/ALIRE
+%{texmfdist}/tex/generic/variations
+
 %files latex-wasysym
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/wasysym
@@ -12738,6 +12803,10 @@ fi
 %{texmfdist}/fonts/map/dvips/vntex
 %{texmfdist}/fonts/source/vntex/vnr
 %{texmfdist}/fonts/tfm/vntex/vnr
+
+%files fonts-urw35vf
+%defattr(644,root,root,755)
+%{texmfdist}/fonts/vf/urw35vf
 
 %files fonts-wadalab
 %defattr(644,root,root,755)
