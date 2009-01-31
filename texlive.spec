@@ -3491,6 +3491,19 @@ PDF PLaTeX format.
 %description format-pdfplatex -l pl.UTF-8
 Format PDF PLaTeX.
 
+%package scripts
+Summary:	Various scripts
+Summary(hu.UTF-8):	Néhány szkript
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description scripts
+Various scripts.
+
+%description scripts -l hu.UTF-8
+Néhány szkript.
+
 # # TeX generic macros #
 
 %package tex-babel
@@ -3558,6 +3571,19 @@ Picture drawing macros for TeX and LaTeX.
 
 %description tex-pictex -l pl.UTF-8
 Makra do rysowania obrazków dla TeXa i LaTeXa.
+
+%package tex-psizzl
+Summary:	A TeX format for physics papers
+Summary(hu.UTF-8):	TeX formátum fizikai kiadványokhoz
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-psizzl
+A TeX format for physics papers.
+
+%description tex-psizzl -l hu.UTF-8
+TeX formátum fizikai kiadványokhoz.
 
 %package tex-pstricks
 Summary:	PostScript macros for TeX
@@ -5251,6 +5277,12 @@ fi
 %postun makeindex
 %texhash
 
+%post scripts
+%texhash
+
+%postun scripts
+%texhash
+
 %post tex-mathdots
 %texhash
 
@@ -6138,6 +6170,12 @@ fi
 %texhash
 
 %postun tex-pictex
+%texhash
+
+%post tex-psizzl
+%texhash
+
+%postun tex-psizzl
 %texhash
 
 %post tex-pstricks
@@ -7444,6 +7482,35 @@ fi
 %{_mandir}/man1/makeindex.1*
 %{_mandir}/man1/mkindex.1*
 %{_mandir}/man1/rumakeindex.1*
+
+%files scripts
+%defattr(644,root,root,755)
+%dir %{texmfdist}/scripts
+%dir %{texmf}/scripts
+%dir %{texmf}/scripts/texlive
+%{texmfdist}/scripts/bengali
+%{texmfdist}/scripts/dviasm
+%{texmfdist}/scripts/glossaries
+%{texmfdist}/scripts/oberdiek
+%{texmfdist}/scripts/perltex
+%{texmfdist}/scripts/pgfplots
+%{texmfdist}/scripts/ppower4
+%{texmfdist}/scripts/pst2pdf
+%{texmfdist}/scripts/shipunov
+%{texmfdist}/scripts/texcount
+%{texmfdist}/scripts/vpe/vpe.pl
+%{texmf}/scripts/a2ping
+%{texmf}/scripts/epstopdf
+%{texmf}/scripts/pkfix
+%{texmf}/scripts/ps2eps
+%{texmf}/scripts/simpdftex
+%{texmf}/scripts/tetex
+%{texmf}/scripts/texlive/getnonfreefonts.pl
+%{texmf}/scripts/texlive/gswin32
+%{texmf}/scripts/texlive/lua
+%{texmf}/scripts/texlive/*.tlu
+%{texmf}/scripts/texlive/tlmgr.pl
+%{texmf}/scripts/texlive/tlmgrgui
 
 %files tex-mathdots
 %defattr(644,root,root,755)
@@ -11436,6 +11503,12 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pictex
 %{texmfdist}/tex/generic/pictex
+
+%files tex-psizzl
+%defattr(644,root,root,755)
+%{texmfdist}/doc/psizzl
+%{texmfdist}/source/psizzl
+%{texmfdist}/tex/psizzl
 
 %files tex-pstricks
 %defattr(644,root,root,755)
