@@ -657,7 +657,7 @@ Summary(pl.UTF-8):	Zestaw narzędzi MetaPost
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-metapost
+Obsoletes:	tetex-matapost
 
 %description metapost
 MetaPost.
@@ -668,18 +668,18 @@ MetaPost.
 %description metapost -l pl.UTF-8
 Zestaw narzędzi MetaPost.
 
-%package metapost-utils
-Summary:	Various tools for MetaPost
-Summary(hu.UTF-8):	Néhány plusz eszköz MetaPost-hoz
+%package metapost-other
+Summary:	Various MetaPost utils
+Summary(hu.UTF-8):	Különböző MetaPost eszközök
 Group:		Applications/Publishing/TeX
-Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
-%description metapost-utils
-Various tools for MetaPost.
+%description metapost-other
+Various MetaPost utils.
 
-%description metapost-utils -l hu.UTF-8
-Néhány plusz eszköz MetaPost-hoz.
+%description metapost-other -l hu.UTF-8
+Különböző MetaPost eszközök.
 
 %package mptopdf
 Summary:	MetaPost to PDF converter
@@ -5269,10 +5269,10 @@ fi
 %postun metapost
 %texhash
 
-%post metapost-utils
+%post metapost-other
 %texhash
 
-%postun metapost-utils
+%postun metapost-other
 %texhash
 
 %post mptopdf
@@ -7507,7 +7507,7 @@ fi
 %{_mandir}/man1/mpto.1*
 %{texmf}/fmtutil/format.metapost.cnf
 
-%files metapost-utils
+%files metapost-other
 %defattr(644,root,root,755)
 %{texmfdist}/metapost/automata
 %{texmfdist}/metapost/bbcard
