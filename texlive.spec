@@ -636,6 +636,34 @@ Commands to produce dots in math that respect font size.
 %description tex-mathdots -l hu.UTF-8
 Pontok előállítása matematikai módban a font méret figyelmbevételével.
 
+%package tex-physe
+Summary:	The PHYSE format
+Summary(hu.UTF-8):	PHYSE formátum
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-physe
+The PHYSE format.
+
+%description tex-physe -l hu.UTF-8
+PHYSE formátum.
+
+%package tex-velthuis
+Summary:	This package provides support for typesetting texts in Devanagari script (Sanskrit and Hindi)
+Summary(hu.UTF-8):	Ezzel a csomaggal lehetőséged nyílik Devanagari szövegek szedésére (Sanskrit és Hindi)
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-velthuis
+This package provides support for typesetting texts in Devanagari
+script (Sanskrit and Hindi).
+
+%description tex-velthuis -l hu.UTF-8
+Ezzel a csomaggal lehetőséged nyílik Devanagari szövegek szedésére
+(Sanskrit és Hindi).
+
 %package metafont
 Summary:	MetaFont
 Summary(hu.UTF-8):	MetaFont
@@ -5289,6 +5317,18 @@ fi
 %postun tex-mathdots
 %texhash
 
+%post tex-physe
+%texhash
+
+%postun tex-physe
+%texhash
+
+%post tex-velthuis
+%texhash
+
+%postun tex-velthuis
+%texhash
+
 %post metafont
 %texhash
 
@@ -7517,6 +7557,16 @@ fi
 %doc %{texmfdist}/doc/generic/mathdots
 %{texmfdist}/source/generic/mathdots
 %{texmfdist}/tex/generic/mathdots
+
+%files tex-physe
+%defattr(644,root,root,755)
+%{texmfdist}/tex/physe
+%{texmf}/fmtutil/format.physe.cnf
+
+%files tex-velthuis
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/velthuis
+%{texmfdist}/tex/generic/velthuis
 
 %files metafont
 %defattr(644,root,root,755)
