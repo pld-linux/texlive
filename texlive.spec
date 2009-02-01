@@ -623,6 +623,19 @@ plików wejściowych i wyjściowych podaje się w pliku stylu; domyślnie
 przyjmowany jest plik wejściowy w formacie idx, wygenerowany przez
 LaTeX.
 
+%package tex-arrayjob
+Summary:	Array data structures for (La)TeX
+Summary(hu.UTF-8):	Tömb adatstruktúra (La)TeX-hez
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-arrayjob
+Array data structures for (La)TeX.
+
+%description tex-arrayjob -l hu.UTF-8
+Tömb adatstruktúra (La)TeX-hez.
+
 %package tex-mathdots
 Summary:	Commands to produce dots in math that respect font size
 Summary(hu.UTF-8):	Pontok előállítása matematikai módban a font méret figyelmbevételével
@@ -635,6 +648,28 @@ Commands to produce dots in math that respect font size.
 
 %description tex-mathdots -l hu.UTF-8
 Pontok előállítása matematikai módban a font méret figyelmbevételével.
+
+%package tex-midnight
+Summary:	A set of useful macro tools
+Summary(hu.UTF-8):	Hasznos makrók gyűjteménye
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-midnight
+A set of useful macro tools.
+
+%description tex-midnight -l hu.UTF-8
+Hasznos makrók gyűjteménye.
+
+%package tex-ofs
+Summary:	Olsak's Font System
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-ofs
+Olsak's Font System.
 
 %package tex-physe
 Summary:	The PHYSE format
@@ -663,6 +698,19 @@ script (Sanskrit and Hindi).
 %description tex-velthuis -l hu.UTF-8
 Ezzel a csomaggal lehetőséged nyílik Devanagari szövegek szedésére
 (Sanskrit és Hindi).
+
+%package tex-ytex
+Summary:	Macro package developed at MIT
+Summary(hu.UTF-8):	MIT-en fejlesztett makrócsomag
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-ytex
+Macro package developed at MIT.
+
+%description tex-ytex -l hu.UTF-8
+MIT-en fejlesztett makrócsomag.
 
 %package metafont
 Summary:	MetaFont
@@ -1842,6 +1890,15 @@ LaTeX jest frontendem do systemu formatującego tekst TeX. Jest
 dających użytkownikom wygodne, predefiniowane formaty dokumentów.
 
 Ten pakiet zawiera podstawowe pliki.
+
+%package latex-colortab
+Summary:	Shade cells of tables and halign
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-colortab
+Shade cells of tables and halign.
 
 %package latex-12many
 Summary:	Generalising mathematical index sets
@@ -3559,6 +3616,19 @@ Supports the new German orthography (neue deutsche Rechtschreibung).
 
 %description tex-german -l pl.UTF-8
 Obsługa nowej ortografii niemieckiej (neue deutsche Rechtschreibung).
+
+%package tex-insbox
+Summary:	A TeX macro for inserting pictures/boxes into paragraphs
+Summary(hu.UTF-8):	TeX makró képek/dobozok beszúrására bekezdésekbe
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-insbox
+A TeX macro for inserting pictures/boxes into paragraphs.
+
+%description tex-insbox -l hu.UTF-8
+TeX makró képek/dobozok beszúrására bekezdésekbe.
 
 %package tex-mfpic
 Summary:	Macros which generate Metafont or Metapost for drawing pictures
@@ -5311,10 +5381,34 @@ fi
 %postun scripts
 %texhash
 
+%post tex-arrayjob
+%texhash
+
+%postun tex-arrayjob
+%texhash
+
+%post tex-insbox
+%texhash
+
+%postun tex-insbox
+%texhash
+
 %post tex-mathdots
 %texhash
 
 %postun tex-mathdots
+%texhash
+
+%post tex-midnight
+%texhash
+
+%postun tex-midnight
+%texhash
+
+%post tex-ofs
+%texhash
+
+%postun tex-ofs
 %texhash
 
 %post tex-physe
@@ -5327,6 +5421,12 @@ fi
 %texhash
 
 %postun tex-velthuis
+%texhash
+
+%post tex-ytex
+%texhash
+
+%postun tex-ytex
 %texhash
 
 %post metafont
@@ -5723,6 +5823,11 @@ fi
 %postun latex-cmbright
 %texhash
 
+%post latex-colortab
+%texhash
+
+%postun latex-colortab
+%texhash
 
 %post latex-comment
 %texhash
@@ -7127,12 +7232,10 @@ fi
 %{texmf}/fmtutil/format.mltex.cnf
 %{texmfdist}/tex/generic/abbr
 %{texmfdist}/tex/generic/abstyles/
-%{texmfdist}/tex/generic/arrayjob
 %{texmfdist}/tex/generic/barr
 %{texmfdist}/tex/generic/borceux
 %{texmfdist}/tex/generic/c-pascal
 %{texmfdist}/tex/generic/cirth
-%{texmfdist}/tex/generic/colortab
 %{texmfdist}/tex/generic/dratex
 %{texmfdist}/tex/generic/ean
 %{texmfdist}/tex/generic/edmac
@@ -7315,11 +7418,11 @@ fi
 # %{texmfdist}/doc/latex/picins
 # %{texmfdist}/doc/latex/ps4pdf
 # %{texmfdist}/doc/latex/pslatex
-# %{texmfdist}/doc/latex/shapepar
 # %{texmfdist}/doc/latex/supertab
 # %{texmfdist}/doc/latex/tex-refs
 # %{texmfdist}/doc/latex/textmerg
 # %{texmfdist}/doc/latex/treesvr
+%{texmfdist}/doc/generic/shapepar
 %{texmfdist}/doc/latex/acronym
 %{texmfdist}/doc/latex/aeguill
 %{texmfdist}/doc/latex/anysize
@@ -7552,11 +7655,26 @@ fi
 %{texmf}/scripts/texlive/tlmgr.pl
 %{texmf}/scripts/texlive/tlmgrgui
 
+%files tex-arrayjob
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/arrayjob
+%{texmfdist}/tex/generic/arrayjob
+
+%files tex-insbox
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/insbox
+%{texmfdist}/tex/generic/insbox
+
 %files tex-mathdots
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/mathdots
 %{texmfdist}/source/generic/mathdots
 %{texmfdist}/tex/generic/mathdots
+
+%files tex-ofs
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/ofs
+%{texmfdist}/tex/generic/ofs
 
 %files tex-physe
 %defattr(644,root,root,755)
@@ -7567,6 +7685,10 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/velthuis
 %{texmfdist}/tex/generic/velthuis
+
+%files tex-ytex
+%defattr(644,root,root,755)
+%{texmfdist}/tex/ytex
 
 %files metafont
 %defattr(644,root,root,755)
@@ -8418,7 +8540,6 @@ fi
 %{texmfdist}/tex/latex/cmsd
 %{texmfdist}/tex/latex/codepage
 %{texmfdist}/tex/latex/colorinfo
-%{texmfdist}/tex/latex/colortab
 %{texmfdist}/tex/latex/colortbl
 %{texmfdist}/tex/latex/colorwav
 %{texmfdist}/tex/latex/combine
@@ -9242,6 +9363,12 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/cmbright
 %{texmfdist}/tex/latex/cmbright
+
+%files latex-colortab
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/colortab
+%{texmfdist}/tex/latex/colortab
+%{texmfdist}/tex/generic/colortab
 
 %files latex-comment
 %defattr(644,root,root,755)
@@ -10968,7 +11095,6 @@ fi
 %{texmfdist}/tex/latex/psfragx
 %{texmfdist}/tex/latex/psgo
 %{texmfdist}/tex/latex/pspicture
-%{texmfdist}/tex/latex/pstricks-add
 %{texmfdist}/tex/latex/ptptex
 %{texmfdist}/tex/latex/qcm
 %{texmfdist}/tex/latex/qobitree
@@ -11539,6 +11665,11 @@ fi
 %doc %{texmfdist}/doc/generic/mfpic
 %{texmfdist}/tex/generic/mfpic
 
+%files tex-midnight
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/midnight
+%{texmfdist}/tex/generic/midnight
+
 %files tex-misc
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/localloc
@@ -11563,8 +11694,10 @@ fi
 %files tex-pstricks
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pstricks
+%doc %{texmfdist}/doc/generic/pstricks-add
 %{texmfdist}/dvips/pstricks
 %{texmfdist}/tex/generic/pstricks
+%{texmfdist}/tex/latex/pstricks-add
 
 # %files tex-qpx
 # %defattr(644,root,root,755)
@@ -11932,7 +12065,6 @@ fi
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/tfm/monotype
 %{texmfdist}/fonts/vf/monotype
-
 
 %files fonts-other
 %defattr(644,root,root,755)
