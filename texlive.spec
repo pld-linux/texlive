@@ -41,7 +41,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.9.8
+Release:	0.9.9
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -2517,6 +2517,32 @@ novice to prepare exams.
 %description latex-exam -l hu.UTF-8
 Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a
 feladatsorok készítése.
+
+%package latex-formlett
+Summary:	Letters to multiple recipients
+Summary(hu.UTF-8):	Levél több címzettnek ("körlevél")
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-formlett
+Letters to multiple recipients.
+
+%description latex-formlett -l hu.UTF-8
+Levél több címzettnek ("körlevél").
+
+%package latex-examdesign
+Summary:	LaTeX class for typesetting exams
+Summary(hu.UTF-8):	LaTeX osztály dolgozatok szedésére
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-examdesign
+LaTeX class for typesetting exams.
+
+%description latex-exam -l hu.UTF-8
+LaTeX osztály dolgozatok szedésére.
 
 %package latex-gbrief
 Summary:	Letter document class
@@ -5884,6 +5910,18 @@ fi
 %postun latex-exam
 %texhash
 
+%post latex-examdesign
+%texhash
+
+%postun latex-examdesign
+%texhash
+
+%post latex-formlett
+%texhash
+
+%postun latex-formlett
+%texhash
+
 %post latex-gbrief
 %texhash
 
@@ -7598,6 +7636,9 @@ fi
 %{texmf}/fonts/map/dvips/tetex/mt-plus.map
 %{texmf}/fonts/map/dvips/tetex/mt-yy.map
 %{texmf}/fonts/map/dvips/tetex/pdftex35.map
+%doc %{texmf}/doc/dvipdfm
+%doc %{texmf}/doc/dvips
+%doc %{texmf}/doc/dvips
 
 
 %files dvilj
@@ -8681,7 +8722,6 @@ fi
 %{texmfdist}/tex/latex/eurosans
 %{texmfdist}/tex/latex/eurosym
 %{texmfdist}/tex/latex/everypage
-%{texmfdist}/tex/latex/examdesign
 %{texmfdist}/tex/latex/examplep
 %{texmfdist}/tex/latex/exceltex
 %{texmfdist}/tex/latex/exercise
@@ -8732,7 +8772,6 @@ fi
 %{texmfdist}/tex/latex/footnpag
 %{texmfdist}/tex/latex/forarray
 %{texmfdist}/tex/latex/forloop
-%{texmfdist}/tex/latex/formlett
 %{texmfdist}/tex/latex/formula
 %{texmfdist}/tex/latex/formular
 %{texmfdist}/tex/latex/fouridx
@@ -9132,6 +9171,7 @@ fi
 %doc %{texmfdist}/doc/latex/bibunits
 %doc %{texmfdist}/doc/latex/natbib
 %doc %{texmfdist}/doc/latex/footbib
+%doc %{texmf}/doc/bibtex8
 %dir %{texmfdist}/doc/bibtex
 %dir %{texmfdist}/bibtex
 %dir %{texmfdist}/bibtex/bib
@@ -9156,6 +9196,8 @@ fi
 %{texmfdist}/tex/latex/bibunits
 %{texmfdist}/source/latex/footbib
 %{texmfdist}/tex/latex/footbib
+%dir %{texmf}/bibtex
+%{texmf}/bibtex/csf
 
 %{_mandir}/man1/bibtex.1*
 %{_mandir}/man1/rubibtex.1*
@@ -9414,6 +9456,17 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/exam
 %{texmfdist}/tex/latex/exam
+
+%files latex-examdesign
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/examdesign
+%{texmfdist}/tex/latex/examdesign
+%{texmfdist}/source/latex/examdesign
+
+%files latex-formlett
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/formlett
+%{texmfdist}/tex/latex/formlett
 
 %files latex-gbrief
 %defattr(644,root,root,755)
@@ -9795,7 +9848,6 @@ fi
 %doc %{texmfdist}/doc/latex/europecv
 %doc %{texmfdist}/doc/latex/eurosans
 %doc %{texmfdist}/doc/latex/everypage
-%doc %{texmfdist}/doc/latex/examdesign
 %doc %{texmfdist}/doc/latex/examplep
 %doc %{texmfdist}/doc/latex/exceltex
 %doc %{texmfdist}/doc/latex/exercise
@@ -9832,7 +9884,6 @@ fi
 %doc %{texmfdist}/doc/latex/fonttable
 %doc %{texmfdist}/doc/latex/forarray
 %doc %{texmfdist}/doc/latex/forloop
-%doc %{texmfdist}/doc/latex/formlett
 %doc %{texmfdist}/doc/latex/formula
 %doc %{texmfdist}/doc/latex/formular
 %doc %{texmfdist}/doc/latex/fouridx
@@ -10511,7 +10562,6 @@ fi
 %{texmfdist}/source/latex/euproposal
 %{texmfdist}/source/latex/euro
 %{texmfdist}/source/latex/everypage
-%{texmfdist}/source/latex/examdesign
 %{texmfdist}/source/latex/exercise
 %{texmfdist}/source/latex/expdlist
 %{texmfdist}/source/latex/expl3
