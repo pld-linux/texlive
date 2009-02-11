@@ -7083,6 +7083,7 @@ fi
 %{texmf}/fonts/enc/dvips/tetex/f7b6d320.enc
 %{texmf}/fonts/map/dvips/tetex/ps2pk35.map
 
+%{texmfdist}/tex/fontinst
 %{texmfdist}/tex/generic/dehyph-exptl/*
 %{texmfdist}/tex/generic/encodings
 %{texmfdist}/tex/generic/epsf
