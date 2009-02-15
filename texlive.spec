@@ -2531,6 +2531,19 @@ Letters to multiple recipients.
 %description latex-formlett -l hu.UTF-8
 Levél több címzettnek ("körlevél").
 
+%package latex-formular
+Summary:	Create forms containing field for manual entry
+Summary(hu.UTF-8):	Kézzel kitöltendő űrlapok készítése
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-formular
+Create forms containing field for manual entry.
+
+%description latex-formular -l hu.UTF-8
+Kézzel kitöltendő űrlapok készítése.
+
 %package latex-examdesign
 Summary:	LaTeX class for typesetting exams
 Summary(hu.UTF-8):	LaTeX osztály dolgozatok szedésére
@@ -5188,6 +5201,9 @@ lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-dist $RPM_BUILD_ROOT%{texmfdist}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-doc $RPM_BUILD_ROOT%{texmfdoc}
+%{__mv} $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pgfplots/* $RPM_BUILD_ROOT%{texmfdist}/doc/latex/pgfplots
+rmdir $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pgfplots
+
 # This is an empty directory
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf
 # Useless binary
@@ -5920,6 +5936,12 @@ fi
 %texhash
 
 %postun latex-formlett
+%texhash
+
+%post latex-formular
+%texhash
+
+%postun latex-formular
 %texhash
 
 %post latex-gbrief
@@ -7063,6 +7085,7 @@ fi
 # %doc %{texmf}/doc/README
 %doc %{texmf}/doc/tetex/TETEXDOC.*
 %doc %{texmf}/doc/tetex/teTeX-FAQ
+%doc %{texmfdist}/source/fontinst
 
 # %{texmf}/fonts/map/dvips/tetex/contnav.map
 # %{texmf}/fonts/map/dvips/tetex/lumath-o.map
@@ -7094,9 +7117,11 @@ fi
 %{texmfdist}/tex/generic/tap
 %{texmfdist}/tex/generic/tex-ps
 %{texmfdist}/tex/texinfo
-%{texmfdist}/tex/fontinst/misc/glyphbox.mtx
 %{texmf}/tex/fontinst
 %{texmf}/tex/generic/hyphen
+
+%doc %{texmfdist}/doc/generic/epsf
+%doc %{temxfdist}/doc/generic/tex-ps
 
 # %{fmtdir}/metafun.mem
 #%{texmf}/web2c/tex-pl.pool
@@ -7289,6 +7314,10 @@ fi
 %doc %{texmfdist}/doc/texsis
 %doc %{texmfdist}/doc/startex
 %doc %{texmfdist}/doc/generic/c-pascal
+%doc %{texmfdist}/doc/generic/barr
+%doc %{texmfdist}/doc/generic/borceux
+%doc %{texmfdist}/doc/generic/dratex
+%doc %{texmfdist}/doc/generic/mkjobtexmf
 
 %files dirs-fonts
 %defattr(644,root,root,755)
@@ -7461,95 +7490,98 @@ fi
 # %{texmfdist}/doc/latex/tex-refs
 # %{texmfdist}/doc/latex/textmerg
 # %{texmfdist}/doc/latex/treesvr
-%{texmfdist}/doc/generic/shapepar
-%{texmfdist}/doc/latex/acronym
-%{texmfdist}/doc/latex/aeguill
-%{texmfdist}/doc/latex/anysize
-%{texmfdist}/doc/latex/base
-%{texmfdist}/doc/latex/beton
-%{texmfdist}/doc/latex/carlisle
-%{texmfdist}/doc/latex/ccaption
-%{texmfdist}/doc/latex/changebar
-%{texmfdist}/doc/latex/chappg
-%{texmfdist}/doc/latex/concmath
-%{texmfdist}/doc/latex/crop
-%{texmfdist}/doc/latex/dinbrief
-%{texmfdist}/doc/latex/draftcopy
-%{texmfdist}/doc/latex/eepic
-%{texmfdist}/doc/latex/endfloat
-%{texmfdist}/doc/latex/esint
-%{texmfdist}/doc/latex/eso-pic
-%{texmfdist}/doc/latex/euler
-%{texmfdist}/doc/latex/eulervm
-%{texmfdist}/doc/latex/extsizes
-%{texmfdist}/doc/latex/fancybox
-%{texmfdist}/doc/latex/fancyhdr
-%{texmfdist}/doc/latex/fancyvrb
-%{texmfdist}/doc/latex/filecontents
-%{texmfdist}/doc/latex/float
-%{texmfdist}/doc/latex/footmisc
-%{texmfdist}/doc/latex/footnpag
-%{texmfdist}/doc/latex/fp
-%{texmfdist}/doc/latex/geometry
-%{texmfdist}/doc/latex/graphics
-%{texmfdist}/doc/latex/hyperref
-%{texmfdist}/doc/latex/hyphenat
-%{texmfdist}/doc/latex/index
-%{texmfdist}/doc/latex/koma-script
-%{texmfdist}/doc/latex/labels
-%{texmfdist}/doc/latex/layouts
-%{texmfdist}/doc/latex/lettrine
-%{texmfdist}/doc/latex/listings
-%{texmfdist}/doc/latex/ltabptch
-%{texmfdist}/doc/latex/mdwtools
-%{texmfdist}/doc/latex/memoir
-%{texmfdist}/doc/latex/mh
-%{texmfdist}/doc/latex/mparhack
-%{texmfdist}/doc/latex/ms
-%{texmfdist}/doc/latex/multibib
-%{texmfdist}/doc/latex/mwcls
-%{texmfdist}/doc/latex/natbib
-%{texmfdist}/doc/latex/nomencl
-%{texmfdist}/doc/latex/ntgclass
-%{texmfdist}/doc/latex/oberdiek
-%{texmfdist}/doc/latex/overpic
-%{texmfdist}/doc/latex/paralist
-%{texmfdist}/doc/latex/pb-diagram
-%{texmfdist}/doc/latex/pdfpages
-%{texmfdist}/doc/latex/picinpar
-%{texmfdist}/doc/latex/pict2e
-%{texmfdist}/doc/latex/placeins
-%{texmfdist}/doc/latex/preprint
-%{texmfdist}/doc/latex/preview
-%{texmfdist}/doc/latex/program
-%{texmfdist}/doc/latex/psfrag
-%{texmfdist}/doc/latex/revtex
-%{texmfdist}/doc/latex/rotating
-%{texmfdist}/doc/latex/rotfloat
-%{texmfdist}/doc/latex/scale
-%{texmfdist}/doc/latex/sectsty
-%{texmfdist}/doc/latex/seminar
-%{texmfdist}/doc/latex/showlabels
-%{texmfdist}/doc/latex/sidecap
-%{texmfdist}/doc/latex/slashbox
-%{texmfdist}/doc/latex/soul
-%{texmfdist}/doc/latex/stdclsdv
-%{texmfdist}/doc/latex/subfig
-%{texmfdist}/doc/latex/subfigure
-%{texmfdist}/doc/latex/textfit
-%{texmfdist}/doc/latex/textpos
-%{texmfdist}/doc/latex/titlesec
-%{texmfdist}/doc/latex/tocbibind
-%{texmfdist}/doc/latex/tocloft
-%{texmfdist}/doc/latex/tools
-%{texmfdist}/doc/latex/totpages
-%{texmfdist}/doc/latex/type1cm
-%{texmfdist}/doc/latex/units
-%{texmfdist}/doc/latex/vmargin
-%{texmfdist}/doc/latex/was
-%{texmfdist}/doc/latex/wrapfig
-%{texmfdist}/doc/latex/xtab
-%{texmfdist}/doc/latex/yfonts
+%doc %{texmfdist}/doc/generic/shapepar
+%doc %{texmfdist}/doc/latex/acronym
+%doc %{texmfdist}/doc/latex/aeguill
+%doc %{texmfdist}/doc/latex/anysize
+%doc %{texmfdist}/doc/latex/base
+%doc %{texmfdist}/doc/latex/beton
+%doc %{texmfdist}/doc/latex/carlisle
+%doc %{texmfdist}/doc/latex/ccaption
+%doc %{texmfdist}/doc/latex/changebar
+%doc %{texmfdist}/doc/latex/chappg
+%doc %{texmfdist}/doc/latex/concmath
+%doc %{texmfdist}/doc/latex/crop
+%doc %{texmfdist}/doc/latex/dinbrief
+%doc %{texmfdist}/doc/latex/draftcopy
+%doc %{texmfdist}/doc/latex/eepic
+%doc %{texmfdist}/doc/latex/endfloat
+%doc %{texmfdist}/doc/latex/esint
+%doc %{texmfdist}/doc/latex/eso-pic
+%doc %{texmfdist}/doc/latex/euler
+%doc %{texmfdist}/doc/latex/eulervm
+%doc %{texmfdist}/doc/latex/extsizes
+%doc %{texmfdist}/doc/latex/fancybox
+%doc %{texmfdist}/doc/latex/fancyhdr
+%doc %{texmfdist}/doc/latex/fancyvrb
+%doc %{texmfdist}/doc/latex/filecontents
+%doc %{texmfdist}/doc/latex/float
+%doc %{texmfdist}/doc/latex/footmisc
+%doc %{texmfdist}/doc/latex/footnpag
+%doc %{texmfdist}/doc/latex/fp
+%doc %{texmfdist}/doc/latex/geometry
+%doc %{texmfdist}/doc/latex/graphics
+%doc %{texmfdist}/doc/latex/hyperref
+%doc %{texmfdist}/doc/latex/hyphenat
+%doc %{texmfdist}/doc/latex/index
+%doc %{texmfdist}/doc/latex/koma-script
+%doc %{texmfdist}/doc/latex/labels
+%doc %{texmfdist}/doc/latex/layouts
+%doc %{texmfdist}/doc/latex/lettrine
+%doc %{texmfdist}/doc/latex/listings
+%doc %{texmfdist}/doc/latex/ltabptch
+%doc %{texmfdist}/doc/latex/mdwtools
+%doc %{texmfdist}/doc/latex/memoir
+%doc %{texmfdist}/doc/latex/mh
+%doc %{texmfdist}/doc/latex/mparhack
+%doc %{texmfdist}/doc/latex/ms
+%doc %{texmfdist}/doc/latex/multibib
+%doc %{texmfdist}/doc/latex/mwcls
+%doc %{texmfdist}/doc/latex/natbib
+%doc %{texmfdist}/doc/latex/nomencl
+%doc %{texmfdist}/doc/latex/ntgclass
+%doc %{texmfdist}/doc/latex/oberdiek
+%doc %{texmfdist}/doc/latex/overpic
+%doc %{texmfdist}/doc/latex/paralist
+%doc %{texmfdist}/doc/latex/pb-diagram
+%doc %{texmfdist}/doc/latex/pdfpages
+%doc %{texmfdist}/doc/latex/picinpar
+%doc %{texmfdist}/doc/latex/pict2e
+%doc %{texmfdist}/doc/latex/placeins
+%doc %{texmfdist}/doc/latex/preprint
+%doc %{texmfdist}/doc/latex/preview
+%doc %{texmfdist}/doc/latex/program
+%doc %{texmfdist}/doc/latex/psfrag
+%doc %{texmfdist}/doc/latex/revtex
+%doc %{texmfdist}/doc/latex/rotating
+%doc %{texmfdist}/doc/latex/rotfloat
+%doc %{texmfdist}/doc/latex/scale
+%doc %{texmfdist}/doc/latex/sectsty
+%doc %{texmfdist}/doc/latex/seminar
+%doc %{texmfdist}/doc/latex/showlabels
+%doc %{texmfdist}/doc/latex/sidecap
+%doc %{texmfdist}/doc/latex/slashbox
+%doc %{texmfdist}/doc/latex/soul
+%doc %{texmfdist}/doc/latex/stdclsdv
+%doc %{texmfdist}/doc/latex/subfig
+%doc %{texmfdist}/doc/latex/subfigure
+%doc %{texmfdist}/doc/latex/textfit
+%doc %{texmfdist}/doc/latex/textpos
+%doc %{texmfdist}/doc/latex/titlesec
+%doc %{texmfdist}/doc/latex/tocbibind
+%doc %{texmfdist}/doc/latex/tocloft
+%doc %{texmfdist}/doc/latex/tools
+%doc %{texmfdist}/doc/latex/totpages
+%doc %{texmfdist}/doc/latex/type1cm
+%doc %{texmfdist}/doc/latex/units
+%doc %{texmfdist}/doc/latex/vmargin
+%doc %{texmfdist}/doc/latex/was
+%doc %{texmfdist}/doc/latex/wrapfig
+%doc %{texmfdist}/doc/latex/xtab
+%doc %{texmfdist}/doc/latex/yfonts
+%doc %{texmfdist}/doc/fonts/calrsfs
+%doc %{texmfdist}/doc/generic/encxvlna
+%doc %{texmfdist}/doc/generic/textmerg
 
 %files -n kpathsea
 %defattr(644,root,root,755)
@@ -7589,8 +7621,8 @@ fi
 # %{_localstatedir}/fonts/map/dvips
 %dir %{texmfdist}/fonts/map/dvips/cmex
 %dir %{texmf}/dvipdfm
-%docdir %{texmf}/doc/dvips
-%docdir %{texmf}/doc/dvipdfm
+%doc %{texmf}/doc/dvips
+%doc %{texmf}/doc/dvipdfm
 %attr(755,root,root) %{_bindir}/dvips
 %attr(755,root,root) %{_bindir}/dvired
 %attr(755,root,root) %{_bindir}/dvitomp
@@ -7612,7 +7644,6 @@ fi
 %{texmf}/dvips/config
 %{texmf}/dvips/getafm
 %{texmf}/dvips/gsftopk
-%{texmfdist}/dvips/psfrag
 # %config(noreplace) %verify(not md5 mtime size) %{texmf}/dvips/config/config.ps
 %{texmfdist}/fonts/enc/dvips/base
 %{texmfdist}/fonts/map/dvips/allrunes
@@ -7637,9 +7668,6 @@ fi
 %{texmf}/fonts/map/dvips/tetex/mt-plus.map
 %{texmf}/fonts/map/dvips/tetex/mt-yy.map
 %{texmf}/fonts/map/dvips/tetex/pdftex35.map
-%doc %{texmf}/doc/dvipdfm
-%doc %{texmf}/doc/dvips
-%doc %{texmf}/doc/dvips
 
 
 %files dvilj
@@ -8094,6 +8122,7 @@ fi
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/lamed.fmt
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/omega.fmt
 %doc %{texmfdist}/doc/omega
+%doc %{texmfdist}/doc/lambda
 %dir %{texmfdist}/omega
 %dir %{texmfdist}/dvips/omega
 %attr(755,root,root) %{_bindir}/aleph
@@ -8133,6 +8162,7 @@ fi
 %{_mandir}/man1/ovp2ovf.1*
 %{texmf}/fmtutil/format.omega.cnf
 %{texmf}/fmtutil/format.aleph.cnf
+%doc %{texmfdist}/doc/aleph
 
 %files plain
 %defattr(644,root,root,755)
@@ -8427,6 +8457,7 @@ fi
 %{texmfdist}/tex/generic/pstricks
 %{texmfdist}/tex/generic/shapepar
 %{texmfdist}/tex/generic/textmerg
+%{texmfdist}/source/generic/textmerg
 %{texmfdist}/tex/latex/12many
 %{texmfdist}/tex/latex/AkkTeX
 %{texmfdist}/tex/latex/ESIEEcv
@@ -8774,7 +8805,6 @@ fi
 %{texmfdist}/tex/latex/forarray
 %{texmfdist}/tex/latex/forloop
 %{texmfdist}/tex/latex/formula
-%{texmfdist}/tex/latex/formular
 %{texmfdist}/tex/latex/fouridx
 %{texmfdist}/tex/latex/fourier
 %{texmfdist}/tex/latex/fouriernc
@@ -9042,8 +9072,10 @@ fi
 %{texmfdist}/tex/latex/williams
 %{texmfdist}/tex/latex/wnri
 %{texmfdist}/tex/latex/wordlike
+%{texmfdist}/source/wordlike
 %{texmfdist}/tex/latex/wrapfig
 %{texmfdist}/tex/latex/wsuipa
+%{texmfdist}/source/generic/wsuipa
 %{texmfdist}/tex/latex/xargs
 %{texmfdist}/tex/latex/xcolor
 %{texmfdist}/tex/latex/xdoc
@@ -9250,8 +9282,7 @@ fi
 
 %files latex-bibtex-styles
 %defattr(644,root,root,755)
-%dir %{texmfdist}/doc/generic/t2
-%dir %{texmfdist}/doc/generic/t2%{_sysconfdir}
+%doc %{texmfdist}/doc/generic/t2
 %dir %{texmfdist}/source/bibtex
 %{texmfdist}/bibtex/bib/IEEEtran
 %{texmfdist}/bibtex/bib/abstyles
@@ -9363,7 +9394,6 @@ fi
 %doc %{texmfdist}/doc/bibtex/gost
 %doc %{texmfdist}/doc/bibtex/ijqc
 %doc %{texmfdist}/doc/bibtex/iopart-num
-%doc %{texmfdist}/doc/generic/t2%{_sysconfdir}/rubibtex
 %doc %{texmfdist}/doc/latex/IEEEtran
 %{texmfdist}/source/bibtex/gost
 
@@ -9468,6 +9498,12 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/formlett
 %{texmfdist}/tex/latex/formlett
+
+%files latex-formular
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/formular
+%{texmfdist}/tex/latex/formular
+%{texmfdist}/source/latex/formular
 
 %files latex-gbrief
 %defattr(644,root,root,755)
@@ -9886,7 +9922,6 @@ fi
 %doc %{texmfdist}/doc/latex/forarray
 %doc %{texmfdist}/doc/latex/forloop
 %doc %{texmfdist}/doc/latex/formula
-%doc %{texmfdist}/doc/latex/formular
 %doc %{texmfdist}/doc/latex/fouridx
 %doc %{texmfdist}/doc/latex/frankenstein
 %doc %{texmfdist}/doc/latex/frenchle
@@ -10460,7 +10495,6 @@ fi
 %{texmfdist}/source/latex/chessfss
 %{texmfdist}/source/latex/chletter
 %{texmfdist}/source/latex/circ
-%{texmfdist}/source/latex/cjk/utils
 %{texmfdist}/source/latex/cjw
 %{texmfdist}/source/latex/clefval
 %{texmfdist}/source/latex/cleveref
@@ -10967,8 +11001,7 @@ fi
 %{texmfdist}/source/latex/york-thesis
 %{texmfdist}/source/latex/youngtab
 %dir %{texmfdist}/source/plain
-%dir %{texmfdist}/source/plain/jsmisc
-%{texmfdist}/source/plain/jsmisc/xfig
+%{texmfdist}/source/plain/jsmisc
 %{texmfdist}/source/xelatex
 %{texmfdist}/tex/alatex
 %{texmfdist}/tex/generic/enctex
@@ -11702,7 +11735,7 @@ fi
 
 %files tex-babel
 %defattr(644,root,root,755)
-%dir %{texmfdist}/source/generic/babel
+%{texmfdist}/source/generic/babel
 %doc %{texmfdist}/doc/generic/babel
 %{texmfdist}/tex/generic/babel
 
@@ -11723,6 +11756,7 @@ fi
 
 %files tex-misc
 %defattr(644,root,root,755)
+%{texmfdist}/source/generic/tap
 %doc %{texmfdist}/doc/latex/localloc
 %doc %{texmfdist}/doc/generic/multido
 %doc %{texmfdist}/doc/generic/tap
@@ -12298,6 +12332,7 @@ fi
 %{texmfdist}/fonts/source/public/cchess
 %{texmfdist}/fonts/tfm/public/cchess
 
+%doc %{texmfdist}/doc/fonts/charter
 %{texmfdist}/fonts/afm/vntex/chartervn
 %{texmfdist}/fonts/tfm/vntex/chartervn
 %{texmfdist}/fonts/type1/vntex/chartervn
@@ -13324,12 +13359,10 @@ fi
 %attr(755,root,root) %{_bindir}/cef*
 %dir %{texmfdist}/tex/latex/cjk
 %dir %{texmfdist}/doc/latex/cjk
-%dir %{texmfdist}/source/latex/cjk
-%dir %{texmfdist}/source/latex/cjk/utils
+%{texmfdist}/source/latex/cjk
 %{texmfdist}/tex/latex/cjk/CEF
 %doc %{texmfdist}/doc/latex/cjk/doc
 %doc %{texmfdist}/doc/latex/cjk/examples
-%{texmfdist}/source/latex/cjk/utils/CEFconv
 
 %files detex
 %defattr(644,root,root,755)
