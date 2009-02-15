@@ -5233,6 +5233,7 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 	texmfsysvar=$RPM_BUILD_ROOT%{_localstatedir} \
 	texmfsysconfig=$RPM_BUILD_ROOT%{texmf}
 
+%{__rm} $RPM_BUILD_ROOT%{texmf}/scripts/texlive/uninstall-win32.pl
 # Fix broken symlinks
 CURDIR=$(pwd)
 cd $RPM_BUILD_ROOT%{_bindir}
@@ -7054,7 +7055,6 @@ fi
 %dir %{texmfdist}/tex/cslatex
 %dir %{texmfdist}/tex/cslatex/base
 %dir %{texmfdist}/tex/fontinst
-%dir %{texmfdist}/tex/fontinst/misc
 %dir %{texmfdist}/tex/generic
 %dir %{texmfdist}/tex/generic/dehyph-exptl
 %dir %{texmfdist}/tex/generic/enctex
@@ -7087,6 +7087,7 @@ fi
 # %{texmf}/fonts/map/dvips/tetex/contnav.map
 # %{texmf}/fonts/map/dvips/tetex/lumath-o.map
 %{texmfdist}/fonts/map/dvips/vntex/urwvn.map
+%{texmfdist}/fonts/map/fontname
 %{texmfdist}/fonts/enc/dvips/vntex/t5.enc
 
 # Main fonts from TeTeX
@@ -7304,6 +7305,8 @@ fi
 %{texmfdist}/tex/generic/fenixpar
 %{texmfdist}/tex/generic/fltpoint
 %{texmfdist}/tex/generic/musixtex
+%{texmf}/hbf2gf
+%{texmf}/fmtutil/format.texsis.cnf
 
 %files other-utils-doc
 %defattr(644,root,root,755)
@@ -8193,6 +8196,8 @@ fi
 %{texmfdist}/tex/mex/base/mex.tex
 %dir %{texmfdist}/tex/mex/config
 %{texmfdist}/tex/mex/base/mexconf.tex
+%{texmf}/fmtutil/format.mex.cnf
+%{texmf}/fmtutil/format.utf8mex.cnf
 
 %files format-mex
 %defattr(644,root,root,755)
@@ -8367,6 +8372,7 @@ fi
 %{texmfdist}/tex/latex/context
 %{texmfdist}/bibtex/bst/context
 %{texmf}/fmtutil/format.context.cnf
+%{texmf}/fmtutil/format.luatex.cnf
 %doc %{texmfdist}/doc/luatex
 
 # no fmt, so commented out
@@ -13345,6 +13351,7 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/afm2pl
 %{_mandir}/man1/afm2pl*
+%{texmf}/fonts/lig/afm2pl
 
 %files bbox
 %defattr(644,root,root,755)
@@ -13391,6 +13398,10 @@ fi
 %{_mandir}/man1/dvipos*
 %{_mandir}/man1/dviselect*
 %{_mandir}/man1/dvitodvi*
+%{texmf}/fonts/map/dvipdfmx
+%dir %{texmf}/fonts/cmap
+%{texmf}/dvipdfmx
+%{texmf}/fonts/cmap/dvipdfmx
 
 %files epsutils
 %defattr(644,root,root,755)
