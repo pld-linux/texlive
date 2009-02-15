@@ -2554,7 +2554,7 @@ Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 %description latex-examdesign
 LaTeX class for typesetting exams.
 
-%description latex-exam -l hu.UTF-8
+%description latex-examdesign -l hu.UTF-8
 LaTeX osztály dolgozatok szedésére.
 
 %package latex-gbrief
@@ -5834,7 +5834,6 @@ fi
 %postun latex-booktabs
 %texhash
 
-
 %post latex-caption
 %texhash
 
@@ -5888,7 +5887,6 @@ fi
 
 %postun latex-currvita
 %texhash
-
 
 %post latex-curves
 %texhash
@@ -6245,7 +6243,6 @@ fi
 %texhash
 
 %postun latex-pst-uncategorized
-
 %texhash
 
 %postun latex-pxfonts
