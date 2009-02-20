@@ -8466,26 +8466,19 @@ fi
 %{texmfdist}/tex/latex/ESIEEcv
 %{texmfdist}/tex/latex/GuIT
 %{texmfdist}/tex/latex/HA-prosper
-%{texmfdist}/tex/latex/IEEEconf
 %{texmfdist}/tex/latex/IEEEtran
 %{texmfdist}/tex/latex/SIstyle
 %{texmfdist}/tex/latex/Tabbing
 %{texmfdist}/tex/latex/a0poster
-%{texmfdist}/tex/latex/aastex
 %{texmfdist}/tex/latex/abc
-%{texmfdist}/tex/latex/achemso
-%{texmfdist}/tex/latex/acmconf
 %{texmfdist}/tex/latex/acmtrans
 %{texmfdist}/tex/latex/acronym
-%{texmfdist}/tex/latex/active-conf
 %{texmfdist}/tex/latex/addlines
 %{texmfdist}/tex/latex/adrlist
 %{texmfdist}/tex/latex/aeguill
 %{texmfdist}/tex/latex/afthesis
 %{texmfdist}/tex/latex/aguplus
-%{texmfdist}/tex/latex/aiaa
 %{texmfdist}/tex/latex/akletter
-%{texmfdist}/tex/latex/alg
 %{texmfdist}/tex/latex/algorithm2e
 %{texmfdist}/tex/latex/algorithmicx
 %{texmfdist}/tex/latex/allrunes
@@ -8500,7 +8493,6 @@ fi
 %{texmfdist}/tex/latex/anyfontsize
 %{texmfdist}/tex/latex/anysize
 %{texmfdist}/tex/latex/apa
-%{texmfdist}/tex/latex/apacite
 %{texmfdist}/tex/latex/apl
 %{texmfdist}/tex/latex/ar
 %{texmfdist}/tex/latex/arabi
@@ -8510,11 +8502,9 @@ fi
 %{texmfdist}/tex/latex/arev
 %{texmfdist}/tex/latex/armenian
 %{texmfdist}/tex/latex/arydshln
-%{texmfdist}/tex/latex/asaetr
 %{texmfdist}/tex/latex/ascelike
 %{texmfdist}/tex/latex/ascii
 %{texmfdist}/tex/latex/assignment
-%{texmfdist}/tex/latex/attachfile
 %{texmfdist}/tex/latex/augie
 %{texmfdist}/tex/latex/auncial-new
 %{texmfdist}/tex/latex/aurical
@@ -8536,14 +8526,11 @@ fi
 %{texmfdist}/tex/latex/bera
 %{texmfdist}/tex/latex/betababel
 %{texmfdist}/tex/latex/beton
-%{texmfdist}/tex/latex/bez123
 %{texmfdist}/tex/latex/bibarts
 %{texmfdist}/tex/latex/bibleref
 %{texmfdist}/tex/latex/biblist
 %{texmfdist}/tex/latex/bibtopicprefix
 %{texmfdist}/tex/latex/bigfoot
-%{texmfdist}/tex/latex/binomexp
-%{texmfdist}/tex/latex/biocon
 %{texmfdist}/tex/latex/bizcard
 %{texmfdist}/tex/latex/blacklettert1
 %{texmfdist}/tex/latex/blindtext
@@ -8557,7 +8544,6 @@ fi
 %{texmfdist}/tex/latex/bookman
 %{texmfdist}/tex/latex/bophook
 %{texmfdist}/tex/latex/boxhandler
-%{texmfdist}/tex/latex/bpchem
 %{texmfdist}/tex/latex/braille
 %{texmfdist}/tex/latex/breakurl
 %{texmfdist}/tex/latex/bridge
@@ -8574,7 +8560,6 @@ fi
 %{texmfdist}/tex/latex/cbcoptic
 %{texmfdist}/tex/latex/cbfonts
 %{texmfdist}/tex/latex/ccaption
-%{texmfdist}/tex/latex/cchess
 %{texmfdist}/tex/latex/cclicenses
 %{texmfdist}/tex/latex/cd-cover
 %{texmfdist}/tex/latex/cd
@@ -8585,14 +8570,7 @@ fi
 %{texmfdist}/tex/latex/changes
 %{texmfdist}/tex/latex/chappg
 %{texmfdist}/tex/latex/chapterfolder
-%{texmfdist}/tex/latex/chemarrow
-%{texmfdist}/tex/latex/chemcompounds
-%{texmfdist}/tex/latex/chemcono
-%{texmfdist}/tex/latex/chemstyle
 %{texmfdist}/tex/latex/cherokee
-%{texmfdist}/tex/latex/chess
-%{texmfdist}/tex/latex/chessboard
-%{texmfdist}/tex/latex/chessfss
 %{texmfdist}/tex/latex/chicago
 %{texmfdist}/tex/latex/china2e
 %{texmfdist}/tex/latex/chletter
@@ -9153,6 +9131,11 @@ fi
 %{texmfdist}/tex/latex/amsfonts
 %{texmfdist}/tex/latex/onlyamsmath
 %{texmfdist}/source/latex/onlyamsmath
+%{texmfdist}/source/latex/amsaddr
+%{texmfdist}/source/latex/amscls
+%{texmfdist}/source/latex/amsfonts
+%{texmfdist}/source/latex/amsmath
+%{texmfdist}/source/latex/amsrefs
 
 %files latex-antp
 %defattr(644,root,root,755)
@@ -9167,10 +9150,8 @@ fi
 %doc %{texmfdist}/doc/latex/appendix
 %{texmfdist}/tex/latex/appendix
 
-%files latex-backgammon
-%defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/backgammon
-%{texmfdist}/tex/latex/backgammon
+# %files latex-backgammon
+# %defattr(644,root,root,755)
 
 %files latex-bardiag
 %defattr(644,root,root,755)
@@ -9291,14 +9272,10 @@ fi
 %{texmfdist}/bibtex/bib/abstyles
 %{texmfdist}/bibtex/bib/achemso
 %{texmfdist}/bibtex/bib/acmtrans
-%{texmfdist}/bibtex/bib/aiaa
-%{texmfdist}/bibtex/bib/apacite
-%{texmfdist}/bibtex/bib/asaetr
 %{texmfdist}/bibtex/bib/ascelike
 %{texmfdist}/bibtex/bib/beebe
 %{texmfdist}/bibtex/bib/bibhtml
 %{texmfdist}/bibtex/bib/bibtopic
-%{texmfdist}/bibtex/bib/biocon
 %{texmfdist}/bibtex/bib/computational-complexity
 %{texmfdist}/bibtex/bib/din1505
 %{texmfdist}/bibtex/bib/directory
@@ -9326,11 +9303,8 @@ fi
 %{texmfdist}/bibtex/bst/acmtrans
 %{texmfdist}/bibtex/bst/afthesis
 %{texmfdist}/bibtex/bst/aguplus
-%{texmfdist}/bibtex/bst/aiaa
 %{texmfdist}/bibtex/bst/aichej
 %{texmfdist}/bibtex/bst/ametsoc
-%{texmfdist}/bibtex/bst/apacite
-%{texmfdist}/bibtex/bst/asaetr
 %{texmfdist}/bibtex/bst/ascelike
 %{texmfdist}/bibtex/bst/babelbib
 %{texmfdist}/bibtex/bst/beebe
@@ -9663,19 +9637,13 @@ fi
 %doc %{texmfdist}/doc/latex/ESIEEcv
 %doc %{texmfdist}/doc/latex/GuIT
 %doc %{texmfdist}/doc/latex/HA-prosper
-%doc %{texmfdist}/doc/latex/IEEEconf
 %doc %{texmfdist}/doc/latex/a0poster
-%doc %{texmfdist}/doc/latex/aastex
 %doc %{texmfdist}/doc/latex/abc
-%doc %{texmfdist}/doc/latex/achemso
-%doc %{texmfdist}/doc/latex/acmconf
 %doc %{texmfdist}/doc/latex/acmtrans
-%doc %{texmfdist}/doc/latex/active-conf
 %doc %{texmfdist}/doc/latex/addlines
 %doc %{texmfdist}/doc/latex/adrlist
 %doc %{texmfdist}/doc/latex/afthesis
 %doc %{texmfdist}/doc/latex/aguplus
-%doc %{texmfdist}/doc/latex/aiaa
 %doc %{texmfdist}/doc/latex/akletter
 %doc %{texmfdist}/doc/latex/alg
 %doc %{texmfdist}/doc/latex/algorithm2e
@@ -9689,16 +9657,13 @@ fi
 %doc %{texmfdist}/doc/latex/answers
 %doc %{texmfdist}/doc/latex/anyfontsize
 %doc %{texmfdist}/doc/latex/apa
-%doc %{texmfdist}/doc/latex/apacite
 %doc %{texmfdist}/doc/latex/ar
 %doc %{texmfdist}/doc/latex/arabi
 %doc %{texmfdist}/doc/latex/arabtex
 %doc %{texmfdist}/doc/latex/arcs
 %doc %{texmfdist}/doc/latex/arydshln
-%doc %{texmfdist}/doc/latex/asaetr
 %doc %{texmfdist}/doc/latex/ascelike
 %doc %{texmfdist}/doc/latex/assignment
-%doc %{texmfdist}/doc/latex/attachfile
 %doc %{texmfdist}/doc/latex/augie
 %doc %{texmfdist}/doc/latex/aurical
 %doc %{texmfdist}/doc/latex/authorindex
@@ -9712,14 +9677,11 @@ fi
 %doc %{texmfdist}/doc/latex/beamer-contrib
 %doc %{texmfdist}/doc/latex/begriff
 %doc %{texmfdist}/doc/latex/betababel
-%doc %{texmfdist}/doc/latex/bez123
 %doc %{texmfdist}/doc/latex/bibarts
 %doc %{texmfdist}/doc/latex/bibleref
 %doc %{texmfdist}/doc/latex/biblist
 %doc %{texmfdist}/doc/latex/bibtopicprefix
 %doc %{texmfdist}/doc/latex/bigfoot
-%doc %{texmfdist}/doc/latex/binomexp
-%doc %{texmfdist}/doc/latex/biocon
 %doc %{texmfdist}/doc/latex/bizcard
 %doc %{texmfdist}/doc/latex/blindtext
 %doc %{texmfdist}/doc/latex/blowup
@@ -9728,7 +9690,6 @@ fi
 %doc %{texmfdist}/doc/latex/bookest
 %doc %{texmfdist}/doc/latex/booklet
 %doc %{texmfdist}/doc/latex/boxhandler
-%doc %{texmfdist}/doc/latex/bpchem
 %doc %{texmfdist}/doc/latex/braille
 %doc %{texmfdist}/doc/latex/breakurl
 %doc %{texmfdist}/doc/latex/brushscr
@@ -9747,11 +9708,6 @@ fi
 %doc %{texmfdist}/doc/latex/cellspace
 %doc %{texmfdist}/doc/latex/changes
 %doc %{texmfdist}/doc/latex/chapterfolder
-%doc %{texmfdist}/doc/latex/chemcompounds
-%doc %{texmfdist}/doc/latex/chemcono
-%doc %{texmfdist}/doc/latex/chemstyle
-%doc %{texmfdist}/doc/latex/chessboard
-%doc %{texmfdist}/doc/latex/chessfss
 %doc %{texmfdist}/doc/latex/china2e
 %doc %{texmfdist}/doc/latex/chletter
 %doc %{texmfdist}/doc/latex/circ
@@ -10066,7 +10022,6 @@ fi
 %doc %{texmfdist}/doc/latex/mff
 %doc %{texmfdist}/doc/latex/mfpic4ode
 %doc %{texmfdist}/doc/latex/mftinc
-%doc %{texmfdist}/doc/latex/mhchem
 %doc %{texmfdist}/doc/latex/mhequ
 %doc %{texmfdist}/doc/latex/miller
 %doc %{texmfdist}/doc/latex/minipage-marginpar
@@ -10147,7 +10102,6 @@ fi
 %doc %{texmfdist}/doc/latex/pecha
 %doc %{texmfdist}/doc/latex/perception
 %doc %{texmfdist}/doc/latex/perltex
-%doc %{texmfdist}/doc/latex/permute
 %doc %{texmfdist}/doc/latex/petiteannonce
 %doc %{texmfdist}/doc/latex/petri-nets
 %doc %{texmfdist}/doc/latex/pgf-soroban
@@ -10403,6 +10357,112 @@ fi
 %doc %{texmfdist}/source/latex/hyperref/doc
 %doc %{texmfdist}/source/latex/koma-script/doc
 
+%files latex-math
+%defattr(644,root,root,755)
+%{texmfdist}/source/latex/permute
+%{texmfdist}/tex/latex/permute
+%doc %{texmfdist}/doc/latex/permute
+%{texmfdist}/source/latex/bez123
+%{texmfdist}/tex/latex/bez123
+%doc %{texmfdist}/doc/latex/bez123
+%{texmfdist}/source/latex/binomexp
+%{texmfdist}/tex/latex/binomexp
+%doc %{texmfdist}/doc/latex/binomexp
+
+%files latex-chem
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/achemso
+%doc %{texmfdist}/doc/latex/bpchem
+%doc %{texmfdist}/doc/latex/chemstyle
+%doc %{texmfdist}/doc/latex/mhchem
+%doc %{texmfdist}/doc/fonts/chemarrow
+%doc %{texmfdist}/doc/latex/chemcompounds
+%doc %{texmfdist}/doc/latex/chemcono
+%{texmfdist}/fonts/afm/public/chemarrow
+%{texmfdist}/fonts/map/dvips/chemarrow
+%{texmfdist}/fonts/source/public/chemarrow
+%{texmfdist}/fonts/tfm/public/chemarrow
+%{texmfdist}/fonts/type1/public/chemarrow
+%{texmfdist}/source/latex/achemso
+%{texmfdist}/source/latex/bpchem
+%{texmfdist}/source/latex/chemcompounds
+%{texmfdist}/source/latex/chemstyle
+%{texmfdist}/tex/latex/achemso
+%{texmfdist}/tex/latex/bpchem
+%{texmfdist}/tex/latex/chemarrow
+%{texmfdist}/tex/latex/chemcompounds
+%{texmfdist}/tex/latex/chemcono
+%{texmfdist}/tex/latex/chemstyle
+%{texmfdist}/tex/latex/mhchem
+
+%files latex-biocon
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/biocon
+%{texmfdist}/bibtex/bib/biocon
+%{texmfdist}/source/latex/biocon
+%{texmfdist}/tex/latex/biocon
+
+%files latex-pdftools
+%defattr(644,root,root,755)
+%{texmfdist}/source/latex/attachfile
+%{texmfdist}/tex/latex/attachfile
+%doc %{texmfdist}/doc/latex/attachfile
+
+%files latex-programming
+%defattr(644,root,root,755)
+%{texmfdist}/source/latex/alg
+%{texmfdist}/tex/latex/alg
+
+%files latex-games
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/backgammon
+%doc %{texmfdist}/doc/latex/chessboard
+%doc %{texmfdist}/doc/latex/chessfss
+%{texmfdist}/fonts/enc/dvips/chessfss
+%{texmfdist}/fonts/source/public/backgammon
+%{texmfdist}/fonts/source/public/cchess
+%{texmfdist}/fonts/source/public/chess
+%{texmfdist}/fonts/tfm/public/backgammon
+%{texmfdist}/fonts/tfm/public/cchess
+%{texmfdist}/source/latex/backgammon
+%{texmfdist}/source/latex/chessboard
+%{texmfdist}/source/latex/chessfss
+%{texmfdist}/tex/latex/backgammon
+%{texmfdist}/tex/latex/cchess
+%{texmfdist}/tex/latex/chess
+%{texmfdist}/tex/latex/chessboard
+%{texmfdist}/tex/latex/chessfss
+
+%files latex-styles
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/acmconf
+%{texmfdist}/source/latex/acmconf
+%{texmfdist}/tex/latex/acmconf
+%doc %{texmfdist}/doc/latex/active-conf
+%{texmfdist}/source/latex/active-conf
+%{texmfdist}/tex/latex/active-conf
+%doc %{texmfdist}/doc/latex/asaetr
+%{texmfdist}/bibtex/bst/asaetr
+%{texmfdist}/bibtex/bib/asaetr
+%{texmfdist}/tex/latex/asaetr
+%{texmfdist}/source/latex/asaetr
+%doc %{texmfdist}/doc/latex/aiaa
+%{texmfdist}/source/latex/aiaa
+%{texmfdist}/tex/latex/aiaa
+%{texmfdist}/bibtex/bib/aiaa
+%{texmfdist}/bibtex/bst/aiaa
+%doc %{texmfdist}/doc/latex/apacite
+%{texmfdist}/bibtex/bib/apacite
+%{texmfdist}/bibtex/bst/apacite
+%{texmfdist}/source/latex/apacite
+%{texmfdist}/tex/latex/apacite
+%{texmfdist}/source/latex/aastex
+%{texmfdist}/tex/latex/aastex
+%doc %{texmfdist}/doc/latex/aastex
+%{texmfdist}/source/latex/IEEEconf
+%{texmfdist}/tex/latex/IEEEconf
+%doc %{texmfdist}/doc/latex/IEEEconf
+
 %files latex-other
 %defattr(644,root,root,755)
 %{texmfdist}/metapost/latexmp
@@ -10412,71 +10472,79 @@ fi
 %dir %{texmfdist}/source/cslatex
 %{texmfdist}/source/cslatex/base
 %{texmfdist}/source/generic/xypic
+# Curriculum vitae for French use.
 %{texmfdist}/source/latex/ESIEEcv
 %{texmfdist}/source/latex/GuIT
+# Patches and improvements for prosper.
 %{texmfdist}/source/latex/HA-prosper
-%{texmfdist}/source/latex/IEEEconf
-%{texmfdist}/source/latex/aastex
+# Support ABC music notation in LaTeX.
 %{texmfdist}/source/latex/abc
+# Control the typesetting of the abstract environment.
 %{texmfdist}/source/latex/abstract
-%{texmfdist}/source/latex/achemso
-%{texmfdist}/source/latex/acmconf
+# Expand acronyms at least once.
 %{texmfdist}/source/latex/acronym
-%{texmfdist}/source/latex/active-conf
+# A user-friendly wrapper around \enlargethispage.
 %{texmfdist}/source/latex/addlines
+# Using address lists in LaTeX.
 %{texmfdist}/source/latex/adrlist
-%{texmfdist}/source/latex/aiaa
-%{texmfdist}/source/latex/alg
+# Alphanumeric section numbering.
 %{texmfdist}/source/latex/alnumsec
+# Alternative font handling in LaTeX.
 %{texmfdist}/source/latex/altfont
-%{texmfdist}/source/latex/amsaddr
-%{texmfdist}/source/latex/amscls
-%{texmfdist}/source/latex/amsfonts
-%{texmfdist}/source/latex/amsmath
-%{texmfdist}/source/latex/amsrefs
+# Setting questions (or exercises) and answers.
 %{texmfdist}/source/latex/answers
-%{texmfdist}/source/latex/apacite
+# Extra control of appendices
 %{texmfdist}/source/latex/appendix
+# Draw arcs over and under text
 %{texmfdist}/source/latex/arcs
+# Horizontal and vertical dashed lines in arrays and tabulars
 %{texmfdist}/source/latex/arydshln
-%{texmfdist}/source/latex/asaetr
 %{texmfdist}/source/latex/ascii
-%{texmfdist}/source/latex/attachfile
 %{texmfdist}/source/latex/augie
 %{texmfdist}/source/latex/babelbib
-%{texmfdist}/source/latex/backgammon
 %{texmfdist}/source/latex/barcodes
 %{texmfdist}/source/latex/base
 %{texmfdist}/source/latex/bayer
 %{texmfdist}/source/latex/bbding
 %{texmfdist}/source/latex/bbm-macros
+# Free replacement for basic MathTime fonts.
 %{texmfdist}/source/latex/belleek
 %{texmfdist}/source/latex/bengali
+# Use Concrete fonts.
 %{texmfdist}/source/latex/beton
-%{texmfdist}/source/latex/bez123
 %{texmfdist}/source/latex/bibarts
 %{texmfdist}/source/latex/bibleref
 %{texmfdist}/source/latex/biblist
 %{texmfdist}/source/latex/bibtopic
 %{texmfdist}/source/latex/bibtopicprefix
 %{texmfdist}/source/latex/bigfoot
-%{texmfdist}/source/latex/binomexp
-%{texmfdist}/source/latex/biocon
+# Typeset business cards.
 %{texmfdist}/source/latex/bizcard
+# Producing 'blind' text for testing.
 %{texmfdist}/source/latex/blindtext
+# Upscale or downscale all pages of a document.
 %{texmfdist}/source/latex/blowup
+# Boxes that may break across pages
 %{texmfdist}/source/latex/boites
 %{texmfdist}/source/latex/bookhands
+# Aids for printing simple booklets.
 %{texmfdist}/source/latex/booklet
+# Publication quality tables in LaTeX
 %{texmfdist}/source/latex/booktabs
+# Provides an At-Begin-Page hook.
 %{texmfdist}/source/latex/bophook
+# Flexible Captioning and Deferred Box/List Printing.
 %{texmfdist}/source/latex/boxhandler
-%{texmfdist}/source/latex/bpchem
+# Support for braille.
 %{texmfdist}/source/latex/braille
+# Line-breakable \url-like links in hyperref when compiling via dvips/ps2pdf.
 %{texmfdist}/source/latex/breakurl
+# A handwriting script font.
 %{texmfdist}/source/latex/brushscr
+# Display list item counter as regular pattern of bullets.
 %{texmfdist}/source/latex/bullcntr
 %{texmfdist}/source/latex/burmese
+# Create illustrations for network protocol specifications.
 %{texmfdist}/source/latex/bytefield
 %{texmfdist}/source/latex/captcont
 %{texmfdist}/source/latex/caption
@@ -10492,10 +10560,6 @@ fi
 %{texmfdist}/source/latex/changes
 %{texmfdist}/source/latex/chappg
 %{texmfdist}/source/latex/chapterfolder
-%{texmfdist}/source/latex/chemcompounds
-%{texmfdist}/source/latex/chemstyle
-%{texmfdist}/source/latex/chessboard
-%{texmfdist}/source/latex/chessfss
 %{texmfdist}/source/latex/chletter
 %{texmfdist}/source/latex/circ
 %{texmfdist}/source/latex/cjw
@@ -10808,7 +10872,6 @@ fi
 %{texmfdist}/source/latex/pdfcprot
 %{texmfdist}/source/latex/pdfpages
 %{texmfdist}/source/latex/perltex
-%{texmfdist}/source/latex/permute
 %{texmfdist}/source/latex/petri-nets
 %{texmfdist}/source/latex/pgfopts
 %{texmfdist}/source/latex/pgfplots
@@ -11072,7 +11135,6 @@ fi
 %{texmfdist}/tex/latex/mff
 %{texmfdist}/tex/latex/mfpic4ode
 %{texmfdist}/tex/latex/mftinc
-%{texmfdist}/tex/latex/mhchem
 %{texmfdist}/tex/latex/mhequ
 %{texmfdist}/tex/latex/mhs
 %{texmfdist}/tex/latex/miller
@@ -11145,7 +11207,6 @@ fi
 %{texmfdist}/tex/latex/pdfwin
 %{texmfdist}/tex/latex/pecha
 %{texmfdist}/tex/latex/perltex
-%{texmfdist}/tex/latex/permute
 %{texmfdist}/tex/latex/petiteannonce
 %{texmfdist}/tex/latex/petri-nets
 %{texmfdist}/tex/latex/pgf-soroban
@@ -11810,7 +11871,6 @@ fi
 %dir %{texmfdist}/source/latex/mapcodes
 %dir %{texmfdist}/source/latex/polyglot
 %dir %{texmfdist}/source/latex/polyglot/langs
-%dir %{texmfdist}/tex/latex/apacite
 %dir %{texmfdist}/tex/latex/babelbib
 %dir %{texmfdist}/tex/latex/dvdcoll/dcl
 %dir %{texmfdist}/tex/texsis
@@ -11827,7 +11887,6 @@ fi
 %{texmfdist}/tex/latex/spanish-mx
 %{texmfdist}/tex/latex/custom-bib/spanish.mbs
 %{texmfdist}/tex/latex/babelbib/spanish.bdf
-%{texmfdist}/tex/latex/apacite/spanish.apc
 %{texmfdist}/tex/latex/dvdcoll/dcl/spanish.dcl
 
 %files tex-texdraw
@@ -12252,9 +12311,6 @@ fi
 
 %{texmfdist}/fonts/map/dvips/avantgar
 
-%{texmfdist}/fonts/source/public/backgammon
-%{texmfdist}/fonts/tfm/public/backgammon
-
 %{texmfdist}/fonts/source/public/bangtex
 %{texmfdist}/fonts/tfm/public/bangtex
 
@@ -12332,28 +12388,14 @@ fi
 %{texmfdist}/fonts/tfm/public/cbfonts
 %{texmfdist}/fonts/type1/public/cbfonts
 
-%{texmfdist}/fonts/source/public/cchess
-%{texmfdist}/fonts/tfm/public/cchess
-
 %doc %{texmfdist}/doc/fonts/charter
 %{texmfdist}/fonts/afm/vntex/chartervn
 %{texmfdist}/fonts/tfm/vntex/chartervn
 %{texmfdist}/fonts/type1/vntex/chartervn
 %{texmfdist}/fonts/vf/vntex/chartervn
 
-%doc %{texmfdist}/doc/fonts/chemarrow
-%{texmfdist}/fonts/afm/public/chemarrow
-%{texmfdist}/fonts/map/dvips/chemarrow
-%{texmfdist}/fonts/source/public/chemarrow
-%{texmfdist}/fonts/tfm/public/chemarrow
-%{texmfdist}/fonts/type1/public/chemarrow
-
 %{texmfdist}/fonts/source/public/cherokee
 %{texmfdist}/fonts/tfm/public/cherokee
-
-%{texmfdist}/fonts/source/public/chess
-
-%{texmfdist}/fonts/enc/dvips/chessfss
 
 %{texmfdist}/fonts/source/public/china2e
 %{texmfdist}/fonts/tfm/public/china2e
