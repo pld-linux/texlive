@@ -2728,6 +2728,154 @@ paragrafu na linie przez TeXa do linii dołączane są ich numery z
 możliwością tworzenia odnośników poprzez mechanizm odnośników LaTeXa
 \ref i \pageref.
 
+%package latex-games
+Summary:	Packages for typesetting games
+Summary(hu.UTF-8):	Játékok szedése
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-games
+Chess, chinese chess and backgammon.
+
+%description latex-games -l hu.UTF-8
+Sakk, kínai sakk és backgammon.
+
+%package latex-math
+Summary:	Mathematical packages
+Summary(hu.UTF-8):	Matematikai csomagok
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-math
+This package contains:
+- bez123: Support for Bezier curves.
+- binomexp: Calculate Pascal's triangle
+- coordsys: draw cartesian coordinate systems.
+- egplot: encapsulate Gnuplot sources in LaTeX documents.
+- eqlist: description lists with equal indentation.
+- eqnarray: more generalised equation arrays with numbering.
+- esdiff: simplify typesetting of derivatives.
+- esvect: vector arrows.
+- extpfeil: extensible arrows in mathematics
+- faktor: typeset quotient structures with LaTeX.
+- permute: support for symmetric groups.
+
+%description latex-math -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- bez123: Bezier-görbék
+- binomexp: Pascal-háromszög számítása
+- coordsys: Descartes-féle koordinátarendszerek rajzolása
+- egplot: Gnuplot források LaTeX dokumentumokba ágyazása
+- eqlist: leíró lista egyenlő behúzással
+- eqnarray: általánosabb egyenlet-rendszer sorszámozással
+- esdiff: deriváltak bevitele
+- esvect: vektornyilak
+- extpfeil: bővíthető nyilak matematikában
+- faktor: hányados struktúrák LaTeX-hel
+- permute: szimmetriacsoportok
+
+%package latex-physics
+Summary:	Physical packages
+Summary(hu.UTF-8):	Fizikai csomagok
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-physics
+This package contains:
+- circ: macros for typesetting circuit diagrams.
+- colorwav: colours by wavelength of visible light.
+- dyntree: construct Dynkin tree diagrams.
+- feynmf: macros and fonts for creating Feynman (and other) diagrams.
+
+%description latex-physics -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- circ: áramkörök szedése
+- colorwav: a látható fény színei hullámhossz szerint
+- dyntree: Dynkin fadiagramok készítése
+- feynmf: makrók és fontok Feynman (és más) diagramok készítésére
+
+%package latex-biology
+Summary:	Biological packages
+Summary(hu.UTF-8):	Biológiai csomagok
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-biology
+This package contains:
+- biocon: typesetting biological species names
+- dnaseq: format DNA base sequences.
+
+%description latex-biology -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- biocon: biológiai fajnevek szedése
+- dnaseq: DNS szekvenciák szedése
+
+%package latex-chem
+Summary:	Chemical packages
+Summary(hu.UTF-8):	Kémiai csomagok
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-chem
+This package contains:
+- achemso: support for American Chemical Society journal submissions.
+- bpchem: typeset chemical names, formulae, etc.
+- chemarrow: arrows for use in chemistry.
+- chemcompounds: simple consecutive numbering of chemical compounds.
+- chemcono: support for compound numbers in chemistry documents.
+- chemstyle: writing chemistry with style.
+- mhchem: typeset chemical formulae/equations and Risk and Safety
+  phrases
+
+%description latex-chem -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- achemso: American Chemical Society formátuma
+- bpchem: kémiai nevek, formulák, stb. szedése
+- chemarrow: kémiában használatos nyilak
+- chemcompounds: kémiai vegyületek számozása
+- chemcono: kémiai vegyületek kémiai dokumentumokbam
+- chemstyle: kémiai dokumentum írása
+- mhchem: kémiai formulák/egyenletek szedése
+
+%package latex-informatic
+Summary:	Informatical packages
+Summary(hu.UTF-8):	Informatikai csomagok
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-informatic
+This package contains:
+- alg: LaTeX environments for typesetting algorithms.
+- bytefield: Create illustrations for network protocol specifications.
+
+%description latex-informatic -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- alg: LaTeX környezetek algoritmusok szedésére
+- bytefield: hálózati protokoll specifikációk szemléltetése
+
+%package latex-pdftools
+Summary:	Various tools to pdf output
+Summary(hu.UTF-8):	Különböző eszközök pdf output-hoz
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-pdftools
+This package contains:
+- attachfile: attach arbitrary files to a PDF document
+- cooltooltips: associate a pop-up window and tooltip with PDF
+  hyperlinks
+
+%description latex-pdftools -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- attachfile: fájlok csatolása PDF dokumentumokba
+- cooltooltips: felugró ablakok és súgók társítása PDF linkekhez
 
 %package latex-mathexam
 Summary:	Package for typesetting exams
@@ -5697,6 +5845,48 @@ fi
 %fixinfodir
 %texhash
 
+%post latex-pdftools
+%texhash
+
+%postun latex-pdftools
+%texhash
+
+%post latex-math
+%texhash
+
+%postun latex-math
+%texhash
+
+%post latex-physics
+%texhash
+
+%postun latex-physics
+%texhash
+
+%post latex-games
+%texhash
+
+%postun latex-games
+%texhash
+
+%post latex-biology
+%texhash
+
+%postun latex-biology
+%texhash
+
+%post latex-chem
+%texhash
+
+%postun latex-chem
+%texhash
+
+%post latex-informatic
+%texhash
+
+%postun latex-informatic
+%texhash
+
 %post latex-12many
 %texhash
 
@@ -7826,7 +8016,6 @@ fi
 %{texmfdist}/metapost/expressg
 %{texmfdist}/metapost/exteps
 %{texmfdist}/metapost/featpost
-%{texmfdist}/metapost/feynmf
 %{texmfdist}/metapost/frcursive
 %{texmfdist}/metapost/hatching
 %{texmfdist}/metapost/metaobj
@@ -8717,11 +8906,9 @@ fi
 %{texmfdist}/tex/latex/expl3
 %{texmfdist}/tex/latex/export
 %{texmfdist}/tex/latex/extarrows
-%{texmfdist}/tex/latex/extpfeil
 %{texmfdist}/tex/latex/extract
 %{texmfdist}/tex/latex/extsizes
 %{texmfdist}/tex/latex/facsimile
-%{texmfdist}/tex/latex/faktor
 %{texmfdist}/tex/latex/fancybox
 %{texmfdist}/tex/latex/fancyhdr
 %{texmfdist}/tex/latex/fancynum
@@ -8731,7 +8918,6 @@ fi
 %{texmfdist}/tex/latex/fax
 %{texmfdist}/tex/latex/fc
 %{texmfdist}/tex/latex/feyn
-%{texmfdist}/tex/latex/feynmf
 %{texmfdist}/tex/latex/fge
 %{texmfdist}/tex/latex/figbib
 %{texmfdist}/tex/latex/figsize
@@ -9802,15 +9988,12 @@ fi
 %doc %{texmfdist}/doc/latex/expl3
 %doc %{texmfdist}/doc/latex/export
 %doc %{texmfdist}/doc/latex/extarrows
-%doc %{texmfdist}/doc/latex/extpfeil
 %doc %{texmfdist}/doc/latex/extract
 %doc %{texmfdist}/doc/latex/facsimile
-%doc %{texmfdist}/doc/latex/faktor
 %doc %{texmfdist}/doc/latex/fancynum
 %doc %{texmfdist}/doc/latex/fancyref
 %doc %{texmfdist}/doc/latex/fancytooltips
 %doc %{texmfdist}/doc/latex/fax
-%doc %{texmfdist}/doc/latex/feynmf
 %doc %{texmfdist}/doc/latex/figbib
 %doc %{texmfdist}/doc/latex/figsize
 %doc %{texmfdist}/doc/latex/fink
@@ -10318,27 +10501,21 @@ fi
 %{texmfdist}/source/latex/binomexp
 %{texmfdist}/tex/latex/binomexp
 %doc %{texmfdist}/doc/latex/binomexp
-# Draw cartesian coordinate systems.
 %doc %{texmfdist}/doc/latex/coordsys
 %{texmfdist}/source/latex/coordsys
 %{texmfdist}/tex/latex/coordsys
-# Encapsulate Gnuplot sources in LaTeX documents.
 %doc %{texmfdist}/doc/latex/egplot
 %{texmfdist}/source/latex/egplot
 %{texmfdist}/tex/latex/egplot
-# Description lists with equal indentation.
 %doc %{texmfdist}/doc/latex/eqlist
 %{texmfdist}/source/latex/eqlist
 %{texmfdist}/tex/latex/eqlist
-# More generalised equation arrays with numbering.
 %doc %{texmfdist}/doc/latex/eqnarray
 %{texmfdist}/source/latex/eqnarray
 %{texmfdist}/tex/latex/eqnarray
-# Simplify typesetting of derivatives.
 %doc %{texmfdist}/doc/latex/esdiff
 %{texmfdist}/source/latex/esdiff
 %{texmfdist}/tex/latex/esdiff
-# Vector arrows.
 %doc %{texmfdist}/doc/latex/esvect
 %{texmfdist}/fonts/map/dvips/esvect
 %{texmfdist}/fonts/source/public/esvect
@@ -10346,21 +10523,28 @@ fi
 %{texmfdist}/fonts/type1/public/esvect
 %{texmfdist}/source/latex/esvect
 %{texmfdist}/tex/latex/esvect
+%doc %{texmfdist}/doc/latex/extpfeil
+%{texmfdist}/source/latex/extpfeil
+%{texmfdist}/tex/latex/extpfeil
+%doc %{texmfdist}/doc/latex/faktor
+%{texmfdist}/source/latex/faktor
+%{texmfdist}/tex/latex/faktor
 
 %files latex-physics
 %defattr(644,root,root,755)
-# Macros for typesetting circuit diagrams.
 %doc %{texmfdist}/doc/latex/circ
 %{texmfdist}/tex/latex/circ
 %{texmfdist}/source/latex/circ
-# Colours by wavelength of visible light.
 %doc %{texmfdist}/doc/latex/colorwav
 %{texmfdist}/source/latex/colorwav
 %{texmfdist}/tex/latex/colorwav
-# Construct Dynkin tree diagrams.
 %doc %{texmfdist}/doc/latex/dyntree
 %{texmfdist}/source/latex/dyntree
 %{texmfdist}/tex/latex/dyntree
+%doc %{texmfdist}/doc/latex/feynmf
+%{texmfdist}/source/latex/feynmf
+%{texmfdist}/tex/latex/feynmf
+%{texmfdist}/metapost/feynmf
 
 %files latex-chem
 %defattr(644,root,root,755)
@@ -10411,6 +10595,7 @@ fi
 
 %files latex-informatic
 %defattr(644,root,root,755)
+# LaTeX environments for typesetting algorithms.
 %{texmfdist}/source/latex/alg
 %{texmfdist}/tex/latex/alg
 # Create illustrations for network protocol specifications.
@@ -10786,403 +10971,773 @@ fi
 %{texmfdist}/source/latex/expdlist
 # Packages showing a proposed LaTeX3 programming convention.
 %{texmfdist}/source/latex/expl3
+# Import and export values of LaTeX registers.
 %{texmfdist}/source/latex/export
-%{texmfdist}/source/latex/extpfeil
+# Extract parts of a document and write to another document.
 %{texmfdist}/source/latex/extract
+# Document class for preparing faxes.
 %{texmfdist}/source/latex/facsimile
-%{texmfdist}/source/latex/faktor
+# Typeset numbers.
 %{texmfdist}/source/latex/fancynum
+# A LaTeX package for fancy cross-referencing.
 %{texmfdist}/source/latex/fancyref
+# Include a wide range of material in PDF tooltips.
 %{texmfdist}/source/latex/fancytooltips
+# Sophisticated verbatim text.
 %{texmfdist}/source/latex/fancyvrb
-%{texmfdist}/source/latex/feynmf
+# Auto-size graphics.
 %{texmfdist}/source/latex/figsize
+# Extended filecontents and filecontents* environments
 %{texmfdist}/source/latex/filecontents
+# The LaTeX2e File Name Keeper.
 %{texmfdist}/source/latex/fink
+# Insert "fixme" notes into draft documents.
 %{texmfdist}/source/latex/fixme
+# Labels for files and folders.
 %{texmfdist}/source/latex/flabels
+# Flag style derivation package
 %{texmfdist}/source/latex/flagderiv
+# A class for typesetting flashcards.
 %{texmfdist}/source/latex/flashcards
+# Horizontal flipping of pages with pdfLaTeX.
 %{texmfdist}/source/latex/flippdf
+# Improved interface for floating objects.
 %{texmfdist}/source/latex/float
+# Modifying the layout of floats.
 %{texmfdist}/source/latex/floatrow
+# Create text frames for posters, brochures or magazines.
 %{texmfdist}/source/latex/flowfram
+# Include Functional MetaPost in LaTeX.
 %{texmfdist}/source/latex/fmp
+# Display the value of a LaTeX counter in a variety of formats.
 %{texmfdist}/source/latex/fmtcount
+# Warn for split footnotes.
 %{texmfdist}/source/latex/fnbreak
+# Interface between foiltex and LaTeX2HTML.
 %{texmfdist}/source/latex/foilhtml
+# Print font tables from a LaTeX document.
 %{texmfdist}/source/latex/fonttable
+# A range of footnote options.
 %{texmfdist}/source/latex/footmisc
+# Per-page numbering of footnotes.
 %{texmfdist}/source/latex/footnpag
+# Using array structures in LaTeX.
 %{texmfdist}/source/latex/forarray
+# Iteration in LaTeX.
 %{texmfdist}/source/latex/forloop
+# Typesetting physical units.
 %{texmfdist}/source/latex/formula
+# Left sub- and superscripts in maths mode.
 %{texmfdist}/source/latex/fouridx
+# A collection of LaTeX packages.
 %{texmfdist}/source/latex/frankenstein
+# Create a frontispiece for Italian theses.
 %{texmfdist}/source/latex/frontespizio
+# Left-blocking for letter class.
 %{texmfdist}/source/latex/fullblck
+# Macros for functional analysis and PDE theory
 %{texmfdist}/source/latex/functan
 %{texmfdist}/source/latex/fundus
 %{texmfdist}/source/latex/g-brief
+# Typeset Galois connections.
 %{texmfdist}/source/latex/galois
+# Citations in a reader-friendly style.
 %{texmfdist}/source/latex/gcite
+# Generalization of LaTeX's minipages.
 %{texmfdist}/source/latex/genmpage
+# Flexible and complete interface to document dimensions.
 %{texmfdist}/source/latex/geometry
+# Macros used in typesetting a geometry book.
 %{texmfdist}/source/latex/geomsty
+# Modification of inputenc for German.
 %{texmfdist}/source/latex/ginpenc
+# Create glossaries and lists of acronyms.
 %{texmfdist}/source/latex/glossaries
+# Embed Gnuplot commands in LaTeX documents.
 %{texmfdist}/source/latex/gnuplottex
 %{texmfdist}/source/latex/go
 %{texmfdist}/source/latex/graphics
 %{texmfdist}/source/latex/graphicx-psmin
+# Provides ancient Greek day and month names, dates, etc.
 %{texmfdist}/source/latex/greekdates
+# Ancient Greek (Athenian) numbers.
 %{texmfdist}/source/latex/grnumalt
 %{texmfdist}/source/latex/grverb
+# Hanging paragraphs.
 %{texmfdist}/source/latex/hanging
+# Harvard citation package for use with LaTeX 2e.
 %{texmfdist}/source/latex/harvard
 %{texmfdist}/source/latex/hc
+# A class for academic reports, especially PhD theses.
 %{texmfdist}/source/latex/hepthesis
+# Print vectors, matrices, and tensors.
 %{texmfdist}/source/latex/hhtensor
+# Support high and low resolution versions of same picture
 %{texmfdist}/source/latex/hilowres
+# Draw histograms with the LaTeX picture environment.
 %{texmfdist}/source/latex/histogr
+# A dissertation class.
 %{texmfdist}/source/latex/hpsdiss
+# LaTeX support for Croatian documents.
 %{texmfdist}/source/latex/hrlatex
 %{texmfdist}/source/latex/hyper
 %{texmfdist}/source/latex/hyperref
 %{texmfdist}/source/latex/hyperxmp
 %{texmfdist}/source/latex/hyphenat
 %{texmfdist}/source/latex/ibycus-babel
+# Class for typesetting articles for the ICSV conference.
 %{texmfdist}/source/latex/icsv
+# Presentation slides for screen and printouts.
 %{texmfdist}/source/latex/ifmslide
+# Conditionals to test which platform is being used.
 %{texmfdist}/source/latex/ifplatform
+# LaTeX Class for the Israel Journal of Mathematics.
 %{texmfdist}/source/latex/ijmart
+# IMTEK thesis class.
 %{texmfdist}/source/latex/imtekda
+# Extended index for LaTeX including multiple indexes.
 %{texmfdist}/source/latex/index
+# Inline expansions within definitions.
 %{texmfdist}/source/latex/inlinedef
+# Calculate inverse file paths.
 %{texmfdist}/source/latex/inversepath
+# Generic ISO standards typesetting macros.
 %{texmfdist}/source/latex/iso
+# Typesetting the STEP standards.
 %{texmfdist}/source/latex/iso10303
+# Tune the output format of dates according to language.
 %{texmfdist}/source/latex/isodate
+# A LaTeX class for the preparation of letters and invoices.
 %{texmfdist}/source/latex/isodoc
+# Rotation of document elements.
 %{texmfdist}/source/latex/isorot
+# A package for type setting isotopes
 %{texmfdist}/source/latex/isotope
+# Spell numbers in words (Italian).
 %{texmfdist}/source/latex/itnumpar
+# Build a jeopardy game in LaTeX.
 %{texmfdist}/source/latex/jeopardy
+# A document class for German legal texts.
 %{texmfdist}/source/latex/jura
+# Abbreviations for typesetting (German) juridical documents.
 %{texmfdist}/source/latex/juraabbrev
+# Citations of judgements and official documents in (German)
 %{texmfdist}/source/latex/jurarsp
+# Greek fonts and macros.
 %{texmfdist}/source/latex/kdgreek
+# Print tables and generate control files to adjust kernings.
 %{texmfdist}/source/latex/kerntest
 %{texmfdist}/source/latex/kluwer
+# A bundle of versatile classes and packages
 %{texmfdist}/source/latex/koma-script
+# Check the existence of labels, and fork accordingly.
 %{texmfdist}/source/latex/labelcas
+# Print sheets of sticky labels.
 %{texmfdist}/source/latex/labels
+# Reference last page for Page N of M type footers.
 %{texmfdist}/source/latex/lastpage
+# A structured copy of the LaTeX distribution.
 %{texmfdist}/source/latex/latex-tds
+# Display various elements of a document's layout.
 %{texmfdist}/source/latex/layouts
+# Generate random integers.
 %{texmfdist}/source/latex/lcg
 %{texmfdist}/source/latex/lcyw
+# This package makes available Classic Cyrillic CM fonts
 %{texmfdist}/source/latex/leading
+# Typeset scholarly editions in parallel texts.
 %{texmfdist}/source/latex/ledmac
+# Left and right subscripts and superscripts in math mode.
 %{texmfdist}/source/latex/leftidx
+# Typeset dropped capitals.
 %{texmfdist}/source/latex/lettrine
+# Macros for a two language dictionary.
 %{texmfdist}/source/latex/lexikon
+# A non-standard Cyrillic input scheme.
 %{texmfdist}/source/latex/lhcyr
+# Miscellaneous helper packages.
 %{texmfdist}/source/latex/lhelp
+# Typeset maps and blocks according to the Information Mapping
 %{texmfdist}/source/latex/limap
+# Easy access to the Lorem Ipsum dummy text.
 %{texmfdist}/source/latex/lipsum
+# Lists contents of BibTeX files.
 %{texmfdist}/source/latex/listbib
+# Typeset source code listings using LaTeX.
 %{texmfdist}/source/latex/listings
+# Typeset lists as tables.
 %{texmfdist}/source/latex/listliketab
+# Macros for localizing TeX register allocations.
 %{texmfdist}/source/latex/localloc
+# Generate logarithmic graph paper with LaTeX.
 %{texmfdist}/source/latex/logpap
+# Class for "Logic and Philosophy of Science".
 %{texmfdist}/source/latex/lps
+# A LaTeX package to typeset indices with GNU's Texindex.
 %{texmfdist}/source/latex/ltxindex
+# Macros for mail merging.
 %{texmfdist}/source/latex/mailing
+# Defines a \makebox* command.
 %{texmfdist}/source/latex/makebox
+# Tabular column heads and multilined cells.
 %{texmfdist}/source/latex/makecell
+# The new \makecommand command always (re)defines a command.
 %{texmfdist}/source/latex/makecmds
+# Perl script to help generate dtx and ins files
 %{texmfdist}/source/latex/makedtx
+# Easy plots from Matlab in LaTeX.
 %{texmfdist}/source/latex/makeplot
+# LaTeX support for the TeX book symbols.
 %{texmfdist}/source/latex/manfnt
+# Emulate look of a document typed on a typewriter.
 %{texmfdist}/source/latex/manuscript
+# Support for multiple character sets and encodings.
 %{texmfdist}/source/latex/mapcodes
+# Notes in the margin, even where \marginpar fails
 %{texmfdist}/source/latex/marginnote
+# Text symbols in maths mode.
 %{texmfdist}/source/latex/mathcomp
+# Fonts to typeset mathematics to match Palatino.
 %{texmfdist}/source/latex/mathpazo
+# Put captions in the margin.
 %{texmfdist}/source/latex/mcaption
+# Multiple items in a single citation.
 %{texmfdist}/source/latex/mcite
+# Miscellaneous tools by Mark Wooding.
 %{texmfdist}/source/latex/mdwtools
+# Typeset fiction, non-fiction and mathematical books.
 %{texmfdist}/source/latex/memoir
+# A basis for books to be published by Mentis publishers.
 %{texmfdist}/source/latex/mentis
+# Typesetting menus.
 %{texmfdist}/source/latex/menu
+# Typeset method and variable declarations.
 %{texmfdist}/source/latex/method
+# Support for the work of classicists
 %{texmfdist}/source/latex/metre
+# Multiple font formats.
 %{texmfdist}/source/latex/mff
+# Macros to draw direction fields and solutions of ODEs.
 %{texmfdist}/source/latex/mfpic4ode
+# Pretty-print Metafont source.
 %{texmfdist}/source/latex/mftinc
+# The MH bundle
 %{texmfdist}/source/latex/mh
+# Typeset miller indices.
 %{texmfdist}/source/latex/miller
+# Minipages with marginal notes.
 %{texmfdist}/source/latex/minipage-marginpar
+# Package for writing minutes of meetings.
 %{texmfdist}/source/latex/minutes
+# Logical markup for lists.
 %{texmfdist}/source/latex/mlist
+# Mathematical symbol font for Adobe MinionPro.
 %{texmfdist}/source/latex/mnsymbol
+# Write numbers in lower case roman numerals.
 %{texmfdist}/source/latex/modroman
+# A language definition file for Mongolian in Babel.
 %{texmfdist}/source/latex/mongolian-babel
+# Mongolian LaTeX.
 %{texmfdist}/source/latex/montex
+# Allows font sizes up to 35.83pt.
 %{texmfdist}/source/latex/moresize
+# Extended verbatim.
 %{texmfdist}/source/latex/moreverb
+# A workaround for a LaTeX bug in marginpars.
 %{texmfdist}/source/latex/mparhack
+# Various LaTeX packages by Martin Schröder.
 %{texmfdist}/source/latex/ms
+# A package for LaTeX localisation.
 %{texmfdist}/source/latex/msg
+# Use italic and upright greek letters with mathtime.
 %{texmfdist}/source/latex/mtgreek
+# Multiple bibliographies.
 %{texmfdist}/source/latex/multibbl
+# Multiple bibliographies within one document.
 %{texmfdist}/source/latex/multibib
+# Format captions inside multicols
 %{texmfdist}/source/latex/multicap
+# Polish-oriented document classes.
 %{texmfdist}/source/latex/mwcls
+# Support for Mongolian "horizontal" (Xewtee Dorwoljin) script.
 %{texmfdist}/source/latex/mxd
+# Detecting and warning about obsolete LaTeX commands
 %{texmfdist}/source/latex/nag
+# Rudimentary c++-like namespaces in LaTeX.
 %{texmfdist}/source/latex/namespc
+# Flexible bibliography support.
 %{texmfdist}/source/latex/natbib
+# A collection of general packages for LaTeX
 %{texmfdist}/source/latex/ncctools
+# Notre Dame Dissertation format class.
 %{texmfdist}/source/latex/nddiss
+# Format algorithms like Cormen, Leiserson and Rivest.
 %{texmfdist}/source/latex/newalg
+# User level management of LaTeX input and output.
 %{texmfdist}/source/latex/newfile
+# Write letters, facsimiles, and memos.
 %{texmfdist}/source/latex/newlfm
+# Typeset newsletters to resemble newspapers.
 %{texmfdist}/source/latex/newspaper
+# Define your own verbatim-like environment.
 %{texmfdist}/source/latex/newvbtm
+# Support for fancy frames.
 %{texmfdist}/source/latex/niceframe
+# Improved underlines in mathematics.
 %{texmfdist}/source/latex/noitcrul
+# Produce lists of symbols as in nomenclature.
 %{texmfdist}/source/latex/nomencl
+# Nomenclature typeset in a longtable
 %{texmfdist}/source/latex/nomentbl
+# Non-floating table and figure captions.
 %{texmfdist}/source/latex/nonfloat
+# LaTeX class for No Starch Press.
 %{texmfdist}/source/latex/nostarch
+# Mark sections of a document.
 %{texmfdist}/source/latex/notes
+# Integrating notes into the bibliography.
 %{texmfdist}/source/latex/notes2bib
+# Class for the NRC technical journals.
 %{texmfdist}/source/latex/nrc
+# "European" versions of standard classes.
 %{texmfdist}/source/latex/ntgclass
+# Enhanced theorem environment.
 %{texmfdist}/source/latex/ntheorem
+# Print numbers with separators and exponent if necessary.
 %{texmfdist}/source/latex/numprint
+# A bundle of packages submitted by Heiko Oberdiek.
 %{texmfdist}/source/latex/oberdiek
+# Macros for typesetting Object Z.
 %{texmfdist}/source/latex/objectz
+# Typeset books following classical design and layout.
 %{texmfdist}/source/latex/octavo
+# Support for Polish typography and the ogonek.
 %{texmfdist}/source/latex/ogonek
+# Old style numbers in OT1 encoding.
 %{texmfdist}/source/latex/oldstyle
+# Footnote-style bibliographical references.
 %{texmfdist}/source/latex/opcit
+# Counters as ordinal numbers in Portuguese.
 %{texmfdist}/source/latex/ordinalpt
+# Create othello boards in LaTeX.
 %{texmfdist}/source/latex/othello
 %{texmfdist}/source/latex/otibet
+# Fonts designed by Fra Luca de Pacioli in 1497.
 %{texmfdist}/source/latex/pacioli
+# Page number-only page styles.
 %{texmfdist}/source/latex/pageno
+# Notes at end of document.
 %{texmfdist}/source/latex/pagenote
+# Versions of article class, tuned for scholarly publications.
 %{texmfdist}/source/latex/paper
+# Origami-style folding paper CD case.
 %{texmfdist}/source/latex/papercdcase
+# Class for newspapers, etc.
 %{texmfdist}/source/latex/papertex
+# Enumerate and itemize within paragraphs.
 %{texmfdist}/source/latex/paralist
+# Typeset parallel texts.
 %{texmfdist}/source/latex/parallel
+# Defines simple macros for greek letters.
 %{texmfdist}/source/latex/paresse
+# Typesets (two) streams of text running parallel.
 %{texmfdist}/source/latex/parrun
+# Change the definition of an existing command.
 %{texmfdist}/source/latex/patchcmd
+# German LaTeX package documentation.
 %{texmfdist}/source/latex/pauldoc
+# Using graphics from PAW.
 %{texmfdist}/source/latex/pawpict
+# A variable-width \parbox command.
 %{texmfdist}/source/latex/pbox
+# Problem sheet class.
 %{texmfdist}/source/latex/pbsheet
+# Activating and setting of character protruding using pdflatex.
 %{texmfdist}/source/latex/pdfcprot
+# Include PDF documents in LaTeX.
 %{texmfdist}/source/latex/pdfpages
+# Define LaTeX macros in terms of Perl code
 %{texmfdist}/source/latex/perltex
+# A set TeX/LaTeX packages for drawing Petri nets.
 %{texmfdist}/source/latex/petri-nets
+# LaTeX package options with pgfkeys.
 %{texmfdist}/source/latex/pgfopts
+# Create normal/logarithmic plots in LaTeX.
 %{texmfdist}/source/latex/pgfplots
+# Typesetting articles for "Philosophers' Imprint".
 %{texmfdist}/source/latex/philosophersimprint
+# A float environment for photographs.
 %{texmfdist}/source/latex/photo
+# New implementation of picture commands.
 %{texmfdist}/source/latex/pict2e
+# Electronic Theses and Dissertations at Pitt.
 %{texmfdist}/source/latex/pittetd
+# Typesetting stageplay scripts.
 %{texmfdist}/source/latex/plari
+# Typeset drama using LaTeX.
 %{texmfdist}/source/latex/play
 %{texmfdist}/source/latex/plweb
+# Typesetting Critical Editions of Poetry.
 %{texmfdist}/source/latex/poemscol
+# Typeset Polish documents with LaTeX and Polish fonts.
 %{texmfdist}/source/latex/polski
 %{texmfdist}/source/latex/polyglot
+# Tabular-like environments with named columns.
 %{texmfdist}/source/latex/polytable
+# A presentation class.
 %{texmfdist}/source/latex/powerdot
+# Prosper preview.
 %{texmfdist}/source/latex/ppr-prv
+# Typeset articles for PracTeX.
 %{texmfdist}/source/latex/pracjourn
+# A bundle of packages provided "as is".
 %{texmfdist}/source/latex/preprint
+# Make label references "self-identify".
 %{texmfdist}/source/latex/prettyref
+# Extract bits of a LaTeX source for output.
 %{texmfdist}/source/latex/preview
+# Shortcuts commands to symbols used in probability texts.
 %{texmfdist}/source/latex/proba
+# generate problem sheets and their solution sheets
 %{texmfdist}/source/latex/probsoln
+# Typeset programs, recognising keywords.
 %{texmfdist}/source/latex/progkeys
+# LaTeX class for high quality slides.
 %{texmfdist}/source/latex/prosper
+# A class for typesetting minutes (only german).
 %{texmfdist}/source/latex/protocol
+# Replace strings in encapsulated PostScript figures.
 %{texmfdist}/source/latex/psfrag
+# A psfrag eXtension.
 %{texmfdist}/source/latex/psfragx
+# Use PostScript fonts by default.
 %{texmfdist}/source/latex/pslatex
+# PostScript picture support.
 %{texmfdist}/source/latex/pspicture
+# A LaTeX2e class for making multiple choice questionnaires
 %{texmfdist}/source/latex/qcm
+# Bundle for unit tests and pattern matching.
 %{texmfdist}/source/latex/qstest
+# Maths symbol abbreviations.
 %{texmfdist}/source/latex/qsymbols
+# Decorative chapter headings.
 %{texmfdist}/source/latex/quotchap
+# Consistent quote marks.
 %{texmfdist}/source/latex/quotmark
+# Marginal pictures.
 %{texmfdist}/source/latex/randbild
+# Decimal-centered optionally rounded numbers in tabular.
 %{texmfdist}/source/latex/rccol
+# Use RCS (revision control system) tags in LaTeX documents.
 %{texmfdist}/source/latex/rcs
+# Support for the revision control system.
 %{texmfdist}/source/latex/rcsinfo
+# Typeset recipes in note-card-sized boxes.
 %{texmfdist}/source/latex/recipecard
+# Format technical reference manuals.
 %{texmfdist}/source/latex/refman
+# Advanced formatting of cross references.
 %{texmfdist}/source/latex/refstyle
+# Display the allocation status of the TeX registers.
 %{texmfdist}/source/latex/regcount
+# Typeset programmable elements in digital hardware (registers).
 %{texmfdist}/source/latex/register
+# A "relaxed" font encoding.
 %{texmfdist}/source/latex/relenc
+# Styles for various Physics Journals.
 %{texmfdist}/source/latex/revtex
+# A package to help change page layout parameters in LaTeX.
 %{texmfdist}/source/latex/rmpage
+# Declare robust command, with \newcommand checks.
 %{texmfdist}/source/latex/robustcommand
+# Generate roman numerals instead of arabic digits.
 %{texmfdist}/source/latex/romannum
+# Rotation tools, including rotated full-page floats.
 %{texmfdist}/source/latex/rotating
+# Rotate floats.
 %{texmfdist}/source/latex/rotfloat
+# BibTeX style for use with RSC journals.
 %{texmfdist}/source/latex/rsc
+# Drawing rhetorical structure analysis diagrams in LaTeX.
 %{texmfdist}/source/latex/rst
+# Input encoding with fallback procedures.
 %{texmfdist}/source/latex/rtkinenc
+# Embed Sage code and plots into LaTeX.
 %{texmfdist}/source/latex/sagetex
+# Sanskrit support.
 %{texmfdist}/source/latex/sanskrit
+# A bundle of utilities by Jonathan Sauer.
 %{texmfdist}/source/latex/sauerj
+# Use sauter fonts in LaTeX.
 %{texmfdist}/source/latex/sauterfonts
+# Save name of the footnote mark for reuse.
 %{texmfdist}/source/latex/savefnmark
+# Pack as much as possible onto each page of a LaTeX document.
 %{texmfdist}/source/latex/savetrees
+# Scale document by sqrt(2) or magstep(2).
 %{texmfdist}/source/latex/scale
+# Create scalebars for maps, diagrams or photos.
 %{texmfdist}/source/latex/scalebar
+# Weekly schedules.
 %{texmfdist}/source/latex/schedule
+# Use Scientific Word/WorkPlace files with another TeX.
 %{texmfdist}/source/latex/sciwordconv
+# A class file to typeset screenplays.
 %{texmfdist}/source/latex/screenplay
+# Control sectional headers.
 %{texmfdist}/source/latex/sectsty
+# Help for writing programming language semantics.
 %{texmfdist}/source/latex/semantic
+# Put only special contents on left-hand pages in two sided layout.
 %{texmfdist}/source/latex/semioneside
+# Split long sequences of characters in a neutral way.
 %{texmfdist}/source/latex/seqsplit
 %{texmfdist}/source/latex/sf298
+# Typesetting science fiction/fantasy manuscripts.
 %{texmfdist}/source/latex/sffms
+# Table of contents with different depths.
 %{texmfdist}/source/latex/shorttoc
+# Variants of \show for LaTeX2e.
 %{texmfdist}/source/latex/show2e
 %{texmfdist}/source/latex/showexpl
+# Show label commands in the margin.
 %{texmfdist}/source/latex/showlabels
+# Typeset captions sideways.
 %{texmfdist}/source/latex/sidecap
+# SIGGRAPH conference class.
 %{texmfdist}/source/latex/siggraph
+# A simple class for writing curricula vitae.
 %{texmfdist}/source/latex/simplecv
+# Simple Wick contractions.
 %{texmfdist}/source/latex/simplewick
+# A font to draw a skull.
 %{texmfdist}/source/latex/skull
+# Access different-shaped small-caps fonts.
 %{texmfdist}/source/latex/slantsc
+# List the external dependencies of a LaTeX document.
 %{texmfdist}/source/latex/snapshot
+# Package for typesetting song lyrics and chord books.
 %{texmfdist}/source/latex/songbook
+# Hyphenation for letterspacing, underlining, and more.
 %{texmfdist}/source/latex/soul
+# Split and reorder your bibliography.
 %{texmfdist}/source/latex/splitbib
+# Unlimited number of indexes.
 %{texmfdist}/source/latex/splitindex
+# Jump between DVI and TeX files.
 %{texmfdist}/source/latex/srcltx
+# Spectral sequence diagrams.
 %{texmfdist}/source/latex/sseq
+# Use the cmssq fonts.
 %{texmfdist}/source/latex/ssqquote
+# Tools to define and use stacks.
 %{texmfdist}/source/latex/stack
+# Store statistics of a document.
 %{texmfdist}/source/latex/statistik
+# Typeset Icelandic staves and runic letters.
 %{texmfdist}/source/latex/staves
+# Provide sectioning information for package writers.
 %{texmfdist}/source/latex/stdclsdv
+# Standard pages with n lines of at most m characters each.
 %{texmfdist}/source/latex/stdpage
+# Stellenbosch thesis bundle.
 %{texmfdist}/source/latex/stellenbosch
+# An Infrastructure for Semantic Preloading of LaTeX Documents.
 %{texmfdist}/source/latex/stex
+# String manipulation for cosmetic and programming application.
 %{texmfdist}/source/latex/stringstrings
+# Draw Nassi-Schneidermann charts
 %{texmfdist}/source/latex/struktex
+# Unify maths subscript height.
 %{texmfdist}/source/latex/subdepth
+# Package for subequation numbering.
 %{texmfdist}/source/latex/subeqn
+# Equation array with sub numbering.
 %{texmfdist}/source/latex/subeqnarray
+# Figures broken into subfigures
 %{texmfdist}/source/latex/subfig
+# Deprecated: Figures divided into subfigures.
 %{texmfdist}/source/latex/subfigure
+# Sub-numbering for figures and tables.
 %{texmfdist}/source/latex/subfloat
+# Create sudoku grids.
 %{texmfdist}/source/latex/sudoku
+# A set of sudoku-related packages.
 %{texmfdist}/source/latex/sudokubundle
+# A multi-page tables package.
 %{texmfdist}/source/latex/supertabular
+# Subversion keywords in multi-file LaTeX documents
 %{texmfdist}/source/latex/svn-multi
+# Typeset Subversion keywords.
 %{texmfdist}/source/latex/svn
+# Typeset Subversion Keywords.
 %{texmfdist}/source/latex/svninfo
+# Graphical/textual representations of swimming performances
 %{texmfdist}/source/latex/swimgraf
+# Labels for tracing in a syntax tree.
 %{texmfdist}/source/latex/syntrace
+# Typeset syntactic trees.
 %{texmfdist}/source/latex/synttree
+# Tabulated lists of short items.
 %{texmfdist}/source/latex/tablists
+# Tabular with variable width columns balanced.
 %{texmfdist}/source/latex/tabulary
+# Typesetting tables showing variations of functions.
 %{texmfdist}/source/latex/tabvar
+# A LaTeX class for presentations.
 %{texmfdist}/source/latex/talk
 %{texmfdist}/source/latex/tcldoc
+# Macros for French teachers of mathematics.
 %{texmfdist}/source/latex/tdsfrmath
+# A package to format technical documents.
 %{texmfdist}/source/latex/technics
+# A (primitive) token list editor.
 %{texmfdist}/source/latex/ted
+# LaTeX support for using Tengwar fonts.
 %{texmfdist}/source/latex/tengwarscript
+# Typeset tensors.
 %{texmfdist}/source/latex/tensor
+# Philological typesetting of classical Greek.
 %{texmfdist}/source/latex/teubner
+# Comprehensive chess annotation in LaTeX.
 %{texmfdist}/source/latex/texmate
+# Create dynamic online presentations with LaTeX.
 %{texmfdist}/source/latex/texpower
+# Package for setting nucleotide and peptide alignments.
 %{texmfdist}/source/latex/texshade
+# Case conversion ignoring mathematics, etc.
 %{texmfdist}/source/latex/textcase
+# Fit text to a desired size.
 %{texmfdist}/source/latex/textfit
+# Annotated membrane protein topology plots.
 %{texmfdist}/source/latex/textopo
+# Place boxes at abitrary positions on the LaTeX page.
 %{texmfdist}/source/latex/textpos
+# Little style to create a standard titlepage for diploma
 %{texmfdist}/source/latex/thesis-titlepage-fhac
+# Extensions to theorem environments.
 %{texmfdist}/source/latex/thmtools
+# Thumb marks in documents.
 %{texmfdist}/source/latex/thumb
+# Thesis template for Tsinghua University.
 %{texmfdist}/source/latex/thuthesis
 %{texmfdist}/source/latex/timesht
+# Control over the typesetting of the \maketitle command.
 %{texmfdist}/source/latex/titling
+# Add bibliography/index/contents to Table of Contents.
 %{texmfdist}/source/latex/tocbibind
+# Control table of contents, figures, etc.
 %{texmfdist}/source/latex/tocloft
+# Section numbering and table of contents control.
 %{texmfdist}/source/latex/tocvsec2
+# Make a to-do list for a document.
 %{texmfdist}/source/latex/todo
+# Macros for writing indices, glossaries.
 %{texmfdist}/source/latex/toolbox
+# The LaTeX standard tools bundle.
 %{texmfdist}/source/latex/tools
+# Bundle of files for typsetting theses.
 %{texmfdist}/source/latex/toptesi
+# Count pages in a document, and report last page number.
 %{texmfdist}/source/latex/totpages
+# Fonts from the Trajan column in Rome.
 %{texmfdist}/source/latex/trajan
+# Trees and other linguists' macros.
 %{texmfdist}/source/latex/tree-dvips
+# Typeset transform signs.
 %{texmfdist}/source/latex/trfsigns
+# Quick float definitions in LaTeX.
 %{texmfdist}/source/latex/trivfloat
+# Symbols for transformations.
 %{texmfdist}/source/latex/trsym
+# LaTeX macros for TUGboat articles.
 %{texmfdist}/source/latex/tugboat
+# Typeset the (logic) turnstile notation.
 %{texmfdist}/source/latex/turnstile
 %{texmfdist}/source/latex/twoup
+# Arbitrary size font selection in LaTeX.
 %{texmfdist}/source/latex/type1cm
+# Eliminate errors by enforcing the types of labels.
 %{texmfdist}/source/latex/typedref
+# Print a typographic grid.
 %{texmfdist}/source/latex/typogrid
+# University of Arizona thesis and dissertation format.
 %{texmfdist}/source/latex/uaclasses
+# UIUC thesis class.
 %{texmfdist}/source/latex/uiucthesis
+# Extra mathematical characters.
 %{texmfdist}/source/latex/ulsy
+# UML diagrams in LaTeX.
 %{texmfdist}/source/latex/uml
+# German input encodings in LaTeX.
 %{texmfdist}/source/latex/umlaute
+# Underline text allowing line breaking.
 %{texmfdist}/source/latex/umoline
+# Underlined running heads.
 %{texmfdist}/source/latex/underlin
+# Typeset a tilde under one (or many) maths symbols.
 %{texmfdist}/source/latex/undertilde
+# Typeset units.
 %{texmfdist}/source/latex/units
+# Typesetting units in LaTeX.
 %{texmfdist}/source/latex/unitsdef
+# Converting Roman numerals to Arabic numbers.
 %{texmfdist}/source/latex/unroman
+# Writing specification such as for UP-based methodologies.
 %{texmfdist}/source/latex/upmethodology
+# Web support for BibTeX.
 %{texmfdist}/source/latex/urlbst
+# Shorter (and longer) underlines and underbars.
 %{texmfdist}/source/latex/ushort
+# Luxury frontend to the \index command.
 %{texmfdist}/source/latex/varindex
+# LaTeX macros for vectors.
 %{texmfdist}/source/latex/vector
+# Aids for typesetting simple verse.
 %{texmfdist}/source/latex/verse
+# Set various page dimensions.
 %{texmfdist}/source/latex/vmargin
+# Typeset only parts of a document, with complete indexes etc.
 %{texmfdist}/source/latex/volumes
+# Add version number to a DVI file.
 %{texmfdist}/source/latex/vrsion
+# Variable-width multiple text columns.
 %{texmfdist}/source/latex/vwcol
+# Document classes for Vaxjo University
 %{texmfdist}/source/latex/vxu
+# Global warnings at the end of the logfile.
 %{texmfdist}/source/latex/warning
+# Relative alignment of rows in numeric columns in tabulars.
 %{texmfdist}/source/latex/warpcol
+# A collection of small packages by Walter Schmidt.
 %{texmfdist}/source/latex/was
+# Ridgeway's fonts.
 %{texmfdist}/source/latex/wnri
+# Define commands with many optional arguments.
 %{texmfdist}/source/latex/xargs
+# Extending the LaTeX doc system.
 %{texmfdist}/source/latex/xdoc
+# A reimplimentation of the LaTeX for-loop macro.
 %{texmfdist}/source/latex/xfor
+# Include eXtensible Metadata Platform data in PDFLaTeX.
 %{texmfdist}/source/latex/xmpincl
+# Implementations of concepts for LaTeX designer interface.
 %{texmfdist}/source/latex/xpackages
+# An extension to the skak package for chess typesetting.
 %{texmfdist}/source/latex/xskak
+# Break tables across pages.
 %{texmfdist}/source/latex/xtab
+# Defining language-dependent text macros.
 %{texmfdist}/source/latex/xtcapts
+# A bundle of miscellaneous footnote packages.
 %{texmfdist}/source/latex/yafoot
+# Support for old German fonts.
 %{texmfdist}/source/latex/yfonts
+# Extended maths fonts for LaTeX.
 %{texmfdist}/source/latex/yhmath
+# A thesis class file for York University, Toronto.
 %{texmfdist}/source/latex/york-thesis
+# Typeset Young-Tableaux.
 %{texmfdist}/source/latex/youngtab
 %dir %{texmfdist}/source/plain
 %{texmfdist}/source/plain/jsmisc
