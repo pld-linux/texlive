@@ -2065,18 +2065,18 @@ Extra control of appendices.
 %description latex-appendix -l hu.UTF-8
 Az appendixek nagyobb irányítása.
 
-%package latex-backgammon
-Summary:	LaTeX package to documenting backgammon games
-Summary(hu.UTF-8):	LaTeX csomag backgammon játékok dokumentálására
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-
-%description latex-backgammon
-LaTeX package to documenting backgammon games.
-
-%description latex-backgammon -l hu.UTF-8
-LaTeX csomag backgammon játékok dokumentálására
+# %package latex-backgammon
+# Summary:	LaTeX package to documenting backgammon games
+# Summary(hu.UTF-8):	LaTeX csomag backgammon játékok dokumentálására
+# Group:		Applications/Publishing/TeX
+# Requires(post,postun):	%{_bindir}/texhash
+# Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+# 
+# %description latex-backgammon
+# LaTeX package to documenting backgammon games.
+# 
+# %description latex-backgammon -l hu.UTF-8
+# LaTeX csomag backgammon játékok dokumentálására
 
 %package latex-bbm
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
@@ -2158,7 +2158,7 @@ Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 %description latex-bezos
 Packages by Javier Bezos (additional math tools).
 
-%description latex-bezos
+%description latex-bezos -l hu.UTF-8
 Javier Bezos csomagjai (további matematikai eszközök).
 
 %package latex-bibtex-ams
@@ -2499,7 +2499,7 @@ Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 A package to customize the three basic lists (enumerate, itemize and
 description).
 
-%description latex-enumitem
+%description latex-enumitem -l hu.UTF-8
 Egy csomag, amivel testreszabhatod a három alapvető listakörnyezetet
 (enumerate, itemize, description).
 
@@ -3450,7 +3450,7 @@ Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
 %description latex-pst-func
 PSTricks package for plotting mathematical functions.
 
-%description latex-pst-eucl -l hu.UTF-8
+%description latex-pst-func -l hu.UTF-8
 PSTricks csomag matematikai függvények ábrázolásához.
 
 %package latex-pst-fr3d
@@ -3777,7 +3777,7 @@ Summary(pl.UTF-8):	Pozwala na dostęp do odcieni, gradientów itp.
 Group:		Applications/Publishing/TeX
 Obsoletes:	tetex-latex-xcolor
 
-%description
+%description latex-xcolor
 `xcolor' provides easy driver-independent access to several kinds of
 color tints, shades, tones, and mixes of arbitrary colors. It allows
 to select a document-wide target color model and offers tools for
@@ -6096,12 +6096,12 @@ fi
 %postun latex-appendix
 %texhash
 
-%post latex-backgammon
-%texhash
-
-%postun latex-backgammon
-%texhash
-
+# %post latex-backgammon
+# %texhash
+# 
+# %postun latex-backgammon
+# %texhash
+ 
 %post latex-bardiag
 %texhash
 
