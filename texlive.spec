@@ -3649,6 +3649,32 @@ A comprehensive (SI) units package.
 %description latex-siunitx -l hu.UTF-8
 Egy minden részletre kiterjedő (SI) egységek kezelését végző csomag.
 
+%package latex-styles
+Summary:	Various LaTeX styles
+Summary(hu.UTF-8):	Különböző LaTeX stílusok
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	/usr/bin/texhash
+Requires:	%{name}-latex
+
+%description latex-styles
+Various LaTeX styles.
+
+%description latex-styles -l hu.UTF-8
+Különböző LaTeX stílusok.
+
+%package latex-lang
+Summary:	LaTeX support for non-english languages
+Summary(hu.UTF-8):	LaTeX támogatás nem-angol nyelvekhez
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	/usr/bin/texhash
+Requires:	%{name}-latex
+
+%description latex-lang
+LaTeX support for non-english languages.
+
+%description latex-lang -l hu.UTF-8
+LaTeX támogatás nem-angol nyelvekhez.
+
 %package latex-Tabbing
 Summary:	Tabbing with accented letters
 Summary(hu.UTF-8):	Tabbing környezet ékezetes betűk használatával
@@ -5942,6 +5968,18 @@ fi
 
 %postun latex
 %fixinfodir
+%texhash
+
+%post latex-lang
+%texhash
+
+%postun latex-lang
+%texhash
+
+%post latex-styles
+%texhash
+
+%postun latex-styles
 %texhash
 
 %post latex-pdftools
