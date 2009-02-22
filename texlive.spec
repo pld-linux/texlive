@@ -7464,7 +7464,7 @@ fi
 %{texmf}/tex/generic/hyphen
 
 %doc %{texmfdist}/doc/generic/epsf
-%doc %{temxfdist}/doc/generic/tex-ps
+%doc %{texmfdist}/doc/generic/tex-ps
 
 # %{fmtdir}/metafun.mem
 #%{texmf}/web2c/tex-pl.pool
