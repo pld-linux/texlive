@@ -2736,10 +2736,61 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex
 
 %description latex-games
-Chess, chinese chess and backgammon.
+Chess, chinese chess, crosswords, go and backgammon.
 
 %description latex-games -l hu.UTF-8
-Sakk, kínai sakk és backgammon.
+Sakk, kínai sakk, keresztrejtvények, go és backgammon.
+
+%package latex-extend
+Summary:	Extensions, patches, improvements of main LaTeX styles, environments
+Summary(hu.UTF-8):	Az alap LaTeX stílusok, környezetek, stb. bővítései, foltjai
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-extend
+This package contains:
+- addlines: a user-friendly wrapper around \enlargethispage.
+- alnumsec: alphanumeric section numbering.
+- arydshln: horizontal and vertical dashed lines in arrays and
+  tabulars
+- babelbib: multilingual bibliographies.
+- bibtopicprefix: prefix references to bibliographies produced by
+  bibtopic.
+- boites: boxes that may break across pages
+- booklet: aids for printing simple booklets.
+- bullcntr: display list item counter as regular pattern of bullets.
+- chappg: page numbering by chapter.
+- cjw: a bundle of packages and classes.
+- clefval: key/value support with a hash.
+- colortbl: add colour to LaTeX tables.
+- combine: bundle individual documents into a single document.
+- contour: print a coloured contour around text.
+- ctable: easily typeset centered tables.
+- curve2e: extensions for package pict2e.
+- HA-prosper: patches and improvements for prosper.
+
+%description latex-extend -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- addlines: felhasználóbarát wrapper \enlargethispage-hez
+- alnumsec: alfanumerikus section számozás
+- arydshln: vízszintes és függőleges pontozott vonalak array és
+  tabular környezetkben
+- babelbib: többnyelvű bibliográfiák
+- bibtopicprefix: prefix hivatkozás bibtopic által készített
+  bibliográfiára
+- boites: dobozok, amelyek törhetők oldalak között
+- booklet: booklet formátumban történő nyomtatás
+- bullcntr: lista elemek számlálójának megjelenítése mint...
+- chappg: oldalszámozás chapter alapján
+- cjw: csomagok és osztályok tömkelege
+- clefval: kulcs/érték párok hash-sel
+- colortbl: színek LaTeX táblázatokban
+- combine: külön dokumentumok eggyé fűzése
+- contour: színes kontúr nyomtatása szöveg körül
+- ctable: középre igazított táblázatok szedése
+- curve2e: pict2e csomaghoz kiegészítések
+- HA-prosper: foltok és bővítések a prosper-hez
 
 %package latex-math
 Summary:	Mathematical packages
@@ -2752,6 +2803,7 @@ Requires:	%{name}-latex
 This package contains:
 - bez123: Support for Bezier curves.
 - binomexp: Calculate Pascal's triangle
+- cmll: symbols for linear logic.
 - coordsys: draw cartesian coordinate systems.
 - egplot: encapsulate Gnuplot sources in LaTeX documents.
 - eqlist: description lists with equal indentation.
@@ -2766,6 +2818,7 @@ This package contains:
 Ez a csomag a következőket tartalmazza:
 - bez123: Bezier-görbék
 - binomexp: Pascal-háromszög számítása
+- cmll: szimbólumok lineáris logikához
 - coordsys: Descartes-féle koordinátarendszerek rajzolása
 - egplot: Gnuplot források LaTeX dokumentumokba ágyazása
 - eqlist: leíró lista egyenlő behúzással
@@ -2775,6 +2828,23 @@ Ez a csomag a következőket tartalmazza:
 - extpfeil: bővíthető nyilak matematikában
 - faktor: hányados struktúrák LaTeX-hel
 - permute: szimmetriacsoportok
+
+%package latex-music
+Summary:	Musical packages
+Summary(hu.UTF-8):	Zenei csomagok
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-music
+This package contains:
+- abc: support ABC music notation in LaTeX.
+- guitar: guitar chords and song texts.
+
+%description latex-music -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- abc: ABC hangjegyzések LaTeX-ben
+- guitar: gitárkották és dalszövegek
 
 %package latex-physics
 Summary:	Physical packages
@@ -3203,6 +3273,35 @@ Typeset (univariate) polynomials.
 
 %description latex-polynomial -l hu.UTF-8
 Egyváltozós polinomok szedése.
+
+%package latex-programming
+Summary:	Additional utilities to programming LaTeX
+Summary(hu.UTF-8):	További eszközök LaTeX programozásához
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-programming
+This package contains:
+- cmdtrack: check used commands.
+- cool: COntent-Oriented LaTeX
+- coollist: manipulate COntent Oriented LaTeX Lists.
+- coolstr: string manipulation in LaTeX.
+- csvtools: reading data from CSV files.
+- datatool: tools to load and manipulate data.
+- datenumber: convert a date into a number and vice versa.
+- dprogress: LaTeX-relevant log information for debugging.
+
+%description latex-programming -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- cmdtrack: használt parancsok ellenőrzése
+- cool: tartalom-orientált (COntent-Oriented) LaTeX
+- coollist: COntent Oriented LaTeX listák manipulációja
+- coolstr: sztring manipuláció LaTeX-ben
+- csvtools: adatok olvasása CSV fájlokból
+- datatool: eszközök adatok beolvasására és manipulációjához
+- datenumber: dátum számmá konvertálása és vissza
+- dprogress: LaTeX-releváns log információ debuggoláshoz
 
 %package latex-prosper
 Summary:	LaTeX class for high quality slides
@@ -5851,10 +5950,28 @@ fi
 %postun latex-pdftools
 %texhash
 
+%post latex-extend
+%texhash
+
+%postun latex-extend
+%texhash
+
+%post latex-programming
+%texhash
+
+%postun latex-programming
+%texhash
+
 %post latex-math
 %texhash
 
 %postun latex-math
+%texhash
+
+%post latex-music
+%texhash
+
+%postun latex-music
 %texhash
 
 %post latex-physics
@@ -7686,7 +7803,6 @@ fi
 %doc %{texmfdist}/doc/latex/anysize
 %doc %{texmfdist}/doc/latex/base
 %doc %{texmfdist}/doc/latex/beton
-%doc %{texmfdist}/doc/latex/carlisle
 %doc %{texmfdist}/doc/latex/ccaption
 %doc %{texmfdist}/doc/latex/changebar
 %doc %{texmfdist}/doc/latex/concmath
@@ -8657,7 +8773,6 @@ fi
 %{texmfdist}/tex/latex/a0poster
 %{texmfdist}/tex/latex/acmtrans
 %{texmfdist}/tex/latex/acronym
-%{texmfdist}/tex/latex/addlines
 %{texmfdist}/tex/latex/adrlist
 %{texmfdist}/tex/latex/aeguill
 %{texmfdist}/tex/latex/afthesis
@@ -8666,7 +8781,6 @@ fi
 %{texmfdist}/tex/latex/algorithm2e
 %{texmfdist}/tex/latex/algorithmicx
 %{texmfdist}/tex/latex/allrunes
-%{texmfdist}/tex/latex/alnumsec
 %{texmfdist}/tex/latex/altfont
 %{texmfdist}/tex/latex/ametsoc
 %{texmfdist}/tex/latex/amsaddr
@@ -8697,7 +8811,6 @@ fi
 %{texmfdist}/tex/latex/autoarea
 %{texmfdist}/tex/latex/autotab
 %{texmfdist}/tex/latex/avantgar
-%{texmfdist}/tex/latex/babelbib
 %{texmfdist}/tex/latex/bangtex
 %{texmfdist}/tex/latex/barcodes
 %{texmfdist}/tex/latex/base
@@ -8712,18 +8825,15 @@ fi
 %{texmfdist}/tex/latex/bibarts
 %{texmfdist}/tex/latex/bibleref
 %{texmfdist}/tex/latex/biblist
-%{texmfdist}/tex/latex/bibtopicprefix
 %{texmfdist}/tex/latex/bigfoot
 %{texmfdist}/tex/latex/bizcard
 %{texmfdist}/tex/latex/blacklettert1
 %{texmfdist}/tex/latex/blindtext
 %{texmfdist}/tex/latex/blowup
 %{texmfdist}/tex/latex/boisik
-%{texmfdist}/tex/latex/boites
 %{texmfdist}/tex/latex/boldtensors
 %{texmfdist}/tex/latex/bookest
 %{texmfdist}/tex/latex/bookhands
-%{texmfdist}/tex/latex/booklet
 %{texmfdist}/tex/latex/bookman
 %{texmfdist}/tex/latex/bophook
 %{texmfdist}/tex/latex/boxhandler
@@ -8731,7 +8841,6 @@ fi
 %{texmfdist}/tex/latex/breakurl
 %{texmfdist}/tex/latex/bridge
 %{texmfdist}/tex/latex/brushscr
-%{texmfdist}/tex/latex/bullcntr
 %{texmfdist}/tex/latex/burmese
 %{texmfdist}/tex/latex/bussproofs
 %{texmfdist}/tex/latex/calrsfs
@@ -8757,9 +8866,7 @@ fi
 %{texmfdist}/tex/latex/citeref
 %{texmfdist}/tex/latex/cjhebrew
 %{texmfdist}/tex/latex/cjk
-%{texmfdist}/tex/latex/cjw
 %{texmfdist}/tex/latex/classicthesis
-%{texmfdist}/tex/latex/clefval
 %{texmfdist}/tex/latex/cleveref
 %{texmfdist}/tex/latex/clock
 %{texmfdist}/tex/latex/clrscode
@@ -8768,24 +8875,16 @@ fi
 %{texmfdist}/tex/latex/cmap
 %{texmfdist}/tex/latex/cmcyralt
 %{texmfdist}/tex/latex/cmdstring
-%{texmfdist}/tex/latex/cmdtrack
-%{texmfdist}/tex/latex/cmll
 %{texmfdist}/tex/latex/cmsd
 %{texmfdist}/tex/latex/codepage
 %{texmfdist}/tex/latex/colorinfo
-%{texmfdist}/tex/latex/colortbl
-%{texmfdist}/tex/latex/combine
 %{texmfdist}/tex/latex/commath
 %{texmfdist}/tex/latex/compactbib
 %{texmfdist}/tex/latex/complexity
 %{texmfdist}/tex/latex/concprog
 %{texmfdist}/tex/latex/confproc
 %{texmfdist}/tex/latex/constants
-%{texmfdist}/tex/latex/contour
 %{texmfdist}/tex/latex/cooking
-%{texmfdist}/tex/latex/cool
-%{texmfdist}/tex/latex/coollist
-%{texmfdist}/tex/latex/coolstr
 %{texmfdist}/tex/latex/courier-scaled
 %{texmfdist}/tex/latex/courier
 %{texmfdist}/tex/latex/courseoutline
@@ -8794,25 +8893,18 @@ fi
 %{texmfdist}/tex/latex/covington
 %{texmfdist}/tex/latex/crop
 %{texmfdist}/tex/latex/crossreference
-%{texmfdist}/tex/latex/crosswrd
 %{texmfdist}/tex/latex/csbulletin
 %{texmfdist}/tex/latex/csquotes
-%{texmfdist}/tex/latex/csvtools
-%{texmfdist}/tex/latex/ctable
 %{texmfdist}/tex/latex/ctib
 %{texmfdist}/tex/latex/cuisine
 %{texmfdist}/tex/latex/cursor
 %{texmfdist}/tex/latex/curve
-%{texmfdist}/tex/latex/curve2e
 %{texmfdist}/tex/latex/cv
 %{texmfdist}/tex/latex/cweb-latex
-%{texmfdist}/tex/latex/cwpuzzle
 %{texmfdist}/tex/latex/cyklop
 %{texmfdist}/tex/latex/dashbox
 %{texmfdist}/tex/latex/dashrule
-%{texmfdist}/tex/latex/datatool
 %{texmfdist}/tex/latex/dateiliste
-%{texmfdist}/tex/latex/datenumber
 %{texmfdist}/tex/latex/datetime
 %{texmfdist}/tex/latex/dcpic
 %{texmfdist}/tex/latex/decimal
@@ -8833,7 +8925,6 @@ fi
 %{texmfdist}/tex/latex/dottex
 %{texmfdist}/tex/latex/doublestroke
 %{texmfdist}/tex/latex/dpfloat
-%{texmfdist}/tex/latex/dprogress
 %{texmfdist}/tex/latex/drac
 %{texmfdist}/tex/latex/draftcopy
 %{texmfdist}/tex/latex/draftwatermark
@@ -9371,6 +9462,7 @@ fi
 %{texmfdist}/bibtex/bst/natbib
 %{texmfdist}/tex/latex/natbib
 %{texmfdist}/tex/latex/bibtopic
+%{texmfdist}/source/latex/bibtopic
 %{texmfdist}/source/latex/bibunits
 %{texmfdist}/tex/latex/bibunits
 %{texmfdist}/source/latex/footbib
@@ -9466,7 +9558,6 @@ fi
 %{texmfdist}/bibtex/bst/aichej
 %{texmfdist}/bibtex/bst/ametsoc
 %{texmfdist}/bibtex/bst/ascelike
-%{texmfdist}/bibtex/bst/babelbib
 %{texmfdist}/bibtex/bst/beebe
 %{texmfdist}/bibtex/bst/bibhtml
 %{texmfdist}/bibtex/bst/chem-journal
@@ -9546,17 +9637,20 @@ fi
 %files latex-booktabs
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/booktabs
+%{texmfdist}/source/latex/booktabs
 %{texmfdist}/tex/latex/booktabs
 
 %files latex-caption
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/caption
 %{texmfdist}/tex/latex/caption
+%{texmfdist}/source/latex/caption
 
 %files latex-carlisle
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/carlisle
 %{texmfdist}/tex/latex/carlisle
+%{texmfdist}/source/latex/carlisle
 
 %files latex-ccfonts
 %defattr(644,root,root,755)
@@ -9582,6 +9676,7 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/comment
 %{texmfdist}/tex/latex/comment
+%{texmfdist}/source/latex/comment
 
 %files latex-concmath
 %defattr(644,root,root,755)
@@ -9595,6 +9690,7 @@ fi
 %files latex-curves
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/curves
+%{texmfdist}/source/latex/curves
 %{texmfdist}/tex/latex/curves
 
 %files latex-custom-bib
@@ -9795,15 +9891,12 @@ fi
 %doc %{texmfdist}/doc/latex/GuIT
 %doc %{texmfdist}/doc/latex/a0poster
 %doc %{texmfdist}/doc/latex/acmtrans
-%doc %{texmfdist}/doc/latex/addlines
 %doc %{texmfdist}/doc/latex/adrlist
 %doc %{texmfdist}/doc/latex/afthesis
 %doc %{texmfdist}/doc/latex/aguplus
 %doc %{texmfdist}/doc/latex/akletter
-%doc %{texmfdist}/doc/latex/alg
 %doc %{texmfdist}/doc/latex/algorithm2e
 %doc %{texmfdist}/doc/latex/algorithmicx
-%doc %{texmfdist}/doc/latex/alnumsec
 %doc %{texmfdist}/doc/latex/altfont
 %doc %{texmfdist}/doc/latex/ametsoc
 %doc %{texmfdist}/doc/latex/amsaddr
@@ -9823,7 +9916,6 @@ fi
 %doc %{texmfdist}/doc/latex/authorindex
 %doc %{texmfdist}/doc/latex/autoarea
 %doc %{texmfdist}/doc/latex/autotab
-%doc %{texmfdist}/doc/latex/babelbib
 %doc %{texmfdist}/doc/latex/bangtex
 %doc %{texmfdist}/doc/latex/barcodes
 %doc %{texmfdist}/doc/latex/bayer
@@ -9834,20 +9926,16 @@ fi
 %doc %{texmfdist}/doc/latex/bibarts
 %doc %{texmfdist}/doc/latex/bibleref
 %doc %{texmfdist}/doc/latex/biblist
-%doc %{texmfdist}/doc/latex/bibtopicprefix
 %doc %{texmfdist}/doc/latex/bigfoot
 %doc %{texmfdist}/doc/latex/bizcard
 %doc %{texmfdist}/doc/latex/blindtext
 %doc %{texmfdist}/doc/latex/blowup
-%doc %{texmfdist}/doc/latex/boites
 %doc %{texmfdist}/doc/latex/boldtensors
 %doc %{texmfdist}/doc/latex/bookest
-%doc %{texmfdist}/doc/latex/booklet
 %doc %{texmfdist}/doc/latex/boxhandler
 %doc %{texmfdist}/doc/latex/braille
 %doc %{texmfdist}/doc/latex/breakurl
 %doc %{texmfdist}/doc/latex/brushscr
-%doc %{texmfdist}/doc/latex/bullcntr
 %doc %{texmfdist}/doc/latex/bussproofs
 %doc %{texmfdist}/doc/latex/calxxxx
 %doc %{texmfdist}/doc/latex/captcont
@@ -9865,7 +9953,6 @@ fi
 %doc %{texmfdist}/doc/latex/cite
 %doc %{texmfdist}/doc/latex/cjk
 %doc %{texmfdist}/doc/latex/classicthesis
-%doc %{texmfdist}/doc/latex/clefval
 %doc %{texmfdist}/doc/latex/cleveref
 %doc %{texmfdist}/doc/latex/clock
 %doc %{texmfdist}/doc/latex/clrscode
@@ -9873,45 +9960,31 @@ fi
 %doc %{texmfdist}/doc/latex/cmap
 %doc %{texmfdist}/doc/latex/cmcyralt
 %doc %{texmfdist}/doc/latex/cmdstring
-%doc %{texmfdist}/doc/latex/cmll
 %doc %{texmfdist}/doc/latex/codepage
 %doc %{texmfdist}/doc/latex/colorinfo
-%doc %{texmfdist}/doc/latex/colortbl
-%doc %{texmfdist}/doc/latex/combine
 %doc %{texmfdist}/doc/latex/commath
 %doc %{texmfdist}/doc/latex/complexity
 %doc %{texmfdist}/doc/latex/concprog
 %doc %{texmfdist}/doc/latex/confproc
 %doc %{texmfdist}/doc/latex/constants
-%doc %{texmfdist}/doc/latex/contour
 %doc %{texmfdist}/doc/latex/cooking
-%doc %{texmfdist}/doc/latex/cool
-%doc %{texmfdist}/doc/latex/coollist
-%doc %{texmfdist}/doc/latex/coolstr
 %doc %{texmfdist}/doc/latex/courier-scaled
 %doc %{texmfdist}/doc/latex/courseoutline
 %doc %{texmfdist}/doc/latex/coursepaper
 %doc %{texmfdist}/doc/latex/coverpage
 %doc %{texmfdist}/doc/latex/covington
 %doc %{texmfdist}/doc/latex/crossreference
-%doc %{texmfdist}/doc/latex/crosswrd
 %doc %{texmfdist}/doc/latex/cryst
 %doc %{texmfdist}/doc/latex/csbulletin
 %doc %{texmfdist}/doc/latex/csquotes
-%doc %{texmfdist}/doc/latex/csvtools
-%doc %{texmfdist}/doc/latex/ctable
 %doc %{texmfdist}/doc/latex/ctib
 %doc %{texmfdist}/doc/latex/cuisine
 %doc %{texmfdist}/doc/latex/cursor
 %doc %{texmfdist}/doc/latex/curve
-%doc %{texmfdist}/doc/latex/curve2e
 %doc %{texmfdist}/doc/latex/cv
 %doc %{texmfdist}/doc/latex/cweb-latex
-%doc %{texmfdist}/doc/latex/cwpuzzle
 %doc %{texmfdist}/doc/latex/dashrule
-%doc %{texmfdist}/doc/latex/datatool
 %doc %{texmfdist}/doc/latex/dateiliste
-%doc %{texmfdist}/doc/latex/datenumber
 %doc %{texmfdist}/doc/latex/datetime
 %doc %{texmfdist}/doc/latex/dcpic
 %doc %{texmfdist}/doc/latex/delimtxt
@@ -9928,7 +10001,6 @@ fi
 %doc %{texmfdist}/doc/latex/dotarrow
 %doc %{texmfdist}/doc/latex/dottex
 %doc %{texmfdist}/doc/latex/dpfloat
-%doc %{texmfdist}/doc/latex/dprogress
 %doc %{texmfdist}/doc/latex/drac
 %doc %{texmfdist}/doc/latex/draftwatermark
 %doc %{texmfdist}/doc/latex/dramatist
@@ -10529,6 +10601,13 @@ fi
 %doc %{texmfdist}/doc/latex/faktor
 %{texmfdist}/source/latex/faktor
 %{texmfdist}/tex/latex/faktor
+%doc %{texmfdist}/doc/latex/cmll
+%{texmfdist}/source/latex/cmll
+%{texmfdist}/fonts/map/dvips/cmll
+%{texmfdist}/fonts/source/public/cmll
+%{texmfdist}/fonts/tfm/public/cmll
+%{texmfdist}/fonts/type1/public/cmll
+%{texmfdist}/tex/latex/cmll
 
 %files latex-physics
 %defattr(644,root,root,755)
@@ -10596,6 +10675,7 @@ fi
 %files latex-informatic
 %defattr(644,root,root,755)
 # LaTeX environments for typesetting algorithms.
+%doc %{texmfdist}/doc/latex/alg
 %{texmfdist}/source/latex/alg
 %{texmfdist}/tex/latex/alg
 # Create illustrations for network protocol specifications.
@@ -10608,6 +10688,9 @@ fi
 %doc %{texmfdist}/doc/latex/backgammon
 %doc %{texmfdist}/doc/latex/chessboard
 %doc %{texmfdist}/doc/latex/chessfss
+%doc %{texmfdist}/doc/latex/cwpuzzle
+%{texmfdist}/tex/latex/cwpuzzle
+%{texmfdist}/source/latex/cwpuzzle
 %{texmfdist}/fonts/enc/dvips/chessfss
 %{texmfdist}/fonts/source/public/backgammon
 %{texmfdist}/fonts/source/public/cchess
@@ -10622,6 +10705,9 @@ fi
 %{texmfdist}/tex/latex/chess
 %{texmfdist}/tex/latex/chessboard
 %{texmfdist}/tex/latex/chessfss
+%doc %{texmfdist}/doc/latex/crosswrd
+%{texmfdist}/source/latex/crosswrd
+%{texmfdist}/tex/latex/crosswrd
 
 %files latex-styles
 %defattr(644,root,root,755)
@@ -10699,18 +10785,83 @@ fi
 
 %files latex-extend
 %defattr(644,root,root,755)
-# Patches and improvements for prosper.
 %doc %{texmfdist}/doc/latex/HA-prosper
 %{texmfdist}/source/latex/HA-prosper
 %{texmfdist}/tex/latex/HA-prosper
-# Horizontal and vertical dashed lines in arrays and tabulars
 %doc %{texmfdist}/doc/latex/arydshln
 %{texmfdist}/source/latex/arydshln
 %{texmfdist}/tex/latex/arydshln
-# Page numbering by chapter.
 %doc %{texmfdist}/doc/latex/chappg
 %{texmfdist}/source/latex/chappg
 %{texmfdist}/tex/latex/chappg
+%doc %{texmfdist}/doc/latex/addlines
+%{texmfdist}/source/latex/addlines
+%{texmfdist}/tex/latex/addlines
+%doc %{texmfdist}/doc/latex/alnumsec
+%{texmfdist}/source/latex/alnumsec
+%{texmfdist}/tex/latex/alnumsec
+%doc %{texmfdist}/doc/latex/babelbib
+%{texmfdist}/source/latex/babelbib
+%{texmfdist}/bibtex/bst/babelbib
+%{texmfdist}/tex/latex/babelbib
+%doc %{texmfdist}/doc/latex/bibtopicprefix
+%{texmfdist}/source/latex/bibtopicprefix
+%{texmfdist}/tex/latex/bibtopicprefix
+%doc %{texmfdist}/doc/latex/boites
+%{texmfdist}/source/latex/boites
+%{texmfdist}/tex/latex/boites
+%{texmfdist}/source/latex/cjw
+%{texmfdist}/tex/latex/cjw
+%doc %{texmfdist}/doc/latex/booklet
+%{texmfdist}/source/latex/booklet
+%{texmfdist}/tex/latex/booklet
+%doc %{texmfdist}/doc/latex/bullcntr
+%{texmfdist}/source/latex/bullcntr
+%{texmfdist}/tex/latex/bullcntr
+%doc %{texmfdist}/doc/latex/clefval
+%{texmfdist}/tex/latex/clefval
+%{texmfdist}/source/latex/clefval
+%doc %{texmfdist}/doc/latex/colortbl
+%{texmfdist}/source/latex/colortbl
+%{texmfdist}/tex/latex/colortbl
+%doc %{texmfdist}/doc/latex/contour
+%{texmfdist}/source/latex/contour
+%{texmfdist}/tex/latex/contour
+%doc %{texmfdist}/doc/latex/combine
+%{texmfdist}/source/latex/combine
+%{texmfdist}/tex/latex/combine
+%doc %{texmfdist}/doc/latex/curve2e
+%{texmfdist}/source/latex/curve2e
+%{texmfdist}/tex/latex/curve2e
+%doc %{texmfdist}/doc/latex/ctable
+%{texmfdist}/source/latex/ctable
+%{texmfdist}/tex/latex/ctable
+
+%files latex-programming
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/cool
+%{texmfdist}/source/latex/cool
+%{texmfdist}/tex/latex/cool
+%doc %{texmfdist}/doc/latex/coolstr
+%{texmfdist}/source/latex/coolstr
+%{texmfdist}/tex/latex/coolstr
+%doc %{texmfdist}/doc/latex/coollist
+%{texmfdist}/source/latex/coollist
+%{texmfdist}/tex/latex/coollist
+%{texmfdist}/source/latex/cmdtrack
+%{texmfdist}/tex/latex/cmdtrack
+%doc %{texmfdist}/doc/latex/datenumber
+%{texmfdist}/source/latex/datenumber
+%{texmfdist}/tex/latex/datenumber
+%doc %{texmfdist}/doc/latex/dprogress
+%{texmfdist}/source/latex/dprogress
+%{texmfdist}/tex/latex/dprogress
+%doc %{texmfdist}/doc/latex/csvtools
+%{texmfdist}/source/latex/csvtools
+%{texmfdist}/tex/latex/csvtools
+%doc %{texmfdist}/doc/latex/datatool
+%{texmfdist}/source/latex/datatool
+%{texmfdist}/tex/latex/datatool
 
 %files latex-other
 %defattr(644,root,root,755)
@@ -10724,36 +10875,39 @@ fi
 %{texmfdist}/source/latex/GuIT
 # Expand acronyms at least once.
 %{texmfdist}/source/latex/acronym
-# A user-friendly wrapper around \enlargethispage.
-%{texmfdist}/source/latex/addlines
 # Using address lists in LaTeX.
 %{texmfdist}/source/latex/adrlist
-# Alphanumeric section numbering.
-%{texmfdist}/source/latex/alnumsec
 # Alternative font handling in LaTeX.
 %{texmfdist}/source/latex/altfont
 # Setting questions (or exercises) and answers.
 %{texmfdist}/source/latex/answers
 # Draw arcs over and under text
 %{texmfdist}/source/latex/arcs
+# Support for IBM "standard ASCII" font.
 %{texmfdist}/source/latex/ascii
+# Calligraphic font for typesetting handwriting.
 %{texmfdist}/source/latex/augie
-%{texmfdist}/source/latex/babelbib
+# Fonts for making barcodes.
 %{texmfdist}/source/latex/barcodes
+# Definitive source of Plain TeX on CTAN.
 %{texmfdist}/source/latex/base
 %{texmfdist}/source/latex/bayer
+# A symbol (dingbat) font and LaTeX macros for its use.
 %{texmfdist}/source/latex/bbding
+# LaTeX support for "blackboard-style" cm fonts.
 %{texmfdist}/source/latex/bbm-macros
 # Free replacement for basic MathTime fonts.
 %{texmfdist}/source/latex/belleek
 %{texmfdist}/source/latex/bengali
 # Use Concrete fonts.
 %{texmfdist}/source/latex/beton
+# "Arts"-style bibliographical information.
 %{texmfdist}/source/latex/bibarts
+# Format bible citations.
 %{texmfdist}/source/latex/bibleref
+# Print a BibTeX database.
 %{texmfdist}/source/latex/biblist
-%{texmfdist}/source/latex/bibtopic
-%{texmfdist}/source/latex/bibtopicprefix
+# Footnotes for critical editions.
 %{texmfdist}/source/latex/bigfoot
 # Typeset business cards.
 %{texmfdist}/source/latex/bizcard
@@ -10761,13 +10915,8 @@ fi
 %{texmfdist}/source/latex/blindtext
 # Upscale or downscale all pages of a document.
 %{texmfdist}/source/latex/blowup
-# Boxes that may break across pages
-%{texmfdist}/source/latex/boites
+# A collection of book-hand fonts.
 %{texmfdist}/source/latex/bookhands
-# Aids for printing simple booklets.
-%{texmfdist}/source/latex/booklet
-# Publication quality tables in LaTeX
-%{texmfdist}/source/latex/booktabs
 # Provides an At-Begin-Page hook.
 %{texmfdist}/source/latex/bophook
 # Flexible Captioning and Deferred Box/List Printing.
@@ -10778,17 +10927,17 @@ fi
 %{texmfdist}/source/latex/breakurl
 # A handwriting script font.
 %{texmfdist}/source/latex/brushscr
-# Display list item counter as regular pattern of bullets.
-%{texmfdist}/source/latex/bullcntr
+# Basic Support for Writing Burmese.
 %{texmfdist}/source/latex/burmese
+# Retain float number across several floats.
 %{texmfdist}/source/latex/captcont
-# Customising captions in floating environments.
-%{texmfdist}/source/latex/caption
-# David Carlisle's small packages.
-%{texmfdist}/source/latex/carlisle
+# Macros for typesetting catechisms.
 %{texmfdist}/source/latex/catechis
+# Continuation headings and legends for floats.
 %{texmfdist}/source/latex/ccaption
+# Support for Concrete text and math fonts in LaTeX.
 %{texmfdist}/source/latex/ccfonts
+# Typeset Creative Commons licence logos.
 %{texmfdist}/source/latex/cclicenses
 # Typeset CD covers.
 %{texmfdist}/source/latex/cd-cover
@@ -10802,53 +10951,25 @@ fi
 %{texmfdist}/source/latex/changes
 # Package for working with complicated folder structures.
 %{texmfdist}/source/latex/chapterfolder
-# A bundle of packages and classes.
-%{texmfdist}/source/latex/cjw
-# Key/value support with a hash.
-%{texmfdist}/source/latex/clefval
 # Automatic cross-reference formatting.
 %{texmfdist}/source/latex/cleveref
 %{texmfdist}/source/latex/cmcyralt
-# Check used commands.
-%{texmfdist}/source/latex/cmdtrack
-# Symbols for linear logic.
-%{texmfdist}/source/latex/cmll
 # Interfaces to the CM Sans Serif Bold fonts.
 %{texmfdist}/source/latex/cmsd
 # Support for variant code pages.
 %{texmfdist}/source/latex/codepage
-# Add colour to LaTeX tables.
-%{texmfdist}/source/latex/colortbl
-# Bundle individual documents into a single document.
-%{texmfdist}/source/latex/combine
-# Selectively include/excludes portions of text.
-%{texmfdist}/source/latex/comment
 # A set of tools for generating conference proceedings.
 %{texmfdist}/source/latex/confproc
 # Automatic numbering of constants.
 %{texmfdist}/source/latex/constants
-# Print a coloured contour around text.
-%{texmfdist}/source/latex/contour
 # Typeset recipes.
 %{texmfdist}/source/latex/cooking
-# COntent-Oriented LaTeX.
-%{texmfdist}/source/latex/cool
-# Manipulate COntent Oriented LaTeX Lists.
-%{texmfdist}/source/latex/coollist
-# String manipulation in LaTeX.
-%{texmfdist}/source/latex/coolstr
 # Automatic cover page creation for scientific papers (with BibTeX data and copyright notice).
 %{texmfdist}/source/latex/coverpage
 # Support for cropmarks.
 %{texmfdist}/source/latex/crop
 # Crossreferences within documents.
 %{texmfdist}/source/latex/crossreference
-# Macros for typesetting crossword puzzles.
-%{texmfdist}/source/latex/crosswrd
-# Reading data from CSV files.
-%{texmfdist}/source/latex/csvtools
-# Easily typeset centered tables.
-%{texmfdist}/source/latex/ctable
 %{texmfdist}/source/latex/ctib
 # Typeset recipes.
 %{texmfdist}/source/latex/cuisine
@@ -10856,23 +10977,13 @@ fi
 %{texmfdist}/source/latex/currvita
 # A class for making curriculum vitae.
 %{texmfdist}/source/latex/curve
-# Extensions for package pict2e.
-%{texmfdist}/source/latex/curve2e
-# Curves for LaTeX picture environment
-%{texmfdist}/source/latex/curves
 %{texmfdist}/source/latex/cweb-latex
-# Typeset crossword puzzles
-%{texmfdist}/source/latex/cwpuzzle
 # Draw dashed boxes.
 %{texmfdist}/source/latex/dashbox
 # Draw dashed rules.
 %{texmfdist}/source/latex/dashrule
-# Tools to load and manipulate data.
-%{texmfdist}/source/latex/datatool
 # Extensions of the \listfiles concept.
 %{texmfdist}/source/latex/dateiliste
-# Convert a date into a number and vice versa.
-%{texmfdist}/source/latex/datenumber
 # Change format of \today with commands for current time.
 %{texmfdist}/source/latex/datetime
 # LaTeX package for the English raised decimal point.
@@ -10893,8 +11004,6 @@ fi
 %{texmfdist}/source/latex/dotseqn
 # Use dot code in LaTeX.
 %{texmfdist}/source/latex/dottex
-# LaTeX-relevant log information for debugging.
-%{texmfdist}/source/latex/dprogress
 # Declare active character substitution, robustly.
 %{texmfdist}/source/latex/drac
 # Identify draft copies.
@@ -10915,17 +11024,22 @@ fi
 %{texmfdist}/source/latex/ecclesiastic
 # A fancy Curriculum Vitae class.
 %{texmfdist}/source/latex/ecv
+# Editorial Notes for LaTeX documents.
 %{texmfdist}/source/latex/ed
 # Typeset scholarly edition.
 %{texmfdist}/source/latex/edmac
+# Multiple series of endnotes for critical editions.
 %{texmfdist}/source/latex/edmargin
+# Adjust the gender of words in a document.
 %{texmfdist}/source/latex/eemeir
+# Traditional style Irish fonts.
 %{texmfdist}/source/latex/eiad
 # Fix uneven spacing around ellipses in LaTeX text mode.
 %{texmfdist}/source/latex/ellipsis
 # Mathematics in Greek texts.
 %{texmfdist}/source/latex/elmath
 %{texmfdist}/source/latex/em
+# "Encapsulate" MetaPost figures in a document.
 %{texmfdist}/source/latex/emp
 # Move floats to the end with markers where they belong.
 %{texmfdist}/source/latex/endfloat
@@ -10954,6 +11068,7 @@ fi
 %{texmfdist}/source/latex/eso-pic
 # Reverse-counting enumerate environment.
 %{texmfdist}/source/latex/etaremune
+# LaTeX macros and fonts for typesetting Amharic.
 %{texmfdist}/source/latex/ethiop
 # UK format dates, with weekday.
 %{texmfdist}/source/latex/eukdate
@@ -11055,18 +11170,23 @@ fi
 %{texmfdist}/source/latex/glossaries
 # Embed Gnuplot commands in LaTeX documents.
 %{texmfdist}/source/latex/gnuplottex
+# Fonts and macros for typesetting go games.
 %{texmfdist}/source/latex/go
+# Standard LaTeX graphics.
 %{texmfdist}/source/latex/graphics
+# Reduce size of PostScript files by not repeating images.
 %{texmfdist}/source/latex/graphicx-psmin
 # Provides ancient Greek day and month names, dates, etc.
 %{texmfdist}/source/latex/greekdates
 # Ancient Greek (Athenian) numbers.
 %{texmfdist}/source/latex/grnumalt
+# Typesetting Greek verbatim.
 %{texmfdist}/source/latex/grverb
 # Hanging paragraphs.
 %{texmfdist}/source/latex/hanging
 # Harvard citation package for use with LaTeX 2e.
 %{texmfdist}/source/latex/harvard
+# Replacement for the LaTeX classes.
 %{texmfdist}/source/latex/hc
 # A class for academic reports, especially PhD theses.
 %{texmfdist}/source/latex/hepthesis
@@ -11080,10 +11200,15 @@ fi
 %{texmfdist}/source/latex/hpsdiss
 # LaTeX support for Croatian documents.
 %{texmfdist}/source/latex/hrlatex
+# Hypertext cross referencing.
 %{texmfdist}/source/latex/hyper
+# Extensive support for hypertext in LaTeX.
 %{texmfdist}/source/latex/hyperref
+# Embed XMP metadata within a LaTeX document.
 %{texmfdist}/source/latex/hyperxmp
+# Disable/enable hypenation.
 %{texmfdist}/source/latex/hyphenat
+# Use the Ibycus 4 Greek font with Babel
 %{texmfdist}/source/latex/ibycus-babel
 # Class for typesetting articles for the ICSV conference.
 %{texmfdist}/source/latex/icsv
@@ -11142,6 +11267,7 @@ fi
 %{texmfdist}/source/latex/layouts
 # Generate random integers.
 %{texmfdist}/source/latex/lcg
+# This package makes available Classic Cyrillic CM fonts
 %{texmfdist}/source/latex/lcyw
 # This package makes available Classic Cyrillic CM fonts
 %{texmfdist}/source/latex/leading
@@ -13109,10 +13235,6 @@ fi
 %{texmfdist}/fonts/type1/public/cm-lgc
 %{texmfdist}/fonts/vf/public/cm-lgc
 
-%{texmfdist}/fonts/map/dvips/cmll
-%{texmfdist}/fonts/source/public/cmll
-%{texmfdist}/fonts/tfm/public/cmll
-%{texmfdist}/fonts/type1/public/cmll
 
 %doc %{texmfdist}/doc/fonts/cmpica
 %{texmfdist}/fonts/source/public/cmpica
