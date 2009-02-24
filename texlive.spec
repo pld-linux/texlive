@@ -2067,14 +2067,18 @@ Extra control of appendices.
 %description latex-appendix -l hu.UTF-8
 Az appendixek nagyobb irányítása.
 
-# %package latex-backgammon # Summary: LaTeX package to documenting
-backgammon games # Summary(hu.UTF-8): LaTeX csomag backgammon játékok
-dokumentálására # Group: Applications/Publishing/TeX #
-Requires(post,postun): %{_bindir}/texhash # Requires: %{name}-latex =
-%{epoch}:%{version}-%{release} # # %description latex-backgammon #
-LaTeX package to documenting backgammon games. # # %description
-latex-backgammon -l hu.UTF-8 # LaTeX csomag backgammon játékok
-dokumentálására
+# %package latex-backgammon
+# Summary: LaTeX package to documenting backgammon games 
+# Summary(hu.UTF-8): LaTeX csomag backgammon játékok dokumentálására 
+# Group: Applications/Publishing/TeX 
+# Requires(post,postun): %{_bindir}/texhash 
+# Requires: %{name}-latex = %{epoch}:%{version}-%{release} 
+# 
+# %description latex-backgammon 
+# LaTeX package to documenting backgammon games. 
+#
+# %description latex-backgammon -l hu.UTF-8 
+# LaTeX csomag backgammon játékok dokumentálására
 
 %package latex-bbm
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
