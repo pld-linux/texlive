@@ -52,6 +52,7 @@ Source1:	ftp://tug.org/texlive/historic/2008/%{name}-20080822-texmf.tar.lzma
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
+Source10:	http://tug.ctan.org/get/macros/latex/contrib/floatflt.zip
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-20080816-kpathsea-ar.patch
 URL:		http://www.tug.org/texlive/
@@ -90,6 +91,7 @@ BuildRequires:	texlive-latex-cyrillic
 BuildRequires:	texlive-tex-babel
 # fill with future texlive BR. guesses ones for now
 %endif
+BuildRequires:	/usr/bin/latex
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libXaw-devel
@@ -2065,18 +2067,14 @@ Extra control of appendices.
 %description latex-appendix -l hu.UTF-8
 Az appendixek nagyobb irányítása.
 
-# %package latex-backgammon
-# Summary:	LaTeX package to documenting backgammon games
-# Summary(hu.UTF-8):	LaTeX csomag backgammon játékok dokumentálására
-# Group:		Applications/Publishing/TeX
-# Requires(post,postun):	%{_bindir}/texhash
-# Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-# 
-# %description latex-backgammon
-# LaTeX package to documenting backgammon games.
-# 
-# %description latex-backgammon -l hu.UTF-8
-# LaTeX csomag backgammon játékok dokumentálására
+# %package latex-backgammon # Summary: LaTeX package to documenting
+backgammon games # Summary(hu.UTF-8): LaTeX csomag backgammon játékok
+dokumentálására # Group: Applications/Publishing/TeX #
+Requires(post,postun): %{_bindir}/texhash # Requires: %{name}-latex =
+%{epoch}:%{version}-%{release} # # %description latex-backgammon #
+LaTeX package to documenting backgammon games. # # %description
+latex-backgammon -l hu.UTF-8 # LaTeX csomag backgammon játékok
+dokumentálására
 
 %package latex-bbm
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
@@ -5570,6 +5568,10 @@ ln -sf ../share/texmf/scripts/texlive/tlmgr.pl tlmgr
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/tmftools tmftools
 ln -sf ../share/texmf-dist/scripts/vpe/vpe.pl vpe
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/xmltools xmltools
+cd $RPM_BUILD_ROOT%{texmfdist}/tex/latex
+unzip %{SOURCE10}
+cd floatflt
+latex floatflt.ins
 cd $CURDIR
 
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
@@ -6098,10 +6100,10 @@ fi
 
 # %post latex-backgammon
 # %texhash
-# 
+#
 # %postun latex-backgammon
 # %texhash
- 
+
 %post latex-bardiag
 %texhash
 
@@ -7822,7 +7824,7 @@ fi
 # %{texmfdist}/doc/latex/bar
 # %{texmfdist}/doc/latex/eclbip
 # %{texmfdist}/doc/latex/eo
-# %{texmfdist}/doc/latex/floatflt
+%{texmfdist}/doc/latex/floatflt
 # %{texmfdist}/doc/latex/general
 # %{texmfdist}/doc/latex/germbib
 # %{texmfdist}/doc/latex/images
@@ -8781,7 +8783,7 @@ fi
 # %{texmfdist}/tex/latex/eo
 # %{texmfdist}/tex/latex/example
 # %{texmfdist}/tex/latex/fguill
-# %{texmfdist}/tex/latex/floatflt
+%{texmfdist}/tex/latex/floatflt
 # %{texmfdist}/tex/latex/gletter
 # %{texmfdist}/tex/latex/here
 # %{texmfdist}/tex/latex/mt11p
