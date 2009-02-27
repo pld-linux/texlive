@@ -2067,18 +2067,14 @@ Extra control of appendices.
 %description latex-appendix -l hu.UTF-8
 Az appendixek nagyobb irányítása.
 
-# %package latex-backgammon
-# Summary: LaTeX package to documenting backgammon games 
-# Summary(hu.UTF-8): LaTeX csomag backgammon játékok dokumentálására 
-# Group: Applications/Publishing/TeX 
-# Requires(post,postun): %{_bindir}/texhash 
-# Requires: %{name}-latex = %{epoch}:%{version}-%{release} 
-# 
-# %description latex-backgammon 
-# LaTeX package to documenting backgammon games. 
-#
-# %description latex-backgammon -l hu.UTF-8 
-# LaTeX csomag backgammon játékok dokumentálására
+# %package latex-backgammon # Summary: LaTeX package to documenting
+backgammon games # Summary(hu.UTF-8): LaTeX csomag backgammon játékok
+dokumentálására # Group: Applications/Publishing/TeX #
+Requires(post,postun): %{_bindir}/texhash # Requires: %{name}-latex =
+%{epoch}:%{version}-%{release} # # %description latex-backgammon #
+LaTeX package to documenting backgammon games. # # %description
+latex-backgammon -l hu.UTF-8 # LaTeX csomag backgammon játékok
+dokumentálására
 
 %package latex-bbm
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
@@ -2770,7 +2766,11 @@ This package contains:
 - contour: print a coloured contour around text.
 - ctable: easily typeset centered tables.
 - curve2e: extensions for package pict2e.
+- dashbox: draw dashed boxes.
+- dashline: draw dashed rules.
+- etaremune: reverse-counting enumerate environment.
 - HA-prosper: patches and improvements for prosper.
+- expdlist: expanded description environments.
 
 %description latex-extend -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -2792,6 +2792,10 @@ Ez a csomag a következőket tartalmazza:
 - contour: színes kontúr nyomtatása szöveg körül
 - ctable: középre igazított táblázatok szedése
 - curve2e: pict2e csomaghoz kiegészítések
+- dashbox: pontozott dobozok
+- dashline: pontozott vonalak
+- etaremune: visszafele sorszámazó enumerate környezet
+- expdlist: kibővített description környezetek
 - HA-prosper: foltok és bővítések a prosper-hez
 
 %package latex-math
@@ -2807,6 +2811,7 @@ This package contains:
 - binomexp: Calculate Pascal's triangle
 - cmll: symbols for linear logic.
 - coordsys: draw cartesian coordinate systems.
+- dotseqn: flush left equations with dotted leaders to the numbers.
 - egplot: encapsulate Gnuplot sources in LaTeX documents.
 - eqlist: description lists with equal indentation.
 - eqnarray: more generalised equation arrays with numbering.
@@ -2814,6 +2819,7 @@ This package contains:
 - esvect: vector arrows.
 - extpfeil: extensible arrows in mathematics
 - faktor: typeset quotient structures with LaTeX.
+- functan: macros for functional analysis and PDE theory
 - permute: support for symmetric groups.
 
 %description latex-math -l hu.UTF-8
@@ -2822,6 +2828,7 @@ Ez a csomag a következőket tartalmazza:
 - binomexp: Pascal-háromszög számítása
 - cmll: szimbólumok lineáris logikához
 - coordsys: Descartes-féle koordinátarendszerek rajzolása
+- dotseqn: TODO
 - egplot: Gnuplot források LaTeX dokumentumokba ágyazása
 - eqlist: leíró lista egyenlő behúzással
 - eqnarray: általánosabb egyenlet-rendszer sorszámozással
@@ -2829,7 +2836,29 @@ Ez a csomag a következőket tartalmazza:
 - esvect: vektornyilak
 - extpfeil: bővíthető nyilak matematikában
 - faktor: hányados struktúrák LaTeX-hel
+- functan: funkcionálanalízés és PDE elmélethez makrók
 - permute: szimmetriacsoportok
+
+%package latex-misc
+Summary:	Misc packages
+Summary(hu.UTF-8):	Vegyes csomagok
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-misc
+This packages contains:
+- cooking: typeset recipes.
+- cuisine: typeset recipes.
+- fixme: insert "fixme" notes into draft documents.
+- recipecard: typeset recipes in note-card-sized boxes.
+
+%description latex-misc -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- cooking: receptek szedése
+- cuisine: receptek szedése
+- fixme: "fixme" megjegyzések elhelyezése
+- recipecard: receptek szedése jegyzet-méretű dobozokba
 
 %package latex-music
 Summary:	Musical packages
@@ -2861,6 +2890,7 @@ This package contains:
 - colorwav: colours by wavelength of visible light.
 - dyntree: construct Dynkin tree diagrams.
 - feynmf: macros and fonts for creating Feynman (and other) diagrams.
+- formula: typesetting physical units.
 
 %description latex-physics -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -2868,6 +2898,7 @@ Ez a csomag a következőket tartalmazza:
 - colorwav: a látható fény színei hullámhossz szerint
 - dyntree: Dynkin fadiagramok készítése
 - feynmf: makrók és fontok Feynman (és más) diagramok készítésére
+- formula: fizikai egységek szedése
 
 %package latex-biology
 Summary:	Biological packages
@@ -3292,7 +3323,14 @@ This package contains:
 - csvtools: reading data from CSV files.
 - datatool: tools to load and manipulate data.
 - datenumber: convert a date into a number and vice versa.
+- delimtxt: read and parse text tables.
+- dialogl: macros for constructing interactive LaTeX scripts.
 - dprogress: LaTeX-relevant log information for debugging.
+- environ: a new interface for environments in LaTeX.
+- fmtcount: display the value of a LaTeX counter in a variety of
+  formats.
+- forarray: using array structures in LaTeX.
+- forloop: iteration in LaTeX.
 
 %description latex-programming -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -3303,7 +3341,13 @@ Ez a csomag a következőket tartalmazza:
 - csvtools: adatok olvasása CSV fájlokból
 - datatool: eszközök adatok beolvasására és manipulációjához
 - datenumber: dátum számmá konvertálása és vissza
+- delimtxt: szöveges táblázatok olvasása és feldolgozása
+- dialogl: interaktív makrók LaTeX-ben
 - dprogress: LaTeX-releváns log információ debuggoláshoz
+- environ: egy új felület környezetek létrehozására
+- fmtcount: LaTeX számlálók megjelenítése különböző formátumokban
+- forarray: tömb struktúrák LaTeX-ben
+- forloop: iteráció LaTeX-ben
 
 %package latex-prosper
 Summary:	LaTeX class for high quality slides
@@ -6004,6 +6048,12 @@ fi
 %texhash
 
 %postun latex-programming
+%texhash
+
+%post latex-misc
+%texhash
+
+%postun latex-misc
 %texhash
 
 %post latex-math
@@ -8928,7 +8978,6 @@ fi
 %{texmfdist}/tex/latex/concprog
 %{texmfdist}/tex/latex/confproc
 %{texmfdist}/tex/latex/constants
-%{texmfdist}/tex/latex/cooking
 %{texmfdist}/tex/latex/courier-scaled
 %{texmfdist}/tex/latex/courier
 %{texmfdist}/tex/latex/courseoutline
@@ -8940,21 +8989,15 @@ fi
 %{texmfdist}/tex/latex/csbulletin
 %{texmfdist}/tex/latex/csquotes
 %{texmfdist}/tex/latex/ctib
-%{texmfdist}/tex/latex/cuisine
 %{texmfdist}/tex/latex/cursor
-%{texmfdist}/tex/latex/curve
 %{texmfdist}/tex/latex/cv
 %{texmfdist}/tex/latex/cweb-latex
 %{texmfdist}/tex/latex/cyklop
-%{texmfdist}/tex/latex/dashbox
-%{texmfdist}/tex/latex/dashrule
 %{texmfdist}/tex/latex/dateiliste
 %{texmfdist}/tex/latex/datetime
 %{texmfdist}/tex/latex/dcpic
 %{texmfdist}/tex/latex/decimal
-%{texmfdist}/tex/latex/delimtxt
 %{texmfdist}/tex/latex/diagnose
-%{texmfdist}/tex/latex/dialogl
 %{texmfdist}/tex/latex/dichokey
 %{texmfdist}/tex/latex/dictsym
 %{texmfdist}/tex/latex/digiconfigs
@@ -8965,7 +9008,6 @@ fi
 %{texmfdist}/tex/latex/doi
 %{texmfdist}/tex/latex/doipubmed
 %{texmfdist}/tex/latex/dotarrow
-%{texmfdist}/tex/latex/dotseqn
 %{texmfdist}/tex/latex/dottex
 %{texmfdist}/tex/latex/doublestroke
 %{texmfdist}/tex/latex/dpfloat
@@ -8985,7 +9027,6 @@ fi
 %{texmfdist}/tex/latex/ecltree
 %{texmfdist}/tex/latex/eco
 %{texmfdist}/tex/latex/economic
-%{texmfdist}/tex/latex/ecv
 %{texmfdist}/tex/latex/ed
 %{texmfdist}/tex/latex/edmargin
 %{texmfdist}/tex/latex/ednotes
@@ -8994,7 +9035,6 @@ fi
 %{texmfdist}/tex/latex/egameps
 %{texmfdist}/tex/latex/eiad
 %{texmfdist}/tex/latex/ellipsis
-%{texmfdist}/tex/latex/elmath
 %{texmfdist}/tex/latex/elpres
 %{texmfdist}/tex/latex/elsevier
 %{texmfdist}/tex/latex/em
@@ -9006,7 +9046,6 @@ fi
 %{texmfdist}/tex/latex/engpron
 %{texmfdist}/tex/latex/engrec
 %{texmfdist}/tex/latex/envbig
-%{texmfdist}/tex/latex/environ
 %{texmfdist}/tex/latex/envlab
 %{texmfdist}/tex/latex/epigrafica
 %{texmfdist}/tex/latex/epigraph
@@ -9017,10 +9056,8 @@ fi
 %{texmfdist}/tex/latex/eqparbox
 %{texmfdist}/tex/latex/errata
 %{texmfdist}/tex/latex/esint
-%{texmfdist}/tex/latex/eskd
 %{texmfdist}/tex/latex/eskdx
 %{texmfdist}/tex/latex/eso-pic
-%{texmfdist}/tex/latex/etaremune
 %{texmfdist}/tex/latex/etex-pkg
 %{texmfdist}/tex/latex/ethiop
 %{texmfdist}/tex/latex/etoolbox
@@ -9037,7 +9074,6 @@ fi
 %{texmfdist}/tex/latex/examplep
 %{texmfdist}/tex/latex/exceltex
 %{texmfdist}/tex/latex/exercise
-%{texmfdist}/tex/latex/expdlist
 %{texmfdist}/tex/latex/expl3
 %{texmfdist}/tex/latex/export
 %{texmfdist}/tex/latex/extarrows
@@ -9059,7 +9095,6 @@ fi
 %{texmfdist}/tex/latex/filecontents
 %{texmfdist}/tex/latex/fink
 %{texmfdist}/tex/latex/fixfoot
-%{texmfdist}/tex/latex/fixme
 %{texmfdist}/tex/latex/flabels
 %{texmfdist}/tex/latex/flacards
 %{texmfdist}/tex/latex/flagderiv
@@ -9069,7 +9104,6 @@ fi
 %{texmfdist}/tex/latex/floatrow
 %{texmfdist}/tex/latex/flowfram
 %{texmfdist}/tex/latex/fmp
-%{texmfdist}/tex/latex/fmtcount
 %{texmfdist}/tex/latex/fnbreak
 %{texmfdist}/tex/latex/fncychap
 %{texmfdist}/tex/latex/foekfont
@@ -9079,9 +9113,6 @@ fi
 %{texmfdist}/tex/latex/fonttable
 %{texmfdist}/tex/latex/footmisc
 %{texmfdist}/tex/latex/footnpag
-%{texmfdist}/tex/latex/forarray
-%{texmfdist}/tex/latex/forloop
-%{texmfdist}/tex/latex/formula
 %{texmfdist}/tex/latex/fouridx
 %{texmfdist}/tex/latex/fourier
 %{texmfdist}/tex/latex/fouriernc
@@ -9094,7 +9125,6 @@ fi
 %{texmfdist}/tex/latex/frontespizio
 %{texmfdist}/tex/latex/fullblck
 %{texmfdist}/tex/latex/fullpict
-%{texmfdist}/tex/latex/functan
 %{texmfdist}/tex/latex/fundus
 %{texmfdist}/tex/latex/gaceta
 %{texmfdist}/tex/latex/galois
@@ -9730,6 +9760,16 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/currvita
 %{texmfdist}/tex/latex/currvita
+%{texmfdist}/source/latex/currvita
+%doc %{texmfdist}/doc/latex/curve
+%{texmfdist}/source/latex/curve
+%{texmfdist}/tex/latex/curve
+%doc %{texmfdist}/doc/latex/ecv
+%{texmfdist}/source/latex/ecv
+%{texmfdist}/tex/latex/ecv
+%doc %{texmfdist}/doc/latex/simplecv
+%{texmfdist}/source/latex/simplecv
+%{texmfdist}/tex/latex/simplecv
 
 %files latex-curves
 %defattr(644,root,root,755)
@@ -9875,6 +9915,21 @@ fi
 %{texmfdist}/source/latex/microtype
 %{texmfdist}/tex/latex/microtype
 
+%files latex-misc
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/fixme
+%{texmfdist}/source/latex/fixme
+%{texmfdist}/tex/latex/fixme
+%doc %{texmfdist}/doc/latex/recipecard
+%{texmfdist}/source/latex/recipecard
+%{texmfdist}/tex/latex/recipecard
+%doc %{texmfdist}/doc/latex/cooking
+%{texmfdist}/source/latex/cooking
+%{texmfdist}/tex/latex/cooking
+%doc %{texmfdist}/doc/latex/cuisine
+%{texmfdist}/source/latex/cuisine
+%{texmfdist}/tex/latex/cuisine
+
 %files latex-mflogo
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/mflogo
@@ -10011,7 +10066,6 @@ fi
 %doc %{texmfdist}/doc/latex/concprog
 %doc %{texmfdist}/doc/latex/confproc
 %doc %{texmfdist}/doc/latex/constants
-%doc %{texmfdist}/doc/latex/cooking
 %doc %{texmfdist}/doc/latex/courier-scaled
 %doc %{texmfdist}/doc/latex/courseoutline
 %doc %{texmfdist}/doc/latex/coursepaper
@@ -10022,18 +10076,13 @@ fi
 %doc %{texmfdist}/doc/latex/csbulletin
 %doc %{texmfdist}/doc/latex/csquotes
 %doc %{texmfdist}/doc/latex/ctib
-%doc %{texmfdist}/doc/latex/cuisine
 %doc %{texmfdist}/doc/latex/cursor
-%doc %{texmfdist}/doc/latex/curve
 %doc %{texmfdist}/doc/latex/cv
 %doc %{texmfdist}/doc/latex/cweb-latex
-%doc %{texmfdist}/doc/latex/dashrule
 %doc %{texmfdist}/doc/latex/dateiliste
 %doc %{texmfdist}/doc/latex/datetime
 %doc %{texmfdist}/doc/latex/dcpic
-%doc %{texmfdist}/doc/latex/delimtxt
 %doc %{texmfdist}/doc/latex/diagnose
-%doc %{texmfdist}/doc/latex/dialogl
 %doc %{texmfdist}/doc/latex/dichokey
 %doc %{texmfdist}/doc/latex/digiconfigs
 %doc %{texmfdist}/doc/latex/din1505
@@ -10059,7 +10108,6 @@ fi
 %doc %{texmfdist}/doc/latex/ebsthesis
 %doc %{texmfdist}/doc/latex/ecclesiastic
 %doc %{texmfdist}/doc/latex/ecltree
-%doc %{texmfdist}/doc/latex/ecv
 %doc %{texmfdist}/doc/latex/ed
 %doc %{texmfdist}/doc/latex/edmac
 %doc %{texmfdist}/doc/latex/edmargin
@@ -10067,7 +10115,6 @@ fi
 %doc %{texmfdist}/doc/latex/eemeir
 %doc %{texmfdist}/doc/latex/egameps
 %doc %{texmfdist}/doc/latex/ellipsis
-%doc %{texmfdist}/doc/latex/elmath
 %doc %{texmfdist}/doc/latex/elpres
 %doc %{texmfdist}/doc/latex/elsevier
 %doc %{texmfdist}/doc/latex/em
@@ -10076,7 +10123,6 @@ fi
 %doc %{texmfdist}/doc/latex/endheads
 %doc %{texmfdist}/doc/latex/engpron
 %doc %{texmfdist}/doc/latex/engrec
-%doc %{texmfdist}/doc/latex/environ
 %doc %{texmfdist}/doc/latex/envlab
 %doc %{texmfdist}/doc/latex/epigraph
 %doc %{texmfdist}/doc/latex/epiolmec
@@ -10084,9 +10130,7 @@ fi
 %doc %{texmfdist}/doc/latex/epspdfconversion
 %doc %{texmfdist}/doc/latex/eqparbox
 %doc %{texmfdist}/doc/latex/errata
-%doc %{texmfdist}/doc/latex/eskd
 %doc %{texmfdist}/doc/latex/eskdx
-%doc %{texmfdist}/doc/latex/etaremune
 %doc %{texmfdist}/doc/latex/etex-pkg
 %doc %{texmfdist}/doc/latex/ethiop-t1
 %doc %{texmfdist}/doc/latex/ethiop
@@ -10100,7 +10144,6 @@ fi
 %doc %{texmfdist}/doc/latex/examplep
 %doc %{texmfdist}/doc/latex/exceltex
 %doc %{texmfdist}/doc/latex/exercise
-%doc %{texmfdist}/doc/latex/expdlist
 %doc %{texmfdist}/doc/latex/expl3
 %doc %{texmfdist}/doc/latex/export
 %doc %{texmfdist}/doc/latex/extarrows
@@ -10114,7 +10157,6 @@ fi
 %doc %{texmfdist}/doc/latex/figsize
 %doc %{texmfdist}/doc/latex/fink
 %doc %{texmfdist}/doc/latex/fixfoot
-%doc %{texmfdist}/doc/latex/fixme
 %doc %{texmfdist}/doc/latex/flabels
 %doc %{texmfdist}/doc/latex/flacards
 %doc %{texmfdist}/doc/latex/flagderiv
@@ -10123,14 +10165,10 @@ fi
 %doc %{texmfdist}/doc/latex/floatrow
 %doc %{texmfdist}/doc/latex/flowfram
 %doc %{texmfdist}/doc/latex/fmp
-%doc %{texmfdist}/doc/latex/fmtcount
 %doc %{texmfdist}/doc/latex/fnbreak
 %doc %{texmfdist}/doc/latex/fncychap
 %doc %{texmfdist}/doc/latex/foekfont
 %doc %{texmfdist}/doc/latex/fonttable
-%doc %{texmfdist}/doc/latex/forarray
-%doc %{texmfdist}/doc/latex/forloop
-%doc %{texmfdist}/doc/latex/formula
 %doc %{texmfdist}/doc/latex/fouridx
 %doc %{texmfdist}/doc/latex/frankenstein
 %doc %{texmfdist}/doc/latex/frenchle
@@ -10139,7 +10177,6 @@ fi
 %doc %{texmfdist}/doc/latex/frontespizio
 %doc %{texmfdist}/doc/latex/fullblck
 %doc %{texmfdist}/doc/latex/fullpict
-%doc %{texmfdist}/doc/latex/functan
 %doc %{texmfdist}/doc/latex/fundus
 %doc %{texmfdist}/doc/latex/gaceta
 %doc %{texmfdist}/doc/latex/galois
@@ -10401,7 +10438,6 @@ fi
 %doc %{texmfdist}/doc/latex/rccol
 %doc %{texmfdist}/doc/latex/rcs
 %doc %{texmfdist}/doc/latex/rcsinfo
-%doc %{texmfdist}/doc/latex/recipecard
 %doc %{texmfdist}/doc/latex/rectopma
 %doc %{texmfdist}/doc/latex/refcheck
 %doc %{texmfdist}/doc/latex/refman
@@ -10449,7 +10485,6 @@ fi
 %doc %{texmfdist}/doc/latex/showexpl
 %doc %{texmfdist}/doc/latex/sides
 %doc %{texmfdist}/doc/latex/siggraph
-%doc %{texmfdist}/doc/latex/simplecv
 %doc %{texmfdist}/doc/latex/simplewick
 %doc %{texmfdist}/doc/latex/skak
 %doc %{texmfdist}/doc/latex/slantsc
@@ -10652,6 +10687,11 @@ fi
 %{texmfdist}/fonts/tfm/public/cmll
 %{texmfdist}/fonts/type1/public/cmll
 %{texmfdist}/tex/latex/cmll
+%{texmfdist}/source/latex/dotseqn
+%{texmfdist}/tex/latex/dotseqn
+%doc %{texmfdist}/doc/latex/functan
+%{texmfdist}/source/latex/functan
+%{texmfdist}/tex/latex/functan
 
 %files latex-physics
 %defattr(644,root,root,755)
@@ -10668,6 +10708,9 @@ fi
 %{texmfdist}/source/latex/feynmf
 %{texmfdist}/tex/latex/feynmf
 %{texmfdist}/metapost/feynmf
+%doc %{texmfdist}/doc/latex/formula
+%{texmfdist}/source/latex/formula
+%{texmfdist}/tex/latex/formula
 
 %files latex-chem
 %defattr(644,root,root,755)
@@ -10816,6 +10859,14 @@ fi
 %doc %{texmfdist}/doc/latex/disser
 %{texmfdist}/tex/latex/disser
 %{texmfdist}/source/latex/disser
+# Mathematics in Greek texts.
+%doc %{texmfdist}/doc/latex/elmath
+%{texmfdist}/source/latex/elmath
+%{texmfdist}/tex/latex/elmath
+# Modern Russian typesetting.
+%doc %{texmfdist}/doc/latex/eskd
+%{texmfdist}/source/latex/eskd
+%{texmfdist}/tex/latex/eskd
 
 %files latex-music
 %defattr(644,root,root,755)
@@ -10880,6 +10931,17 @@ fi
 %doc %{texmfdist}/doc/latex/ctable
 %{texmfdist}/source/latex/ctable
 %{texmfdist}/tex/latex/ctable
+%doc %{texmfdist}/doc/latex/dashrule
+%{texmfdist}/tex/latex/dashrule
+%{texmfdist}/source/latex/dashrule
+%{texmfdist}/tex/latex/dashbox
+%{texmfdist}/source/latex/dashbox
+%doc %{texmfdist}/doc/latex/etaremune
+%{texmfdist}/source/latex/etaremune
+%{texmfdist}/tex/latex/etaremune
+%doc %{texmfdist}/doc/latex/expdlist
+%{texmfdist}/source/latex/expdlist
+%{texmfdist}/tex/latex/expdlist
 
 %files latex-programming
 %defattr(644,root,root,755)
@@ -10906,6 +10968,24 @@ fi
 %doc %{texmfdist}/doc/latex/datatool
 %{texmfdist}/source/latex/datatool
 %{texmfdist}/tex/latex/datatool
+%doc %{texmfdist}/doc/latex/dialogl
+%{texmfdist}/source/latex/dialogl
+%{texmfdist}/tex/latex/dialogl
+%doc %{texmfdist}/doc/latex/delimtxt
+%{texmfdist}/tex/latex/delimtxt
+%{texmfdist}/source/latex/delimtxt
+%doc %{texmfdist}/doc/latex/environ
+%{texmfdist}/source/latex/environ
+%{texmfdist}/tex/latex/environ
+%doc %{texmfdist}/doc/latex/fmtcount
+%{texmfdist}/source/latex/fmtcount
+%{texmfdist}/tex/latex/fmtcount
+%doc %{texmfdist}/doc/latex/forarray
+%{texmfdist}/source/latex/forarray
+%{texmfdist}/tex/latex/forarray
+%doc %{texmfdist}/doc/latex/forloop
+%{texmfdist}/source/latex/forloop
+%{texmfdist}/tex/latex/forloop
 
 %files latex-other
 %defattr(644,root,root,755)
@@ -11006,8 +11086,6 @@ fi
 %{texmfdist}/source/latex/confproc
 # Automatic numbering of constants.
 %{texmfdist}/source/latex/constants
-# Typeset recipes.
-%{texmfdist}/source/latex/cooking
 # Automatic cover page creation for scientific papers (with BibTeX data and copyright notice).
 %{texmfdist}/source/latex/coverpage
 # Support for cropmarks.
@@ -11015,37 +11093,21 @@ fi
 # Crossreferences within documents.
 %{texmfdist}/source/latex/crossreference
 %{texmfdist}/source/latex/ctib
-# Typeset recipes.
-%{texmfdist}/source/latex/cuisine
-# Typeset a curriculum vitae.
-%{texmfdist}/source/latex/currvita
-# A class for making curriculum vitae.
-%{texmfdist}/source/latex/curve
 %{texmfdist}/source/latex/cweb-latex
-# Draw dashed boxes.
-%{texmfdist}/source/latex/dashbox
-# Draw dashed rules.
-%{texmfdist}/source/latex/dashrule
 # Extensions of the \listfiles concept.
 %{texmfdist}/source/latex/dateiliste
 # Change format of \today with commands for current time.
 %{texmfdist}/source/latex/datetime
 # LaTeX package for the English raised decimal point.
 %{texmfdist}/source/latex/decimal
-# Read and parse text tables.
-%{texmfdist}/source/latex/delimtxt
 # A diagnostic tool for a TeX installation.
 %{texmfdist}/source/latex/diagnose
-# Macros for constructing interactive LaTeX scripts.
-%{texmfdist}/source/latex/dialogl
 # Document non-LaTeX code.
 %{texmfdist}/source/latex/docmfp
 # Special commands for use in bibliographies.
 %{texmfdist}/source/latex/doipubmed
 # Extendable dotted arrows.
 %{texmfdist}/source/latex/dotarrow
-# Flush left equations with dotted leaders to the numbers.
-%{texmfdist}/source/latex/dotseqn
 # Use dot code in LaTeX.
 %{texmfdist}/source/latex/dottex
 # Declare active character substitution, robustly.
@@ -11066,8 +11128,6 @@ fi
 %{texmfdist}/source/latex/ebsthesis
 # Typesetting Ecclesiastic Latin.
 %{texmfdist}/source/latex/ecclesiastic
-# A fancy Curriculum Vitae class.
-%{texmfdist}/source/latex/ecv
 # Editorial Notes for LaTeX documents.
 %{texmfdist}/source/latex/ed
 # Typeset scholarly edition.
@@ -11080,8 +11140,6 @@ fi
 %{texmfdist}/source/latex/eiad
 # Fix uneven spacing around ellipses in LaTeX text mode.
 %{texmfdist}/source/latex/ellipsis
-# Mathematics in Greek texts.
-%{texmfdist}/source/latex/elmath
 %{texmfdist}/source/latex/em
 # "Encapsulate" MetaPost figures in a document.
 %{texmfdist}/source/latex/emp
@@ -11093,8 +11151,6 @@ fi
 %{texmfdist}/source/latex/engpron
 # Enumerate with lower- or uppercase Greek letters.
 %{texmfdist}/source/latex/engrec
-# A new interface for environments in LaTeX.
-%{texmfdist}/source/latex/environ
 # Addresses on envelopes or mailing labels.
 %{texmfdist}/source/latex/envlab
 # A package for typesetting epigraphs.
@@ -11106,12 +11162,8 @@ fi
 %{texmfdist}/source/latex/eqparbox
 # Error markup for LaTeX documents.
 %{texmfdist}/source/latex/errata
-# Modern Russian typesetting.
-%{texmfdist}/source/latex/eskd
 # Add picture commands (or backgrounds) to every page.
 %{texmfdist}/source/latex/eso-pic
-# Reverse-counting enumerate environment.
-%{texmfdist}/source/latex/etaremune
 # LaTeX macros and fonts for typesetting Amharic.
 %{texmfdist}/source/latex/ethiop
 # UK format dates, with weekday.
@@ -11126,8 +11178,6 @@ fi
 %{texmfdist}/source/latex/everypage
 # Typeset exercises, problems, etc. and their answers
 %{texmfdist}/source/latex/exercise
-# Expanded description environments.
-%{texmfdist}/source/latex/expdlist
 # Packages showing a proposed LaTeX3 programming convention.
 %{texmfdist}/source/latex/expl3
 # Import and export values of LaTeX registers.
@@ -11150,8 +11200,6 @@ fi
 %{texmfdist}/source/latex/filecontents
 # The LaTeX2e File Name Keeper.
 %{texmfdist}/source/latex/fink
-# Insert "fixme" notes into draft documents.
-%{texmfdist}/source/latex/fixme
 # Labels for files and folders.
 %{texmfdist}/source/latex/flabels
 # Flag style derivation package
@@ -11168,8 +11216,6 @@ fi
 %{texmfdist}/source/latex/flowfram
 # Include Functional MetaPost in LaTeX.
 %{texmfdist}/source/latex/fmp
-# Display the value of a LaTeX counter in a variety of formats.
-%{texmfdist}/source/latex/fmtcount
 # Warn for split footnotes.
 %{texmfdist}/source/latex/fnbreak
 # Interface between foiltex and LaTeX2HTML.
@@ -11180,12 +11226,6 @@ fi
 %{texmfdist}/source/latex/footmisc
 # Per-page numbering of footnotes.
 %{texmfdist}/source/latex/footnpag
-# Using array structures in LaTeX.
-%{texmfdist}/source/latex/forarray
-# Iteration in LaTeX.
-%{texmfdist}/source/latex/forloop
-# Typesetting physical units.
-%{texmfdist}/source/latex/formula
 # Left sub- and superscripts in maths mode.
 %{texmfdist}/source/latex/fouridx
 # A collection of LaTeX packages.
@@ -11194,8 +11234,6 @@ fi
 %{texmfdist}/source/latex/frontespizio
 # Left-blocking for letter class.
 %{texmfdist}/source/latex/fullblck
-# Macros for functional analysis and PDE theory
-%{texmfdist}/source/latex/functan
 %{texmfdist}/source/latex/fundus
 %{texmfdist}/source/latex/g-brief
 # Typeset Galois connections.
@@ -11602,8 +11640,6 @@ fi
 %{texmfdist}/source/latex/rcs
 # Support for the revision control system.
 %{texmfdist}/source/latex/rcsinfo
-# Typeset recipes in note-card-sized boxes.
-%{texmfdist}/source/latex/recipecard
 # Format technical reference manuals.
 %{texmfdist}/source/latex/refman
 # Advanced formatting of cross references.
@@ -11676,8 +11712,6 @@ fi
 %{texmfdist}/source/latex/sidecap
 # SIGGRAPH conference class.
 %{texmfdist}/source/latex/siggraph
-# A simple class for writing curricula vitae.
-%{texmfdist}/source/latex/simplecv
 # Simple Wick contractions.
 %{texmfdist}/source/latex/simplewick
 # A font to draw a skull.
@@ -12100,7 +12134,6 @@ fi
 %{texmfdist}/tex/latex/rccol
 %{texmfdist}/tex/latex/rcs
 %{texmfdist}/tex/latex/rcsinfo
-%{texmfdist}/tex/latex/recipecard
 %{texmfdist}/tex/latex/rectopma
 %{texmfdist}/tex/latex/refcheck
 %{texmfdist}/tex/latex/refman
@@ -12153,7 +12186,6 @@ fi
 %{texmfdist}/tex/latex/showexpl
 %{texmfdist}/tex/latex/sides
 %{texmfdist}/tex/latex/siggraph
-%{texmfdist}/tex/latex/simplecv
 %{texmfdist}/tex/latex/simplewick
 %{texmfdist}/tex/latex/skak
 %{texmfdist}/tex/latex/skull
