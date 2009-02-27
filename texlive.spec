@@ -5636,6 +5636,9 @@ cd $RPM_BUILD_ROOT%{texmfdist}/tex/latex
 unzip %{SOURCE10}
 cd floatflt
 latex floatflt.ins
+%{__rm} *.log
+install -d $RPM_BUILD_ROOT%{texmfdist}/doc/latex/floatflt
+%{__mv} *.txt *.tex *.pdf README $RPM_BUILD_ROOT%{texmfdist}/doc/latex/floatflt
 cd $CURDIR
 
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
