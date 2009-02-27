@@ -2734,10 +2734,10 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex
 
 %description latex-games
-Chess, chinese chess, crosswords, go and backgammon.
+Chess, chinese chess, crosswords, go, backgammon and more.
 
 %description latex-games -l hu.UTF-8
-Sakk, kínai sakk, keresztrejtvények, go és backgammon.
+Sakk, kínai sakk, keresztrejtvények, go, backgammon és még sok más.
 
 %package latex-extend
 Summary:	Extensions, patches, improvements of main LaTeX styles, environments
@@ -2804,6 +2804,8 @@ Summary(hu.UTF-8):	Matematikai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex
+# gnuplottex needs gnuplot
+Requires:	gnuplot
 
 %description latex-math
 This package contains:
@@ -2819,7 +2821,12 @@ This package contains:
 - esvect: vector arrows.
 - extpfeil: extensible arrows in mathematics
 - faktor: typeset quotient structures with LaTeX.
+- fouridx: left sub- and superscripts in maths mode.
 - functan: macros for functional analysis and PDE theory
+- galois: typeset Galois connections.
+- gnuplottex: embed Gnuplot commands in LaTeX documents.
+- hhtensor: print vectors, matrices, and tensors.
+- noitcrul: improved underlines in mathematics.
 - permute: support for symmetric groups.
 
 %description latex-math -l hu.UTF-8
@@ -2836,7 +2843,12 @@ Ez a csomag a következőket tartalmazza:
 - esvect: vektornyilak
 - extpfeil: bővíthető nyilak matematikában
 - faktor: hányados struktúrák LaTeX-hel
+- fouridx: alsó és felső indexek bal oldalon matematikai módban
 - functan: funkcionálanalízés és PDE elmélethez makrók
+- galois: Galois kapcsolatok szedése
+- gnuplottex: Gnuplot parancsok beágyazása LaTeX dokumentumokba
+- hhtensor: vetkorok, mátrixok és tenzorok nyomtatása
+- noitcrul: kibővített aláhúzások matematikában
 - permute: szimmetriacsoportok
 
 %package latex-misc
@@ -2891,6 +2903,7 @@ This package contains:
 - dyntree: construct Dynkin tree diagrams.
 - feynmf: macros and fonts for creating Feynman (and other) diagrams.
 - formula: typesetting physical units.
+- isotope: a package for type setting isotopes
 
 %description latex-physics -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -2899,6 +2912,7 @@ Ez a csomag a következőket tartalmazza:
 - dyntree: Dynkin fadiagramok készítése
 - feynmf: makrók és fontok Feynman (és más) diagramok készítésére
 - formula: fizikai egységek szedése
+- isotope: izotópok szedése
 
 %package latex-biology
 Summary:	Biological packages
@@ -3331,6 +3345,7 @@ This package contains:
   formats.
 - forarray: using array structures in LaTeX.
 - forloop: iteration in LaTeX.
+- labelcas: check the existence of labels, and fork accordingly.
 
 %description latex-programming -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -3348,6 +3363,7 @@ Ez a csomag a következőket tartalmazza:
 - fmtcount: LaTeX számlálók megjelenítése különböző formátumokban
 - forarray: tömb struktúrák LaTeX-ben
 - forloop: iteráció LaTeX-ben
+- labelcas: cimkék létezésének ellenőrzése
 
 %package latex-prosper
 Summary:	LaTeX class for high quality slides
@@ -9113,7 +9129,6 @@ fi
 %{texmfdist}/tex/latex/fonttable
 %{texmfdist}/tex/latex/footmisc
 %{texmfdist}/tex/latex/footnpag
-%{texmfdist}/tex/latex/fouridx
 %{texmfdist}/tex/latex/fourier
 %{texmfdist}/tex/latex/fouriernc
 %{texmfdist}/tex/latex/fp
@@ -9127,7 +9142,6 @@ fi
 %{texmfdist}/tex/latex/fullpict
 %{texmfdist}/tex/latex/fundus
 %{texmfdist}/tex/latex/gaceta
-%{texmfdist}/tex/latex/galois
 %{texmfdist}/tex/latex/gastex
 %{texmfdist}/tex/latex/gatech-thesis
 %{texmfdist}/tex/latex/gauss
@@ -9146,7 +9160,6 @@ fi
 %{texmfdist}/tex/latex/gfsneohellenic
 %{texmfdist}/tex/latex/gfsporson
 %{texmfdist}/tex/latex/gfssolomos
-%{texmfdist}/tex/latex/ginpenc
 %{texmfdist}/tex/latex/gloss
 %{texmfdist}/tex/latex/glossaries
 %{texmfdist}/tex/latex/gmdoc
@@ -9154,8 +9167,6 @@ fi
 %{texmfdist}/tex/latex/gmiflink
 %{texmfdist}/tex/latex/gmutils
 %{texmfdist}/tex/latex/gmverb
-%{texmfdist}/tex/latex/gnuplottex
-%{texmfdist}/tex/latex/go
 %{texmfdist}/tex/latex/graphics
 %{texmfdist}/tex/latex/graphicx-psmin
 %{texmfdist}/tex/latex/greek-inputenc
@@ -9181,12 +9192,10 @@ fi
 %{texmfdist}/tex/latex/hepunits
 %{texmfdist}/tex/latex/hexgame
 %{texmfdist}/tex/latex/hfoldsty
-%{texmfdist}/tex/latex/hhtensor
 %{texmfdist}/tex/latex/hilowres
 %{texmfdist}/tex/latex/histogr
 %{texmfdist}/tex/latex/hitec
 %{texmfdist}/tex/latex/hpsdiss
-%{texmfdist}/tex/latex/hrlatex
 %{texmfdist}/tex/latex/hvfloat
 %{texmfdist}/tex/latex/hypdvips
 %{texmfdist}/tex/latex/hyper
@@ -9217,11 +9226,9 @@ fi
 %{texmfdist}/tex/latex/isodoc
 %{texmfdist}/tex/latex/isonums
 %{texmfdist}/tex/latex/isorot
-%{texmfdist}/tex/latex/isotope
 %{texmfdist}/tex/latex/itnumpar
 %{texmfdist}/tex/latex/itrans
 %{texmfdist}/tex/latex/iwona
-%{texmfdist}/tex/latex/jeopardy
 %{texmfdist}/tex/latex/jhep
 %{texmfdist}/tex/latex/jknapltx
 %{texmfdist}/tex/latex/jneurosci
@@ -9845,6 +9852,7 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/lastpage
 %{texmfdist}/tex/latex/lastpage
+%{texmfdist}/source/latex/lastpage
 
 %files latex-lcd
 %defattr(644,root,root,755)
@@ -10169,7 +10177,6 @@ fi
 %doc %{texmfdist}/doc/latex/fncychap
 %doc %{texmfdist}/doc/latex/foekfont
 %doc %{texmfdist}/doc/latex/fonttable
-%doc %{texmfdist}/doc/latex/fouridx
 %doc %{texmfdist}/doc/latex/frankenstein
 %doc %{texmfdist}/doc/latex/frenchle
 %doc %{texmfdist}/doc/latex/fribrief
@@ -10179,7 +10186,6 @@ fi
 %doc %{texmfdist}/doc/latex/fullpict
 %doc %{texmfdist}/doc/latex/fundus
 %doc %{texmfdist}/doc/latex/gaceta
-%doc %{texmfdist}/doc/latex/galois
 %doc %{texmfdist}/doc/latex/gastex
 %doc %{texmfdist}/doc/latex/gatech-thesis
 %doc %{texmfdist}/doc/latex/gauss
@@ -10188,7 +10194,6 @@ fi
 %doc %{texmfdist}/doc/latex/gcite
 %doc %{texmfdist}/doc/latex/genmpage
 %doc %{texmfdist}/doc/latex/geomsty
-%doc %{texmfdist}/doc/latex/ginpenc
 %doc %{texmfdist}/doc/latex/gloss
 %doc %{texmfdist}/doc/latex/glossaries
 %doc %{texmfdist}/doc/latex/gmdoc
@@ -10196,7 +10201,6 @@ fi
 %doc %{texmfdist}/doc/latex/gmiflink
 %doc %{texmfdist}/doc/latex/gmutils
 %doc %{texmfdist}/doc/latex/gmverb
-%doc %{texmfdist}/doc/latex/gnuplottex
 %doc %{texmfdist}/doc/latex/graphicx-psmin
 %doc %{texmfdist}/doc/latex/greek-inputenc
 %doc %{texmfdist}/doc/latex/greekdates
@@ -10218,11 +10222,9 @@ fi
 %doc %{texmfdist}/doc/latex/hepthesis
 %doc %{texmfdist}/doc/latex/hepunits
 %doc %{texmfdist}/doc/latex/hexgame
-%doc %{texmfdist}/doc/latex/hhtensor
 %doc %{texmfdist}/doc/latex/histogr
 %doc %{texmfdist}/doc/latex/hitec
 %doc %{texmfdist}/doc/latex/hpsdiss
-%doc %{texmfdist}/doc/latex/hrlatex
 %doc %{texmfdist}/doc/latex/hvfloat
 %doc %{texmfdist}/doc/latex/hypdvips
 %doc %{texmfdist}/doc/latex/hyperref-docsrc
@@ -10248,7 +10250,6 @@ fi
 %doc %{texmfdist}/doc/latex/isodoc
 %doc %{texmfdist}/doc/latex/isorot
 %doc %{texmfdist}/doc/latex/itnumpar
-%doc %{texmfdist}/doc/latex/jeopardy
 %doc %{texmfdist}/doc/latex/jknapltx
 %doc %{texmfdist}/doc/latex/jneurosci
 %doc %{texmfdist}/doc/latex/jpsj
@@ -10260,7 +10261,6 @@ fi
 %doc %{texmfdist}/doc/latex/kerkis
 %doc %{texmfdist}/doc/latex/kerntest
 %doc %{texmfdist}/doc/latex/kluwer
-%doc %{texmfdist}/doc/latex/labelcas
 %doc %{texmfdist}/doc/latex/lazylist
 %doc %{texmfdist}/doc/latex/lcyw
 %doc %{texmfdist}/doc/latex/leading
@@ -10349,7 +10349,6 @@ fi
 %doc %{texmfdist}/doc/latex/newvbtm
 %doc %{texmfdist}/doc/latex/niceframe
 %doc %{texmfdist}/doc/latex/nih
-%doc %{texmfdist}/doc/latex/noitcrul
 %doc %{texmfdist}/doc/latex/nomentbl
 %doc %{texmfdist}/doc/latex/nonfloat
 %doc %{texmfdist}/doc/latex/nostarch
@@ -10692,6 +10691,21 @@ fi
 %doc %{texmfdist}/doc/latex/functan
 %{texmfdist}/source/latex/functan
 %{texmfdist}/tex/latex/functan
+%doc %{texmfdist}/doc/latex/galois
+%{texmfdist}/source/latex/galois
+%{texmfdist}/tex/latex/galois
+%doc %{texmfdist}/doc/latex/gnuplottex
+%{texmfdist}/source/latex/gnuplottex
+%{texmfdist}/tex/latex/gnuplottex
+%doc %{texmfdist}/doc/latex/hhtensor
+%{texmfdist}/source/latex/hhtensor
+%{texmfdist}/tex/latex/hhtensor
+%doc %{texmfdist}/doc/latex/fouridx
+%{texmfdist}/source/latex/fouridx
+%{texmfdist}/tex/latex/fouridx
+%doc %{texmfdist}/doc/latex/noitcrul
+%{texmfdist}/source/latex/noitcrul
+%{texmfdist}/tex/latex/noitcrul
 
 %files latex-physics
 %defattr(644,root,root,755)
@@ -10711,6 +10725,8 @@ fi
 %doc %{texmfdist}/doc/latex/formula
 %{texmfdist}/source/latex/formula
 %{texmfdist}/tex/latex/formula
+%{texmfdist}/source/latex/isotope
+%{texmfdist}/tex/latex/isotope
 
 %files latex-chem
 %defattr(644,root,root,755)
@@ -10795,6 +10811,13 @@ fi
 %doc %{texmfdist}/doc/latex/crosswrd
 %{texmfdist}/source/latex/crosswrd
 %{texmfdist}/tex/latex/crosswrd
+%doc %{texmfdist}/doc/latex/jeopardy
+%{texmfdist}/tex/latex/jeopardy
+%{texmfdist}/source/latex/jeopardy
+%{texmfdist}/tex/latex/go
+%{texmfdist}/source/latex/go
+%{texmfdist}/fonts/source/public/go
+%{texmfdist}/fonts/tfm/public/go
 
 %files latex-styles
 %defattr(644,root,root,755)
@@ -10867,6 +10890,14 @@ fi
 %doc %{texmfdist}/doc/latex/eskd
 %{texmfdist}/source/latex/eskd
 %{texmfdist}/tex/latex/eskd
+# Modification of inputenc for German.
+%doc %{texmfdist}/doc/latex/ginpenc
+%{texmfdist}/source/latex/ginpenc
+%{texmfdist}/tex/latex/ginpenc
+# LaTeX support for Croatian documents.
+%doc %{texmfdist}/doc/latex/hrlatex
+%{texmfdist}/source/latex/hrlatex
+%{texmfdist}/tex/latex/hrlatex
 
 %files latex-music
 %defattr(644,root,root,755)
@@ -10986,6 +11017,9 @@ fi
 %doc %{texmfdist}/doc/latex/forloop
 %{texmfdist}/source/latex/forloop
 %{texmfdist}/tex/latex/forloop
+%doc %{texmfdist}/doc/latex/labelcas
+%{texmfdist}/source/latex/labelcas
+%{texmfdist}/tex/latex/labelcas
 
 %files latex-other
 %defattr(644,root,root,755)
@@ -11226,8 +11260,6 @@ fi
 %{texmfdist}/source/latex/footmisc
 # Per-page numbering of footnotes.
 %{texmfdist}/source/latex/footnpag
-# Left sub- and superscripts in maths mode.
-%{texmfdist}/source/latex/fouridx
 # A collection of LaTeX packages.
 %{texmfdist}/source/latex/frankenstein
 # Create a frontispiece for Italian theses.
@@ -11236,8 +11268,6 @@ fi
 %{texmfdist}/source/latex/fullblck
 %{texmfdist}/source/latex/fundus
 %{texmfdist}/source/latex/g-brief
-# Typeset Galois connections.
-%{texmfdist}/source/latex/galois
 # Citations in a reader-friendly style.
 %{texmfdist}/source/latex/gcite
 # Generalization of LaTeX's minipages.
@@ -11246,14 +11276,8 @@ fi
 %{texmfdist}/source/latex/geometry
 # Macros used in typesetting a geometry book.
 %{texmfdist}/source/latex/geomsty
-# Modification of inputenc for German.
-%{texmfdist}/source/latex/ginpenc
 # Create glossaries and lists of acronyms.
 %{texmfdist}/source/latex/glossaries
-# Embed Gnuplot commands in LaTeX documents.
-%{texmfdist}/source/latex/gnuplottex
-# Fonts and macros for typesetting go games.
-%{texmfdist}/source/latex/go
 # Standard LaTeX graphics.
 %{texmfdist}/source/latex/graphics
 # Reduce size of PostScript files by not repeating images.
@@ -11272,16 +11296,12 @@ fi
 %{texmfdist}/source/latex/hc
 # A class for academic reports, especially PhD theses.
 %{texmfdist}/source/latex/hepthesis
-# Print vectors, matrices, and tensors.
-%{texmfdist}/source/latex/hhtensor
 # Support high and low resolution versions of same picture
 %{texmfdist}/source/latex/hilowres
 # Draw histograms with the LaTeX picture environment.
 %{texmfdist}/source/latex/histogr
 # A dissertation class.
 %{texmfdist}/source/latex/hpsdiss
-# LaTeX support for Croatian documents.
-%{texmfdist}/source/latex/hrlatex
 # Hypertext cross referencing.
 %{texmfdist}/source/latex/hyper
 # Extensive support for hypertext in LaTeX.
@@ -11318,12 +11338,8 @@ fi
 %{texmfdist}/source/latex/isodoc
 # Rotation of document elements.
 %{texmfdist}/source/latex/isorot
-# A package for type setting isotopes
-%{texmfdist}/source/latex/isotope
 # Spell numbers in words (Italian).
 %{texmfdist}/source/latex/itnumpar
-# Build a jeopardy game in LaTeX.
-%{texmfdist}/source/latex/jeopardy
 # A document class for German legal texts.
 %{texmfdist}/source/latex/jura
 # Abbreviations for typesetting (German) juridical documents.
@@ -11337,12 +11353,8 @@ fi
 %{texmfdist}/source/latex/kluwer
 # A bundle of versatile classes and packages
 %{texmfdist}/source/latex/koma-script
-# Check the existence of labels, and fork accordingly.
-%{texmfdist}/source/latex/labelcas
 # Print sheets of sticky labels.
 %{texmfdist}/source/latex/labels
-# Reference last page for Page N of M type footers.
-%{texmfdist}/source/latex/lastpage
 # A structured copy of the LaTeX distribution.
 %{texmfdist}/source/latex/latex-tds
 # Display various elements of a document's layout.
@@ -11491,8 +11503,6 @@ fi
 %{texmfdist}/source/latex/newvbtm
 # Support for fancy frames.
 %{texmfdist}/source/latex/niceframe
-# Improved underlines in mathematics.
-%{texmfdist}/source/latex/noitcrul
 # Produce lists of symbols as in nomenclature.
 %{texmfdist}/source/latex/nomencl
 # Nomenclature typeset in a longtable
@@ -11955,7 +11965,6 @@ fi
 %{texmfdist}/tex/latex/kluwer
 %{texmfdist}/tex/latex/kpfonts
 %{texmfdist}/tex/latex/kurier
-%{texmfdist}/tex/latex/labelcas
 %{texmfdist}/tex/latex/lazylist
 %{texmfdist}/tex/latex/lcg
 %{texmfdist}/tex/latex/lcyw
@@ -12039,7 +12048,6 @@ fi
 %{texmfdist}/tex/latex/newvbtm
 %{texmfdist}/tex/latex/niceframe
 %{texmfdist}/tex/latex/nih
-%{texmfdist}/tex/latex/noitcrul
 %{texmfdist}/tex/latex/nomentbl
 %{texmfdist}/tex/latex/nonfloat
 %{texmfdist}/tex/latex/nostarch
@@ -13551,8 +13559,6 @@ fi
 %{texmfdist}/fonts/type1/public/gfssolomos
 %{texmfdist}/fonts/vf/public/gfssolomos
 
-%{texmfdist}/fonts/source/public/go
-%{texmfdist}/fonts/tfm/public/go
 
 %doc %{texmfdist}/doc/fonts/greenpoint
 %{texmfdist}/fonts/source/public/greenpoint
