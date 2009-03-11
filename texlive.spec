@@ -5588,7 +5588,7 @@ lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 rmdir $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pgfplots
 # imho it is unneeded
 %{__rm} -r $RPM_BUILD_ROOT%{texmfdist}/doc/fonts/{ec,fc,utopia}
-%{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/cef{5,c,s}conv
+%{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/cefconv
 
 # This is an empty directory
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf
