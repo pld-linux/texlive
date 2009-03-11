@@ -2798,6 +2798,35 @@ Ez a csomag a következőket tartalmazza:
 - expdlist: kibővített description környezetek
 - HA-prosper: foltok és bővítések a prosper-hez
 
+%package latex-effects
+Summary:	Additional effects to fonts, texts...
+Summary(hu.UTF-8):	További effektek betűkhöz, szövegekhez,...
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-effects
+This package contains:
+- arcs: draw arcs over and under text
+- blowup: upscale or downscale all pages of a document.
+- changebar: generate changebars in LaTeX documents.
+- draftwatermark: put a grey textual watermark on document pages.
+- flippdf: horizontal flipping of pages with pdfLaTeX.
+- flowfram: create text frames for posters, brochures or magazines.
+- isorot: rotation of document elements.
+- lettrine: typeset dropped capitals.
+
+%description latex-effects -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- arcs: ívek rajzolása szöveg fölé és alá
+- blowup: a dokumentum összes oldalának nagyítása vagy kicsinyítése
+- changebar: oldalsávok készítése LaTeX dokumentumokban
+- draftwatermark: szürke szöveges vízjel a dokumentum oldalaira
+- flippdf: oldalak vízszintes tükrözése pdfLaTeX-hel
+- flowfram: szövegkeretek poszterekhez, brossúrákhoz vagy magazinokhoz
+- isorot: dokumentum-elemek forgatása
+- lettrine: ejtett kapitálisok szedése
+
 %package latex-math
 Summary:	Mathematical packages
 Summary(hu.UTF-8):	Matematikai csomagok
@@ -2812,6 +2841,7 @@ This package contains:
 - bez123: Support for Bezier curves.
 - binomexp: Calculate Pascal's triangle
 - cmll: symbols for linear logic.
+- constants: automatic numbering of constants.
 - coordsys: draw cartesian coordinate systems.
 - dotseqn: flush left equations with dotted leaders to the numbers.
 - egplot: encapsulate Gnuplot sources in LaTeX documents.
@@ -2834,6 +2864,7 @@ Ez a csomag a következőket tartalmazza:
 - bez123: Bezier-görbék
 - binomexp: Pascal-háromszög számítása
 - cmll: szimbólumok lineáris logikához
+- constants: változók automatikus sorszámozása
 - coordsys: Descartes-féle koordinátarendszerek rajzolása
 - dotseqn: TODO
 - egplot: Gnuplot források LaTeX dokumentumokba ágyazása
@@ -3341,11 +3372,14 @@ This package contains:
 - dialogl: macros for constructing interactive LaTeX scripts.
 - dprogress: LaTeX-relevant log information for debugging.
 - environ: a new interface for environments in LaTeX.
+- export: import and export values of LaTeX registers.
 - fmtcount: display the value of a LaTeX counter in a variety of
   formats.
 - forarray: using array structures in LaTeX.
 - forloop: iteration in LaTeX.
+- inversepath: calculate inverse file paths.
 - labelcas: check the existence of labels, and fork accordingly.
+- lcg: generate random integers.
 
 %description latex-programming -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -3359,11 +3393,14 @@ Ez a csomag a következőket tartalmazza:
 - delimtxt: szöveges táblázatok olvasása és feldolgozása
 - dialogl: interaktív makrók LaTeX-ben
 - dprogress: LaTeX-releváns log információ debuggoláshoz
+- export: LaTeX regiszterek értékeinek importálása és exportálása
 - environ: egy új felület környezetek létrehozására
 - fmtcount: LaTeX számlálók megjelenítése különböző formátumokban
 - forarray: tömb struktúrák LaTeX-ben
 - forloop: iteráció LaTeX-ben
+- inversepath: fájlútvonalak visszafele relatív meghatározása
 - labelcas: cimkék létezésének ellenőrzése
+- lcg: véletlen egész számok generálása
 
 %package latex-prosper
 Summary:	LaTeX class for high quality slides
@@ -6075,6 +6112,12 @@ fi
 %postun latex-misc
 %texhash
 
+%post latex-effects
+%texhash
+
+%postun latex-effects
+%texhash
+
 %post latex-math
 %texhash
 
@@ -7917,7 +7960,6 @@ fi
 %doc %{texmfdist}/doc/latex/base
 %doc %{texmfdist}/doc/latex/beton
 %doc %{texmfdist}/doc/latex/ccaption
-%doc %{texmfdist}/doc/latex/changebar
 %doc %{texmfdist}/doc/latex/concmath
 %doc %{texmfdist}/doc/latex/crop
 %doc %{texmfdist}/doc/latex/draftcopy
@@ -7944,7 +7986,6 @@ fi
 %doc %{texmfdist}/doc/latex/koma-script
 %doc %{texmfdist}/doc/latex/labels
 %doc %{texmfdist}/doc/latex/layouts
-%doc %{texmfdist}/doc/latex/lettrine
 %doc %{texmfdist}/doc/latex/listings
 %doc %{texmfdist}/doc/latex/ltabptch
 %doc %{texmfdist}/doc/latex/mdwtools
@@ -8909,7 +8950,6 @@ fi
 %{texmfdist}/tex/latex/arabi
 %{texmfdist}/tex/latex/arabtex
 %{texmfdist}/tex/latex/archaic
-%{texmfdist}/tex/latex/arcs
 %{texmfdist}/tex/latex/arev
 %{texmfdist}/tex/latex/armenian
 %{texmfdist}/tex/latex/ascelike
@@ -8942,7 +8982,6 @@ fi
 %{texmfdist}/tex/latex/bizcard
 %{texmfdist}/tex/latex/blacklettert1
 %{texmfdist}/tex/latex/blindtext
-%{texmfdist}/tex/latex/blowup
 %{texmfdist}/tex/latex/boisik
 %{texmfdist}/tex/latex/boldtensors
 %{texmfdist}/tex/latex/bookest
@@ -8969,7 +9008,6 @@ fi
 %{texmfdist}/tex/latex/cd
 %{texmfdist}/tex/latex/cdpbundl
 %{texmfdist}/tex/latex/cellspace
-%{texmfdist}/tex/latex/changebar
 %{texmfdist}/tex/latex/changepage
 %{texmfdist}/tex/latex/changes
 %{texmfdist}/tex/latex/chapterfolder
@@ -8996,7 +9034,6 @@ fi
 %{texmfdist}/tex/latex/complexity
 %{texmfdist}/tex/latex/concprog
 %{texmfdist}/tex/latex/confproc
-%{texmfdist}/tex/latex/constants
 %{texmfdist}/tex/latex/courier-scaled
 %{texmfdist}/tex/latex/courier
 %{texmfdist}/tex/latex/courseoutline
@@ -9032,7 +9069,6 @@ fi
 %{texmfdist}/tex/latex/dpfloat
 %{texmfdist}/tex/latex/drac
 %{texmfdist}/tex/latex/draftcopy
-%{texmfdist}/tex/latex/draftwatermark
 %{texmfdist}/tex/latex/dramatist
 %{texmfdist}/tex/latex/duerer-latex
 %{texmfdist}/tex/latex/dvdcoll
@@ -9094,7 +9130,6 @@ fi
 %{texmfdist}/tex/latex/exceltex
 %{texmfdist}/tex/latex/exercise
 %{texmfdist}/tex/latex/expl3
-%{texmfdist}/tex/latex/export
 %{texmfdist}/tex/latex/extarrows
 %{texmfdist}/tex/latex/extract
 %{texmfdist}/tex/latex/extsizes
@@ -9118,10 +9153,8 @@ fi
 %{texmfdist}/tex/latex/flacards
 %{texmfdist}/tex/latex/flagderiv
 %{texmfdist}/tex/latex/flashcards
-%{texmfdist}/tex/latex/flippdf
 %{texmfdist}/tex/latex/float
 %{texmfdist}/tex/latex/floatrow
-%{texmfdist}/tex/latex/flowfram
 %{texmfdist}/tex/latex/fmp
 %{texmfdist}/tex/latex/fnbreak
 %{texmfdist}/tex/latex/fncychap
@@ -9220,7 +9253,6 @@ fi
 %{texmfdist}/tex/latex/inlinebib
 %{texmfdist}/tex/latex/inlinedef
 %{texmfdist}/tex/latex/interactiveworkbook
-%{texmfdist}/tex/latex/inversepath
 %{texmfdist}/tex/latex/invoice
 %{texmfdist}/tex/latex/ipa
 %{texmfdist}/tex/latex/iso
@@ -9228,7 +9260,6 @@ fi
 %{texmfdist}/tex/latex/isodate
 %{texmfdist}/tex/latex/isodoc
 %{texmfdist}/tex/latex/isonums
-%{texmfdist}/tex/latex/isorot
 %{texmfdist}/tex/latex/itnumpar
 %{texmfdist}/tex/latex/itrans
 %{texmfdist}/tex/latex/iwona
@@ -9249,7 +9280,6 @@ fi
 %{texmfdist}/tex/latex/latexconfig/pdflatex.ini
 %{texmfdist}/tex/latex/latexconfig/pdflualatex.ini
 %{texmfdist}/tex/latex/layouts
-%{texmfdist}/tex/latex/lettrine
 %{texmfdist}/tex/latex/listings
 %{texmfdist}/tex/latex/ltabptch
 %{texmfdist}/tex/latex/localloc
@@ -9873,6 +9903,7 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/leftidx
 %{texmfdist}/tex/latex/leftidx
+%{texmfdist}/source/latex/leftidx
 
 %files latex-lewis
 %defattr(644,root,root,755)
@@ -9987,8 +10018,9 @@ fi
 
 %files latex-ntheorem
 %defattr(644,root,root,755)
-%{texmfdist}/tex/latex/ntheorem
 %doc %{texmfdist}/doc/latex/ntheorem
+%{texmfdist}/tex/latex/ntheorem
+%{texmfdist}/source/latex/ntheorem
 
 %files latex-other-doc
 %defattr(644,root,root,755)
@@ -10018,7 +10050,6 @@ fi
 %doc %{texmfdist}/doc/latex/ar
 %doc %{texmfdist}/doc/latex/arabi
 %doc %{texmfdist}/doc/latex/arabtex
-%doc %{texmfdist}/doc/latex/arcs
 %doc %{texmfdist}/doc/latex/ascelike
 %doc %{texmfdist}/doc/latex/assignment
 %doc %{texmfdist}/doc/latex/augie
@@ -10039,7 +10070,6 @@ fi
 %doc %{texmfdist}/doc/latex/bigfoot
 %doc %{texmfdist}/doc/latex/bizcard
 %doc %{texmfdist}/doc/latex/blindtext
-%doc %{texmfdist}/doc/latex/blowup
 %doc %{texmfdist}/doc/latex/boldtensors
 %doc %{texmfdist}/doc/latex/bookest
 %doc %{texmfdist}/doc/latex/boxhandler
@@ -10076,7 +10106,6 @@ fi
 %doc %{texmfdist}/doc/latex/complexity
 %doc %{texmfdist}/doc/latex/concprog
 %doc %{texmfdist}/doc/latex/confproc
-%doc %{texmfdist}/doc/latex/constants
 %doc %{texmfdist}/doc/latex/courier-scaled
 %doc %{texmfdist}/doc/latex/courseoutline
 %doc %{texmfdist}/doc/latex/coursepaper
@@ -10106,7 +10135,6 @@ fi
 %doc %{texmfdist}/doc/latex/dottex
 %doc %{texmfdist}/doc/latex/dpfloat
 %doc %{texmfdist}/doc/latex/drac
-%doc %{texmfdist}/doc/latex/draftwatermark
 %doc %{texmfdist}/doc/latex/dramatist
 %doc %{texmfdist}/doc/latex/dtxgallery
 %doc %{texmfdist}/doc/latex/duerer-latex
@@ -10156,7 +10184,6 @@ fi
 %doc %{texmfdist}/doc/latex/exceltex
 %doc %{texmfdist}/doc/latex/exercise
 %doc %{texmfdist}/doc/latex/expl3
-%doc %{texmfdist}/doc/latex/export
 %doc %{texmfdist}/doc/latex/extarrows
 %doc %{texmfdist}/doc/latex/extract
 %doc %{texmfdist}/doc/latex/facsimile
@@ -10172,9 +10199,7 @@ fi
 %doc %{texmfdist}/doc/latex/flacards
 %doc %{texmfdist}/doc/latex/flagderiv
 %doc %{texmfdist}/doc/latex/flashcards
-%doc %{texmfdist}/doc/latex/flippdf
 %doc %{texmfdist}/doc/latex/floatrow
-%doc %{texmfdist}/doc/latex/flowfram
 %doc %{texmfdist}/doc/latex/fmp
 %doc %{texmfdist}/doc/latex/fnbreak
 %doc %{texmfdist}/doc/latex/fncychap
@@ -10244,14 +10269,12 @@ fi
 %doc %{texmfdist}/doc/latex/inlinebib
 %doc %{texmfdist}/doc/latex/inlinedef
 %doc %{texmfdist}/doc/latex/interactiveworkbook
-%doc %{texmfdist}/doc/latex/inversepath
 %doc %{texmfdist}/doc/latex/invoice
 %doc %{texmfdist}/doc/latex/ipa
 %doc %{texmfdist}/doc/latex/iso
 %doc %{texmfdist}/doc/latex/iso10303
 %doc %{texmfdist}/doc/latex/isodate
 %doc %{texmfdist}/doc/latex/isodoc
-%doc %{texmfdist}/doc/latex/isorot
 %doc %{texmfdist}/doc/latex/itnumpar
 %doc %{texmfdist}/doc/latex/jknapltx
 %doc %{texmfdist}/doc/latex/jneurosci
@@ -10368,7 +10391,6 @@ fi
 %doc %{texmfdist}/doc/latex/ogonek
 %doc %{texmfdist}/doc/latex/opcit
 %doc %{texmfdist}/doc/latex/ordinalpt
-%doc %{texmfdist}/doc/latex/othello
 %doc %{texmfdist}/doc/latex/otibet
 %doc %{texmfdist}/doc/latex/outline
 %doc %{texmfdist}/doc/latex/outliner
@@ -10394,7 +10416,6 @@ fi
 %doc %{texmfdist}/doc/latex/petri-nets
 %doc %{texmfdist}/doc/latex/pgf-soroban
 %doc %{texmfdist}/doc/latex/pgfopts
-%doc %{texmfdist}/doc/latex/pgfplots
 %doc %{texmfdist}/doc/latex/philex
 %doc %{texmfdist}/doc/latex/philosophersimprint
 %doc %{texmfdist}/doc/latex/photo
@@ -10709,6 +10730,9 @@ fi
 %doc %{texmfdist}/doc/latex/noitcrul
 %{texmfdist}/source/latex/noitcrul
 %{texmfdist}/tex/latex/noitcrul
+%doc %{texmfdist}/doc/latex/constants
+%{texmfdist}/source/latex/constants
+%{texmfdist}/tex/latex/constants
 
 %files latex-physics
 %defattr(644,root,root,755)
@@ -10821,6 +10845,12 @@ fi
 %{texmfdist}/source/latex/go
 %{texmfdist}/fonts/source/public/go
 %{texmfdist}/fonts/tfm/public/go
+# Create othello boards in LaTeX.
+%doc %{texmfdist}/doc/latex/othello
+%{texmfdist}/source/latex/othello
+%{texmfdist}/tex/latex/othello
+%{texmfdist}/fonts/source/public/othello
+%{texmfdist}/fonts/tfm/public/othello
 
 %files latex-styles
 %defattr(644,root,root,755)
@@ -11023,6 +11053,41 @@ fi
 %doc %{texmfdist}/doc/latex/labelcas
 %{texmfdist}/source/latex/labelcas
 %{texmfdist}/tex/latex/labelcas
+%doc %{texmfdist}/doc/latex/export
+%{texmfdist}/source/latex/export
+%{texmfdist}/tex/latex/export
+%doc %{texmfdist}/doc/latex/inversepath
+%{texmfdist}/source/latex/inversepath
+%{texmfdist}/tex/latex/inversepath
+%{texmfdist}/source/latex/lcg
+%{texmfdist}/tex/latex/lcg
+
+%files latex-effects
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/arcs
+%{texmfdist}/source/latex/arcs
+%{texmfdist}/tex/latex/arcs
+%doc %{texmfdist}/doc/latex/blowup
+%{texmfdist}/source/latex/blowup
+%{texmfdist}/tex/latex/blowup
+%doc %{texmfdist}/doc/latex/changebar
+%{texmfdist}/tex/latex/changebar
+%{texmfdist}/source/latex/changebar
+%doc %{texmfdist}/doc/latex/draftwatermark
+%{texmfdist}/source/latex/draftwatermark
+%{texmfdist}/tex/latex/draftwatermark
+%doc %{texmfdist}/doc/latex/flippdf
+%{texmfdist}/source/latex/flippdf
+%{texmfdist}/tex/latex/flippdf
+%doc %{texmfdist}/doc/latex/flowfram
+%{texmfdist}/source/latex/flowfram
+%{texmfdist}/tex/latex/flowfram
+%doc %{texmfdist}/doc/latex/isorot
+%{texmfdist}/source/latex/isorot
+%{texmfdist}/tex/latex/isorot
+%doc %{texmfdist}/doc/latex/lettrine
+%{texmfdist}/source/latex/lettrine
+%{texmfdist}/tex/latex/lettrine
 
 %files latex-other
 %defattr(644,root,root,755)
@@ -11042,8 +11107,6 @@ fi
 %{texmfdist}/source/latex/altfont
 # Setting questions (or exercises) and answers.
 %{texmfdist}/source/latex/answers
-# Draw arcs over and under text
-%{texmfdist}/source/latex/arcs
 # Support for IBM "standard ASCII" font.
 %{texmfdist}/source/latex/ascii
 # Calligraphic font for typesetting handwriting.
@@ -11074,8 +11137,6 @@ fi
 %{texmfdist}/source/latex/bizcard
 # Producing 'blind' text for testing.
 %{texmfdist}/source/latex/blindtext
-# Upscale or downscale all pages of a document.
-%{texmfdist}/source/latex/blowup
 # A collection of book-hand fonts.
 %{texmfdist}/source/latex/bookhands
 # Provides an At-Begin-Page hook.
@@ -11106,8 +11167,6 @@ fi
 %{texmfdist}/source/latex/cd
 # Business letters in the Italian style.
 %{texmfdist}/source/latex/cdpbundl
-# Generate changebars in LaTeX documents.
-%{texmfdist}/source/latex/changebar
 # Manual change markup.
 %{texmfdist}/source/latex/changes
 # Package for working with complicated folder structures.
@@ -11121,8 +11180,6 @@ fi
 %{texmfdist}/source/latex/codepage
 # A set of tools for generating conference proceedings.
 %{texmfdist}/source/latex/confproc
-# Automatic numbering of constants.
-%{texmfdist}/source/latex/constants
 # Automatic cover page creation for scientific papers (with BibTeX data and copyright notice).
 %{texmfdist}/source/latex/coverpage
 # Support for cropmarks.
@@ -11151,8 +11208,6 @@ fi
 %{texmfdist}/source/latex/drac
 # Identify draft copies.
 %{texmfdist}/source/latex/draftcopy
-# Put a grey textual watermark on document pages.
-%{texmfdist}/source/latex/draftwatermark
 # Typeset dramas, both in verse and in prose.
 %{texmfdist}/source/latex/dramatist
 # A small collection of minimal DTX examples.
@@ -11191,6 +11246,7 @@ fi
 # Addresses on envelopes or mailing labels.
 %{texmfdist}/source/latex/envlab
 # A package for typesetting epigraphs.
+# bevezető idézetek szedése (mottó)
 %{texmfdist}/source/latex/epigraph
 %{texmfdist}/source/latex/epiolmec
 # A scalable dice "font".
@@ -11217,8 +11273,6 @@ fi
 %{texmfdist}/source/latex/exercise
 # Packages showing a proposed LaTeX3 programming convention.
 %{texmfdist}/source/latex/expl3
-# Import and export values of LaTeX registers.
-%{texmfdist}/source/latex/export
 # Extract parts of a document and write to another document.
 %{texmfdist}/source/latex/extract
 # Document class for preparing faxes.
@@ -11243,14 +11297,10 @@ fi
 %{texmfdist}/source/latex/flagderiv
 # A class for typesetting flashcards.
 %{texmfdist}/source/latex/flashcards
-# Horizontal flipping of pages with pdfLaTeX.
-%{texmfdist}/source/latex/flippdf
 # Improved interface for floating objects.
 %{texmfdist}/source/latex/float
 # Modifying the layout of floats.
 %{texmfdist}/source/latex/floatrow
-# Create text frames for posters, brochures or magazines.
-%{texmfdist}/source/latex/flowfram
 # Include Functional MetaPost in LaTeX.
 %{texmfdist}/source/latex/fmp
 # Warn for split footnotes.
@@ -11329,8 +11379,6 @@ fi
 %{texmfdist}/source/latex/index
 # Inline expansions within definitions.
 %{texmfdist}/source/latex/inlinedef
-# Calculate inverse file paths.
-%{texmfdist}/source/latex/inversepath
 # Generic ISO standards typesetting macros.
 %{texmfdist}/source/latex/iso
 # Typesetting the STEP standards.
@@ -11339,8 +11387,6 @@ fi
 %{texmfdist}/source/latex/isodate
 # A LaTeX class for the preparation of letters and invoices.
 %{texmfdist}/source/latex/isodoc
-# Rotation of document elements.
-%{texmfdist}/source/latex/isorot
 # Spell numbers in words (Italian).
 %{texmfdist}/source/latex/itnumpar
 # A document class for German legal texts.
@@ -11362,18 +11408,12 @@ fi
 %{texmfdist}/source/latex/latex-tds
 # Display various elements of a document's layout.
 %{texmfdist}/source/latex/layouts
-# Generate random integers.
-%{texmfdist}/source/latex/lcg
 # This package makes available Classic Cyrillic CM fonts
 %{texmfdist}/source/latex/lcyw
 # This package makes available Classic Cyrillic CM fonts
 %{texmfdist}/source/latex/leading
 # Typeset scholarly editions in parallel texts.
 %{texmfdist}/source/latex/ledmac
-# Left and right subscripts and superscripts in math mode.
-%{texmfdist}/source/latex/leftidx
-# Typeset dropped capitals.
-%{texmfdist}/source/latex/lettrine
 # Macros for a two language dictionary.
 %{texmfdist}/source/latex/lexikon
 # A non-standard Cyrillic input scheme.
@@ -11522,8 +11562,6 @@ fi
 %{texmfdist}/source/latex/nrc
 # "European" versions of standard classes.
 %{texmfdist}/source/latex/ntgclass
-# Enhanced theorem environment.
-%{texmfdist}/source/latex/ntheorem
 # Print numbers with separators and exponent if necessary.
 %{texmfdist}/source/latex/numprint
 # A bundle of packages submitted by Heiko Oberdiek.
@@ -11540,8 +11578,6 @@ fi
 %{texmfdist}/source/latex/opcit
 # Counters as ordinal numbers in Portuguese.
 %{texmfdist}/source/latex/ordinalpt
-# Create othello boards in LaTeX.
-%{texmfdist}/source/latex/othello
 %{texmfdist}/source/latex/otibet
 # Fonts designed by Fra Luca de Pacioli in 1497.
 %{texmfdist}/source/latex/pacioli
@@ -11583,8 +11619,6 @@ fi
 %{texmfdist}/source/latex/petri-nets
 # LaTeX package options with pgfkeys.
 %{texmfdist}/source/latex/pgfopts
-# Create normal/logarithmic plots in LaTeX.
-%{texmfdist}/source/latex/pgfplots
 # Typesetting articles for "Philosophers' Imprint".
 %{texmfdist}/source/latex/philosophersimprint
 # A float environment for photographs.
@@ -11969,7 +12003,6 @@ fi
 %{texmfdist}/tex/latex/kpfonts
 %{texmfdist}/tex/latex/kurier
 %{texmfdist}/tex/latex/lazylist
-%{texmfdist}/tex/latex/lcg
 %{texmfdist}/tex/latex/lcyw
 %{texmfdist}/tex/latex/leading
 %{texmfdist}/tex/latex/ledmac
@@ -12069,7 +12102,6 @@ fi
 %{texmfdist}/tex/latex/opcit
 %{texmfdist}/tex/latex/ordinalpt
 %{texmfdist}/tex/latex/ot2cyr
-%{texmfdist}/tex/latex/othello
 %{texmfdist}/tex/latex/otibet
 %{texmfdist}/tex/latex/outline
 %{texmfdist}/tex/latex/outliner
@@ -12294,6 +12326,8 @@ fi
 %files latex-pgf
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pgf
+%doc %{texmfdist}/doc/latex/pgfplots
+%{texmfdist}/source/latex/pgfplots
 %{texmfdist}/tex/generic/pgf
 %{texmfdist}/tex/generic/pgfplots
 %{texmfdist}/tex/latex/pgf
@@ -13795,9 +13829,6 @@ fi
 %doc %{texmfdist}/doc/fonts/ot2cyr
 %{texmfdist}/fonts/map/dvips/ot2cyr
 %{texmfdist}/source/fonts/ot2cyr
-
-%{texmfdist}/fonts/source/public/othello
-%{texmfdist}/fonts/tfm/public/othello
 
 %{texmfdist}/fonts/ofm/public/otibet
 %{texmfdist}/fonts/ovf/public/otibet
