@@ -13812,7 +13812,7 @@ fi
 %{texmfdist}/fonts/tfm/vntex/mscorevn
 %{texmfdist}/fonts/vf/vntex/mscorevn
 
-%doc %{temxfdist}/doc/generic/musixps
+%doc %{texmfdist}/doc/generic/musixps
 %{texmfdist}/fonts/source/public/musixps
 %{texmfdist}/fonts/tfm/public/musixps
 
