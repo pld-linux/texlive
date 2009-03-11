@@ -664,6 +664,15 @@ A set of useful macro tools.
 %description tex-midnight -l hu.UTF-8
 Hasznos makrók gyűjteménye.
 
+%package tex-kastrup
+Summary:	Convert numbers into binary, octal and hexadecimal
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-kastrup
+Convert numbers into binary, octal and hexadecimal.
+
 %package tex-ofs
 Summary:	Olsak's Font System
 Group:		Applications/Publishing/TeX
@@ -3380,6 +3389,7 @@ This package contains:
 - inversepath: calculate inverse file paths.
 - labelcas: check the existence of labels, and fork accordingly.
 - lcg: generate random integers.
+- namespc: rudimentary c++-like namespaces in LaTeX.
 
 %description latex-programming -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -3401,6 +3411,7 @@ Ez a csomag a következőket tartalmazza:
 - inversepath: fájlútvonalak visszafele relatív meghatározása
 - labelcas: cimkék létezésének ellenőrzése
 - lcg: véletlen egész számok generálása
+- namespc: c++-szerű névterek LaTeX-ben
 
 %package latex-prosper
 Summary:	LaTeX class for high quality slides
@@ -5575,6 +5586,9 @@ lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-doc $RPM_BUILD_ROOT%{texmfdoc}
 %{__mv} $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pgfplots/* $RPM_BUILD_ROOT%{texmfdist}/doc/latex/pgfplots
 rmdir $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pgfplots
+# imho it is unneeded
+%{__rm} -r $RPM_BUILD_ROOT%{texmfdist}/doc/fonts/{ec,fc,utopia}
+%{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/cef{5,c,s}conv
 
 # This is an empty directory
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf
@@ -5807,6 +5821,12 @@ fi
 %texhash
 
 %postun tex-arrayjob
+%texhash
+
+%post tex-kastrup
+%texhash
+
+%postun tex-kastrup
 %texhash
 
 %post tex-insbox
@@ -7383,7 +7403,6 @@ fi
 # %dir %{texmf}/doc/programs
 # %doc %{texmf}/doc/programs/web2c*
 # %doc %{texmf}/doc/programs/cwebman.dvi
-# %doc %{texmf}/doc/programs/dvipng.*
 # %doc %{texmf}/doc/knuth
 #%attr(755,root,root) %{_bindir}/MakeTeXPK
 #%attr(755,root,root) %{_bindir}/access
@@ -7546,6 +7565,8 @@ fi
 %doc %{texmf}/doc/tetex/TETEXDOC.*
 %doc %{texmf}/doc/tetex/teTeX-FAQ
 %doc %{texmfdist}/source/fontinst
+%doc %{texmf}/doc/dvipng
+%doc %{texmf}/doc/texdoc
 
 # %{texmf}/fonts/map/dvips/tetex/contnav.map
 # %{texmf}/fonts/map/dvips/tetex/lumath-o.map
@@ -7572,12 +7593,14 @@ fi
 %{texmfdist}/tex/generic/encodings
 %{texmfdist}/tex/generic/epsf
 %{texmfdist}/tex/generic/hyph-utf8/*
+%doc %{texmfdist}/doc/generic/hyph-utf8
 %{texmfdist}/tex/generic/genmisc
 %{texmfdist}/tex/generic/misc/null*
 %{texmfdist}/tex/generic/misc/texnames.sty
 %{texmfdist}/tex/generic/tap
 %{texmfdist}/tex/generic/tex-ps
 %{texmfdist}/tex/texinfo
+%doc %{texmf}/doc/texinfo
 %{texmf}/tex/fontinst
 %{texmf}/tex/generic/hyphen
 
@@ -7773,6 +7796,7 @@ fi
 
 %files other-utils-doc
 %defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/abbr
 %doc %{texmfdist}/doc/jadetex
 %doc %{texmfdist}/doc/texsis
 %doc %{texmfdist}/doc/startex
@@ -7781,6 +7805,12 @@ fi
 %doc %{texmfdist}/doc/generic/borceux
 %doc %{texmfdist}/doc/generic/dratex
 %doc %{texmfdist}/doc/generic/mkjobtexmf
+%doc %{texmfdist}/doc/support/texcount
+%doc %{texmf}/doc/tpic2pdftex
+%doc %{texmf}/doc/extconv
+%doc %{texmfdist}/doc/generic/fenixpar
+%doc %{texmfdist}/doc/generic/fltpoint
+%doc %{texmf}/doc/bg5conv
 
 %files dirs-fonts
 %defattr(644,root,root,755)
@@ -7853,6 +7883,7 @@ fi
 %files doc-el
 %defattr(644,root,root,755)
 %{texmfdoc}/doc/greek
+%{texmf}/doc/generic/elhyphen
 
 %files doc-es
 %defattr(644,root,root,755)
@@ -8043,8 +8074,7 @@ fi
 
 %files -n kpathsea
 %defattr(644,root,root,755)
-%dir %{texmf}/doc/kpathsea
-%doc %{texmf}/doc/kpathsea/kpathsea.pdf
+%doc %{texmf}/doc/kpathsea
 %attr(755,root,root) %{_bindir}/kpsepath
 %attr(755,root,root) %{_bindir}/kpsestat
 %attr(755,root,root) %{_bindir}/kpsetool
@@ -8192,6 +8222,12 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/insbox
 %{texmfdist}/tex/generic/insbox
+
+%files tex-kastrup
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/kastrup/binhex.pdf
+%{texmfdist}/source/generic/kastrup
+%{texmfdist}/tex/generic/kastrup
 
 %files tex-mathdots
 %defattr(644,root,root,755)
@@ -9925,9 +9961,7 @@ fi
 %files latex-lucidabr
 %defattr(644,root,root,755)
 %dir %{texmfdist}/vtex
-%dir %{texmfdist}/vtex/config
-%{texmfdist}/vtex/config/lucidabr-k.ali
-%{texmfdist}/vtex/config/lucidabr.ali
+%{texmfdist}/vtex/config
 
 %files latex-lineno
 %defattr(644,root,root,755)
@@ -10362,7 +10396,6 @@ fi
 %doc %{texmfdist}/doc/latex/mxd
 %doc %{texmfdist}/doc/latex/mxedruli
 %doc %{texmfdist}/doc/latex/nag
-%doc %{texmfdist}/doc/latex/namespc
 %doc %{texmfdist}/doc/latex/nath
 %doc %{texmfdist}/doc/latex/nature
 %doc %{texmfdist}/doc/latex/ncclatex
@@ -11061,6 +11094,9 @@ fi
 %{texmfdist}/tex/latex/inversepath
 %{texmfdist}/source/latex/lcg
 %{texmfdist}/tex/latex/lcg
+%doc %{texmfdist}/doc/latex/namespc
+%{texmfdist}/source/latex/namespc
+%{texmfdist}/tex/latex/namespc
 
 %files latex-effects
 %defattr(644,root,root,755)
@@ -11526,8 +11562,6 @@ fi
 %{texmfdist}/source/latex/mxd
 # Detecting and warning about obsolete LaTeX commands
 %{texmfdist}/source/latex/nag
-# Rudimentary c++-like namespaces in LaTeX.
-%{texmfdist}/source/latex/namespc
 # Flexible bibliography support.
 %{texmfdist}/source/latex/natbib
 # A collection of general packages for LaTeX
@@ -12078,7 +12112,6 @@ fi
 %{texmfdist}/tex/latex/mxd
 %{texmfdist}/tex/latex/mxedruli
 %{texmfdist}/tex/latex/nag
-%{texmfdist}/tex/latex/namespc
 %{texmfdist}/tex/latex/nath
 %{texmfdist}/tex/latex/nature
 %{texmfdist}/tex/latex/newvbtm
@@ -12732,6 +12765,7 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/mfpic
 %{texmfdist}/tex/generic/mfpic
+%{texmfdist}/source/generic/mfpic
 
 %files tex-midnight
 %defattr(644,root,root,755)
@@ -13137,6 +13171,9 @@ fi
 %defattr(644,root,root,755)
 
 %doc %{texmfdist}/doc/fonts/yi4latex
+%{texmfdist}/fonts/afm/itc
+%{texmfdist}/fonts/map/glyphlist
+%{texmfdist}/fonts/source/public/knuthotherfonts
 %{texmfdist}/fonts/source/public/yi4latex
 %{texmfdist}/fonts/tfm/public/yi4latex
 
@@ -13775,6 +13812,7 @@ fi
 %{texmfdist}/fonts/tfm/vntex/mscorevn
 %{texmfdist}/fonts/vf/vntex/mscorevn
 
+%doc %{temxfdist}/doc/generic/musixps
 %{texmfdist}/fonts/source/public/musixps
 %{texmfdist}/fonts/tfm/public/musixps
 
@@ -14232,6 +14270,7 @@ fi
 %doc %{texmfdist}/doc/fonts/fpl
 %{texmfdist}/fonts/afm/public/fpl
 %{texmfdist}/fonts/type1/public/fpl
+%{texmfdist}/source/fonts/fpl
 
 %files fonts-type1-lm
 %defattr(644,root,root,755)
@@ -14433,6 +14472,7 @@ fi
 %doc %{texmfdist}/doc/xetex
 %{texmfdist}/scripts/xetex
 %{texmfdist}/tex/generic/ifxetex
+%doc %{texmfdist}/doc/generic/ifxetex
 %{texmfdist}/tex/generic/xetexconfig
 %{texmfdist}/tex/latex/latexconfig/xelatex.ini
 %{texmfdist}/tex/plain/config/xetex.ini
