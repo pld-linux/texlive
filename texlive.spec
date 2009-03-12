@@ -2525,6 +2525,19 @@ novice to prepare exams.
 Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a
 feladatsorok készítése.
 
+%package latex-float
+Summary:	Tools to manipulate float objects
+Summary(hu.UTF-8):	Eszközök úszó objektuomok kezeléséhez
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-float
+Tools to manipulate float objects.
+
+%description latex-float -l hu.UTF-8
+Eszközök úszó objektuomok kezeléséhez.
+
 %package latex-formlett
 Summary:	Letters to multiple recipients
 Summary(hu.UTF-8):	Levél több címzettnek ("körlevél")
@@ -2835,6 +2848,17 @@ Ez a csomag a következőket tartalmazza:
 - flowfram: szövegkeretek poszterekhez, brossúrákhoz vagy magazinokhoz
 - isorot: dokumentum-elemek forgatása
 - lettrine: ejtett kapitálisok szedése
+
+%package latex-math-sources
+Summary:	Sources of latex-math
+Summary(hu.UTF-8):	A latex-math forrása
+Group:		Applications/Publishing/TeX
+
+%description latex-math-sources
+Sources of latex-math.
+
+%description latex-math-sources -l hu.UTF-8
+A latex-math forrása.
 
 %package latex-math
 Summary:	Mathematical packages
@@ -3758,6 +3782,17 @@ A comprehensive (SI) units package.
 
 %description latex-siunitx -l hu.UTF-8
 Egy minden részletre kiterjedő (SI) egységek kezelését végző csomag.
+
+%package latex-sources
+Summary:	LaTeX sources
+Summary(hu.UTF-8):	LaTeX források
+Group:		Applications/Publishing/TeX
+
+%description latex-sources
+LaTeX sources.
+
+%description latex-sources -l hu.UTF-8
+LaTeX források.
 
 %package latex-styles
 Summary:	Various LaTeX styles
@@ -6414,6 +6449,12 @@ fi
 %postun latex-examdesign
 %texhash
 
+%post latex-float
+%texhash
+
+%postun latex-float
+%texhash
+
 %post latex-formlett
 %texhash
 
@@ -7990,7 +8031,6 @@ fi
 %doc %{texmfdist}/doc/latex/anysize
 %doc %{texmfdist}/doc/latex/base
 %doc %{texmfdist}/doc/latex/beton
-%doc %{texmfdist}/doc/latex/ccaption
 %doc %{texmfdist}/doc/latex/concmath
 %doc %{texmfdist}/doc/latex/crop
 %doc %{texmfdist}/doc/latex/draftcopy
@@ -9038,7 +9078,6 @@ fi
 %{texmfdist}/tex/latex/catechis
 %{texmfdist}/tex/latex/cbcoptic
 %{texmfdist}/tex/latex/cbfonts
-%{texmfdist}/tex/latex/ccaption
 %{texmfdist}/tex/latex/cclicenses
 %{texmfdist}/tex/latex/cd-cover
 %{texmfdist}/tex/latex/cd
@@ -9885,6 +9924,17 @@ fi
 %{texmfdist}/tex/latex/examdesign
 %{texmfdist}/source/latex/examdesign
 
+%files latex-float
+%defattr(644,root,root,755)
+# Continuation headings and legends for floats.
+%doc %{texmfdist}/doc/latex/ccaption
+%{texmfdist}/source/latex/ccaption
+%{texmfdist}/tex/latex/ccaption
+# A float environment for photographs.
+%doc %{texmfdist}/doc/latex/photo
+%{texmfdist}/source/latex/photo
+%{texmfdist}/tex/latex/photo
+
 %files latex-formlett
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/formlett
@@ -10451,7 +10501,6 @@ fi
 %doc %{texmfdist}/doc/latex/pgfopts
 %doc %{texmfdist}/doc/latex/philex
 %doc %{texmfdist}/doc/latex/philosophersimprint
-%doc %{texmfdist}/doc/latex/photo
 %doc %{texmfdist}/doc/latex/pinlabel
 %doc %{texmfdist}/doc/latex/pittetd
 %doc %{texmfdist}/doc/latex/plari
@@ -10697,74 +10746,76 @@ fi
 %doc %{texmfdist}/source/latex/hyperref/doc
 %doc %{texmfdist}/source/latex/koma-script/doc
 
-%files latex-math
+%files latex-math-sources
 %defattr(644,root,root,755)
 %{texmfdist}/source/latex/permute
+%{texmfdist}/source/latex/bez123
+%{texmfdist}/source/latex/binomexp
+%{texmfdist}/source/latex/coordsys
+%{texmfdist}/source/latex/egplot
+%{texmfdist}/source/latex/eqlist
+%{texmfdist}/source/latex/eqnarray
+%{texmfdist}/source/latex/esdiff
+%{texmfdist}/source/latex/esvect
+%{texmfdist}/source/latex/extpfeil
+%{texmfdist}/source/latex/cmll
+%{texmfdist}/source/latex/dotseqn
+%{texmfdist}/source/latex/functan
+%{texmfdist}/source/latex/galois
+%{texmfdist}/source/latex/gnuplottex
+%{texmfdist}/source/latex/hhtensor
+%{texmfdist}/source/latex/fouridx
+%{texmfdist}/source/latex/noitcrul
+%{texmfdist}/source/latex/constants
+
+%files latex-math
+%defattr(644,root,root,755)
 %{texmfdist}/tex/latex/permute
 %doc %{texmfdist}/doc/latex/permute
-%{texmfdist}/source/latex/bez123
 %{texmfdist}/tex/latex/bez123
 %doc %{texmfdist}/doc/latex/bez123
-%{texmfdist}/source/latex/binomexp
 %{texmfdist}/tex/latex/binomexp
 %doc %{texmfdist}/doc/latex/binomexp
 %doc %{texmfdist}/doc/latex/coordsys
-%{texmfdist}/source/latex/coordsys
 %{texmfdist}/tex/latex/coordsys
 %doc %{texmfdist}/doc/latex/egplot
-%{texmfdist}/source/latex/egplot
 %{texmfdist}/tex/latex/egplot
 %doc %{texmfdist}/doc/latex/eqlist
-%{texmfdist}/source/latex/eqlist
 %{texmfdist}/tex/latex/eqlist
 %doc %{texmfdist}/doc/latex/eqnarray
-%{texmfdist}/source/latex/eqnarray
 %{texmfdist}/tex/latex/eqnarray
 %doc %{texmfdist}/doc/latex/esdiff
-%{texmfdist}/source/latex/esdiff
 %{texmfdist}/tex/latex/esdiff
 %doc %{texmfdist}/doc/latex/esvect
-%{texmfdist}/fonts/map/dvips/esvect
 %{texmfdist}/fonts/source/public/esvect
+%{texmfdist}/fonts/map/dvips/esvect
 %{texmfdist}/fonts/tfm/public/esvect
 %{texmfdist}/fonts/type1/public/esvect
-%{texmfdist}/source/latex/esvect
 %{texmfdist}/tex/latex/esvect
 %doc %{texmfdist}/doc/latex/extpfeil
-%{texmfdist}/source/latex/extpfeil
 %{texmfdist}/tex/latex/extpfeil
 %doc %{texmfdist}/doc/latex/faktor
-%{texmfdist}/source/latex/faktor
 %{texmfdist}/tex/latex/faktor
 %doc %{texmfdist}/doc/latex/cmll
-%{texmfdist}/source/latex/cmll
 %{texmfdist}/fonts/map/dvips/cmll
 %{texmfdist}/fonts/source/public/cmll
 %{texmfdist}/fonts/tfm/public/cmll
 %{texmfdist}/fonts/type1/public/cmll
 %{texmfdist}/tex/latex/cmll
-%{texmfdist}/source/latex/dotseqn
 %{texmfdist}/tex/latex/dotseqn
 %doc %{texmfdist}/doc/latex/functan
-%{texmfdist}/source/latex/functan
 %{texmfdist}/tex/latex/functan
 %doc %{texmfdist}/doc/latex/galois
-%{texmfdist}/source/latex/galois
 %{texmfdist}/tex/latex/galois
 %doc %{texmfdist}/doc/latex/gnuplottex
-%{texmfdist}/source/latex/gnuplottex
 %{texmfdist}/tex/latex/gnuplottex
 %doc %{texmfdist}/doc/latex/hhtensor
-%{texmfdist}/source/latex/hhtensor
 %{texmfdist}/tex/latex/hhtensor
 %doc %{texmfdist}/doc/latex/fouridx
-%{texmfdist}/source/latex/fouridx
 %{texmfdist}/tex/latex/fouridx
 %doc %{texmfdist}/doc/latex/noitcrul
-%{texmfdist}/source/latex/noitcrul
 %{texmfdist}/tex/latex/noitcrul
 %doc %{texmfdist}/doc/latex/constants
-%{texmfdist}/source/latex/constants
 %{texmfdist}/tex/latex/constants
 
 %files latex-physics
@@ -10884,6 +10935,108 @@ fi
 %{texmfdist}/tex/latex/othello
 %{texmfdist}/fonts/source/public/othello
 %{texmfdist}/fonts/tfm/public/othello
+
+%files latex-sources
+%defattr(644,root,root,755)
+%dir %{texmfdist}/source
+%dir %{texmfdist}/source/latex
+%{texmfdist}/source/latex/flashcards
+%{texmfdist}/source/latex/flagderiv
+%{texmfdist}/source/latex/flabels
+%{texmfdist}/source/latex/fink
+%{texmfdist}/source/latex/filecontents
+%{texmfdist}/source/latex/figsize
+%{texmfdist}/source/latex/fancyvrb
+%{texmfdist}/source/latex/fancytooltips
+%{texmfdist}/source/latex/fancyref
+%{texmfdist}/source/latex/acronym
+%{texmfdist}/source/latex/adrlist
+%{texmfdist}/source/latex/altfont
+%{texmfdist}/source/latex/answers
+%{texmfdist}/source/latex/ascii
+%{texmfdist}/source/latex/augie
+%{texmfdist}/source/latex/barcodes
+%{texmfdist}/source/latex/bbding
+%{texmfdist}/source/latex/bbm-macros
+%{texmfdist}/source/latex/bengali
+%{texmfdist}/source/latex/beton
+%{texmfdist}/source/latex/bibarts
+%{texmfdist}/source/latex/bibleref
+%{texmfdist}/source/latex/biblist
+%{texmfdist}/source/latex/bigfoot
+%{texmfdist}/source/latex/bizcard
+%{texmfdist}/source/latex/blindtext
+%{texmfdist}/source/latex/bookhands
+%{texmfdist}/source/latex/bophook
+%{texmfdist}/source/latex/boxhandler
+%{texmfdist}/source/latex/braille
+%{texmfdist}/source/latex/breakurl
+%{texmfdist}/source/latex/brushscr
+%{texmfdist}/source/latex/burmese
+%{texmfdist}/source/latex/captcont
+%{texmfdist}/source/latex/catechis
+%{texmfdist}/source/latex/cclicenses
+%{texmfdist}/source/latex/cd
+%{texmfdist}/source/latex/cd-cover
+%{texmfdist}/source/latex/cdpbundl
+%{texmfdist}/source/latex/changes
+%{texmfdist}/source/latex/chapterfolder
+%{texmfdist}/source/latex/cleveref
+%{texmfdist}/source/latex/cmcyralt
+%{texmfdist}/source/latex/cmsd
+%{texmfdist}/source/latex/codepage
+%{texmfdist}/source/latex/confproc
+%{texmfdist}/source/latex/coverpage
+%{texmfdist}/source/latex/crop
+%{texmfdist}/source/latex/crossreference
+%{texmfdist}/source/latex/ctib
+%{texmfdist}/source/latex/cweb-latex
+%{texmfdist}/source/latex/dateiliste
+%{texmfdist}/source/latex/datetime
+%{texmfdist}/source/latex/decimal
+%{texmfdist}/source/latex/diagnose
+%{texmfdist}/source/latex/docmfp
+%{texmfdist}/source/latex/doipubmed
+%{texmfdist}/source/latex/dotarrow
+%{texmfdist}/source/latex/dottex
+%{texmfdist}/source/latex/drac
+%{texmfdist}/source/latex/draftcopy
+%{texmfdist}/source/latex/dramatist
+%{texmfdist}/source/latex/eCards
+%{texmfdist}/source/latex/ebezier
+%{texmfdist}/source/latex/ebsthesis
+%{texmfdist}/source/latex/ecclesiastic
+%{texmfdist}/source/latex/edmargin
+%{texmfdist}/source/latex/eemeir
+%{texmfdist}/source/latex/eiad
+%{texmfdist}/source/latex/ellipsis
+%{texmfdist}/source/latex/em
+%{texmfdist}/source/latex/emp
+%{texmfdist}/source/latex/endfloat
+%{texmfdist}/source/latex/endheads
+%{texmfdist}/source/latex/engpron
+%{texmfdist}/source/latex/engrec
+%{texmfdist}/source/latex/envlab
+%{texmfdist}/source/latex/epigraph
+%{texmfdist}/source/latex/epiolmec
+%{texmfdist}/source/latex/epsdice
+%{texmfdist}/source/latex/eqparbox
+%{texmfdist}/source/latex/errata
+%{texmfdist}/source/latex/eso-pic
+%{texmfdist}/source/latex/ethiop
+%{texmfdist}/source/latex/eukdate
+%{texmfdist}/source/latex/euproposal
+%{texmfdist}/source/latex/euro
+%{texmfdist}/source/latex/everypage
+%{texmfdist}/source/latex/exercise
+%{texmfdist}/source/latex/expl3
+%{texmfdist}/source/latex/extract
+%{texmfdist}/source/latex/facsimile
+%{texmfdist}/source/latex/fancynum
+%{texmfdist}/source/latex/float
+%{texmfdist}/source/latex/floatrow
+%{texmfdist}/source/latex/rotating
+%{texmfdist}/source/latex/rotfloat
 
 %files latex-styles
 %defattr(644,root,root,755)
@@ -11135,208 +11288,21 @@ fi
 %{texmfdist}/source/cslatex/base
 %{texmfdist}/source/generic/xypic
 %{texmfdist}/source/latex/GuIT
-# Expand acronyms at least once.
-%{texmfdist}/source/latex/acronym
-# Using address lists in LaTeX.
-%{texmfdist}/source/latex/adrlist
-# Alternative font handling in LaTeX.
-%{texmfdist}/source/latex/altfont
-# Setting questions (or exercises) and answers.
-%{texmfdist}/source/latex/answers
-# Support for IBM "standard ASCII" font.
-%{texmfdist}/source/latex/ascii
-# Calligraphic font for typesetting handwriting.
-%{texmfdist}/source/latex/augie
-# Fonts for making barcodes.
-%{texmfdist}/source/latex/barcodes
 # Definitive source of Plain TeX on CTAN.
 %{texmfdist}/source/latex/base
 %{texmfdist}/source/latex/bayer
-# A symbol (dingbat) font and LaTeX macros for its use.
-%{texmfdist}/source/latex/bbding
-# LaTeX support for "blackboard-style" cm fonts.
-%{texmfdist}/source/latex/bbm-macros
 # Free replacement for basic MathTime fonts.
 %{texmfdist}/source/latex/belleek
-%{texmfdist}/source/latex/bengali
-# Use Concrete fonts.
-%{texmfdist}/source/latex/beton
-# "Arts"-style bibliographical information.
-%{texmfdist}/source/latex/bibarts
-# Format bible citations.
-%{texmfdist}/source/latex/bibleref
-# Print a BibTeX database.
-%{texmfdist}/source/latex/biblist
-# Footnotes for critical editions.
-%{texmfdist}/source/latex/bigfoot
-# Typeset business cards.
-%{texmfdist}/source/latex/bizcard
-# Producing 'blind' text for testing.
-%{texmfdist}/source/latex/blindtext
-# A collection of book-hand fonts.
-%{texmfdist}/source/latex/bookhands
-# Provides an At-Begin-Page hook.
-%{texmfdist}/source/latex/bophook
-# Flexible Captioning and Deferred Box/List Printing.
-%{texmfdist}/source/latex/boxhandler
-# Support for braille.
-%{texmfdist}/source/latex/braille
-# Line-breakable \url-like links in hyperref when compiling via dvips/ps2pdf.
-%{texmfdist}/source/latex/breakurl
-# A handwriting script font.
-%{texmfdist}/source/latex/brushscr
-# Basic Support for Writing Burmese.
-%{texmfdist}/source/latex/burmese
-# Retain float number across several floats.
-%{texmfdist}/source/latex/captcont
-# Macros for typesetting catechisms.
-%{texmfdist}/source/latex/catechis
-# Continuation headings and legends for floats.
-%{texmfdist}/source/latex/ccaption
 # Support for Concrete text and math fonts in LaTeX.
 %{texmfdist}/source/latex/ccfonts
-# Typeset Creative Commons licence logos.
-%{texmfdist}/source/latex/cclicenses
-# Typeset CD covers.
-%{texmfdist}/source/latex/cd-cover
-# Typeset CD covers.
-%{texmfdist}/source/latex/cd
-# Business letters in the Italian style.
-%{texmfdist}/source/latex/cdpbundl
-# Manual change markup.
-%{texmfdist}/source/latex/changes
-# Package for working with complicated folder structures.
-%{texmfdist}/source/latex/chapterfolder
-# Automatic cross-reference formatting.
-%{texmfdist}/source/latex/cleveref
-%{texmfdist}/source/latex/cmcyralt
-# Interfaces to the CM Sans Serif Bold fonts.
-%{texmfdist}/source/latex/cmsd
-# Support for variant code pages.
-%{texmfdist}/source/latex/codepage
-# A set of tools for generating conference proceedings.
-%{texmfdist}/source/latex/confproc
-# Automatic cover page creation for scientific papers (with BibTeX data and copyright notice).
-%{texmfdist}/source/latex/coverpage
-# Support for cropmarks.
-%{texmfdist}/source/latex/crop
-# Crossreferences within documents.
-%{texmfdist}/source/latex/crossreference
-%{texmfdist}/source/latex/ctib
-%{texmfdist}/source/latex/cweb-latex
-# Extensions of the \listfiles concept.
-%{texmfdist}/source/latex/dateiliste
-# Change format of \today with commands for current time.
-%{texmfdist}/source/latex/datetime
-# LaTeX package for the English raised decimal point.
-%{texmfdist}/source/latex/decimal
-# A diagnostic tool for a TeX installation.
-%{texmfdist}/source/latex/diagnose
-# Document non-LaTeX code.
-%{texmfdist}/source/latex/docmfp
-# Special commands for use in bibliographies.
-%{texmfdist}/source/latex/doipubmed
-# Extendable dotted arrows.
-%{texmfdist}/source/latex/dotarrow
-# Use dot code in LaTeX.
-%{texmfdist}/source/latex/dottex
-# Declare active character substitution, robustly.
-%{texmfdist}/source/latex/drac
-# Identify draft copies.
-%{texmfdist}/source/latex/draftcopy
-# Typeset dramas, both in verse and in prose.
-%{texmfdist}/source/latex/dramatist
 # A small collection of minimal DTX examples.
 %{texmfdist}/source/latex/dtxgallery
-# Electronic flash cards.
-%{texmfdist}/source/latex/eCards
-# Device independent picture environment enhancement.
-%{texmfdist}/source/latex/ebezier
-# Typesetting theses for economics
-%{texmfdist}/source/latex/ebsthesis
-# Typesetting Ecclesiastic Latin.
-%{texmfdist}/source/latex/ecclesiastic
 # Editorial Notes for LaTeX documents.
 %{texmfdist}/source/latex/ed
 # Typeset scholarly edition.
 %{texmfdist}/source/latex/edmac
-# Multiple series of endnotes for critical editions.
-%{texmfdist}/source/latex/edmargin
-# Adjust the gender of words in a document.
-%{texmfdist}/source/latex/eemeir
-# Traditional style Irish fonts.
-%{texmfdist}/source/latex/eiad
-# Fix uneven spacing around ellipses in LaTeX text mode.
-%{texmfdist}/source/latex/ellipsis
-%{texmfdist}/source/latex/em
-# "Encapsulate" MetaPost figures in a document.
-%{texmfdist}/source/latex/emp
-# Move floats to the end with markers where they belong.
-%{texmfdist}/source/latex/endfloat
-# Running headers of the form "Notes to pp.xx-yy"
-%{texmfdist}/source/latex/endheads
-# Helps to type the pronunciation of English words.
-%{texmfdist}/source/latex/engpron
-# Enumerate with lower- or uppercase Greek letters.
-%{texmfdist}/source/latex/engrec
-# Addresses on envelopes or mailing labels.
-%{texmfdist}/source/latex/envlab
-# A package for typesetting epigraphs.
-# bevezető idézetek szedése (mottó)
-%{texmfdist}/source/latex/epigraph
-%{texmfdist}/source/latex/epiolmec
-# A scalable dice "font".
-%{texmfdist}/source/latex/epsdice
-# Create equal-widthed parboxes.
-%{texmfdist}/source/latex/eqparbox
-# Error markup for LaTeX documents.
-%{texmfdist}/source/latex/errata
-# Add picture commands (or backgrounds) to every page.
-%{texmfdist}/source/latex/eso-pic
-# LaTeX macros and fonts for typesetting Amharic.
-%{texmfdist}/source/latex/ethiop
-# UK format dates, with weekday.
-%{texmfdist}/source/latex/eukdate
 # Use AMS Euler fonts for math.
 %{texmfdist}/source/latex/euler
-# A class for preparing FP7 proposals.
-%{texmfdist}/source/latex/euproposal
-# Provide Euro values for national currency amounts.
-%{texmfdist}/source/latex/euro
-# Provide hooks to be run on every page of a document.
-%{texmfdist}/source/latex/everypage
-# Typeset exercises, problems, etc. and their answers
-%{texmfdist}/source/latex/exercise
-# Packages showing a proposed LaTeX3 programming convention.
-%{texmfdist}/source/latex/expl3
-# Extract parts of a document and write to another document.
-%{texmfdist}/source/latex/extract
-# Document class for preparing faxes.
-%{texmfdist}/source/latex/facsimile
-# Typeset numbers.
-%{texmfdist}/source/latex/fancynum
-# A LaTeX package for fancy cross-referencing.
-%{texmfdist}/source/latex/fancyref
-# Include a wide range of material in PDF tooltips.
-%{texmfdist}/source/latex/fancytooltips
-# Sophisticated verbatim text.
-%{texmfdist}/source/latex/fancyvrb
-# Auto-size graphics.
-%{texmfdist}/source/latex/figsize
-# Extended filecontents and filecontents* environments
-%{texmfdist}/source/latex/filecontents
-# The LaTeX2e File Name Keeper.
-%{texmfdist}/source/latex/fink
-# Labels for files and folders.
-%{texmfdist}/source/latex/flabels
-# Flag style derivation package
-%{texmfdist}/source/latex/flagderiv
-# A class for typesetting flashcards.
-%{texmfdist}/source/latex/flashcards
-# Improved interface for floating objects.
-%{texmfdist}/source/latex/float
-# Modifying the layout of floats.
-%{texmfdist}/source/latex/floatrow
 # Include Functional MetaPost in LaTeX.
 %{texmfdist}/source/latex/fmp
 # Warn for split footnotes.
@@ -11655,8 +11621,6 @@ fi
 %{texmfdist}/source/latex/pgfopts
 # Typesetting articles for "Philosophers' Imprint".
 %{texmfdist}/source/latex/philosophersimprint
-# A float environment for photographs.
-%{texmfdist}/source/latex/photo
 # New implementation of picture commands.
 %{texmfdist}/source/latex/pict2e
 # Electronic Theses and Dissertations at Pitt.
@@ -11739,10 +11703,6 @@ fi
 %{texmfdist}/source/latex/robustcommand
 # Generate roman numerals instead of arabic digits.
 %{texmfdist}/source/latex/romannum
-# Rotation tools, including rotated full-page floats.
-%{texmfdist}/source/latex/rotating
-# Rotate floats.
-%{texmfdist}/source/latex/rotfloat
 # BibTeX style for use with RSC journals.
 %{texmfdist}/source/latex/rsc
 # Drawing rhetorical structure analysis diagrams in LaTeX.
@@ -12167,7 +12127,6 @@ fi
 %{texmfdist}/tex/latex/philex
 %{texmfdist}/tex/latex/philosophersimprint
 %{texmfdist}/tex/latex/phonetic
-%{texmfdist}/tex/latex/photo
 %{texmfdist}/tex/latex/pictex2
 %{texmfdist}/tex/latex/pinlabel
 %{texmfdist}/tex/latex/pittetd
