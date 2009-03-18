@@ -41,7 +41,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.9.9
+Release:	0.9.10
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -5848,9 +5848,9 @@ rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.php
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir.gz
 rm -f $RPM_BUILD_ROOT%{_mandir}/{README.*,hu/man1/readlink.1*}
 rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/gzip
-rm -f $RPM_BUILD_ROOT%{texmf}/chktex
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/chktex
+rm -rf $RPM_BUILD_ROOT%{texmf}/doc/gzip
+rm -rf $RPM_BUILD_ROOT%{texmf}/chktex
+rm -rf $RPM_BUILD_ROOT%{texmf}/doc/chktex
 
 # move format logs to BUILD, so $RPM_BUILD_ROOT is not polluted
 # and we can still analyze them
