@@ -2793,8 +2793,11 @@ This package contains:
 - etaremune: reverse-counting enumerate environment.
 - expdlist: expanded description environments.
 - HA-prosper: patches and improvements for prosper.
+- listliketab: typeset lists as tables.
+- ltablex: table package extensions.
 - marginnote: notes in the margin, even where \marginpar fails
 - notes2bib: integrating notes into the bibliography.
+- underlin: underlined running heads.
 
 %description latex-extend -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -2821,8 +2824,11 @@ Ez a csomag a következőket tartalmazza:
 - etaremune: visszafele sorszámazó enumerate környezet
 - expdlist: kibővített description környezetek
 - HA-prosper: foltok és bővítések a prosper-hez
+- listliketab: listák táblázatként szedése
+- ltablex: table csomag kiegészítése
 - marginnote: széljegyzetek, ott is, ahol a \marginpar hibázik
 - notes2bib: megjegyzések elhelyezése bibliográfiába
+- underlin: aláhúzott élőfej
 
 %package latex-effects
 Summary:	Additional effects to fonts, texts...
@@ -2907,6 +2913,7 @@ This package contains:
 - subdepth: unify maths subscript height.
 - subeqn: package for subequation numbering.
 - subeqnarray: equation array with sub numbering.
+- trsym: symbols for transformations.
 - ulsy: extra mathematical characters.
 
 %description latex-math -l hu.UTF-8
@@ -2943,6 +2950,7 @@ Ez a csomag a következőket tartalmazza:
 - subdepth: matematikai indexek méretének egységesítése
 - subeqn: alegyenletek sorszámozása
 - subeqnarray: egyenletek al-sorszámozása
+- trsym: szimbólumok transzformációkhoz
 - ulsy: extra matematikai karakterek
 
 %package latex-misc
@@ -3071,6 +3079,7 @@ This package contains:
 - msc: draw MSC diagrams.
 - nag: detecting and warning about obsolete LaTeX commands
 - progkeys: typeset programs, recognising keywords.
+- register: typeset programmable elements in digital hardware (registers).
 - uml: UML diagrams in LaTeX.
 
 %description latex-informatic -l hu.UTF-8
@@ -3080,6 +3089,7 @@ Ez a csomag a következőket tartalmazza:
 - msc: MSC diagramok
 - nag: elavult LaTeX parancsok detektálása és figyelmeztetés
 - progkeys: programok szedése, kulcsszavakkal
+- register: programozható elemek (regiszterek) szedése
 - uml: UML diagramok LaTeX-ben
 
 %package latex-pdftools
@@ -5838,6 +5848,9 @@ rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.php
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir.gz
 rm -f $RPM_BUILD_ROOT%{_mandir}/{README.*,hu/man1/readlink.1*}
 rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
+rm -f $RPM_BUILD_ROOT%{texmf}/doc/gzip
+rm -f $RPM_BUILD_ROOT%{texmf}/chktex
+rm -f $RPM_BUILD_ROOT%{texmf}/doc/chktex
 
 # move format logs to BUILD, so $RPM_BUILD_ROOT is not polluted
 # and we can still analyze them
@@ -7667,6 +7680,7 @@ fi
 %doc %{texmfdist}/source/fontinst
 %doc %{texmf}/doc/dvipng
 %doc %{texmf}/doc/texdoc
+%{texmf}/doc/info
 
 # %{texmf}/fonts/map/dvips/tetex/contnav.map
 # %{texmf}/fonts/map/dvips/tetex/lumath-o.map
@@ -7706,6 +7720,7 @@ fi
 
 %doc %{texmfdist}/doc/generic/epsf
 %doc %{texmfdist}/doc/generic/tex-ps
+%doc %{texmf}/doc/web2c
 
 # %{fmtdir}/metafun.mem
 #%{texmf}/web2c/tex-pl.pool
@@ -7890,6 +7905,7 @@ fi
 %{texmfdist}/tex/generic/elvish
 %{texmfdist}/tex/generic/fenixpar
 %{texmfdist}/tex/generic/fltpoint
+%{texmfdist}/source/generic/fltpoint
 %{texmfdist}/tex/generic/musixtex
 %{texmf}/hbf2gf
 %{texmf}/fmtutil/format.texsis.cnf
@@ -7911,6 +7927,11 @@ fi
 %doc %{texmfdist}/doc/generic/fenixpar
 %doc %{texmfdist}/doc/generic/fltpoint
 %doc %{texmf}/doc/bg5conv
+%doc %{texmf}/doc/pkfix
+%doc %{texmf}/doc/hbf2gf
+%doc %{texmf}/doc/ttf2pk
+%doc %{texmf}/doc/sjisconv
+%doc %{texmf}/doc/vlna
 
 %files dirs-fonts
 %defattr(644,root,root,755)
@@ -8848,6 +8869,7 @@ fi
 %doc %{texmfdist}/doc/cslatex/base/testlat.tex
 %attr(755,root,root) %{_bindir}/csplain
 %{texmfdist}/tex/csplain
+%{texmf}/fmtutil/format.csplain.cnf
 
 %files format-csplain
 %defattr(644,root,root,755)
@@ -9993,6 +10015,9 @@ fi
 %doc %{texmfdist}/doc/latex/photo
 %{texmfdist}/source/latex/photo
 %{texmfdist}/tex/latex/photo
+# Move floats to the top of the page.
+%doc %{texmfdist}/doc/latex/topfloat
+%{texmfdist}/tex/latex/topfloat
 
 %files latex-formlett
 %defattr(644,root,root,755)
@@ -10441,7 +10466,6 @@ fi
 %doc %{texmfdist}/doc/latex/linguex
 %doc %{texmfdist}/doc/latex/lipsum
 %doc %{texmfdist}/doc/latex/listbib
-%doc %{texmfdist}/doc/latex/listliketab
 %doc %{texmfdist}/doc/latex/listofsymbols
 %doc %{texmfdist}/doc/latex/lkproof
 %doc %{texmfdist}/doc/latex/logic
@@ -10489,7 +10513,6 @@ fi
 %doc %{texmfdist}/doc/latex/multicap
 %doc %{texmfdist}/doc/latex/multirow
 %doc %{texmfdist}/doc/latex/munich
-%doc %{texmfdist}/doc/latex/musixlyr
 %doc %{texmfdist}/doc/latex/muthesis
 %doc %{texmfdist}/doc/latex/mxd
 %doc %{texmfdist}/doc/latex/mxedruli
@@ -10576,7 +10599,6 @@ fi
 %doc %{texmfdist}/doc/latex/refcheck
 %doc %{texmfdist}/doc/latex/refstyle
 %doc %{texmfdist}/doc/latex/regcount
-%doc %{texmfdist}/doc/latex/register
 %doc %{texmfdist}/doc/latex/relenc
 %doc %{texmfdist}/doc/latex/repeatindex
 %doc %{texmfdist}/doc/latex/rlepsf
@@ -10685,7 +10707,6 @@ fi
 %doc %{texmfdist}/doc/latex/todo
 %doc %{texmfdist}/doc/latex/tokenizer
 %doc %{texmfdist}/doc/latex/toolbox
-%doc %{texmfdist}/doc/latex/topfloat
 %doc %{texmfdist}/doc/latex/toptesi
 %doc %{texmfdist}/doc/latex/tpslifonts
 %doc %{texmfdist}/doc/latex/trajan
@@ -10693,7 +10714,6 @@ fi
 %doc %{texmfdist}/doc/latex/tree-dvips
 %doc %{texmfdist}/doc/latex/trfsigns
 %doc %{texmfdist}/doc/latex/trivfloat
-%doc %{texmfdist}/doc/latex/trsym
 %doc %{texmfdist}/doc/latex/turnstile
 %doc %{texmfdist}/doc/latex/twoup
 %doc %{texmfdist}/doc/latex/typedref
@@ -10701,7 +10721,6 @@ fi
 %doc %{texmfdist}/doc/latex/uebungsblatt
 %doc %{texmfdist}/doc/latex/umlaute
 %doc %{texmfdist}/doc/latex/umoline
-%doc %{texmfdist}/doc/latex/underlin
 %doc %{texmfdist}/doc/latex/undertilde
 %doc %{texmfdist}/doc/latex/unitsdef
 %doc %{texmfdist}/doc/latex/unroman
@@ -10748,6 +10767,8 @@ fi
 
 %files latex-math-sources
 %defattr(644,root,root,755)
+%dir %{texmfdist}/source
+%dir %{texmfdist}/source/latex
 %{texmfdist}/source/latex/bez123
 %{texmfdist}/source/latex/binomexp
 %{texmfdist}/source/latex/cmll
@@ -10770,6 +10791,7 @@ fi
 %{texmfdist}/source/latex/permute
 %{texmfdist}/source/latex/qsymbols
 %{texmfdist}/source/latex/subdepth
+%{texmfdist}/source/latex/faktor
 
 %files latex-math
 %defattr(644,root,root,755)
@@ -10855,6 +10877,11 @@ fi
 %doc %{texmfdist}/doc/latex/sseq
 %{texmfdist}/source/latex/sseq
 %{texmfdist}/tex/latex/sseq
+%doc %{texmfdist}/doc/latex/trsym
+%{texmfdist}/source/latex/trsym
+%{texmfdist}/tex/latex/trsym
+%{texmfdist}/fonts/source/public/trsym
+%{texmfdist}/fonts/tfm/public/trsym
 
 
 %files latex-physics
@@ -10949,6 +10976,9 @@ fi
 %{texmfdist}/tex/latex/uml
 %doc %{texmfdist}/doc/latex/msc
 %{texmfdist}/tex/latex/msc
+%doc %{texmfdist}/doc/latex/register
+%{texmfdist}/source/latex/register
+%{texmfdist}/tex/latex/register
 
 %files latex-games
 %defattr(644,root,root,755)
@@ -11459,6 +11489,12 @@ fi
 %{texmfdist}/source/latex/songbook
 %{texmfdist}/tex/latex/songbook
 %doc %{texmfdist}/doc/latex/songbook
+%{texmfdist}/tex/generic/musixlyr
+%doc %{texmfdist}/doc/latex/musixlyr
+%{texmfdist}/tex/generic/musixps
+%doc %{texmfdist}/doc/generic/musixps
+%{texmfdist}/fonts/source/public/musixps
+%{texmfdist}/fonts/tfm/public/musixps
 
 %files latex-extend
 %defattr(644,root,root,755)
@@ -11530,6 +11566,13 @@ fi
 %doc %{texmfdist}/doc/latex/notes2bib
 %{texmfdist}/source/latex/notes2bib
 %{texmfdist}/tex/latex/notes2bib
+%doc %{texmfdist}/doc/latex/underlin
+%{texmfdist}/source/latex/underlin
+%{texmfdist}/tex/latex/underlin
+%{texmfdist}/source/latex/listliketab
+%{texmfdist}/tex/latex/listliketab
+%doc %{texmfdist}/doc/latex/listliketab
+%{texmfdist}/tex/latex/ltablex
 
 %files latex-programming
 %defattr(644,root,root,755)
@@ -11712,9 +11755,6 @@ fi
 # Lists contents of BibTeX files.
 %{texmfdist}/source/latex/listbib
 %{texmfdist}/tex/latex/listbib
-# Typeset lists as tables.
-%{texmfdist}/source/latex/listliketab
-%{texmfdist}/tex/latex/listliketab
 # Create and manipulate lists of symbols
 %{texmfdist}/tex/latex/listofsymbols
 # LK Proof figure macros.
@@ -11723,8 +11763,6 @@ fi
 %{texmfdist}/tex/latex/logic
 # Typesetting Live Sequence Charts.
 %{texmfdist}/tex/latex/lsc
-# Table package extensions.
-%{texmfdist}/tex/latex/ltablex
 # A LaTeX package to typeset indices with GNU's Texindex.
 %{texmfdist}/source/latex/ltxindex
 %{texmfdist}/tex/latex/ltxindex
@@ -12029,9 +12067,6 @@ fi
 # Display the allocation status of the TeX registers.
 %{texmfdist}/source/latex/regcount
 %{texmfdist}/tex/latex/regcount
-# Typeset programmable elements in digital hardware (registers).
-%{texmfdist}/source/latex/register
-%{texmfdist}/tex/latex/register
 # A "relaxed" font encoding.
 %{texmfdist}/source/latex/relenc
 %{texmfdist}/tex/latex/relenc
@@ -12238,8 +12273,6 @@ fi
 # Macros for writing indices, glossaries.
 %{texmfdist}/source/latex/toolbox
 %{texmfdist}/tex/latex/toolbox
-# Move floats to the top of the page.
-%{texmfdist}/tex/latex/topfloat
 # Bundle of files for typsetting theses.
 %{texmfdist}/source/latex/toptesi
 %{texmfdist}/tex/latex/toptesi
@@ -12261,9 +12294,6 @@ fi
 # Quick float definitions in LaTeX.
 %{texmfdist}/source/latex/trivfloat
 %{texmfdist}/tex/latex/trivfloat
-# Symbols for transformations.
-%{texmfdist}/source/latex/trsym
-%{texmfdist}/tex/latex/trsym
 # Typeset the (logic) turnstile notation.
 %{texmfdist}/source/latex/turnstile
 %{texmfdist}/tex/latex/turnstile
@@ -12284,12 +12314,10 @@ fi
 %{texmfdist}/tex/latex/umoline
 # Package for fancy box frames.
 %{texmfdist}/tex/latex/umrand
-# Underlined running heads.
-%{texmfdist}/source/latex/underlin
-%{texmfdist}/tex/latex/underlin
 # Shorter (and longer) underlines and underbars.
 %{texmfdist}/source/latex/ushort
 %{texmfdist}/tex/latex/ushort
+
 
 # %files latex-palatcm
 # %defattr(644,root,root,755)
@@ -12305,6 +12333,7 @@ fi
 %doc %{texmfdist}/doc/generic/pgf
 %doc %{texmfdist}/doc/latex/pgfplots
 %{texmfdist}/source/latex/pgfplots
+%{texmfdist}/source/latex/pgfopts
 %{texmfdist}/tex/generic/pgf
 %{texmfdist}/tex/generic/pgfplots
 %{texmfdist}/tex/latex/pgf
@@ -13116,8 +13145,10 @@ fi
 %files fonts-other
 %defattr(644,root,root,755)
 
+%{texmf}/fonts/sfd
 %doc %{texmfdist}/doc/fonts/yi4latex
 %{texmfdist}/fonts/afm/itc
+%{texmf}/fonts/map/glyphlist
 %{texmfdist}/fonts/map/glyphlist
 %{texmfdist}/fonts/source/public/knuthotherfonts
 %{texmfdist}/fonts/source/public/yi4latex
@@ -13758,10 +13789,6 @@ fi
 %{texmfdist}/fonts/tfm/vntex/mscorevn
 %{texmfdist}/fonts/vf/vntex/mscorevn
 
-%doc %{texmfdist}/doc/generic/musixps
-%{texmfdist}/fonts/source/public/musixps
-%{texmfdist}/fonts/tfm/public/musixps
-
 %doc %{texmfdist}/doc/generic/musixtex
 %{texmfdist}/fonts/map/dvips/musixtex
 %{texmfdist}/fonts/source/public/musixtex
@@ -13935,8 +13962,6 @@ fi
 %{texmfdist}/fonts/tfm/public/trajan
 %{texmfdist}/fonts/type1/public/trajan
 
-%{texmfdist}/fonts/source/public/trsym
-%{texmfdist}/fonts/tfm/public/trsym
 
 %{texmfdist}/fonts/tfm/vntex/txttvn
 %{texmfdist}/fonts/type1/vntex/txttvn
