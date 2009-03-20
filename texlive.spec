@@ -41,7 +41,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.9.10
+Release:	0.9.11
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -2510,20 +2510,18 @@ description).
 Egy csomag, amivel testreszabhatod a három alapvető listakörnyezetet
 (enumerate, itemize, description).
 
-%package latex-exam
-Summary:	The exam document class attempts to make it easy for even a LaTeX novice to prepare exams
-Summary(hu.UTF-8):	Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a feladatsorok készítése
+%package latex-exams
+Summary:	Various document classes to typeset exams
+Summary(hu.UTF-8):	Különböző dokumentumosztályok vizsgák, feladatsorok szedésére
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
-%description latex-exam
-The exam document class attempts to make it easy for even a LaTeX
-novice to prepare exams.
+%description latex-exams
+Various document classes to typeset exams.
 
-%description latex-exam -l hu.UTF-8
-Az exam dokumentumosztály segítségével könnyűvé válik LaTeX-ben a
-feladatsorok készítése.
+%description latex-exams -l hu.UTF-8
+Különböző dokumentumosztályok vizsgák, feladatsorok szedésére.
 
 %package latex-float
 Summary:	Tools to manipulate float objects
@@ -2563,19 +2561,6 @@ Create forms containing field for manual entry.
 
 %description latex-formular -l hu.UTF-8
 Kézzel kitöltendő űrlapok készítése.
-
-%package latex-examdesign
-Summary:	LaTeX class for typesetting exams
-Summary(hu.UTF-8):	LaTeX osztály dolgozatok szedésére
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-
-%description latex-examdesign
-LaTeX class for typesetting exams.
-
-%description latex-examdesign -l hu.UTF-8
-LaTeX osztály dolgozatok szedésére.
 
 %package latex-gbrief
 Summary:	Letter document class
@@ -2748,6 +2733,15 @@ paragrafu na linie przez TeXa do linii dołączane są ich numery z
 możliwością tworzenia odnośników poprzez mechanizm odnośników LaTeXa
 \ref i \pageref.
 
+%package latex-metre
+Summary:	Support for the work of classicists
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	/usr/bin/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-metre
+Support for the work of classicists.
+
 %package latex-games
 Summary:	Packages for typesetting games
 Summary(hu.UTF-8):	Játékok szedése
@@ -2793,11 +2787,32 @@ This package contains:
 - etaremune: reverse-counting enumerate environment.
 - expdlist: expanded description environments.
 - HA-prosper: patches and improvements for prosper.
+- leading: define leading with a length.
 - listliketab: typeset lists as tables.
 - ltablex: table package extensions.
+- makebox: defines a \makebox* command.
+- makecell: tabular column heads and multilined cells.
 - marginnote: notes in the margin, even where \marginpar fails
+- mcaption: put captions in the margin.
+- mcite: multiple items in a single citation.
+- mciteplus: enhanced multiple citations.
+- minipage-marginpar: minipages with marginal notes.
+- miniplot: a package for easy figure arrangement.
+- multicap: format captions inside multicols
+- newvbtm: define your own verbatim-like environment.
 - notes2bib: integrating notes into the bibliography.
+- ntabbing: simple tabbing extension for automatic line numbering.
+- numline: LaTeX macros for numbering lines.
+- pbox: a variable-width \parbox command.
+- pinlabel: a TeX labelling package.
+- polytable: tabular-like environments with named columns.
+- rccol: decimal-centered optionally rounded numbers in tabular.
+- romannum: generate roman numerals instead of arabic digits.
+- schedule: weekly schedules.
+- umoline: underline text allowing line breaking.
+- umrand: package for fancy box frames.
 - underlin: underlined running heads.
+- ushort: shorter (and longer) underlines and underbars.
 
 %description latex-extend -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -2824,14 +2839,35 @@ Ez a csomag a következőket tartalmazza:
 - etaremune: visszafele sorszámazó enumerate környezet
 - expdlist: kibővített description környezetek
 - HA-prosper: foltok és bővítések a prosper-hez
+- leading: sorközök definiálása hosszal
 - listliketab: listák táblázatként szedése
 - ltablex: table csomag kiegészítése
+- makebox: egy \makebox* parancs definiálása
+- makecell: táblázat címsorral és többsoros cellákkal
 - marginnote: széljegyzetek, ott is, ahol a \marginpar hibázik
+- mcaption: címkék a margóra
+- mcite: több elem egy hivatkozásban
+- mciteplus: kibővített többszörös hivatkozás
+- minipage-marginpar: minipage-ek széljegyzetekkel
+- miniplot: egy csomag ábrák könnyű elhelyezéséhez
+- multicap: formázott cimkék multicols környezetben
+- newvbtm: saját verbatim-szerű környezetek
 - notes2bib: megjegyzések elhelyezése bibliográfiába
+- ntabbing: tabbing környezet automatikus sorszámozással
+- numline: LaTeX makrók sorok számozására
+- pbox: változtatható szélességű \parbox
+- pinlabel: a TeX labelling package.
+- polytable: tabular-like environments with named columns.
+- rccol: decimal-centered optionally rounded numbers in tabular.
+- romannum: generate roman numerals instead of arabic digits.
+- schedule: heti időbeosztás (órarend)
+- umoline: aláhúzott szövegben sortörés engedélyezése
+- umrand: package for fancy box frames.
 - underlin: aláhúzott élőfej
+- ushort: shorter (and longer) underlines and underbars.
 
 %package latex-effects
-Summary:	Additional effects to fonts, texts...
+Summary:	Additional effects to fonts, texts.
 Summary(hu.UTF-8):	További effektek betűkhöz, szövegekhez,...
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
@@ -2847,6 +2883,12 @@ This package contains:
 - flowfram: create text frames for posters, brochures or magazines.
 - isorot: rotation of document elements.
 - lettrine: typeset dropped capitals.
+- niceframe: support for fancy frames.
+- notes: mark sections of a document.
+- objectz: macros for typesetting Object Z.
+- parallel: typeset parallel texts.
+- quotchap: decorative chapter headings.
+- rotpages: typeset sets of pages upside-down and backwards.
 
 %description latex-effects -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -2858,6 +2900,12 @@ Ez a csomag a következőket tartalmazza:
 - flowfram: szövegkeretek poszterekhez, brossúrákhoz vagy magazinokhoz
 - isorot: dokumentum-elemek forgatása
 - lettrine: ejtett kapitálisok szedése
+- niceframe: különféle keretek
+- notes: dokumentum részeinek kiemelése, megjelölése
+- objectz: Object Z objektumok szedése
+- parallel: párhuzamos szövegek szedése
+- quotchap: decorative chapter headings.
+- rotpages: typeset sets of pages upside-down and backwards.
 
 %package latex-math-sources
 Summary:	Sources of latex-math
@@ -2901,18 +2949,24 @@ This package contains:
 - hhtensor: print vectors, matrices, and tensors.
 - logpap: generate logarithmic graph paper with LaTeX.
 - makeplot: easy plots from Matlab in LaTeX.
+- maybemath: make math bold or italic according to context.
 - mfpic4ode: macros to draw direction fields and solutions of ODEs.
 - mhequ: multicolumn equations, tags, labels, sub-numbering.
 - mhs: historical mathematics.
+- mlist: logical markup for lists.
 - nath: natural mathematics notation.
 - noitcrul: improved underlines in mathematics.
 - numprint: print numbers with separators and exponent if necessary.
 - permute: support for symmetric groups.
+- petri-nets: A set TeX/LaTeX packages for drawing Petri nets.
 - qsymbols: maths symbol abbreviations.
+- qtree: draw tree structures.
+- simplewick: simple Wick contractions.
 - sseq: spectral sequence diagrams.
 - subdepth: unify maths subscript height.
 - subeqn: package for subequation numbering.
 - subeqnarray: equation array with sub numbering.
+- trfsigns: typeset transform signs.
 - trsym: symbols for transformations.
 - ulsy: extra mathematical characters.
 
@@ -2938,18 +2992,25 @@ Ez a csomag a következőket tartalmazza:
 - hhtensor: vetkorok, mátrixok és tenzorok nyomtatása
 - logpap: logaritmikus grafikonok
 - makeplot: könnyű ábrázolások Matlab-ból LaTeX-be
+- maybemath: matematikai félkövér ill. dőlt szöveg környezettől
+  függően
 - mfpic4ode: differenciálegyenletek megoldásainak ábrázolása
 - mhequ: többoszlopos egyenletek, cimkék, al-sorszámozás
 - mhs: történelmi matematika
+- mlist: listák logikus jelölése
 - nath: természetes matematikai jelölés
 - noitcrul: kibővített aláhúzások matematikában
 - numprint: számok írása elválasztókkal és kitevőkkel, ha szükséges
 - permute: szimmetriacsoportok
+- petri-nets: A set TeX/LaTeX packages for drawing Petri nets.
 - qsymbols: matematikai szimbólumok rövidítése
+- qtree: fastruktúrák rajzolása
+- simplewick: simple Wick contractions.
 - sseq: spectral sequence diagrams.
 - subdepth: matematikai indexek méretének egységesítése
 - subeqn: alegyenletek sorszámozása
 - subeqnarray: egyenletek al-sorszámozása
+- trfsigns: transzformációs jelek szedése
 - trsym: szimbólumok transzformációkhoz
 - ulsy: extra matematikai karakterek
 
@@ -2966,6 +3027,7 @@ This packages contains:
 - cuisine: typeset recipes.
 - fixme: insert "fixme" notes into draft documents.
 - recipecard: typeset recipes in note-card-sized boxes.
+- todo: make a to-do list for a document.
 
 %description latex-misc -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -2973,6 +3035,7 @@ Ez a csomag a következőket tartalmazza:
 - cuisine: receptek szedése
 - fixme: "fixme" megjegyzések elhelyezése
 - recipecard: receptek szedése jegyzet-méretű dobozokba
+- todo: dokumentumok teendőinek listája
 
 %package latex-music
 Summary:	Musical packages
@@ -3008,7 +3071,9 @@ This package contains:
 - feynmf: macros and fonts for creating Feynman (and other) diagrams.
 - formula: typesetting physical units.
 - isotope: a package for type setting isotopes
+- listofsymbols: create and manipulate lists of symbols
 - miller: typeset miller indices.
+- susy: macros for SuperSymmetry-related work.
 
 %description latex-physics -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -3018,7 +3083,9 @@ Ez a csomag a következőket tartalmazza:
 - feynmf: makrók és fontok Feynman (és más) diagramok készítésére
 - formula: fizikai egységek szedése
 - isotope: izotópok szedése
+- listofsymbols: szimbólumok listákának létrehozása és kezelése
 - miller: miller indexek szedése
+- susy: Szuper-Szimmetria elmélettel kapcsolatos munkákhoz makrók
 
 %package latex-biology
 Summary:	Biological packages
@@ -3076,16 +3143,21 @@ Requires:	%{name}-latex
 This package contains:
 - alg: LaTeX environments for typesetting algorithms.
 - bytefield: Create illustrations for network protocol specifications.
+- lsc: typesetting Live Sequence Charts.
+- method: typeset method and variable declarations.
 - msc: draw MSC diagrams.
 - nag: detecting and warning about obsolete LaTeX commands
 - progkeys: typeset programs, recognising keywords.
-- register: typeset programmable elements in digital hardware (registers).
+- register: typeset programmable elements in digital hardware
+  (registers).
 - uml: UML diagrams in LaTeX.
 
 %description latex-informatic -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
 - alg: LaTeX környezetek algoritmusok szedésére
 - bytefield: hálózati protokoll specifikációk szemléltetése
+- lsc: Live Sequence Charts
+- method: eljárások és változók deklarációjának szedése
 - msc: MSC diagramok
 - nag: elavult LaTeX parancsok detektálása és figyelmeztetés
 - progkeys: programok szedése, kulcsszavakkal
@@ -3104,30 +3176,21 @@ This package contains:
 - attachfile: attach arbitrary files to a PDF document
 - cooltooltips: associate a pop-up window and tooltip with PDF
   hyperlinks
-- pdfcprot: activating and setting of character protruding using pdflatex.
-- pdftricks: support for pstricks in pdfTeX.
-. pdfscreen: support screen-based document design.
+- movie15: multimedia inclusion package.
+- pdfcprot: activating and setting of character protruding using
+  pdflatex.
+- pdftricks: support for pstricks in pdfTeX. . pdfscreen: support
+  screen-based document design.
 
 %description latex-pdftools -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
 - attachfile: fájlok csatolása PDF dokumentumokba
 - cooltooltips: felugró ablakok és súgók társítása PDF linkekhez
-- pdfcprot: activating and setting of character protruding using pdflatex.
+- movie15: multimédia beillesztése
+- pdfcprot: activating and setting of character protruding using
+  pdflatex.
 - pdftricks: pstricks támogatás pdfTeX-ben
 - pdfscreen: képernyő alapú dokumentumok
-
-%package latex-mathexam
-Summary:	Package for typesetting exams
-Summary(hu.UTF-8):	Vizsgák szedése
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
-
-%description latex-mathexam
-Package for typesetting exams.
-
-%description latex-mathexam -l hu.UTF-8
-Vizsgák szedése.
 
 %package latex-microtype
 Summary:	An interface to the micro-typographic extensions of pdfTeX
@@ -3472,12 +3535,19 @@ This package contains:
 - labelcas: check the existence of labels, and fork accordingly.
 - lcg: generate random integers.
 - makecmds: the new \makecommand command always (re)defines a command.
+- multido: a loop facility for Generic TeX.
 - namespc: rudimentary c++-like namespaces in LaTeX.
 - patchcmd: change the definition of an existing command.
+- progress: creates an overview of a document's state.
+- randtext: randomise the order of characters in strings.
+- regcount: display the allocation status of the TeX registers.
+- robustcommand: declare robust command, with \newcommand checks.
+- splitindex: unlimited number of indexes.
 - stack: tools to define and use stacks.
 - stringstrings: string manipulation for cosmetic and programming
   application
 - substr: deal with substrings in strings.
+- typedref: eliminate errors by enforcing the types of labels.
 
 %description latex-programming -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -3500,11 +3570,18 @@ Ez a csomag a következőket tartalmazza:
 - labelcas: cimkék létezésének ellenőrzése
 - lcg: véletlen egész számok generálása
 - makecmds: új \makecommand, amely mindig (újra)definiál parancsot
+- multido: ciklusok szervezése LaTeX-ben
 - namespc: c++-szerű névterek LaTeX-ben
 - patchcmd: létező parancsok definíciójának megváltoztatása
+- progress: egy áttekintést készít a dokumentum állapotáról
+- randtext: sztring karaktereinek összekeverése
+- regcount: display the allocation status of the TeX registers.
+- robustcommand: declare robust command, with \newcommand checks.
+- splitindex: unlimited number of indexes.
 - stack: verem használata
 - stringstrings: sztring manipuláció
 - substr: részszövegek keresése
+- typedref: eliminate errors by enforcing the types of labels.
 
 %package latex-prosper
 Summary:	LaTeX class for high quality slides
@@ -4788,6 +4865,18 @@ Knappen, including sgmlcmpt.
 %description fonts-jknappen -l pl.UTF-8
 Różne makra, głównie do używania dodatkowych fontów autorstwa Joerga
 Knappena. Zawiera sgmlcmpt.
+
+%package fonts-kpfonts
+Summary:	A complete set of fonts for text and mathematics
+Summary(hu.UTF-8):	Betűtípusok teljes készlete (matematikai) szövegekhez
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-kpfonts
+A complete set of fonts for text and mathematics.
+
+%description fonts-kpfonts -l hu.UTF-8
+Betűtípusok teljes készlete (matematikai) szövegekhez.
 
 %package fonts-latex
 Summary:	Basic LaTeX fonts
@@ -6233,6 +6322,12 @@ fi
 %postun latex-programming
 %texhash
 
+%post latex-metre
+%texhash
+
+%postun latex-metre
+%texhash
+
 %post latex-misc
 %texhash
 
@@ -6509,16 +6604,10 @@ fi
 %postun latex-enumitem
 %texhash
 
-%post latex-exam
+%post latex-exams
 %texhash
 
-%postun latex-exam
-%texhash
-
-%post latex-examdesign
-%texhash
-
-%postun latex-examdesign
+%postun latex-exams
 %texhash
 
 %post latex-float
@@ -6609,12 +6698,6 @@ fi
 %texhash
 
 %postun latex-marvosym
-%texhash
-
-%post latex-mathexam
-%texhash
-
-%postun latex-mathexam
 %texhash
 
 %post latex-mathpple
@@ -7205,6 +7288,12 @@ fi
 %postun fonts-latex
 %texhash
 
+%post fonts-kpfonts
+%texhash
+
+%postun fonts-kpfonts
+%texhash
+
 %post fonts-lh
 %texhash
 
@@ -7633,19 +7722,11 @@ fi
 %attr(1777,root,root) %dir %{fmtdir}
 
 %dir %{texmfdist}
-%doc %{texmfdist}/README
-%dir %{texmf}
-
 %dir %{texmfdist}/doc
 %dir %{texmfdist}/doc/generic
 %dir %{texmfdist}/doc/generic/enctex
 %dir %{texmfdist}/doc/latex
 %dir %{texmfdist}/doc/latex/localloc
-%dir %{texmf}/doc
-%dir %{texmf}/doc/generic
-%dir %{texmf}/doc/tetex
-%dir %{texmf}/fmtutil
-
 %dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/cslatex
 %dir %{texmfdist}/tex/cslatex/base
@@ -7657,24 +7738,31 @@ fi
 %dir %{texmfdist}/tex/generic/misc
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/base
+%dir %{texmf}
+%dir %{texmf}/doc
+%dir %{texmf}/doc/generic
+%dir %{texmf}/doc/tetex
 %dir %{texmf}/dvips
 %dir %{texmf}/dvips/config
 %dir %{texmf}/dvips/tetex
+%dir %{texmf}/fmtutil
 %dir %{texmf}/fonts/enc
 %dir %{texmf}/fonts/enc/dvips
 %dir %{texmf}/fonts/enc/dvips/tetex
-%dir %{texmf}/fonts/map/dvips/updmap
 %dir %{texmf}/fonts/map
 %dir %{texmf}/fonts/map/dvips
 %dir %{texmf}/fonts/map/dvips/tetex
+%dir %{texmf}/fonts/map/dvips/updmap
 %dir %{texmf}/scripts
 %dir %{texmf}/tex
 %dir %{texmf}/tex/generic
 %dir %{texmf}/tex/generic/config
 %dir %{texmf}/web2c
 
+
 # Docs
 # %doc %{texmf}/doc/README
+%doc %{texmfdist}/README
 %doc %{texmf}/doc/tetex/TETEXDOC.*
 %doc %{texmf}/doc/tetex/teTeX-FAQ
 %doc %{texmfdist}/source/fontinst
@@ -8194,6 +8282,8 @@ fi
 
 %files -n kpathsea
 %defattr(644,root,root,755)
+%dir %{texmf}/doc
+%dir %{texmf}/doc/kpathsea
 %doc %{texmf}/doc/kpathsea
 %attr(755,root,root) %{_bindir}/kpsepath
 %attr(755,root,root) %{_bindir}/kpsestat
@@ -9815,7 +9905,6 @@ fi
 %{texmfdist}/bibtex/bib/lsc
 %{texmfdist}/bibtex/bib/msc
 %{texmfdist}/bibtex/bib/nostarch
-%{texmfdist}/bibtex/bib/philosophersimprint
 %{texmfdist}/bibtex/bib/revtex
 %{texmfdist}/bibtex/bib/spie
 %{texmfdist}/bibtex/bib/urlbst
@@ -9860,7 +9949,6 @@ fi
 %{texmfdist}/bibtex/bst/jneurosci
 %{texmfdist}/bibtex/bst/jurarsp
 %{texmfdist}/bibtex/bst/kluwer
-%{texmfdist}/bibtex/bst/mciteplus
 %{texmfdist}/bibtex/bst/mslapa
 %{texmfdist}/bibtex/bst/multibib
 %{texmfdist}/bibtex/bst/munich
@@ -9869,7 +9957,6 @@ fi
 %{texmfdist}/bibtex/bst/opcit
 %{texmfdist}/bibtex/bst/perception
 %{texmfdist}/bibtex/bst/revtex
-%{texmfdist}/bibtex/bst/rsc
 %{texmfdist}/bibtex/bst/savetrees
 %{texmfdist}/bibtex/bst/shipunov
 %{texmfdist}/bibtex/bst/smflatex
@@ -9925,6 +10012,7 @@ fi
 %files latex-ccfonts
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/ccfonts
+%{texmfdist}/source/latex/ccfonts
 %{texmfdist}/tex/latex/ccfonts
 
 %files latex-cite
@@ -9994,16 +10082,27 @@ fi
 %doc %{texmfdist}/doc/latex/enumitem
 %{texmfdist}/tex/latex/enumitem
 
-%files latex-exam
+%files latex-exams
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/exam
 %{texmfdist}/tex/latex/exam
-
-%files latex-examdesign
-%defattr(644,root,root,755)
+# generate problem sheets and their solution sheets
+%doc %{texmfdist}/doc/latex/probsoln
+%{texmfdist}/source/latex/probsoln
+%{texmfdist}/tex/latex/probsoln
 %doc %{texmfdist}/doc/latex/examdesign
 %{texmfdist}/tex/latex/examdesign
 %{texmfdist}/source/latex/examdesign
+%doc %{texmfdist}/doc/latex/mathexam
+%{texmfdist}/source/latex/mathexam
+%{texmfdist}/tex/latex/mathexam
+# A LaTeX2e class for making multiple choice questionnaires
+%doc %{texmfdist}/doc/latex/qcm
+%{texmfdist}/source/latex/qcm
+%{texmfdist}/tex/latex/qcm
+# A LaTeX class for writing exercise sheets.
+%doc %{texmfdist}/doc/latex/uebungsblatt
+%{texmfdist}/tex/latex/uebungsblatt
 
 %files latex-float
 %defattr(644,root,root,755)
@@ -10103,16 +10202,15 @@ fi
 %doc %{texmfdist}/doc/latex/lineno
 %{texmfdist}/tex/latex/lineno
 
+%files latex-metre
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/metre
+%{texmfdist}/source/latex/metre
+%{texmfdist}/tex/latex/metre
 
 %files latex-marvosym
 %defattr(644,root,root,755)
 %{texmfdist}/tex/latex/marvosym
-
-%files latex-mathexam
-%defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/mathexam
-%{texmfdist}/source/latex/mathexam
-%{texmfdist}/tex/latex/mathexam
 
 #%files latex-mathpple
 #%defattr(644,root,root,755)
@@ -10140,6 +10238,9 @@ fi
 %doc %{texmfdist}/doc/latex/cuisine
 %{texmfdist}/source/latex/cuisine
 %{texmfdist}/tex/latex/cuisine
+%doc %{texmfdist}/doc/latex/todo
+%{texmfdist}/source/latex/todo
+%{texmfdist}/tex/latex/todo
 
 %files latex-mflogo
 %defattr(644,root,root,755)
@@ -10459,45 +10560,29 @@ fi
 %doc %{texmfdist}/doc/latex/kluwer
 %doc %{texmfdist}/doc/latex/lazylist
 %doc %{texmfdist}/doc/latex/lcyw
-%doc %{texmfdist}/doc/latex/leading
 %doc %{texmfdist}/doc/latex/ledmac
 %doc %{texmfdist}/doc/latex/lgreek
 %doc %{texmfdist}/doc/latex/lhelp
 %doc %{texmfdist}/doc/latex/linguex
 %doc %{texmfdist}/doc/latex/lipsum
 %doc %{texmfdist}/doc/latex/listbib
-%doc %{texmfdist}/doc/latex/listofsymbols
 %doc %{texmfdist}/doc/latex/lkproof
 %doc %{texmfdist}/doc/latex/logic
-%doc %{texmfdist}/doc/latex/lsc
 %doc %{texmfdist}/doc/latex/ltxindex
 %doc %{texmfdist}/doc/latex/mafr
 %doc %{texmfdist}/doc/latex/magyar
 %doc %{texmfdist}/doc/latex/mailing
 %doc %{texmfdist}/doc/latex/makebarcode
-%doc %{texmfdist}/doc/latex/makebox
-%doc %{texmfdist}/doc/latex/makecell
 %doc %{texmfdist}/doc/latex/makedtx
 %doc %{texmfdist}/doc/latex/makeglos
 %doc %{texmfdist}/doc/latex/mathdesign
 %doc %{texmfdist}/doc/latex/mathpazo
-%doc %{texmfdist}/doc/latex/maybemath
-%doc %{texmfdist}/doc/latex/mcaption
 %doc %{texmfdist}/doc/latex/mceinleger
-%doc %{texmfdist}/doc/latex/mcite
-%doc %{texmfdist}/doc/latex/mciteplus
 %doc %{texmfdist}/doc/latex/memexsupp
-%doc %{texmfdist}/doc/latex/mentis
 %doc %{texmfdist}/doc/latex/metaplot
-%doc %{texmfdist}/doc/latex/method
-%doc %{texmfdist}/doc/latex/metre
 %doc %{texmfdist}/doc/latex/mff
 %doc %{texmfdist}/doc/latex/mftinc
-%doc %{texmfdist}/doc/latex/minipage-marginpar
-%doc %{texmfdist}/doc/latex/miniplot
 %doc %{texmfdist}/doc/latex/minutes
-%doc %{texmfdist}/doc/latex/mla-paper
-%doc %{texmfdist}/doc/latex/mlist
 %doc %{texmfdist}/doc/latex/mmap
 %doc %{texmfdist}/doc/latex/mnsymbol
 %doc %{texmfdist}/doc/latex/moderncv
@@ -10505,12 +10590,10 @@ fi
 %doc %{texmfdist}/doc/latex/mongolian-babel
 %doc %{texmfdist}/doc/latex/montex
 %doc %{texmfdist}/doc/latex/moresize
-%doc %{texmfdist}/doc/latex/movie15
 %doc %{texmfdist}/doc/latex/msg
 %doc %{texmfdist}/doc/latex/mslapa
 %doc %{texmfdist}/doc/latex/mtgreek
 %doc %{texmfdist}/doc/latex/multibbl
-%doc %{texmfdist}/doc/latex/multicap
 %doc %{texmfdist}/doc/latex/multirow
 %doc %{texmfdist}/doc/latex/munich
 %doc %{texmfdist}/doc/latex/muthesis
@@ -10523,17 +10606,10 @@ fi
 %doc %{texmfdist}/doc/latex/newfile
 %doc %{texmfdist}/doc/latex/newlfm
 %doc %{texmfdist}/doc/latex/newspaper
-%doc %{texmfdist}/doc/latex/newvbtm
-%doc %{texmfdist}/doc/latex/niceframe
-%doc %{texmfdist}/doc/latex/nih
 %doc %{texmfdist}/doc/latex/nomentbl
 %doc %{texmfdist}/doc/latex/nonfloat
-%doc %{texmfdist}/doc/latex/notes
-%doc %{texmfdist}/doc/latex/ntabbing
 %doc %{texmfdist}/doc/latex/numname
-%doc %{texmfdist}/doc/latex/objectz
 %doc %{texmfdist}/doc/latex/ocr-latex
-%doc %{texmfdist}/doc/latex/octavo
 %doc %{texmfdist}/doc/latex/ogham
 %doc %{texmfdist}/doc/latex/ogonek
 %doc %{texmfdist}/doc/latex/opcit
@@ -10543,71 +10619,50 @@ fi
 %doc %{texmfdist}/doc/latex/outliner
 %doc %{texmfdist}/doc/latex/pagenote
 %doc %{texmfdist}/doc/latex/papercdcase
-%doc %{texmfdist}/doc/latex/parallel
 %doc %{texmfdist}/doc/latex/paresse
 %doc %{texmfdist}/doc/latex/parrun
 %doc %{texmfdist}/doc/latex/pauldoc
-%doc %{texmfdist}/doc/latex/pbox
 %doc %{texmfdist}/doc/latex/pdfsync
 %doc %{texmfdist}/doc/latex/pdfwin
 %doc %{texmfdist}/doc/latex/pecha
 %doc %{texmfdist}/doc/latex/perception
 %doc %{texmfdist}/doc/latex/perltex
-%doc %{texmfdist}/doc/latex/petiteannonce
-%doc %{texmfdist}/doc/latex/petri-nets
 %doc %{texmfdist}/doc/latex/pgf-soroban
 %doc %{texmfdist}/doc/latex/pgfopts
 %doc %{texmfdist}/doc/latex/philex
-%doc %{texmfdist}/doc/latex/philosophersimprint
-%doc %{texmfdist}/doc/latex/pinlabel
-%doc %{texmfdist}/doc/latex/pittetd
-%doc %{texmfdist}/doc/latex/plari
 %doc %{texmfdist}/doc/latex/plates
 %doc %{texmfdist}/doc/latex/plweb
 %doc %{texmfdist}/doc/latex/pmgraph
 %doc %{texmfdist}/doc/latex/polski
 %doc %{texmfdist}/doc/latex/polyglot
-%doc %{texmfdist}/doc/latex/polytable
 %doc %{texmfdist}/doc/latex/postcards
 %doc %{texmfdist}/doc/latex/powerdot
 %doc %{texmfdist}/doc/latex/ppower4
 %doc %{texmfdist}/doc/latex/ppr-prv
 %doc %{texmfdist}/doc/latex/prettyref
 %doc %{texmfdist}/doc/latex/proba
-%doc %{texmfdist}/doc/latex/probsoln
 %doc %{texmfdist}/doc/latex/procIAGssymp
-%doc %{texmfdist}/doc/latex/progress
 %doc %{texmfdist}/doc/latex/protex
 %doc %{texmfdist}/doc/latex/protocol
 %doc %{texmfdist}/doc/latex/psfragx
 %doc %{texmfdist}/doc/latex/psgo
 %doc %{texmfdist}/doc/latex/pspicture
 %doc %{texmfdist}/doc/latex/pst2pdf
-%doc %{texmfdist}/doc/latex/qcm
 %doc %{texmfdist}/doc/latex/qobitree
 %doc %{texmfdist}/doc/latex/qstest
-%doc %{texmfdist}/doc/latex/qtree
-%doc %{texmfdist}/doc/latex/quotchap
 %doc %{texmfdist}/doc/latex/quotmark
 %doc %{texmfdist}/doc/latex/r_und_s
 %doc %{texmfdist}/doc/latex/randbild
-%doc %{texmfdist}/doc/latex/randtext
-%doc %{texmfdist}/doc/latex/rccol
 %doc %{texmfdist}/doc/latex/rcs
 %doc %{texmfdist}/doc/latex/rcsinfo
 %doc %{texmfdist}/doc/latex/rectopma
 %doc %{texmfdist}/doc/latex/refcheck
 %doc %{texmfdist}/doc/latex/refstyle
-%doc %{texmfdist}/doc/latex/regcount
 %doc %{texmfdist}/doc/latex/relenc
 %doc %{texmfdist}/doc/latex/repeatindex
 %doc %{texmfdist}/doc/latex/rlepsf
 %doc %{texmfdist}/doc/latex/rmpage
-%doc %{texmfdist}/doc/latex/robustcommand
 %doc %{texmfdist}/doc/latex/robustindex
-%doc %{texmfdist}/doc/latex/romannum
-%doc %{texmfdist}/doc/latex/rotpages
-%doc %{texmfdist}/doc/latex/rsc
 %doc %{texmfdist}/doc/latex/rst
 %doc %{texmfdist}/doc/latex/rtkinenc
 %doc %{texmfdist}/doc/latex/rtklage
@@ -10618,7 +10673,6 @@ fi
 %doc %{texmfdist}/doc/latex/savefnmark
 %doc %{texmfdist}/doc/latex/savetrees
 %doc %{texmfdist}/doc/latex/scalebar
-%doc %{texmfdist}/doc/latex/schedule
 %doc %{texmfdist}/doc/latex/scientificpaper
 %doc %{texmfdist}/doc/latex/sciposter
 %doc %{texmfdist}/doc/latex/sciwordconv
@@ -10635,7 +10689,6 @@ fi
 %doc %{texmfdist}/doc/latex/shorttoc
 %doc %{texmfdist}/doc/latex/show2e
 %doc %{texmfdist}/doc/latex/showexpl
-%doc %{texmfdist}/doc/latex/simplewick
 %doc %{texmfdist}/doc/latex/slantsc
 %doc %{texmfdist}/doc/latex/smalltableof
 %doc %{texmfdist}/doc/latex/smartref
@@ -10646,7 +10699,6 @@ fi
 %doc %{texmfdist}/doc/latex/sparklines
 %doc %{texmfdist}/doc/latex/spie
 %doc %{texmfdist}/doc/latex/splitbib
-%doc %{texmfdist}/doc/latex/splitindex
 %doc %{texmfdist}/doc/latex/spotcolor
 %doc %{texmfdist}/doc/latex/sprite
 %doc %{texmfdist}/doc/latex/srcltx
@@ -10661,7 +10713,6 @@ fi
 %doc %{texmfdist}/doc/latex/subfloat
 %doc %{texmfdist}/doc/latex/sugconf
 %doc %{texmfdist}/doc/latex/supertabular
-%doc %{texmfdist}/doc/latex/susy
 %doc %{texmfdist}/doc/latex/svgcolor
 %doc %{texmfdist}/doc/latex/svn-multi
 %doc %{texmfdist}/doc/latex/svn
@@ -10704,7 +10755,6 @@ fi
 %doc %{texmfdist}/doc/latex/timesht
 %doc %{texmfdist}/doc/latex/titling
 %doc %{texmfdist}/doc/latex/tocvsec2
-%doc %{texmfdist}/doc/latex/todo
 %doc %{texmfdist}/doc/latex/tokenizer
 %doc %{texmfdist}/doc/latex/toolbox
 %doc %{texmfdist}/doc/latex/toptesi
@@ -10712,21 +10762,16 @@ fi
 %doc %{texmfdist}/doc/latex/trajan
 %doc %{texmfdist}/doc/latex/translator
 %doc %{texmfdist}/doc/latex/tree-dvips
-%doc %{texmfdist}/doc/latex/trfsigns
 %doc %{texmfdist}/doc/latex/trivfloat
 %doc %{texmfdist}/doc/latex/turnstile
 %doc %{texmfdist}/doc/latex/twoup
-%doc %{texmfdist}/doc/latex/typedref
 %doc %{texmfdist}/doc/latex/typogrid
-%doc %{texmfdist}/doc/latex/uebungsblatt
 %doc %{texmfdist}/doc/latex/umlaute
-%doc %{texmfdist}/doc/latex/umoline
 %doc %{texmfdist}/doc/latex/undertilde
 %doc %{texmfdist}/doc/latex/unitsdef
 %doc %{texmfdist}/doc/latex/unroman
 %doc %{texmfdist}/doc/latex/upmethodology
 %doc %{texmfdist}/doc/latex/urlbst
-%doc %{texmfdist}/doc/latex/ushort
 %doc %{texmfdist}/doc/latex/varindex
 %doc %{texmfdist}/doc/latex/varsfromjobname
 %doc %{texmfdist}/doc/latex/vector
@@ -10792,6 +10837,11 @@ fi
 %{texmfdist}/source/latex/qsymbols
 %{texmfdist}/source/latex/subdepth
 %{texmfdist}/source/latex/faktor
+%{texmfdist}/source/latex/sseq
+%{texmfdist}/source/latex/trsym
+%{texmfdist}/source/latex/petri-nets
+%{texmfdist}/source/latex/mlist
+%{texmfdist}/source/latex/numprint
 
 %files latex-math
 %defattr(644,root,root,755)
@@ -10872,17 +10922,27 @@ fi
 %doc %{texmfdist}/doc/latex/nath
 %{texmfdist}/tex/latex/nath
 %doc %{texmfdist}/doc/latex/numprint
-%{texmfdist}/source/latex/numprint
 %{texmfdist}/tex/latex/numprint
 %doc %{texmfdist}/doc/latex/sseq
-%{texmfdist}/source/latex/sseq
 %{texmfdist}/tex/latex/sseq
 %doc %{texmfdist}/doc/latex/trsym
-%{texmfdist}/source/latex/trsym
 %{texmfdist}/tex/latex/trsym
 %{texmfdist}/fonts/source/public/trsym
 %{texmfdist}/fonts/tfm/public/trsym
-
+%doc %{texmfdist}/doc/latex/maybemath
+%{texmfdist}/tex/latex/maybemath
+%doc %{texmfdist}/doc/latex/mlist
+%{texmfdist}/tex/latex/mlist
+%doc %{texmfdist}/doc/latex/petri-nets
+%{texmfdist}/tex/latex/petri-nets
+%doc %{texmfdist}/doc/latex/qtree
+%{texmfdist}/tex/latex/qtree
+%doc %{texmfdist}/doc/latex/simplewick
+%{texmfdist}/source/latex/simplewick
+%{texmfdist}/tex/latex/simplewick
+%doc %{texmfdist}/doc/latex/trfsigns
+%{texmfdist}/source/latex/trfsigns
+%{texmfdist}/tex/latex/trfsigns
 
 %files latex-physics
 %defattr(644,root,root,755)
@@ -10907,6 +10967,10 @@ fi
 %doc %{texmfdist}/doc/latex/miller
 %{texmfdist}/source/latex/miller
 %{texmfdist}/tex/latex/miller
+%doc %{texmfdist}/doc/latex/listofsymbols
+%{texmfdist}/tex/latex/listofsymbols
+%doc %{texmfdist}/doc/latex/susy
+%{texmfdist}/tex/latex/susy
 
 %files latex-chem
 %defattr(644,root,root,755)
@@ -10952,13 +11016,15 @@ fi
 %doc %{texmfdist}/doc/latex/cooltooltips
 %{texmfdist}/source/latex/cooltooltips
 %{texmfdist}/tex/latex/cooltooltips
-%{texmfdist}/tex/latex/pdftricks
 %doc %{texmfdist}/doc/latex/pdftricks
+%{texmfdist}/tex/latex/pdftricks
 %doc %{texmfdist}/doc/latex/pdfcprot
 %{texmfdist}/source/latex/pdfcprot
 %{texmfdist}/tex/latex/pdfcprot
-%{texmfdist}/tex/latex/pdfscreen
 %doc %{texmfdist}/doc/latex/pdfscreen
+%{texmfdist}/tex/latex/pdfscreen
+%doc %{texmfdist}/doc/latex/movie15
+%{texmfdist}/tex/latex/movie15
 
 %files latex-informatic
 %defattr(644,root,root,755)
@@ -10979,6 +11045,11 @@ fi
 %doc %{texmfdist}/doc/latex/register
 %{texmfdist}/source/latex/register
 %{texmfdist}/tex/latex/register
+%doc %{texmfdist}/doc/latex/lsc
+%{texmfdist}/tex/latex/lsc
+%doc %{texmfdist}/doc/latex/method
+%{texmfdist}/source/latex/method
+%{texmfdist}/tex/latex/method
 
 %files latex-games
 %defattr(644,root,root,755)
@@ -11202,8 +11273,6 @@ fi
 %{texmfdist}/source/latex/newfile
 %{texmfdist}/source/latex/newlfm
 %{texmfdist}/source/latex/newspaper
-%{texmfdist}/source/latex/newvbtm
-%{texmfdist}/source/latex/niceframe
 %{texmfdist}/source/latex/nomencl
 %{texmfdist}/source/latex/ntgclass
 %{texmfdist}/source/latex/oberdiek
@@ -11442,6 +11511,38 @@ fi
 # University of Washington thesis class.
 %doc %{texmfdist}/doc/latex/uwthesis
 %{texmfdist}/tex/latex/uwthesis
+# A basis for books to be published by Mentis publishers.
+%doc %{texmfdist}/doc/latex/mentis
+%{texmfdist}/source/latex/mentis
+%{texmfdist}/tex/latex/mentis
+# Typeset books following classical design and layout.
+%doc %{texmfdist}/doc/latex/octavo
+%{texmfdist}/source/latex/octavo
+%{texmfdist}/tex/latex/octavo
+# A class for NIH grant applications.
+%doc %{texmfdist}/doc/latex/nih
+%{texmfdist}/tex/latex/nih
+# A class for small advertisements.
+%doc %{texmfdist}/doc/latex/petiteannonce
+%{texmfdist}/tex/latex/petiteannonce
+# Electronic Theses and Dissertations at Pitt.
+%doc %{texmfdist}/doc/latex/pittetd
+%{texmfdist}/source/latex/pittetd
+%{texmfdist}/tex/latex/pittetd
+# Typesetting stageplay scripts.
+%doc %{texmfdist}/doc/latex/plari
+%{texmfdist}/source/latex/plari
+%{texmfdist}/tex/latex/plari
+# Typesetting articles for "Philosophers' Imprint".
+%doc %{texmfdist}/doc/latex/philosophersimprint
+%{texmfdist}/bibtex/bib/philosophersimprint
+%{texmfdist}/source/latex/philosophersimprint
+%{texmfdist}/tex/latex/philosophersimprint
+# BibTeX style for use with RSC journals.
+%doc %{texmfdist}/doc/latex/rsc
+%{texmfdist}/bibtex/bst/rsc
+%{texmfdist}/source/latex/rsc
+%{texmfdist}/tex/latex/rsc
 
 %files latex-lang
 %defattr(644,root,root,755)
@@ -11477,6 +11578,9 @@ fi
 %doc %{texmfdist}/doc/latex/hrlatex
 %{texmfdist}/source/latex/hrlatex
 %{texmfdist}/tex/latex/hrlatex
+# Proper MLA formatting.
+%doc %{texmfdist}/doc/latex/mla-paper
+%{texmfdist}/tex/latex/mla-paper
 
 %files latex-music
 %defattr(644,root,root,755)
@@ -11573,6 +11677,58 @@ fi
 %{texmfdist}/tex/latex/listliketab
 %doc %{texmfdist}/doc/latex/listliketab
 %{texmfdist}/tex/latex/ltablex
+%doc %{texmfdist}/doc/latex/leading
+%{texmfdist}/source/latex/leading
+%{texmfdist}/tex/latex/leading
+%doc %{texmfdist}/doc/latex/makecell
+%{texmfdist}/source/latex/makecell
+%{texmfdist}/tex/latex/makecell
+%doc %{texmfdist}/doc/latex/makebox
+%{texmfdist}/source/latex/makebox
+%{texmfdist}/tex/latex/makebox
+%doc %{texmfdist}/doc/latex/mcite
+%{texmfdist}/source/latex/mcite
+%{texmfdist}/tex/latex/mcite
+%doc %{texmfdist}/doc/latex/mciteplus
+%{texmfdist}/tex/latex/mciteplus
+%{texmfdist}/bibtex/bst/mciteplus
+%doc %{texmfdist}/doc/latex/mcaption
+%{texmfdist}/source/latex/mcaption
+%{texmfdist}/tex/latex/mcaption
+%doc %{texmfdist}/doc/latex/minipage-marginpar
+%{texmfdist}/source/latex/minipage-marginpar
+%{texmfdist}/tex/latex/minipage-marginpar
+%doc %{texmfdist}/doc/latex/newvbtm
+%{texmfdist}/source/latex/newvbtm
+%{texmfdist}/tex/latex/newvbtm
+%doc %{texmfdist}/doc/latex/miniplot
+%{texmfdist}/tex/latex/miniplot
+%doc %{texmfdist}/doc/latex/multicap
+%{texmfdist}/source/latex/multicap
+%{texmfdist}/tex/latex/multicap
+%doc %{texmfdist}/doc/latex/ntabbing
+%{texmfdist}/tex/latex/ntabbing
+%{texmfdist}/tex/latex/numline
+%doc %{texmfdist}/doc/latex/pbox
+%{texmfdist}/source/latex/pbox
+%{texmfdist}/tex/latex/pbox
+%doc %{texmfdist}/doc/latex/pinlabel
+%{texmfdist}/tex/latex/pinlabel
+%doc %{texmfdist}/doc/latex/polytable
+%{texmfdist}/source/latex/polytable
+%{texmfdist}/tex/latex/polytable
+%doc %{texmfdist}/doc/latex/rccol
+%{texmfdist}/source/latex/rccol
+%{texmfdist}/tex/latex/rccol
+%doc %{texmfdist}/doc/latex/romannum
+%{texmfdist}/source/latex/romannum
+%{texmfdist}/tex/latex/romannum
+%doc %{texmfdist}/doc/latex/schedule
+%{texmfdist}/source/latex/schedule
+%{texmfdist}/tex/latex/schedule
+%doc %{texmfdist}/doc/latex/umoline
+%{texmfdist}/source/latex/umoline
+%{texmfdist}/tex/latex/umoline
 
 %files latex-programming
 %defattr(644,root,root,755)
@@ -11646,6 +11802,23 @@ fi
 %{texmfdist}/tex/latex/stack
 %doc %{texmfdist}/doc/latex/substr
 %{texmfdist}/tex/latex/substr
+%{texmfdist}/tex/latex/multido
+%doc %{texmfdist}/doc/latex/progress
+%{texmfdist}/tex/latex/progress
+%doc %{texmfdist}/doc/latex/randtext
+%{texmfdist}/tex/latex/randtext
+%doc %{texmfdist}/doc/latex/regcount
+%{texmfdist}/source/latex/regcount
+%{texmfdist}/tex/latex/regcount
+%doc %{texmfdist}/doc/latex/robustcommand
+%{texmfdist}/source/latex/robustcommand
+%{texmfdist}/tex/latex/robustcommand
+%doc %{texmfdist}/doc/latex/typedref
+%{texmfdist}/source/latex/typedref
+%{texmfdist}/tex/latex/typedref
+%doc %{texmfdist}/doc/latex/splitindex
+%{texmfdist}/source/latex/splitindex
+%{texmfdist}/tex/latex/splitindex
 
 %files latex-effects
 %defattr(644,root,root,755)
@@ -11673,6 +11846,32 @@ fi
 %doc %{texmfdist}/doc/latex/lettrine
 %{texmfdist}/source/latex/lettrine
 %{texmfdist}/tex/latex/lettrine
+%doc %{texmfdist}/doc/latex/niceframe
+%{texmfdist}/source/latex/niceframe
+%{texmfdist}/tex/latex/niceframe
+%{texmfdist}/fonts/source/public/niceframe
+%{texmfdist}/fonts/tfm/public/niceframe
+%doc %{texmfdist}/doc/latex/notes
+%{texmfdist}/source/latex/notes
+%{texmfdist}/tex/latex/notes
+%doc %{texmfdist}/doc/latex/objectz
+%{texmfdist}/source/latex/objectz
+%{texmfdist}/tex/latex/objectz
+%doc %{texmfdist}/doc/latex/parallel
+%{texmfdist}/source/latex/parallel
+%{texmfdist}/tex/latex/parallel
+%doc %{texmfdist}/doc/latex/quotchap
+%{texmfdist}/source/latex/quotchap
+%{texmfdist}/tex/latex/quotchap
+%doc %{texmfdist}/doc/latex/rotpages
+%{texmfdist}/tex/latex/rotpages
+%{texmfdist}/tex/latex/umrand
+%doc %{texmfdist}/doc/fonts/umrand
+%{texmfdist}/fonts/source/public/umrand
+%{texmfdist}/fonts/tfm/public/umrand
+%doc %{texmfdist}/doc/latex/ushort
+%{texmfdist}/source/latex/ushort
+%{texmfdist}/tex/latex/ushort
 
 %files latex-other
 %defattr(644,root,root,755)
@@ -11687,10 +11886,6 @@ fi
 # Definitive source of Plain TeX on CTAN.
 %{texmfdist}/source/latex/base
 %{texmfdist}/source/latex/bayer
-# Free replacement for basic MathTime fonts.
-%{texmfdist}/source/latex/belleek
-# Support for Concrete text and math fonts in LaTeX.
-%{texmfdist}/source/latex/ccfonts
 # A small collection of minimal DTX examples.
 %{texmfdist}/source/latex/dtxgallery
 # Editorial Notes for LaTeX documents.
@@ -11717,8 +11912,6 @@ fi
 %{texmfdist}/tex/latex/kerntest
 %{texmfdist}/tex/latex/kluwer
 %{texmfdist}/source/latex/kluwer
-# A complete set of fonts for text and mathematics.
-%{texmfdist}/tex/latex/kpfonts
 # A two-element sans-serif typeface.
 %{texmfdist}/tex/latex/kurier
 # Lists in TeX's "mouth".
@@ -11726,9 +11919,6 @@ fi
 # This package makes available Classic Cyrillic CM fonts
 %{texmfdist}/source/latex/lcyw
 %{texmfdist}/tex/latex/lcyw
-# This package makes available Classic Cyrillic CM fonts
-%{texmfdist}/source/latex/leading
-%{texmfdist}/tex/latex/leading
 # Typeset scholarly editions in parallel texts.
 %{texmfdist}/source/latex/ledmac
 %{texmfdist}/tex/latex/ledmac
@@ -11755,14 +11945,10 @@ fi
 # Lists contents of BibTeX files.
 %{texmfdist}/source/latex/listbib
 %{texmfdist}/tex/latex/listbib
-# Create and manipulate lists of symbols
-%{texmfdist}/tex/latex/listofsymbols
 # LK Proof figure macros.
 %{texmfdist}/tex/latex/lkproof
 # A font for electronic logic design.
 %{texmfdist}/tex/latex/logic
-# Typesetting Live Sequence Charts.
-%{texmfdist}/tex/latex/lsc
 # A LaTeX package to typeset indices with GNU's Texindex.
 %{texmfdist}/source/latex/ltxindex
 %{texmfdist}/tex/latex/ltxindex
@@ -11777,12 +11963,6 @@ fi
 %{texmfdist}/tex/latex/mailing
 # Print various kinds 2/5 and Code 39 bar codes.
 %{texmfdist}/tex/latex/makebarcode
-# Defines a \makebox* command.
-%{texmfdist}/source/latex/makebox
-%{texmfdist}/tex/latex/makebox
-# Tabular column heads and multilined cells.
-%{texmfdist}/source/latex/makecell
-%{texmfdist}/tex/latex/makecell
 # Perl script to help generate dtx and ins files
 %{texmfdist}/source/latex/makedtx
 %{texmfdist}/tex/latex/makedtx
@@ -11796,53 +11976,22 @@ fi
 %{texmfdist}/tex/latex/mapcodes
 # Mathematical fonts to fit with particular text fonts.
 %{texmfdist}/tex/latex/mathdesign
-# Make math bold or italic according to context.
-%{texmfdist}/tex/latex/maybemath
-# Put captions in the margin.
-%{texmfdist}/source/latex/mcaption
-%{texmfdist}/tex/latex/mcaption
 # Creating covers for music cassettes.
 %{texmfdist}/tex/latex/mceinleger
-# Multiple items in a single citation.
-%{texmfdist}/source/latex/mcite
-%{texmfdist}/tex/latex/mcite
-# Enhanced multiple citations.
-%{texmfdist}/tex/latex/mciteplus
 # Experimental memoir support.
 %{texmfdist}/tex/latex/memexsupp
-# A basis for books to be published by Mentis publishers.
-%{texmfdist}/source/latex/mentis
-%{texmfdist}/tex/latex/mentis
-# Typeset method and variable declarations.
-%{texmfdist}/source/latex/method
-%{texmfdist}/tex/latex/method
-# Support for the work of classicists
-%{texmfdist}/source/latex/metre
-%{texmfdist}/tex/latex/metre
 # Multiple font formats.
 %{texmfdist}/source/latex/mff
 %{texmfdist}/tex/latex/mff
 # Pretty-print Metafont source.
 %{texmfdist}/source/latex/mftinc
 %{texmfdist}/tex/latex/mftinc
-# Minipages with marginal notes.
-%{texmfdist}/source/latex/minipage-marginpar
-%{texmfdist}/tex/latex/minipage-marginpar
-# A package for easy figure arrangement.
-%{texmfdist}/tex/latex/miniplot
 # Package for writing minutes of meetings.
 %{texmfdist}/source/latex/minutes
 %{texmfdist}/tex/latex/minutes
-# Proper MLA formatting.
-%{texmfdist}/tex/latex/mla-paper
-# Logical markup for lists.
-%{texmfdist}/source/latex/mlist
-%{texmfdist}/tex/latex/mlist
 # Allows font sizes up to 35.83pt.
 %{texmfdist}/source/latex/moresize
 %{texmfdist}/tex/latex/moresize
-# Multimedia inclusion package.
-%{texmfdist}/tex/latex/movie15
 # A package for LaTeX localisation.
 %{texmfdist}/source/latex/msg
 %{texmfdist}/tex/latex/msg
@@ -11854,45 +12003,21 @@ fi
 # Multiple bibliographies.
 %{texmfdist}/source/latex/multibbl
 %{texmfdist}/tex/latex/multibbl
-# Format captions inside multicols
-%{texmfdist}/source/latex/multicap
-%{texmfdist}/tex/latex/multicap
-# A loop facility for Generic TeX.
-%{texmfdist}/tex/latex/multido
 # Support for Mongolian "horizontal" (Xewtee Dorwoljin) script.
 %{texmfdist}/source/latex/mxd
 %{texmfdist}/tex/latex/mxd
 # A pair of Georgian fonts.
 %{texmfdist}/tex/latex/mxedruli
-# Define your own verbatim-like environment.
-%{texmfdist}/tex/latex/newvbtm
-# Support for fancy frames.
-%{texmfdist}/tex/latex/niceframe
-# A class for NIH grant applications.
-%{texmfdist}/tex/latex/nih
 # Nomenclature typeset in a longtable
 %{texmfdist}/source/latex/nomentbl
 %{texmfdist}/tex/latex/nomentbl
 # Non-floating table and figure captions.
 %{texmfdist}/source/latex/nonfloat
 %{texmfdist}/tex/latex/nonfloat
-# Mark sections of a document.
-%{texmfdist}/source/latex/notes
-%{texmfdist}/tex/latex/notes
-# Simple tabbing extension for automatic line numbering.
-%{texmfdist}/tex/latex/ntabbing
-# LaTeX macros for numbering lines.
-%{texmfdist}/tex/latex/numline
 # Convert a number to its English expression.
 %{texmfdist}/tex/latex/numname
-# Macros for typesetting Object Z.
-%{texmfdist}/source/latex/objectz
-%{texmfdist}/tex/latex/objectz
 # LaTeX support for ocr fonts.
 %{texmfdist}/tex/latex/ocr-latex
-# Typeset books following classical design and layout.
-%{texmfdist}/source/latex/octavo
-%{texmfdist}/tex/latex/octavo
 # Support for Polish typography and the ogonek.
 %{texmfdist}/source/latex/ogonek
 %{texmfdist}/tex/latex/ogonek
@@ -11926,9 +12051,6 @@ fi
 # Origami-style folding paper CD case.
 %{texmfdist}/source/latex/papercdcase
 %{texmfdist}/tex/latex/papercdcase
-# Typeset parallel texts.
-%{texmfdist}/source/latex/parallel
-%{texmfdist}/tex/latex/parallel
 # Defines simple macros for greek letters.
 %{texmfdist}/source/latex/paresse
 %{texmfdist}/tex/latex/paresse
@@ -11941,9 +12063,6 @@ fi
 # Using graphics from PAW.
 %{texmfdist}/source/latex/pawpict
 %{texmfdist}/tex/latex/pawpict
-# A variable-width \parbox command.
-%{texmfdist}/source/latex/pbox
-%{texmfdist}/tex/latex/pbox
 # Font support for current PCL printers.
 %{texmfdist}/tex/latex/pclnfss
 %{texmfdist}/tex/latex/pdfwin
@@ -11952,32 +12071,16 @@ fi
 # Define LaTeX macros in terms of Perl code
 %{texmfdist}/source/latex/perltex
 %{texmfdist}/tex/latex/perltex
-# A class for small advertisements.
-%{texmfdist}/tex/latex/petiteannonce
-# A set TeX/LaTeX packages for drawing Petri nets.
-%{texmfdist}/source/latex/petri-nets
-%{texmfdist}/tex/latex/petri-nets
 # Create images of the soroban using TikZ/PGF.
 %{texmfdist}/tex/latex/pgf-soroban
 # Disk of Phaistos font.
 %{texmfdist}/tex/latex/phaistos
 # Cross references for named and numbered environments.
 %{texmfdist}/tex/latex/philex
-# Typesetting articles for "Philosophers' Imprint".
-%{texmfdist}/source/latex/philosophersimprint
-%{texmfdist}/tex/latex/philosophersimprint
 # MetaFont Phonetic fonts, based on Computer Modern.
 %{texmfdist}/tex/latex/phonetic
 # Adds relative coordinates and improves the \plot command.
 %{texmfdist}/tex/latex/pictex2
-# A TeX labelling package.
-%{texmfdist}/tex/latex/pinlabel
-# Electronic Theses and Dissertations at Pitt.
-%{texmfdist}/source/latex/pittetd
-%{texmfdist}/tex/latex/pittetd
-# Typesetting stageplay scripts.
-%{texmfdist}/source/latex/plari
-%{texmfdist}/tex/latex/plari
 # Arrange for "plates" sections of documents.
 %{texmfdist}/tex/latex/plates
 %{texmfdist}/source/latex/plweb
@@ -11989,9 +12092,6 @@ fi
 %{texmfdist}/tex/latex/polski
 %{texmfdist}/source/latex/polyglot
 %{texmfdist}/tex/latex/polyglot
-# Tabular-like environments with named columns.
-%{texmfdist}/source/latex/polytable
-%{texmfdist}/tex/latex/polytable
 # Facilitates mass-mailing of postcards (junkmail).
 %{texmfdist}/tex/latex/postcards
 # A presentation class.
@@ -12008,12 +12108,7 @@ fi
 # Shortcuts commands to symbols used in probability texts.
 %{texmfdist}/source/latex/proba
 %{texmfdist}/tex/latex/proba
-# generate problem sheets and their solution sheets
-%{texmfdist}/source/latex/probsoln
-%{texmfdist}/tex/latex/probsoln
 %{texmfdist}/tex/latex/procIAGssymp
-# Creates an overview of a document's state.
-%{texmfdist}/tex/latex/progress
 # Literate programming package.
 %{texmfdist}/tex/latex/protex
 # A class for typesetting minutes (only german).
@@ -12026,19 +12121,11 @@ fi
 # PostScript picture support.
 %{texmfdist}/source/latex/pspicture
 %{texmfdist}/tex/latex/pspicture
-# A LaTeX2e class for making multiple choice questionnaires
-%{texmfdist}/source/latex/qcm
-%{texmfdist}/tex/latex/qcm
 # LaTeX macros for typesetting trees.
 %{texmfdist}/tex/latex/qobitree
 # Bundle for unit tests and pattern matching.
 %{texmfdist}/source/latex/qstest
 %{texmfdist}/tex/latex/qstest
-# Draw tree structures.
-%{texmfdist}/tex/latex/qtree
-# Decorative chapter headings.
-%{texmfdist}/source/latex/quotchap
-%{texmfdist}/tex/latex/quotchap
 # Consistent quote marks.
 %{texmfdist}/source/latex/quotmark
 %{texmfdist}/tex/latex/quotmark
@@ -12046,11 +12133,6 @@ fi
 # Marginal pictures.
 %{texmfdist}/source/latex/randbild
 %{texmfdist}/tex/latex/randbild
-# Randomise the order of characters in strings.
-%{texmfdist}/tex/latex/randtext
-# Decimal-centered optionally rounded numbers in tabular.
-%{texmfdist}/source/latex/rccol
-%{texmfdist}/tex/latex/rccol
 # Use RCS (revision control system) tags in LaTeX documents.
 %{texmfdist}/source/latex/rcs
 %{texmfdist}/tex/latex/rcs
@@ -12064,9 +12146,6 @@ fi
 # Advanced formatting of cross references.
 %{texmfdist}/source/latex/refstyle
 %{texmfdist}/tex/latex/refstyle
-# Display the allocation status of the TeX registers.
-%{texmfdist}/source/latex/regcount
-%{texmfdist}/tex/latex/regcount
 # A "relaxed" font encoding.
 %{texmfdist}/source/latex/relenc
 %{texmfdist}/tex/latex/relenc
@@ -12078,19 +12157,8 @@ fi
 # A package to help change page layout parameters in LaTeX.
 %{texmfdist}/source/latex/rmpage
 %{texmfdist}/tex/latex/rmpage
-# Declare robust command, with \newcommand checks.
-%{texmfdist}/source/latex/robustcommand
-%{texmfdist}/tex/latex/robustcommand
 # Create index with pagerefs.
 %{texmfdist}/tex/latex/robustindex
-# Generate roman numerals instead of arabic digits.
-%{texmfdist}/source/latex/romannum
-%{texmfdist}/tex/latex/romannum
-# Typeset sets of pages upside-down and backwards.
-%{texmfdist}/tex/latex/rotpages
-# BibTeX style for use with RSC journals.
-%{texmfdist}/source/latex/rsc
-%{texmfdist}/tex/latex/rsc
 # Drawing rhetorical structure analysis diagrams in LaTeX.
 %{texmfdist}/source/latex/rst
 %{texmfdist}/tex/latex/rst
@@ -12121,9 +12189,6 @@ fi
 # Create scalebars for maps, diagrams or photos.
 %{texmfdist}/source/latex/scalebar
 %{texmfdist}/tex/latex/scalebar
-# Weekly schedules.
-%{texmfdist}/source/latex/schedule
-%{texmfdist}/tex/latex/schedule
 # Format a scientific paper for journal
 %{texmfdist}/tex/latex/scientificpaper
 # Make posters of ISO A3 size and larger.
@@ -12167,9 +12232,6 @@ fi
 %{texmfdist}/tex/latex/show2e
 %{texmfdist}/source/latex/showexpl
 %{texmfdist}/tex/latex/showexpl
-# Simple Wick contractions.
-%{texmfdist}/source/latex/simplewick
-%{texmfdist}/tex/latex/simplewick
 # A font to draw a skull.
 %{texmfdist}/source/latex/skull
 %{texmfdist}/tex/latex/skull
@@ -12194,9 +12256,6 @@ fi
 # Split and reorder your bibliography.
 %{texmfdist}/source/latex/splitbib
 %{texmfdist}/tex/latex/splitbib
-# Unlimited number of indexes.
-%{texmfdist}/source/latex/splitindex
-%{texmfdist}/tex/latex/splitindex
 # Macros to typeset simple bitmaps with LaTeX.
 %{texmfdist}/tex/latex/sprite
 # Jump between DVI and TeX files.
@@ -12234,8 +12293,6 @@ fi
 %{texmfdist}/tex/latex/subfloat
 # SAS(R) user group conference proceedings document class.
 %{texmfdist}/tex/latex/sugconf
-# Macros for SuperSymmetry-related work.
-%{texmfdist}/tex/latex/susy
 # Define SVG named colours.
 %{texmfdist}/tex/latex/svgcolor
 # Subversion keywords in multi-file LaTeX documents
@@ -12265,9 +12322,6 @@ fi
 # Section numbering and table of contents control.
 %{texmfdist}/source/latex/tocvsec2
 %{texmfdist}/tex/latex/tocvsec2
-# Make a to-do list for a document.
-%{texmfdist}/source/latex/todo
-%{texmfdist}/tex/latex/todo
 # A tokenizer.
 %{texmfdist}/tex/latex/tokenizer
 # Macros for writing indices, glossaries.
@@ -12288,9 +12342,6 @@ fi
 # Trees and other linguists' macros.
 %{texmfdist}/source/latex/tree-dvips
 %{texmfdist}/tex/latex/tree-dvips
-# Typeset transform signs.
-%{texmfdist}/source/latex/trfsigns
-%{texmfdist}/tex/latex/trfsigns
 # Quick float definitions in LaTeX.
 %{texmfdist}/source/latex/trivfloat
 %{texmfdist}/tex/latex/trivfloat
@@ -12299,25 +12350,11 @@ fi
 %{texmfdist}/tex/latex/turnstile
 %{texmfdist}/source/latex/twoup
 %{texmfdist}/tex/latex/twoup
-# Eliminate errors by enforcing the types of labels.
-%{texmfdist}/source/latex/typedref
-%{texmfdist}/tex/latex/typedref
 # Print a typographic grid.
 %{texmfdist}/source/latex/typogrid
 %{texmfdist}/tex/latex/typogrid
-# A LaTeX class for writing exercise sheets.
-%{texmfdist}/tex/latex/uebungsblatt
 # Time printing, in German.
 %{texmfdist}/tex/latex/uhrzeit
-# Underline text allowing line breaking.
-%{texmfdist}/source/latex/umoline
-%{texmfdist}/tex/latex/umoline
-# Package for fancy box frames.
-%{texmfdist}/tex/latex/umrand
-# Shorter (and longer) underlines and underbars.
-%{texmfdist}/source/latex/ushort
-%{texmfdist}/tex/latex/ushort
-
 
 # %files latex-palatcm
 # %defattr(644,root,root,755)
@@ -13067,6 +13104,18 @@ fi
 %{texmfdist}/fonts/source/jknappen
 %{texmfdist}/fonts/tfm/jknappen
 
+%files fonts-kpfonts
+%defattr(644,root,root,755)
+%dir %{texmfdist}/doc/fonts
+%doc %{texmfdist}/doc/fonts/kpfonts
+%{texmfdist}/fonts/afm/public/kpfonts
+%{texmfdist}/fonts/map/public/kpfonts
+%{texmfdist}/fonts/source/public/kpfonts
+%{texmfdist}/fonts/tfm/public/kpfonts
+%{texmfdist}/fonts/type1/public/kpfonts
+%{texmfdist}/fonts/vf/public/kpfonts
+%{texmfdist}/tex/latex/kpfonts
+
 %files fonts-latex
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/esint
@@ -13144,6 +13193,7 @@ fi
 
 %files fonts-other
 %defattr(644,root,root,755)
+
 
 %{texmf}/fonts/sfd
 %doc %{texmfdist}/doc/fonts/yi4latex
@@ -13257,7 +13307,6 @@ fi
 %{texmfdist}/fonts/source/public/bbding
 %{texmfdist}/fonts/tfm/public/bbding
 
-%{texmfdist}/fonts/map/dvips/belleek
 %{texmfdist}/fonts/truetype/public
 
 %{texmfdist}/fonts/source/public/bengali
@@ -13706,15 +13755,7 @@ fi
 %{texmfdist}/fonts/source/public/kixfont
 %{texmfdist}/fonts/tfm/public/kixfont
 
-%doc %{texmfdist}/doc/fonts/kpfonts
 %dir %{texmfdist}/fonts/map/public
-%{texmfdist}/fonts/afm/public/kpfonts
-%{texmfdist}/fonts/map/public/kpfonts
-%{texmfdist}/fonts/source/public/kpfonts
-%{texmfdist}/fonts/tfm/public/kpfonts
-%{texmfdist}/fonts/type1/public/kpfonts
-%{texmfdist}/fonts/vf/public/kpfonts
-
 %doc %{texmfdist}/doc/fonts/kurier
 %{texmfdist}/fonts/afm/public/kurier
 %{texmfdist}/fonts/enc/dvips/kurier
@@ -13802,9 +13843,6 @@ fi
 %{texmfdist}/fonts/tfm/public/mxedruli
 
 %{texmfdist}/fonts/map/dvips/ncntrsbk
-
-%{texmfdist}/fonts/source/public/niceframe
-%{texmfdist}/fonts/tfm/public/niceframe
 
 %doc %{texmfdist}/doc/fonts/nkarta
 %{texmfdist}/fonts/source/public/nkarta
@@ -13967,10 +14005,6 @@ fi
 %{texmfdist}/fonts/type1/vntex/txttvn
 
 %{texmfdist}/fonts/map/dvips/uhc
-
-%doc %{texmfdist}/doc/fonts/umrand
-%{texmfdist}/fonts/source/public/umrand
-%{texmfdist}/fonts/tfm/public/umrand
 
 %doc %{texmfdist}/doc/fonts/umtypewriter
 %{texmfdist}/fonts/opentype/public/umtypewriter
@@ -14192,7 +14226,9 @@ fi
 %files fonts-type1-belleek
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/belleek
+%{texmfdist}/source/latex/belleek
 %{texmfdist}/fonts/type1/public/belleek
+%{texmfdist}/fonts/map/dvips/belleek
 
 %files fonts-type1-bitstream
 %defattr(644,root,root,755)
