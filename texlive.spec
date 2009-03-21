@@ -1962,7 +1962,6 @@ BibTeX styles to implement an address database.
 %description latex-adrconv -l hu.UTF-8
 BibTeX stílusok cím-adatbázis megvalósításához.
 
-
 %package latex-ae
 Summary:	Virtual fonts for PDF-files with T1 encoded CMR-fonts
 Summary(pl.UTF-8):	Wirtualne fonty dla plików PDF z fontami CMR o kodowaniu T1
@@ -2302,7 +2301,6 @@ Publication quality tables in LaTeX.
 %description latex-booktabs -l hu.UTF-8
 Nyomdai minőségű táblázatok LaTeX-ben.
 
-
 %package latex-caption
 Summary:	Customising captions in floating environments
 Summary(hu.UTF-8):	Feliratok testreszabása úszó környezetekben
@@ -2566,7 +2564,6 @@ Letter document class.
 %description latex-gbrief -l hu.UTF-8
 Levél dokumentumosztály.
 
-
 %package latex-jknappen
 Summary:	Miscellaneous packages by Joerg Knappen
 Summary(pl.UTF-8):	Różne pakiety autorstwa Joerga Knappena
@@ -2595,7 +2592,6 @@ Graphical representation of keys on keyboard.
 
 %description latex-keystroke -l hu.UTF-8
 A billentyűk grafikus megjelenítése.
-
 
 %package latex-labbook
 Summary:	Typeset laboratory journals
@@ -2648,7 +2644,6 @@ Left and right subscripts and superscripts in math mode.
 
 %description latex-leftidx -l hu.UTF-8
 Bal és jobboldali alsó és felső indexek matematikai módban.
-
 
 %package latex-lewis
 Summary:	Draw Lewis structures (chemistry)
@@ -3439,7 +3434,6 @@ Palatino + Computer Modern math fonts for LaTeX.
 
 %description latex-palatcm -l pl.UTF-8
 Fonty matematyczne Palatino i Computer Modern dla LaTeXa.
-
 
 %package latex-pdfslide
 Summary:	Presentation slides using pdftex
@@ -5006,7 +5000,6 @@ Fonts for Omega - extended unicode TeX.
 %description fonts-omega -l pl.UTF-8
 Fonty dla Omegi - TeXa ze wsparciem dla unikodu.
 
-
 %package fonts-other
 Summary:	Other fonts
 Summary(hu.UTF-8):	További betűtípusok
@@ -5644,7 +5637,6 @@ A filter to strip TeX commands from a .tex file.
 %description detex -l hu.UTF-8
 Egy szűrő, amely .tex fájlokból szűri ki a TeX parancsokat.
 
-
 %package dviutils
 Summary:	Various DVI utils
 Summary(hu.UTF-8):	Vegyes DVI eszközök
@@ -5663,14 +5655,12 @@ Group:		Applications/Publishing/TeX
 %description epsutils
 Various EPS (Encapsulated PostScript) utils.
 
-
 %package filters
 Summary:	Various filters
 Group:		Applications/Publishing/TeX
 
 %description filters
 Various filters.
-
 
 %package uncategorized-utils
 Summary:	Uncategorized utils
@@ -5709,6 +5699,7 @@ Requires(post,postun):	/usr/bin/texhash
 %description xmltex
 XMLTeX is a non-validating, namespace-aware XML parser written in TeX.
 It allows TeX to directly process XML files.
+
 
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
@@ -6294,8 +6285,6 @@ fi
 %postun format-context-nl
 %texhash
 
-# LaTeX format.
-
 %post latex
 %fixinfodir
 %texhash
@@ -6597,12 +6586,6 @@ fi
 
 %postun latex-cyrillic
 %texhash
-
-# %post latex-dstroke
-# %texhash
-
-# %postun latex-dstroke
-# %texhash
 
 %post latex-enumitem
 %texhash
