@@ -112,6 +112,7 @@ Requires:	sh-utils
 Requires:	texconfig = %{epoch}:%{version}-%{release}
 Requires:	textutils
 Suggests:	tmpwatch
+Provides:	tetex
 Obsoletes:	tetex
 Obsoletes:	tetex-afm
 Obsoletes:	tetex-doc
@@ -483,6 +484,8 @@ Summary(tr.UTF-8):	dvi'dan postscript'e dönüştürücü
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	tetex-dvips
+Obsoletes:	tetex-dvips
 
 %description dvips
 The program dvips takes a DVI file file[.dvi] produced by TeX (or by
@@ -599,6 +602,8 @@ Summary(pl.UTF-8):	Generator hierarchicznych indeksów ogólnego przeznaczenia
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	tetex-makeindex
+Obsoletes:	tetex-makeindex
 Obsoletes:	tetex-rumakeindex
 
 %description makeindex
@@ -731,6 +736,8 @@ Summary(pl.UTF-8):	Zestaw narzędzi MetaFont
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	tetex-metafont
+Obsoletes:	tetex-metafont
 
 %description metafont
 MetaFont.
@@ -1375,6 +1382,10 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
+Provides:	tetex-pdftex
+Obsoletes:	tetex-pdftex
+Provides:	tetex-format-pdftex
+Obsoletes:	tetex-format-pdftex
 
 %description pdftex
 TeX generating PDF files instead DVI.
@@ -1447,6 +1458,10 @@ Summary(pl.UTF-8):	Podstawowe pliki dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	tetex-plain
+Obsoletes:	tetex-plain
+Provides:	tetex-format-plain
+Obsoletes:	tetex-format-plain
 
 %description plain
 Plain TeX format basic files.
@@ -1477,6 +1492,8 @@ Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 # for epstopdf to work
 Requires:	fonts-Type1-urw
 Requires:	ghostscript
+Provides:	tetex-format-pdftex
+Obsoletes:	tetex-format-pdftex
 
 %description format-pdftex
 PDFTeX Plain format.
@@ -1491,6 +1508,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Provides:	tetex-format-pdfetex
+Obsoletes:	tetex-format-pdfetex
 
 %description format-pdfetex
 PDFTeX EPlain format.
@@ -1564,6 +1583,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-ams = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Provides:	tetex-ams
 Obsoletes:	tetex-ams
 Obsoletes:	tetex-plain-amsfonts
 
@@ -1611,6 +1631,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-cs = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Provides:	tetex-csplain
+Obsoletes:	tetex-csplain
 
 %description csplain
 TeX CSPlain format basic files.
@@ -1779,7 +1801,8 @@ Summary(pl.UTF-8):	Podstawowe pliki pakietu makr ConTeXt
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-latex-context
+Provides:	tetex-context
+Obsoletes:	tetex-context
 
 %define		_noautoreq	'perl(path_tre)'
 
@@ -1852,7 +1875,9 @@ Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-fonts-jknappen
 Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex
 Obsoletes:	tetex-bibtex-koma-script
+Obsoletes:	tetex-latex
 Obsoletes:	tetex-latex-SIunits
 Obsoletes:	tetex-latex-caption
 Obsoletes:	tetex-latex-curves
@@ -1970,6 +1995,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-ae = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex-ae
+Obsoletes:	tetex-latex-ae
 
 %description latex-ae
 A set of virtual fonts which emulates T1 coded fonts using the
@@ -2006,6 +2033,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-ams = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex-ams
+Obsoletes:	tetex-latex-ams
 Obsoletes:	tetex-latex-amscls
 Obsoletes:	tetex-latex-amsfonts
 Obsoletes:	tetex-latex-amsmath
@@ -2123,7 +2152,9 @@ Summary(pl.UTF-8):	Zarządzenie bibliografią dla LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex-bibtex
 Obsoletes:	tetex-bibtex
+Obsoletes:	tetex-latex-bibtex
 Obsoletes:	tetex-natbib
 Obsoletes:	tetex-rubibtex
 
@@ -2321,6 +2352,8 @@ Summary(pl.UTF-8):	Różne małe pakiety autorstwa Davida Carlisle
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex-carlisle
+Obsoletes:	tetex-latex-carlisle
 
 %description latex-carlisle
 Miscellaneous small packages by David Carlisle.
@@ -2461,6 +2494,8 @@ Summary(pl.UTF-8):	Obsługa cyrylicy dla LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex-cyrillic
+Obsoletes:	tetex-latex-cyrillic
 
 %description latex-cyrillic
 LaTeX Cyrillic support.
@@ -2475,6 +2510,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-dstroke = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex-dstroke
+Obsoletes:	tetex-latex-dstroke
 
 %description latex-dstroke
 Doublestroke font for typesetting the mathematical symbols for the
@@ -2748,6 +2785,8 @@ Summary(hu.UTF-8):	Az alap LaTeX stílusok, környezetek, stb. bővítései, fol
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex
+Obsoletes:	tetex-latex-ltablex
+Provides:	tetex-latex-ltablex
 
 %description latex-extend
 This package contains:
@@ -2854,7 +2893,7 @@ Ez a csomag a következőket tartalmazza:
 - ushort: shorter (and longer) underlines and underbars.
 
 %package latex-effects
-Summary:	Additional effects to fonts, texts.
+Summary:	Additional effects to fonts, texts
 Summary(hu.UTF-8):	További effektek betűkhöz, szövegekhez,...
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
@@ -3237,6 +3276,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-fonts-marvosym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex-marvosym
+Obsoletes:	tetex-latex-marvosym
 
 %description latex-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -3604,8 +3645,10 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-adobe = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex-psnfss
 Obsoletes:	tetex-latex-mathptm
 Obsoletes:	tetex-latex-mathptmx
+Obsoletes:	tetex-latex-psnfss
 
 %description latex-psnfss
 LaTeX font definition files, macros and font metrics for common
@@ -4028,6 +4071,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-wasy = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex-wasysym
+Obsoletes:	tetex-latex-wasysym
 
 %description latex-wasysym
 Makes some additional characters available that come from the wasy
@@ -4082,7 +4127,9 @@ Summary(pl.UTF-8):	Pakiet makr LaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-format-latex
 Obsoletes:	hugelatex
+Obsoletes:	tetex-format-latex
 
 %description format-latex
 LaTeX is a front end for the TeX text formatting system. Easier to use
@@ -4108,6 +4155,8 @@ Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-psnfss = %{epoch}:%{version}-%{release}
 Requires:	%{name}-metafont = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
+Provides:	tetex-format-pdflatex
+Obsoletes:	tetex-format-pdflatex
 
 %description format-pdflatex
 LaTeX is a front end for the TeX text formatting system. Easier to use
@@ -4188,6 +4237,8 @@ Summary(pl.UTF-8):	Obsługa wielu języków dla TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	tetex-tex-babel
+Obsoletes:	tetex-tex-babel
 
 %description tex-babel
 Multilingual support for TeX.
@@ -4201,6 +4252,8 @@ Summary(pl.UTF-8):	Obsługa nowej ortografii niemieckiej (neue deutsche Rechtsch
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	tetex-tex-german
+Obsoletes:	tetex-tex-german
 
 %description tex-german
 Supports the new German orthography (neue deutsche Rechtschreibung).
@@ -4240,7 +4293,9 @@ Summary(pl.UTF-8):	Różne makra TeXowe
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	tetex-tex-misc
 Obsoletes:	tetex-tex-eijkhout
+Obsoletes:	tetex-tex-misc
 
 %description tex-misc
 Miscellaneous TeX macros.
@@ -4280,6 +4335,8 @@ Summary(pl.UTF-8):	Makra postscriptowe dla TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-misc = %{epoch}:%{version}-%{release}
+Provides:	tetex-tex-pstricks
+Obsoletes:	tetex-tex-pstricks
 
 %description tex-pstricks
 An extensive collection of PostScript macros that is compatible with
@@ -4345,6 +4402,8 @@ Summary(pl.UTF-8):	Rosyjskie reguły przenoszenia wyrazów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	tetex-tex-ruhyphen
+Obsoletes:	tetex-tex-ruhyphen
 
 %description tex-ruhyphen
 A collection of Russian hyphenation patterns supporting a number of
@@ -4411,6 +4470,8 @@ Summary(pl.UTF-8):	Ukraińskie zasady przenoszenia wyrazów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Provides:	tetex-tex-ukrhyph
+Obsoletes:	tetex-tex-ukrhyph
 
 %description tex-ukrhyph
 This package allows the use of different hyphenation patterns for the
@@ -4498,6 +4559,8 @@ Summary:	Adobe fonts
 Summary(pl.UTF-8):	Fonty Adobe
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-adobe
+Obsoletes:	tetex-fonts-adobe
 
 %description fonts-adobe
 Adobe fonts.
@@ -4522,6 +4585,8 @@ Summary:	AMS fonts
 Summary(pl.UTF-8):	Fonty AMS
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-ams
+Obsoletes:	tetex-fonts-ams
 
 %description fonts-ams
 AMS fonts.
@@ -4652,6 +4717,8 @@ Summary:	Computer Modern fonts
 Summary(pl.UTF-8):	Fonty Computer Modern
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-cm
+Obsoletes:	tetex-fonts-cm
 
 %description fonts-cm
 Computer Modern fonts.
@@ -4689,6 +4756,8 @@ Summary:	Computer Modern fonts extended with Russian letters
 Summary(pl.UTF-8):	Fonty Computer Modern rozszerzone o litery rosyjskie
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-cmcyr
+Obsoletes:	tetex-fonts-cmcyr
 
 %description fonts-cmcyr
 Computer Modern fonts extended with Russian letters.
@@ -4701,6 +4770,8 @@ Summary:	Extra Computer Modern fonts, from the American Mathematical Society
 Summary(pl.UTF-8):	Dodatkowe fonty Computer Modern z AMS
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-cmextra
+Obsoletes:	tetex-fonts-cmextra
 
 %description fonts-cmextra
 Extra Computer Modern fonts, from the American Mathematical Society.
@@ -4858,6 +4929,8 @@ Summary:	Miscellaneous packages by Joerg Knappen
 Summary(pl.UTF-8):	Różne pakiety autorstwa Joerga Knappena
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-jknappen
+Obsoletes:	tetex-fonts-jknappen
 
 %description fonts-jknappen
 Miscellaneous macros, mostly for making use of extra fonts, by Joerg
@@ -4884,6 +4957,8 @@ Summary:	Basic LaTeX fonts
 Summary(pl.UTF-8):	Podstawowe fonty dla LaTeXa
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-latex
+Obsoletes:	tetex-fonts-latex
 
 %description fonts-latex
 Basic LaTeX fonts.
@@ -5018,6 +5093,8 @@ Summary:	Pazo fonts
 Summary(pl.UTF-8):	Fonty Pazo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-pazo
+Obsoletes:	tetex-fonts-pazo
 
 %description fonts-pazo
 Pazo fonts.
@@ -5113,6 +5190,8 @@ Summary:	St Mary Road symbols for functional programming
 Summary(pl.UTF-8):	Symbole St Mary Road do programowania funkcyjnego
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-stmaryrd
+Obsoletes:	tetex-fonts-stmaryrd
 
 %description fonts-stmaryrd
 St Mary Road symbols for functional programming.
@@ -5202,6 +5281,8 @@ Summary:	Waldis symbol fonts
 Summary(pl.UTF-8):	Fonty Waldis symbol
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-wasy
+Obsoletes:	tetex-fonts-wasy
 
 %description fonts-wasy
 Waldis symbol fonts.
@@ -5564,6 +5645,8 @@ Summary:	URW fonts
 Summary(pl.UTF-8):	Fonty URW
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-type1-urw
+Obsoletes:	tetex-fonts-type1-urw
 
 %description fonts-type1-urw
 URW fonts.
