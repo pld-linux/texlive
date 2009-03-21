@@ -53,6 +53,7 @@ Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
 Source10:	http://tug.ctan.org/get/macros/latex/contrib/floatflt.zip
+# Source10-md5:	5d9fe14d289aa81ebb6b4761169dd5f2
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-20080816-kpathsea-ar.patch
 URL:		http://www.tug.org/texlive/
