@@ -41,7 +41,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	0.9.11
+Release:	0.9.99
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -3179,6 +3179,7 @@ This package contains:
 - movie15: multimedia inclusion package.
 - pdfcprot: activating and setting of character protruding using
   pdflatex.
+- pdfsync: provide links between source and PDF.
 - pdftricks: support for pstricks in pdfTeX. . pdfscreen: support
   screen-based document design.
 
@@ -3190,6 +3191,7 @@ Ez a csomag a következőket tartalmazza:
 - pdfcprot: activating and setting of character protruding using
   pdflatex.
 - pdftricks: pstricks támogatás pdfTeX-ben
+- pdfsync: provide links between source and PDF.
 - pdfscreen: képernyő alapú dokumentumok
 
 %package latex-microtype
@@ -4337,6 +4339,19 @@ QuasiTimes and TX fonts typesetting support.
 
 %description tex-qpxqtx -l pl.UTF-8
 Wsparcie dla składu fontami QuasiTimes i TX.
+
+%package tex-huhyphen
+Summary:	Hungarian hyphenation
+Summary(hu.UTF-8):	Magyar elválasztás
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tex-huhyphen
+Hungarian hyphenation.
+
+%description tex-huhyphen -l hu.UTF-8
+Magyar elválasztás.
 
 %package tex-ruhyphen
 Summary:	Russian hyphenation
@@ -5603,7 +5618,6 @@ Xy-pic fonts.
 %description fonts-type1-xypic -l pl.UTF-8
 Fonty Xy-pic.
 
-
 # TeXLive-specific packages - there wasn't before...
 %package afm2pl
 Summary:	Convert an Adobe font metric file to a TeX font property list
@@ -5611,7 +5625,6 @@ Group:		Fonts
 
 %description afm2pl
 Convert an Adobe font metric file to a TeX font property list.
-
 
 %package bbox
 Summary:	bbox prints the bounding box of images
@@ -5914,32 +5927,40 @@ install %{SOURCE4} $RPM_BUILD_ROOT/etc/cron.daily/texlive
 install %{SOURCE5} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
 
-# bzip2 -dc %{SOURCE3} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
-
-# in separate spec
-# rm -rf $RPM_BUILD_ROOT%{texmf}/tex/latex/{pgf,xcolor}
-# rm -rf $RPM_BUILD_ROOT%{texmf}/doc/latex/{pgf,xcolor}
-
 # not included in package
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/fonts/oldgerman/COPYING
+rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
+rm -f $RPM_BUILD_ROOT%{_infodir}/dir*
+rm -f $RPM_BUILD_ROOT%{_infodir}/dvipng*
+rm -f $RPM_BUILD_ROOT%{_mandir}/{README.*,hu/man1/readlink.1*}
 rm -f $RPM_BUILD_ROOT%{texmf}/doc/Makefile
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/programs/texinfo.*
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/helpfile
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/helpindex.html
-rm -f $RPM_BUILD_ROOT%{texmf}/fonts/pk/ljfour/lh/lh-lcy/*.600pk
-rm -f $RPM_BUILD_ROOT%{texmf}/release-tetex-{src,texmf}.txt
-rm -f $RPM_BUILD_ROOT%{texmf}/scripts/uniqleaf/uniqleaf.pl
+rm -f $RPM_BUILD_ROOT%{texmf}/doc/fonts/oldgerman/COPYING
 rm -f $RPM_BUILD_ROOT%{texmf}/doc/help/Catalogue-upd.sh
 rm -f $RPM_BUILD_ROOT%{texmf}/doc/help/faq/uktug-faq-upd.sh
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/mkhtml*
+rm -f $RPM_BUILD_ROOT%{texmf}/doc/helpfile
+rm -f $RPM_BUILD_ROOT%{texmf}/doc/helpindex.html
 rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.html
 rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.php
-rm -f $RPM_BUILD_ROOT%{_infodir}/dir.gz
-rm -f $RPM_BUILD_ROOT%{_mandir}/{README.*,hu/man1/readlink.1*}
-rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/gzip
+rm -f $RPM_BUILD_ROOT%{texmf}/doc/mkhtml*
+rm -f $RPM_BUILD_ROOT%{texmf}/doc/programs/texinfo.*
+rm -f $RPM_BUILD_ROOT%{texmf}/fonts/pk/ljfour/lh/lh-lcy/*.600pk
+rm -f $RPM_BUILD_ROOT%{texmf}/generic/config/pdftex-dvi.tex
+rm -f $RPM_BUILD_ROOT%{texmf}/release-tetex-{src,texmf}.txt
+rm -f $RPM_BUILD_ROOT%{texmf}/scripts/uniqleaf/uniqleaf.pl
+rm -f $RPM_BUILD_ROOT%{texmf}/tex/generic/pdftex/glyphtounicode.tex
+rm -rf $RPM_BUILD_ROOT%{_datadir}/lcdf-typetools
+rm -rf $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pdf-trans
+rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/generic/hyph-utf8
+rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/generic/patch
+rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/plain/plgraph
+rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/pdf-trans
+rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/xecyr
+rm -rf $RPM_BUILD_ROOT%{texmf}/cef5conv
+rm -rf $RPM_BUILD_ROOT%{texmf}/cefsconv
 rm -rf $RPM_BUILD_ROOT%{texmf}/chktex
+rm -rf $RPM_BUILD_ROOT%{texmf}/doc/cef5conv
+rm -rf $RPM_BUILD_ROOT%{texmf}/doc/cefsconv
 rm -rf $RPM_BUILD_ROOT%{texmf}/doc/chktex
+rm -rf $RPM_BUILD_ROOT%{texmf}/doc/gzip
 
 # move format logs to BUILD, so $RPM_BUILD_ROOT is not polluted
 # and we can still analyze them
@@ -7078,6 +7099,12 @@ fi
 %postun tex-qpxqtx
 %texhash
 
+%post tex-huhyphen
+%texhash
+
+%postun tex-huhyphen
+%texhash
+
 %post tex-ruhyphen
 %texhash
 
@@ -7689,9 +7716,13 @@ fi
 
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/cslatex/base/fonttext.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.dat
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.def
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.us
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.us.def
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/latex/base/fontmath.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/latex/base/fonttext.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/latex/base/preload.cfg
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/texdoc/texdoc.cnf
 
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/fmtutil.cnf
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktex.cnf
@@ -7700,6 +7731,7 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktexnam.opt
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/texmf.cnf
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/updmap.cfg
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/updmap-hdr.cfg
 
 %attr(1777,root,root) /var/cache/fonts
 
@@ -7730,7 +7762,6 @@ fi
 %dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/cslatex
 %dir %{texmfdist}/tex/cslatex/base
-%dir %{texmfdist}/tex/fontinst
 %dir %{texmfdist}/tex/generic
 %dir %{texmfdist}/tex/generic/dehyph-exptl
 %dir %{texmfdist}/tex/generic/enctex
@@ -7738,6 +7769,8 @@ fi
 %dir %{texmfdist}/tex/generic/misc
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/base
+%dir %{texmfdist}/source
+%dir %{texmfdist}/source/generic
 %dir %{texmf}
 %dir %{texmf}/doc
 %dir %{texmf}/doc/generic
@@ -7762,6 +7795,7 @@ fi
 
 # Docs
 # %doc %{texmf}/doc/README
+%doc %{texmf}/README
 %doc %{texmfdist}/README
 %doc %{texmf}/doc/tetex/TETEXDOC.*
 %doc %{texmf}/doc/tetex/teTeX-FAQ
@@ -7895,6 +7929,7 @@ fi
 
 %files other-utils
 %defattr(644,root,root,755)
+%dir %{texmfdist}/scripts/mkjobtexmf
 %attr(755,root,root) %{_bindir}/bg5+latex
 %attr(755,root,root) %{_bindir}/bg5+pdflatex
 %attr(755,root,root) %{_bindir}/bg5conv
@@ -7915,6 +7950,7 @@ fi
 %attr(755,root,root) %{_bindir}/makeglossaries
 %attr(755,root,root) %{_bindir}/metafun
 %attr(755,root,root) %{_bindir}/mkjobtexmf
+%attr(755,root,root) %{texmfdist}/scripts/mkjobtexmf/mkjobtexmf.pl
 %attr(755,root,root) %{_bindir}/mllatex
 %attr(755,root,root) %{_bindir}/mltex
 %attr(755,root,root) %{_bindir}/mmafm
@@ -7979,12 +8015,19 @@ fi
 %{texmfdist}/tex/jadetex
 %{texmfdist}/tex/texsis
 %{texmfdist}/tex/startex
+%{texmf}/fmtutil/fmtutil-hdr.cnf
 %{texmf}/fmtutil/format.jadetex.cnf
+%{texmf}/fmtutil/format.cyrtex.cnf
+%{texmf}/fmtutil/format.cyrtexinfo.cnf
 %{texmf}/fmtutil/format.mltex.cnf
+%{texmf}/ttf2pk
+%{texmf}/fonts/enc/ttf2pk
+%{texmf}/fonts/map/ttf2pk
 %{texmfdist}/tex/generic/abbr
 %{texmfdist}/tex/generic/abstyles/
 %{texmfdist}/tex/generic/barr
 %{texmfdist}/tex/generic/borceux
+%{texmfdist}/source/generic/borceux
 %{texmfdist}/tex/generic/c-pascal
 %{texmfdist}/tex/generic/cirth
 %{texmfdist}/tex/generic/dratex
@@ -7995,6 +8038,8 @@ fi
 %{texmfdist}/tex/generic/fltpoint
 %{texmfdist}/source/generic/fltpoint
 %{texmfdist}/tex/generic/musixtex
+%{texmfdist}/source/generic/hyphenex
+%{texmfdist}/source/generic/mkjobtexmf
 %{texmf}/hbf2gf
 %{texmf}/fmtutil/format.texsis.cnf
 
@@ -8282,8 +8327,6 @@ fi
 
 %files -n kpathsea
 %defattr(644,root,root,755)
-%dir %{texmf}/doc
-%dir %{texmf}/doc/kpathsea
 %doc %{texmf}/doc/kpathsea
 %attr(755,root,root) %{_bindir}/kpsepath
 %attr(755,root,root) %{_bindir}/kpsestat
@@ -8479,7 +8522,6 @@ fi
 #%{_mandir}/man1/inimf.1*
 #%{_mandir}/man1/virmf.1*
 %dir %{texmfdist}/mft
-%dir %{texmfdist}/mft/base
 %attr(755,root,root) %{_bindir}/mf
 %attr(755,root,root) %{_bindir}/mf-nowin
 %attr(755,root,root) %{_bindir}/mft
@@ -8487,8 +8529,7 @@ fi
 %attr(755,root,root) %{_bindir}/mktexpk
 %attr(755,root,root) %{_bindir}/mktextfm
 %{texmfdist}/metafont
-%{texmfdist}/mft/base/mplain.mft
-%{texmfdist}/mft/base/plain.mft
+%{texmfdist}/mft/base
 %{texmfdist}/source/metafont
 %{_mandir}/man1/mf.1*
 %{_mandir}/man1/mf-nowin.1*
@@ -8551,6 +8592,7 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mptopdf
 %{_mandir}/man1/mptopdf.1*
+%{texmfdist}/tex/mptopdf
 # %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/mptopdf.fmt
 
 %files texdoctk
@@ -8792,7 +8834,9 @@ fi
 # %{texmf}/web2c/pdfxtex.pool
 # %{_mandir}/man1/pdfxtex.1*
 %dir %{texmf}/fonts/map/pdftex
+%dir %{texmfdist}/doc/support
 %doc %{texmfdist}/doc/pdftex
+%doc %{texmfdist}/doc/support/pdfcrop
 %attr(755,root,root) %{_bindir}/epstopdf
 %attr(755,root,root) %{_bindir}/pdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
@@ -8846,6 +8890,7 @@ fi
 %{texmfdist}/dvips/omega/config.omega
 %{texmfdist}/dvips/omega/omega.cfg
 %{texmfdist}/fonts/map/dvips/omega
+%{texmfdist}/tex/generic/omegahyph
 %{texmfdist}/omega/ocp
 %{texmfdist}/omega/otp
 %{texmfdist}/tex/lambda
@@ -8893,14 +8938,11 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/mex
 %dir %{texmfdist}/tex/mex
-%dir %{texmfdist}/tex/mex/base
-%{texmfdist}/tex/mex/base/mex1.tex
-%{texmfdist}/tex/mex/base/mex2.tex
-%{texmfdist}/tex/mex/base/mex.tex
+%{texmfdist}/tex/mex/base
 %dir %{texmfdist}/tex/mex/config
-%{texmfdist}/tex/mex/base/mexconf.tex
 %{texmf}/fmtutil/format.mex.cnf
 %{texmf}/fmtutil/format.utf8mex.cnf
+%{texmfdist}/source/mex
 
 %files format-mex
 %defattr(644,root,root,755)
@@ -9014,6 +9056,7 @@ fi
 %doc %{texmfdist}/doc/eplain
 %{texmfdist}/tex/plain/etex
 %{texmfdist}/tex/eplain
+%{texmfdist}/source/eplain/eplain-source-3.2.zip
 
 %files format-eplain
 %defattr(644,root,root,755)
@@ -9077,6 +9120,7 @@ fi
 %{texmfdist}/bibtex/bst/context
 %{texmf}/fmtutil/format.context.cnf
 %{texmf}/fmtutil/format.luatex.cnf
+%{texmf}/web2c/context.cnf
 %doc %{texmfdist}/doc/luatex
 
 # no fmt, so commented out
@@ -9563,6 +9607,7 @@ fi
 %{texmfdist}/tex/latex/overpic
 %{texmfdist}/tex/latex/paralist
 %{texmfdist}/tex/latex/pb-diagram
+%{texmfdist}/tex/latex/pdftex-def
 %{texmfdist}/tex/latex/pdfpages
 %{texmfdist}/tex/latex/picinpar
 %{texmfdist}/tex/latex/pict2e
@@ -10261,11 +10306,11 @@ fi
 %{texmfdist}/source/latex/minitoc
 %{texmfdist}/tex/latex/minitoc
 
-
 %files latex-mltex
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/mltex
 %{texmfdist}/tex/latex/mltex
+%{texmfdist}/tex/mltex/config
 
 %files latex-moreverb
 %defattr(644,root,root,755)
@@ -10622,7 +10667,6 @@ fi
 %doc %{texmfdist}/doc/latex/paresse
 %doc %{texmfdist}/doc/latex/parrun
 %doc %{texmfdist}/doc/latex/pauldoc
-%doc %{texmfdist}/doc/latex/pdfsync
 %doc %{texmfdist}/doc/latex/pdfwin
 %doc %{texmfdist}/doc/latex/pecha
 %doc %{texmfdist}/doc/latex/perception
@@ -11025,6 +11069,8 @@ fi
 %{texmfdist}/tex/latex/pdfscreen
 %doc %{texmfdist}/doc/latex/movie15
 %{texmfdist}/tex/latex/movie15
+%doc %{texmfdist}/doc/latex/pdfsync
+%{texmfdist}/tex/latex/pdfsync
 
 %files latex-informatic
 %defattr(644,root,root,755)
@@ -12376,6 +12422,9 @@ fi
 %{texmfdist}/tex/latex/pgf
 %{texmfdist}/tex/latex/pgfopts
 %{texmfdist}/tex/latex/pgfplots
+%dir %{texmfdist}/source/context
+%dir %{texmfdist}/source/context/third
+%{texmfdist}/source/context/third/pgfplots
 
 %files latex-prosper
 %defattr(644,root,root,755)
@@ -12646,8 +12695,6 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/psnfss
 %dir %{texmfdist}/source/latex
-%dir %{texmfdist}/source/latex/latex-tds
-%dir %{texmfdist}/source/latex/latex-tds/tex
 %{texmfdist}/fonts/map/dvips/psnfss
 %{texmfdist}/source/latex/psnfss
 %{texmfdist}/source/latex/latex-tds
@@ -12772,6 +12819,7 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/german
 %{texmfdist}/tex/generic/german
+%{texmfdist}/source/generic/german
 
 %files tex-mfpic
 %defattr(644,root,root,755)
@@ -12790,10 +12838,12 @@ fi
 %doc %{texmfdist}/doc/latex/localloc
 %doc %{texmfdist}/doc/generic/multido
 %doc %{texmfdist}/doc/generic/tap
+%doc %{texmfdist}/doc/generic/vrb
 
 %{texmfdist}/tex/generic/eijkhout
 %{texmfdist}/tex/generic/multido
 %{texmfdist}/tex/generic/misc
+%{texmfdist}/tex/generic/vrb
 
 %files tex-pictex
 %defattr(644,root,root,755)
@@ -12813,6 +12863,8 @@ fi
 %{texmfdist}/dvips/pstricks
 %{texmfdist}/tex/generic/pstricks
 %{texmfdist}/tex/latex/pstricks-add
+%{texmfdist}/source/generic/pstricks-add
+%{texmfdist}/tex/generic/pstricks-add
 
 # %files tex-qpx
 # %defattr(644,root,root,755)
@@ -12830,6 +12882,10 @@ fi
 %defattr(644,root,root,755)
 %{texmfdist}/tex/generic/ruhyphen
 %{texmfdist}/source/generic/ruhyphen
+
+%files tex-huhyphen
+%defattr(644,root,root,755)
+%doc %{texmf}/doc/generic/huhyphen
 
 %files tex-spanish
 %defattr(644,root,root,755)
@@ -13193,8 +13249,6 @@ fi
 
 %files fonts-other
 %defattr(644,root,root,755)
-
-
 %{texmf}/fonts/sfd
 %doc %{texmfdist}/doc/fonts/yi4latex
 %{texmfdist}/fonts/afm/itc
@@ -14336,9 +14390,11 @@ fi
 
 %files afm2pl
 %defattr(644,root,root,755)
+%dir %{texmf}/tex/latex
 %attr(755,root,root) %{_bindir}/afm2pl
 %{_mandir}/man1/afm2pl*
 %{texmf}/fonts/lig/afm2pl
+%{texmf}/tex/latex/afm2pl
 
 %files bbox
 %defattr(644,root,root,755)
@@ -14387,6 +14443,7 @@ fi
 %{_mandir}/man1/dvitodvi*
 %{texmf}/fonts/map/dvipdfmx
 %dir %{texmf}/fonts/cmap
+%doc %{texmf}/fonts/cmap/README
 %{texmf}/dvipdfmx
 %{texmf}/fonts/cmap/dvipdfmx
 
@@ -14473,6 +14530,7 @@ fi
 %{texmfdist}/scripts/xetex
 %{texmfdist}/tex/generic/ifxetex
 %doc %{texmfdist}/doc/generic/ifxetex
+%doc %{texmfdist}/doc/generic/xetex-pstricks
 %{texmfdist}/tex/generic/xetexconfig
 %{texmfdist}/tex/latex/latexconfig/xelatex.ini
 %{texmfdist}/tex/plain/config/xetex.ini
@@ -14486,3 +14544,4 @@ fi
 %attr(755,root,root) %{_bindir}/xmltex
 %{texmfdist}/tex/xmltex
 %{texmf}/fmtutil/format.xmltex.cnf
+%{texmfdist}/source/xmltex
