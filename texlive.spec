@@ -7755,6 +7755,7 @@ fi
 %dir %{texmf}/fonts/map/dvips/tetex
 %dir %{texmf}/fonts/map/dvips/updmap
 %dir %{texmf}/scripts
+%dir %{texmf}/texdoc
 %dir %{texmf}/tex
 %dir %{texmf}/tex/generic
 %dir %{texmf}/tex/generic/config
