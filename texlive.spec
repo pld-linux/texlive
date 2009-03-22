@@ -114,7 +114,7 @@ Requires:	textutils
 Suggests:	tmpwatch
 Provides:	tetex-format-pdfetex
 Obsoletes:	tetex-format-pdfetex
-Provides:	tetex
+Provides:	tetex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex
 Obsoletes:	tetex-afm
 Obsoletes:	tetex-doc
