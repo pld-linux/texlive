@@ -13096,7 +13096,7 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/cm
 %dir %{texmfdist}/doc/fonts
-%dir %{texmfdist}/dvips
+# %dir %{texmfdist}/dvips
 %dir %{texmfdist}/fonts/afm/bluesky
 %dir %{texmfdist}/fonts/map/dvips
 %dir %{texmfdist}/fonts/pk/ljfour/public
