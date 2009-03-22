@@ -112,6 +112,8 @@ Requires:	sh-utils
 Requires:	texconfig = %{epoch}:%{version}-%{release}
 Requires:	textutils
 Suggests:	tmpwatch
+Provides:	tetex-format-pdfetex
+Obsoletes:	tetex-format-pdfetex
 Provides:	tetex
 Obsoletes:	tetex
 Obsoletes:	tetex-afm
@@ -1875,8 +1877,10 @@ Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-fonts-jknappen
 Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
+Provides:	tetex-format-latex
 Provides:	tetex-latex
 Obsoletes:	tetex-bibtex-koma-script
+Obsoletes:	tetex-format-latex
 Obsoletes:	tetex-latex
 Obsoletes:	tetex-latex-SIunits
 Obsoletes:	tetex-latex-caption
