@@ -1386,7 +1386,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
 Provides:	tetex-pdftex
 Obsoletes:	tetex-pdftex
-Provides:	tetex-format-pdftex
+Provides:	tetex-format-pdftex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-pdftex
 
 %description pdftex
@@ -1510,7 +1510,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
-Provides:	tetex-format-pdfetex
+Provides:	tetex-format-pdfetex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-pdfetex
 
 %description format-pdfetex
