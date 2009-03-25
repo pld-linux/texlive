@@ -1,6 +1,7 @@
 # TODO:
 #
 # MAIN TODO (sort by importnce):
+# - http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/ to 'scripts'
 # - texlive-format-pdflatex deps
 # - check unpackaged files (only some files)
 # - pl updates
