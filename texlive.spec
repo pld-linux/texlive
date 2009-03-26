@@ -1,11 +1,8 @@
 # TODO:
 #
 # MAIN TODO (sort by importnce):
-# - http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/ to 'scripts'
 # - texlive-format-pdflatex deps
-# - check unpackaged files (only some files)
 # - pl updates
-# - maybe more splits (e.g. latex subpackages)
 # - see uncategorized and *other* subpackages and split
 # - context: consider more splitting, check dependencies
 # - omega: consider more splitting, check dependencies
@@ -27,6 +24,8 @@
 # - texk/web2c doesn't build (luatex option)
 # - %files latex-bibtex-revtex4
 # - Check CEF/cjk!
+# - texdoc: /usr/bin/env: texlua: No such file or directory
+# - tlmgr: "kpsewhich" is not exported by the TeXLive::TLUtils module
 #
 %include	/usr/lib/rpm/macros.perl
 #
@@ -6021,20 +6020,20 @@ ln -sf ../share/texmf-dist/scripts/context/stubs/unix/tmftools tmftools
 ln -sf ../share/texmf-dist/scripts/vpe/vpe.pl vpe
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/xmltools xmltools
 
-install -d $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE50} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE51} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE52} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE53} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE54} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE55} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE56} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE57} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE58} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE59} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE60} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE61} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
-install %{SOURCE62} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE50} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE51} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE52} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE53} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE54} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE55} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE56} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE57} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE58} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE59} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE60} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE61} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
+install %{SOURCE62} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
 
 cd $RPM_BUILD_ROOT%{texmfdist}/tex/latex
 unzip %{SOURCE10}
@@ -7778,7 +7777,6 @@ fi
 # ***********
 # executables
 # ***********
-%attr(755,root,root) %{_bindir}/a2ping
 %attr(755,root,root) %{_bindir}/afm2tfm
 %attr(755,root,root) %{_bindir}/allcm
 %attr(755,root,root) %{_bindir}/allec
@@ -7788,7 +7786,6 @@ fi
 %attr(755,root,root) %{_bindir}/ctie
 %attr(755,root,root) %{_bindir}/dmp
 %attr(755,root,root) %{_bindir}/dvipng
-%attr(755,root,root) %{_bindir}/e2pall
 %attr(755,root,root) %{_bindir}/ebb
 # %attr(755,root,root) %{_bindir}/fdf2tan
 %attr(755,root,root) %{_bindir}/fmtutil
@@ -7826,9 +7823,7 @@ fi
 %attr(755,root,root) %{_bindir}/tangle
 #%attr(755,root,root) %{_bindir}/tetex-updmap
 %attr(755,root,root) %{_bindir}/tex
-%attr(755,root,root) %{_bindir}/texdoc
 %attr(755,root,root) %{_bindir}/texhash
-# %attr(755,root,root) %{_bindir}/texi2html
 %attr(755,root,root) %{_bindir}/texlinks
 %attr(755,root,root) %{_bindir}/tftopl
 %attr(755,root,root) %{_bindir}/tie
@@ -7861,7 +7856,6 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/latex/base/fontmath.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/latex/base/fonttext.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/latex/base/preload.cfg
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/texdoc/texdoc.cnf
 
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/fmtutil.cnf
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktex.cnf
@@ -7875,14 +7869,6 @@ fi
 %attr(1777,root,root) /var/cache/fonts
 
 %{_datadir}/info/web2c.info*
-# %{_datadir}/info/texi2html.info*
-# %{_datadir}/texi2html
-#%{texmf}/updates.dat
-
-# %{texmf}/aliases
-# %{texmf}/tex/generic/bghyph
-# %doc %{texmf}/doc/generic/hyphen
-#%{texmf}/tex/generic/letterspacing
 
 # ***********
 # Directories
@@ -7926,7 +7912,6 @@ fi
 %dir %{texmf}/fonts/map/dvips/tetex
 %dir %{texmf}/fonts/map/dvips/updmap
 %dir %{texmf}/scripts
-%dir %{texmf}/texdoc
 %dir %{texmf}/tex
 %dir %{texmf}/tex/generic
 %dir %{texmf}/tex/generic/config
@@ -7941,7 +7926,6 @@ fi
 %doc %{texmf}/doc/tetex/teTeX-FAQ
 %doc %{texmfdist}/source/fontinst
 %doc %{texmf}/doc/dvipng
-%doc %{texmf}/doc/texdoc
 %{texmf}/doc/info
 
 # %{texmf}/fonts/map/dvips/tetex/contnav.map
@@ -8023,7 +8007,6 @@ fi
 %{_mandir}/man1/dmp.1*
 %{_mandir}/man1/dvipdft.1*
 %{_mandir}/man1/dvipng.1*
-%{_mandir}/man1/e2pall.1*
 %{_mandir}/man1/ebb.1*
 %{_mandir}/man1/fmtutil.1*
 %{_mandir}/man1/fmtutil-sys.1*
@@ -8120,7 +8103,6 @@ fi
 %attr(755,root,root) %{_bindir}/t1testpage
 %attr(755,root,root) %{_bindir}/texcount
 %attr(755,root,root) %{_bindir}/texsis
-%attr(755,root,root) %{_bindir}/tlmgr
 %attr(755,root,root) %{_bindir}/tpic2pdftex
 %attr(755,root,root) %{_bindir}/ttf2pk
 %attr(755,root,root) %{_bindir}/ttf2tfm
@@ -8138,7 +8120,6 @@ fi
 %{_mandir}/man1/otftotfm.1*
 %{_mandir}/man1/oxdvi.1
 %{_mandir}/man1/pdftosrc.1*
-%{_mandir}/man1/ps2eps.1*
 %{_mandir}/man1/synctex.1*
 %{_mandir}/man1/t1dotlessj.1*
 %{_mandir}/man1/t1lint.1*
@@ -8580,7 +8561,6 @@ fi
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts
 %dir %{texmfdist}/scripts/bengali
-%dir %{texmfdist}/scripts/dviasm
 %dir %{texmfdist}/scripts/glossaries
 %dir %{texmfdist}/scripts/oberdiek
 %dir %{texmfdist}/scripts/perltex
@@ -8591,9 +8571,7 @@ fi
 %dir %{texmfdist}/scripts/vpe
 %dir %{texmf}/scripts
 %dir %{texmf}/scripts/a2ping
-%dir %{texmf}/scripts/epstopdf
 %dir %{texmf}/scripts/pkfix
-%dir %{texmf}/scripts/ps2eps
 %dir %{texmf}/scripts/simpdftex
 %dir %{texmf}/scripts/tetex
 %dir %{texmf}/scripts/texlive
@@ -8602,9 +8580,8 @@ fi
 %dir %{texmf}/scripts/texlive/lua/texlive
 %dir %{texmf}/scripts/texlive/tlmgrgui
 %{texmf}/scripts/texlive/tlmgrgui/lang
-%{perl_vendorlib}/texlive
+%{perl_vendorlib}/TeXLive
 %attr(755,root,root) %{texmfdist}/scripts/bengali/*
-%attr(755,root,root) %{texmfdist}/scripts/dviasm/dviasm*
 %attr(755,root,root) %{texmfdist}/scripts/glossaries/*
 %attr(755,root,root) %{texmfdist}/scripts/oberdiek/*
 %attr(755,root,root) %{texmfdist}/scripts/perltex/perltex*
@@ -8614,9 +8591,7 @@ fi
 %attr(755,root,root) %{texmfdist}/scripts/texcount/*
 %attr(755,root,root) %{texmfdist}/scripts/vpe/vpe.pl
 %attr(755,root,root) %{texmf}/scripts/a2ping/a2ping*
-%attr(755,root,root) %{texmf}/scripts/epstopdf/epstopdf*
 %attr(755,root,root) %{texmf}/scripts/pkfix/pkfix*
-%attr(755,root,root) %{texmf}/scripts/ps2eps/ps2eps*
 %attr(755,root,root) %{texmf}/scripts/simpdftex/simpdftex*
 %attr(755,root,root) %{texmf}/scripts/tetex/*
 %attr(755,root,root) %{texmf}/scripts/texlive/*.pl
@@ -8624,6 +8599,14 @@ fi
 %attr(755,root,root) %{texmf}/scripts/texlive/gswin32/*
 %attr(755,root,root) %{texmf}/scripts/texlive/lua/texlive/*
 %attr(755,root,root) %{texmf}/scripts/texlive/tlmgrgui/*.pl
+%attr(755,root,root) %{_bindir}/tlmgr
+%attr(755,root,root) %{_bindir}/a2ping
+%attr(755,root,root) %{_bindir}/e2pall
+%{_mandir}/man1/e2pall.1*
+%dir %{texmf}/texdoc
+%doc %{texmf}/doc/texdoc
+%attr(755,root,root) %{_bindir}/texdoc
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/texdoc/texdoc.cnf
 
 %files tex-arrayjob
 %defattr(644,root,root,755)
@@ -8995,6 +8978,8 @@ fi
 %dir %{texmfdist}/doc/support
 %doc %{texmfdist}/doc/pdftex
 %doc %{texmfdist}/doc/support/pdfcrop
+%dir %{texmf}/scripts
+%dir %{texmf}/scripts/epstopdf
 %attr(755,root,root) %{_bindir}/epstopdf
 %attr(755,root,root) %{_bindir}/pdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
@@ -9007,6 +8992,7 @@ fi
 %{texmfdist}/fonts/enc/pdftex
 %{texmfdist}/fonts/map/pdftex
 %{texmf}/fonts/map/pdftex/updmap
+%attr(755,root,root) %{texmf}/scripts/epstopdf/epstopdf*
 
 %files phyzzx
 %defattr(644,root,root,755)
@@ -14297,8 +14283,6 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/pl
 %dir %{texmf}/scripts/texlive
-%dir %{texmf}/scripts/texlive/tlmgrgui
-%dir %{texmf}/scripts/texlive/tlmgrgui/lang
 %{texmfdist}/dvips/pl
 %{texmfdist}/fonts/source/public/pl
 %{texmfdist}/fonts/type1/public/pl
@@ -14306,7 +14290,6 @@ fi
 %{texmfdist}/fonts/enc/dvips/pl
 %{texmfdist}/fonts/tfm/public/pl
 %{texmfdist}/fonts/map/dvips/pl
-%{texmf}/scripts/texlive/tlmgrgui/lang/pl
 
 %files fonts-px
 %defattr(644,root,root,755)
@@ -14598,6 +14581,9 @@ fi
 %doc %{texmf}/fonts/cmap/README
 %{texmf}/dvipdfmx
 %{texmf}/fonts/cmap/dvipdfmx
+%dir %{texmfdist}/scripts
+%dir %{texmfdist}/scripts/dviasm
+%attr(755,root,root) %{texmfdist}/scripts/dviasm/dviasm*
 
 %files epsutils
 %defattr(644,root,root,755)
@@ -14627,6 +14613,8 @@ fi
 %attr(755,root,root) %{_bindir}/ps2eps
 %attr(755,root,root) %{_bindir}/pstops
 %attr(755,root,root) %{_bindir}/showchar
+%dir %{texmf}/scripts/ps2eps
+%attr(755,root,root) %{texmf}/scripts/ps2eps/ps2eps*
 %{_mandir}/man1/extractres*
 %{_mandir}/man1/getafm*
 %{_mandir}/man1/includeres*
@@ -14636,6 +14624,7 @@ fi
 %{_mandir}/man1/psresize*
 %{_mandir}/man1/psselect*
 %{_mandir}/man1/pstops*
+%{_mandir}/man1/ps2eps.1*
 %{texmf}/dvips/psutils
 
 %files uncategorized-utils
