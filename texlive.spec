@@ -55,6 +55,32 @@ Source5:	xdvi.desktop
 Source6:	xdvi.png
 Source10:	http://tug.ctan.org/get/macros/latex/contrib/floatflt.zip
 # Source10-md5:	5d9fe14d289aa81ebb6b4761169dd5f2
+Source50:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/Splashscreen.pm
+# Source50-md5:	5cc49f49010f27fdb02dd7053797ba19
+Source51:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLConfig.pm
+# Source51-md5:	947ee29c38c2c2cfd9a25c597a89598a
+Source52:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLMedia.pm
+# Source52-md5:	9f1e76f3528125691edd4fbcdd69c5cb
+Source53:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLPDB.pm
+# Source53-md5:	47cae437999e98a7bd24f27db7b0fa34
+Source54:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLPOBJ.pm
+# Source54-md5:	c573c407ae3d98f710d65d593a7d1745
+Source55:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLPSRC.pm
+# Source55-md5:	834ae0ac5c59fd00ab6000ba6367a987
+Source56:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLPaper.pm
+# Source56-md5:	326314fc034a5d9ef9d4a60033f7186f
+Source57:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLPostActions.pm
+# Source57-md5:	17c1968725ccf4aaafb7162b7b3609fc
+Source58:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLTREE.pm
+# Source58-md5:	039cc8878f380cab3b0beffe75870c6c
+Source59:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLUtils.pm
+# Source59-md5:	4e611075975c0dd62a9170d319258b8f
+Source60:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLWinGoo.pm
+# Source60-md5:	825121187994692ecda0f48a5b17421a
+Source61:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TeXCatalogue.pm
+# Source61-md5:	6289d93a12aa246fc2019b0109d2167f
+Source62:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/waitVariableX.pm
+# Source62-md5:	f0fa0f2fc7aacb1e9b40eb65891a24c8
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-20080816-kpathsea-ar.patch
 URL:		http://www.tug.org/texlive/
@@ -113,9 +139,8 @@ Requires:	sh-utils
 Requires:	texconfig = %{epoch}:%{version}-%{release}
 Requires:	textutils
 Suggests:	tmpwatch
-Provides:	tetex-format-pdfetex
-Obsoletes:	tetex-format-pdfetex
 Provides:	tetex = %{epoch}:%{version}-%{release}
+Provides:	tetex-format-pdfetex
 Obsoletes:	tetex
 Obsoletes:	tetex-afm
 Obsoletes:	tetex-doc
@@ -128,6 +153,7 @@ Obsoletes:	tetex-fonts-vcm
 Obsoletes:	tetex-format-elatex
 Obsoletes:	tetex-format-pdfelatex
 Obsoletes:	tetex-format-pdfemex
+Obsoletes:	tetex-format-pdfetex
 Obsoletes:	tetex-latex-vnps
 Obsoletes:	tetex-latex-vnr
 Obsoletes:	tetex-oxdvi
@@ -1385,10 +1411,10 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
-Provides:	tetex-pdftex
-Obsoletes:	tetex-pdftex
 Provides:	tetex-format-pdftex = %{epoch}:%{version}-%{release}
+Provides:	tetex-pdftex
 Obsoletes:	tetex-format-pdftex
+Obsoletes:	tetex-pdftex
 
 %description pdftex
 TeX generating PDF files instead DVI.
@@ -1461,10 +1487,10 @@ Summary(pl.UTF-8):	Podstawowe pliki dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Provides:	tetex-plain
-Obsoletes:	tetex-plain
 Provides:	tetex-format-plain
+Provides:	tetex-plain
 Obsoletes:	tetex-format-plain
+Obsoletes:	tetex-plain
 
 %description plain
 Plain TeX format basic files.
@@ -2790,8 +2816,8 @@ Summary(hu.UTF-8):	Az alap LaTeX stílusok, környezetek, stb. bővítései, fol
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex
-Obsoletes:	tetex-latex-ltablex
 Provides:	tetex-latex-ltablex
+Obsoletes:	tetex-latex-ltablex
 
 %description latex-extend
 This package contains:
@@ -2840,6 +2866,7 @@ This package contains:
 - rccol: decimal-centered optionally rounded numbers in tabular.
 - romannum: generate roman numerals instead of arabic digits.
 - schedule: weekly schedules.
+- subfloat: sub-numbering for figures and tables.
 - umoline: underline text allowing line breaking.
 - umrand: package for fancy box frames.
 - underlin: underlined running heads.
@@ -2892,6 +2919,7 @@ Ez a csomag a következőket tartalmazza:
 - rccol: decimal-centered optionally rounded numbers in tabular.
 - romannum: generate roman numerals instead of arabic digits.
 - schedule: heti időbeosztás (órarend)
+- subfloat: sub-numbering for figures and tables.
 - umoline: aláhúzott szövegben sortörés engedélyezése
 - umrand: package for fancy box frames.
 - underlin: aláhúzott élőfej
@@ -2920,6 +2948,8 @@ This package contains:
 - parallel: typeset parallel texts.
 - quotchap: decorative chapter headings.
 - rotpages: typeset sets of pages upside-down and backwards.
+- sectionbox: create fancy boxed ((sub)sub)sections.
+- shadethm: theorem environments that are shaded
 
 %description latex-effects -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
@@ -2937,6 +2967,8 @@ Ez a csomag a következőket tartalmazza:
 - parallel: párhuzamos szövegek szedése
 - quotchap: decorative chapter headings.
 - rotpages: typeset sets of pages upside-down and backwards.
+- sectionbox: create fancy boxed ((sub)sub)sections.
+- shadethm: theorem environments that are shaded
 
 %package latex-math-sources
 Summary:	Sources of latex-math
@@ -2992,6 +3024,8 @@ This package contains:
 - petri-nets: A set TeX/LaTeX packages for drawing Petri nets.
 - qsymbols: maths symbol abbreviations.
 - qtree: draw tree structures.
+- sdrt: macros for Segmented Discourse Representation Theory.
+- semantic: help for writing programming language semantics.
 - simplewick: simple Wick contractions.
 - sseq: spectral sequence diagrams.
 - subdepth: unify maths subscript height.
@@ -3036,6 +3070,8 @@ Ez a csomag a következőket tartalmazza:
 - petri-nets: A set TeX/LaTeX packages for drawing Petri nets.
 - qsymbols: matematikai szimbólumok rövidítése
 - qtree: fastruktúrák rajzolása
+- sdrt: macros for Segmented Discourse Representation Theory.
+- semantic: help for writing programming language semantics.
 - simplewick: simple Wick contractions.
 - sseq: spectral sequence diagrams.
 - subdepth: matematikai indexek méretének egységesítése
@@ -3135,11 +3171,35 @@ Ez a csomag a következőket tartalmazza:
 - biocon: biológiai fajnevek szedése
 - dnaseq: DNS szekvenciák szedése
 
+%package latex-presentation
+Summary:	Presentations in LaTeX
+Summary(hu.UTF-8):	Prezentációk LaTeX-ben
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
+
+%description latex-presentation
+This package contains:
+- powerdot: a presentation class.
+- ppower4: a postprocessor for PDF presentations.
+- sciposter: make posters of ISO A3 size and larger.
+- tpslifonts: a LaTeX package for configuring presentation fonts.
+
+%description latex-presentation -l hu.UTF-8
+Ez a csomag a következőket tartalmazza:
+- powerdot: egy prezentáció osztály
+- ppower4: egy postprocesszor PDF prezentációkhoz
+- sciposter: poszterek készítése A3-as és nagyobb méretben
+- tpslifonts: a LaTeX package for configuring presentation fonts.
+
 %package latex-chem
 Summary:	Chemical packages
 Summary(hu.UTF-8):	Kémiai csomagok
 Group:		Applications/Publishing/TeX
+Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex
 Requires:	%{name}-latex
 
 %description latex-chem
@@ -5960,6 +6020,22 @@ ln -sf ../share/texmf/scripts/texlive/tlmgr.pl tlmgr
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/tmftools tmftools
 ln -sf ../share/texmf-dist/scripts/vpe/vpe.pl vpe
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/xmltools xmltools
+
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE50} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE51} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE52} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE53} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE54} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE55} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE56} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE57} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE58} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE59} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE60} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE61} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+install %{SOURCE62} $RPM_BUILD_ROOT%{perl_vendorlib}/texlive
+
 cd $RPM_BUILD_ROOT%{texmfdist}/tex/latex
 unzip %{SOURCE10}
 cd floatflt
@@ -6404,6 +6480,12 @@ fi
 %texhash
 
 %postun latex-extend
+%texhash
+
+%post latex-presentation
+%texhash
+
+%postun latex-presentation
 %texhash
 
 %post latex-programming
@@ -8026,7 +8108,6 @@ fi
 %{__perl}tex
 %attr(755,root,root) %{_bindir}/physe
 %attr(755,root,root) %{_bindir}/pkfix
-%attr(755,root,root) %{_bindir}/ppower4
 %attr(755,root,root) %{_bindir}/rungs
 %attr(755,root,root) %{_bindir}/simpdftex
 %attr(755,root,root) %{_bindir}/sjisconv
@@ -8498,31 +8579,51 @@ fi
 %files scripts
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts
+%dir %{texmfdist}/scripts/bengali
+%dir %{texmfdist}/scripts/dviasm
+%dir %{texmfdist}/scripts/glossaries
+%dir %{texmfdist}/scripts/oberdiek
+%dir %{texmfdist}/scripts/perltex
+%dir %{texmfdist}/scripts/pgfplots
+%dir %{texmfdist}/scripts/pst2pdf
+%dir %{texmfdist}/scripts/shipunov
+%dir %{texmfdist}/scripts/texcount
+%dir %{texmfdist}/scripts/vpe
 %dir %{texmf}/scripts
+%dir %{texmf}/scripts/a2ping
+%dir %{texmf}/scripts/epstopdf
+%dir %{texmf}/scripts/pkfix
+%dir %{texmf}/scripts/ps2eps
+%dir %{texmf}/scripts/simpdftex
+%dir %{texmf}/scripts/tetex
 %dir %{texmf}/scripts/texlive
-%{texmfdist}/scripts/bengali
-%{texmfdist}/scripts/dviasm
-%{texmfdist}/scripts/glossaries
-%{texmfdist}/scripts/oberdiek
-%{texmfdist}/scripts/perltex
-%{texmfdist}/scripts/pgfplots
-%{texmfdist}/scripts/ppower4
-%{texmfdist}/scripts/pst2pdf
-%{texmfdist}/scripts/shipunov
-%{texmfdist}/scripts/texcount
-%{texmfdist}/scripts/vpe/vpe.pl
-%{texmf}/scripts/a2ping
-%{texmf}/scripts/epstopdf
-%{texmf}/scripts/pkfix
-%{texmf}/scripts/ps2eps
-%{texmf}/scripts/simpdftex
-%{texmf}/scripts/tetex
-%{texmf}/scripts/texlive/getnonfreefonts.pl
-%{texmf}/scripts/texlive/gswin32
-%{texmf}/scripts/texlive/lua
-%{texmf}/scripts/texlive/*.tlu
-%{texmf}/scripts/texlive/tlmgr.pl
-%{texmf}/scripts/texlive/tlmgrgui
+%dir %{texmf}/scripts/texlive/gswin32
+%dir %{texmf}/scripts/texlive/lua
+%dir %{texmf}/scripts/texlive/lua/texlive
+%dir %{texmf}/scripts/texlive/tlmgrgui
+%{texmf}/scripts/texlive/tlmgrgui/lang
+%{perl_vendorlib}/texlive
+%attr(755,root,root) %{texmfdist}/scripts/bengali/*
+%attr(755,root,root) %{texmfdist}/scripts/dviasm/dviasm*
+%attr(755,root,root) %{texmfdist}/scripts/glossaries/*
+%attr(755,root,root) %{texmfdist}/scripts/oberdiek/*
+%attr(755,root,root) %{texmfdist}/scripts/perltex/perltex*
+%attr(755,root,root) %{texmfdist}/scripts/pgfplots/*
+%attr(755,root,root) %{texmfdist}/scripts/pst2pdf/pst2pdf*
+%attr(755,root,root) %{texmfdist}/scripts/shipunov/*
+%attr(755,root,root) %{texmfdist}/scripts/texcount/*
+%attr(755,root,root) %{texmfdist}/scripts/vpe/vpe.pl
+%attr(755,root,root) %{texmf}/scripts/a2ping/a2ping*
+%attr(755,root,root) %{texmf}/scripts/epstopdf/epstopdf*
+%attr(755,root,root) %{texmf}/scripts/pkfix/pkfix*
+%attr(755,root,root) %{texmf}/scripts/ps2eps/ps2eps*
+%attr(755,root,root) %{texmf}/scripts/simpdftex/simpdftex*
+%attr(755,root,root) %{texmf}/scripts/tetex/*
+%attr(755,root,root) %{texmf}/scripts/texlive/*.pl
+%attr(755,root,root) %{texmf}/scripts/texlive/*.tlu
+%attr(755,root,root) %{texmf}/scripts/texlive/gswin32/*
+%attr(755,root,root) %{texmf}/scripts/texlive/lua/texlive/*
+%attr(755,root,root) %{texmf}/scripts/texlive/tlmgrgui/*.pl
 
 %files tex-arrayjob
 %defattr(644,root,root,755)
@@ -8682,14 +8783,13 @@ fi
 %dir %{texmf}/xindy
 %dir %{texmf}/xindy/lang
 %dir %{texmf}/scripts
-%{texmf}/scripts/xindy
+%attr(755,root,root) %{texmf}/scripts/xindy/*
 %{texmf}/xindy/base
 %{texmf}/xindy/class
 %{texmf}/xindy/ord
 %{texmf}/xindy/rules
 %{texmf}/xindy/styles
 %{texmf}/xindy/tex
-
 
 %files -n xindy-albanian
 %defattr(644,root,root,755)
@@ -9138,7 +9238,6 @@ fi
 %attr(755,root,root) %{_bindir}/mpstools
 %attr(755,root,root) %{_bindir}/mtxrun
 %attr(755,root,root) %{_bindir}/mtxtools
-%attr(755,root,root) %{_bindir}/pdfthumb
 %attr(755,root,root) %{_bindir}/pdftools
 %attr(755,root,root) %{_bindir}/pdftrimwhite
 %attr(755,root,root) %{_bindir}/pstopdf
@@ -10735,9 +10834,6 @@ fi
 %doc %{texmfdist}/doc/latex/polski
 %doc %{texmfdist}/doc/latex/polyglot
 %doc %{texmfdist}/doc/latex/postcards
-%doc %{texmfdist}/doc/latex/powerdot
-%doc %{texmfdist}/doc/latex/ppower4
-%doc %{texmfdist}/doc/latex/ppr-prv
 %doc %{texmfdist}/doc/latex/prettyref
 %doc %{texmfdist}/doc/latex/proba
 %doc %{texmfdist}/doc/latex/procIAGssymp
@@ -10773,18 +10869,12 @@ fi
 %doc %{texmfdist}/doc/latex/savetrees
 %doc %{texmfdist}/doc/latex/scalebar
 %doc %{texmfdist}/doc/latex/scientificpaper
-%doc %{texmfdist}/doc/latex/sciposter
 %doc %{texmfdist}/doc/latex/sciwordconv
-%doc %{texmfdist}/doc/latex/sdrt
-%doc %{texmfdist}/doc/latex/sectionbox
-%doc %{texmfdist}/doc/latex/semantic
 %doc %{texmfdist}/doc/latex/semioneside
 %doc %{texmfdist}/doc/latex/seqsplit
 %doc %{texmfdist}/doc/latex/sf298
 %doc %{texmfdist}/doc/latex/sffms
 %doc %{texmfdist}/doc/latex/sfg
-%doc %{texmfdist}/doc/latex/sgame
-%doc %{texmfdist}/doc/latex/shadethm
 %doc %{texmfdist}/doc/latex/shorttoc
 %doc %{texmfdist}/doc/latex/show2e
 %doc %{texmfdist}/doc/latex/showexpl
@@ -10809,7 +10899,6 @@ fi
 %doc %{texmfdist}/doc/latex/struktex
 %doc %{texmfdist}/doc/latex/sttools
 %doc %{texmfdist}/doc/latex/stubs
-%doc %{texmfdist}/doc/latex/subfloat
 %doc %{texmfdist}/doc/latex/sugconf
 %doc %{texmfdist}/doc/latex/supertabular
 %doc %{texmfdist}/doc/latex/svgcolor
@@ -10857,7 +10946,6 @@ fi
 %doc %{texmfdist}/doc/latex/tokenizer
 %doc %{texmfdist}/doc/latex/toolbox
 %doc %{texmfdist}/doc/latex/toptesi
-%doc %{texmfdist}/doc/latex/tpslifonts
 %doc %{texmfdist}/doc/latex/trajan
 %doc %{texmfdist}/doc/latex/translator
 %doc %{texmfdist}/doc/latex/tree-dvips
@@ -11042,6 +11130,11 @@ fi
 %doc %{texmfdist}/doc/latex/trfsigns
 %{texmfdist}/source/latex/trfsigns
 %{texmfdist}/tex/latex/trfsigns
+%doc %{texmfdist}/doc/latex/sdrt
+%{texmfdist}/tex/latex/sdrt
+%doc %{texmfdist}/doc/latex/semantic
+%{texmfdist}/source/latex/semantic
+%{texmfdist}/tex/latex/semantic
 
 %files latex-physics
 %defattr(644,root,root,755)
@@ -11201,6 +11294,9 @@ fi
 %{texmfdist}/fonts/map/dvips/skak
 %{texmfdist}/fonts/source/public/skak
 %{texmfdist}/fonts/tfm/public/skak
+# LaTeX style for typesetting strategic games.
+%doc %{texmfdist}/doc/latex/sgame
+%{texmfdist}/tex/latex/sgame
 
 %files latex-sources
 %defattr(644,root,root,755)
@@ -11830,6 +11926,25 @@ fi
 %doc %{texmfdist}/doc/latex/umoline
 %{texmfdist}/source/latex/umoline
 %{texmfdist}/tex/latex/umoline
+%doc %{texmfdist}/doc/latex/subfloat
+%{texmfdist}/source/latex/subfloat
+%{texmfdist}/tex/latex/subfloat
+
+%files latex-presentation
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/ppower4
+%attr(755,root,root) %{_bindir}/pdfthumb
+%doc %{texmfdist}/doc/latex/ppower4
+%dir %{texmfdist}/scripts
+%{texmfdist}/scripts/ppower4
+%{texmfdist}/tex/latex/ppower4
+%doc %{texmfdist}/doc/latex/powerdot
+%{texmfdist}/source/latex/powerdot
+%{texmfdist}/tex/latex/powerdot
+%doc %{texmfdist}/doc/latex/sciposter
+%{texmfdist}/tex/latex/sciposter
+%doc %{texmfdist}/doc/latex/tpslifonts
+%{texmfdist}/tex/latex/tpslifonts
 
 %files latex-programming
 %defattr(644,root,root,755)
@@ -11973,6 +12088,10 @@ fi
 %doc %{texmfdist}/doc/latex/ushort
 %{texmfdist}/source/latex/ushort
 %{texmfdist}/tex/latex/ushort
+%doc %{texmfdist}/doc/latex/sectionbox
+%{texmfdist}/tex/latex/sectionbox
+%doc %{texmfdist}/doc/latex/shadethm
+%{texmfdist}/tex/latex/shadethm
 
 %files latex-other
 %defattr(644,root,root,755)
@@ -12195,14 +12314,6 @@ fi
 %{texmfdist}/tex/latex/polyglot
 # Facilitates mass-mailing of postcards (junkmail).
 %{texmfdist}/tex/latex/postcards
-# A presentation class.
-%{texmfdist}/source/latex/powerdot
-%{texmfdist}/tex/latex/powerdot
-# A postprocessor for PDF presentations.
-%{texmfdist}/tex/latex/ppower4
-# Prosper preview.
-%{texmfdist}/source/latex/ppr-prv
-%{texmfdist}/tex/latex/ppr-prv
 # Make label references "self-identify".
 %{texmfdist}/source/latex/prettyref
 %{texmfdist}/tex/latex/prettyref
@@ -12292,18 +12403,9 @@ fi
 %{texmfdist}/tex/latex/scalebar
 # Format a scientific paper for journal
 %{texmfdist}/tex/latex/scientificpaper
-# Make posters of ISO A3 size and larger.
-%{texmfdist}/tex/latex/sciposter
 # Use Scientific Word/WorkPlace files with another TeX.
 %{texmfdist}/source/latex/sciwordconv
 %{texmfdist}/tex/latex/sciwordconv
-# Macros for Segmented Discourse Representation Theory.
-%{texmfdist}/tex/latex/sdrt
-# Create fancy boxed ((sub)sub)sections.
-%{texmfdist}/tex/latex/sectionbox
-# Help for writing programming language semantics.
-%{texmfdist}/source/latex/semantic
-%{texmfdist}/tex/latex/semantic
 # Semaphore alphabet font.
 %{texmfdist}/tex/latex/semaphor
 # Put only special contents on left-hand pages in two sided layout.
@@ -12319,12 +12421,8 @@ fi
 %{texmfdist}/tex/latex/sffms
 # Draw signal flow graphs.
 %{texmfdist}/tex/latex/sfg
-# LaTeX style for typesetting strategic games.
-%{texmfdist}/tex/latex/sgame
 # Shade the background of any box.
 %{texmfdist}/tex/latex/shadbox
-# Theorem environments that are shaded
-%{texmfdist}/tex/latex/shadethm
 # Table of contents with different depths.
 %{texmfdist}/source/latex/shorttoc
 %{texmfdist}/tex/latex/shorttoc
@@ -12389,9 +12487,6 @@ fi
 %{texmfdist}/tex/latex/sttools
 # Create tear-off stubs at the bottom of a page.
 %{texmfdist}/tex/latex/stubs
-# Sub-numbering for figures and tables.
-%{texmfdist}/source/latex/subfloat
-%{texmfdist}/tex/latex/subfloat
 # SAS(R) user group conference proceedings document class.
 %{texmfdist}/tex/latex/sugconf
 # Define SVG named colours.
@@ -12431,8 +12526,6 @@ fi
 # Bundle of files for typsetting theses.
 %{texmfdist}/source/latex/toptesi
 %{texmfdist}/tex/latex/toptesi
-# A LaTeX package for configuring presentation fonts.
-%{texmfdist}/tex/latex/tpslifonts
 # Adjust tracking of strings.
 %{texmfdist}/tex/latex/tracking
 # Fonts from the Trajan column in Rome.
@@ -12486,6 +12579,10 @@ fi
 %doc %{texmfdist}/doc/latex/prosper
 %{texmfdist}/tex/latex/prosper
 %{texmfdist}/source/latex/prosper
+# Prosper preview.
+%doc %{texmfdist}/doc/latex/ppr-prv
+%{texmfdist}/source/latex/ppr-prv
+%{texmfdist}/tex/latex/ppr-prv
 
 %files latex-polynom
 %defattr(644,root,root,755)
