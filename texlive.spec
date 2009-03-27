@@ -4293,6 +4293,21 @@ Various scripts.
 %description scripts -l hu.UTF-8
 Néhány szkript.
 
+%package tlmgr
+Summary:	TeXLive manager
+Summary(hu.UTF-8):	TeXLive manager
+Group:		Applications/Publishing/TeX
+
+%description tlmgr
+tlmgr manages an existing TeX Live installation, both packages and
+configuration options. It performs many of the same actions as
+texconfig, and more besides.
+
+%description tlmgr -l hu.UTF-8
+tlmgr egy létező TeX Live telepítést tart karban, csomag és beállítás
+tekintetében is. Hasonló műveleteket végez, mint a texconfig, sőt,
+többet is.
+
 # # TeX generic macros #
 
 %package tex-babel
@@ -8557,6 +8572,23 @@ fi
 %{_mandir}/man1/mkindex.1*
 %{_mandir}/man1/rumakeindex.1*
 
+%files tlmgr
+%defattr(644,root,root,755)
+%dir %{texmf}/scripts
+%dir %{texmf}/scripts/texlive
+%dir %{texmf}/scripts/texlive/gswin32
+%dir %{texmf}/scripts/texlive/lua
+%dir %{texmf}/scripts/texlive/lua/texlive
+%dir %{texmf}/scripts/texlive/tlmgrgui
+%attr(755,root,root) %{texmf}/scripts/texlive/*.pl
+%attr(755,root,root) %{texmf}/scripts/texlive/*.tlu
+%attr(755,root,root) %{texmf}/scripts/texlive/gswin32/*
+%attr(755,root,root) %{texmf}/scripts/texlive/lua/texlive/*
+%attr(755,root,root) %{texmf}/scripts/texlive/tlmgrgui/*.pl
+%attr(755,root,root) %{_bindir}/tlmgr
+%{perl_vendorlib}/TeXLive
+%{texmf}/scripts/texlive/tlmgrgui/lang
+
 %files scripts
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts
@@ -8574,13 +8606,6 @@ fi
 %dir %{texmf}/scripts/pkfix
 %dir %{texmf}/scripts/simpdftex
 %dir %{texmf}/scripts/tetex
-%dir %{texmf}/scripts/texlive
-%dir %{texmf}/scripts/texlive/gswin32
-%dir %{texmf}/scripts/texlive/lua
-%dir %{texmf}/scripts/texlive/lua/texlive
-%dir %{texmf}/scripts/texlive/tlmgrgui
-%{texmf}/scripts/texlive/tlmgrgui/lang
-%{perl_vendorlib}/TeXLive
 %attr(755,root,root) %{texmfdist}/scripts/bengali/*
 %attr(755,root,root) %{texmfdist}/scripts/glossaries/*
 %attr(755,root,root) %{texmfdist}/scripts/oberdiek/*
@@ -8594,12 +8619,6 @@ fi
 %attr(755,root,root) %{texmf}/scripts/pkfix/pkfix*
 %attr(755,root,root) %{texmf}/scripts/simpdftex/simpdftex*
 %attr(755,root,root) %{texmf}/scripts/tetex/*
-%attr(755,root,root) %{texmf}/scripts/texlive/*.pl
-%attr(755,root,root) %{texmf}/scripts/texlive/*.tlu
-%attr(755,root,root) %{texmf}/scripts/texlive/gswin32/*
-%attr(755,root,root) %{texmf}/scripts/texlive/lua/texlive/*
-%attr(755,root,root) %{texmf}/scripts/texlive/tlmgrgui/*.pl
-%attr(755,root,root) %{_bindir}/tlmgr
 %attr(755,root,root) %{_bindir}/a2ping
 %attr(755,root,root) %{_bindir}/e2pall
 %{_mandir}/man1/e2pall.1*
