@@ -41,7 +41,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	1
+Release:	1.1
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -112,7 +112,7 @@ BuildRequires:	tetex-format-pdflatex
 BuildRequires:	tetex-latex-cyrillic
 BuildRequires:	tetex-tex-babel
 %else
-BuildRequires:	texlive-format-latex
+# BuildRequires:	texlive-format-latex
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex-cyrillic
 BuildRequires:	texlive-tex-babel
@@ -404,39 +404,6 @@ Group:		Documentation
 
 %description doc-zh_CN
 Assorted useful Chinese documentation for TeX Live.
-
-%package doc-Catalogue
-Summary:	TeX Catalogue
-Summary(pl.UTF-8):	Katalog TeXa
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-
-%description doc-Catalogue
-TeX Catalogue.
-
-%description doc-Catalogue -l pl.UTF-8
-Katalog TeXa.
-
-%package doc-tug-faq
-Summary:	TeX User Group FAQ
-Summary(hu.UTF-8):	TeX felhasználók FAQ-ja
-Summary(pl.UTF-8):	FAQ Grupy Użytkowników TeXa
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-doc-LaTeX-FAQ-francaise
-Obsoletes:	tetex-doc-de-tex-faq
-Obsoletes:	tetex-doc-uktug-faq
-
-%description doc-tug-faq
-TeX User Group FAQ.
-
-%description doc-tug-faq -l hu.UTF8
-TeX felhasználók FAQ-ja.
-
-%description doc-tug-faq -l pl.UTF-8
-FAQ Grupy Użytkowników TeXa.
 
 %package doc-latex
 Summary:	Basic LaTeX packages documentation
@@ -1497,54 +1464,6 @@ Plain TeX format basic files.
 %description plain -l pl.UTF-8
 Podstawowe pliki dla formatu Plain TeX.
 
-%package format-plain
-Summary:	TeX Plain format
-Summary(pl.UTF-8):	Format TeX Plain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
-
-%description format-plain
-TeX Plain format.
-
-%description format-plain -l pl.UTF-8
-Format TeX Plain.
-
-%package format-pdftex
-Summary:	PDFTeX Plain format
-Summary(pl.UTF-8):	Format PDFTeX Plain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
-# for epstopdf to work
-Requires:	fonts-Type1-urw
-Requires:	ghostscript
-Provides:	tetex-format-pdftex
-Obsoletes:	tetex-format-pdftex
-
-%description format-pdftex
-PDFTeX Plain format.
-
-%description format-pdftex -l pl.UTF-8
-Format PDFTeX Plain.
-
-%package format-pdfetex
-Summary:	PDFTeX EPlain format
-Summary(pl.UTF-8):	Format PDFTeX EPlain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
-Provides:	tetex-format-pdfetex = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-format-pdfetex
-
-%description format-pdfetex
-PDFTeX EPlain format.
-
-%description format-pdfetex -l pl.UTF-8
-Format PDFTeX EPlain.
-
 # MeX Plain format
 
 %package mex
@@ -1636,20 +1555,6 @@ American Mathematical Society macros for Plain TeX.
 %description format-amstex -l pl.UTF-8
 Makra AMS (American Mathematical Society) dla formatu Plain TeX.
 
-%package format-pdfamstex
-Summary:	AMS macros for PDFTeX
-Summary(pl.UTF-8):	Makra AMS dla formatu PDFTeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-amstex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
-
-%description format-pdfamstex
-American Mathematical Society macros for PDFTeX.
-
-%description format-pdfamstex -l pl.UTF-8
-Makra AMS (American Mathematical Society) dla formatu PDFTeX.
-
 # CSPlain format
 
 %package csplain
@@ -1735,62 +1640,6 @@ PDF CSLaTeX format.
 
 %description format-pdfcslatex -l pl.UTF-8
 Format PDF CSLaTeX.
-
-# Cyrillic Plain format
-
-%package cyrplain
-Summary:	Cyrillic Plain format basic files
-Summary(pl.UTF-8):	Podstawowe pliki dla formatu Cyrillic Plain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
-
-%description cyrplain
-Cyrillic Plain format basic files.
-
-%description cyrplain -l pl.UTF-8
-Podstawowe pliki dla formatu Cyrillic Plain.
-
-%package format-cyrplain
-Summary:	Cyrillic Plain format
-Summary(pl.UTF-8):	Format Cyrillic Plain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-cyrplain = %{epoch}:%{version}-%{release}
-
-%description format-cyrplain
-Cyrillic Plain format.
-
-%description format-cyrplain -l pl.UTF-8
-Format Cyrillic Plain.
-
-%package format-cyramstex
-Summary:	Cyrillic AMSTeX format
-Summary(pl.UTF-8):	Format Cyrillic AMSTeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-cyramstex
-
-%description format-cyramstex
-Cyrillic AMSTeX format.
-
-%description format-cyramstex -l pl.UTF-8
-Format Cyrillic AMSTeX.
-
-%package format-cyrtexinfo
-Summary:	Cyrillic TeXInfo format
-Summary(pl.UTF-8):	Format Cyrillic TeXInfo
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-cyrtexinfo
-
-%description format-cyrtexinfo
-Cyrillic TeXInfo format.
-
-%description format-cyrtexinfo -l pl.UTF-8
-Format Cyrillic TeXInfo.
 
 # EPlain format
 
@@ -2254,19 +2103,6 @@ Dk-bib to tłumaczenie czterech standardowych plików stylów BibTeXa
 rozszerzone o pola ISBN, ISSN i URL, które można włączyć poprzez plik
 stylu LaTeXa.
 
-%package latex-bibtex-nor
-Summary:	Norwegian variants of the standard BibTeX styles
-Summary(pl.UTF-8):	Norweskie warianty standardowych stylów BibTeXa
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
-
-%description latex-bibtex-nor
-Norwegian variants of the standard BibTeX styles.
-
-%description latex-bibtex-nor -l pl.UTF-8
-Norweskie warianty standardowych stylów BibTeXa.
-
 %package latex-bibtex-pl
 Summary:	Polish bibliography management for LaTeX
 Summary(pl.UTF-8):	Polska wersja zarządzania bibliografią dla LaTeXa
@@ -2533,25 +2369,6 @@ LaTeX Cyrillic support.
 %description latex-cyrillic -l pl.UTF-8
 Obsługa cyrylicy dla LaTeXa.
 
-%package latex-dstroke
-Summary:	LaTeX doublestroke font
-Summary(pl.UTF-8):	Podwójnie kreślony font dla LaTeXa
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-dstroke = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Provides:	tetex-latex-dstroke
-Obsoletes:	tetex-latex-dstroke
-
-%description latex-dstroke
-Doublestroke font for typesetting the mathematical symbols for the
-natural numbers, whole numbers, rational numbers, real numbers and
-complex numbers.
-
-%description latex-dstroke -l pl.UTF-8
-Podwójnie kreślony font do składania symboli matematycznych liczb
-naturalnych, całkowitych, wymiernych, rzeczywistych i zespolonych.
-
 %package latex-enumitem
 Summary:	A package to customize the three basic lists
 Summary(hu.UTF-8):	Egy csomag, amivel testreszabhatod a három alapvető listát
@@ -2653,7 +2470,7 @@ Summary:	Graphical representation of keys on keyboard
 Summary(hu.UTF-8):	A billentyűk grafikus megjelenítése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-keystroke
 Graphical representation of keys on keyboard.
@@ -2666,7 +2483,7 @@ Summary:	Typeset laboratory journals
 Summary(hu.UTF-8):	Laborjegyzőkönyvek szedése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-labbook
 Typeset laboratory journals.
@@ -2679,7 +2496,7 @@ Summary:	Alphanumerical LCD-style displays
 Summary(hu.UTF-8):	Alfanumerikus LCD-szerű kijelzés
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-lcd
 Alphanumerical LCD-style displays.
@@ -2692,7 +2509,7 @@ Summary:	Create small handouts (flyers)
 Summary(hu.UTF-8):	Kis "kézikönyvek" készítése (brossúrák)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-leaflet
 Create small handouts (flyers).
@@ -2718,7 +2535,7 @@ Summary:	Draw Lewis structures (chemistry)
 Summary(hu.UTF-8):	Lewis struktúrák készítése (kémia)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-lewis
 Draw Lewis structures (chemistry).
@@ -2801,7 +2618,7 @@ Summary:	Packages for typesetting games
 Summary(hu.UTF-8):	Játékok szedése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-games
 Chess, chinese chess, crosswords, go, backgammon and more.
@@ -2814,7 +2631,7 @@ Summary:	Extensions, patches, improvements of main LaTeX styles, environments
 Summary(hu.UTF-8):	Az alap LaTeX stílusok, környezetek, stb. bővítései, foltjai
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-ltablex
 Obsoletes:	tetex-latex-ltablex
 
@@ -2929,7 +2746,7 @@ Summary:	Additional effects to fonts, texts
 Summary(hu.UTF-8):	További effektek betűkhöz, szövegekhez,...
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-effects
 This package contains:
@@ -2985,7 +2802,7 @@ Summary:	Mathematical packages
 Summary(hu.UTF-8):	Matematikai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 # gnuplottex needs gnuplot
 Requires:	gnuplot
 
@@ -3085,7 +2902,7 @@ Summary:	Misc packages
 Summary(hu.UTF-8):	Vegyes csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-misc
 This packages contains:
@@ -3108,7 +2925,7 @@ Summary:	Musical packages
 Summary(hu.UTF-8):	Zenei csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-music
 This package contains:
@@ -3127,7 +2944,7 @@ Summary:	Physical packages
 Summary(hu.UTF-8):	Fizikai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-physics
 This package contains:
@@ -3158,7 +2975,7 @@ Summary:	Biological packages
 Summary(hu.UTF-8):	Biológiai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-biology
 This package contains:
@@ -3175,7 +2992,8 @@ Summary:	Presentations in LaTeX
 Summary(hu.UTF-8):	Prezentációk LaTeX-ben
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Suggests:	%{name}-latex-prosper
 
 %description latex-presentation
 This package contains:
@@ -3198,8 +3016,7 @@ Group:		Applications/Publishing/TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-chem
 This package contains:
@@ -3227,7 +3044,7 @@ Summary:	Informatical packages
 Summary(hu.UTF-8):	Informatikai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-informatic
 This package contains:
@@ -3259,7 +3076,7 @@ Summary:	Various tools to pdf output
 Summary(hu.UTF-8):	Különböző eszközök pdf output-hoz
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-pdftools
 This package contains:
@@ -3358,50 +3175,6 @@ krojach Times, Helvetica i Courier; symbole do inżynierii
 strukturalnej; symbole do przekrojów stalowych; znaki astronomiczne
 (Słońce, Księżyc, planety); 12 znaków Zodiaku; symbole nożyczek; znak
 CE i inne.
-
-%package latex-mathpple
-Summary:	Use PostScript Palatino for typesetting maths
-Summary(pl.UTF-8):	Używanie postscriptowych fontów Palatino do składania wzorów matematycznych
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-adobe = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-
-%description latex-mathpple
-The package defines the PostScript font family `Palatino' (ppl) as the
-default roman font and then uses the `mathpple' fonts for typesetting
-math. These virtual fonts have been created for typesetting math in a
-style that suits the Palatino text fonts. The AMS fonts, when used
-additionally, will be scaled to fit Palatino.
-
-%description latex-mathpple -l pl.UTF-8
-Pakiet definiuje rodzinę fontów postscriptowych Palatino (ppl) jako
-domyślny font roman i używa fontów mathpple do składania wzorów
-matematycznych. Te wirtualne fonty zostały stworzone do składania
-wzorów matematycznych w stylu pasującym do fontów tekstowych Palatino.
-Fonty AMS, jeśli są dodatkowo używane, zostaną przeskalowane tak, by
-pasować do Palatino.
-
-%package latex-mathtime
-Summary:	Mathtime fonts for LaTeX
-Summary(pl.UTF-8):	Fonty Mathtime dla LaTeXa
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-
-%description latex-mathtime
-The Mathtime fonts have a number of characters remapped to positions
-different from the ones normally used by the corresponding TeX
-CM-fonts. For the symbol font ``operators'' the corresponding mathtime
-style files use the Times Roman font (often called something like:
-ptmr or ptmr7t or ptmrq).
-
-%description latex-mathtime -l pl.UTF-8
-Fonty Mathtime zawierają wiele znaków przemapowanych na pozycje
-różniące się od tych normalnie używanych w odpowiadających im TeXowych
-fontach CM. Dla fontu symboli "operators" odpowiadający styl mathtime
-używa fontu Times Roman (zazwyczaj nazywanego w stylu ptmr, ptmr7t lub
-ptmrq).
 
 %package latex-mflogo
 Summary:	LaTeX support for MetaFont and logo fonts
@@ -3527,19 +3300,6 @@ Other LaTeX packages documentation.
 
 %description latex-other-doc -l hu.UTF-8
 Néhány további LaTeX csomag dokumentációja.
-
-%package latex-palatcm
-Summary:	Palatino + Computer Modern math fonts for LaTeX
-Summary(pl.UTF-8):	Fonty matematyczne Palatino i Computer Modern dla LaTeXa
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-
-%description latex-palatcm
-Palatino + Computer Modern math fonts for LaTeX.
-
-%description latex-palatcm -l pl.UTF-8
-Fonty matematyczne Palatino i Computer Modern dla LaTeXa.
 
 %package latex-pdfslide
 Summary:	Presentation slides using pdftex
@@ -3960,30 +3720,6 @@ PX fonts LaTeX support.
 %description latex-pxfonts -l pl.UTF-8
 Obsługa fontów PX w LaTeXu.
 
-%package latex-qfonts
-Summary:	A collection of PostScript (Adobe Type 1) fonts in QX layout
-Summary(pl.UTF-8):	Zestaw fontów postscriptowych (Adobe Type 1) w układzie QX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-
-%description latex-qfonts
-A collection of Type 1 fonts; include QuasiBookman, QuasiChancery,
-QuasiCourier, QuasiPalatino, QuasiSwiss, QuasiSwissCondensed, and
-QuasiTimes (regular, italic, bold and bold italic), based on URW++
-fonts distributed with Ghostscript. The fonts are encoded according to
-QX layout which facilitates multilingual and technical typesetting
-using TeX, preserving usability in Windows applications.
-
-%description latex-qfonts -l pl.UTF-8
-Zestaw fontów Type 1; zawiera QuasiBookman, QuasiChancery,
-QuasiCourier, QuasiPalatino, QuasiSwiss, QuasiSwissCondensed oraz
-QuasiTimes (zwykłe, pochyłe, tłuste i tłuste pochyłe), oparte na
-fontach URW++ rozpowszechnianych z Ghostscriptem. Fonty są kodowane
-zgodnie z układem QX, który ułatwia skład wielojęzyczny i techniczny w
-TeXu, zachowując przydatność dla aplikacji windowsowych.
-
 %package latex-SIstyle
 Summary:	Package to typeset SI units, numbers and angles
 Summary(hu.UTF-8):	Csomag SI egységek, számok és szögek szedésére
@@ -4016,7 +3752,7 @@ Summary:	A comprehensive (SI) units package
 Summary(hu.UTF-8):	Egy minden részletre kiterjedő (SI) egységek kezelését végző csomag
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-siunitx
 A comprehensive (SI) units package.
@@ -4040,7 +3776,7 @@ Summary:	Various LaTeX styles
 Summary(hu.UTF-8):	Különböző LaTeX stílusok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-styles
 Various LaTeX styles.
@@ -4053,7 +3789,7 @@ Summary:	LaTeX support for non-english languages
 Summary(hu.UTF-8):	LaTeX támogatás nem-angol nyelvekhez
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-latex
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 
 %description latex-lang
 LaTeX support for non-english languages.
@@ -4072,20 +3808,6 @@ Tabbing with accented letters.
 
 %description latex-Tabbing -l hu.UTF-8
 Tabbing környezet ékezetes betűk használatával.
-
-%package latex-urwvn
-Summary:	URWVN fonts
-Summary(pl.UTF-8):	Fonty URWVN
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-fonts-urwvn = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-
-%description latex-urwvn
-URWVN fonts.
-
-%description latex-urwvn -l pl.UTF-8
-Fonty URWVN.
 
 %package latex-txfonts
 Summary:	TX fonts LaTeX support
@@ -4185,30 +3907,6 @@ na wybór modelu koloru dla całego dokumentu i oferuje narzędzia dla
 schematów kolorów, konwersji między ośmioma modelami kolorów oraz
 naprzemiennych kolorów w tabelach.
 
-%package format-latex
-Summary:	LaTeX macro package
-Summary(pl.UTF-8):	Pakiet makr LaTeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Provides:	tetex-format-latex
-Obsoletes:	hugelatex
-Obsoletes:	tetex-format-latex
-
-%description format-latex
-LaTeX is a front end for the TeX text formatting system. Easier to use
-than TeX, LaTeX is essentially a set of TeX macros which provide
-convenient, predefined document formats for users.
-
-This package contains LaTeX format.
-
-%description format-latex -l pl.UTF-8
-LaTeX jest frontendem do systemu formatującego tekst TeX. Jest
-łatwiejszy w użyciu niż TeX. Jest właściwie zestawem makr TeXowych,
-dających użytkownikom wygodne, predefiniowane formaty dokumentów.
-
-Ten pakiet zawiera format LaTeX.
-
 %package format-pdflatex
 Summary:	PDF LaTeX macro package
 Summary(pl.UTF-8):	Pakiet makr PDF LaTeX
@@ -4235,50 +3933,6 @@ LaTeX jest frontendem do systemu formatującego tekst TeX. Jest
 dających użytkownikom wygodne, predefiniowane formaty dokumentów.
 
 Ten pakiet zawiera format PDF LaTeX.
-
-# PLaTeX format
-
-%package platex
-Summary:	PLaTeX format basic files
-Summary(pl.UTF-8):	Podstawowe pliki dla formatu PLaTeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-pl = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-
-%description platex
-PLaTeX format basic files.
-
-%description platex -l pl.UTF-8
-Podstawowe pliki dla formatu PLaTeX.
-
-%package format-platex
-Summary:	PLaTeX format
-Summary(pl.UTF-8):	Format PLaTeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-platex = %{epoch}:%{version}-%{release}
-
-%description format-platex
-PLaTeX format.
-
-%description format-platex -l pl.UTF-8
-Format PLaTeX.
-
-%package format-pdfplatex
-Summary:	PDF PLaTeX format
-Summary(pl.UTF-8):	Format PDF PLaTeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-type1-pl = %{epoch}:%{version}-%{release}
-Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-platex = %{epoch}:%{version}-%{release}
-
-%description format-pdfplatex
-PDF PLaTeX format.
-
-%description format-pdfplatex -l pl.UTF-8
-Format PDF PLaTeX.
 
 %package scripts
 Summary:	Various scripts
@@ -4433,20 +4087,6 @@ makra obsługujące kolory, grafikę, wykresy kołowe, obroty, drzewa i
 nakładanie. Mają wiele możliwości, w tym dużo makr graficznych (do
 rysowania obrazków) z elastycznym interfejsem i obsługą koloru. Są też
 makra do kolorowania lub cieniowania komórek tabel.
-
-%package tex-qpx
-Summary:	QuasiPalatino and PX fonts typesetting support
-Summary(pl.UTF-8):	Wsparcie dla składu fontami QuasiPalatino i PX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-qpx = %{epoch}:%{version}-%{release}
-
-%description tex-qpx
-QuasiPalatino and PX fonts typesetting support.
-
-%description tex-qpx -l pl.UTF-8
-Wsparcie dla składu fontami QuasiPalatino i PX.
 
 %package tex-qpxqtx
 Summary:	QuasiTimes and TX fonts typesetting support
@@ -4730,18 +4370,6 @@ Sans serif blackboard bold for LaTeX.
 %description fonts-bbold -l pl.UTF-8
 Tablicowy tłusty font sans serif dla LaTeXa.
 
-%package fonts-bh
-Summary:	Bold & Heavy Fonts
-Summary(pl.UTF-8):	Fonty Bold i Heavy
-Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-
-%description fonts-bh
-Bold & Heavy Fonts.
-
-%description fonts-bh -l pl.UTF-8
-Fonty Bold i Heavy.
-
 %package fonts-bitstream
 Summary:	Bitstream fonts
 Summary(pl.UTF-8):	Fonty Bitstream
@@ -4754,18 +4382,6 @@ Bitstream fonts.
 
 %description fonts-bitstream -l pl.UTF-8
 Fonty Bitstream.
-
-%package fonts-cbgreek
-Summary:	Complete set of Greek fonts
-Summary(pl.UTF-8):	Pełny zestaw fontów greckich
-Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-
-%description fonts-cbgreek
-Complete set of Greek fonts.
-
-%description fonts-cbgreek -l pl.UTF-8
-Pełny zestaw fontów greckich.
 
 %package fonts-cc-pl
 Summary:	Polish version of Computer Concrete fonts
@@ -4896,18 +4512,6 @@ Czech/Slovak-tuned MetaFont Computer Modern fonts.
 %description fonts-cs -l pl.UTF-8
 Fonty MetaFont Computer Modern zmodyfikowane pod kątem języków
 czeskiego i słowackiego.
-
-%package fonts-dstroke
-Summary:	Doublestroke font for typesetting the mathematical symbols
-Summary(pl.UTF-8):	Podwójnie kreślony font do składania symboli matematycznych
-Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-
-%description fonts-dstroke
-Doublestroke font for typesetting the mathematical symbols.
-
-%description fonts-dstroke -l pl.UTF-8
-Podwójnie kreślony font do składania symboli matematycznych.
 
 %package fonts-ecc
 Summary:	Sources for the European Concrete fonts
@@ -5167,20 +4771,6 @@ Other fonts.
 %description fonts-omega -l hu.UTF-8
 További betűtípusok.
 
-%package fonts-pazo
-Summary:	Pazo fonts
-Summary(pl.UTF-8):	Fonty Pazo
-Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-Provides:	tetex-fonts-pazo
-Obsoletes:	tetex-fonts-pazo
-
-%description fonts-pazo
-Pazo fonts.
-
-%description fonts-pazo -l pl.UTF-8
-Fonty Pazo.
-
 %package fonts-pl
 Summary:	Polish fonts
 Summary(pl.UTF-8):	Polskie fonty
@@ -5204,32 +4794,6 @@ PX fonts.
 
 %description fonts-px -l pl.UTF-8
 Fonty PX.
-
-%package fonts-qfonts
-Summary:	Quasi fonts
-Summary(pl.UTF-8):	Fonty Quasi
-Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-
-%description fonts-qfonts
-Quasi fonts.
-
-%description fonts-qfonts -l pl.UTF-8
-Fonty Quasi.
-
-%package fonts-qpx
-Summary:	Additional fonts for QPX package
-Summary(pl.UTF-8):	Dodatkowe fonty dla pakietu QPX
-Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-px = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
-
-%description fonts-qpx
-Additional fonts for QPX package.
-
-%description fonts-qpx -l pl.UTF-8
-Dodatkowe fonty dla pakietu QPX.
 
 %package fonts-qpxqtx
 Summary:	Additional fonts for QTX package
@@ -5500,18 +5064,6 @@ Czech/Slovak-tuned MetaFont Computer Modern fonts.
 Fonty MetaFont Computer Modern zmodyfikowane pod kątem języków
 czeskiego i słowackiego.
 
-%package fonts-type1-dstroke
-Summary:	Doublestroke Type1 font for typesetting the mathematical symbols
-Summary(pl.UTF-8):	Podwójnie kreślony font Type1 do składania symboli matematycznych
-Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-
-%description fonts-type1-dstroke
-Doublestroke Type1 font for typesetting the mathematical symbols.
-
-%description fonts-type1-dstroke -l pl.UTF-8
-Podwójnie kreślony font Type1 do składania symboli matematycznych.
-
 %package fonts-type1-eurosym
 Summary:	The new European currency symbol for the Euro
 Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
@@ -5575,18 +5127,6 @@ dało lepsze wyniki. Wszystko to zostało zrobione przy użyciu
 wolnodostępnego edytora fontów FontForge <http://fontforge.sf.net/>.
 Dane dla kerningu w tych fontach pochodzą z ulepszonych metryk
 Palatino Waltera Schmidta.
-
-%package fonts-type1-tt2001
-Summary:	Type1 tt2001 family fonts
-Summary(pl.UTF-8):	Fonty Type1 z rodziny tt2001
-Group:		Applications/Publishing/TeX
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-
-%description fonts-type1-tt2001
-Type1 tt2001 famliy fonts.
-
-%description fonts-type1-tt2001 -l pl.UTF-8
-Fonty Type1 z rodziny tt2001.
 
 %package fonts-type1-lm
 Summary:	Type1 Latin Modern family fonts
@@ -5686,18 +5226,6 @@ PX fonts.
 
 %description fonts-type1-px -l pl.UTF-8
 Fonty PX.
-
-%package fonts-type1-qfonts
-Summary:	Quasi fonts
-Summary(pl.UTF-8):	Fonty Quasi
-Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-
-%description fonts-type1-qfonts
-Quasi fonts.
-
-%description fonts-type1-qfonts -l pl.UTF-8
-Fonty Quasi.
 
 %package fonts-type1-tx
 Summary:	TX fonts
@@ -6141,18 +5669,6 @@ if [ "$1" = "1" ]; then
 	%texhash
 fi
 
-%post doc-Catalogue
-%texhash
-
-%postun doc-Catalogue
-%texhash
-
-%post doc-tug-faq
-%texhash
-
-%postun doc-tug-faq
-%texhash
-
 %post -n kpathsea
 /sbin/ldconfig
 %fixinfodir
@@ -6309,24 +5825,6 @@ fi
 %postun plain
 %texhash
 
-%post format-plain
-%texhash
-
-%postun format-plain
-%texhash
-
-%post format-pdftex
-%texhash
-
-%postun format-pdftex
-%texhash
-
-%post format-pdfetex
-%texhash
-
-%postun format-pdfetex
-%texhash
-
 %post mex
 %texhash
 
@@ -6358,12 +5856,6 @@ fi
 %texhash
 
 %postun format-amstex
-%texhash
-
-%post format-pdfamstex
-%texhash
-
-%postun format-pdfamstex
 %texhash
 
 %post csplain
@@ -6400,30 +5892,6 @@ fi
 %texhash
 
 %postun format-pdfcslatex
-%texhash
-
-%post cyrplain
-%texhash
-
-%postun cyrplain
-%texhash
-
-%post format-cyrplain
-%texhash
-
-%postun format-cyrplain
-%texhash
-
-%post format-cyramstex
-%texhash
-
-%postun format-cyramstex
-%texhash
-
-%post format-cyrtexinfo
-%texhash
-
-%postun format-cyrtexinfo
 %texhash
 
 %post eplain
@@ -6874,18 +6342,6 @@ fi
 %postun latex-marvosym
 %texhash
 
-%post latex-mathpple
-%texhash
-
-%postun latex-mathpple
-%texhash
-
-%post latex-mathtime
-%texhash
-
-%postun latex-mathtime
-%texhash
-
 %post latex-mflogo
 %texhash
 
@@ -6944,12 +6400,6 @@ fi
 %texhash
 
 %postun latex-other-doc
-%texhash
-
-%post latex-palatcm
-%texhash
-
-%postun latex-palatcm
 %texhash
 
 %post latex-pdfslide
@@ -7102,12 +6552,6 @@ fi
 %postun latex-pxfonts
 %texhash
 
-%post latex-qfonts
-%texhash
-
-%postun latex-qfonts
-%texhash
-
 %post latex-SIstyle
 %texhash
 
@@ -7168,34 +6612,10 @@ fi
 %postun latex-xcolor
 %texhash
 
-%post format-latex
-%texhash
-
-%postun format-latex
-%texhash
-
 %post format-pdflatex
 %texhash
 
 %postun format-pdflatex
-%texhash
-
-%post platex
-%texhash
-
-%postun platex
-%texhash
-
-%post format-platex
-%texhash
-
-%postun format-platex
-%texhash
-
-%post format-pdfplatex
-%texhash
-
-%postun format-pdfplatex
 %texhash
 
 %post tex-babel
@@ -7238,12 +6658,6 @@ fi
 %texhash
 
 %postun tex-pstricks
-%texhash
-
-%post tex-qpx
-%texhash
-
-%postun tex-qpx
 %texhash
 
 %post tex-qpxqtx
@@ -7342,22 +6756,10 @@ fi
 %postun fonts-bbold
 %texhash
 
-%post fonts-bh
-%texhash
-
-%postun fonts-bh
-%texhash
-
 %post fonts-bitstream
 %texhash
 
 %postun fonts-bitstream
-%texhash
-
-%post fonts-cbgreek
-%texhash
-
-%postun fonts-cbgreek
 %texhash
 
 %post fonts-cc-pl
@@ -7418,12 +6820,6 @@ fi
 %texhash
 
 %postun fonts-cs
-%texhash
-
-%post fonts-dstroke
-%texhash
-
-%postun fonts-dstroke
 %texhash
 
 %post fonts-ecc
@@ -7522,12 +6918,6 @@ fi
 %postun fonts-other
 %texhash
 
-%post fonts-pazo
-%texhash
-
-%postun fonts-pazo
-%texhash
-
 %post fonts-pl
 %texhash
 
@@ -7538,18 +6928,6 @@ fi
 %texhash
 
 %postun fonts-px
-%texhash
-
-%post fonts-qfonts
-%texhash
-
-%postun fonts-qfonts
-%texhash
-
-%post fonts-qpx
-%texhash
-
-%postun fonts-qpx
 %texhash
 
 %post fonts-qpxqtx
@@ -7660,12 +7038,6 @@ fi
 %postun fonts-type1-cs
 %texhash
 
-%post fonts-type1-dstroke
-%texhash
-
-%postun fonts-type1-dstroke
-%texhash
-
 %post fonts-type1-eurosym
 %texhash
 
@@ -7714,12 +7086,6 @@ fi
 %postun fonts-type1-px
 %texhash
 
-%post fonts-type1-qfonts
-%texhash
-
-%postun fonts-type1-qfonts
-%texhash
-
 %post fonts-type1-tx
 %texhash
 
@@ -7762,32 +7128,11 @@ fi
 %postun xmltex
 %texhash
 
-# Check the commented lines!!!
-
 %files
 %defattr(644,root,root,755)
-# %doc %{texmf}/LICENSE.texmf
-# %doc %{texmf}/ChangeLog
-# %doc %{texmf}/doc/README.knuth
 # There isn't doc/fonts directory
 %dir %{texmfdist}/doc/fonts
 %doc %{texmfdist}/doc/fontname
-# %dir %{texmf}/doc/fonts/polish
-# %dir %{texmf}/doc/help
-# %doc %{texmf}/doc/help/csname.txt
-# %doc %{texmf}/doc/help/ctan
-# %doc %{texmf}/doc/help/tds.dvi
-# %doc %{texmf}/doc/help/unixtex.ftp
-# %dir %{texmf}/doc/help/faq
-# %doc %{texmf}/doc/images
-# %dir %{texmf}/doc/polish
-# %doc %{texmf}/doc/polish/*.html
-# %dir %{texmf}/doc/programs
-# %doc %{texmf}/doc/programs/web2c*
-# %doc %{texmf}/doc/programs/cwebman.dvi
-# %doc %{texmf}/doc/knuth
-#%attr(755,root,root) %{_bindir}/MakeTeXPK
-#%attr(755,root,root) %{_bindir}/access
 
 # ***********
 # executables
@@ -7802,23 +7147,18 @@ fi
 %attr(755,root,root) %{_bindir}/dmp
 %attr(755,root,root) %{_bindir}/dvipng
 %attr(755,root,root) %{_bindir}/ebb
-# %attr(755,root,root) %{_bindir}/fdf2tan
 %attr(755,root,root) %{_bindir}/fmtutil
 %attr(755,root,root) %{_bindir}/fmtutil-sys
-#%attr(755,root,root) %{_bindir}/fontexport
-#%attr(755,root,root) %{_bindir}/fontimport
 %attr(755,root,root) %{_bindir}/fontinst
 %attr(755,root,root) %{_bindir}/gftodvi
 %attr(755,root,root) %{_bindir}/gftopk
 %attr(755,root,root) %{_bindir}/gftype
 %attr(755,root,root) %{_bindir}/gsftopk
-#%attr(755,root,root) %{_bindir}/initex
 %attr(755,root,root) %{_bindir}/kpseaccess
 %attr(755,root,root) %{_bindir}/kpsereadlink
 %attr(755,root,root) %{_bindir}/kpsewhere
 %attr(755,root,root) %{_bindir}/mag
 %attr(755,root,root) %{_bindir}/makempx
-#%attr(755,root,root) %{_bindir}/mkfontdesc
 %attr(755,root,root) %{_bindir}/mktexfmt
 %attr(755,root,root) %{_bindir}/mktexlsr
 %attr(755,root,root) %{_bindir}/newer
@@ -7834,9 +7174,7 @@ fi
 %attr(755,root,root) %{_bindir}/ps2pk
 # TODO: move this file to correct subpackage ?
 %attr(755,root,root) %{_bindir}/ps4pdf
-#%attr(755,root,root) %{_bindir}/t1mapper
 %attr(755,root,root) %{_bindir}/tangle
-#%attr(755,root,root) %{_bindir}/tetex-updmap
 %attr(755,root,root) %{_bindir}/tex
 %attr(755,root,root) %{_bindir}/texhash
 %attr(755,root,root) %{_bindir}/texlinks
@@ -7846,7 +7184,6 @@ fi
 %attr(755,root,root) %{_bindir}/updmap
 %attr(755,root,root) %{_bindir}/updmap-sys
 %attr(755,root,root) %{_bindir}/vftovp
-#%attr(755,root,root) %{_bindir}/virtex
 %attr(755,root,root) %{_bindir}/vptovf
 %attr(755,root,root) %{_bindir}/weave
 
@@ -7856,12 +7193,8 @@ fi
 
 %attr(750,root,root) /etc/cron.daily/texlive
 
-#%dir /etc/sysconfig/tetex-updmap
-#%verify(not md5 mtime size) %config(noreplace) /etc/sysconfig/tetex-updmap/maps.lst
-
 %ghost %{texmf}/ls-R
 %ghost %{texmfdist}/ls-R
-# %ghost %{_localstatedir}/ls-R
 
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/cslatex/base/fonttext.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.dat
@@ -7932,24 +7265,25 @@ fi
 %dir %{texmf}/tex/generic/config
 %dir %{texmf}/web2c
 
-
 # Docs
-# %doc %{texmf}/doc/README
-%doc %{texmf}/README
 %doc %{texmfdist}/README
+%doc %{texmfdist}/doc/generic/epsf
+%doc %{texmfdist}/doc/generic/hyph-utf8
+%doc %{texmfdist}/doc/generic/tex-ps
+%doc %{texmfdist}/source/fontinst
+%doc %{texmf}/README
+%doc %{texmf}/doc/dvipng
 %doc %{texmf}/doc/tetex/TETEXDOC.*
 %doc %{texmf}/doc/tetex/teTeX-FAQ
-%doc %{texmfdist}/source/fontinst
-%doc %{texmf}/doc/dvipng
+%doc %{texmf}/doc/texinfo
+%doc %{texmf}/doc/web2c
+
 %{texmf}/doc/info
 
-# %{texmf}/fonts/map/dvips/tetex/contnav.map
-# %{texmf}/fonts/map/dvips/tetex/lumath-o.map
 %{texmfdist}/fonts/map/dvips/vntex/urwvn.map
 %{texmfdist}/fonts/map/fontname
 %{texmfdist}/fonts/enc/dvips/vntex/t5.enc
 
-# Main fonts from TeTeX
 %{texmf}/fonts/enc/dvips/tetex/09fbbfac.enc
 %{texmf}/fonts/enc/dvips/tetex/0ef0afca.enc
 %{texmf}/fonts/enc/dvips/tetex/10037936.enc
@@ -7968,48 +7302,16 @@ fi
 %{texmfdist}/tex/generic/encodings
 %{texmfdist}/tex/generic/epsf
 %{texmfdist}/tex/generic/hyph-utf8/*
-%doc %{texmfdist}/doc/generic/hyph-utf8
 %{texmfdist}/tex/generic/genmisc
 %{texmfdist}/tex/generic/misc/null*
 %{texmfdist}/tex/generic/misc/texnames.sty
 %{texmfdist}/tex/generic/tap
 %{texmfdist}/tex/generic/tex-ps
 %{texmfdist}/tex/texinfo
-%doc %{texmf}/doc/texinfo
 %{texmf}/tex/fontinst
 %{texmf}/tex/generic/hyphen
-
-%doc %{texmfdist}/doc/generic/epsf
-%doc %{texmfdist}/doc/generic/tex-ps
-%doc %{texmf}/doc/web2c
-
-# %{fmtdir}/metafun.mem
-#%{texmf}/web2c/tex-pl.pool
-# %{texmf}/web2c/tex.pool
 %{texmf}/fonts/map/dvips/updmap/*
-
 %{texmf}/web2c/*.tcx
-
-# %lang(fi) %{_mandir}/fi/man1/afm2tfm.1*
-# %lang(fi) %{_mandir}/fi/man1/allcm.1*
-# %lang(fi) %{_mandir}/fi/man1/allneeded.1*
-# %lang(fr) %{_mandir}/fr/man1/access.1*
-# %lang(hu) %{_mandir}/hu/man1/access.1*
-# %lang(hu) %{_mandir}/hu/man1/newer.1*
-# %lang(pl) %{_mandir}/pl/man1/access.1*
-# %lang(pl) %{_mandir}/pl/man1/newer.1*
-#%{_mandir}/man1/MakeTeXPK.1*
-#%{_mandir}/man1/access.1*
-#%{_mandir}/man1/fontexport.1*
-#%{_mandir}/man1/fontimport.1*
-#%{_mandir}/man1/initex.1*
-#%{_mandir}/man1/t1mapper.1*
-#%{_mandir}/man1/texdoc.1*
-#%{_mandir}/man1/texi2html.1*
-#%{_mandir}/man1/virtex.1*
-#%{_mandir}/man8/fmtutil.8*
-#%{_mandir}/man8/mkfontdesc.8*
-#%{_mandir}/man8/texlinks.8*
 
 %{_mandir}/man1/afm2tfm.1*
 %{_mandir}/man1/allcm.1*
@@ -8346,34 +7648,12 @@ fi
 %defattr(644,root,root,755)
 %{texmfdoc}/doc/chinese
 
-# %files doc-Catalogue
-# %defattr(644,root,root,755)
-# %{texmf}/doc/help/Catalogue
-
-# %files doc-tug-faq
-# %defattr(644,root,root,755)
-# %{texmf}/doc/help/faq/uktug-faq
-
-
 %files doc-latex
 %defattr(644,root,root,755)
-# %{texmfdist}/doc/latex/bar
-# %{texmfdist}/doc/latex/eclbip
-# %{texmfdist}/doc/latex/eo
-%{texmfdist}/doc/latex/floatflt
-# %{texmfdist}/doc/latex/general
-# %{texmfdist}/doc/latex/germbib
-# %{texmfdist}/doc/latex/images
-# %{texmfdist}/doc/latex/mathcomp
-# %{texmfdist}/doc/latex/mt11p
-# %{texmfdist}/doc/latex/picins
-# %{texmfdist}/doc/latex/ps4pdf
-# %{texmfdist}/doc/latex/pslatex
-# %{texmfdist}/doc/latex/supertab
-# %{texmfdist}/doc/latex/tex-refs
-# %{texmfdist}/doc/latex/textmerg
-# %{texmfdist}/doc/latex/treesvr
+%doc %{texmfdist}/doc/fonts/calrsfs
+%doc %{texmfdist}/doc/generic/encxvlna
 %doc %{texmfdist}/doc/generic/shapepar
+%doc %{texmfdist}/doc/generic/textmerg
 %doc %{texmfdist}/doc/latex/acronym
 %doc %{texmfdist}/doc/latex/aeguill
 %doc %{texmfdist}/doc/latex/anysize
@@ -8394,6 +7674,7 @@ fi
 %doc %{texmfdist}/doc/latex/fancyvrb
 %doc %{texmfdist}/doc/latex/filecontents
 %doc %{texmfdist}/doc/latex/float
+%doc %{texmfdist}/doc/latex/floatflt
 %doc %{texmfdist}/doc/latex/footmisc
 %doc %{texmfdist}/doc/latex/footnpag
 %doc %{texmfdist}/doc/latex/fp
@@ -8456,9 +7737,6 @@ fi
 %doc %{texmfdist}/doc/latex/wrapfig
 %doc %{texmfdist}/doc/latex/xtab
 %doc %{texmfdist}/doc/latex/yfonts
-%doc %{texmfdist}/doc/fonts/calrsfs
-%doc %{texmfdist}/doc/generic/encxvlna
-%doc %{texmfdist}/doc/generic/textmerg
 
 %files -n kpathsea
 %defattr(644,root,root,755)
@@ -8484,30 +7762,22 @@ fi
 
 %files dvips
 %defattr(644,root,root,755)
-# %doc %{texmf}/doc/programs/dvips.dvi
-# %doc %{texmf}/doc/programs/dvipdfm.dvi
-# %doc %{texmf}/doc/latex/psnfssx
-# %lang(fi) %{_mandir}/fi/man1/dvips.1*
-# %{texmf}/dvips/misc
-# %{texmf}/dvips/config/config.generic
-# %{texmf}/fonts/map/dvips/misc
-# %{texmf}/fonts/map/dvips/tetex/bsr-interpolated.map
-# %{texmf}/fonts/map/dvips/tetex/bsr.map
-# %{_localstatedir}/fonts/map/dvipdfm
-# %{_localstatedir}/fonts/map/dvips
 %dir %{texmfdist}/fonts/map/dvips/cmex
 %dir %{texmf}/dvipdfm
+%dir %{texmf}/fonts/map/dvipdfm
+%dir %{texmf}/fonts/map/dvips
+%dir %{texmf}/fonts/map/dvips/tetex
 %doc %{texmf}/doc/dvips
 %doc %{texmf}/doc/dvipdfm
+# dvi2fax requires ghostscript
+%attr(755,root,root) %{_bindir}/dvi2fax
+%attr(755,root,root) %{_bindir}/dvicopy
+%attr(755,root,root) %{_bindir}/dvipdfm
+%attr(755,root,root) %{_bindir}/dvipdft
 %attr(755,root,root) %{_bindir}/dvips
 %attr(755,root,root) %{_bindir}/dvired
 %attr(755,root,root) %{_bindir}/dvitomp
 %attr(755,root,root) %{_bindir}/dvitype
-%attr(755,root,root) %{_bindir}/dvicopy
-%attr(755,root,root) %{_bindir}/dvipdfm
-%attr(755,root,root) %{_bindir}/dvipdft
-# dvi2fax requires ghostscript
-%attr(755,root,root) %{_bindir}/dvi2fax
 %{_infodir}/dvips.info*
 %{_mandir}/man1/dvi2fax.1*
 %{_mandir}/man1/dvicopy.1*
@@ -8520,7 +7790,6 @@ fi
 %{texmf}/dvips/config
 %{texmf}/dvips/getafm
 %{texmf}/dvips/gsftopk
-# %config(noreplace) %verify(not md5 mtime size) %{texmf}/dvips/config/config.ps
 %{texmfdist}/fonts/enc/dvips/base
 %{texmfdist}/fonts/map/dvips/allrunes
 %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
@@ -8530,10 +7799,6 @@ fi
 %{texmf}/dvips/tetex/config.*
 %{texmf}/fonts/enc/dvips/tetex/mtex.enc
 %{texmf}/fonts/enc/dvips/afm2pl
-# %{texmf}/fonts/map
-%dir %{texmf}/fonts/map/dvipdfm
-%dir %{texmf}/fonts/map/dvips
-%dir %{texmf}/fonts/map/dvips/tetex
 %{texmf}/fonts/map/dvipdfm/updmap
 %{texmf}/fonts/map/dvipdfm/dvipdfmx
 %{texmf}/fonts/map/dvipdfm/tetex
@@ -8544,7 +7809,6 @@ fi
 %{texmf}/fonts/map/dvips/tetex/mt-plus.map
 %{texmf}/fonts/map/dvips/tetex/mt-yy.map
 %{texmf}/fonts/map/dvips/tetex/pdftex35.map
-
 
 %files dvilj
 %defattr(644,root,root,755)
@@ -8564,8 +7828,8 @@ fi
 %files makeindex
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/makeindex
-%attr(755,root,root) %{_bindir}/mkindex
 %attr(755,root,root) %{_bindir}/makeindex
+%attr(755,root,root) %{_bindir}/mkindex
 %attr(755,root,root) %{_bindir}/rumakeindex
 %{texmfdist}/makeindex
 %{_mandir}/man1/makeindex.1*
@@ -8670,18 +7934,6 @@ fi
 
 %files metafont
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/mfw
-#%attr(755,root,root) %{_bindir}/virmf
-#%attr(755,root,root) %{_bindir}/inimf
-#%{texmf}/mft/cmbase.mft
-# %{texmf}/mft/e.mft
-# %{texmf}/mft/pl.mft
-# %{fmtdir}/mf.base
-#%{texmf}/web2c/mf-nowin.base
-# %{texmf}/web2c/mf.pool
-#%{texmf}/web2c/mfw.base
-#%{_mandir}/man1/inimf.1*
-#%{_mandir}/man1/virmf.1*
 %dir %{texmfdist}/mft
 %attr(755,root,root) %{_bindir}/mf
 %attr(755,root,root) %{_bindir}/mf-nowin
@@ -8692,22 +7944,16 @@ fi
 %{texmfdist}/metafont
 %{texmfdist}/mft/base
 %{texmfdist}/source/metafont
+%{texmf}/fmtutil/format.metafont.cnf
 %{_mandir}/man1/mf.1*
 %{_mandir}/man1/mf-nowin.1*
 %{_mandir}/man1/mft.1*
 %{_mandir}/man1/mktexmf.1*
 %{_mandir}/man1/mktexpk.1*
 %{_mandir}/man1/mktextfm.1*
-%{texmf}/fmtutil/format.metafont.cnf
 
 %files metapost
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/virmpost
-#%attr(755,root,root) %{_bindir}/inimpost
-# %{texmf}/web2c/mp.pool
-# %{fmtdir}/mpost.mem
-#%{_mandir}/man1/inimpost.1*
-#%{_mandir}/man1/virmpost.1*
 %dir %{texmfdist}/metapost
 %doc %{texmfdist}/doc/metapost
 %attr(755,root,root) %{_bindir}/mpost
@@ -8754,11 +8000,9 @@ fi
 %attr(755,root,root) %{_bindir}/mptopdf
 %{_mandir}/man1/mptopdf.1*
 %{texmfdist}/tex/mptopdf
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/mptopdf.fmt
 
 %files texdoctk
 %defattr(644,root,root,755)
-# %doc %{texmf}/doc/texdoctk
 %attr(755,root,root) %{_bindir}/texdoctk
 %{texmf}/texdoctk
 %{_mandir}/man1/texdoctk.1*
@@ -8971,9 +8215,6 @@ fi
 
 %files -n xdvi
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/xdvi-motif.bin
-# %attr(755,root,root) %{_bindir}/xdvizilla
-# %{_mandir}/man1/xdvizilla.1*
 %attr(755,root,root) %{_bindir}/xdvi-xaw
 %attr(755,root,root) %{_bindir}/xdvi
 %{_mandir}/man1/xdvi.1*
@@ -8983,35 +8224,25 @@ fi
 
 %files pdftex
 %defattr(644,root,root,755)
-# %doc %{texmf}/doc/programs/pdfcrop.txt
-# %attr(755,root,root) %{_bindir}/pdfxtex
-# %{_localstatedir}/fonts/map/pdftex
-# %dir %{texmf}/fonts/map/pdftex
-# %dir %{texmf}/fonts/map/pdftex/cmttf
-# %{texmf}/fonts/map/pdftex/cmttf/cmttf.map
-# %{texmf}/web2c/pdfetex-pl.pool
-# %{texmf}/web2c/pdfetex.pool
-# %{texmf}/web2c/pdfxtex.pool
-# %{_mandir}/man1/pdfxtex.1*
-%dir %{texmf}/fonts/map/pdftex
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftexconfig.tex
 %dir %{texmfdist}/doc/support
-%doc %{texmfdist}/doc/pdftex
-%doc %{texmfdist}/doc/support/pdfcrop
+%dir %{texmf}/fonts/map/pdftex
 %dir %{texmf}/scripts
 %dir %{texmf}/scripts/epstopdf
+%doc %{texmfdist}/doc/pdftex
+%doc %{texmfdist}/doc/support/pdfcrop
 %attr(755,root,root) %{_bindir}/epstopdf
 %attr(755,root,root) %{_bindir}/pdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
+%attr(755,root,root) %{texmf}/scripts/epstopdf/epstopdf*
 %attr(1777,root,root) %dir %{fmtdir}/pdftex
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftexconfig.tex
-%{texmf}/fmtutil/format.pdftex.cnf
-%{texmfdist}/scripts/pdfcrop
 %{_mandir}/man1/epstopdf.1*
 %{_mandir}/man1/pdftex.1*
 %{texmfdist}/fonts/enc/pdftex
 %{texmfdist}/fonts/map/pdftex
+%{texmfdist}/scripts/pdfcrop
+%{texmf}/fmtutil/format.pdftex.cnf
 %{texmf}/fonts/map/pdftex/updmap
-%attr(755,root,root) %{texmf}/scripts/epstopdf/epstopdf*
 
 %files phyzzx
 %defattr(644,root,root,755)
@@ -9025,12 +8256,7 @@ fi
 
 %files omega
 %defattr(644,root,root,755)
-# %{texmf}/web2c/omega.pool
-# %{texmf}/web2c/aleph.pool
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/aleph.fmt
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/lambda.fmt
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/lamed.fmt
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/omega.fmt
+%doc %{texmfdist}/doc/aleph
 %doc %{texmfdist}/doc/omega
 %doc %{texmfdist}/doc/lambda
 %dir %{texmfdist}/omega
@@ -9058,6 +8284,8 @@ fi
 %{texmfdist}/omega/otp
 %{texmfdist}/tex/lambda
 %{texmfdist}/source/lambda
+%{texmf}/fmtutil/format.omega.cnf
+%{texmf}/fmtutil/format.aleph.cnf
 %{_mandir}/man1/lambda.1*
 %{_mandir}/man1/mkocp.1*
 %{_mandir}/man1/mkofm.1*
@@ -9071,9 +8299,6 @@ fi
 %{_mandir}/man1/outocp.1*
 %{_mandir}/man1/ovf2ovp.1*
 %{_mandir}/man1/ovp2ovf.1*
-%{texmf}/fmtutil/format.omega.cnf
-%{texmf}/fmtutil/format.aleph.cnf
-%doc %{texmfdist}/doc/aleph
 
 %files plain
 %defattr(644,root,root,755)
@@ -9081,43 +8306,26 @@ fi
 %{texmfdist}/tex/plain
 %exclude %{texmfdist}/tex/plain/config/xetex.ini
 %{texmf}/fmtutil/format.tex.cnf
-#%{texmf}/web2c/plain.mem
-#%{texmf}/web2c/plain.base
-
-# %files format-plain
-# %defattr(644,root,root,755)
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/tex.fmt
-#%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/plain.fmt
-
-# %files format-pdftex
-# %defattr(644,root,root,755)
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdftex.fmt
-
-# %files format-pdfetex
-# %defattr(644,root,root,755)
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfetex.fmt
 
 %files mex
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/mex
 %dir %{texmfdist}/tex/mex
-%{texmfdist}/tex/mex/base
 %dir %{texmfdist}/tex/mex/config
+%doc %{texmfdist}/doc/mex
+%{texmfdist}/source/mex
+%{texmfdist}/tex/mex/base
 %{texmf}/fmtutil/format.mex.cnf
 %{texmf}/fmtutil/format.utf8mex.cnf
-%{texmfdist}/source/mex
 
 %files format-mex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mex
 %{texmfdist}/tex/mex/config/mex.ini
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/mex.fmt
 
 %files format-pdfmex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdfmex
 %{texmfdist}/tex/mex/config/pdfmex.ini
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfmex.fmt
 
 %files format-utf8mex
 %defattr(644,root,root,755)
@@ -9125,7 +8333,6 @@ fi
 %dir %{texmfdist}/doc/mex
 %doc %{texmfdist}/doc/mex/utf8mex
 %{texmfdist}/tex/mex/utf8mex
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/utf8mex.fmt
 
 %files amstex
 %defattr(644,root,root,755)
@@ -9136,20 +8343,12 @@ fi
 
 %files format-amstex
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/amstex
 %doc %{texmfdist}/doc/amstex
 %{texmfdist}/tex/amstex
-%attr(755,root,root) %{_bindir}/amstex
-%{_mandir}/man1/amstex.1*
 %{texmf}/fmtutil/format.amstex.cnf
 %{texmf}/fmtutil/format.cyramstex.cnf
-# %lang(fi) %{_mandir}/fi/man1/amstex.1*
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/amstex.fmt
-
-# %files format-pdfamstex
-# %defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/pdfamstex
-#%{texmf}/pdftex/amstex
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfamstex.fmt
+%{_mandir}/man1/amstex.1*
 
 %files csplain
 %defattr(644,root,root,755)
@@ -9168,17 +8367,13 @@ fi
 
 %files format-csplain
 %defattr(644,root,root,755)
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/csplain.fmt
 
 %files format-pdfcsplain
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdfcsplain
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfcsplain.fmt
 
 %files cslatex
 %defattr(644,root,root,755)
-# %doc %{texmf}/doc/cstex/INSTALL.cslatex
-# %doc %{texmf}/doc/cstex/README.cslatex
 %{texmfdist}/tex/cslatex
 %{texmfdist}/tex/latex/cslatex
 
@@ -9186,32 +8381,10 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/cslatex
 %{texmf}/fmtutil/format.cslatex.cnf
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cslatex.fmt
 
 %files format-pdfcslatex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdfcslatex
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfcslatex.fmt
-
-# %files cyrplain
-# %defattr(644,root,root,755)
-# %doc %{texmf}/doc/cyrplain
-# %{texmf}/tex/cyrplain
-
-# %files format-cyrplain
-# %defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/cyrtex
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cyrtex.fmt
-
-# %files format-cyramstex
-# %defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/cyramstex
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cyramstex.fmt
-
-# %files format-cyrtexinfo
-# %defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/cyrtexinfo
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cyrtexinfo.fmt
 
 %files eplain
 %defattr(644,root,root,755)
@@ -9228,13 +8401,11 @@ fi
 %{_mandir}/man1/eplain.1*
 %{_mandir}/man1/etex.1*
 %{texmf}/fmtutil/format.eplain.cnf
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/eplain.fmt
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/etex.fmt
 
 %files context
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/context
-# %doc %{texmf}/doc/polish/context
+%doc %{texmfdist}/doc/luatex
 %attr(755,root,root) %{_bindir}/context
 %attr(755,root,root) %{_bindir}/ctxtools
 %attr(755,root,root) %{_bindir}/exatools
@@ -9257,7 +8428,6 @@ fi
 %attr(755,root,root) %{_bindir}/texutil
 %attr(755,root,root) %{_bindir}/tmftools
 %attr(755,root,root) %{_bindir}/xmltools
-# %{_mandir}/man1/fdf2tex.1*
 %{_mandir}/man1/ctxtools.1*
 %{_mandir}/man1/pdftools.1*
 %{_mandir}/man1/pstopdf.1*
@@ -9266,10 +8436,8 @@ fi
 %{_mandir}/man1/texmfstart.1*
 %{_mandir}/man1/textools.1*
 %{_mandir}/man1/texutil.1*
-# %{_mandir}/man1/texshow.1*
 %{texmfdist}/context
 %{texmfdist}/fonts/enc/dvips/context
-# %{texmfdist}/fonts/map/dvips/context
 %{texmfdist}/metapost/context
 %{texmfdist}/scripts/context
 %{texmfdist}/tex/context
@@ -9283,89 +8451,38 @@ fi
 %{texmf}/fmtutil/format.context.cnf
 %{texmf}/fmtutil/format.luatex.cnf
 %{texmf}/web2c/context.cnf
-%doc %{texmfdist}/doc/luatex
-
-# no fmt, so commented out
-#%files format-context-cz
-#%defattr(644,root,root,755)
-#%%{texmf}/tex/context/config/cont-cz.ini
-# does not build with beta 20021025
-#%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-cz.efmt
 
 %files format-context-de
 %defattr(644,root,root,755)
 %{texmfdist}/tex/context/config/cont-de.ini
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-de.fmt
-#%{_mandir}/man1/cont-de.1*
 
 %files format-context-en
 %defattr(644,root,root,755)
 %{texmfdist}/tex/context/config/cont-en.ini
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-en.fmt
-#%{_mandir}/man1/cont-en.1*
 # what is the difference betwen uk and en in this particular situation?
 %{texmfdist}/tex/context/config/cont-uk.ini
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-uk.fmt
-
-# no fmt, so commented out
-#%files format-context-it
-#%defattr(644,root,root,755)
-#%%{texmf}/tex/context/config/cont-it.ini
 
 %files format-context-nl
 %defattr(644,root,root,755)
 %{texmfdist}/tex/context/config/cont-nl.ini
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/cont-nl.fmt
-#%{_mandir}/man1/cont-nl.1*
-
-# no fmt, so commented out
-#%files format-context-ro
-#%defattr(644,root,root,755)
-#%%{texmf}/tex/context/config/cont-ro.ini
-
 
 %files latex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
 %attr(755,root,root) %{_bindir}/pslatex
-# %lang(fi) %{_mandir}/fi/man1/latex.1*
-# %lang(pl) %{_mandir}/pl/man1/latex.1*
-# %{_infodir}/latex.info*
-%{texmf}/fmtutil/format.latex.cnf
-%{_mandir}/man1/lacheck.1*
-%{_mandir}/man1/latex.1*
-%{_mandir}/man1/pslatex.1*
-
 %dir %{texmfdist}/scripts
 %dir %{texmfdist}/scripts/pst-pdf
 %dir %{texmfdist}/source/generic
 %dir %{texmfdist}/tex/latex
+%dir %{texmfdist}/tex/latex/latexconfig
 %dir %{texmfdist}/tex/plain
 %dir %{texmf}/tex/latex
-
-# %{texmfdist}/tex/latex/citesort
-# %{texmfdist}/tex/latex/dvilj
-# %{texmfdist}/tex/latex/eclbip
-# %{texmfdist}/tex/latex/eo
-# %{texmfdist}/tex/latex/example
-# %{texmfdist}/tex/latex/fguill
+%{_mandir}/man1/lacheck.1*
+%{_mandir}/man1/latex.1*
+%{_mandir}/man1/pslatex.1*
+%{texmf}/fmtutil/format.latex.cnf
 %{texmfdist}/tex/latex/floatflt
-# %{texmfdist}/tex/latex/gletter
-# %{texmfdist}/tex/latex/here
-# %{texmfdist}/tex/latex/mt11p
-# %{texmfdist}/tex/latex/relsize
-# %{texmfdist}/tex/latex/selectp
-# %{texmfdist}/tex/latex/shadow
-# %{texmfdist}/tex/latex/showtags
-# %{texmfdist}/tex/latex/tabls
-# %{texmfdist}/tex/latex/texmacs
-# %{texmfdist}/tex/latex/threeparttable
-# %{texmfdist}/tex/latex/treesvr
-# %{texmfdist}/tex/latex/ulem
-# %{texmfdist}/tex/latex/url
-# %{texmf}/tex/latex/version
-# %{texmf}/tex/latex/vpage
 %{texmfdist}/scripts/pst-pdf/ps4pdf
 %{texmfdist}/tex/generic/pstricks
 %{texmfdist}/tex/generic/shapepar
@@ -9725,7 +8842,6 @@ fi
 %{texmfdist}/tex/latex/jurarsp
 %{texmfdist}/tex/latex/koma-script
 %{texmfdist}/tex/latex/labels
-%dir %{texmfdist}/tex/latex/latexconfig
 %{texmfdist}/tex/latex/latexconfig/latex.ini
 %{texmfdist}/tex/latex/latexconfig/lualatex.ini
 %{texmfdist}/tex/latex/latexconfig/mllatex.ini
@@ -9941,10 +9057,10 @@ fi
 
 %files latex-ams
 %defattr(644,root,root,755)
+%doc %{texmfdist}/doc/fonts/amsfonts
 %doc %{texmfdist}/doc/latex/amscls
 %doc %{texmfdist}/doc/latex/amsmath
 %doc %{texmfdist}/doc/latex/onlyamsmath
-%{texmfdist}/doc/fonts/amsfonts
 %{texmfdist}/tex/latex/amscls
 %{texmfdist}/tex/latex/amsmath
 %{texmfdist}/tex/latex/amsfonts
@@ -9999,43 +9115,40 @@ fi
 
 %files latex-bibtex
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/bibtex/base
-%doc %{texmfdist}/doc/latex/adrconv
-%doc %{texmfdist}/doc/latex/bibtopic
-%doc %{texmfdist}/doc/latex/bibunits
-%doc %{texmfdist}/doc/latex/natbib
-%doc %{texmfdist}/doc/latex/footbib
-%doc %{texmf}/doc/bibtex8
-%dir %{texmfdist}/doc/bibtex
 %dir %{texmfdist}/bibtex
 %dir %{texmfdist}/bibtex/bib
 %dir %{texmfdist}/bibtex/bst
 %dir %{texmfdist}/bibtex/csf
+%dir %{texmfdist}/doc/bibtex
+%dir %{texmf}/bibtex
+%doc %{texmfdist}/doc/bibtex/base
+%doc %{texmfdist}/doc/latex/adrconv
+%doc %{texmfdist}/doc/latex/bibtopic
+%doc %{texmfdist}/doc/latex/bibunits
+%doc %{texmfdist}/doc/latex/footbib
+%doc %{texmfdist}/doc/latex/natbib
+%doc %{texmf}/doc/bibtex8
+%{_mandir}/man1/bibtex.1*
+%{_mandir}/man1/rubibtex.1*
 
 %attr(755,root,root) %{_bindir}/bibtex
 %attr(755,root,root) %{_bindir}/rubibtex
-
-%{texmfdist}/bibtex/bst/base
-%{texmfdist}/bibtex/csf/base
+%{texmfdist}/bibtex/bib/adrconv
 %{texmfdist}/bibtex/bib/base
 %{texmfdist}/bibtex/bst/adrconv
-%{texmfdist}/bibtex/bib/adrconv
-%{texmfdist}/source/latex/adrconv
-%{texmfdist}/tex/latex/adrconv
-# %{texmf}/bibtex/bst/misc
+%{texmfdist}/bibtex/bst/base
 %{texmfdist}/bibtex/bst/natbib
-%{texmfdist}/tex/latex/natbib
-%{texmfdist}/tex/latex/bibtopic
+%{texmfdist}/bibtex/csf/base
+%{texmfdist}/source/latex/adrconv
 %{texmfdist}/source/latex/bibtopic
 %{texmfdist}/source/latex/bibunits
-%{texmfdist}/tex/latex/bibunits
 %{texmfdist}/source/latex/footbib
+%{texmfdist}/tex/latex/adrconv
+%{texmfdist}/tex/latex/bibtopic
+%{texmfdist}/tex/latex/bibunits
 %{texmfdist}/tex/latex/footbib
-%dir %{texmf}/bibtex
+%{texmfdist}/tex/latex/natbib
 %{texmf}/bibtex/csf
-
-%{_mandir}/man1/bibtex.1*
-%{_mandir}/man1/rubibtex.1*
 
 %files latex-bibtex-ams
 %defattr(644,root,root,755)
@@ -10078,14 +9191,19 @@ fi
 %{texmfdist}/source/latex/dk-bib
 %{texmfdist}/tex/latex/dk-bib
 
-# %files latex-bibtex-nor
-# %defattr(644,root,root,755)
-# %{texmf}/bibtex/bst/norbib
-
 %files latex-bibtex-styles
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/generic/t2
 %dir %{texmfdist}/source/bibtex
+%doc %{texmfdist}/doc/bibtex/abstyles
+%doc %{texmfdist}/doc/bibtex/bibhtml
+%doc %{texmfdist}/doc/bibtex/dinat
+%doc %{texmfdist}/doc/bibtex/economic
+%doc %{texmfdist}/doc/bibtex/elsevier-bib
+%doc %{texmfdist}/doc/bibtex/gost
+%doc %{texmfdist}/doc/bibtex/ijqc
+%doc %{texmfdist}/doc/bibtex/iopart-num
+%doc %{texmfdist}/doc/generic/t2
+%doc %{texmfdist}/doc/latex/IEEEtran
 %{texmfdist}/bibtex/bib/IEEEtran
 %{texmfdist}/bibtex/bib/abstyles
 %{texmfdist}/bibtex/bib/achemso
@@ -10173,15 +9291,6 @@ fi
 %{texmfdist}/bibtex/bst/tugboat
 %{texmfdist}/bibtex/bst/urlbst
 %{texmfdist}/bibtex/csf/gost
-%doc %{texmfdist}/doc/bibtex/abstyles
-%doc %{texmfdist}/doc/bibtex/bibhtml
-%doc %{texmfdist}/doc/bibtex/dinat
-%doc %{texmfdist}/doc/bibtex/economic
-%doc %{texmfdist}/doc/bibtex/elsevier-bib
-%doc %{texmfdist}/doc/bibtex/gost
-%doc %{texmfdist}/doc/bibtex/ijqc
-%doc %{texmfdist}/doc/bibtex/iopart-num
-%doc %{texmfdist}/doc/latex/IEEEtran
 %{texmfdist}/source/bibtex/gost
 
 %files latex-bibtex-vancouver
@@ -10189,11 +9298,11 @@ fi
 %dir %{texmfdist}/bibtex/bib/vancouver
 %dir %{texmfdist}/bibtex/bst/vancouver
 %dir %{texmfdist}/doc/bibtex/vancouver
-%{texmfdist}/bibtex/bib/vancouver/vancouver.bib
-%{texmfdist}/bibtex/bst/vancouver/vancouver.bst
 %doc %{texmfdist}/doc/bibtex/vancouver/README
 %doc %{texmfdist}/doc/bibtex/vancouver/vancouver.pdf
 %doc %{texmfdist}/doc/bibtex/vancouver/vancouver.tex
+%{texmfdist}/bibtex/bib/vancouver/vancouver.bib
+%{texmfdist}/bibtex/bst/vancouver/vancouver.bst
 
 %files latex-booktabs
 %defattr(644,root,root,755)
@@ -10277,10 +9386,6 @@ fi
 %{texmfdist}/source/latex/cyrillic
 %{texmfdist}/tex/latex/cyrillic
 
-# %files latex-dstroke
-# %defattr(644,root,root,755)
-# %{texmf}/tex/latex/dstroke
-
 %files latex-enumitem
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/enumitem
@@ -10289,37 +9394,31 @@ fi
 %files latex-exams
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/exam
-%{texmfdist}/tex/latex/exam
-# generate problem sheets and their solution sheets
-%doc %{texmfdist}/doc/latex/probsoln
-%{texmfdist}/source/latex/probsoln
-%{texmfdist}/tex/latex/probsoln
 %doc %{texmfdist}/doc/latex/examdesign
-%{texmfdist}/tex/latex/examdesign
-%{texmfdist}/source/latex/examdesign
 %doc %{texmfdist}/doc/latex/mathexam
-%{texmfdist}/source/latex/mathexam
-%{texmfdist}/tex/latex/mathexam
-# A LaTeX2e class for making multiple choice questionnaires
+%doc %{texmfdist}/doc/latex/probsoln
 %doc %{texmfdist}/doc/latex/qcm
-%{texmfdist}/source/latex/qcm
-%{texmfdist}/tex/latex/qcm
-# A LaTeX class for writing exercise sheets.
 %doc %{texmfdist}/doc/latex/uebungsblatt
+%{texmfdist}/source/latex/examdesign
+%{texmfdist}/source/latex/mathexam
+%{texmfdist}/source/latex/probsoln
+%{texmfdist}/source/latex/qcm
+%{texmfdist}/tex/latex/exam
+%{texmfdist}/tex/latex/examdesign
+%{texmfdist}/tex/latex/mathexam
+%{texmfdist}/tex/latex/probsoln
+%{texmfdist}/tex/latex/qcm
 %{texmfdist}/tex/latex/uebungsblatt
 
 %files latex-float
 %defattr(644,root,root,755)
-# Continuation headings and legends for floats.
 %doc %{texmfdist}/doc/latex/ccaption
-%{texmfdist}/source/latex/ccaption
-%{texmfdist}/tex/latex/ccaption
-# A float environment for photographs.
 %doc %{texmfdist}/doc/latex/photo
-%{texmfdist}/source/latex/photo
-%{texmfdist}/tex/latex/photo
-# Move floats to the top of the page.
 %doc %{texmfdist}/doc/latex/topfloat
+%{texmfdist}/source/latex/ccaption
+%{texmfdist}/source/latex/photo
+%{texmfdist}/tex/latex/ccaption
+%{texmfdist}/tex/latex/photo
 %{texmfdist}/tex/latex/topfloat
 
 %files latex-formlett
@@ -10415,12 +9514,6 @@ fi
 %files latex-marvosym
 %defattr(644,root,root,755)
 %{texmfdist}/tex/latex/marvosym
-
-#%files latex-mathpple
-#%defattr(644,root,root,755)
-
-#%files latex-mathtime
-#%defattr(644,root,root,755)
 
 %files latex-microtype
 %defattr(644,root,root,755)
@@ -11037,136 +10130,136 @@ fi
 
 %files latex-math
 %defattr(644,root,root,755)
-%{texmfdist}/tex/latex/permute
-%doc %{texmfdist}/doc/latex/mfpic4ode
-%{texmfdist}/source/latex/mfpic4ode
-%{texmfdist}/tex/latex/mfpic4ode
-%doc %{texmfdist}/doc/latex/permute
-%doc %{texmfdist}/doc/latex/makeplot
-%{texmfdist}/tex/latex/makeplot
-%{texmfdist}/source/latex/makeplot
-%{texmfdist}/tex/latex/bez123
 %doc %{texmfdist}/doc/latex/bez123
-%{texmfdist}/tex/latex/binomexp
 %doc %{texmfdist}/doc/latex/binomexp
-%doc %{texmfdist}/doc/latex/coordsys
-%{texmfdist}/tex/latex/coordsys
-%doc %{texmfdist}/doc/latex/egplot
-%{texmfdist}/tex/latex/egplot
-%doc %{texmfdist}/doc/latex/eqlist
-%{texmfdist}/tex/latex/eqlist
-%doc %{texmfdist}/doc/latex/eqnarray
-%{texmfdist}/tex/latex/eqnarray
-%doc %{texmfdist}/doc/latex/esdiff
-%{texmfdist}/tex/latex/esdiff
-%doc %{texmfdist}/doc/latex/esvect
-%{texmfdist}/fonts/source/public/esvect
-%{texmfdist}/fonts/map/dvips/esvect
-%{texmfdist}/fonts/tfm/public/esvect
-%{texmfdist}/fonts/type1/public/esvect
-%{texmfdist}/tex/latex/esvect
-%doc %{texmfdist}/doc/latex/extpfeil
-%{texmfdist}/tex/latex/extpfeil
-%doc %{texmfdist}/doc/latex/faktor
-%{texmfdist}/tex/latex/faktor
 %doc %{texmfdist}/doc/latex/cmll
-%{texmfdist}/fonts/map/dvips/cmll
-%{texmfdist}/fonts/source/public/cmll
-%{texmfdist}/fonts/tfm/public/cmll
-%{texmfdist}/fonts/type1/public/cmll
-%{texmfdist}/tex/latex/cmll
-%{texmfdist}/tex/latex/dotseqn
-%doc %{texmfdist}/doc/latex/functan
-%{texmfdist}/tex/latex/functan
-%doc %{texmfdist}/doc/latex/galois
-%{texmfdist}/tex/latex/galois
-%doc %{texmfdist}/doc/latex/gnuplottex
-%{texmfdist}/tex/latex/gnuplottex
-%doc %{texmfdist}/doc/latex/hhtensor
-%{texmfdist}/tex/latex/hhtensor
-%doc %{texmfdist}/doc/latex/fouridx
-%{texmfdist}/tex/latex/fouridx
-%doc %{texmfdist}/doc/latex/noitcrul
-%{texmfdist}/tex/latex/noitcrul
 %doc %{texmfdist}/doc/latex/constants
-%{texmfdist}/tex/latex/constants
+%doc %{texmfdist}/doc/latex/coordsys
+%doc %{texmfdist}/doc/latex/egplot
+%doc %{texmfdist}/doc/latex/eqlist
+%doc %{texmfdist}/doc/latex/eqnarray
+%doc %{texmfdist}/doc/latex/esdiff
+%doc %{texmfdist}/doc/latex/esvect
+%doc %{texmfdist}/doc/latex/extpfeil
+%doc %{texmfdist}/doc/latex/faktor
+%doc %{texmfdist}/doc/latex/fouridx
+%doc %{texmfdist}/doc/latex/functan
+%doc %{texmfdist}/doc/latex/galois
+%doc %{texmfdist}/doc/latex/gnuplottex
+%doc %{texmfdist}/doc/latex/hhtensor
 %doc %{texmfdist}/doc/latex/logpap
-%{texmfdist}/tex/latex/logpap
+%doc %{texmfdist}/doc/latex/makeplot
+%doc %{texmfdist}/doc/latex/maybemath
+%doc %{texmfdist}/doc/latex/mfpic4ode
+%doc %{texmfdist}/doc/latex/mhequ
+%doc %{texmfdist}/doc/latex/mlist
+%doc %{texmfdist}/doc/latex/nath
+%doc %{texmfdist}/doc/latex/noitcrul
+%doc %{texmfdist}/doc/latex/numprint
+%doc %{texmfdist}/doc/latex/permute
+%doc %{texmfdist}/doc/latex/petri-nets
 %doc %{texmfdist}/doc/latex/qsymbols
-%{texmfdist}/tex/latex/qsymbols
-%{texmfdist}/source/latex/subeqn
-%{texmfdist}/source/latex/subeqnarray
-%{texmfdist}/tex/latex/subeqn
-%{texmfdist}/tex/latex/subeqnarray
+%doc %{texmfdist}/doc/latex/qtree
+%doc %{texmfdist}/doc/latex/sdrt
+%doc %{texmfdist}/doc/latex/semantic
+%doc %{texmfdist}/doc/latex/simplewick
+%doc %{texmfdist}/doc/latex/sseq
+%doc %{texmfdist}/doc/latex/subdepth
 %doc %{texmfdist}/doc/latex/subeqn
 %doc %{texmfdist}/doc/latex/subeqnarray
+%doc %{texmfdist}/doc/latex/trfsigns
+%doc %{texmfdist}/doc/latex/trsym
 %doc %{texmfdist}/doc/latex/ulsy
+%{texmfdist}/fonts/map/dvips/cmll
+%{texmfdist}/fonts/map/dvips/esvect
+%{texmfdist}/fonts/source/public/cmll
+%{texmfdist}/fonts/source/public/esvect
+%{texmfdist}/fonts/source/public/trsym
 %{texmfdist}/fonts/source/public/ulsy
+%{texmfdist}/fonts/tfm/public/cmll
+%{texmfdist}/fonts/tfm/public/esvect
+%{texmfdist}/fonts/tfm/public/trsym
 %{texmfdist}/fonts/tfm/public/ulsy
+%{texmfdist}/fonts/type1/public/cmll
+%{texmfdist}/fonts/type1/public/esvect
+%{texmfdist}/source/latex/makeplot
+%{texmfdist}/source/latex/mfpic4ode
+%{texmfdist}/source/latex/semantic
+%{texmfdist}/source/latex/simplewick
+%{texmfdist}/source/latex/subeqn
+%{texmfdist}/source/latex/subeqnarray
+%{texmfdist}/source/latex/trfsigns
 %{texmfdist}/source/latex/ulsy
-%{texmfdist}/tex/latex/ulsy
-%{texmfdist}/tex/latex/sfmath
-%doc %{texmfdist}/doc/latex/subdepth
-%{texmfdist}/tex/latex/subdepth
-%doc %{texmfdist}/doc/latex/mhequ
+%{texmfdist}/tex/latex/bez123
+%{texmfdist}/tex/latex/binomexp
+%{texmfdist}/tex/latex/cmll
+%{texmfdist}/tex/latex/constants
+%{texmfdist}/tex/latex/coordsys
+%{texmfdist}/tex/latex/dotseqn
+%{texmfdist}/tex/latex/egplot
+%{texmfdist}/tex/latex/eqlist
+%{texmfdist}/tex/latex/eqnarray
+%{texmfdist}/tex/latex/esdiff
+%{texmfdist}/tex/latex/esvect
+%{texmfdist}/tex/latex/extpfeil
+%{texmfdist}/tex/latex/faktor
+%{texmfdist}/tex/latex/fouridx
+%{texmfdist}/tex/latex/functan
+%{texmfdist}/tex/latex/galois
+%{texmfdist}/tex/latex/gnuplottex
+%{texmfdist}/tex/latex/hhtensor
+%{texmfdist}/tex/latex/logpap
+%{texmfdist}/tex/latex/makeplot
+%{texmfdist}/tex/latex/maybemath
+%{texmfdist}/tex/latex/mfpic4ode
 %{texmfdist}/tex/latex/mhequ
 %{texmfdist}/tex/latex/mhs
-%doc %{texmfdist}/doc/latex/nath
-%{texmfdist}/tex/latex/nath
-%doc %{texmfdist}/doc/latex/numprint
-%{texmfdist}/tex/latex/numprint
-%doc %{texmfdist}/doc/latex/sseq
-%{texmfdist}/tex/latex/sseq
-%doc %{texmfdist}/doc/latex/trsym
-%{texmfdist}/tex/latex/trsym
-%{texmfdist}/fonts/source/public/trsym
-%{texmfdist}/fonts/tfm/public/trsym
-%doc %{texmfdist}/doc/latex/maybemath
-%{texmfdist}/tex/latex/maybemath
-%doc %{texmfdist}/doc/latex/mlist
 %{texmfdist}/tex/latex/mlist
-%doc %{texmfdist}/doc/latex/petri-nets
+%{texmfdist}/tex/latex/nath
+%{texmfdist}/tex/latex/noitcrul
+%{texmfdist}/tex/latex/numprint
+%{texmfdist}/tex/latex/permute
 %{texmfdist}/tex/latex/petri-nets
-%doc %{texmfdist}/doc/latex/qtree
+%{texmfdist}/tex/latex/qsymbols
 %{texmfdist}/tex/latex/qtree
-%doc %{texmfdist}/doc/latex/simplewick
-%{texmfdist}/source/latex/simplewick
-%{texmfdist}/tex/latex/simplewick
-%doc %{texmfdist}/doc/latex/trfsigns
-%{texmfdist}/source/latex/trfsigns
-%{texmfdist}/tex/latex/trfsigns
-%doc %{texmfdist}/doc/latex/sdrt
 %{texmfdist}/tex/latex/sdrt
-%doc %{texmfdist}/doc/latex/semantic
-%{texmfdist}/source/latex/semantic
 %{texmfdist}/tex/latex/semantic
+%{texmfdist}/tex/latex/sfmath
+%{texmfdist}/tex/latex/simplewick
+%{texmfdist}/tex/latex/sseq
+%{texmfdist}/tex/latex/subdepth
+%{texmfdist}/tex/latex/subeqn
+%{texmfdist}/tex/latex/subeqnarray
+%{texmfdist}/tex/latex/trfsigns
+%{texmfdist}/tex/latex/trsym
+%{texmfdist}/tex/latex/ulsy
 
 %files latex-physics
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/circ
-%{texmfdist}/tex/latex/circ
-%{texmfdist}/source/latex/circ
 %doc %{texmfdist}/doc/latex/colorwav
-%{texmfdist}/source/latex/colorwav
-%{texmfdist}/tex/latex/colorwav
 %doc %{texmfdist}/doc/latex/dyntree
-%{texmfdist}/source/latex/dyntree
-%{texmfdist}/tex/latex/dyntree
 %doc %{texmfdist}/doc/latex/feynmf
-%{texmfdist}/source/latex/feynmf
-%{texmfdist}/tex/latex/feynmf
-%{texmfdist}/metapost/feynmf
 %doc %{texmfdist}/doc/latex/formula
-%{texmfdist}/source/latex/formula
-%{texmfdist}/tex/latex/formula
-%{texmfdist}/source/latex/isotope
-%{texmfdist}/tex/latex/isotope
-%doc %{texmfdist}/doc/latex/miller
-%{texmfdist}/source/latex/miller
-%{texmfdist}/tex/latex/miller
 %doc %{texmfdist}/doc/latex/listofsymbols
-%{texmfdist}/tex/latex/listofsymbols
+%doc %{texmfdist}/doc/latex/miller
 %doc %{texmfdist}/doc/latex/susy
+%{texmfdist}/metapost/feynmf
+%{texmfdist}/source/latex/circ
+%{texmfdist}/source/latex/colorwav
+%{texmfdist}/source/latex/dyntree
+%{texmfdist}/source/latex/feynmf
+%{texmfdist}/source/latex/formula
+%{texmfdist}/source/latex/isotope
+%{texmfdist}/source/latex/miller
+%{texmfdist}/tex/latex/circ
+%{texmfdist}/tex/latex/colorwav
+%{texmfdist}/tex/latex/dyntree
+%{texmfdist}/tex/latex/feynmf
+%{texmfdist}/tex/latex/formula
+%{texmfdist}/tex/latex/isotope
+%{texmfdist}/tex/latex/listofsymbols
+%{texmfdist}/tex/latex/miller
 %{texmfdist}/tex/latex/susy
 
 %files latex-chem
@@ -11198,110 +10291,108 @@ fi
 %files latex-biology
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/biocon
+%doc %{texmfdist}/doc/latex/dnaseq
 %{texmfdist}/bibtex/bib/biocon
 %{texmfdist}/source/latex/biocon
-%{texmfdist}/tex/latex/biocon
-%doc %{texmfdist}/doc/latex/dnaseq
 %{texmfdist}/source/latex/dnaseq
+%{texmfdist}/tex/latex/biocon
 %{texmfdist}/tex/latex/dnaseq
 
 %files latex-pdftools
 %defattr(644,root,root,755)
-%{texmfdist}/source/latex/attachfile
-%{texmfdist}/tex/latex/attachfile
 %doc %{texmfdist}/doc/latex/attachfile
 %doc %{texmfdist}/doc/latex/cooltooltips
-%{texmfdist}/source/latex/cooltooltips
-%{texmfdist}/tex/latex/cooltooltips
-%doc %{texmfdist}/doc/latex/pdftricks
-%{texmfdist}/tex/latex/pdftricks
-%doc %{texmfdist}/doc/latex/pdfcprot
-%{texmfdist}/source/latex/pdfcprot
-%{texmfdist}/tex/latex/pdfcprot
-%doc %{texmfdist}/doc/latex/pdfscreen
-%{texmfdist}/tex/latex/pdfscreen
 %doc %{texmfdist}/doc/latex/movie15
-%{texmfdist}/tex/latex/movie15
+%doc %{texmfdist}/doc/latex/pdfcprot
+%doc %{texmfdist}/doc/latex/pdfscreen
 %doc %{texmfdist}/doc/latex/pdfsync
+%doc %{texmfdist}/doc/latex/pdftricks
+%{texmfdist}/source/latex/attachfile
+%{texmfdist}/source/latex/cooltooltips
+%{texmfdist}/source/latex/pdfcprot
+%{texmfdist}/tex/latex/attachfile
+%{texmfdist}/tex/latex/cooltooltips
+%{texmfdist}/tex/latex/movie15
+%{texmfdist}/tex/latex/pdfcprot
+%{texmfdist}/tex/latex/pdfscreen
 %{texmfdist}/tex/latex/pdfsync
+%{texmfdist}/tex/latex/pdftricks
 
 %files latex-informatic
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/alg
-%{texmfdist}/source/latex/alg
-%{texmfdist}/tex/latex/alg
-%{texmfdist}/source/latex/bytefield
-%{texmfdist}/tex/latex/bytefield
 %doc %{texmfdist}/doc/latex/bytefield
-%doc %{texmfdist}/doc/latex/progkeys
-%{texmfdist}/source/latex/progkeys
-%{texmfdist}/tex/latex/progkeys
-%doc %{texmfdist}/doc/latex/uml
-%{texmfdist}/source/latex/uml
-%{texmfdist}/tex/latex/uml
-%doc %{texmfdist}/doc/latex/msc
-%{texmfdist}/tex/latex/msc
-%doc %{texmfdist}/doc/latex/register
-%{texmfdist}/source/latex/register
-%{texmfdist}/tex/latex/register
 %doc %{texmfdist}/doc/latex/lsc
-%{texmfdist}/tex/latex/lsc
 %doc %{texmfdist}/doc/latex/method
+%doc %{texmfdist}/doc/latex/msc
+%doc %{texmfdist}/doc/latex/progkeys
+%doc %{texmfdist}/doc/latex/register
+%doc %{texmfdist}/doc/latex/uml
+%{texmfdist}/source/latex/alg
+%{texmfdist}/source/latex/bytefield
 %{texmfdist}/source/latex/method
+%{texmfdist}/source/latex/progkeys
+%{texmfdist}/source/latex/register
+%{texmfdist}/source/latex/uml
+%{texmfdist}/tex/latex/alg
+%{texmfdist}/tex/latex/bytefield
+%{texmfdist}/tex/latex/lsc
 %{texmfdist}/tex/latex/method
+%{texmfdist}/tex/latex/msc
+%{texmfdist}/tex/latex/progkeys
+%{texmfdist}/tex/latex/register
+%{texmfdist}/tex/latex/uml
 
 %files latex-games
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/backgammon
 %doc %{texmfdist}/doc/latex/chessboard
 %doc %{texmfdist}/doc/latex/chessfss
+%doc %{texmfdist}/doc/latex/crosswrd
 %doc %{texmfdist}/doc/latex/cwpuzzle
-%{texmfdist}/tex/latex/cwpuzzle
-%{texmfdist}/source/latex/cwpuzzle
+%doc %{texmfdist}/doc/latex/jeopardy
+%doc %{texmfdist}/doc/latex/othello
+%doc %{texmfdist}/doc/latex/sgame
+%doc %{texmfdist}/doc/latex/skak
+%doc %{texmfdist}/doc/latex/sudoku
+%doc %{texmfdist}/doc/latex/sudokubundle
 %{texmfdist}/fonts/enc/dvips/chessfss
+%{texmfdist}/fonts/map/dvips/skak
 %{texmfdist}/fonts/source/public/backgammon
 %{texmfdist}/fonts/source/public/cchess
 %{texmfdist}/fonts/source/public/chess
+%{texmfdist}/fonts/source/public/go
+%{texmfdist}/fonts/source/public/othello
+%{texmfdist}/fonts/source/public/skak
 %{texmfdist}/fonts/tfm/public/backgammon
 %{texmfdist}/fonts/tfm/public/cchess
+%{texmfdist}/fonts/tfm/public/go
+%{texmfdist}/fonts/tfm/public/othello
+%{texmfdist}/fonts/tfm/public/skak
 %{texmfdist}/source/latex/backgammon
 %{texmfdist}/source/latex/chessboard
 %{texmfdist}/source/latex/chessfss
+%{texmfdist}/source/latex/crosswrd
+%{texmfdist}/source/latex/cwpuzzle
+%{texmfdist}/source/latex/go
+%{texmfdist}/source/latex/jeopardy
+%{texmfdist}/source/latex/othello
+%{texmfdist}/source/latex/sudoku
+%{texmfdist}/source/latex/sudokubundle
 %{texmfdist}/tex/latex/backgammon
 %{texmfdist}/tex/latex/cchess
 %{texmfdist}/tex/latex/chess
 %{texmfdist}/tex/latex/chessboard
 %{texmfdist}/tex/latex/chessfss
-%doc %{texmfdist}/doc/latex/crosswrd
-%{texmfdist}/source/latex/crosswrd
 %{texmfdist}/tex/latex/crosswrd
-%doc %{texmfdist}/doc/latex/jeopardy
-%{texmfdist}/tex/latex/jeopardy
-%{texmfdist}/source/latex/jeopardy
+%{texmfdist}/tex/latex/cwpuzzle
 %{texmfdist}/tex/latex/go
-%{texmfdist}/source/latex/go
-%{texmfdist}/fonts/source/public/go
-%{texmfdist}/fonts/tfm/public/go
-%doc %{texmfdist}/doc/latex/othello
-%{texmfdist}/source/latex/othello
+%{texmfdist}/tex/latex/jeopardy
 %{texmfdist}/tex/latex/othello
-%{texmfdist}/fonts/source/public/othello
-%{texmfdist}/fonts/tfm/public/othello
-%doc %{texmfdist}/doc/latex/sudoku
-%{texmfdist}/source/latex/sudoku
-%{texmfdist}/tex/latex/sudoku
-%doc %{texmfdist}/doc/latex/sudokubundle
-%{texmfdist}/source/latex/sudokubundle
-%{texmfdist}/tex/latex/sudokubundle
-# Fonts and macros for typesetting chess games.
-%doc %{texmfdist}/doc/latex/skak
-%{texmfdist}/tex/latex/skak
-%{texmfdist}/fonts/map/dvips/skak
-%{texmfdist}/fonts/source/public/skak
-%{texmfdist}/fonts/tfm/public/skak
-# LaTeX style for typesetting strategic games.
-%doc %{texmfdist}/doc/latex/sgame
 %{texmfdist}/tex/latex/sgame
+%{texmfdist}/tex/latex/skak
+%{texmfdist}/tex/latex/sudoku
+%{texmfdist}/tex/latex/sudokubundle
 
 %files latex-sources
 %defattr(644,root,root,755)
@@ -11559,545 +10650,495 @@ fi
 
 %files latex-styles
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/acmconf
-%{texmfdist}/source/latex/acmconf
-%{texmfdist}/tex/latex/acmconf
-%doc %{texmfdist}/doc/latex/active-conf
-%{texmfdist}/source/latex/active-conf
-%{texmfdist}/tex/latex/active-conf
-%doc %{texmfdist}/doc/latex/asaetr
-%{texmfdist}/bibtex/bst/asaetr
-%{texmfdist}/bibtex/bib/asaetr
-%{texmfdist}/tex/latex/asaetr
-%{texmfdist}/source/latex/asaetr
-%doc %{texmfdist}/doc/latex/aiaa
-%{texmfdist}/source/latex/aiaa
-%{texmfdist}/tex/latex/aiaa
-%{texmfdist}/bibtex/bib/aiaa
-%{texmfdist}/bibtex/bst/aiaa
-%doc %{texmfdist}/doc/latex/apacite
-%{texmfdist}/bibtex/bib/apacite
-%{texmfdist}/bibtex/bst/apacite
-%{texmfdist}/source/latex/apacite
-%{texmfdist}/tex/latex/apacite
-%doc %{texmfdist}/doc/latex/aastex
-%{texmfdist}/source/latex/aastex
-%{texmfdist}/tex/latex/aastex
 %doc %{texmfdist}/doc/latex/IEEEconf
-%{texmfdist}/source/latex/IEEEconf
-%{texmfdist}/tex/latex/IEEEconf
+%doc %{texmfdist}/doc/latex/aastex
+%doc %{texmfdist}/doc/latex/acmconf
+%doc %{texmfdist}/doc/latex/active-conf
+%doc %{texmfdist}/doc/latex/aiaa
+%doc %{texmfdist}/doc/latex/apacite
+%doc %{texmfdist}/doc/latex/asaetr
 %doc %{texmfdist}/doc/latex/computational-complexity
-%{texmfdist}/source/latex/computational-complexity
-%{texmfdist}/tex/latex/computational-complexity
-%{texmfdist}/bibtex/bib/computational-complexity
-%{texmfdist}/bibtex/bst/computational-complexity
-# Document class for the journal of DANTE.
 %doc %{texmfdist}/doc/latex/dtk
-%{texmfdist}/source/latex/dtk
-%{texmfdist}/tex/latex/dtk
-%{texmfdist}/bibtex/bib/dtk
-%{texmfdist}/bibtex/bst/dtk
-# Class for articles for submission to Elsevier journals.
 %doc %{texmfdist}/doc/latex/elsarticle
-%{texmfdist}/source/latex/elsarticle
-%{texmfdist}/tex/latex/elsarticle
-# Letters and faxes in French.
 %doc %{texmfdist}/doc/latex/lettre
-%{texmfdist}/tex/latex/lettre
-# Macros for a two language dictionary.
 %doc %{texmfdist}/doc/latex/lexikon
-%{texmfdist}/source/latex/lexikon
-%{texmfdist}/tex/latex/lexikon
-# Class for "Logic and Philosophy of Science".
 %doc %{texmfdist}/doc/latex/lps
-%{texmfdist}/source/latex/lps
-%{texmfdist}/tex/latex/lps
-# Emulate look of a document typed on a typewriter.
 %doc %{texmfdist}/doc/latex/manuscript
-%{texmfdist}/source/latex/manuscript
-%{texmfdist}/tex/latex/manuscript
-# Styles and examples for the MAPLE newsletter.
 %doc %{texmfdist}/doc/latex/maple
-%{texmfdist}/tex/latex/maple
-# Typesetting menus.
-%{texmfdist}/source/latex/menu
-%{texmfdist}/tex/latex/menu
-# Classes for University of Manchester Dept of Computer
-%{texmfdist}/tex/latex/muthesis
-# Prepare papers for the journal Nature.
-%doc %{texmfdist}/doc/latex/nature
-%{texmfdist}/tex/latex/nature
-# LaTeX class for No Starch Press.
-%doc %{texmfdist}/doc/latex/nostarch
-%{texmfdist}/source/latex/nostarch
-%{texmfdist}/tex/latex/nostarch
-# Class for the NRC technical journals.
-%doc %{texmfdist}/doc/latex/nrc
-%{texmfdist}/source/latex/nrc
-%{texmfdist}/tex/latex/nrc
-# Versions of article class, tuned for scholarly publications.
-%doc %{texmfdist}/doc/latex/paper
-%{texmfdist}/source/latex/paper
-%{texmfdist}/tex/latex/paper
-# Class for newspapers, etc.
-%doc %{texmfdist}/doc/latex/papertex
-%{texmfdist}/source/latex/papertex
-%{texmfdist}/tex/latex/papertex
-# Problem sheet class.
-%doc %{texmfdist}/doc/latex/pbsheet
-%{texmfdist}/source/latex/pbsheet
-%{texmfdist}/tex/latex/pbsheet
-# Typeset drama using LaTeX.
-%doc %{texmfdist}/doc/latex/play
-%{texmfdist}/source/latex/play
-%{texmfdist}/tex/latex/play
-# Typesetting Critical Editions of Poetry.
-%doc %{texmfdist}/doc/latex/poemscol
-%{texmfdist}/source/latex/poemscol
-%{texmfdist}/tex/latex/poemscol
-# Typeset articles for PracTeX.
-%doc %{texmfdist}/doc/latex/pracjourn
-%{texmfdist}/source/latex/pracjourn
-%{texmfdist}/tex/latex/pracjourn
-# Macros for 'Progress of Theoretical Physics'.
-%doc %{texmfdist}/doc/latex/ptptex
-%{texmfdist}/tex/latex/ptptex
-# Format technical reference manuals.
-%doc %{texmfdist}/doc/latex/refman
-%{texmfdist}/source/latex/refman
-%{texmfdist}/tex/latex/refman
-# A class file to typeset screenplays.
-%doc %{texmfdist}/doc/latex/screenplay
-%{texmfdist}/source/latex/screenplay
-%{texmfdist}/tex/latex/screenplay
-# Variant report and book styles.
-%doc %{texmfdist}/doc/latex/script
-%{texmfdist}/tex/latex/script
-# A collection of LaTeX packages and classes.
-%doc %{texmfdist}/doc/latex/shipunov
-%{texmfdist}/tex/latex/shipunov
-# A LaTeX class for typesetting stage plays.
-%doc %{texmfdist}/doc/latex/sides
-%{texmfdist}/tex/latex/sides
-# SIGGRAPH conference class.
-%doc %{texmfdist}/doc/latex/siggraph
-%{texmfdist}/source/latex/siggraph
-%{texmfdist}/tex/latex/siggraph
-# A LaTeX class for stage plays
-%doc %{texmfdist}/doc/latex/stage
-%{texmfdist}/tex/latex/stage
-# Document classes inspired by the work of Edward Tufte.
-%doc %{texmfdist}/doc/latex/tufte-latex
-%{texmfdist}/tex/latex/tufte-latex
-# LaTeX macros for TUGboat articles.
-%doc %{texmfdist}/doc/latex/tugboat
-%{texmfdist}/source/latex/tugboat
-%{texmfdist}/tex/latex/tugboat
-# University of Arizona thesis and dissertation format.
-%doc %{texmfdist}/doc/latex/uaclasses
-%{texmfdist}/source/latex/uaclasses
-%{texmfdist}/tex/latex/uaclasses
-# UIUC thesis class.
-%doc %{texmfdist}/doc/latex/uiucthesis
-%{texmfdist}/source/latex/uiucthesis
-%{texmfdist}/tex/latex/uiucthesis
-# University of Michigan Thesis LaTeX class.
-%doc %{texmfdist}/doc/latex/umich-thesis
-%{texmfdist}/tex/latex/umich-thesis
-# University of California thesis format.
-%doc %{texmfdist}/doc/latex/ucthesis
-%{texmfdist}/tex/latex/ucthesis
-# Dissertations at the University of Michigan.
-%doc %{texmfdist}/doc/latex/umthesis
-%{texmfdist}/tex/latex/umthesis
-# University of Washington thesis class.
-%doc %{texmfdist}/doc/latex/uwthesis
-%{texmfdist}/tex/latex/uwthesis
-# A basis for books to be published by Mentis publishers.
 %doc %{texmfdist}/doc/latex/mentis
-%{texmfdist}/source/latex/mentis
-%{texmfdist}/tex/latex/mentis
-# Typeset books following classical design and layout.
-%doc %{texmfdist}/doc/latex/octavo
-%{texmfdist}/source/latex/octavo
-%{texmfdist}/tex/latex/octavo
-# A class for NIH grant applications.
+%doc %{texmfdist}/doc/latex/nature
 %doc %{texmfdist}/doc/latex/nih
-%{texmfdist}/tex/latex/nih
-# A class for small advertisements.
+%doc %{texmfdist}/doc/latex/nostarch
+%doc %{texmfdist}/doc/latex/nrc
+%doc %{texmfdist}/doc/latex/octavo
+%doc %{texmfdist}/doc/latex/paper
+%doc %{texmfdist}/doc/latex/papertex
+%doc %{texmfdist}/doc/latex/pbsheet
 %doc %{texmfdist}/doc/latex/petiteannonce
-%{texmfdist}/tex/latex/petiteannonce
-# Electronic Theses and Dissertations at Pitt.
-%doc %{texmfdist}/doc/latex/pittetd
-%{texmfdist}/source/latex/pittetd
-%{texmfdist}/tex/latex/pittetd
-# Typesetting stageplay scripts.
-%doc %{texmfdist}/doc/latex/plari
-%{texmfdist}/source/latex/plari
-%{texmfdist}/tex/latex/plari
-# Typesetting articles for "Philosophers' Imprint".
 %doc %{texmfdist}/doc/latex/philosophersimprint
-%{texmfdist}/bibtex/bib/philosophersimprint
-%{texmfdist}/source/latex/philosophersimprint
-%{texmfdist}/tex/latex/philosophersimprint
-# BibTeX style for use with RSC journals.
+%doc %{texmfdist}/doc/latex/pittetd
+%doc %{texmfdist}/doc/latex/plari
+%doc %{texmfdist}/doc/latex/play
+%doc %{texmfdist}/doc/latex/poemscol
+%doc %{texmfdist}/doc/latex/pracjourn
+%doc %{texmfdist}/doc/latex/ptptex
+%doc %{texmfdist}/doc/latex/refman
 %doc %{texmfdist}/doc/latex/rsc
+%doc %{texmfdist}/doc/latex/screenplay
+%doc %{texmfdist}/doc/latex/script
+%doc %{texmfdist}/doc/latex/shipunov
+%doc %{texmfdist}/doc/latex/sides
+%doc %{texmfdist}/doc/latex/siggraph
+%doc %{texmfdist}/doc/latex/stage
+%doc %{texmfdist}/doc/latex/tufte-latex
+%doc %{texmfdist}/doc/latex/tugboat
+%doc %{texmfdist}/doc/latex/uaclasses
+%doc %{texmfdist}/doc/latex/ucthesis
+%doc %{texmfdist}/doc/latex/uiucthesis
+%doc %{texmfdist}/doc/latex/umich-thesis
+%doc %{texmfdist}/doc/latex/umthesis
+%doc %{texmfdist}/doc/latex/uwthesis
+%{texmfdist}/bibtex/bib/aiaa
+%{texmfdist}/bibtex/bib/apacite
+%{texmfdist}/bibtex/bib/asaetr
+%{texmfdist}/bibtex/bib/computational-complexity
+%{texmfdist}/bibtex/bib/dtk
+%{texmfdist}/bibtex/bib/philosophersimprint
+%{texmfdist}/bibtex/bst/aiaa
+%{texmfdist}/bibtex/bst/apacite
+%{texmfdist}/bibtex/bst/asaetr
+%{texmfdist}/bibtex/bst/computational-complexity
+%{texmfdist}/bibtex/bst/dtk
 %{texmfdist}/bibtex/bst/rsc
+%{texmfdist}/source/latex/IEEEconf
+%{texmfdist}/source/latex/aastex
+%{texmfdist}/source/latex/acmconf
+%{texmfdist}/source/latex/active-conf
+%{texmfdist}/source/latex/aiaa
+%{texmfdist}/source/latex/apacite
+%{texmfdist}/source/latex/asaetr
+%{texmfdist}/source/latex/computational-complexity
+%{texmfdist}/source/latex/dtk
+%{texmfdist}/source/latex/elsarticle
+%{texmfdist}/source/latex/lexikon
+%{texmfdist}/source/latex/lps
+%{texmfdist}/source/latex/manuscript
+%{texmfdist}/source/latex/mentis
+%{texmfdist}/source/latex/menu
+%{texmfdist}/source/latex/nostarch
+%{texmfdist}/source/latex/nrc
+%{texmfdist}/source/latex/octavo
+%{texmfdist}/source/latex/paper
+%{texmfdist}/source/latex/papertex
+%{texmfdist}/source/latex/pbsheet
+%{texmfdist}/source/latex/philosophersimprint
+%{texmfdist}/source/latex/pittetd
+%{texmfdist}/source/latex/plari
+%{texmfdist}/source/latex/play
+%{texmfdist}/source/latex/poemscol
+%{texmfdist}/source/latex/pracjourn
+%{texmfdist}/source/latex/refman
 %{texmfdist}/source/latex/rsc
+%{texmfdist}/source/latex/screenplay
+%{texmfdist}/source/latex/siggraph
+%{texmfdist}/source/latex/tugboat
+%{texmfdist}/source/latex/uaclasses
+%{texmfdist}/source/latex/uiucthesis
+%{texmfdist}/tex/latex/IEEEconf
+%{texmfdist}/tex/latex/aastex
+%{texmfdist}/tex/latex/acmconf
+%{texmfdist}/tex/latex/active-conf
+%{texmfdist}/tex/latex/aiaa
+%{texmfdist}/tex/latex/apacite
+%{texmfdist}/tex/latex/asaetr
+%{texmfdist}/tex/latex/computational-complexity
+%{texmfdist}/tex/latex/dtk
+%{texmfdist}/tex/latex/elsarticle
+%{texmfdist}/tex/latex/lettre
+%{texmfdist}/tex/latex/lexikon
+%{texmfdist}/tex/latex/lps
+%{texmfdist}/tex/latex/manuscript
+%{texmfdist}/tex/latex/maple
+%{texmfdist}/tex/latex/mentis
+%{texmfdist}/tex/latex/menu
+%{texmfdist}/tex/latex/muthesis
+%{texmfdist}/tex/latex/nature
+%{texmfdist}/tex/latex/nih
+%{texmfdist}/tex/latex/nostarch
+%{texmfdist}/tex/latex/nrc
+%{texmfdist}/tex/latex/octavo
+%{texmfdist}/tex/latex/paper
+%{texmfdist}/tex/latex/papertex
+%{texmfdist}/tex/latex/pbsheet
+%{texmfdist}/tex/latex/petiteannonce
+%{texmfdist}/tex/latex/philosophersimprint
+%{texmfdist}/tex/latex/pittetd
+%{texmfdist}/tex/latex/plari
+%{texmfdist}/tex/latex/play
+%{texmfdist}/tex/latex/poemscol
+%{texmfdist}/tex/latex/pracjourn
+%{texmfdist}/tex/latex/ptptex
+%{texmfdist}/tex/latex/refman
 %{texmfdist}/tex/latex/rsc
+%{texmfdist}/tex/latex/screenplay
+%{texmfdist}/tex/latex/script
+%{texmfdist}/tex/latex/shipunov
+%{texmfdist}/tex/latex/sides
+%{texmfdist}/tex/latex/siggraph
+%{texmfdist}/tex/latex/stage
+%{texmfdist}/tex/latex/tufte-latex
+%{texmfdist}/tex/latex/tugboat
+%{texmfdist}/tex/latex/uaclasses
+%{texmfdist}/tex/latex/ucthesis
+%{texmfdist}/tex/latex/uiucthesis
+%{texmfdist}/tex/latex/umich-thesis
+%{texmfdist}/tex/latex/umthesis
+%{texmfdist}/tex/latex/uwthesis
 
 %files latex-lang
 %defattr(644,root,root,755)
-# Curriculum vitae for French use.
 %doc %{texmfdist}/doc/latex/ESIEEcv
-%{texmfdist}/source/latex/ESIEEcv
-%{texmfdist}/tex/latex/ESIEEcv
-# Class for typesetting letters to Swiss rules.
 %doc %{texmfdist}/doc/latex/chletter
-%{texmfdist}/source/latex/chletter
-%{texmfdist}/tex/latex/chletter
-# German letter DIN style.
 %doc %{texmfdist}/doc/latex/dinbrief
-%{texmfdist}/source/latex/dinbrief
-%{texmfdist}/tex/latex/dinbrief
-# Class and templates for typesetting dissertations in Russian.
 %doc %{texmfdist}/doc/latex/disser
-%{texmfdist}/tex/latex/disser
-%{texmfdist}/source/latex/disser
-# Mathematics in Greek texts.
 %doc %{texmfdist}/doc/latex/elmath
-%{texmfdist}/source/latex/elmath
-%{texmfdist}/tex/latex/elmath
-# Modern Russian typesetting.
 %doc %{texmfdist}/doc/latex/eskd
-%{texmfdist}/source/latex/eskd
-%{texmfdist}/tex/latex/eskd
-# Modification of inputenc for German.
 %doc %{texmfdist}/doc/latex/ginpenc
-%{texmfdist}/source/latex/ginpenc
-%{texmfdist}/tex/latex/ginpenc
-# LaTeX support for Croatian documents.
 %doc %{texmfdist}/doc/latex/hrlatex
-%{texmfdist}/source/latex/hrlatex
-%{texmfdist}/tex/latex/hrlatex
-# Proper MLA formatting.
 %doc %{texmfdist}/doc/latex/mla-paper
+%{texmfdist}/source/latex/ESIEEcv
+%{texmfdist}/source/latex/chletter
+%{texmfdist}/source/latex/dinbrief
+%{texmfdist}/source/latex/disser
+%{texmfdist}/source/latex/elmath
+%{texmfdist}/source/latex/eskd
+%{texmfdist}/source/latex/ginpenc
+%{texmfdist}/source/latex/hrlatex
+%{texmfdist}/tex/latex/ESIEEcv
+%{texmfdist}/tex/latex/chletter
+%{texmfdist}/tex/latex/dinbrief
+%{texmfdist}/tex/latex/disser
+%{texmfdist}/tex/latex/elmath
+%{texmfdist}/tex/latex/eskd
+%{texmfdist}/tex/latex/ginpenc
+%{texmfdist}/tex/latex/hrlatex
 %{texmfdist}/tex/latex/mla-paper
 
 %files latex-music
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/abc
-%{texmfdist}/source/latex/abc
-%{texmfdist}/tex/latex/abc
-%doc %{texmfdist}/doc/latex/guitar
-%{texmfdist}/source/latex/guitar
-%{texmfdist}/tex/latex/guitar
-%{texmfdist}/source/latex/songbook
-%{texmfdist}/tex/latex/songbook
-%doc %{texmfdist}/doc/latex/songbook
-%{texmfdist}/tex/generic/musixlyr
-%doc %{texmfdist}/doc/latex/musixlyr
-%{texmfdist}/tex/generic/musixps
 %doc %{texmfdist}/doc/generic/musixps
+%doc %{texmfdist}/doc/latex/abc
+%doc %{texmfdist}/doc/latex/guitar
+%doc %{texmfdist}/doc/latex/musixlyr
+%doc %{texmfdist}/doc/latex/songbook
 %{texmfdist}/fonts/source/public/musixps
 %{texmfdist}/fonts/tfm/public/musixps
+%{texmfdist}/source/latex/abc
+%{texmfdist}/source/latex/guitar
+%{texmfdist}/source/latex/songbook
+%{texmfdist}/tex/generic/musixlyr
+%{texmfdist}/tex/generic/musixps
+%{texmfdist}/tex/latex/abc
+%{texmfdist}/tex/latex/guitar
+%{texmfdist}/tex/latex/songbook
 
 %files latex-extend
 %defattr(644,root,root,755)
-%{texmfdist}/source/latex/marginnote
-%{texmfdist}/tex/latex/marginnote
-%doc %{texmfdist}/doc/latex/marginnote
 %doc %{texmfdist}/doc/latex/HA-prosper
-%{texmfdist}/source/latex/HA-prosper
-%{texmfdist}/tex/latex/HA-prosper
-%doc %{texmfdist}/doc/latex/arydshln
-%{texmfdist}/source/latex/arydshln
-%{texmfdist}/tex/latex/arydshln
-%doc %{texmfdist}/doc/latex/chappg
-%{texmfdist}/source/latex/chappg
-%{texmfdist}/tex/latex/chappg
 %doc %{texmfdist}/doc/latex/addlines
-%{texmfdist}/source/latex/addlines
-%{texmfdist}/tex/latex/addlines
 %doc %{texmfdist}/doc/latex/alnumsec
-%{texmfdist}/source/latex/alnumsec
-%{texmfdist}/tex/latex/alnumsec
+%doc %{texmfdist}/doc/latex/arydshln
 %doc %{texmfdist}/doc/latex/babelbib
-%{texmfdist}/source/latex/babelbib
-%{texmfdist}/bibtex/bst/babelbib
-%{texmfdist}/tex/latex/babelbib
 %doc %{texmfdist}/doc/latex/bibtopicprefix
-%{texmfdist}/source/latex/bibtopicprefix
-%{texmfdist}/tex/latex/bibtopicprefix
 %doc %{texmfdist}/doc/latex/boites
-%{texmfdist}/source/latex/boites
-%{texmfdist}/tex/latex/boites
-%{texmfdist}/source/latex/cjw
-%{texmfdist}/tex/latex/cjw
 %doc %{texmfdist}/doc/latex/booklet
-%{texmfdist}/source/latex/booklet
-%{texmfdist}/tex/latex/booklet
 %doc %{texmfdist}/doc/latex/bullcntr
-%{texmfdist}/source/latex/bullcntr
-%{texmfdist}/tex/latex/bullcntr
+%doc %{texmfdist}/doc/latex/chappg
 %doc %{texmfdist}/doc/latex/clefval
-%{texmfdist}/tex/latex/clefval
-%{texmfdist}/source/latex/clefval
 %doc %{texmfdist}/doc/latex/colortbl
-%{texmfdist}/source/latex/colortbl
-%{texmfdist}/tex/latex/colortbl
-%doc %{texmfdist}/doc/latex/contour
-%{texmfdist}/source/latex/contour
-%{texmfdist}/tex/latex/contour
 %doc %{texmfdist}/doc/latex/combine
-%{texmfdist}/source/latex/combine
-%{texmfdist}/tex/latex/combine
-%doc %{texmfdist}/doc/latex/curve2e
-%{texmfdist}/source/latex/curve2e
-%{texmfdist}/tex/latex/curve2e
+%doc %{texmfdist}/doc/latex/contour
 %doc %{texmfdist}/doc/latex/ctable
-%{texmfdist}/source/latex/ctable
-%{texmfdist}/tex/latex/ctable
+%doc %{texmfdist}/doc/latex/curve2e
 %doc %{texmfdist}/doc/latex/dashrule
-%{texmfdist}/tex/latex/dashrule
-%{texmfdist}/source/latex/dashrule
-%{texmfdist}/tex/latex/dashbox
-%{texmfdist}/source/latex/dashbox
 %doc %{texmfdist}/doc/latex/etaremune
-%{texmfdist}/source/latex/etaremune
-%{texmfdist}/tex/latex/etaremune
 %doc %{texmfdist}/doc/latex/expdlist
-%{texmfdist}/source/latex/expdlist
-%{texmfdist}/tex/latex/expdlist
-%doc %{texmfdist}/doc/latex/notes2bib
-%{texmfdist}/source/latex/notes2bib
-%{texmfdist}/tex/latex/notes2bib
-%doc %{texmfdist}/doc/latex/underlin
-%{texmfdist}/source/latex/underlin
-%{texmfdist}/tex/latex/underlin
-%{texmfdist}/source/latex/listliketab
-%{texmfdist}/tex/latex/listliketab
-%doc %{texmfdist}/doc/latex/listliketab
-%{texmfdist}/tex/latex/ltablex
 %doc %{texmfdist}/doc/latex/leading
-%{texmfdist}/source/latex/leading
-%{texmfdist}/tex/latex/leading
-%doc %{texmfdist}/doc/latex/makecell
-%{texmfdist}/source/latex/makecell
-%{texmfdist}/tex/latex/makecell
+%doc %{texmfdist}/doc/latex/listliketab
 %doc %{texmfdist}/doc/latex/makebox
-%{texmfdist}/source/latex/makebox
-%{texmfdist}/tex/latex/makebox
-%doc %{texmfdist}/doc/latex/mcite
-%{texmfdist}/source/latex/mcite
-%{texmfdist}/tex/latex/mcite
-%doc %{texmfdist}/doc/latex/mciteplus
-%{texmfdist}/tex/latex/mciteplus
-%{texmfdist}/bibtex/bst/mciteplus
+%doc %{texmfdist}/doc/latex/makecell
+%doc %{texmfdist}/doc/latex/marginnote
 %doc %{texmfdist}/doc/latex/mcaption
-%{texmfdist}/source/latex/mcaption
-%{texmfdist}/tex/latex/mcaption
+%doc %{texmfdist}/doc/latex/mcite
+%doc %{texmfdist}/doc/latex/mciteplus
 %doc %{texmfdist}/doc/latex/minipage-marginpar
-%{texmfdist}/source/latex/minipage-marginpar
-%{texmfdist}/tex/latex/minipage-marginpar
-%doc %{texmfdist}/doc/latex/newvbtm
-%{texmfdist}/source/latex/newvbtm
-%{texmfdist}/tex/latex/newvbtm
 %doc %{texmfdist}/doc/latex/miniplot
-%{texmfdist}/tex/latex/miniplot
 %doc %{texmfdist}/doc/latex/multicap
-%{texmfdist}/source/latex/multicap
-%{texmfdist}/tex/latex/multicap
+%doc %{texmfdist}/doc/latex/newvbtm
+%doc %{texmfdist}/doc/latex/notes2bib
 %doc %{texmfdist}/doc/latex/ntabbing
+%doc %{texmfdist}/doc/latex/pbox
+%doc %{texmfdist}/doc/latex/pinlabel
+%doc %{texmfdist}/doc/latex/polytable
+%doc %{texmfdist}/doc/latex/rccol
+%doc %{texmfdist}/doc/latex/romannum
+%doc %{texmfdist}/doc/latex/schedule
+%doc %{texmfdist}/doc/latex/subfloat
+%doc %{texmfdist}/doc/latex/umoline
+%doc %{texmfdist}/doc/latex/underlin
+%{texmfdist}/bibtex/bst/babelbib
+%{texmfdist}/bibtex/bst/mciteplus
+%{texmfdist}/source/latex/HA-prosper
+%{texmfdist}/source/latex/addlines
+%{texmfdist}/source/latex/alnumsec
+%{texmfdist}/source/latex/arydshln
+%{texmfdist}/source/latex/babelbib
+%{texmfdist}/source/latex/bibtopicprefix
+%{texmfdist}/source/latex/boites
+%{texmfdist}/source/latex/booklet
+%{texmfdist}/source/latex/bullcntr
+%{texmfdist}/source/latex/chappg
+%{texmfdist}/source/latex/cjw
+%{texmfdist}/source/latex/clefval
+%{texmfdist}/source/latex/colortbl
+%{texmfdist}/source/latex/combine
+%{texmfdist}/source/latex/contour
+%{texmfdist}/source/latex/ctable
+%{texmfdist}/source/latex/curve2e
+%{texmfdist}/source/latex/dashbox
+%{texmfdist}/source/latex/dashrule
+%{texmfdist}/source/latex/etaremune
+%{texmfdist}/source/latex/expdlist
+%{texmfdist}/source/latex/leading
+%{texmfdist}/source/latex/listliketab
+%{texmfdist}/source/latex/makebox
+%{texmfdist}/source/latex/makecell
+%{texmfdist}/source/latex/marginnote
+%{texmfdist}/source/latex/mcaption
+%{texmfdist}/source/latex/mcite
+%{texmfdist}/source/latex/minipage-marginpar
+%{texmfdist}/source/latex/multicap
+%{texmfdist}/source/latex/newvbtm
+%{texmfdist}/source/latex/notes2bib
+%{texmfdist}/source/latex/pbox
+%{texmfdist}/source/latex/polytable
+%{texmfdist}/source/latex/rccol
+%{texmfdist}/source/latex/romannum
+%{texmfdist}/source/latex/schedule
+%{texmfdist}/source/latex/subfloat
+%{texmfdist}/source/latex/umoline
+%{texmfdist}/source/latex/underlin
+%{texmfdist}/tex/latex/HA-prosper
+%{texmfdist}/tex/latex/addlines
+%{texmfdist}/tex/latex/alnumsec
+%{texmfdist}/tex/latex/arydshln
+%{texmfdist}/tex/latex/babelbib
+%{texmfdist}/tex/latex/bibtopicprefix
+%{texmfdist}/tex/latex/boites
+%{texmfdist}/tex/latex/booklet
+%{texmfdist}/tex/latex/bullcntr
+%{texmfdist}/tex/latex/chappg
+%{texmfdist}/tex/latex/cjw
+%{texmfdist}/tex/latex/clefval
+%{texmfdist}/tex/latex/colortbl
+%{texmfdist}/tex/latex/combine
+%{texmfdist}/tex/latex/contour
+%{texmfdist}/tex/latex/ctable
+%{texmfdist}/tex/latex/curve2e
+%{texmfdist}/tex/latex/dashbox
+%{texmfdist}/tex/latex/dashrule
+%{texmfdist}/tex/latex/etaremune
+%{texmfdist}/tex/latex/expdlist
+%{texmfdist}/tex/latex/leading
+%{texmfdist}/tex/latex/listliketab
+%{texmfdist}/tex/latex/ltablex
+%{texmfdist}/tex/latex/makebox
+%{texmfdist}/tex/latex/makecell
+%{texmfdist}/tex/latex/marginnote
+%{texmfdist}/tex/latex/mcaption
+%{texmfdist}/tex/latex/mcite
+%{texmfdist}/tex/latex/mciteplus
+%{texmfdist}/tex/latex/minipage-marginpar
+%{texmfdist}/tex/latex/miniplot
+%{texmfdist}/tex/latex/multicap
+%{texmfdist}/tex/latex/newvbtm
+%{texmfdist}/tex/latex/notes2bib
 %{texmfdist}/tex/latex/ntabbing
 %{texmfdist}/tex/latex/numline
-%doc %{texmfdist}/doc/latex/pbox
-%{texmfdist}/source/latex/pbox
 %{texmfdist}/tex/latex/pbox
-%doc %{texmfdist}/doc/latex/pinlabel
 %{texmfdist}/tex/latex/pinlabel
-%doc %{texmfdist}/doc/latex/polytable
-%{texmfdist}/source/latex/polytable
 %{texmfdist}/tex/latex/polytable
-%doc %{texmfdist}/doc/latex/rccol
-%{texmfdist}/source/latex/rccol
 %{texmfdist}/tex/latex/rccol
-%doc %{texmfdist}/doc/latex/romannum
-%{texmfdist}/source/latex/romannum
 %{texmfdist}/tex/latex/romannum
-%doc %{texmfdist}/doc/latex/schedule
-%{texmfdist}/source/latex/schedule
 %{texmfdist}/tex/latex/schedule
-%doc %{texmfdist}/doc/latex/umoline
-%{texmfdist}/source/latex/umoline
-%{texmfdist}/tex/latex/umoline
-%doc %{texmfdist}/doc/latex/subfloat
-%{texmfdist}/source/latex/subfloat
 %{texmfdist}/tex/latex/subfloat
+%{texmfdist}/tex/latex/umoline
+%{texmfdist}/tex/latex/underlin
 
 %files latex-presentation
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ppower4
 %attr(755,root,root) %{_bindir}/pdfthumb
-%doc %{texmfdist}/doc/latex/ppower4
 %dir %{texmfdist}/scripts
-%{texmfdist}/scripts/ppower4
-%{texmfdist}/tex/latex/ppower4
 %doc %{texmfdist}/doc/latex/powerdot
+%doc %{texmfdist}/doc/latex/ppower4
+%doc %{texmfdist}/doc/latex/sciposter
+%doc %{texmfdist}/doc/latex/tpslifonts
+%{texmfdist}/scripts/ppower4
 %{texmfdist}/source/latex/powerdot
 %{texmfdist}/tex/latex/powerdot
-%doc %{texmfdist}/doc/latex/sciposter
+%{texmfdist}/tex/latex/ppower4
 %{texmfdist}/tex/latex/sciposter
-%doc %{texmfdist}/doc/latex/tpslifonts
 %{texmfdist}/tex/latex/tpslifonts
 
 %files latex-programming
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/cool
-%{texmfdist}/source/latex/cool
-%{texmfdist}/tex/latex/cool
-%doc %{texmfdist}/doc/latex/coolstr
-%{texmfdist}/source/latex/coolstr
-%{texmfdist}/tex/latex/coolstr
 %doc %{texmfdist}/doc/latex/coollist
-%{texmfdist}/source/latex/coollist
-%{texmfdist}/tex/latex/coollist
-%{texmfdist}/source/latex/cmdtrack
-%{texmfdist}/tex/latex/cmdtrack
-%doc %{texmfdist}/doc/latex/datenumber
-%{texmfdist}/source/latex/datenumber
-%{texmfdist}/tex/latex/datenumber
-%doc %{texmfdist}/doc/latex/dprogress
-%{texmfdist}/source/latex/dprogress
-%{texmfdist}/tex/latex/dprogress
+%doc %{texmfdist}/doc/latex/coolstr
 %doc %{texmfdist}/doc/latex/csvtools
-%{texmfdist}/source/latex/csvtools
-%{texmfdist}/tex/latex/csvtools
 %doc %{texmfdist}/doc/latex/datatool
-%{texmfdist}/source/latex/datatool
-%{texmfdist}/tex/latex/datatool
-%doc %{texmfdist}/doc/latex/dialogl
-%{texmfdist}/source/latex/dialogl
-%{texmfdist}/tex/latex/dialogl
+%doc %{texmfdist}/doc/latex/datenumber
 %doc %{texmfdist}/doc/latex/delimtxt
-%{texmfdist}/tex/latex/delimtxt
-%{texmfdist}/source/latex/delimtxt
+%doc %{texmfdist}/doc/latex/dialogl
+%doc %{texmfdist}/doc/latex/dprogress
 %doc %{texmfdist}/doc/latex/environ
-%{texmfdist}/source/latex/environ
-%{texmfdist}/tex/latex/environ
-%doc %{texmfdist}/doc/latex/fmtcount
-%{texmfdist}/source/latex/fmtcount
-%{texmfdist}/tex/latex/fmtcount
-%doc %{texmfdist}/doc/latex/forarray
-%{texmfdist}/source/latex/forarray
-%{texmfdist}/tex/latex/forarray
-%doc %{texmfdist}/doc/latex/forloop
-%{texmfdist}/source/latex/forloop
-%{texmfdist}/tex/latex/forloop
-%doc %{texmfdist}/doc/latex/labelcas
-%{texmfdist}/source/latex/labelcas
-%{texmfdist}/tex/latex/labelcas
 %doc %{texmfdist}/doc/latex/export
-%{texmfdist}/source/latex/export
-%{texmfdist}/tex/latex/export
+%doc %{texmfdist}/doc/latex/fmtcount
+%doc %{texmfdist}/doc/latex/forarray
+%doc %{texmfdist}/doc/latex/forloop
 %doc %{texmfdist}/doc/latex/inversepath
-%{texmfdist}/source/latex/inversepath
-%{texmfdist}/tex/latex/inversepath
-%{texmfdist}/source/latex/lcg
-%{texmfdist}/tex/latex/lcg
-%doc %{texmfdist}/doc/latex/namespc
-%{texmfdist}/source/latex/namespc
-%{texmfdist}/tex/latex/namespc
+%doc %{texmfdist}/doc/latex/labelcas
 %doc %{texmfdist}/doc/latex/makecmds
-%{texmfdist}/source/latex/makecmds
-%{texmfdist}/tex/latex/makecmds
-%{texmfdist}/source/latex/patchcmd
-%{texmfdist}/tex/latex/patchcmd
-%doc %{texmfdist}/doc/latex/stringstrings
-%{texmfdist}/source/latex/stringstrings
-%{texmfdist}/tex/latex/stringstrings
 %doc %{texmfdist}/doc/latex/nag
-%{texmfdist}/source/latex/nag
-%{texmfdist}/tex/latex/nag
-%{texmfdist}/source/latex/stack
-%{texmfdist}/tex/latex/stack
-%doc %{texmfdist}/doc/latex/substr
-%{texmfdist}/tex/latex/substr
-%{texmfdist}/tex/latex/multido
+%doc %{texmfdist}/doc/latex/namespc
 %doc %{texmfdist}/doc/latex/progress
-%{texmfdist}/tex/latex/progress
 %doc %{texmfdist}/doc/latex/randtext
-%{texmfdist}/tex/latex/randtext
 %doc %{texmfdist}/doc/latex/regcount
-%{texmfdist}/source/latex/regcount
-%{texmfdist}/tex/latex/regcount
 %doc %{texmfdist}/doc/latex/robustcommand
-%{texmfdist}/source/latex/robustcommand
-%{texmfdist}/tex/latex/robustcommand
-%doc %{texmfdist}/doc/latex/typedref
-%{texmfdist}/source/latex/typedref
-%{texmfdist}/tex/latex/typedref
 %doc %{texmfdist}/doc/latex/splitindex
+%doc %{texmfdist}/doc/latex/stringstrings
+%doc %{texmfdist}/doc/latex/substr
+%doc %{texmfdist}/doc/latex/typedref
+%{texmfdist}/source/latex/cmdtrack
+%{texmfdist}/source/latex/cool
+%{texmfdist}/source/latex/coollist
+%{texmfdist}/source/latex/coolstr
+%{texmfdist}/source/latex/csvtools
+%{texmfdist}/source/latex/datatool
+%{texmfdist}/source/latex/datenumber
+%{texmfdist}/source/latex/delimtxt
+%{texmfdist}/source/latex/dialogl
+%{texmfdist}/source/latex/dprogress
+%{texmfdist}/source/latex/environ
+%{texmfdist}/source/latex/export
+%{texmfdist}/source/latex/fmtcount
+%{texmfdist}/source/latex/forarray
+%{texmfdist}/source/latex/forloop
+%{texmfdist}/source/latex/inversepath
+%{texmfdist}/source/latex/labelcas
+%{texmfdist}/source/latex/lcg
+%{texmfdist}/source/latex/makecmds
+%{texmfdist}/source/latex/nag
+%{texmfdist}/source/latex/namespc
+%{texmfdist}/source/latex/patchcmd
+%{texmfdist}/source/latex/regcount
+%{texmfdist}/source/latex/robustcommand
 %{texmfdist}/source/latex/splitindex
+%{texmfdist}/source/latex/stack
+%{texmfdist}/source/latex/stringstrings
+%{texmfdist}/source/latex/typedref
+%{texmfdist}/tex/latex/cmdtrack
+%{texmfdist}/tex/latex/cool
+%{texmfdist}/tex/latex/coollist
+%{texmfdist}/tex/latex/coolstr
+%{texmfdist}/tex/latex/csvtools
+%{texmfdist}/tex/latex/datatool
+%{texmfdist}/tex/latex/datenumber
+%{texmfdist}/tex/latex/delimtxt
+%{texmfdist}/tex/latex/dialogl
+%{texmfdist}/tex/latex/dprogress
+%{texmfdist}/tex/latex/environ
+%{texmfdist}/tex/latex/export
+%{texmfdist}/tex/latex/fmtcount
+%{texmfdist}/tex/latex/forarray
+%{texmfdist}/tex/latex/forloop
+%{texmfdist}/tex/latex/inversepath
+%{texmfdist}/tex/latex/labelcas
+%{texmfdist}/tex/latex/lcg
+%{texmfdist}/tex/latex/makecmds
+%{texmfdist}/tex/latex/multido
+%{texmfdist}/tex/latex/nag
+%{texmfdist}/tex/latex/namespc
+%{texmfdist}/tex/latex/patchcmd
+%{texmfdist}/tex/latex/progress
+%{texmfdist}/tex/latex/randtext
+%{texmfdist}/tex/latex/regcount
+%{texmfdist}/tex/latex/robustcommand
 %{texmfdist}/tex/latex/splitindex
+%{texmfdist}/tex/latex/stack
+%{texmfdist}/tex/latex/stringstrings
+%{texmfdist}/tex/latex/substr
+%{texmfdist}/tex/latex/typedref
 
 %files latex-effects
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/arcs
-%{texmfdist}/source/latex/arcs
-%{texmfdist}/tex/latex/arcs
-%doc %{texmfdist}/doc/latex/blowup
-%{texmfdist}/source/latex/blowup
-%{texmfdist}/tex/latex/blowup
-%doc %{texmfdist}/doc/latex/changebar
-%{texmfdist}/tex/latex/changebar
-%{texmfdist}/source/latex/changebar
-%doc %{texmfdist}/doc/latex/draftwatermark
-%{texmfdist}/source/latex/draftwatermark
-%{texmfdist}/tex/latex/draftwatermark
-%doc %{texmfdist}/doc/latex/flippdf
-%{texmfdist}/source/latex/flippdf
-%{texmfdist}/tex/latex/flippdf
-%doc %{texmfdist}/doc/latex/flowfram
-%{texmfdist}/source/latex/flowfram
-%{texmfdist}/tex/latex/flowfram
-%doc %{texmfdist}/doc/latex/isorot
-%{texmfdist}/source/latex/isorot
-%{texmfdist}/tex/latex/isorot
-%doc %{texmfdist}/doc/latex/lettrine
-%{texmfdist}/source/latex/lettrine
-%{texmfdist}/tex/latex/lettrine
-%doc %{texmfdist}/doc/latex/niceframe
-%{texmfdist}/source/latex/niceframe
-%{texmfdist}/tex/latex/niceframe
-%{texmfdist}/fonts/source/public/niceframe
-%{texmfdist}/fonts/tfm/public/niceframe
-%doc %{texmfdist}/doc/latex/notes
-%{texmfdist}/source/latex/notes
-%{texmfdist}/tex/latex/notes
-%doc %{texmfdist}/doc/latex/objectz
-%{texmfdist}/source/latex/objectz
-%{texmfdist}/tex/latex/objectz
-%doc %{texmfdist}/doc/latex/parallel
-%{texmfdist}/source/latex/parallel
-%{texmfdist}/tex/latex/parallel
-%doc %{texmfdist}/doc/latex/quotchap
-%{texmfdist}/source/latex/quotchap
-%{texmfdist}/tex/latex/quotchap
-%doc %{texmfdist}/doc/latex/rotpages
-%{texmfdist}/tex/latex/rotpages
-%{texmfdist}/tex/latex/umrand
 %doc %{texmfdist}/doc/fonts/umrand
-%{texmfdist}/fonts/source/public/umrand
-%{texmfdist}/fonts/tfm/public/umrand
-%doc %{texmfdist}/doc/latex/ushort
-%{texmfdist}/source/latex/ushort
-%{texmfdist}/tex/latex/ushort
+%doc %{texmfdist}/doc/latex/arcs
+%doc %{texmfdist}/doc/latex/blowup
+%doc %{texmfdist}/doc/latex/changebar
+%doc %{texmfdist}/doc/latex/draftwatermark
+%doc %{texmfdist}/doc/latex/flippdf
+%doc %{texmfdist}/doc/latex/flowfram
+%doc %{texmfdist}/doc/latex/isorot
+%doc %{texmfdist}/doc/latex/lettrine
+%doc %{texmfdist}/doc/latex/niceframe
+%doc %{texmfdist}/doc/latex/notes
+%doc %{texmfdist}/doc/latex/objectz
+%doc %{texmfdist}/doc/latex/parallel
+%doc %{texmfdist}/doc/latex/quotchap
+%doc %{texmfdist}/doc/latex/rotpages
 %doc %{texmfdist}/doc/latex/sectionbox
-%{texmfdist}/tex/latex/sectionbox
 %doc %{texmfdist}/doc/latex/shadethm
+%doc %{texmfdist}/doc/latex/ushort
+%{texmfdist}/fonts/source/public/niceframe
+%{texmfdist}/fonts/source/public/umrand
+%{texmfdist}/fonts/tfm/public/niceframe
+%{texmfdist}/fonts/tfm/public/umrand
+%{texmfdist}/source/latex/arcs
+%{texmfdist}/source/latex/blowup
+%{texmfdist}/source/latex/changebar
+%{texmfdist}/source/latex/draftwatermark
+%{texmfdist}/source/latex/flippdf
+%{texmfdist}/source/latex/flowfram
+%{texmfdist}/source/latex/isorot
+%{texmfdist}/source/latex/lettrine
+%{texmfdist}/source/latex/niceframe
+%{texmfdist}/source/latex/notes
+%{texmfdist}/source/latex/objectz
+%{texmfdist}/source/latex/parallel
+%{texmfdist}/source/latex/quotchap
+%{texmfdist}/source/latex/ushort
+%{texmfdist}/tex/latex/arcs
+%{texmfdist}/tex/latex/blowup
+%{texmfdist}/tex/latex/changebar
+%{texmfdist}/tex/latex/draftwatermark
+%{texmfdist}/tex/latex/flippdf
+%{texmfdist}/tex/latex/flowfram
+%{texmfdist}/tex/latex/isorot
+%{texmfdist}/tex/latex/lettrine
+%{texmfdist}/tex/latex/niceframe
+%{texmfdist}/tex/latex/notes
+%{texmfdist}/tex/latex/objectz
+%{texmfdist}/tex/latex/parallel
+%{texmfdist}/tex/latex/quotchap
+%{texmfdist}/tex/latex/rotpages
+%{texmfdist}/tex/latex/sectionbox
 %{texmfdist}/tex/latex/shadethm
+%{texmfdist}/tex/latex/umrand
+%{texmfdist}/tex/latex/ushort
 
+# I don't sort them, because maybe can splitting and grouping them
 %files latex-other
 %defattr(644,root,root,755)
 %{texmfdist}/metapost/latexmp
@@ -12555,10 +11596,6 @@ fi
 # Time printing, in German.
 %{texmfdist}/tex/latex/uhrzeit
 
-# %files latex-palatcm
-# %defattr(644,root,root,755)
-# %{texmf}/tex/latex/palatcm
-
 %files latex-pdfslide
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/pdfslide
@@ -12566,28 +11603,27 @@ fi
 
 %files latex-pgf
 %defattr(644,root,root,755)
+%dir %{texmfdist}/source/context
+%dir %{texmfdist}/source/context/third
 %doc %{texmfdist}/doc/generic/pgf
 %doc %{texmfdist}/doc/latex/pgfplots
-%{texmfdist}/source/latex/pgfplots
+%{texmfdist}/source/context/third/pgfplots
 %{texmfdist}/source/latex/pgfopts
+%{texmfdist}/source/latex/pgfplots
 %{texmfdist}/tex/generic/pgf
 %{texmfdist}/tex/generic/pgfplots
 %{texmfdist}/tex/latex/pgf
 %{texmfdist}/tex/latex/pgfopts
 %{texmfdist}/tex/latex/pgfplots
-%dir %{texmfdist}/source/context
-%dir %{texmfdist}/source/context/third
-%{texmfdist}/source/context/third/pgfplots
 
 %files latex-prosper
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/prosper
-%{texmfdist}/tex/latex/prosper
-%{texmfdist}/source/latex/prosper
-# Prosper preview.
 %doc %{texmfdist}/doc/latex/ppr-prv
+%doc %{texmfdist}/doc/latex/prosper
 %{texmfdist}/source/latex/ppr-prv
+%{texmfdist}/source/latex/prosper
 %{texmfdist}/tex/latex/ppr-prv
+%{texmfdist}/tex/latex/prosper
 
 %files latex-polynom
 %defattr(644,root,root,755)
@@ -12721,8 +11757,6 @@ fi
 %doc %{texmfdist}/doc/generic/pst-blur
 %doc %{texmfdist}/doc/generic/pst-coil
 %doc %{texmfdist}/doc/generic/pst-cox
-# %doc %{texmfdist}/doc/generic/pst-cox/pst-coxcoor
-# %doc %{texmfdist}/doc/generic/pst-cox/pst-coxeterp
 %doc %{texmfdist}/doc/generic/pst-dbicons
 %doc %{texmfdist}/doc/generic/pst-eps
 %doc %{texmfdist}/doc/generic/pst-fill
@@ -12741,8 +11775,6 @@ fi
 %doc %{texmfdist}/doc/generic/pst-qtree
 %doc %{texmfdist}/doc/generic/pst-slpe
 %doc %{texmfdist}/doc/generic/pst-solides3d
-# %doc %{texmfdist}/doc/generic/pst-solides3d/doc-en
-# %doc %{texmfdist}/doc/generic/pst-solides3d/doc
 %doc %{texmfdist}/doc/generic/pst-soroban
 %doc %{texmfdist}/doc/generic/pst-spectra
 %doc %{texmfdist}/doc/generic/pst-stru
@@ -12867,9 +11899,6 @@ fi
 %{texmfdist}/fonts/vf/public/pxfonts
 %{texmfdist}/fonts/map/dvips/pxfonts
 
-#%files latex-qfonts
-#%defattr(644,root,root,755)
-
 %files latex-SIstyle
 %defattr(644,root,root,755)
 %{texmfdist}/doc/latex/SIstyle
@@ -12913,9 +11942,6 @@ fi
 %{texmfdist}/tex/latex/umlaute
 %{texmfdist}/source/latex/umlaute
 
-# %files latex-urwvn
-# %defattr(644,root,root,755)
-
 %files latex-variations
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/variations
@@ -12933,43 +11959,15 @@ fi
 %{texmfdist}/dvips/xcolor
 %{texmfdist}/source/latex/xcolor
 
-# %files format-latex
-# %defattr(644,root,root,755)
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/latex.fmt
-
 %files format-pdflatex
 %defattr(644,root,root,755)
-#%{texmf}/pdftex/latex/config
-# %dir %{texmf}/pdftex/latex
 %attr(755,root,root) %{_bindir}/pdflatex
 %{_mandir}/man1/pdflatex.1*
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdflatex.fmt
-
-# %files platex
-# %defattr(644,root,root,755)
-# %doc %{texmf}/doc/latex/platex
-# %dir %{texmf}/tex/platex
-# %{texmf}/tex/platex/config
-# %{texmf}/tex/latex/platex
-
-# %files format-platex
-# %defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/platex
-#%attr(755,root,root) %{_bindir}/platex-pl
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/platex.fmt
-#%config(noreplace) %verify(not md5 mtime size) %{fmtdir}/platex-pl.fmt
-
-# %files format-pdfplatex
-# %defattr(644,root,root,755)
-#%dir %{texmf}/pdftex/platex
-#%{texmf}/pdftex/platex/config
-# %attr(755,root,root) %{_bindir}/pdfplatex
-# %config(noreplace) %verify(not md5 mtime size) %{fmtdir}/pdfplatex.fmt
 
 %files tex-babel
 %defattr(644,root,root,755)
-%{texmfdist}/source/generic/babel
 %doc %{texmfdist}/doc/generic/babel
+%{texmfdist}/source/generic/babel
 %{texmfdist}/tex/generic/babel
 
 %files tex-german
@@ -13023,11 +12021,6 @@ fi
 %{texmfdist}/source/generic/pstricks-add
 %{texmfdist}/tex/generic/pstricks-add
 
-# %files tex-qpx
-# %defattr(644,root,root,755)
-# %doc %{texmf}/doc/fonts/polish/qpx
-# %{texmf}/tex/generic/qpx
-
 %files tex-qpxqtx
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/qpxqtx
@@ -13077,9 +12070,9 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/thumbpdf
 %attr(755,root,root) %{_bindir}/thumbpdf
+%{_mandir}/man1/thumbpdf.1*
 %{texmfdist}/tex/generic/thumbpdf
 %{texmfdist}/scripts/thumbpdf
-%{_mandir}/man1/thumbpdf.1*
 
 %files tex-ukrhyph
 %defattr(644,root,root,755)
@@ -13168,20 +12161,11 @@ fi
 %{texmfdist}/fonts/source/public/bbold
 %{texmfdist}/fonts/tfm/public/bbold
 
-# %files fonts-bh
-# %defattr(644,root,root,755)
-# %doc %{texmf}/doc/fonts/bh
-# %{texmf}/fonts/tfm/bh
-# %{texmf}/fonts/vf/bh
-
 %files fonts-bitstream
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/afm/bitstrea
 %{texmfdist}/fonts/tfm/bitstrea
 %{texmfdist}/fonts/vf/bitstrea
-
-#%files fonts-cbgreek
-#%defattr(644,root,root,755)
 
 %files fonts-cc-pl
 %defattr(644,root,root,755)
@@ -13197,18 +12181,17 @@ fi
 
 %files fonts-cm
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/fonts/cm
 %dir %{texmfdist}/doc/fonts
-# %dir %{texmfdist}/dvips
 %dir %{texmfdist}/fonts/afm/bluesky
 %dir %{texmfdist}/fonts/map/dvips
 %dir %{texmfdist}/fonts/pk/ljfour/public
+%doc %{texmfdist}/doc/fonts/cm
 %{texmfdist}/dvips/cm
-%{texmfdist}/fonts/source/public/cm
 %{texmfdist}/fonts/afm/bluesky/cm
-%{texmfdist}/fonts/tfm/public/cm
-%{texmfdist}/fonts/pk/ljfour/public/cm
 %{texmfdist}/fonts/map/dvips/cm
+%{texmfdist}/fonts/pk/ljfour/public/cm
+%{texmfdist}/fonts/source/public/cm
+%{texmfdist}/fonts/tfm/public/cm
 
 %files fonts-cmbright
 %defattr(644,root,root,755)
@@ -13264,9 +12247,6 @@ fi
 %{texmfdist}/fonts/tfm/public/cs
 %{texmfdist}/fonts/map/dvips/cs
 
-#%files fonts-dstroke
-#%defattr(644,root,root,755)
-
 %files fonts-ecc
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/ecc
@@ -13297,7 +12277,7 @@ fi
 
 %files fonts-gothic
 %defattr(644,root,root,755)
-%{texmfdist}/doc/fonts/gothic
+%doc %{texmfdist}/doc/fonts/gothic
 %{texmfdist}/dvips/gothic
 %{texmfdist}/fonts/source/public/gothic
 %{texmfdist}/fonts/type1/public/gothic
@@ -13331,21 +12311,21 @@ fi
 
 %files fonts-latex
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/esint
-%dir %{texmfdist}/fonts/source/public/latex-fonts
-%dir %{texmfdist}/fonts/type1/bluesky/latex-fonts
 %dir %{texmfdist}/fonts/afm/bluesky/latex-fonts
-%dir %{texmfdist}/fonts/tfm/public/latex-fonts
 %dir %{texmfdist}/fonts/map/dvips/latex-fonts
+%dir %{texmfdist}/fonts/source/public/latex-fonts
+%dir %{texmfdist}/fonts/tfm/public/latex-fonts
+%dir %{texmfdist}/fonts/type1/bluesky/latex-fonts
+%doc %{texmfdist}/doc/latex/esint
+%{texmfdist}/fonts/afm/bluesky/latex-fonts/*
+%{texmfdist}/fonts/map/dvips/latex-fonts/*
 %{texmfdist}/fonts/source/public/esint
+%{texmfdist}/fonts/source/public/latex-fonts/*
 %{texmfdist}/fonts/tfm/public/esint
+%{texmfdist}/fonts/tfm/public/latex-fonts/*
+%{texmfdist}/fonts/type1/bluesky/latex-fonts/*
 %{texmfdist}/source/latex/esint
 %{texmfdist}/tex/latex/esint
-%{texmfdist}/fonts/source/public/latex-fonts/*
-%{texmfdist}/fonts/type1/bluesky/latex-fonts/*
-%{texmfdist}/fonts/afm/bluesky/latex-fonts/*
-%{texmfdist}/fonts/tfm/public/latex-fonts/*
-%{texmfdist}/fonts/map/dvips/latex-fonts/*
 
 %files fonts-lh
 %defattr(644,root,root,755)
@@ -13370,10 +12350,10 @@ fi
 
 %files fonts-marvosym
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/marvosym
 %dir %{texmfdist}/source/fonts/eurofont
 %dir %{texmfdist}/source/fonts/eurofont/marvosym
 %dir %{texmfdist}/tex/latex
+%doc %{texmfdist}/doc/latex/marvosym
 %{texmfdist}/fonts/type1/public/marvosym
 %{texmfdist}/fonts/afm/public/marvosym
 %{texmfdist}/fonts/tfm/public/marvosym
@@ -13406,8 +12386,8 @@ fi
 
 %files fonts-other
 %defattr(644,root,root,755)
-%{texmf}/fonts/sfd
 %doc %{texmfdist}/doc/fonts/yi4latex
+%{texmf}/fonts/sfd
 %{texmfdist}/fonts/afm/itc
 %{texmf}/fonts/map/glyphlist
 %{texmfdist}/fonts/map/glyphlist
@@ -13629,7 +12609,6 @@ fi
 %{texmfdist}/fonts/tfm/public/cm-lgc
 %{texmfdist}/fonts/type1/public/cm-lgc
 %{texmfdist}/fonts/vf/public/cm-lgc
-
 
 %doc %{texmfdist}/doc/fonts/cmpica
 %{texmfdist}/fonts/source/public/cmpica
@@ -13869,7 +12848,6 @@ fi
 %{texmfdist}/fonts/tfm/public/gfssolomos
 %{texmfdist}/fonts/type1/public/gfssolomos
 %{texmfdist}/fonts/vf/public/gfssolomos
-
 
 %doc %{texmfdist}/doc/fonts/greenpoint
 %{texmfdist}/fonts/source/public/greenpoint
@@ -14276,13 +13254,12 @@ fi
 %{texmfdist}/fonts/tfm/public/zefonts
 %{texmfdist}/fonts/vf/public/zefonts
 
-
 %files fonts-omega
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/omega
 %dir %{texmfdist}/omega
-%dir %{texmfdist}/omega/otp
 %dir %{texmfdist}/omega/ocp
+%dir %{texmfdist}/omega/otp
+%doc %{texmfdist}/doc/omega
 %{texmfdist}/dvips/omega
 %{texmfdist}/fonts/ofm/public/omega
 %{texmfdist}/fonts/type1/public/omega
@@ -14294,9 +13271,6 @@ fi
 %{texmfdist}/omega/ocp/omega
 %{texmfdist}/omega/otp/omega
 %{texmfdist}/tex/plain/omega
-
-#%files fonts-pazo
-#%defattr(644,root,root,755)
 
 %files fonts-pl
 %defattr(644,root,root,755)
@@ -14313,8 +13287,6 @@ fi
 %files fonts-px
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/pxfonts
-# %doc %{texmf}/doc/doc/english/free-math-font-survey/source/pxfonts.tex
-# %doc %{texmf}/doc/doc/english/free-math-font-survey/images/pxfonts.png
 %dir %{texmfdist}/fonts/map/dvips/pxfonts
 %dir %{texmfdist}/tex/latex/pxfonts
 %{texmfdist}/fonts/map/dvips/pxfonts/pxfonts.map
@@ -14323,20 +13295,6 @@ fi
 %{texmfdist}/fonts/type1/public/pxfonts
 %{texmfdist}/fonts/vf/public/pxfonts
 %{texmfdist}/tex/latex/pxfonts/pxfonts.sty
-
-#%files fonts-qfonts
-#%defattr(644,root,root,755)
-# %doc %{texmf}/doc/fonts/polish/qfonts
-# %{texmf}/fonts/enc/dvips/qfonts
-# %{texmf}/fonts/map/dvips/qfonts
-# %{texmf}/dvips/qfonts
-# %{texmf}/fonts/afm/public/qfonts
-# %{texmf}/fonts/tfm/public/qfonts
-
-# %files fonts-qpx
-# %defattr(644,root,root,755)
-# %{texmf}/fonts/tfm/public/qpx
-# %{texmf}/fonts/vf/public/qpx
 
 %files fonts-qpxqtx
 %defattr(644,root,root,755)
@@ -14406,16 +13364,12 @@ fi
 %files fonts-xypic
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/map/dvips/xypic
-# %{texmfdist}/fonts/afm/public/xypic
 %{texmfdist}/fonts/source/public/xypic
 %{texmfdist}/fonts/tfm/public/xypic
 
 %files fonts-yandy
 %defattr(644,root,root,755)
-# %{texmf}/fonts/afm/yandy
 %{texmfdist}/source/fonts/eurofont/marvosym/tfmfiles/yandy
-# %{texmf}/fonts/tfm/yandy
-# %{texmf}/fonts/vf/yandy
 
 %files fonts-type1-antp
 %defattr(644,root,root,755)
@@ -14424,7 +13378,6 @@ fi
 
 %files fonts-type1-antt
 %defattr(644,root,root,755)
-# %{texmf}/dvips/antt
 %{texmfdist}/fonts/type1/public/antt
 
 %files fonts-type1-arphic
@@ -14444,8 +13397,6 @@ fi
 
 %files fonts-type1-bluesky
 %defattr(644,root,root,755)
-# %doc %{texmf}/doc/fonts/bluesky
-# %{texmf}/dvips/bluesky
 %{texmfdist}/fonts/type1/bluesky
 
 %files fonts-type1-cc-pl
@@ -14460,10 +13411,6 @@ fi
 %files fonts-type1-cs
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/type1/public/cs
-
-# %files fonts-type1-dstroke
-# %defattr(644,root,root,755)
-# %{texmf}/fonts/type1/public/dstroke
 
 %files fonts-type1-eurosym
 %defattr(644,root,root,755)
@@ -14491,7 +13438,6 @@ fi
 
 %files fonts-type1-mathpazo
 %defattr(644,root,root,755)
-# %doc %{texmf}/doc/fonts/mathpazo
 %{texmfdist}/fonts/afm/public/mathpazo
 %{texmfdist}/fonts/type1/public/mathpazo
 
@@ -14501,24 +13447,15 @@ fi
 
 %files fonts-type1-pl
 %defattr(644,root,root,755)
-# %doc %{texmf}/doc/fonts/polish/plpsfont
 %{texmfdist}/fonts/type1/public/pl
 
 %files fonts-type1-px
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/type1/public/pxfonts
 
-# %files fonts-type1-qfonts
-# %defattr(644,root,root,755)
-# %{texmfdist}/fonts/type1/public/qfonts
-
 %files fonts-type1-tx
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/type1/public/txfonts
-
-# %files fonts-type1-tt2001
-# %defattr(644,root,root,755)
-# %{texmf}/fonts/type1/public/tt2001
 
 %files fonts-type1-uhc
 %defattr(644,root,root,755)
@@ -14540,8 +13477,6 @@ fi
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/type1/public/xypic
 
-# TeXLive-specific
-
 %files afm2pl
 %defattr(644,root,root,755)
 %dir %{texmf}/tex/latex
@@ -14560,19 +13495,22 @@ fi
 %attr(755,root,root) %{_bindir}/cef*
 %dir %{texmfdist}/tex/latex/cjk
 %dir %{texmfdist}/doc/latex/cjk
-%{texmfdist}/source/latex/cjk
-%{texmfdist}/tex/latex/cjk/CEF
 %doc %{texmfdist}/doc/latex/cjk/doc
 %doc %{texmfdist}/doc/latex/cjk/examples
+%{texmfdist}/source/latex/cjk
+%{texmfdist}/tex/latex/cjk/CEF
 
 %files detex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/detex
 %{_mandir}/man1/detex*
 
-
 %files dviutils
 %defattr(644,root,root,755)
+%dir %{texmfdist}/scripts
+%dir %{texmfdist}/scripts/dviasm
+%dir %{texmf}/fonts/cmap
+%doc %{texmf}/fonts/cmap/README
 %attr(755,root,root) %{_bindir}/dt2dv
 %attr(755,root,root) %{_bindir}/dv2dt
 %attr(755,root,root) %{_bindir}/dvi2tty
@@ -14585,6 +13523,7 @@ fi
 %attr(755,root,root) %{_bindir}/dvipos
 %attr(755,root,root) %{_bindir}/dviselect
 %attr(755,root,root) %{_bindir}/dvitodvi
+%attr(755,root,root) %{texmfdist}/scripts/dviasm/dviasm*
 %{_mandir}/man1/dt2dv*
 %{_mandir}/man1/dv2dt*
 %{_mandir}/man1/dvi2tty*
@@ -14595,14 +13534,9 @@ fi
 %{_mandir}/man1/dvipos*
 %{_mandir}/man1/dviselect*
 %{_mandir}/man1/dvitodvi*
-%{texmf}/fonts/map/dvipdfmx
-%dir %{texmf}/fonts/cmap
-%doc %{texmf}/fonts/cmap/README
 %{texmf}/dvipdfmx
 %{texmf}/fonts/cmap/dvipdfmx
-%dir %{texmfdist}/scripts
-%dir %{texmfdist}/scripts/dviasm
-%attr(755,root,root) %{texmfdist}/scripts/dviasm/dviasm*
+%{texmf}/fonts/map/dvipdfmx
 
 %files epsutils
 %defattr(644,root,root,755)
@@ -14610,9 +13544,9 @@ fi
 %attr(755,root,root) %{_bindir}/epspdf
 %attr(755,root,root) %{_bindir}/epspdftk
 %attr(755,root,root) %{_bindir}/pst2pdf
-%{texmfdist}/scripts/epspdf
-%{_mandir}/man1/epsffit*
 %doc %{texmfdist}/doc/epspdf
+%{_mandir}/man1/epsffit*
+%{texmfdist}/scripts/epspdf
 
 %files filters
 %defattr(644,root,root,755)
@@ -14621,6 +13555,7 @@ fi
 
 %files psutils
 %defattr(644,root,root,755)
+%dir %{texmf}/scripts/ps2eps
 %attr(755,root,root) %{_bindir}/extractres
 %attr(755,root,root) %{_bindir}/getafm
 %attr(755,root,root) %{_bindir}/includeres
@@ -14632,7 +13567,6 @@ fi
 %attr(755,root,root) %{_bindir}/ps2eps
 %attr(755,root,root) %{_bindir}/pstops
 %attr(755,root,root) %{_bindir}/showchar
-%dir %{texmf}/scripts/ps2eps
 %attr(755,root,root) %{texmf}/scripts/ps2eps/ps2eps*
 %{_mandir}/man1/extractres*
 %{_mandir}/man1/getafm*
@@ -14653,6 +13587,8 @@ fi
 
 %files tex4ht
 %defattr(644,root,root,755)
+%dir %{texmfdist}/scripts/tex4ht
+%doc %{texmfdist}/doc/generic/tex4ht
 %attr(755,root,root) %{_bindir}/ht
 %attr(755,root,root) %{_bindir}/htcontext
 %attr(755,root,root) %{_bindir}/htlatex
@@ -14664,9 +13600,6 @@ fi
 %attr(755,root,root) %{_bindir}/mk4ht
 %attr(755,root,root) %{_bindir}/t4ht
 %attr(755,root,root) %{_bindir}/tex4ht
-%{texmf}/scripts/tex4ht
-%{texmfdist}/tex/generic/tex4ht
-%dir %{texmfdist}/scripts/tex4ht
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/ht.sh
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/htcontext.sh
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/htlatex.sh
@@ -14676,32 +13609,33 @@ fi
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxelatex.sh
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxetex.sh
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/mk4ht.pl
-%doc %{texmfdist}/doc/generic/tex4ht
+%{texmfdist}/tex/generic/tex4ht
 %{texmfdist}/tex4ht
+%{texmf}/scripts/tex4ht
 
 %files xetex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/xdvipdfmx
 %attr(755,root,root) %{_bindir}/xelatex
 %attr(755,root,root) %{_bindir}/xetex
-%{texmf}/fmtutil/format.xetex.cnf
+%doc %{texmfdist}/doc/generic/ifxetex
+%doc %{texmfdist}/doc/generic/xetex-pstricks
 %doc %{texmfdist}/doc/xelatex
 %doc %{texmfdist}/doc/xetex
 %{texmfdist}/scripts/xetex
 %{texmfdist}/tex/generic/ifxetex
-%doc %{texmfdist}/doc/generic/ifxetex
-%doc %{texmfdist}/doc/generic/xetex-pstricks
 %{texmfdist}/tex/generic/xetexconfig
 %{texmfdist}/tex/latex/latexconfig/xelatex.ini
 %{texmfdist}/tex/plain/config/xetex.ini
 %{texmfdist}/tex/xelatex
 %{texmfdist}/tex/xetex
+%{texmf}/fmtutil/format.xetex.cnf
 
 %files xmltex
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/xmltex
 %attr(755,root,root) %{_bindir}/pdfxmltex
 %attr(755,root,root) %{_bindir}/xmltex
+%doc %{texmfdist}/doc/xmltex
+%{texmfdist}/source/xmltex
 %{texmfdist}/tex/xmltex
 %{texmf}/fmtutil/format.xmltex.cnf
-%{texmfdist}/source/xmltex
