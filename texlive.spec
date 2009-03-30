@@ -29,7 +29,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 #
-%bcond_without	bootstrap
+# %bcond_without	bootstrap
 #
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
@@ -41,7 +41,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	1
+Release:	2
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -112,7 +112,6 @@ BuildRequires:	tetex-format-pdflatex
 BuildRequires:	tetex-latex-cyrillic
 BuildRequires:	tetex-tex-babel
 %else
-# BuildRequires:	texlive-format-latex
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex-cyrillic
 BuildRequires:	texlive-tex-babel
