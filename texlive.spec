@@ -29,7 +29,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 #
-# %bcond_without	bootstrap
+# %%bcond_without	bootstrap
 #
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
