@@ -4727,6 +4727,7 @@ Summary:	Miscellaneous fonts
 Summary(pl.UTF-8):	Różne fonty
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-misc
 
 %description fonts-misc
 Miscellaneous fonts.
