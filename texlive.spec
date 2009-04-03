@@ -7242,6 +7242,7 @@ fi
 %dir %{texmfdist}/tex/generic/misc
 %dir %{texmfdist}/tex/latex
 %dir %{texmfdist}/tex/latex/base
+%dir %{texmfdist}/scripts
 %dir %{texmfdist}/source
 %dir %{texmfdist}/source/generic
 %dir %{texmf}
@@ -7838,7 +7839,6 @@ fi
 
 %files tlmgr
 %defattr(644,root,root,755)
-%dir %{texmf}/scripts
 %dir %{texmf}/scripts/texlive
 %dir %{texmf}/scripts/texlive/gswin32
 %dir %{texmf}/scripts/texlive/lua
@@ -7855,7 +7855,6 @@ fi
 
 %files scripts
 %defattr(644,root,root,755)
-%dir %{texmfdist}/scripts
 %dir %{texmfdist}/scripts/bengali
 %dir %{texmfdist}/scripts/glossaries
 %dir %{texmfdist}/scripts/oberdiek
@@ -7865,7 +7864,6 @@ fi
 %dir %{texmfdist}/scripts/shipunov
 %dir %{texmfdist}/scripts/texcount
 %dir %{texmfdist}/scripts/vpe
-%dir %{texmf}/scripts
 %dir %{texmf}/scripts/a2ping
 %dir %{texmf}/scripts/pkfix
 %dir %{texmf}/scripts/simpdftex
@@ -8028,7 +8026,6 @@ fi
 %doc %{texmf}/doc/xindy
 %dir %{texmf}/xindy
 %dir %{texmf}/xindy/lang
-%dir %{texmf}/scripts
 %attr(755,root,root) %{texmf}/scripts/xindy/*
 %{texmf}/xindy/base
 %{texmf}/xindy/class
@@ -8227,7 +8224,6 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftexconfig.tex
 %dir %{texmfdist}/doc/support
 %dir %{texmf}/fonts/map/pdftex
-%dir %{texmf}/scripts
 %dir %{texmf}/scripts/epstopdf
 %doc %{texmfdist}/doc/pdftex
 %doc %{texmfdist}/doc/support/pdfcrop
@@ -8471,7 +8467,6 @@ fi
 %attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
 %attr(755,root,root) %{_bindir}/pslatex
-%dir %{texmfdist}/scripts
 %dir %{texmfdist}/scripts/pst-pdf
 %dir %{texmfdist}/source/generic
 %dir %{texmfdist}/tex/latex
@@ -10979,7 +10974,6 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ppower4
 %attr(755,root,root) %{_bindir}/pdfthumb
-%dir %{texmfdist}/scripts
 %doc %{texmfdist}/doc/latex/powerdot
 %doc %{texmfdist}/doc/latex/ppower4
 %doc %{texmfdist}/doc/latex/sciposter
@@ -13507,7 +13501,6 @@ fi
 
 %files dviutils
 %defattr(644,root,root,755)
-%dir %{texmfdist}/scripts
 %dir %{texmfdist}/scripts/dviasm
 %dir %{texmf}/fonts/cmap
 %doc %{texmf}/fonts/cmap/README
