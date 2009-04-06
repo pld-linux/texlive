@@ -1607,6 +1607,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-cs = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-cslatex
+Provides:	tetex-cslatex
 
 %description cslatex
 CSLaTeX format basic files.
