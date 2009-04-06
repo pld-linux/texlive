@@ -4265,6 +4265,7 @@ Summary:	TeX font directories
 Summary(pl.UTF-8):	Katalogi fontów TeXa
 Group:		Fonts
 Obsoletes:	tetex-dirs-fonts
+Provides:	tetex-dirs-fonts
 
 %description dirs-fonts
 TeX font directories.
