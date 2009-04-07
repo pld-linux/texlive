@@ -5023,6 +5023,8 @@ Summary:	Computer Modern family fonts
 Summary(pl.UTF-8):	Fonty z rodziny Computer Modern
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-fonts-type1-bluesky
+Obsoletes:	tetex-fonts-type1-bluesky
 
 %description fonts-type1-bluesky
 Computer Modern family fonts.
