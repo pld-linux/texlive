@@ -114,6 +114,7 @@ BuildRequires:	tetex-format-pdflatex
 BuildRequires:	tetex-latex-cyrillic
 BuildRequires:	tetex-tex-babel
 %else
+BuildRequires:	texlive-fonts-cmsuper
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex-cyrillic
 BuildRequires:	texlive-tex-babel
@@ -5524,6 +5525,13 @@ It allows TeX to directly process XML files.
 lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch0 -p1
 %patch1 -p1
+CURDIR=$(pwd)
+
+cd utils/xindy/make-rules/alphabets
+tar xvf %{SOURCE11}
+cp $(find fonts -type f) .
+for i in larm?00.tfm; do ln -s $i $(echo $i | sed "s@larm\(.\).*@larm0\100.tfm@") ; done
+cd ${CURDIR}
 
 cd libs/teckit
 cat ax*.m4 > acinclude.m4
@@ -5547,8 +5555,8 @@ cd ../..
 %configure \
 %if %{with bootstrap}
 	--without-xindy \
-	--without-luatex \
 %endif
+	--without-luatex \
 	--disable-multiplatform \
 	--disable-static \
 	--enable-a4 \
