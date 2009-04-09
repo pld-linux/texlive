@@ -88,7 +88,10 @@ URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
+%ifarch %{ppc}
+%else
 BuildRequires:	clisp
+%endif
 BuildRequires:	ed
 BuildRequires:	expat-devel
 BuildRequires:	ffcall-devel
