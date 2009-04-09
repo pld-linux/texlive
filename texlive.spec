@@ -232,6 +232,7 @@ TeXbook' başlıklı kitabında anlatılmaktadır.
 %package other-utils
 Summary:	Other utilities
 Group:		Applications/Publishing/TeX
+Obsoletes:	tetex-format-cyrtexinfo
 
 %description other-utils
 Other utilities.
@@ -1460,6 +1461,7 @@ Provides:	tetex-format-plain
 Provides:	tetex-plain
 Obsoletes:	tetex-format-plain
 Obsoletes:	tetex-plain
+Obsoletes:	tetex-cyrplain
 
 %description plain
 Plain TeX format basic files.
@@ -1554,6 +1556,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-amstex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-ams
+Obsoletes:	tetex-format-cyramstex
 
 %description format-amstex
 American Mathematical Society macros for Plain TeX.
@@ -1777,6 +1780,7 @@ Obsoletes:	tetex-latex-caption
 Obsoletes:	tetex-latex-curves
 Obsoletes:	tetex-latex-dinbrief
 Obsoletes:	tetex-latex-draftcopy
+Obsoletes:	tetex-latex-dstroke
 Obsoletes:	tetex-latex-dvilj
 Obsoletes:	tetex-latex-eepic
 Obsoletes:	tetex-latex-endfloat
@@ -1799,6 +1803,7 @@ Obsoletes:	tetex-latex-ntgclass
 Obsoletes:	tetex-latex-oberdiek
 Obsoletes:	tetex-latex-pb-diagram
 Obsoletes:	tetex-latex-pstricks
+Obsoletes:	tetex-latex-qfonts
 Obsoletes:	tetex-latex-revtex4
 Obsoletes:	tetex-latex-seminar
 Obsoletes:	tetex-latex-t2
@@ -3318,6 +3323,7 @@ Summary(hu.UTF-8):	Néhány további LaTeX csomag
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-platex
 
 %description latex-other
 Other LaTeX packages.
@@ -4837,6 +4843,13 @@ Summary:	Other fonts
 Summary(hu.UTF-8):	További betűtípusok
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-cbgreek
+Obsoletes:	tetex-fonts-dstroke
+Obsoletes:	tetex-fonts-pazo
+Obsoletes:	tetex-qfonts
+Obsoletes:	tetex-fonts-type1-dstroke
+Obsoletes:	tetex-fonts-type1-qfonts
+Obsoletes:	tetex-fonts-type1-tt2001
 
 %description fonts-other
 Other fonts.
