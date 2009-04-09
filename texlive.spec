@@ -5556,6 +5556,9 @@ cd ../..
 %if %{with bootstrap}
 	--without-xindy \
 %endif
+%ifarch %{ppc}
+	--without-xindy \
+%endif
 	--without-luatex \
 	--disable-multiplatform \
 	--disable-static \
@@ -8176,6 +8179,9 @@ fi
 %{texmf}/texconfig/v
 %{texmf}/texconfig/x
 
+%ifarch %{ppc}
+# Don't builded xindy
+%else
 %files -n xindy
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/xindy
@@ -8371,6 +8377,7 @@ fi
 %files -n xindy-vietnamese
 %defattr(644,root,root,755)
 %{texmf}/xindy/lang/vietnamese/
+%endif
 
 %files -n xdvi
 %defattr(644,root,root,755)
