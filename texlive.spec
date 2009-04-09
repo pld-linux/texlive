@@ -8184,6 +8184,7 @@ fi
 %attr(755,root,root) %{texmf}/scripts/xindy/*
 %attr(755,root,root) %{_bindir}/tex2xindy
 %attr(755,root,root) %{_bindir}/xindy
+%attr(755,root,root) %{_bindir}/texindy
 %{_libdir}/xindy
 %{texmf}/xindy/base
 %{texmf}/xindy/class
@@ -8191,6 +8192,9 @@ fi
 %{texmf}/xindy/rules
 %{texmf}/xindy/styles
 %{texmf}/xindy/tex
+%{_mandir}/man1/tex2xindy.1*
+%{_mandir}/man1/texindy.1*
+%{_mandir}/man1/xindy.1*
 
 %files -n xindy-albanian
 %defattr(644,root,root,755)
