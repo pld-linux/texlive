@@ -88,7 +88,7 @@ URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
-%ifarch %{ppc}
+%ifarch ppc
 %else
 BuildRequires:	clisp
 %endif
@@ -5559,7 +5559,7 @@ cd ../..
 %if %{with bootstrap}
 	--without-xindy \
 %endif
-%ifarch %{ppc}
+%ifarch ppc
 	--without-xindy \
 %endif
 	--without-luatex \
@@ -8182,7 +8182,7 @@ fi
 %{texmf}/texconfig/v
 %{texmf}/texconfig/x
 
-%ifarch %{ppc}
+%ifarch ppc
 # Don't builded xindy
 %else
 %files -n xindy
