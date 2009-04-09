@@ -5801,6 +5801,10 @@ rm -rf $RPM_BUILD_ROOT%{texmf}/doc/gzip
 # install -d format-logs
 # mv -fv $RPM_BUILD_ROOT%{fmtdir}/*.log format-logs
 
+# xindy files are in %%{texmf}
+rm -rf $RPM_BUILD_ROOT%{_datadir}/xindy
+rm -rf $RPM_BUILD_ROOT%{_datadir}/doc
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -8178,6 +8182,9 @@ fi
 %dir %{texmf}/xindy
 %dir %{texmf}/xindy/lang
 %attr(755,root,root) %{texmf}/scripts/xindy/*
+%attr(755,root,root) %{_bindir}/tex2xindy
+%attr(755,root,root) %{_bindir}/xindy
+%{_libdir}/xindy
 %{texmf}/xindy/base
 %{texmf}/xindy/class
 %{texmf}/xindy/ord
