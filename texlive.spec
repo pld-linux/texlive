@@ -411,6 +411,7 @@ Summary(pl.UTF-8):	Podstawowa dokumentacja do pakietów LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-doc-latex
 
 %description doc-latex
 Basic LaTeX packages documentation.
@@ -478,7 +479,7 @@ Summary(tr.UTF-8):	dvi'dan postscript'e dönüştürücü
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Provides:	tetex-dvips
+Provides:	tetex-dvips = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-dvips
 
 %description dvips
@@ -534,6 +535,7 @@ Summary(tr.UTF-8):	dvi'dan laserjet'e dönüştürücü
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-dvilj
 
 %description dvilj
 Dvilj and dvilj's siblings (included in this package) will convert TeX
@@ -793,6 +795,7 @@ Summary(pl.UTF-8):	Łatwy dostęp do dokumentacji TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-texdoctk
 
 %description texdoctk
 A Perl/Tk-based GUI for easy access to package documentation for TeX
@@ -1431,6 +1434,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-omega = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-omega
 
 %description omega
 Omega is a version of the TeX program modified for multilingual
@@ -1473,6 +1477,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	texlive-fonts-pl = %{epoch}:%{version}-%{release}
 Requires:	texlive-plain = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-mex
 
 %description mex
 MeX Plain Format basic files.
@@ -1500,6 +1505,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-pdfmex
 
 %description format-pdfmex
 PDFMeX Plain Format.
@@ -1531,6 +1537,7 @@ Requires:	%{name}-fonts-ams = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Provides:	tetex-ams
 Obsoletes:	tetex-ams
+Obsoletes:	tetex-amstex
 Obsoletes:	tetex-plain-amsfonts
 
 %description amstex
@@ -1578,6 +1585,7 @@ Summary(pl.UTF-8):	Format TeX CSPlain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-csplain = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-csplain
 
 %description format-csplain
 TeX CSPlain format.
@@ -1591,6 +1599,7 @@ Summary(pl.UTF-8):	Format PDFTeX CSPlain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-csplain = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-pdfcsplain
 
 %description format-pdfcsplain
 PDFTeX CSPlain format.
@@ -1622,6 +1631,7 @@ Summary(pl.UTF-8):	Format CSLaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-cslatex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-cslatex
 
 %description format-cslatex
 CSLaTeX format.
@@ -1651,6 +1661,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-etex
+Obsoletes:	tetex-eplain
 
 %description eplain
 EPlain format basic files.
@@ -1702,6 +1713,7 @@ Summary(pl.UTF-8):	Niemiecka wersja formatu ConTeXt
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-context = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-context-de
 
 %description format-context-de
 German ConTeXt format.
@@ -1715,6 +1727,7 @@ Summary(pl.UTF-8):	Angielska wersja formatu ConTeXt
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-context = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-context-en
 
 %description format-context-en
 English ConTeXt format.
@@ -1728,6 +1741,7 @@ Summary(pl.UTF-8):	Holenderska wersja formatu ConTeXt
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-context = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-context-nl
 
 %description format-context-nl
 Dutch ConTeXt format.
@@ -1753,8 +1767,8 @@ Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-fonts-jknappen
 Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
-Provides:	tetex-format-latex
-Provides:	tetex-latex
+Provides:	tetex-format-latex = %{epoch}:%{version}-%{release}
+Provides:	tetex-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-koma-script
 Obsoletes:	tetex-format-latex
 Obsoletes:	tetex-latex
@@ -1897,6 +1911,7 @@ Summary(pl.UTF-8):	Pływające środowisko dla algorytmów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-algorith
 
 %description latex-algorithms
 Defines a floating algorithm environment designed to work with the
@@ -1935,6 +1950,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-antp = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-antp
 
 %description latex-antp
 A replica of Antykwa Poltawskiego font in PostScript Type 1 format
@@ -1961,6 +1977,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-antt = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-antt
 
 %description latex-antt
 Antykwa Torunska is a serif font designed by the late Polish
@@ -1992,6 +2009,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-bbm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-bbm
 
 %description latex-bbm
 Blackboard variant fonts for Computer Modern, with LaTeX support.
@@ -2018,6 +2036,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-bbold = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-bbold
 
 %description latex-bbold
 A geometric sans serif blackboard bold font, for use in mathematics.
@@ -2050,6 +2069,7 @@ Summary(hu.UTF-8):	LaTeX dokumentumosztály prezentációk és fóliák készít
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-beamer
 
 %description latex-beamer
 A LaTeX class for producing presentations and slides.
@@ -2078,6 +2098,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-ams
+Obsoletes:	tetex-latex-bibtex-ams
 
 %description latex-bibtex-ams
 BibTeX style files for American Mathematical Society publications.
@@ -2111,6 +2132,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-plbib
+Obsoletes:	tetex-latex-bibtex-pl
 
 %description latex-bibtex-pl
 Polish bibliography management for LaTeX.
@@ -2125,6 +2147,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-germbib
+Obsoletes:	tetex-latex-bibtex-german
 
 %description latex-bibtex-german
 German variants of standard BibTeX styles.
@@ -2139,6 +2162,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-revtex4
+Obsoletes:	tetex-latex-bibtex-revtex4
 
 %description latex-bibtex-revtex4
 BibTeX styles for REVTeX4.
@@ -2153,6 +2177,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-jurabib
+Obsoletes:	tetex-latex-bibtex-jurabib
 
 %description latex-bibtex-jurabib
 Extended BibTeX citation support for the humanities and legal texts.
@@ -2234,6 +2259,7 @@ Summary(pl.UTF-8):	Obsługa fontów tekstowych i matematycznych Concrete w LaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-ccfonts
 
 %description latex-ccfonts
 LaTeX font definition files for the Concrete fonts and a LaTeX package
@@ -2253,6 +2279,7 @@ Summary(pl.UTF-8):	Obsługa kompresowanych, sortowanych list numerowanych cytat�
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-cite
 
 %description latex-cite
 Supports compressed, sorted lists of numerical citations.
@@ -2267,6 +2294,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-cmbright = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-cmbright
 
 %description latex-cmbright
 A family of sans serif fonts for TeX and LaTeX, based on Donald
@@ -2302,6 +2330,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-concmath = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-concmath
 
 %description latex-concmath
 LaTeX package and font definition files to access the Concrete math
@@ -2346,6 +2375,7 @@ Summary(pl.UTF-8):	Dostosowywanie stylów BibTeXa dla LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-custom-bib
 
 %description latex-custom-bib
 Package generating customized BibTeX bibliography styles from a
@@ -2457,6 +2487,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-jknappen = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-jknappen
 
 %description latex-jknappen
 Miscellaneous macros, mostly for making use of extra fonts, by Joerg
@@ -3144,6 +3175,7 @@ Summary(pl.UTF-8):	Pakiet umożliwiający używanie fontów Lucida Bright w LaTe
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-lucidabr
 
 %description latex-lucidabr
 Package to make Lucida Bright fonts usable with LaTeX.
@@ -3184,6 +3216,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-mflogo = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-mflogo
 
 %description latex-mflogo
 LaTeX package and font definition file to access the Knuthian `logo'
@@ -3201,6 +3234,7 @@ Summary(pl.UTF-8):	Pliki opisów fontów udostępniające dodatkowe fonty, jak y
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-mfnfss
 
 %description latex-mfnfss
 Font description files to use extra fonts like yinit and ygoth.
@@ -3214,6 +3248,7 @@ Summary(pl.UTF-8):	Tworzenie spisów treści dla każdego rozdziału
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-minitoc
 
 %description latex-minitoc
 Produce a table of contents for each chapter.
@@ -3227,6 +3262,7 @@ Summary(pl.UTF-8):	Wsparcie dla MLTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-mltex
 
 %description latex-mltex
 Support for MLTeX, the multilingual TeX extension from Michael J.
@@ -3714,6 +3750,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-px = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-pxfonts
 
 %description latex-pxfonts
 PX fonts LaTeX support.
@@ -3817,6 +3854,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-txfonts
 
 %description latex-txfonts
 TX fonts LaTeX support.
@@ -3844,6 +3882,7 @@ Summary(pl.UTF-8):	Interfejs inputenc do używania alternatywnych kodowań wejś
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-umlaute
 
 %description latex-umlaute
 An interface to inputenc for using alternate input encodings.
@@ -4014,6 +4053,7 @@ Summary(pl.UTF-8):	Makra generujące Metafont lub Metapost do rysowania obrazkó
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-tex-mfpic
 
 %description tex-mfpic
 Macros which generate Metafont or Metapost for drawing pictures.
@@ -4043,6 +4083,7 @@ Summary(pl.UTF-8):	Makra do rysowania obrazków dla TeXa i LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-tex-pictex
 
 %description tex-pictex
 Picture drawing macros for TeX and LaTeX.
@@ -4096,6 +4137,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-qpxqtx = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-tex-qpx
+Obsoletes:	tetex-tex-qtx
 
 %description tex-qpxqtx
 QuasiTimes and TX fonts typesetting support.
@@ -4142,6 +4185,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-spanishb
+Obsoletes:	tetex-tex-spanish
 
 %description tex-spanish
 Various TeX related files for typesetting documents written in
@@ -4157,6 +4201,7 @@ Summary(pl.UTF-8):	Makra graficzne używające osadzanego PostScriptu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-tex-texdraw
 
 %description tex-texdraw
 Graphical macros, using embedded PostScript.
@@ -4170,6 +4215,7 @@ Summary(pl.UTF-8):	Ikonki dla PDFTeXa i dvips/ps2pdf
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-tex-thumbpdf
 
 %description tex-thumbpdf
 Provides support, using Perl, for thumbnails in pdfTeX and
@@ -4235,6 +4281,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-xypic = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-xypic
 
 %description tex-xypic
 A package for typesetting a variety of graphs and diagrams with TeX.
@@ -4264,8 +4311,8 @@ Rozszerzenie do pakietu keyval.
 Summary:	TeX font directories
 Summary(pl.UTF-8):	Katalogi fontów TeXa
 Group:		Fonts
-Obsoletes:	tetex-dirs-fonts
 Provides:	tetex-dirs-fonts
+Obsoletes:	tetex-dirs-fonts
 
 %description dirs-fonts
 TeX font directories.
@@ -4294,6 +4341,7 @@ Summary:	Virtual fonts for PDF-files with T1 encoded CMR-fonts
 Summary(pl.UTF-8):	Wirtualne fonty do plików PDF z fontami CMR o kodowaniu T1
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-ae
 
 %description fonts-ae
 Virtual fonts for PDF-files with T1 encoded CMR-fonts.
@@ -4320,6 +4368,7 @@ Summary:	Antykwa Poltawskiego, a Type 1 family of Polish traditional type
 Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-antp
 
 %description fonts-antp
 Antykwa Poltawskiego, a Type 1 family of Polish traditional type.
@@ -4333,6 +4382,7 @@ Summary:	Antykwa Torunska, a Type 1 family of a Polish traditional type
 Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-antt
 
 %description fonts-antt
 Antykwa Torunska, a Type 1 family of a Polish traditional type.
@@ -4353,6 +4403,7 @@ Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
 Summary(pl.UTF-8):	Tablicowy wariant fontów Computer Modern ze wsparciem dla LaTeXa
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-bbm
 
 %description fonts-bbm
 Blackboard variant fonts for Computer Modern, with LaTeX support.
@@ -4365,6 +4416,7 @@ Summary:	Sans serif blackboard bold for LaTeX
 Summary(pl.UTF-8):	Tablicowy tłusty font sans serif dla LaTeXa
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-bbold
 
 %description fonts-bbold
 Sans serif blackboard bold for LaTeX.
@@ -4390,6 +4442,7 @@ Summary:	Polish version of Computer Concrete fonts
 Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-cc-pl
 
 %description fonts-cc-pl
 Polish version of Computer Concrete fonts.
@@ -4402,6 +4455,7 @@ Summary:	Compugraphic fonts
 Summary(pl.UTF-8):	Fonty Compugraphic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-cg
 
 %description fonts-cg
 Compugraphic fonts.
@@ -4428,6 +4482,7 @@ Summary:	CM Bright fonts
 Summary(pl.UTF-8):	Fonty CM Bright
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-cmbright
 
 %description fonts-cmbright
 CM Bright fonts.
@@ -4481,6 +4536,7 @@ Summary:	Concrete Math fonts
 Summary(pl.UTF-8):	Fonty matematyczne Concrete Math
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-concmath
 
 %description fonts-concmath
 Concrete Math fonts.
@@ -4493,6 +4549,7 @@ Summary:	Concrete Roman fonts
 Summary(pl.UTF-8):	Fonty Concrete Roman
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-concrete
 
 %description fonts-concrete
 Concrete Roman fonts, designed by Donald E. Knuth, originally for use
@@ -4507,6 +4564,7 @@ Summary:	Czech/Slovak-tuned MetaFont Computer Modern fonts
 Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i słowackiego
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-cs
 
 %description fonts-cs
 Czech/Slovak-tuned MetaFont Computer Modern fonts.
@@ -4520,6 +4578,7 @@ Summary:	Sources for the European Concrete fonts
 Summary(pl.UTF-8):	Źródła dla fontów European Concrete
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-ecc
 
 %description fonts-ecc
 The MetaFont sources and tfm files of the European Concrete Fonts.
@@ -4536,6 +4595,7 @@ Summary:	The new European currency symbol for the Euro
 Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-eurosym
 
 %description fonts-eurosym
 The new European currency symbol for the Euro implemented in Metafont,
@@ -4552,6 +4612,7 @@ Summary:	The Virtual Euler Math fonts
 Summary(pl.UTF-8):	Fonty Virtual Euler Math
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-eulervm
 
 %description fonts-eulervm
 Euler-VM is a set of _virtual_ math fonts based on Euler and CM. This
@@ -4572,6 +4633,7 @@ Summary:	Fonts similar to EUSM but with two more characters
 Summary(pl.UTF-8):	Fonty podobne do EUSM, ale z dwoma dodatkowymi znakami
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-euxm
 
 %description fonts-euxm
 Fonts like EUSM but with two more characters needed for Concrete Math
@@ -4586,6 +4648,7 @@ Summary:	Gothic and ornamental initial fonts by Yannis Haralambous
 Summary(pl.UTF-8):	Początkowe fonty gotyckie i ornamentowe Yannisa Haralambousa
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-gothic
 
 %description fonts-gothic
 Gothic and ornamental initial fonts by Yannis Haralambous.
@@ -4598,6 +4661,7 @@ Summary:	Converted mflogo font
 Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-hoekwater
 
 %description fonts-hoekwater
 Fonts originally created in MetaFont, transformed to PostScript by
@@ -4656,6 +4720,7 @@ Summary:	Olga Lapko's LH fonts
 Summary(pl.UTF-8):	Fonty LH Olgi Lapko
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-lh
 
 %description fonts-lh
 The lh fonts for the `T2'/X2 encodings (for cyrillic languages).
@@ -4668,6 +4733,7 @@ Summary:	Latin Modern family fonts
 Summary(pl.UTF-8):	Fonty z rodziny Latin Modern
 Group:		Applications/Publishing/TeX
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-lm
 
 %description fonts-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -4696,6 +4762,7 @@ Summary:	Martin Vogel's Symbol (marvosym) font
 Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-marvosym
 
 %description fonts-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -4718,6 +4785,7 @@ Summary:	Logo fonts
 Summary(pl.UTF-8):	Fonty logo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-mflogo
 
 %description fonts-mflogo
 Logo fonts.
@@ -4743,6 +4811,7 @@ Summary:	Monotype fonts
 Summary(pl.UTF-8):	Fonty Monotype
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-monotype
 
 %description fonts-monotype
 Monotype fonts.
@@ -4755,6 +4824,7 @@ Summary:	Fonts for Omega - extended unicode TeX
 Summary(pl.UTF-8):	Fonty dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-omega
 
 %description fonts-omega
 Fonts for Omega - extended unicode TeX.
@@ -4779,6 +4849,7 @@ Summary:	Polish fonts
 Summary(pl.UTF-8):	Polskie fonty
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-pl
 
 %description fonts-pl
 Polish fonts.
@@ -4791,6 +4862,7 @@ Summary:	PX fonts
 Summary(pl.UTF-8):	Fonty PX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-px
 
 %description fonts-px
 PX fonts.
@@ -4806,6 +4878,8 @@ Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 # I hope qpxqtx doesn't need qfonts
 # Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-qpx
+Obsoletes:	tetex-fonts-qtx
 
 %description fonts-qpxqtx
 Additional fonts for QTX package.
@@ -4818,6 +4892,7 @@ Summary:	Fonts of uppercase script letters for scientific and mathematical types
 Summary(pl.UTF-8):	Fonty wielkich liter pisanych do składania dokumentów naukowych i matematycznych
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-rsfs
 
 %description fonts-rsfs
 Fonts of uppercase script letters for use as symbols in scientific and
@@ -4850,6 +4925,7 @@ Summary:	TX fonts
 Summary(pl.UTF-8):	Fonty TX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-tx
 
 %description fonts-tx
 TX fonts.
@@ -4870,6 +4946,7 @@ Summary:	URW fonts
 Summary(pl.UTF-8):	Fonty URW
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-urw
 
 %description fonts-urw
 URW fonts.
@@ -4882,6 +4959,7 @@ Summary:	URWVN fonts
 Summary(pl.UTF-8):	Fonty URWVN
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-urwvn
 
 %description fonts-urwvn
 URWVN fonts.
@@ -4894,6 +4972,7 @@ Summary:	VNR fonts
 Summary(pl.UTF-8):	Fonty VNR
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-vnr
 
 %description fonts-vnr
 VNR fonts.
@@ -4941,6 +5020,7 @@ Summary:	Xy-pic fonts
 Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-xypic
 
 %description fonts-xypic
 Xy-pic fonts.
@@ -4953,6 +5033,7 @@ Summary:	European Modern fonts from Y&Y
 Summary(pl.UTF-8):	Fonty European Modern od Y&Y
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-yandy
 
 %description fonts-yandy
 European Modern fonts from Y&Y.
@@ -4965,6 +5046,7 @@ Summary:	Antykwa Poltawskiego, a Type 1 family of Polish traditional type
 Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-antp
 
 %description fonts-type1-antp
 Antykwa Poltawskiego, a Type 1 family of Polish traditional type.
@@ -4978,6 +5060,7 @@ Summary:	Antykwa Torunska, a Type 1 family of a Polish traditional type
 Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-antt
 
 %description fonts-type1-antt
 Antykwa Torunska, a Type 1 family of a Polish traditional type.
@@ -4998,6 +5081,7 @@ Summary:	Free replacement for basic MathTime fonts
 Summary(pl.UTF-8):	Wolnodostępny zamiennik podstawowych fontów MathTime
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-belleek
 
 %description fonts-type1-belleek
 Free replacement for basic MathTime fonts.
@@ -5037,6 +5121,7 @@ Summary:	Polish version of Computer Concrete fonts
 Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-cc-pl
 
 %description fonts-type1-cc-pl
 Polish version of Computer Concrete fonts.
@@ -5049,6 +5134,7 @@ Summary:	Computer Modern fonts extended with Russian letters
 Summary(pl.UTF-8):	Fonty Computer Modern rozszerzone o litery rosyjskie
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-cmcyr
 
 %description fonts-type1-cmcyr
 Computer Modern fonts extended with Russian letters.
@@ -5061,6 +5147,7 @@ Summary:	Czech/Slovak-tuned MetaFont Computer Modern fonts
 Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i słowackiego
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-cs
 
 %description fonts-type1-cs
 Czech/Slovak-tuned MetaFont Computer Modern fonts.
@@ -5074,6 +5161,7 @@ Summary:	The new European currency symbol for the Euro
 Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-eurosym
 
 %description fonts-type1-eurosym
 The new European currency symbol for the Euro implemented in Metafont,
@@ -5090,6 +5178,7 @@ Summary:	Converted mflogo font
 Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-hoekwater
 
 %description fonts-type1-hoekwater
 Fonts originally created in MetaFont, transformed to PostScript by
@@ -5106,6 +5195,7 @@ Summary:	SC/OsF fonts for URW Palladio L
 Summary(pl.UTF-8):	Fonty SC/OsF dla URW Palladio L
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-fpl
 
 %description fonts-type1-fpl
 The FPL Fonts provide a set of SC/OsF fonts for URW Palladio L which
@@ -5138,6 +5228,7 @@ Summary:	Type1 Latin Modern family fonts
 Summary(pl.UTF-8):	Fonty Type1 z rodziny Latin Modern
 Group:		Applications/Publishing/TeX
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-lm
 
 %description fonts-type1-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -5166,6 +5257,7 @@ Summary:	Martin Vogel's Symbol (marvosym) font
 Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-marvosym
 
 %description fonts-type1-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -5188,6 +5280,7 @@ Summary:	Pazo Math fonts
 Summary(pl.UTF-8):	Fonty matematyczne Pazo Math
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-mathpazo
 
 %description fonts-type1-mathpazo
 Pazo Math fonts.
@@ -5200,6 +5293,7 @@ Summary:	Type1 fonts for Omega - extended unicode TeX
 Summary(pl.UTF-8):	Fonty Type1 dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-omega
 
 %description fonts-type1-omega
 Type1 fonts for Omega - extended unicode TeX.
@@ -5213,6 +5307,7 @@ Summary(pl.UTF-8):	Polskie fonty
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-pl
 
 %description fonts-type1-pl
 Polish fonts.
@@ -5225,6 +5320,7 @@ Summary:	PX fonts
 Summary(pl.UTF-8):	Fonty PX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-px
 
 %description fonts-type1-px
 PX fonts.
@@ -5237,6 +5333,7 @@ Summary:	TX fonts
 Summary(pl.UTF-8):	Fonty TX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-tx
 
 %description fonts-type1-tx
 TX fonts.
@@ -5271,6 +5368,7 @@ Summary:	Type1 VNR fonts
 Summary(pl.UTF-8):	Fonty Type1 VNR
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-vnr
 
 %description fonts-type1-vnr
 Type1 VNR fonts.
@@ -5291,6 +5389,7 @@ Summary:	Xy-pic fonts
 Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-fonts-type1-xypic
 
 %description fonts-type1-xypic
 Xy-pic fonts.
@@ -8393,6 +8492,7 @@ fi
 %doc %{texmfdist}/doc/eplain
 %{texmfdist}/tex/plain/etex
 %{texmfdist}/tex/eplain
+%dir %{texmfdist}/source/eplain
 %{texmfdist}/source/eplain/eplain-source-3.2.zip
 
 %files format-eplain
@@ -9562,6 +9662,7 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/mltex
 %{texmfdist}/tex/latex/mltex
+%dir %{texmfdist}/tex/mltex
 %{texmfdist}/tex/mltex/config
 
 %files latex-moreverb
@@ -13481,6 +13582,7 @@ fi
 %dir %{texmf}/tex/latex
 %attr(755,root,root) %{_bindir}/afm2pl
 %{_mandir}/man1/afm2pl*
+%dir %{texmf}/fonts/lig
 %{texmf}/fonts/lig/afm2pl
 %{texmf}/tex/latex/afm2pl
 
