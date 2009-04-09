@@ -54,6 +54,8 @@ Source5:	xdvi.desktop
 Source6:	xdvi.png
 Source10:	http://tug.ctan.org/get/macros/latex/contrib/floatflt.zip
 # Source10-md5:	5d9fe14d289aa81ebb6b4761169dd5f2
+Source11:	http://carme.pld-linux.org/~uzsolt/sources/texlive-fonts-larm.tar.bz2
+# Source11-md5:	df2fcc66f0c2e90785ca6c9b27dacd34
 Source50:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/Splashscreen.pm
 # Source50-md5:	5cc49f49010f27fdb02dd7053797ba19
 Source51:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLConfig.pm
@@ -4342,6 +4344,14 @@ Adobe fonts.
 %description fonts-adobe -l pl.UTF-8
 Fonty Adobe.
 
+%package fonts-larm
+Summary:	Larm (cyrillic) fonts
+Group:		Fonts
+Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+
+%description fonts-larm
+Larm (cyrillic) fonts.
+
 %package fonts-ae
 Summary:	Virtual fonts for PDF-files with T1 encoded CMR-fonts
 Summary(pl.UTF-8):	Wirtualne fonty do plików PDF z fontami CMR o kodowaniu T1
@@ -5696,13 +5706,23 @@ install %{SOURCE61} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
 install %{SOURCE62} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
 
 cd $RPM_BUILD_ROOT%{texmfdist}/tex/latex
+
+# floatflt
 unzip %{SOURCE10}
 cd floatflt
 latex floatflt.ins
 %{__rm} *.log
 install -d $RPM_BUILD_ROOT%{texmfdist}/doc/latex/floatflt
 %{__mv} *.txt *.tex *.pdf README $RPM_BUILD_ROOT%{texmfdist}/doc/latex/floatflt
+cd $RPM_BUILD_ROOT%{texmfdist}
+
+# larm fonts
+tar xvf %{SOURCE11}
+cd fonts/tfm/la
+for i in larm?00.tfm; do ln -s $i $(echo $i | sed "s@larm\(.\).*@larm0\100.tfm@") ; done
+
 cd $CURDIR
+
 
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
 #touch $RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap/maps.lst
@@ -6835,6 +6855,12 @@ fi
 %texhash
 
 %postun fonts-adobe
+%texhash
+
+%post fonts-larm
+%texhash
+
+%postun fonts-larm
 %texhash
 
 %post fonts-ae
@@ -12215,6 +12241,12 @@ fi
 %{texmfdist}/fonts/afm/adobe
 %{texmfdist}/fonts/tfm/adobe
 %{texmfdist}/fonts/vf/adobe
+
+%files fonts-larm
+%defattr(644,root,root,755)
+%{texmfdist}/fonts/tfm/la
+%{texmfdist}/fonts/type1/la/
+%{texmfdist}/fonts/enc/larm.enc
 
 %files fonts-ae
 %defattr(644,root,root,755)
