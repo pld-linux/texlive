@@ -2988,6 +2988,9 @@ Summary(hu.UTF-8):	Fizikai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Suggests:	%{name}-latex-SIstyle
+Suggests:	%{name}-latex-SIunits
+Suggests:	%{name}-latex-siunitx
 
 %description latex-physics
 This package contains:
@@ -3060,6 +3063,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Suggests:	%{name}-latex-lewis
 
 %description latex-chem
 This package contains:
@@ -8660,7 +8664,6 @@ fi
 %{texmfdist}/tex/latex/AkkTeX
 %{texmfdist}/tex/latex/GuIT
 %{texmfdist}/tex/latex/IEEEtran
-%{texmfdist}/tex/latex/SIstyle
 %{texmfdist}/tex/latex/Tabbing
 %{texmfdist}/tex/latex/a0poster
 %{texmfdist}/tex/latex/acmtrans
@@ -12071,6 +12074,7 @@ fi
 %defattr(644,root,root,755)
 %{texmfdist}/doc/latex/SIstyle
 %{texmfdist}/source/latex/SIstyle
+%{texmfdist}/tex/latex/SIstyle
 
 %files latex-SIunits
 %defattr(644,root,root,755)
