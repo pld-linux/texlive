@@ -1528,6 +1528,7 @@ Summary(pl.UTF-8):	Format MeX Plain z plikami źródłowymi kodowanymi UTF-8
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-utf8mex
 
 %description format-utf8mex
 MeX Plain Format with UTF-8 encoded source files.
