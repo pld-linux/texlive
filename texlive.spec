@@ -30,7 +30,8 @@
 #
 %include	/usr/lib/rpm/macros.perl
 #
-# %%bcond_without	bootstrap
+# Conditional build:
+%bcond_with	bootstrap	# bootstrap build
 #
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
