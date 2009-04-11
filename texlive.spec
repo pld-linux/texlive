@@ -119,6 +119,7 @@ BuildRequires:	texlive-fonts-cmsuper
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex-cyrillic
 BuildRequires:	texlive-tex-babel
+BuildRequires:	texlive-xetex
 # fill with future texlive BR. guesses ones for now
 %endif
 BuildRequires:	/usr/bin/latex
