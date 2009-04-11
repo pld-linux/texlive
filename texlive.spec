@@ -7957,10 +7957,6 @@ fi
 %{texmf}/dvips/config
 %{texmf}/dvips/getafm
 %{texmf}/dvips/gsftopk
-<<<<<<< texlive.spec
-# %config(noreplace) %verify(not md5 mtime size) %{texmf}/dvips/config/config.ps
-=======
->>>>>>> 1.226
 %{texmfdist}/fonts/enc/dvips/base
 %{texmfdist}/fonts/map/dvips/allrunes
 %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
