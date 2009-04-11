@@ -89,10 +89,7 @@ URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
-%ifarch ppc
-%else
 BuildRequires:	clisp
-%endif
 BuildRequires:	ed
 BuildRequires:	expat-devel
 BuildRequires:	ffcall-devel
@@ -5560,11 +5557,13 @@ cd texk/kpathsea
 %{__sed} -i 's@^TEXMFVAR =.*@TEXMFVAR = %{_localstatedir}@' texmf.cnf
 cd ../..
 
+%ifarch ppc ppc64
+# clisp does not work properly on forge
+ulimit -s unlimited
+%endif
+
 %configure \
 %if %{with bootstrap}
-	--without-xindy \
-%endif
-%ifarch ppc
 	--without-xindy \
 %endif
 	--without-luatex \
@@ -7957,6 +7956,10 @@ fi
 %{texmf}/dvips/config
 %{texmf}/dvips/getafm
 %{texmf}/dvips/gsftopk
+<<<<<<< texlive.spec
+# %config(noreplace) %verify(not md5 mtime size) %{texmf}/dvips/config/config.ps
+=======
+>>>>>>> 1.226
 %{texmfdist}/fonts/enc/dvips/base
 %{texmfdist}/fonts/map/dvips/allrunes
 %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
@@ -8187,9 +8190,6 @@ fi
 %{texmf}/texconfig/v
 %{texmf}/texconfig/x
 
-%ifarch ppc
-# Don't builded xindy
-%else
 %files -n xindy
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/xindy
@@ -8385,7 +8385,6 @@ fi
 %files -n xindy-vietnamese
 %defattr(644,root,root,755)
 %{texmf}/xindy/lang/vietnamese/
-%endif
 
 %files -n xdvi
 %defattr(644,root,root,755)
