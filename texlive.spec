@@ -105,6 +105,7 @@ BuildRequires:	libtool
 BuildRequires:	libsigsegv
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	readline-devel
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
