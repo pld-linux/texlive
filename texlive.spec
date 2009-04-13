@@ -9354,7 +9354,8 @@ fi
 %files latex-bibtex-revtex4
 %defattr(644,root,root,755)
 %dir %{texmfdist}/source/latex/revtex
-%doc %{texmfdist}/doc/latex/revtex/revtex4.pdf
+%dir %{texmfdist}/doc/latex
+%doc %{texmfdist}/doc/latex/revtex
 %{texmfdist}/source/latex/revtex/revtex4.dtx
 %{texmfdist}/source/latex/revtex/revtex4.ins
 %{texmfdist}/tex/latex/revtex/revtex4.cls
