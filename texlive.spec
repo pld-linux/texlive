@@ -4380,6 +4380,7 @@ Summary:	AMS fonts
 Summary(pl.UTF-8):	Fonty AMS
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-ams
 Obsoletes:	tetex-fonts-ams
 
