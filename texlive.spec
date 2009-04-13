@@ -12,6 +12,8 @@
 # - fix package removal:
 #   /usr/bin/texhash[77]: kpsewhich: not found
 # - drop ppc bconds once clisp is fixed on that architecture
+# - jadetex subpackage (from other-utils)
+# - maybe patch main config file (http://www.togaware.com/linux/survivor/TeX_Capacity.html)
 #
 # FHS TODO:
 # - merge rhconfig and texmfsysvar patches
@@ -43,7 +45,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	4
+Release:	4.1
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -117,11 +119,28 @@ BuildRequires:	tetex-format-pdflatex
 BuildRequires:	tetex-latex-cyrillic
 BuildRequires:	tetex-tex-babel
 %else
-BuildRequires:	texlive-fonts-cmsuper
-BuildRequires:	texlive-format-pdflatex
-BuildRequires:	texlive-latex-cyrillic
-BuildRequires:	texlive-tex-babel
-BuildRequires:	texlive-xetex
+BuildRequires:	%{name}-csplain
+BuildRequires:	%{name}-fonts-cmsuper
+#BuildRequires:	%{name}-format-amstex
+#BuildRequires:	%{name}-format-cslatex
+BuildRequires:	%{name}-format-eplain
+BuildRequires:	%{name}-format-pdflatex
+BuildRequires:	%{name}-latex
+BuildRequires:	%{name}-latex-cyrillic
+BuildRequires:	%{name}-metafont
+BuildRequires:	%{name}-metapost
+BuildRequires:	%{name}-mex
+BuildRequires:	%{name}-omega
+BuildRequires:	%{name}-other-utils
+BuildRequires:	%{name}-pdftex
+BuildRequires:	%{name}-phyzzx
+BuildRequires:	%{name}-plain
+BuildRequires:	%{name}-tex-babel
+BuildRequires:	%{name}-tex-physe
+BuildRequires:	%{name}-xetex
+BuildRequires:	%{name}-xetex
+BuildRequires:	%{name}-xmltex
+BuildRequires: 	%{name}-context
 # fill with future texlive BR. guesses ones for now
 %endif
 BuildRequires:	/usr/bin/latex
@@ -240,6 +259,8 @@ TeXbook' başlıklı kitabında anlatılmaktadır.
 Summary:	Other utilities
 Group:		Applications/Publishing/TeX
 Obsoletes:	tetex-format-cyrtexinfo
+Obsoletes:	jadetex
+Provides:	jadetex
 
 %description other-utils
 Other utilities.
@@ -5536,6 +5557,8 @@ fonts.
 %package xmltex
 Summary:	TeX package for processing XML files
 Group:		Applications/Publishing/TeX
+Obsoletes:	xmltex
+Provides:	xmltex
 Requires(post,postun):	/usr/bin/texhash
 
 %description xmltex
@@ -5832,6 +5855,12 @@ rm -rf $RPM_BUILD_ROOT%{texmf}/doc/gzip
 # xindy files are in %%{texmf}
 rm -rf $RPM_BUILD_ROOT%{_datadir}/xindy
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc
+
+# Create format files
+# for format in latex pdftex pdfetex pdflatex; do
+# 	fmtutil --byfmt=${format} --fmtdir=$RPM_BUILD_ROOT%{fmtdir}
+# done
+fmtutil --all --fmtdir=$RPM_BUILD_ROOT%{fmtdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
