@@ -7894,7 +7894,6 @@ fi
 %doc %{texmfdist}/doc/latex/preview
 %doc %{texmfdist}/doc/latex/program
 %doc %{texmfdist}/doc/latex/psfrag
-%doc %{texmfdist}/doc/latex/revtex
 %doc %{texmfdist}/doc/latex/rotating
 %doc %{texmfdist}/doc/latex/rotfloat
 %doc %{texmfdist}/doc/latex/scale
