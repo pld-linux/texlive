@@ -2850,6 +2850,16 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 # gnuplottex needs gnuplot
 Requires:	gnuplot
+Requires:	%{name}-fonts-bbm = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-stmaryrd = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-carlisle = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-psnfss = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-pst-3dplot = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-wasysym = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-xkeyval = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-xypic = %{epoch}:%{version}-%{release}
 
 %description latex-math
 This package contains:
@@ -2892,6 +2902,7 @@ This package contains:
 - subdepth: unify maths subscript height.
 - subeqn: package for subequation numbering.
 - subeqnarray: equation array with sub numbering.
+- tree-dvips: trees and other linguists' macros.
 - trfsigns: typeset transform signs.
 - trsym: symbols for transformations.
 - ulsy: extra mathematical characters.
@@ -2938,6 +2949,7 @@ Ez a csomag a következőket tartalmazza:
 - subdepth: matematikai indexek méretének egységesítése
 - subeqn: alegyenletek sorszámozása
 - subeqnarray: egyenletek al-sorszámozása
+- tree-dvips: trees and other linguists' macros
 - trfsigns: transzformációs jelek szedése
 - trsym: szimbólumok transzformációkhoz
 - ulsy: extra matematikai karakterek
@@ -3024,6 +3036,7 @@ Summary(hu.UTF-8):	Biológiai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-xetex = %{epoch}:%{version}-%{release}
 
 %description latex-biology
 This package contains:
@@ -10219,7 +10232,6 @@ fi
 %doc %{texmfdist}/doc/latex/toptesi
 %doc %{texmfdist}/doc/latex/trajan
 %doc %{texmfdist}/doc/latex/translator
-%doc %{texmfdist}/doc/latex/tree-dvips
 %doc %{texmfdist}/doc/latex/trivfloat
 %doc %{texmfdist}/doc/latex/turnstile
 %doc %{texmfdist}/doc/latex/twoup
@@ -10303,6 +10315,7 @@ fi
 
 %files latex-math
 %defattr(644,root,root,755)
+%doc %{texmfdist}/doc/fonts/eco
 %doc %{texmfdist}/doc/latex/bez123
 %doc %{texmfdist}/doc/latex/binomexp
 %doc %{texmfdist}/doc/latex/cmll
@@ -10350,11 +10363,14 @@ fi
 %{texmfdist}/fonts/source/public/trsym
 %{texmfdist}/fonts/source/public/ulsy
 %{texmfdist}/fonts/tfm/public/cmll
+%{texmfdist}/fonts/tfm/public/eco
 %{texmfdist}/fonts/tfm/public/esvect
 %{texmfdist}/fonts/tfm/public/trsym
 %{texmfdist}/fonts/tfm/public/ulsy
 %{texmfdist}/fonts/type1/public/cmll
 %{texmfdist}/fonts/type1/public/esvect
+%{texmfdist}/fonts/vf/public/eco
+%{texmfdist}/source/fonts/eco
 %{texmfdist}/source/latex/makeplot
 %{texmfdist}/source/latex/mfpic4ode
 %{texmfdist}/source/latex/semantic
@@ -10406,6 +10422,9 @@ fi
 %{texmfdist}/tex/latex/trfsigns
 %{texmfdist}/tex/latex/trsym
 %{texmfdist}/tex/latex/ulsy
+%doc %{texmfdist}/doc/latex/tree-dvips
+%{texmfdist}/source/latex/tree-dvips
+%{texmfdist}/tex/latex/tree-dvips
 
 %files latex-physics
 %defattr(644,root,root,755)
@@ -11753,9 +11772,6 @@ fi
 %{texmfdist}/tex/latex/trajan
 # Provide an open platform for packages to be localized.
 %{texmfdist}/tex/latex/translator
-# Trees and other linguists' macros.
-%{texmfdist}/source/latex/tree-dvips
-%{texmfdist}/tex/latex/tree-dvips
 # Quick float definitions in LaTeX.
 %{texmfdist}/source/latex/trivfloat
 %{texmfdist}/tex/latex/trivfloat
@@ -11823,14 +11839,18 @@ fi
 
 %files latex-pst-3dplot
 %defattr(644,root,root,755)
+%doc %{texmfdist}/doc/generic/pst-3d
 %doc %{texmfdist}/doc/generic/pst-3dplot
 %{texmfdist}/dvips/pst-3dplot
+%{texmfdist}/source/generic/pst-3d
+%{texmfdist}/source/generic/pst-3dplot
+%{texmfdist}/tex/generic/pst-3d
 %{texmfdist}/tex/generic/pst-3dplot
+%{texmfdist}/tex/latex/pst-3d
 %{texmfdist}/tex/latex/pst-3dplot
 
 %files latex-pst-bar
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/generic/pst-3dplot
 %{texmfdist}/dvips/pst-bar
 %{texmfdist}/tex/generic/pst-bar
 %{texmfdist}/tex/latex/pst-bar
@@ -11924,7 +11944,6 @@ fi
 
 %files latex-pst-uncategorized
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/generic/pst-3d
 %doc %{texmfdist}/doc/generic/pst-asr
 %doc %{texmfdist}/doc/generic/pst-bar
 %doc %{texmfdist}/doc/generic/pst-barcode
@@ -11970,8 +11989,6 @@ fi
 %{texmfdist}/dvips/pst-spectra
 %{texmfdist}/dvips/pst-vue3d
 %{texmfdist}/scripts/pst-pdf
-%{texmfdist}/source/generic/pst-3d
-%{texmfdist}/source/generic/pst-3dplot
 %{texmfdist}/source/generic/pst-barcode
 %{texmfdist}/source/generic/pst-blur
 %{texmfdist}/source/generic/pst-circ
@@ -11997,7 +12014,6 @@ fi
 %{texmfdist}/source/latex/pst-gr3d
 %{texmfdist}/source/latex/pst-pdf
 %{texmfdist}/source/latex/pst-poly
-%{texmfdist}/tex/generic/pst-3d
 %{texmfdist}/tex/generic/pst-asr
 %{texmfdist}/tex/generic/pst-barcode
 %{texmfdist}/tex/generic/pst-blur
@@ -12023,7 +12039,6 @@ fi
 %{texmfdist}/tex/generic/pst-spectra
 %{texmfdist}/tex/generic/pst-stru
 %{texmfdist}/tex/generic/pst-vue3d
-%{texmfdist}/tex/latex/pst-3d
 %{texmfdist}/tex/latex/pst-asr
 %{texmfdist}/tex/latex/pst-barcode
 %{texmfdist}/tex/latex/pst-blur
@@ -12857,11 +12872,6 @@ fi
 %doc %{texmfdist}/doc/fonts/ean
 %{texmfdist}/fonts/source/public/ean
 %{texmfdist}/fonts/tfm/public/ean
-
-%doc %{texmfdist}/doc/fonts/eco
-%{texmfdist}/fonts/tfm/public/eco
-%{texmfdist}/fonts/vf/public/eco
-%{texmfdist}/source/fonts/eco
 
 %doc %{texmfdist}/doc/fonts/eiad
 %{texmfdist}/fonts/source/public/eiad
