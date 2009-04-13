@@ -3014,7 +3014,7 @@ Ez a csomag a következőket tartalmazza:
 - feynmf: makrók és fontok Feynman (és más) diagramok készítésére
 - formula: fizikai egységek szedése
 - isotope: izotópok szedése
-- listofsymbols: szimbólumok listákának létrehozása és kezelése
+- listofsymbols: szimbólumok listájának létrehozása és kezelése
 - miller: miller indexek szedése
 - susy: Szuper-Szimmetria elmélettel kapcsolatos munkákhoz makrók
 
@@ -4875,7 +4875,7 @@ Obsoletes:	tetex-fonts-type1-tt2001
 %description fonts-other
 Other fonts.
 
-%description fonts-omega -l hu.UTF-8
+%description fonts-other -l hu.UTF-8
 További betűtípusok.
 
 %package fonts-pl
@@ -10434,6 +10434,8 @@ fi
 %{texmfdist}/tex/latex/listofsymbols
 %{texmfdist}/tex/latex/miller
 %{texmfdist}/tex/latex/susy
+%{texmfdist}/fonts/source/public/circ
+%{texmfdist}/fonts/tfm/public/circ
 
 %files latex-chem
 %defattr(644,root,root,755)
@@ -12752,9 +12754,6 @@ fi
 
 %{texmfdist}/fonts/source/public/china2e
 %{texmfdist}/fonts/tfm/public/china2e
-
-%{texmfdist}/fonts/source/public/circ
-%{texmfdist}/fonts/tfm/public/circ
 
 %doc %{texmfdist}/doc/fonts/cirth
 %{texmfdist}/fonts/source/public/cirth
