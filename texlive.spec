@@ -5881,7 +5881,8 @@ for format in \
 	xmltex; do
  	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format} 
 done
-# fmtutil --all --fmtdir=$RPM_BUILD_ROOT%{fmtdir}
+# We don't need the log files
+rm -f $(find $RPM_BUILD_ROOT%{fmtdir} -name "*.log")
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -7601,6 +7602,10 @@ fi
 %{_mandir}/man5/fmtutil.cnf.5*
 %{_mandir}/man5/updmap.cfg.5*
 
+%{fmtdir}/pdftex/pdfetex.fmt
+%dir %{fmtdir}/tex
+%{fmtdir}/tex/tex.fmt
+
 %files other-utils
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts/mkjobtexmf
@@ -7713,6 +7718,7 @@ fi
 %{texmfdist}/source/generic/mkjobtexmf
 %{texmf}/hbf2gf
 %{texmf}/fmtutil/format.texsis.cnf
+%{fmtdir}/pdftex/texsis.fmt
 
 %files other-utils-doc
 %defattr(644,root,root,755)
@@ -8152,6 +8158,7 @@ fi
 %defattr(644,root,root,755)
 %{texmfdist}/tex/physe
 %{texmf}/fmtutil/format.physe.cnf
+%{fmtdir}/pdftex/physe.fmt
 
 %files tex-velthuis
 %defattr(644,root,root,755)
@@ -8230,6 +8237,7 @@ fi
 %attr(755,root,root) %{_bindir}/mptopdf
 %{_mandir}/man1/mptopdf.1*
 %{texmfdist}/tex/mptopdf
+%{fmtdir}/pdftex/mptopdf.fmt
 
 %files texdoctk
 %defattr(644,root,root,755)
@@ -8478,6 +8486,7 @@ fi
 %{texmfdist}/scripts/pdfcrop
 %{texmf}/fmtutil/format.pdftex.cnf
 %{texmf}/fonts/map/pdftex/updmap
+%{fmtdir}/pdftex/pdftex.fmt
 
 %files phyzzx
 %defattr(644,root,root,755)
@@ -8488,6 +8497,7 @@ fi
 %{texmfdist}/tex/phyzzx/base
 %{texmfdist}/tex/phyzzx/config
 %{texmf}/fmtutil/format.phyzzx.cnf
+%{fmtdir}/pdftex/phyzzx.fmt
 
 %files omega
 %defattr(644,root,root,755)
@@ -8534,6 +8544,8 @@ fi
 %{_mandir}/man1/outocp.1*
 %{_mandir}/man1/ovf2ovp.1*
 %{_mandir}/man1/ovp2ovf.1*
+%{fmtdir}/aleph
+%{fmtdir}/omega
 
 %files plain
 %defattr(644,root,root,755)
@@ -8602,10 +8614,12 @@ fi
 
 %files format-csplain
 %defattr(644,root,root,755)
+%{fmtdir}/pdftex/csplain.fmt
 
 %files format-pdfcsplain
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdfcsplain
+%{fmtdir}/pdftex/pdfcsplain.fmt
 
 %files cslatex
 %defattr(644,root,root,755)
@@ -8637,6 +8651,7 @@ fi
 %{_mandir}/man1/eplain.1*
 %{_mandir}/man1/etex.1*
 %{texmf}/fmtutil/format.eplain.cnf
+%{fmtdir}/pdftex/etex.fmt
 
 %files context
 %defattr(644,root,root,755)
@@ -9258,6 +9273,9 @@ fi
 %{texmfdist}/tex/plain/etex
 %{texmf}/tex/latex/config
 %{texmf}/tex/latex/dvipdfm
+%{fmtdir}/pdftex/latex.fmt
+%{fmtdir}/pdftex/mllatex.fmt
+%{fmtdir}/pdftex/pdflatex.fmt
 
 %files latex-12many
 %defattr(644,root,root,755)
@@ -13856,6 +13874,7 @@ fi
 %attr(755,root,root) %{_bindir}/xdvipdfmx
 %attr(755,root,root) %{_bindir}/xelatex
 %attr(755,root,root) %{_bindir}/xetex
+%dir %{fmtdir}/xetex
 %doc %{texmfdist}/doc/generic/ifxetex
 %doc %{texmfdist}/doc/generic/xetex-pstricks
 %doc %{texmfdist}/doc/xelatex
@@ -13868,6 +13887,8 @@ fi
 %{texmfdist}/tex/xelatex
 %{texmfdist}/tex/xetex
 %{texmf}/fmtutil/format.xetex.cnf
+%{fmtdir}/xetex/xetex.fmt
+%{fmtdir}/xetex/xelatex.fmt
 
 %files xmltex
 %defattr(644,root,root,755)
@@ -13877,3 +13898,5 @@ fi
 %{texmfdist}/source/xmltex
 %{texmfdist}/tex/xmltex
 %{texmf}/fmtutil/format.xmltex.cnf
+%{fmtdir}/pdftex/pdfxmltex.fmt
+%{fmtdir}/pdftex/xmltex.fmt
