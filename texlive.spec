@@ -8478,7 +8478,7 @@ fi
 %attr(755,root,root) %{_bindir}/pdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
 %attr(755,root,root) %{texmf}/scripts/epstopdf/epstopdf*
-%attr(1777,root,root) %dir %{fmtdir}/pdftex
+%dir %{fmtdir}/pdftex
 %{_mandir}/man1/epstopdf.1*
 %{_mandir}/man1/pdftex.1*
 %{texmfdist}/fonts/enc/pdftex
