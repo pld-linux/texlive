@@ -5857,10 +5857,31 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/xindy
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc
 
 # Create format files
-# for format in latex pdftex pdfetex pdflatex; do
-# 	fmtutil --byfmt=${format} --fmtdir=$RPM_BUILD_ROOT%{fmtdir}
-# done
-fmtutil --all --fmtdir=$RPM_BUILD_ROOT%{fmtdir}
+for format in \
+	aleph \
+	csplain \
+	etex \
+	lambda \
+	lamed \
+	latex \
+	mllatex \
+	mptopdf \
+	omega \
+	pdfcsplain \
+	pdfetex \
+	pdflatex \
+	pdftex \
+	pdfxmltex \
+	physe \
+	phyzzx \
+	tex \
+	texsis \
+	xetex \
+	xelatex \
+	xmltex; do
+ 	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format} 
+done
+# fmtutil --all --fmtdir=$RPM_BUILD_ROOT%{fmtdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
