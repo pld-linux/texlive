@@ -45,7 +45,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	4.1
+Release:	4.2
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -5504,6 +5504,8 @@ Egy szűrő, amely .tex fájlokból szűri ki a TeX parancsokat.
 Summary:	Various DVI utils
 Summary(hu.UTF-8):	Vegyes DVI eszközök
 Group:		Applications/Publishing/TeX
+Provides:	dvi2tty
+Conflicts:	dvi2tty
 
 %description dviutils
 This package contains various DVI utils.
@@ -5514,6 +5516,7 @@ Ez a csomag mindenféle DVI eszközt tartalmaz.
 %package epsutils
 Summary:	Various EPS utils
 Group:		Applications/Publishing/TeX
+Conflicts:	psutils
 
 %description epsutils
 Various EPS (Encapsulated PostScript) utils.
@@ -7758,6 +7761,7 @@ fi
 %dir %{texmfdist}/fonts/map/dvips
 %dir %{texmfdist}/fonts/map/dvips/vntex
 %dir %{texmfdist}/fonts/map/fontname
+%dir %{texmfdist}/fonts/map/public
 %dir %{texmfdist}/fonts/map/vtex
 %dir %{texmfdist}/fonts/ofm
 %dir %{texmfdist}/fonts/ofm/public
@@ -8139,7 +8143,7 @@ fi
 
 %files tex-kastrup
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/generic/kastrup/binhex.pdf
+%doc %{texmfdist}/doc/generic/kastrup
 %{texmfdist}/source/generic/kastrup
 %{texmfdist}/tex/generic/kastrup
 
@@ -8583,8 +8587,6 @@ fi
 
 %files amstex
 %defattr(644,root,root,755)
-%dir %{texmfdist}/tex/amstex
-%{texmfdist}/tex/amstex/base
 %{texmfdist}/tex/amstex/config
 %{texmfdist}/tex/plain/amsfonts
 
@@ -13767,6 +13769,7 @@ fi
 %dir %{texmfdist}/scripts/dviasm
 %dir %{texmf}/fonts/cmap
 %doc %{texmf}/fonts/cmap/README
+%attr(755,root,root) %{_bindir}/disdvi
 %attr(755,root,root) %{_bindir}/dt2dv
 %attr(755,root,root) %{_bindir}/dv2dt
 %attr(755,root,root) %{_bindir}/dvi2tty
@@ -13839,7 +13842,6 @@ fi
 %files uncategorized-utils
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/devnag
-%attr(755,root,root) %{_bindir}/disdvi
 
 %files tex4ht
 %defattr(644,root,root,755)
