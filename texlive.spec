@@ -7481,6 +7481,7 @@ fi
 %dir %{texmfdist}/tex/latex/base
 %dir %{texmfdist}/scripts
 %dir %{texmfdist}/source
+%dir %{texmfdist}/source/latex
 %dir %{texmfdist}/source/generic
 %dir %{texmf}
 %dir %{texmf}/doc
@@ -7786,9 +7787,7 @@ fi
 %dir %{texmfdist}/fonts/vf
 %dir %{texmfdist}/fonts/vf/public
 %dir %{texmfdist}/fonts/vf/vntex
-%dir %{texmfdist}/source
 %dir %{texmfdist}/source/fonts
-%dir %{texmfdist}/source/latex
 %dir %{texmf}/fonts
 %dir %{texmf}/fonts/opentype
 %dir %{texmf}/fonts/opentype/public
@@ -10352,8 +10351,6 @@ fi
 
 %files latex-math-sources
 %defattr(644,root,root,755)
-%dir %{texmfdist}/source
-%dir %{texmfdist}/source/latex
 %{texmfdist}/source/latex/bez123
 %{texmfdist}/source/latex/binomexp
 %{texmfdist}/source/latex/cmll
@@ -10660,8 +10657,6 @@ fi
 
 %files latex-sources
 %defattr(644,root,root,755)
-%dir %{texmfdist}/source
-%dir %{texmfdist}/source/latex
 %{texmfdist}/source/latex/acronym
 %{texmfdist}/source/latex/adrlist
 %{texmfdist}/source/latex/altfont
@@ -12142,7 +12137,6 @@ fi
 %files latex-psnfss
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/psnfss
-%dir %{texmfdist}/source/latex
 %{texmfdist}/fonts/map/dvips/psnfss
 %{texmfdist}/source/latex/psnfss
 %{texmfdist}/source/latex/latex-tds
