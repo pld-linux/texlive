@@ -14,7 +14,6 @@
 #   /usr/bin/texhash[77]: kpsewhich: not found
 # - drop ppc bconds once clisp is fixed on that architecture
 # - jadetex subpackage (from other-utils)
-# - maybe patch main config file (http://www.togaware.com/linux/survivor/TeX_Capacity.html)
 #
 # FHS TODO:
 # - merge rhconfig and texmfsysvar patches
@@ -5600,6 +5599,7 @@ cd texk/kpathsea
 %{__sed} -i 's@^TEXMFSYSVAR =.*@TEXMFSYSVAR = %{_localstatedir}@' texmf.cnf
 %{__sed} -i 's@^TEXMFSYSCONFIG =.*@TEXMFSYSCONFIG = %{_sysconfdir}/%{name}@' texmf.cnf
 %{__sed} -i 's@^TEXMFVAR =.*@TEXMFVAR = %{_localstatedir}@' texmf.cnf
+%{__sed} -i 's@^trie_size.*@trie_size = 1262000@' texmf.cnf
 cd ../..
 
 %ifarch ppc ppc64
