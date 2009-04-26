@@ -2,6 +2,7 @@
 #
 # MAIN TODO (sort by importnce):
 # - texlive-format-pdflatex deps
+# - texlive-epsutils vs. psutils conflicts
 # - pl updates
 # - see uncategorized and *other* subpackages and split
 # - context: consider more splitting, check dependencies
