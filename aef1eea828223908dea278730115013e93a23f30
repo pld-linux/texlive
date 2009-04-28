@@ -1,0 +1,2 @@
+- fixing in %build
+- move --without-luatex outside %if
