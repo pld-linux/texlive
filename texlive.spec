@@ -1423,7 +1423,7 @@ Summary:	PostScript Utilities
 Summary(hu.UTF-8):	PostScript eszközök
 Summary(pl.UTF-8):	Narzędzia do PostScriptu
 Group:		Applications/Printing
-Provides:	epsutils
+Provides:	psutils
 Obsoletes:	psutils
 Obsoletes:	%{name}-epsutils
 Obsoletes:	%{name}-filters
