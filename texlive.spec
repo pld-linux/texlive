@@ -57,7 +57,7 @@ Source5:	xdvi.desktop
 Source6:	xdvi.png
 Source10:	http://tug.ctan.org/get/macros/latex/contrib/floatflt.zip
 # Source10-md5:	5d9fe14d289aa81ebb6b4761169dd5f2
-Source11:	http://carme.pld-linux.org/~uzsolt/sources/texlive-fonts-larm.tar.bz2
+Source11:	http://carme.pld-linux.org/~uzsolt/sources/%{name}-fonts-larm.tar.bz2
 # Source11-md5:	df2fcc66f0c2e90785ca6c9b27dacd34
 Source50:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/Splashscreen.pm
 # Source50-md5:	5cc49f49010f27fdb02dd7053797ba19
@@ -118,6 +118,7 @@ BuildRequires:	tetex-format-pdflatex
 BuildRequires:	tetex-latex-cyrillic
 BuildRequires:	tetex-tex-babel
 %else
+BuildRequires:	%{name}-context
 BuildRequires:	%{name}-csplain
 BuildRequires:	%{name}-fonts-cmsuper
 #BuildRequires:	%{name}-format-amstex
@@ -139,7 +140,6 @@ BuildRequires:	%{name}-tex-physe
 BuildRequires:	%{name}-xetex
 BuildRequires:	%{name}-xetex
 BuildRequires:	%{name}-xmltex
-BuildRequires: 	%{name}-context
 # fill with future texlive BR. guesses ones for now
 %endif
 BuildRequires:	/usr/bin/latex
@@ -257,9 +257,9 @@ TeXbook' başlıklı kitabında anlatılmaktadır.
 %package other-utils
 Summary:	Other utilities
 Group:		Applications/Publishing/TeX
-Obsoletes:	tetex-format-cyrtexinfo
-Obsoletes:	jadetex
 Provides:	jadetex
+Obsoletes:	jadetex
+Obsoletes:	tetex-format-cyrtexinfo
 
 %description other-utils
 Other utilities.
@@ -1425,8 +1425,8 @@ Summary(pl.UTF-8):	Narzędzia do PostScriptu
 Group:		Applications/Printing
 Provides:	psutils
 Obsoletes:	psutils
-Obsoletes:	%{name}-epsutils
-Obsoletes:	%{name}-filters
+Obsoletes:	texlive-epsutils
+Obsoletes:	texlive-filters
 
 %description psutils
 This archive contains some utilities for manipulating PostScript
@@ -1489,9 +1489,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-plain
 Provides:	tetex-plain
+Obsoletes:	tetex-cyrplain
 Obsoletes:	tetex-format-plain
 Obsoletes:	tetex-plain
-Obsoletes:	tetex-cyrplain
 
 %description plain
 Plain TeX format basic files.
@@ -1650,8 +1650,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-cs = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-cslatex
 Provides:	tetex-cslatex
+Obsoletes:	tetex-cslatex
 
 %description cslatex
 CSLaTeX format basic files.
@@ -1694,8 +1694,8 @@ Summary(pl.UTF-8):	Podstawowe pliki dla formatu EPlain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-etex
 Obsoletes:	tetex-eplain
+Obsoletes:	tetex-etex
 
 %description eplain
 EPlain format basic files.
@@ -2870,11 +2870,9 @@ Summary:	Mathematical packages
 Summary(hu.UTF-8):	Matematikai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-# gnuplottex needs gnuplot
-Requires:	gnuplot
 Requires:	%{name}-fonts-bbm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-stmaryrd = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-carlisle = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-psnfss = %{epoch}:%{version}-%{release}
@@ -2883,6 +2881,8 @@ Requires:	%{name}-latex-wasysym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-xkeyval = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-xypic = %{epoch}:%{version}-%{release}
+# gnuplottex needs gnuplot
+Requires:	gnuplot
 
 %description latex-math
 This package contains:
@@ -4238,8 +4238,8 @@ Summary(pl.UTF-8):	Różne pliki TeXowe służące do składu dokumentów w jęz
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-tex-spanishb
 Obsoletes:	tetex-tex-spanish
+Obsoletes:	tetex-tex-spanishb
 
 %description tex-spanish
 Various TeX related files for typesetting documents written in
@@ -4903,10 +4903,10 @@ Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-cbgreek
 Obsoletes:	tetex-fonts-dstroke
 Obsoletes:	tetex-fonts-pazo
-Obsoletes:	tetex-qfonts
 Obsoletes:	tetex-fonts-type1-dstroke
 Obsoletes:	tetex-fonts-type1-qfonts
 Obsoletes:	tetex-fonts-type1-tt2001
+Obsoletes:	tetex-qfonts
 
 %description fonts-other
 Other fonts.
@@ -5562,9 +5562,9 @@ fonts.
 %package xmltex
 Summary:	TeX package for processing XML files
 Group:		Applications/Publishing/TeX
-Obsoletes:	xmltex
-Provides:	xmltex
 Requires(post,postun):	/usr/bin/texhash
+Provides:	xmltex
+Obsoletes:	xmltex
 
 %description xmltex
 XMLTeX is a non-validating, namespace-aware XML parser written in TeX.
@@ -5885,7 +5885,7 @@ for format in \
 	xetex \
 	xelatex \
 	xmltex; do
- 	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format} 
+ 	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
 done
 # We don't need the log files
 rm -f $(find $RPM_BUILD_ROOT%{fmtdir} -name "*.log")
