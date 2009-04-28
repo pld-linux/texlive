@@ -2,7 +2,6 @@
 #
 # MAIN TODO (sort by importnce):
 # - texlive-format-pdflatex deps
-# - texlive-epsutils vs. psutils conflicts
 # - pl updates
 # - see uncategorized and *other* subpackages and split
 # - context: consider more splitting, check dependencies
@@ -45,7 +44,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	4.2
+Release:	4.3
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -1424,7 +1423,10 @@ Summary:	PostScript Utilities
 Summary(hu.UTF-8):	PostScript eszközök
 Summary(pl.UTF-8):	Narzędzia do PostScriptu
 Group:		Applications/Printing
+Provides:	epsutils
 Obsoletes:	psutils
+Obsoletes:	%{name}-epsutils
+Obsoletes:	%{name}-filters
 
 %description psutils
 This archive contains some utilities for manipulating PostScript
@@ -13792,46 +13794,40 @@ fi
 %{texmf}/fonts/cmap/dvipdfmx
 %{texmf}/fonts/map/dvipdfmx
 
-%files epsutils
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/epsffit
-%attr(755,root,root) %{_bindir}/epspdf
-%attr(755,root,root) %{_bindir}/epspdftk
-%attr(755,root,root) %{_bindir}/pst2pdf
-%doc %{texmfdist}/doc/epspdf
-%{_mandir}/man1/epsffit*
-%{texmfdist}/scripts/epspdf
-
-%files filters
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/fix*
-%{_mandir}/man1/fix*
-
 %files psutils
 %defattr(644,root,root,755)
 %dir %{texmf}/scripts/ps2eps
+%doc %{texmfdist}/doc/epspdf
+%attr(755,root,root) %{_bindir}/epsffit
+%attr(755,root,root) %{_bindir}/epspdf
+%attr(755,root,root) %{_bindir}/epspdftk
 %attr(755,root,root) %{_bindir}/extractres
+%attr(755,root,root) %{_bindir}/fix*
 %attr(755,root,root) %{_bindir}/getafm
 %attr(755,root,root) %{_bindir}/includeres
+%attr(755,root,root) %{_bindir}/ps2eps
 %attr(755,root,root) %{_bindir}/psbook
 %attr(755,root,root) %{_bindir}/psmerge
 %attr(755,root,root) %{_bindir}/psnup
 %attr(755,root,root) %{_bindir}/psresize
 %attr(755,root,root) %{_bindir}/psselect
-%attr(755,root,root) %{_bindir}/ps2eps
+%attr(755,root,root) %{_bindir}/pst2pdf
 %attr(755,root,root) %{_bindir}/pstops
 %attr(755,root,root) %{_bindir}/showchar
 %attr(755,root,root) %{texmf}/scripts/ps2eps/ps2eps*
+%{_mandir}/man1/epsffit*
 %{_mandir}/man1/extractres*
+%{_mandir}/man1/fix*
 %{_mandir}/man1/getafm*
 %{_mandir}/man1/includeres*
+%{_mandir}/man1/ps2eps.1*
 %{_mandir}/man1/psbook*
 %{_mandir}/man1/psmerge*
 %{_mandir}/man1/psnup*
 %{_mandir}/man1/psresize*
 %{_mandir}/man1/psselect*
 %{_mandir}/man1/pstops*
-%{_mandir}/man1/ps2eps.1*
+%{texmfdist}/scripts/epspdf
 %{texmf}/dvips/psutils
 
 %files uncategorized-utils
