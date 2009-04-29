@@ -7466,6 +7466,7 @@ fi
 %attr(1777,root,root) %dir %{_localstatedir}/fonts/map
 %attr(1777,root,root) %dir %{fmtdir}
 
+%dir %{fmtdir}/tex
 %dir %{texmfdist}
 %dir %{texmfdist}/doc
 %dir %{texmfdist}/doc/generic
@@ -7608,9 +7609,7 @@ fi
 %{_mandir}/man1/weave.1*
 %{_mandir}/man5/fmtutil.cnf.5*
 %{_mandir}/man5/updmap.cfg.5*
-
 %{fmtdir}/pdftex/pdfetex.fmt
-%dir %{fmtdir}/tex
 %{fmtdir}/tex/tex.fmt
 
 %files other-utils
@@ -9279,7 +9278,6 @@ fi
 %{texmf}/tex/latex/dvipdfm
 %{fmtdir}/pdftex/latex.fmt
 %{fmtdir}/pdftex/mllatex.fmt
-%{fmtdir}/pdftex/pdflatex.fmt
 
 %files latex-12many
 %defattr(644,root,root,755)
@@ -12219,6 +12217,7 @@ fi
 %files format-pdflatex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdflatex
+%{fmtdir}/pdftex/pdflatex.fmt
 %{_mandir}/man1/pdflatex.1*
 
 %files tex-babel
