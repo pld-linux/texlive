@@ -777,7 +777,7 @@ Summary(pl.UTF-8):	Zestaw narzędzi MetaPost
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-matapost
+Obsoletes:	tetex-metapost
 
 %description metapost
 MetaPost.
