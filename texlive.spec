@@ -808,6 +808,7 @@ Summary(pl.UTF-8):	Konwerter MetaPost do PDF
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-metapost = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-mptopdf
 
 %description mptopdf
 MetaPost to PDF converter.
