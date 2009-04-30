@@ -258,7 +258,7 @@ TeXbook' başlıklı kitabında anlatılmaktadır.
 %package other-utils
 Summary:	Other utilities
 Group:		Applications/Publishing/TeX
-Provides:	jadetex
+Provides:	jadetex = %{epoch}:%{version}-%{release}
 Obsoletes:	jadetex
 Obsoletes:	tetex-format-cyrtexinfo
 
@@ -1710,6 +1710,7 @@ Summary(pl.UTF-8):	Format EPlain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-eplain = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-eplain
 
 %description format-eplain
 EPlain format.
@@ -2619,6 +2620,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-fonts-lm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-lm
 
 %description latex-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -4322,6 +4324,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-vietnam
+Obsoletes:	tetex-latex-vietnam
 
 %description latex-vietnam
 Vietnamese language support.
@@ -4337,6 +4340,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-xypic = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-xypic
+Obsoletes:	tetex-tex-xypic
 
 %description tex-xypic
 A package for typesetting a variety of graphs and diagrams with TeX.
@@ -4355,6 +4359,7 @@ Summary(pl.UTF-8):	Rozszerzenie do pakietu keyval
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-tex-xkeyval
 
 %description tex-xkeyval
 Extension to keyval package.
