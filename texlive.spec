@@ -5892,8 +5892,17 @@ for format in \
 	xetex \
 	xelatex \
 	xmltex; do
- 	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
+%if %{with bootstrap}
+	mkdir -p $RPM_BUILD_ROOT%{fmtdir}/${format}
+	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
+	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
+%else
+	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
+%endif
 done
+%if %{with bootstrap}
+touch $RPM_BUILD_ROOT%{fmtdir}/xetex/xelatex.fmt
+%endif
 # We don't need the log files
 rm -f $(find $RPM_BUILD_ROOT%{fmtdir} -name "*.log")
 
@@ -8273,6 +8282,7 @@ fi
 %{texmf}/texconfig/v
 %{texmf}/texconfig/x
 
+%if !%{with bootstrap}
 %files -n xindy
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/xindy
@@ -8468,6 +8478,7 @@ fi
 %files -n xindy-vietnamese
 %defattr(644,root,root,755)
 %{texmf}/xindy/lang/vietnamese/
+%endif
 
 %files -n xdvi
 %defattr(644,root,root,755)
