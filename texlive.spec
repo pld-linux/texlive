@@ -164,7 +164,7 @@ Requires:	texconfig = %{epoch}:%{version}-%{release}
 Requires:	textutils
 Suggests:	tmpwatch
 Provides:	tetex = %{epoch}:%{version}-%{release}
-Provides:	tetex-format-pdfetex
+Provides:	tetex-format-pdfetex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex
 Obsoletes:	tetex-afm
 Obsoletes:	tetex-doc
@@ -1491,6 +1491,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-plain
 Provides:	tetex-plain
 Obsoletes:	tetex-cyrplain
+Obsoletes:	tetex-format-cyrplain
 Obsoletes:	tetex-format-plain
 Obsoletes:	tetex-plain
 
@@ -1524,6 +1525,7 @@ Summary(pl.UTF-8):	Format MeX Plain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	texlive-mex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-mex
 
 %description format-mex
 MeX Plain Format.
@@ -1589,6 +1591,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-amstex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-ams
 Obsoletes:	tetex-format-cyramstex
+Obsoletes:	tetex-format-amstex
 
 %description format-amstex
 American Mathematical Society macros for Plain TeX.
@@ -1666,7 +1669,7 @@ Summary(pl.UTF-8):	Format CSLaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-cslatex = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-cslatex
+Obsoletes:	tetex-format-cslatex
 
 %description format-cslatex
 CSLaTeX format.
@@ -1680,6 +1683,7 @@ Summary(pl.UTF-8):	Format PDF CSLaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-cslatex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-format-pdfcslatex
 
 %description format-pdfcslatex
 PDF CSLaTeX format.
@@ -1950,6 +1954,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-algorith
+Obsoletes:	tetex-latex-algorithms
 
 %description latex-algorithms
 Defines a floating algorithm environment designed to work with the
@@ -2150,6 +2155,8 @@ Summary(pl.UTF-8):	Duńskie warianty standardowych stylów BibTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-bibtex-dk
+
 
 %description latex-bibtex-dk
 Dk-bib is a translation of the four standard BibTeX style files
@@ -3195,6 +3202,7 @@ Summary(pl.UTF-8):	Interfejs do rozszerzeń mikrotypograficznych pdfTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-microtype
 
 %description latex-microtype
 The `microtype' package provides a LaTeX interface to pdfTeX's
