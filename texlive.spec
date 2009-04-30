@@ -1589,7 +1589,6 @@ Summary(pl.UTF-8):	Makra AMS dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-amstex = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-ams
 Obsoletes:	tetex-format-cyramstex
 Obsoletes:	tetex-format-amstex
 
