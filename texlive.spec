@@ -2669,6 +2669,7 @@ Summary(pl.UTF-8):	Numery linii dla paragrafów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Obsoletes:	tetex-latex-lineno
 
 %description latex-lineno
 The LaTeX package lineno.sty provides line numbers on paragraphs.
@@ -4333,6 +4334,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-vietnam
 Obsoletes:	tetex-latex-vietnam
+Obsoletes:	tetex-latex-urwvn
 
 %description latex-vietnam
 Vietnamese language support.
