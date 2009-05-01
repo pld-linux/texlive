@@ -44,7 +44,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	5
+Release:	5.1
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -5523,7 +5523,7 @@ Summary:	Various DVI utils
 Summary(hu.UTF-8):	Vegyes DVI eszközök
 Group:		Applications/Publishing/TeX
 Provides:	dvi2tty
-Conflicts:	dvi2tty
+Obsoletes:	dvi2tty
 
 %description dviutils
 This package contains various DVI utils.
