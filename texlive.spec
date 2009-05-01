@@ -139,7 +139,6 @@ BuildRequires:	%{name}-plain
 BuildRequires:	%{name}-tex-babel
 BuildRequires:	%{name}-tex-physe
 BuildRequires:	%{name}-xetex
-BuildRequires:	%{name}-xetex
 BuildRequires:	%{name}-xmltex
 # fill with future texlive BR. guesses ones for now
 %endif
@@ -181,14 +180,9 @@ Obsoletes:	tetex-format-pdfetex
 Obsoletes:	tetex-latex-vnps
 Obsoletes:	tetex-latex-vnr
 Obsoletes:	tetex-oxdvi
-Obsoletes:	tetex-oxdvi
-Obsoletes:	tetex-plain-dvips
 Obsoletes:	tetex-plain-dvips
 Obsoletes:	tetex-plain-mathtime
-Obsoletes:	tetex-plain-mathtime
 Obsoletes:	tetex-plain-misc
-Obsoletes:	tetex-plain-misc
-Obsoletes:	tetex-plain-plnfss
 Obsoletes:	tetex-plain-plnfss
 Obsoletes:	tetex-tex-hyphen
 Obsoletes:	tetex-tex-vietnam
@@ -3108,8 +3102,6 @@ Ez a csomag a következőket tartalmazza:
 Summary:	Chemical packages
 Summary(hu.UTF-8):	Kémiai csomagok
 Group:		Applications/Publishing/TeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-latex-lewis
