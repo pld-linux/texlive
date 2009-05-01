@@ -1584,8 +1584,8 @@ Summary(pl.UTF-8):	Makra AMS dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-amstex = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-format-cyramstex
 Obsoletes:	tetex-format-amstex
+Obsoletes:	tetex-format-cyramstex
 
 %description format-amstex
 American Mathematical Society macros for Plain TeX.
@@ -4324,9 +4324,9 @@ Summary(pl.UTF-8):	Wsparcie dla języka wietnamskiego
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-tex-vietnam
-Obsoletes:	tetex-latex-vietnam
 Obsoletes:	tetex-latex-urwvn
+Obsoletes:	tetex-latex-vietnam
+Obsoletes:	tetex-tex-vietnam
 
 %description latex-vietnam
 Vietnamese language support.
@@ -4341,8 +4341,8 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-xypic = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-xypic
 Obsoletes:	tetex-tex-xypic
+Obsoletes:	tetex-xypic
 
 %description tex-xypic
 A package for typesetting a variety of graphs and diagrams with TeX.
@@ -5895,7 +5895,7 @@ for format in \
 	xelatex \
 	xmltex; do
 %if %{with bootstrap}
-	mkdir -p $RPM_BUILD_ROOT%{fmtdir}/${format}
+	install -d $RPM_BUILD_ROOT%{fmtdir}/${format}
 	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
 	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
 %else
