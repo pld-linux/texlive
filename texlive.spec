@@ -13483,7 +13483,7 @@ fi
 %{texmfdist}/fonts/tfm/public/velthuis
 %{texmfdist}/fonts/type1/public/velthuis
 
-%{texmfdist}/fonts/enc/dvips/vntex
+%{texmfdist}/fonts/enc/dvips/vntex/*
 
 %{texmfdist}/fonts/afm/vntex/vntopia
 %{texmfdist}/fonts/tfm/vntex/vntopia
