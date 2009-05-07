@@ -5571,7 +5571,9 @@ fonts.
 Summary:	TeX package for processing XML files
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
+Provides:	passivetex
 Provides:	xmltex
+Obsoletes:	passivetex
 Obsoletes:	xmltex
 
 %description xmltex
