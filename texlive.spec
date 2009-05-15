@@ -5804,6 +5804,8 @@ tex prog_manual.tex
 
 cd $CURDIR
 
+cp $RPM_BUILD_ROOT%{texmfdoc}/latex/xstring/xstring.tex $RPM_BUILD_ROOT%{texmfdist}/tex/latex/xstring
+
 
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
 #touch $RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap/maps.lst
