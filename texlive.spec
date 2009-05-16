@@ -11,8 +11,6 @@
 #   /usr/share/fonts/Type1 ?)
 # - fix package removal:
 #   /usr/bin/texhash[77]: kpsewhich: not found
-# - drop ppc bconds once clisp is fixed on that architecture
-# - jadetex subpackage (from other-utils)
 #
 # FHS TODO:
 # - merge rhconfig and texmfsysvar patches
@@ -252,12 +250,28 @@ TeXbook' başlıklı kitabında anlatılmaktadır.
 %package other-utils
 Summary:	Other utilities
 Group:		Applications/Publishing/TeX
-Provides:	jadetex = %{epoch}:%{version}-%{release}
-Obsoletes:	jadetex
 Obsoletes:	tetex-format-cyrtexinfo
 
 %description other-utils
 Other utilities.
+
+%package jadetex
+Summary:	LaTeX macros for converting Jade TeX output into DVI/PS/PDF
+Summary(pl.UTF-8):	Makra LaTeXa do konwersji Jade TeXa do DVI/PS/PDF
+Group:		Applications/Publishing/TeX
+Provides:	jadetex = %{epoch}:%{version}-%{release}
+Obsoletes:	jadetex
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
+
+%description jadetex
+JadeTeX contains the additional LaTeX macros necessary for taking Jade
+TeX output files and processing them as LaTeX files.
+
+%description -l pl.UTF-8
+JadeTeX zawiera dodatkowe makra LaTeXa potrzebne do konwersji plików
+otrzymanych z Jade TeXa i przetworzenia ich jako plików LaTeXa.
 
 %package other-utils-doc
 Summary:	Other utilities documentation
@@ -5523,21 +5537,6 @@ This package contains various DVI utils.
 %description dviutils -l hu.UTF-8
 Ez a csomag mindenféle DVI eszközt tartalmaz.
 
-%package epsutils
-Summary:	Various EPS utils
-Group:		Applications/Publishing/TeX
-Conflicts:	psutils
-
-%description epsutils
-Various EPS (Encapsulated PostScript) utils.
-
-%package filters
-Summary:	Various filters
-Group:		Applications/Publishing/TeX
-
-%description filters
-Various filters.
-
 %package uncategorized-utils
 Summary:	Uncategorized utils
 Group:		Applications/Publishing/TeX
@@ -5929,6 +5928,18 @@ rm -rf $RPM_BUILD_ROOT
 if [ "$1" = "1" ]; then
 	%texhash
 fi
+
+%post other-utils
+%texhash
+
+%postun other-utils
+%texhash
+
+%post jadetex
+%texhash
+
+%postun jadetex
+%texhash
 
 %post -n kpathsea
 /sbin/ldconfig
@@ -7657,7 +7668,6 @@ fi
 %attr(755,root,root) %{_bindir}/getnonfreefonts
 %attr(755,root,root) %{_bindir}/getnonfreefonts-sys
 %attr(755,root,root) %{_bindir}/hbf2gf
-%attr(755,root,root) %{_bindir}/jadetex
 %attr(755,root,root) %{_bindir}/lamed
 %attr(755,root,root) %{_bindir}/makeglossaries
 %attr(755,root,root) %{_bindir}/metafun
@@ -7674,7 +7684,6 @@ fi
 %attr(755,root,root) %{_bindir}/oxdvi
 %attr(755,root,root) %{_bindir}/pdfatfi
 %attr(755,root,root) %{_bindir}/pdfclose
-%attr(755,root,root) %{_bindir}/pdfjadetex
 %attr(755,root,root) %{_bindir}/pdfopen
 %attr(755,root,root) %{_bindir}/pdftosrc
 %{__perl}tex
@@ -7720,12 +7729,9 @@ fi
 %{_mandir}/man1/vlna.1*
 %{_mandir}/man5/synctex.5*
 %{texmfdist}/source/startex
-%{texmfdist}/source/jadetex
-%{texmfdist}/tex/jadetex
 %{texmfdist}/tex/texsis
 %{texmfdist}/tex/startex
 %{texmf}/fmtutil/fmtutil-hdr.cnf
-%{texmf}/fmtutil/format.jadetex.cnf
 %{texmf}/fmtutil/format.cyrtex.cnf
 %{texmf}/fmtutil/format.cyrtexinfo.cnf
 %{texmf}/fmtutil/format.mltex.cnf
@@ -7753,10 +7759,20 @@ fi
 %{texmf}/fmtutil/format.texsis.cnf
 %{fmtdir}/pdftex/texsis.fmt
 
+%files jadetex
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/jadetex/base/*
+%doc %{texmfdist}/source/jadetex/base/ChangeLog*
+%attr(755,root,root) %{_bindir}/jadetex
+%attr(755,root,root) %{_bindir}/pdfjadetex
+%{texmfdist}/source/jadetex
+%exclude %{texmfdist}/source/jadetex/base/ChangeLog*
+%{texmfdist}/tex/jadetex
+%{texmf}/fmtutil/format.jadetex.cnf
+
 %files other-utils-doc
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/abbr
-%doc %{texmfdist}/doc/jadetex
 %doc %{texmfdist}/doc/texsis
 %doc %{texmfdist}/doc/startex
 %doc %{texmfdist}/doc/generic/c-pascal
