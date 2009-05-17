@@ -2636,6 +2636,7 @@ Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-fonts-lm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-lm
+Obsoletes:	%{name}-fonts-type1-lm
 
 %description latex-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -4596,6 +4597,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-cmcyr
 Obsoletes:	tetex-fonts-cmcyr
+Obsoletes:	%{name}-fonts-type1-cmcyr
 
 %description fonts-cmcyr
 Computer Modern fonts extended with Russian letters.
@@ -9724,11 +9726,6 @@ fi
 %{texmfdist}/source/latex/g-brief
 %{texmfdist}/tex/latex/g-brief
 
-%files latex-jknappen
-%defattr(644,root,root,755)
-%doc %{texmfdist}/fonts/source/jknappen
-%{texmfdist}/fonts/tfm/jknappen
-
 %files latex-keystroke
 %defattr(644,root,root,755)
 %{texmfdist}/tex/latex/keystroke
@@ -9776,8 +9773,6 @@ fi
 %{texmfdist}/fonts/enc/dvips/lm
 %{texmfdist}/fonts/map/dvips/lm
 %{texmfdist}/fonts/map/dvipdfm/lm
-%{texmfdist}/fonts/opentype/public/lm
-%{texmfdist}/fonts/tfm/public/lm
 %{texmfdist}/source/fonts/lm
 
 %files latex-lucidabr
@@ -12153,7 +12148,6 @@ fi
 %{texmfdist}/tex/latex/pxfonts
 %{texmfdist}/fonts/type1/public/pxfonts
 %{texmfdist}/fonts/afm/public/pxfonts
-%{texmfdist}/fonts/tfm/public/pxfonts
 %{texmfdist}/fonts/vf/public/pxfonts
 %{texmfdist}/fonts/map/dvips/pxfonts
 
@@ -12186,7 +12180,6 @@ fi
 %{texmfdist}/fonts/type1/public/txfonts
 %{texmfdist}/fonts/afm/public/txfonts
 %{texmfdist}/fonts/enc/dvips/txfonts
-%{texmfdist}/fonts/tfm/public/txfonts
 %{texmfdist}/fonts/vf/public/txfonts
 %{texmfdist}/fonts/map/dvips/txfonts
 %{texmfdist}/tex/latex/txfonts
@@ -12281,7 +12274,6 @@ fi
 %files tex-qpxqtx
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/qpxqtx
-%{texmfdist}/fonts/tfm/public/qpxqtx
 %{texmfdist}/fonts/vf/public/qpxqtx
 %{texmfdist}/tex/generic/qpxqtx
 
@@ -12376,8 +12368,6 @@ fi
 %files fonts-ams
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/source/public/ams
-%{texmfdist}/fonts/type1/bluesky/ams
-%{texmfdist}/fonts/afm/bluesky/ams
 %{texmfdist}/fonts/tfm/public/ams
 %{texmfdist}/fonts/map/dvips/ams
 
@@ -12568,7 +12558,6 @@ fi
 %dir %{texmfdist}/fonts/map/dvips/latex-fonts
 %dir %{texmfdist}/fonts/source/public/latex-fonts
 %dir %{texmfdist}/fonts/tfm/public/latex-fonts
-%dir %{texmfdist}/fonts/type1/bluesky/latex-fonts
 %doc %{texmfdist}/doc/latex/esint
 %{texmfdist}/fonts/afm/bluesky/latex-fonts/*
 %{texmfdist}/fonts/map/dvips/latex-fonts/*
@@ -12576,7 +12565,6 @@ fi
 %{texmfdist}/fonts/source/public/latex-fonts/*
 %{texmfdist}/fonts/tfm/public/esint
 %{texmfdist}/fonts/tfm/public/latex-fonts/*
-%{texmfdist}/fonts/type1/bluesky/latex-fonts/*
 %{texmfdist}/source/latex/esint
 %{texmfdist}/tex/latex/esint
 
@@ -12617,7 +12605,6 @@ fi
 %files fonts-mflogo
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/source/public/mflogo
-%{texmfdist}/fonts/type1/hoekwater/mflogo
 %{texmfdist}/fonts/afm/hoekwater/mflogo
 %{texmfdist}/fonts/tfm/public/mflogo
 %{texmfdist}/fonts/map/dvips/mflogo
@@ -13642,10 +13629,6 @@ fi
 %doc %{texmfdist}/doc/fonts/cc-pl
 %{texmfdist}/fonts/type1/public/cc-pl
 
-%files fonts-type1-cmcyr
-%defattr(644,root,root,755)
-%{texmfdist}/fonts/type1/public/cmcyr
-
 %files fonts-type1-cs
 %defattr(644,root,root,755)
 %{texmfdist}/fonts/type1/public/cs
@@ -13664,11 +13647,6 @@ fi
 %{texmfdist}/fonts/afm/public/fpl
 %{texmfdist}/fonts/type1/public/fpl
 %{texmfdist}/source/fonts/fpl
-
-%files fonts-type1-lm
-%defattr(644,root,root,755)
-%{texmfdist}/fonts/afm/public/lm
-%{texmfdist}/fonts/type1/public/lm
 
 %files fonts-type1-marvosym
 %defattr(644,root,root,755)
