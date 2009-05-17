@@ -4182,6 +4182,7 @@ Summary(pl.UTF-8):	Makra postscriptowe dla TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-misc = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dvips = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-pstricks
 Obsoletes:	tetex-tex-pstricks
 
@@ -7794,7 +7795,6 @@ fi
 
 %files dirs-fonts
 %defattr(644,root,root,755)
-%dir %{texmfdist}/doc/latex/marvosym/mac/oztex/tex-font
 %dir %{texmfdist}/fonts
 %dir %{texmfdist}/fonts/afm
 %dir %{texmfdist}/fonts/afm/public
@@ -7952,7 +7952,6 @@ fi
 %doc %{texmfdist}/doc/latex/draftcopy
 %doc %{texmfdist}/doc/latex/eepic
 %doc %{texmfdist}/doc/latex/endfloat
-%doc %{texmfdist}/doc/latex/esint
 %doc %{texmfdist}/doc/latex/eso-pic
 %doc %{texmfdist}/doc/latex/euler
 %doc %{texmfdist}/doc/latex/eulervm
@@ -7983,7 +7982,6 @@ fi
 %doc %{texmfdist}/doc/latex/ms
 %doc %{texmfdist}/doc/latex/multibib
 %doc %{texmfdist}/doc/latex/mwcls
-%doc %{texmfdist}/doc/latex/natbib
 %doc %{texmfdist}/doc/latex/nomencl
 %doc %{texmfdist}/doc/latex/ntgclass
 %doc %{texmfdist}/doc/latex/oberdiek
@@ -8627,8 +8625,6 @@ fi
 %files format-utf8mex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/utf8mex
-%dir %{texmfdist}/doc/mex
-%doc %{texmfdist}/doc/mex/utf8mex
 %{texmfdist}/tex/mex/utf8mex
 
 %files amstex
@@ -8648,14 +8644,7 @@ fi
 %files csplain
 %defattr(644,root,root,755)
 %dir %{texmfdist}/doc/cslatex
-%dir %{texmfdist}/doc/cslatex/base
-%doc %{texmfdist}/doc/cslatex/base/README-cspsfont
-%doc %{texmfdist}/doc/cslatex/base/cs-fonts.doc
-%doc %{texmfdist}/doc/cslatex/base/cscorr.tab
-%doc %{texmfdist}/doc/cslatex/base/csplain.doc
-%doc %{texmfdist}/doc/cslatex/base/parpozn.tex
-%doc %{texmfdist}/doc/cslatex/base/test8z.tex
-%doc %{texmfdist}/doc/cslatex/base/testlat.tex
+%doc %{texmfdist}/doc/cslatex/base
 %attr(755,root,root) %{_bindir}/csplain
 %{texmfdist}/tex/csplain
 %{texmf}/fmtutil/format.csplain.cnf
@@ -9392,7 +9381,6 @@ fi
 
 %files latex-bbm
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/fonts/bbm
 %{texmfdist}/tex/latex/bbm
 
 %files latex-bbold
@@ -9421,7 +9409,6 @@ fi
 %dir %{texmfdist}/doc/bibtex
 %dir %{texmf}/bibtex
 %doc %{texmfdist}/doc/bibtex/base
-%doc %{texmfdist}/doc/latex/adrconv
 %doc %{texmfdist}/doc/latex/bibtopic
 %doc %{texmfdist}/doc/latex/bibunits
 %doc %{texmfdist}/doc/latex/footbib
@@ -9442,7 +9429,6 @@ fi
 %{texmfdist}/source/latex/bibtopic
 %{texmfdist}/source/latex/bibunits
 %{texmfdist}/source/latex/footbib
-%{texmfdist}/tex/latex/adrconv
 %{texmfdist}/tex/latex/bibtopic
 %{texmfdist}/tex/latex/bibunits
 %{texmfdist}/tex/latex/footbib
@@ -9785,7 +9771,6 @@ fi
 
 %files latex-lm
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/fonts/lm
 %{texmfdist}/tex/latex/lm
 %{texmfdist}/fonts/afm/public/lm
 %{texmfdist}/fonts/enc/dvips/lm
@@ -9894,8 +9879,6 @@ fi
 %files latex-other-doc
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/alatex
-%doc %{texmfdist}/doc/cslatex/base
-%doc %{texmfdist}/doc/generic/enctex
 %doc %{texmfdist}/doc/generic/wsuipa
 %doc %{texmfdist}/doc/latex/ANUfinalexam
 %doc %{texmfdist}/doc/latex/AkkTeX
@@ -9960,7 +9943,6 @@ fi
 %doc %{texmfdist}/doc/latex/chapterfolder
 %doc %{texmfdist}/doc/latex/china2e
 %doc %{texmfdist}/doc/latex/cite
-%doc %{texmfdist}/doc/latex/cjk
 %doc %{texmfdist}/doc/latex/classicthesis
 %doc %{texmfdist}/doc/latex/cleveref
 %doc %{texmfdist}/doc/latex/clock
@@ -11952,7 +11934,6 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pst-3d
 %doc %{texmfdist}/doc/generic/pst-3dplot
-%{texmfdist}/dvips/pst-3dplot
 %{texmfdist}/source/generic/pst-3d
 %{texmfdist}/source/generic/pst-3dplot
 %{texmfdist}/tex/generic/pst-3d
@@ -11962,14 +11943,12 @@ fi
 
 %files latex-pst-bar
 %defattr(644,root,root,755)
-%{texmfdist}/dvips/pst-bar
 %{texmfdist}/tex/generic/pst-bar
 %{texmfdist}/tex/latex/pst-bar
 
 %files latex-pst-circ
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pst-circ
-%{texmfdist}/dvips/pst-circ
 %{texmfdist}/tex/generic/pst-circ
 %{texmfdist}/tex/latex/pst-circ
 
@@ -11988,14 +11967,12 @@ fi
 %files latex-pst-fun
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pst-fun
-%{texmfdist}/dvips/pst-fun
 %{texmfdist}/tex/generic/pst-fun
 %{texmfdist}/tex/latex/pst-fun
 
 %files latex-pst-func
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pst-func
-%{texmfdist}/dvips/pst-func
 %{texmfdist}/tex/generic/pst-func
 %{texmfdist}/tex/latex/pst-func
 
@@ -12015,14 +11992,12 @@ fi
 %files latex-pst-fractal
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pst-fractal
-%{texmfdist}/dvips/pst-fractal
 %{texmfdist}/tex/generic/pst-fractal
 %{texmfdist}/tex/latex/pst-fractal
 
 %files latex-pst-math
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pst-math
-%{texmfdist}/dvips/pst-math
 %{texmfdist}/tex/generic/pst-math
 %{texmfdist}/tex/latex/pst-math
 
@@ -12036,7 +12011,6 @@ fi
 %files latex-pst-optexp
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pst-optexp
-%{texmfdist}/dvips/pst-optexp
 %{texmfdist}/tex/generic/pst-optexp
 %{texmfdist}/tex/latex/pst-optexp
 
@@ -12049,7 +12023,6 @@ fi
 %files latex-pst-text
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pst-text
-%{texmfdist}/dvips/pst-text
 %{texmfdist}/tex/generic/pst-text
 %{texmfdist}/tex/latex/pst-text
 
@@ -12086,19 +12059,6 @@ fi
 %doc %{texmfdist}/doc/generic/pst-vue3d
 %doc %{texmfdist}/doc/latex/auto-pst-pdf
 %doc %{texmfdist}/doc/latex/pst-pdf
-%{texmfdist}/dvips/pst-barcode
-%{texmfdist}/dvips/pst-blur
-%{texmfdist}/dvips/pst-coil
-%{texmfdist}/dvips/pst-cox
-%{texmfdist}/dvips/pst-eucl
-%{texmfdist}/dvips/pst-geo
-%{texmfdist}/dvips/pst-ghsb
-%{texmfdist}/dvips/pst-grad
-%{texmfdist}/dvips/pst-light3d
-%{texmfdist}/dvips/pst-slpe
-%{texmfdist}/dvips/pst-solides3d
-%{texmfdist}/dvips/pst-spectra
-%{texmfdist}/dvips/pst-vue3d
 %{texmfdist}/scripts/pst-pdf
 %{texmfdist}/source/generic/pst-barcode
 %{texmfdist}/source/generic/pst-blur
@@ -12190,7 +12150,6 @@ fi
 
 %files latex-pxfonts
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/fonts/pxfonts
 %{texmfdist}/tex/latex/pxfonts
 %{texmfdist}/fonts/type1/public/pxfonts
 %{texmfdist}/fonts/afm/public/pxfonts
@@ -12256,7 +12215,6 @@ fi
 %files latex-xcolor
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/latex/xcolor
-%{texmfdist}/dvips/xcolor
 %{texmfdist}/source/latex/xcolor
 
 %files format-pdflatex
@@ -12291,7 +12249,6 @@ fi
 %files tex-misc
 %defattr(644,root,root,755)
 %{texmfdist}/source/generic/tap
-%doc %{texmfdist}/doc/latex/localloc
 %doc %{texmfdist}/doc/generic/multido
 %doc %{texmfdist}/doc/generic/tap
 %doc %{texmfdist}/doc/generic/vrb
@@ -12316,7 +12273,6 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/generic/pstricks
 %doc %{texmfdist}/doc/generic/pstricks-add
-%{texmfdist}/dvips/pstricks
 %{texmfdist}/tex/generic/pstricks
 %{texmfdist}/tex/latex/pstricks-add
 %{texmfdist}/source/generic/pstricks-add
@@ -12419,9 +12375,6 @@ fi
 
 %files fonts-ams
 %defattr(644,root,root,755)
-%{texmfdist}/bibtex/bst/ams
-%{texmfdist}/bibtex/bib/ams
-%{texmfdist}/dvips/ams
 %{texmfdist}/fonts/source/public/ams
 %{texmfdist}/fonts/type1/bluesky/ams
 %{texmfdist}/fonts/afm/bluesky/ams
@@ -12435,7 +12388,6 @@ fi
 %{texmfdist}/fonts/map/dvips/antp
 %{texmfdist}/fonts/afm/public/antp
 %{texmfdist}/fonts/tfm/public/antp
-%{texmfdist}/dvips/antp
 
 %files fonts-antt
 %defattr(644,root,root,755)
@@ -12493,7 +12445,6 @@ fi
 %dir %{texmfdist}/fonts/map/dvips
 %dir %{texmfdist}/fonts/pk/ljfour/public
 %doc %{texmfdist}/doc/fonts/cm
-%{texmfdist}/dvips/cm
 %{texmfdist}/fonts/afm/bluesky/cm
 %{texmfdist}/fonts/map/dvips/cm
 %{texmfdist}/fonts/pk/ljfour/public/cm
@@ -12502,7 +12453,6 @@ fi
 
 %files fonts-cmbright
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/cmbright
 %{texmfdist}/fonts/source/public/cmbright
 %{texmfdist}/fonts/tfm/public/cmbright
 %{texmfdist}/source/latex/cmbright
@@ -12534,7 +12484,6 @@ fi
 %files fonts-concmath
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/concmath
-%doc %{texmfdist}/doc/latex/concmath
 %{texmfdist}/fonts/source/public/concmath
 %{texmfdist}/fonts/tfm/public/concmath
 %{texmfdist}/source/latex/concmath
@@ -12548,7 +12497,6 @@ fi
 
 %files fonts-cs
 %defattr(644,root,root,755)
-%{texmfdist}/dvips/cs
 %{texmfdist}/fonts/source/public/cs
 %{texmfdist}/fonts/enc/dvips/cs
 %{texmfdist}/fonts/tfm/public/cs
@@ -12571,7 +12519,6 @@ fi
 
 %files fonts-eulervm
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/eulervm
 %{texmfdist}/fonts/tfm/public/eulervm
 %{texmfdist}/fonts/vf/public/eulervm
 %{texmfdist}/source/latex/eulervm
@@ -12585,7 +12532,6 @@ fi
 %files fonts-gothic
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/gothic
-%{texmfdist}/dvips/gothic
 %{texmfdist}/fonts/source/public/gothic
 %{texmfdist}/fonts/type1/public/gothic
 %{texmfdist}/fonts/afm/public/gothic
@@ -12670,7 +12616,6 @@ fi
 
 %files fonts-mflogo
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/mflogo
 %{texmfdist}/fonts/source/public/mflogo
 %{texmfdist}/fonts/type1/hoekwater/mflogo
 %{texmfdist}/fonts/afm/hoekwater/mflogo
@@ -12681,7 +12626,6 @@ fi
 
 %files fonts-misc
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/latex/marvosym/mac/oztex/tex-font/misc
 %{texmfdist}/fonts/source/public/misc
 %{texmfdist}/fonts/tfm/public/misc
 %{texmfdist}/fonts/misc
@@ -13548,7 +13492,6 @@ fi
 
 %{texmfdist}/fonts/map/dvips/zapfding
 
-%{texmfdist}/dvips/zefonts
 %{texmfdist}/fonts/map/dvips/zefonts
 %{texmfdist}/fonts/tfm/public/zefonts
 %{texmfdist}/fonts/vf/public/zefonts
@@ -13558,8 +13501,6 @@ fi
 %dir %{texmfdist}/omega
 %dir %{texmfdist}/omega/ocp
 %dir %{texmfdist}/omega/otp
-%doc %{texmfdist}/doc/omega
-%{texmfdist}/dvips/omega
 %{texmfdist}/fonts/ofm/public/omega
 %{texmfdist}/fonts/type1/public/omega
 %{texmfdist}/fonts/afm/public/omega
@@ -13575,7 +13516,6 @@ fi
 %defattr(644,root,root,755)
 %doc %{texmfdist}/doc/fonts/pl
 %dir %{texmf}/scripts/texlive
-%{texmfdist}/dvips/pl
 %{texmfdist}/fonts/source/public/pl
 %{texmfdist}/fonts/type1/public/pl
 %{texmfdist}/fonts/afm/public/pl
@@ -13672,7 +13612,6 @@ fi
 
 %files fonts-type1-antp
 %defattr(644,root,root,755)
-%{texmfdist}/dvips/antp
 %{texmfdist}/fonts/type1/public/antp
 
 %files fonts-type1-antt
