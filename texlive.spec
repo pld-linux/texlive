@@ -259,11 +259,11 @@ Other utilities.
 Summary:	LaTeX macros for converting Jade TeX output into DVI/PS/PDF
 Summary(pl.UTF-8):	Makra LaTeXa do konwersji Jade TeXa do DVI/PS/PDF
 Group:		Applications/Publishing/TeX
-Provides:	jadetex = %{epoch}:%{version}-%{release}
-Obsoletes:	jadetex
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
+Provides:	jadetex = %{epoch}:%{version}-%{release}
+Obsoletes:	jadetex
 
 %description jadetex
 JadeTeX contains the additional LaTeX macros necessary for taking Jade
@@ -2636,7 +2636,7 @@ Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-fonts-lm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-lm
-Obsoletes:	%{name}-fonts-type1-lm
+Obsoletes:	texlive-fonts-type1-lm
 
 %description latex-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -4182,8 +4182,8 @@ Summary:	PostScript macros for TeX
 Summary(pl.UTF-8):	Makra postscriptowe dla TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-misc = %{epoch}:%{version}-%{release}
 Requires:	%{name}-dvips = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-misc = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-pstricks
 Obsoletes:	tetex-tex-pstricks
 
@@ -4597,7 +4597,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-cmcyr
 Obsoletes:	tetex-fonts-cmcyr
-Obsoletes:	%{name}-fonts-type1-cmcyr
+Obsoletes:	texlive-fonts-type1-cmcyr
 
 %description fonts-cmcyr
 Computer Modern fonts extended with Russian letters.
