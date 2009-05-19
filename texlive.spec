@@ -5800,14 +5800,14 @@ cd fonts/tfm/la
 for i in larm?00.tfm; do ln -s $i $(echo $i | sed "s@larm\(.\).*@larm0\100.tfm@") ; done
 
 # wrong dvi in formlett, should be regenerate
-cd $RPM_BUILD_ROOT%{texmfdoc}/latex/formlett
+cd $RPM_BUILD_ROOT%{texmf-dist}/doc/latex/formlett
 tex user_manual.tex
 tex prog_manual.tex
 
 cd $CURDIR
 
-cp $RPM_BUILD_ROOT%{texmfdoc}/latex/xstring/xstring.tex $RPM_BUILD_ROOT%{texmfdist}/tex/latex/xstring
-
+# some tex-files need xstring.tex and doc/latex isn't in kpathsea search path
+cp $RPM_BUILD_ROOT%{texmf-dist}/doc/latex/xstring/xstring.tex $RPM_BUILD_ROOT%{texmfdist}/tex/latex/xstring
 
 #install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
 #touch $RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap/maps.lst
