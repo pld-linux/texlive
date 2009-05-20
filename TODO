@@ -1,0 +1,41 @@
+- fix compiling with glibc 2.10
+	In file included from tangleboot.c:95:
+	tangleboot.h:34: error: conflicting types for 'getline'
+	/usr/include/stdio.h:651: note: previous declaration of 'getline' was here
+	tangleboot.c:2175: error: conflicting types for 'getline'
+	/usr/include/stdio.h:651: note: previous declaration of 'getline' was here
+	make[3]: *** [tangleboot.o] Error 1
+	make[3]: Leaving directory `/home/users/uzsolt/rpm/BUILD.i686-linux/texlive-20080816-source/texk/web2c'
+	make[2]: *** [tangleboot.p] Error 2
+	make[2]: Leaving directory `/home/users/uzsolt/rpm/BUILD.i686-linux/texlive-20080816-source/texk/web2c'
+	make[1]: *** [all] Error 1
+	make[1]: Leaving directory `/home/users/uzsolt/rpm/BUILD.i686-linux/texlive-20080816-source/texk'
+	make: *** [all] Error 1
+
+MAIN TODO (sort by importance):
+- texlive-format-pdflatex deps
+- pl updates
+- see uncategorized and *other* subpackages and split
+- context: consider more splitting, check dependencies
+- omega: consider more splitting, check dependencies
+- tdphp: is it really useful?
+- allow using Type1 fonts in others applications (symlink to
+  /usr/share/fonts/Type1 ?)
+- fix package removal:
+  /usr/bin/texhash[77]: kpsewhich: not found
+
+FHS TODO:
+- merge rhconfig and texmfsysvar patches
+- texmfsysvar patch: change fmtutil and web2cdir variables instead
+  of creating texmfsys{config,var} variables?
+- move config files to /etc
+- merge all above with configure switch "--enable-fhs" and send it to TE
+
+TeXLive specific TODO:
+- summary/description correcting (all languages)
+- texk/web2c doesn't build (luatex option)
+- %files latex-bibtex-revtex4
+- Check CEF/cjk!
+- texdoc: /usr/bin/env: texlua: No such file or directory
+- tlmgr: "kpsewhich" is not exported by the TeXLive::TLUtils module
+
