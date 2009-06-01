@@ -1387,6 +1387,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
+Requires:	ghostscript
 Provides:	tetex-format-pdftex = %{epoch}:%{version}-%{release}
 Provides:	tetex-pdftex
 Obsoletes:	tetex-format-pdftex
