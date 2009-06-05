@@ -1,3 +1,22 @@
+# TODO:
+# - get rid of /etc/cron.daily depencency from base pkg, use /etc/tmpwatch.d instead
+# - dep loops:
+#error: LOOP:
+#error: removing kpathsea-20080816-5.x86_64 "Requires(post): /usr/bin/texhash" from tsort relations.
+#error:     kpathsea-20080816-5.x86_64               Requires(post): /usr/bin/texhash
+#error: removing texlive-20080816-5.x86_64 "Requires: texconfig = 1:20080816-5" from tsort relations.
+#error:     texlive-20080816-5.x86_64                Requires: texconfig = 1:20080816-5
+#error: removing texconfig-20080816-5.x86_64 "Requires: texlive-dvips = 1:20080816-5" from tsort relations.
+#error:     texconfig-20080816-5.x86_64              Requires: texlive-dvips = 1:20080816-5
+#error: removing texlive-dvips-20080816-5.x86_64 "Requires(auto): libkpathsea.so.4()(64bit)" from tsort relations.
+#error:     texlive-dvips-20080816-5.x86_64          Requires(auto): libkpathsea.so.4()(64bit)
+#error: LOOP:
+#error: removing texlive-20080816-5.x86_64 "Requires: texlive-metafont = 1:20080816-5" from tsort relations.
+#error:     texlive-20080816-5.x86_64                Requires: texlive-metafont = 1:20080816-5
+#error: removing texlive-metafont-20080816-5.x86_64 "Requires(post): /usr/bin/texhash" from tsort relations.
+#error:     texlive-metafont-20080816-5.x86_64       Requires(post): /usr/bin/texhash
+#Preparing...                ########################################### [100%]
+
 %include	/usr/lib/rpm/macros.perl
 # Conditional build:
 %bcond_with	bootstrap	# bootstrap build
