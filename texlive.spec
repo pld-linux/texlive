@@ -1,5 +1,6 @@
 # TODO:
 # - get rid of /etc/cron.daily depencency from base pkg, use /etc/tmpwatch.d instead
+# - cache in /var/lib? (move to /var/cache)
 # - dep loops:
 #error: LOOP:
 #error: removing kpathsea-20080816-5.x86_64 "Requires(post): /usr/bin/texhash" from tsort relations.
