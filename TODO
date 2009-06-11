@@ -14,6 +14,8 @@
 
 MAIN TODO (sort by importance):
 - texlive-format-pdflatex deps
+- missing obsoletes (?):
+    tetex = 1:3.0-12 is required by installed tetex-doc-Catalogue-3.0-12.i686
 - pl updates
 - see uncategorized and *other* subpackages and split
 - context: consider more splitting, check dependencies
