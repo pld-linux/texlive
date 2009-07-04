@@ -76,6 +76,8 @@ Source62:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/Te
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-20080816-kpathsea-ar.patch
 Patch2:		%{name}-gcc44.patch
+Patch3:		%{name}-getline.patch
+Patch4:		%{name}-stdio.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -5581,6 +5583,8 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1 
 CURDIR=$(pwd)
 
 cd utils/xindy/make-rules/alphabets
