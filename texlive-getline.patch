@@ -259,3 +259,54 @@
      currentline->next = temp->next;
      currentline->prev = temp;
      temp->next->prev = currentline;
+--- texlive-20080816-source.orig/texk/ttf2pk/newobj.c	2009-07-04 10:12:21.579825377 +0200
++++ texlive-20080816-source/texk/ttf2pk/newobj.c	2009-07-04 13:24:44.943254190 +0200
+@@ -134,7 +134,7 @@
+  */
+ 
+ Boolean
+-getline(char **bufferp, FILE *f)
++tl_getline(char **bufferp, FILE *f)
+ {
+   size_t l;
+ 
+--- texlive-20080816-source.orig/texk/ttf2pk/newobj.h	2009-07-04 10:12:21.536492551 +0200
++++ texlive-20080816-source/texk/ttf2pk/newobj.h	2009-07-04 13:25:35.789915748 +0200
+@@ -26,7 +26,7 @@
+ void *myrealloc(void *oldp, size_t len);
+ 
+ char *get_line(FILE *f);
+-Boolean getline(char **bufferp, FILE *f);
++Boolean tl_getline(char **bufferp, FILE *f);
+ char *newstring(char *s);
+ 
+ ttfinfo *newchar(Font *fnt);
+--- texlive-20080816-source.orig/texk/ttf2pk/parse.c	2009-07-04 10:12:21.576492082 +0200
++++ texlive-20080816-source/texk/ttf2pk/parse.c	2009-07-04 13:26:10.178664088 +0200
+@@ -63,7 +63,7 @@
+       if (*bufferp)
+         free(*bufferp);
+ 
+-      if (getline(bufferp, f) == False)
++      if (tl_getline(bufferp, f) == False)
+         oops("Premature end in encoding file.");
+ 
+       curp = *bufferp;
+@@ -187,7 +187,7 @@
+         "Token 258 in encoding must be make-array (]).");
+     free(p);
+ 
+-    while (getline(&buffer, enc_file))
++    while (tl_getline(&buffer, enc_file))
+     {
+       for (p = buffer; *p; p++)
+         if (*p == '%')
+@@ -246,7 +246,7 @@
+   if (replacement_file == NULL)
+     oops("Cannot open replacement file `%s'.", real_replacement_name);
+ 
+-  while (getline(&buffer, replacement_file))
++  while (tl_getline(&buffer, replacement_file))
+   {
+     for (p = buffer; *p; p++)
+       if (*p == '%')
