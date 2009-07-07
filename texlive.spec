@@ -21,6 +21,12 @@
 %include	/usr/lib/rpm/macros.perl
 # Conditional build:
 %bcond_with	bootstrap	# bootstrap build
+%bcond_without	xindy		# do not build xindy packages
+
+%if %{with bootstrap}
+%undefine	with_xindy
+%endif
+
 #
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
@@ -82,7 +88,9 @@ URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
+%if %{with xindy}
 BuildRequires:	clisp
+%endif
 BuildRequires:	ed
 BuildRequires:	expat-devel
 BuildRequires:	ffcall-devel
@@ -5619,9 +5627,7 @@ ulimit -s unlimited
 %endif
 
 %configure \
-%if %{with bootstrap}
-	--without-xindy \
-%endif
+	--with%{!?with_xindy:out}-xindy \
 	--without-luatex \
 	--disable-multiplatform \
 	--disable-static \
@@ -8309,7 +8315,7 @@ fi
 %{texmf}/texconfig/v
 %{texmf}/texconfig/x
 
-%if !%{with bootstrap}
+%if %{with xindy}
 %files -n xindy
 %defattr(644,root,root,755)
 %doc %{texmf}/doc/xindy
