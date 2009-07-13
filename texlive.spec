@@ -5931,18 +5931,18 @@ fi
 
 %post -n kpathsea
 /sbin/ldconfig
-%fixinfodir
 %texhash
 
 %postun -n kpathsea
 /sbin/ldconfig
-%fixinfodir
 %texhash
 
 %post -n kpathsea-devel
+%fixinfodir
 %texhash
 
 %postun -n kpathsea-devel
+%fixinfodir
 %texhash
 
 %post dvips
