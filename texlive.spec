@@ -11,11 +11,6 @@
 #error:     texconfig-20080816-5.x86_64              Requires: texlive-dvips = 1:20080816-5
 #error: removing texlive-dvips-20080816-5.x86_64 "Requires(auto): libkpathsea.so.4()(64bit)" from tsort relations.
 #error:     texlive-dvips-20080816-5.x86_64          Requires(auto): libkpathsea.so.4()(64bit)
-#error: LOOP:
-#error: removing texlive-20080816-5.x86_64 "Requires: texlive-metafont = 1:20080816-5" from tsort relations.
-#error:     texlive-20080816-5.x86_64                Requires: texlive-metafont = 1:20080816-5
-#error: removing texlive-metafont-20080816-5.x86_64 "Requires(post): /usr/bin/texhash" from tsort relations.
-#error:     texlive-metafont-20080816-5.x86_64       Requires(post): /usr/bin/texhash
 #Preparing...                ########################################### [100%]
 
 %include	/usr/lib/rpm/macros.perl
@@ -126,7 +121,6 @@ BuildRequires:	%{name}-format-eplain
 BuildRequires:	%{name}-format-pdflatex
 BuildRequires:	%{name}-latex
 BuildRequires:	%{name}-latex-cyrillic
-BuildRequires:	%{name}-metafont
 BuildRequires:	%{name}-metapost
 BuildRequires:	%{name}-mex
 BuildRequires:	%{name}-omega
@@ -151,7 +145,6 @@ BuildRequires:	zlib-devel >= 1.2.1
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-cm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-misc = %{epoch}:%{version}-%{release}
-Requires:	%{name}-metafont = %{epoch}:%{version}-%{release}
 Requires:	awk
 Requires:	dialog
 Requires:	kpathsea = %{epoch}:%{version}-%{release}
@@ -162,6 +155,7 @@ Requires:	textutils
 Suggests:	tmpwatch
 Provides:	tetex = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-pdfetex = %{epoch}:%{version}-%{release}
+Provides:	tetex-metafont
 Obsoletes:	tetex
 Obsoletes:	tetex-afm
 Obsoletes:	tetex-doc
@@ -177,6 +171,7 @@ Obsoletes:	tetex-format-pdfemex
 Obsoletes:	tetex-format-pdfetex
 Obsoletes:	tetex-latex-vnps
 Obsoletes:	tetex-latex-vnr
+Obsoletes:	tetex-metafont
 Obsoletes:	tetex-oxdvi
 Obsoletes:	tetex-plain-dvips
 Obsoletes:	tetex-plain-mathtime
@@ -184,6 +179,7 @@ Obsoletes:	tetex-plain-misc
 Obsoletes:	tetex-plain-plnfss
 Obsoletes:	tetex-tex-hyphen
 Obsoletes:	tetex-tex-vietnam
+Obsoletes:	texlive-metafont
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		texmf	%{_datadir}/texmf
@@ -762,22 +758,6 @@ Macro package developed at MIT.
 %description tex-ytex -l hu.UTF-8
 MIT-en fejlesztett makrócsomag.
 
-%package metafont
-Summary:	MetaFont
-Summary(hu.UTF-8):	MetaFont
-Summary(pl.UTF-8):	Zestaw narzędzi MetaFont
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Provides:	tetex-metafont
-Obsoletes:	tetex-metafont
-
-%description metafont
-MetaFont.
-
-%description metafont -l pl.UTF-8
-Zestaw narzędzi MetaFont.
-
 %package metapost
 Summary:	MetaPost
 Summary(hu.UTF-8):	MetaPost
@@ -863,7 +843,6 @@ Summary(pl.UTF-8):	Konfigurator systemu składu TeX
 Group:		Applications/Publishing/TeX
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-dvips = %{epoch}:%{version}-%{release}
-Requires:	%{name}-metafont = %{epoch}:%{version}-%{release}
 Requires:	xdvi = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-texconfig
 
@@ -884,7 +863,6 @@ Summary(tr.UTF-8):	X11 öngörüntüleyici
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-metafont = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-dvips
 Obsoletes:	tetex-xdvi
 
@@ -4026,11 +4004,11 @@ Summary:	PDF LaTeX macro package
 Summary(pl.UTF-8):	Pakiet makr PDF LaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-jknappen = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-urw = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-psnfss = %{epoch}:%{version}-%{release}
-Requires:	%{name}-metafont = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-pdflatex
 Obsoletes:	tetex-format-pdflatex
@@ -6047,12 +6025,6 @@ fi
 %postun tex-ytex
 %texhash
 
-%post metafont
-%texhash
-
-%postun metafont
-%texhash
-
 %post metapost
 %texhash
 
@@ -7447,6 +7419,12 @@ fi
 %attr(755,root,root) %{_bindir}/kpsewhere
 %attr(755,root,root) %{_bindir}/mag
 %attr(755,root,root) %{_bindir}/makempx
+%attr(755,root,root) %{_bindir}/mf
+%attr(755,root,root) %{_bindir}/mf-nowin
+%attr(755,root,root) %{_bindir}/mft
+%attr(755,root,root) %{_bindir}/mktexmf
+%attr(755,root,root) %{_bindir}/mktexpk
+%attr(755,root,root) %{_bindir}/mktextfm
 %attr(755,root,root) %{_bindir}/mktexfmt
 %attr(755,root,root) %{_bindir}/mktexlsr
 %attr(755,root,root) %{_bindir}/newer
@@ -7521,6 +7499,7 @@ fi
 %dir %{texmfdist}/doc/generic/enctex
 %dir %{texmfdist}/doc/latex
 %dir %{texmfdist}/doc/latex/localloc
+%dir %{texmfdist}/mft
 %dir %{texmfdist}/tex
 %dir %{texmfdist}/tex/cslatex
 %dir %{texmfdist}/tex/cslatex/base
@@ -7588,6 +7567,9 @@ fi
 %{texmf}/fonts/enc/dvips/tetex/f7b6d320.enc
 %{texmf}/fonts/map/dvips/tetex/ps2pk35.map
 
+%{texmfdist}/metafont
+%{texmfdist}/mft/base
+%{texmfdist}/source/metafont
 %{texmfdist}/tex/fontinst
 %{texmfdist}/tex/generic/dehyph-exptl/*
 %{texmfdist}/tex/generic/encodings
@@ -7601,6 +7583,7 @@ fi
 %{texmfdist}/tex/texinfo
 %{texmf}/tex/fontinst
 %{texmf}/tex/generic/hyphen
+%{texmf}/fmtutil/format.metafont.cnf
 %{texmf}/fonts/map/dvips/updmap/*
 %{texmf}/web2c/*.tcx
 
@@ -7629,6 +7612,12 @@ fi
 %{_mandir}/man1/mag.1*
 %{_mandir}/man1/makempx.1*
 %{_mandir}/man1/makempy.1*
+%{_mandir}/man1/mf.1*
+%{_mandir}/man1/mf-nowin.1*
+%{_mandir}/man1/mft.1*
+%{_mandir}/man1/mktexmf.1*
+%{_mandir}/man1/mktexpk.1*
+%{_mandir}/man1/mktextfm.1*
 %{_mandir}/man1/mktexfmt.1*
 %{_mandir}/man1/mktexlsr.1*
 %{_mandir}/man1/newer.1*
@@ -8223,26 +8212,6 @@ fi
 %files tex-ytex
 %defattr(644,root,root,755)
 %{texmfdist}/tex/ytex
-
-%files metafont
-%defattr(644,root,root,755)
-%dir %{texmfdist}/mft
-%attr(755,root,root) %{_bindir}/mf
-%attr(755,root,root) %{_bindir}/mf-nowin
-%attr(755,root,root) %{_bindir}/mft
-%attr(755,root,root) %{_bindir}/mktexmf
-%attr(755,root,root) %{_bindir}/mktexpk
-%attr(755,root,root) %{_bindir}/mktextfm
-%{texmfdist}/metafont
-%{texmfdist}/mft/base
-%{texmfdist}/source/metafont
-%{texmf}/fmtutil/format.metafont.cnf
-%{_mandir}/man1/mf.1*
-%{_mandir}/man1/mf-nowin.1*
-%{_mandir}/man1/mft.1*
-%{_mandir}/man1/mktexmf.1*
-%{_mandir}/man1/mktexpk.1*
-%{_mandir}/man1/mktextfm.1*
 
 %files metapost
 %defattr(644,root,root,755)
