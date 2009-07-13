@@ -5896,6 +5896,7 @@ for format in \
 	lambda \
 	lamed \
 	latex \
+	mex \
 	mllatex \
 	mptopdf \
 	omega \
@@ -8624,6 +8625,7 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mex
 %{texmfdist}/tex/mex/config/mex.ini
+%{fmtdir}/tex/mex.fmt
 
 %files format-pdfmex
 %defattr(644,root,root,755)
