@@ -48,6 +48,8 @@ Source10:	http://tug.ctan.org/get/macros/latex/contrib/floatflt.zip
 # Source10-md5:	5d9fe14d289aa81ebb6b4761169dd5f2
 Source11:	http://carme.pld-linux.org/~uzsolt/sources/%{name}-fonts-larm.tar.bz2
 # Source11-md5:	df2fcc66f0c2e90785ca6c9b27dacd34
+Source12:	http://www.ctan.org/get/macros/latex/contrib/foiltex.zip
+# Source12-md5:	0a6b4e64fb883a68d9b288bf3421db25
 Source50:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/Splashscreen.pm
 # Source50-md5:	5cc49f49010f27fdb02dd7053797ba19
 Source51:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/TLConfig.pm
@@ -2473,6 +2475,19 @@ Tools to manipulate float objects.
 %description latex-float -l hu.UTF-8
 Eszközök úszó objektuomok kezeléséhez.
 
+%package latex-foiltex
+Summary:	The FoilTeX is a collection of LaTeX files for making foils
+Summary(hu.UTF-8):	A FoilTeX a LaTeX fájlok gyűjteménye fóliák készítéséhez
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	%{_bindir}/texhash
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+
+%description latex-foiltex
+The FoilTeX is a collection of LaTeX files for making foils.
+
+%description latex-foiltex -l hu.UTF-8
+A FoilTeX a LaTeX fájlok gyűjteménye fóliák készítéséhez.
+
 %package latex-formlett
 Summary:	Letters to multiple recipients
 Summary(hu.UTF-8):	Levél több címzettnek ("körlevél")
@@ -3075,8 +3090,8 @@ Summary:	Presentations in LaTeX
 Summary(hu.UTF-8):	Prezentációk LaTeX-ben
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Suggests:	%{name}-latex-prosper
+Requires:	%{name}-latex-foiltex = %{epoch}:%{version}-%{release}
+Suggests:	%{name}-latex-prosper = %{epoch}:%{version}-%{release}
 
 %description latex-presentation
 This package contains:
@@ -5764,6 +5779,7 @@ install %{SOURCE60} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
 install %{SOURCE61} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
 install %{SOURCE62} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
 
+
 cd $RPM_BUILD_ROOT%{texmfdist}/tex/latex
 
 # floatflt
@@ -5773,9 +5789,19 @@ latex floatflt.ins
 %{__rm} *.log
 install -d $RPM_BUILD_ROOT%{texmfdist}/doc/latex/floatflt
 %{__mv} *.txt *.tex *.pdf README $RPM_BUILD_ROOT%{texmfdist}/doc/latex/floatflt
-cd $RPM_BUILD_ROOT%{texmfdist}
+cd ..
+
+# foiltex
+unzip %{SOURCE12}
+cd foiltex
+latex foiltex.ins
+%{__rm} *.log
+install -d $RPM_BUILD_ROOT%{texmfdist}/doc/latex/foiltex
+%{__mv} *.tex *.pdf README $RPM_BUILD_ROOT%{texmfdist}/doc/latex/foiltex
+cd ..
 
 # larm fonts
+cd $RPM_BUILD_ROOT%{texmfdist}
 tar xvf %{SOURCE11}
 cd fonts/tfm/la
 for i in larm?00.tfm; do ln -s $i $(echo $i | sed "s@larm\(.\).*@larm0\100.tfm@") ; done
@@ -6511,6 +6537,12 @@ fi
 %texhash
 
 %postun latex-float
+%texhash
+
+%post latex-foiltex
+%texhash
+
+%postun latex-foiltex
 %texhash
 
 %post latex-formlett
@@ -9686,6 +9718,11 @@ fi
 %{texmfdist}/tex/latex/ccaption
 %{texmfdist}/tex/latex/photo
 %{texmfdist}/tex/latex/topfloat
+
+%files latex-foiltex
+%defattr(644,root,root,755)
+%doc %{texmfdist}/doc/latex/foiltex
+%{texmfdist}/tex/latex/foiltex
 
 %files latex-formlett
 %defattr(644,root,root,755)
