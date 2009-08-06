@@ -3531,6 +3531,7 @@ Summary(hu.UTF-8):	LaTeX osztály jó minőségű fóliák készítéséhez
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-xetex = %{epoch}:%{version}-%{release}
 
 %description latex-prosper
 LaTeX class for high quality slides.
