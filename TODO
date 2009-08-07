@@ -1,14 +1,3 @@
-Doesn't build again:
-	+ aclocal
-	configure.ac:18: error: AC_LANG_CONFTEST: unknown language: RC
-	../../lib/autoconf/lang.m4:214: AC_LANG_CONFTEST is expanded from...
-	acinclude.m4:73: AX_LANG_CONFTEST is expanded from...
-	acinclude.m4:133: AC_PROG_RC is expanded from...
-	configure.ac:18: the top level
-	autom4te: /usr/bin/m4 failed with exit status: 1
-	aclocal: autom4te failed with exit status: 1
-
-
 MAIN TODO (sort by importance):
 - texlive-format-pdflatex deps
 - pl updates
