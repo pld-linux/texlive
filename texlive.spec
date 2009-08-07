@@ -121,6 +121,7 @@ BuildRequires:	%{name}-fonts-cmsuper
 #BuildRequires:	%{name}-format-amstex
 #BuildRequires:	%{name}-format-cslatex
 BuildRequires:	%{name}-format-eplain
+BuildRequires:	%{name}-format-mex
 BuildRequires:	%{name}-format-pdflatex
 BuildRequires:	%{name}-latex
 BuildRequires:	%{name}-latex-cyrillic
@@ -8629,7 +8630,7 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mex
 %{texmfdist}/tex/mex/config/mex.ini
-%{fmtdir}/tex/mex.fmt
+%{fmtdir}/pdftex/mex.fmt
 
 %files format-pdfmex
 %defattr(644,root,root,755)
