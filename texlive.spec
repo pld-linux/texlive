@@ -33,7 +33,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	6
+Release:	7
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -4752,7 +4752,7 @@ Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-jknappen
 Obsoletes:	tetex-fonts-jknappen
 Obsoletes:	tetex-latex-jknappen
-Obsoletes:	%{name}-latex-jknappen
+Obsoletes:	texlive-latex-jknappen
 
 %description fonts-jknappen
 Miscellaneous macros, mostly for making use of extra fonts, by Joerg
@@ -5575,8 +5575,8 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1 
-%patch5 -p1 
+%patch4 -p1
+%patch5 -p1
 CURDIR=$(pwd)
 
 cd utils/xindy/make-rules/alphabets
