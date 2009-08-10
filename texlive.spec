@@ -1562,6 +1562,7 @@ Summary(pl.UTF-8):	Podstawowe pliki makr AMS dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-ams = %{epoch}:%{version}-%{release}
+Requires:	%{name}-format-amstex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Provides:	tetex-ams
 Obsoletes:	tetex-ams
