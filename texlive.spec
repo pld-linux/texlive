@@ -4766,6 +4766,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-jknappen
 Obsoletes:	tetex-fonts-jknappen
+Obsoletes:	%{name}-latex-jknappen
 
 %description fonts-jknappen
 Miscellaneous macros, mostly for making use of extra fonts, by Joerg
