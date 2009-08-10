@@ -2529,23 +2529,6 @@ Letter document class.
 %description latex-gbrief -l hu.UTF-8
 Levél dokumentumosztály.
 
-%package latex-jknappen
-Summary:	Miscellaneous packages by Joerg Knappen
-Summary(pl.UTF-8):	Różne pakiety autorstwa Joerga Knappena
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-jknappen = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-latex-jknappen
-
-%description latex-jknappen
-Miscellaneous macros, mostly for making use of extra fonts, by Joerg
-Knappen, including sgmlcmpt.
-
-%description latex-jknappen -l pl.UTF-8
-Różne makra, głównie do używania dodatkowych fontów autorstwa Joerga
-Knappena. Zawiera sgmlcmpt.
-
 %package latex-keystroke
 Summary:	Graphical representation of keys on keyboard
 Summary(hu.UTF-8):	A billentyűk grafikus megjelenítése
@@ -4764,8 +4747,10 @@ Summary:	Miscellaneous packages by Joerg Knappen
 Summary(pl.UTF-8):	Różne pakiety autorstwa Joerga Knappena
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-jknappen
 Obsoletes:	tetex-fonts-jknappen
+Obsoletes:	tetex-latex-jknappen
 Obsoletes:	%{name}-latex-jknappen
 
 %description fonts-jknappen
@@ -6565,12 +6550,6 @@ fi
 %texhash
 
 %postun latex-gbrief
-%texhash
-
-%post latex-jknappen
-%texhash
-
-%postun latex-jknappen
 %texhash
 
 %post latex-keystroke
