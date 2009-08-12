@@ -7777,7 +7777,8 @@ fi
 
 %files jadetex
 %defattr(644,root,root,755)
-%doc %{texmfdist}/doc/jadetex/base/*
+%dir %{texmfdist}/doc/jadetex
+%doc %{texmfdist}/doc/jadetex/base
 %doc %{texmfdist}/source/jadetex/base/ChangeLog*
 %attr(755,root,root) %{_bindir}/jadetex
 %attr(755,root,root) %{_bindir}/pdfjadetex
