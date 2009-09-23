@@ -843,6 +843,7 @@ przez administratora lub użytkownika.
 
 %package -n texconfig
 Summary:	TeX typesetting system configurator
+Summary(hu.UTF-8):	TeX szövegszedő rendszer beállítása
 Summary(pl.UTF-8):	Konfigurator systemu składu TeX
 Group:		Applications/Publishing/TeX
 Requires:	%{name} = %{epoch}:%{version}-%{release}
@@ -853,6 +854,9 @@ Obsoletes:	tetex-texconfig
 %description -n texconfig
 TeX typesetting system configurator.
 
+%description -n texconfig -l hu.UTF-8
+TeX szövegszedő rendszer beállítása.
+
 %description -n texconfig -l pl.UTF-8
 Konfigurator systemu składu TeX.
 
@@ -861,6 +865,7 @@ Summary:	X11 previewer
 Summary(de.UTF-8):	X11-Previewer
 Summary(es.UTF-8):	Visualizador TeX X11
 Summary(fr.UTF-8):	Prévisualisateur X11
+Summary(hu.UTF-8):	X11 előnézet
 Summary(pl.UTF-8):	Przeglądarka DVI dla X11
 Summary(pt_BR.UTF-8):	Visualizador TeX X11
 Summary(tr.UTF-8):	X11 öngörüntüleyici
@@ -886,6 +891,10 @@ visualizar archivos dvi, como los producidos por tex y latex.
 %description -n xdvi -l fr.UTF-8
 xdvi est un programme s'exécutant sous le système X Window. Il sert à
 visualiser les fichiers dvi tels que ceux produits par tex et latex.
+
+%description -n xdvi -l hu.UTF-8
+xdvi egyprogram, amely az X Window rendszeren fut. DVI fájlok
+előnézetére használjuk, amelyet tex és latex készít.
 
 %description -n xdvi -l pl.UTF-8
 Xdvi jest programem (działającym w X Window System) do przeglądania
@@ -1389,7 +1398,6 @@ Xindy vietnamese language
 
 %description -n xindy-vietnamese -l hu.UTF-8
 Xindy vietnám nyelv
-
 
 %package pdftex
 Summary:	TeX generating PDF files instead DVI
