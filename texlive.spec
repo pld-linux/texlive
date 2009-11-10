@@ -23,6 +23,8 @@
 %endif
 
 #
+%define		year	2009
+%define		monthday	1011
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
@@ -32,14 +34,13 @@ Summary(pl.UTF-8):	System składu publikacji TeX oraz formater fontów MetaFont
 Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
-Version:	20080816
-Release:	8
-Epoch:		1
+Version:	%{year}%{monthday}
+Release:	0.1
 License:	distributable
 Group:		Applications/Publishing/TeX
-Source0:	http://tug.org/svn/texlive/branches/branch2008/Master/source/%{name}-%{version}-source.tar.lzma
-# Source0-md5:	554287c3e458da776edd684506048d45
-Source1:	ftp://tug.org/texlive/historic/2008/%{name}-20080822-texmf.tar.lzma
+Source0:	http://tug.org/svn/texlive/branches/branch%{year}/Master/source/%{name}-%{version}-source.tar.xz
+# Source0-md5:	053395f260549b5d48892d40b5e083eb
+# Source1:	ftp://tug.org/texlive/historic/2008/%{name}-20080822-texmf.tar.lzma
 # Source1-md5:	fa74072e1344e8390eb156bcda61a8b2
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
@@ -97,6 +98,7 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel
 BuildRequires:	freetype1-devel
 BuildRequires:	gd-devel >= 2.0.33
+BuildRequires:	kpathsea-devel
 BuildRequires:	libpng-devel >= 1.2.8
 BuildRequires:	libtool
 # should this be somewhere in clisp?
@@ -5577,14 +5579,13 @@ It allows TeX to directly process XML files.
 
 
 %prep
-%setup -q -c -T -n %{name}-%{version}-source
-lzma -dc %{SOURCE0} | tar xf - -C ..
+%setup -q -n %{name}-%{version}-source
 %patch0 -p1
-%patch1 -p1
+# %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+# %patch3 -p1
 %patch4 -p1
-%patch5 -p1
+# %patch5 -p1
 CURDIR=$(pwd)
 
 cd utils/xindy/make-rules/alphabets
@@ -5593,15 +5594,17 @@ cp $(find fonts -type f) .
 for i in larm?00.tfm; do ln -s $i $(echo $i | sed "s@larm\(.\).*@larm0\100.tfm@") ; done
 cd ${CURDIR}
 
-cd libs/teckit
-cat ax*.m4 > acinclude.m4
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__automake}
+## cd libs/teckit
+## cat ax*.m4 > acinclude.m4
+# echo -e "KPSE_ADD_FLAGS([zlib])\nKPSE_ADD_FLAGS([libpng])\nLT_INIT" >> configure.ac
+cd ${CURDIR}
+# %{__libtoolize}
+# %{__aclocal}
+# %{__autoconf}
+# %{__automake}
 
 %build
-find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
+# find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 %{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk/*.c
 cd texk/kpathsea
 %{__sed} -i 's@^TEXMFMAIN =.*@TEXMFMAIN = %{texmf}@' texmf.cnf
@@ -5618,8 +5621,13 @@ cd ../..
 ulimit -s unlimited
 %endif
 
+export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES" 
+# ./reautoconf
 %configure \
+	--prefix=%{_prefix} \
 	--with%{!?with_xindy:out}-xindy \
+	--enable-shared \
+	--disable-native-texlive-build \
 	--without-luatex \
 	--disable-multiplatform \
 	--disable-static \
@@ -5631,13 +5639,14 @@ ulimit -s unlimited
 	--with-fonts-dir=/var/cache/fonts \
 	--with-ncurses \
 	--with-system-freetype \
-	--with-freetype-include=/usr/include/freetype \
+	--with-freetype-includes=/usr/include/freetype \
 	--with-system-freetype2 \
-	--with-freetype2-include=/usr/include/freetype2 \
 	--with-system-gd \
+	--with-system-kpathsea \
 	--with-system-ncurses \
 	--with-system-pnglib \
 	--with-system-t1lib \
+	--with-system-xpdf \
 	--with-system-zlib \
 	--with-xdvi-x-toolkit=xaw \
 	--without-dialog \
@@ -5658,7 +5667,7 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map\
 	$RPM_BUILD_ROOT%{fmtdir}/pdftex
 
-lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
+# lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-dist $RPM_BUILD_ROOT%{texmfdist}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-doc $RPM_BUILD_ROOT%{texmfdoc}
