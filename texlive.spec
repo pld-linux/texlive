@@ -7568,7 +7568,9 @@ fi
 %{_mandir}/man5/fmtutil.cnf.5*
 %{_mandir}/man5/updmap.cfg.5*
 %{fmtdir}/pdftex/pdfetex.fmt
+%{fmtdir}/pdfetex
 %{fmtdir}/tex/tex.fmt
+%{fmtdir}/pdftex/tex.fmt
 
 %files other-utils
 %defattr(644,root,root,755)
@@ -7641,6 +7643,7 @@ fi
 %{_mandir}/man1/vlna.1*
 %{_mandir}/man5/synctex.5*
 %{fmtdir}/pdftex/texsis.fmt
+%{fmtdir}/texsis
 
 # %files jadetex
 # %defattr(644,root,root,755)
@@ -8078,6 +8081,7 @@ fi
 # %{texmfdist}/tex/physe
 # %{texmf}/fmtutil/format.physe.cnf
 %{fmtdir}/pdftex/physe.fmt
+%{fmtdir}/physe
 
 # %files tex-velthuis
 # %defattr(644,root,root,755)
@@ -8137,6 +8141,7 @@ fi
 %{_mandir}/man1/mptopdf.1*
 # %{texmfdist}/tex/mptopdf
 %{fmtdir}/pdftex/mptopdf.fmt
+%{fmtdir}/mptopdf
 
 %files texdoctk
 %defattr(644,root,root,755)
@@ -8400,6 +8405,7 @@ fi
 # %{texmfdist}/tex/phyzzx/config
 # %{texmf}/fmtutil/format.phyzzx.cnf
 %{fmtdir}/pdftex/phyzzx.fmt
+%{fmtdir}/phyzzx
 
 %files omega
 %defattr(644,root,root,755)
@@ -8448,6 +8454,10 @@ fi
 %{_mandir}/man1/ovp2ovf.1*
 %{fmtdir}/aleph
 %{fmtdir}/omega
+%{fmtdir}/lambda
+%{fmtdir}/pdftex/lambda.fmt
+%{fmtdir}/pdftex/omega.fmt
+
 
 # %files plain
 # %defattr(644,root,root,755)
@@ -8471,6 +8481,7 @@ fi
 # %attr(755,root,root) %{_bindir}/mex
 # %{texmfdist}/tex/mex/config/mex.ini
 %{fmtdir}/pdftex/mex.fmt
+%{fmtdir}/mex
 
 # %files format-pdfmex
 # %defattr(644,root,root,755)
@@ -8507,11 +8518,13 @@ fi
 %files format-csplain
 %defattr(644,root,root,755)
 %{fmtdir}/pdftex/csplain.fmt
+%{fmtdir}/csplain
 
 %files format-pdfcsplain
 %defattr(644,root,root,755)
 # %attr(755,root,root) %{_bindir}/pdfcsplain
 %{fmtdir}/pdftex/pdfcsplain.fmt
+%{fmtdir}/pdfcsplain
 
 # %files cslatex
 # %defattr(644,root,root,755)
@@ -8544,6 +8557,7 @@ fi
 # %{_mandir}/man1/etex.1*
 # %{texmf}/fmtutil/format.eplain.cnf
 %{fmtdir}/pdftex/etex.fmt
+%{fmtdir}/etex
 
 %files context
 %defattr(644,root,root,755)
@@ -9167,6 +9181,8 @@ fi
 # %{texmf}/tex/latex/dvipdfm
 %{fmtdir}/pdftex/latex.fmt
 %{fmtdir}/pdftex/mllatex.fmt
+%{fmtdir}/mllatex
+%{fmtdir}/latex
 
 # %files latex-12many
 # %defattr(644,root,root,755)
@@ -12068,10 +12084,11 @@ fi
 # %doc %{texmfdist}/doc/latex/xcolor
 # %{texmfdist}/source/latex/xcolor
 # 
-# %files format-pdflatex
+%files format-pdflatex
 # %defattr(644,root,root,755)
 # %attr(755,root,root) %{_bindir}/pdflatex
-# %{fmtdir}/pdftex/pdflatex.fmt
+%{fmtdir}/pdflatex
+%{fmtdir}/pdftex/pdflatex.fmt
 # %{_mandir}/man1/pdflatex.1*
 # 
 # %files tex-babel
@@ -13701,6 +13718,9 @@ fi
 # %{texmf}/fmtutil/format.xetex.cnf
 %{fmtdir}/xetex/xetex.fmt
 %{fmtdir}/xetex/xelatex.fmt
+%{fmtdir}/pdftex/xelatex.fmt
+%{fmtdir}/pdftex/xetex.fmt
+%{fmtdir}/xelatex
 
 %files xmltex
 %defattr(644,root,root,755)
@@ -13712,3 +13732,5 @@ fi
 # %{texmf}/fmtutil/format.xmltex.cnf
 %{fmtdir}/pdftex/pdfxmltex.fmt
 %{fmtdir}/pdftex/xmltex.fmt
+%{fmtdir}/pdfxmltex
+%{fmtdir}/xmltex
