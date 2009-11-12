@@ -15,7 +15,7 @@
 
 %include	/usr/lib/rpm/macros.perl
 # Conditional build:
-%bcond_with	bootstrap	# bootstrap build
+%bcond_without	bootstrap	# bootstrap build
 %bcond_without	xindy		# do not build xindy packages
 
 %if %{with bootstrap}
@@ -40,8 +40,6 @@ License:	distributable
 Group:		Applications/Publishing/TeX
 Source0:	http://tug.org/svn/texlive/branches/branch%{year}/Master/source/%{name}-%{version}-source.tar.xz
 # Source0-md5:	053395f260549b5d48892d40b5e083eb
-# Source1:	ftp://tug.org/texlive/historic/2008/%{name}-20080822-texmf.tar.lzma
-# Source1-md5:	fa74072e1344e8390eb156bcda61a8b2
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
@@ -1807,6 +1805,7 @@ Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-data
 Suggests:	%{name}-fonts-jknappen
 Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-latex = %{epoch}:%{version}-%{release}
@@ -5642,11 +5641,9 @@ export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES"
 	--with-freetype-includes=/usr/include/freetype \
 	--with-system-freetype2 \
 	--with-system-gd \
-	--with-system-kpathsea \
 	--with-system-ncurses \
 	--with-system-pnglib \
 	--with-system-t1lib \
-	--with-system-xpdf \
 	--with-system-zlib \
 	--with-xdvi-x-toolkit=xaw \
 	--without-dialog \
