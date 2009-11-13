@@ -3080,7 +3080,7 @@ Ez a csomag a következőket tartalmazza:
 - biocon: biológiai fajnevek szedése
 - dnaseq: DNS szekvenciák szedése
 
-%package latex-presentation
+%package latex-presentation-bin
 Summary:	Presentations in LaTeX
 Summary(hu.UTF-8):	Prezentációk LaTeX-ben
 Group:		Applications/Publishing/TeX
@@ -3088,14 +3088,14 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-foiltex = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-latex-prosper = %{epoch}:%{version}-%{release}
 
-%description latex-presentation
+%description latex-presentation-bin
 This package contains:
 - powerdot: a presentation class.
 - ppower4: a postprocessor for PDF presentations.
 - sciposter: make posters of ISO A3 size and larger.
 - tpslifonts: a LaTeX package for configuring presentation fonts.
 
-%description latex-presentation -l hu.UTF-8
+%description latex-presentation-bin -l hu.UTF-8
 Ez a csomag a következőket tartalmazza:
 - powerdot: egy prezentáció osztály
 - ppower4: egy postprocesszor PDF prezentációkhoz
@@ -4388,6 +4388,13 @@ TeX font directories.
 
 %description dirs-fonts -l pl.UTF-8
 Katalogi fontów TeXa.
+
+%package font-utils
+Summary:	Font utilities
+Group:		Fonts
+
+%description font-utils
+Font utilities.
 
 # # Fonts packages #
 
@@ -5703,7 +5710,56 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 %{__mv} $RPM_BUILD_ROOT/usr/texmf* $RPM_BUILD_ROOT/usr/share/
 CURDIR=$(pwd)
 cd $RPM_BUILD_ROOT%{_bindir}
+
 ln -sf pdftex latex
+ln -sf xetex xelatex
+ln -sf pdftex pdflatex
+
+
+ln -sf ../share/texmf-dist/scripts/fontools/afm2afm afm2afm
+ln -sf ../share/texmf-dist/scripts/fontools/autoinst autoinst
+ln -sf ../share/texmf-dist/scripts/cachepic/cachepic.tlu cachepic
+ln -sf ../share/texmf-dist/scripts/fontools/cmap2enc cmap2enc
+ln -sf ../share/texmf-dist/scripts/epstopdf/epstopdf.pl epstopdf
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/exatools exatools
+ln -sf ../share/texmf-dist/scripts/fig4latex/fig4latex fig4latex
+ln -sf ../share/texmf-dist/scripts/findhyph/findhyph findhyph
+ln -sf ../share/texmf-dist/scripts/fontools/font2afm font2afm
+ln -sf ../share/texmf-dist/scripts/fragmaster/fragmaster.pl fragmaster
+ln -sf ../share/texmf-dist/scripts/texlive/getnonfreefonts.pl getnonfreefonts
+ln -sf ../share/texmf-dist/scripts/texlive/getnonfreefonts.pl getnonfreefonts-sys
+ln -sf ../share/texmf-dist/scripts/latex2man/latex2man latex2man
+ln -sf ../share/texmf-dist/scripts/latexmk/latexmk.pl latexmk
+ln -sf ../share/texmf-dist/scripts/listings-ext/listings-ext.sh listings-ext.sh
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/luatools luatools
+ln -sf ../share/texmf-dist/doc/man man
+ln -sf ../share/texmf-dist/scripts/mkgrkindex/mkgrkindex mkgrkindex
+ln -sf ../share/texmf-dist/scripts/accfonts/mkt1font mkt1font
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxrun mtxrun
+ln -sf ../share/texmf-dist/scripts/fontools/ot2kpx ot2kpx
+ln -sf ../share/texmf-dist/scripts/pax/pdfannotextractor.pl pdfannotextractor
+ln -sf ../share/texmf-dist/scripts/ppower4/pdfthumb.texlua pdfthumb
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftrimwhite pdftrimwhite
+ln -sf ../share/texmf-dist/scripts/perltex/perltex.pl perltex
+ln -sf ../share/texmf-dist/scripts/fontools/pfm2kpx pfm2kpx
+ln -sf ../share/texmf-dist/scripts/pkfix/pkfix.pl pkfix
+ln -sf ../share/texmf-dist/scripts/pkfix-helper/pkfix-helper pkfix-helper
+ln -sf ../share/texmf-dist/scripts/ppower4/ppower4.texlua ppower4
+ln -sf ../share/texmf-dist/scripts/ps2eps/ps2eps.pl ps2eps
+ln -sf ../share/texmf-dist/scripts/purifyeps/purifyeps purifyeps
+ln -sf ../share/texmf-dist/scripts/fontools/showglyphs showglyphs
+ln -sf ../share/texmf-dist/scripts/splitindex/perl/splitindex.pl splitindex
+ln -sf ../share/texmf-dist/scripts/svn-multi/svn-multi.pl svn-multi
+ln -sf ../share/texmf-dist/scripts/texcount/TeXcount.pl texcount
+ln -sf ../share/texmf-dist/scripts/texdiff/texdiff texdiff
+ln -sf ../share/texmf-dist/scripts/texdirflatten/texdirflatten texdirflatten
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
+ln -sf ../share/texmf-dist/scripts/texloganalyser/texloganalyser texloganalyser
+ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texshow texshow
+ln -sf ../share/texmf-dist/scripts/ulqda/ulqda.pl ulqda
+ln -sf ../share/texmf-dist/scripts/accfonts/vpl2ovp vpl2ovp
+ln -sf ../share/texmf-dist/scripts/accfonts/vpl2vpl vpl2vpl
+
 ln -sf ../share/texmf/scripts/a2ping/a2ping.pl a2ping
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/context context
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/ctxtools ctxtools
@@ -5712,10 +5768,10 @@ ln -sf ../share/texmf/scripts/tetex/e2pall.pl e2pall
 ln -sf ../share/texmf-dist/scripts/bengali/ebong.py ebong
 ln -sf ../share/texmf-dist/scripts/epspdf/epspdf epspdf
 ln -sf ../share/texmf-dist/scripts/epspdf/epspdftk epspdftk
-ln -sf ../share/texmf/scripts/epstopdf/epstopdf.pl epstopdf
+ln -sf ../share/texmf-dist/scripts/epstopdf/epstopdf.pl epstopdf
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/exatools exatools
-ln -sf ../share/texmf/scripts/texlive/getnonfreefonts.pl getnonfreefonts
-ln -sf ../share/texmf/scripts/texlive/getnonfreefonts.pl getnonfreefonts-sys
+ln -sf ../share/texmf/scripts/getnonfreefonts/getnonfreefonts.pl getnonfreefonts
+ln -sf ../share/texmf/scripts/getnonfreefonts/getnonfreefonts.pl getnonfreefonts-sys
 ln -sf ../share/texmf-dist/scripts/tex4ht/ht.sh ht
 ln -sf ../share/texmf-dist/scripts/tex4ht/htcontext.sh htcontext
 ln -sf ../share/texmf-dist/scripts/tex4ht/htlatex.sh htlatex
@@ -5724,23 +5780,23 @@ ln -sf ../share/texmf-dist/scripts/tex4ht/httex.sh httex
 ln -sf ../share/texmf-dist/scripts/tex4ht/httexi.sh httexi
 ln -sf ../share/texmf-dist/scripts/tex4ht/htxelatex.sh htxelatex
 ln -sf ../share/texmf-dist/scripts/tex4ht/htxetex.sh htxetex
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/luatools luatools
+ln -sf ../share/texmf-dist/scripts/context/lua/luatools luatools
 ln -sf ../share/texmf-dist/scripts/glossaries/makeglossaries makeglossaries
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/makempy makempy
 ln -sf ../share/texmf-dist/scripts/tex4ht/mk4ht.pl mk4ht
 ln -sf ../share/texmf-dist/scripts/mkjobtexmf/mkjobtexmf.pl mkjobtexmf
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mpstools mpstools
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mptopdf mptopdf
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxrun mtxrun
+ln -sf ../share/texmf-dist/scripts/context/lua/mtxrun.lua mtxrun
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxtools mtxtools
 ln -sf ../share/texmf-dist/scripts/oberdiek/pdfatfi.pl pdfatfi
 ln -sf ../share/texmf-dist/scripts/pdfcrop/pdfcrop.pl pdfcrop
-ln -sf ../share/texmf-dist/scripts/ppower4/pdfthumb.texlua pdfthumb
+ln -sf ../share/texmf-dist/scripts/ppower4/pdfthumb.tlu pdfthumb
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftools pdftools
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftrimwhite pdftrimwhite
-ln -sf ../share/texmf-dist/scripts/perltex/perltex.pl perltex
-ln -sf ../share/texmf/scripts/pkfix/pkfix.pl pkfix
-ln -sf ../share/texmf-dist/scripts/ppower4/ppower4.texlua ppower4
+ln -sf ../share/texmf-dist/scripts/perltex/perltex perltex
+ln -sf ../share/texmf-dist/scripts/pkfix/pkfix.pl pkfix
+ln -sf ../share/texmf-dist/scripts/ppower4/ppower4.tlu ppower4
 ln -sf ../share/texmf/scripts/ps2eps/ps2eps.pl ps2eps
 ln -sf ../share/texmf-dist/scripts/pst-pdf/ps4pdf ps4pdf
 ln -sf ../share/texmf-dist/scripts/pst2pdf/pst2pdf.pl pst2pdf
@@ -5749,8 +5805,8 @@ ln -sf ../share/texmf-dist/scripts/context/stubs/unix/rlxtools rlxtools
 ln -sf ../share/texmf/scripts/texlive/rungs.tlu rungs
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/runtools runtools
 ln -sf ../share/texmf/scripts/simpdftex/simpdftex simpdftex
-ln -sf ../share/texmf-dist/scripts/texcount/TeXcount.pl texcount
-ln -sf ../share/texmf/scripts/texlive/texdoc.tlu texdoc
+ln -sf ../share/texmf-dist/scripts/texcount/texcount.pl texcount
+ln -sf ../share/texmf/scripts/texdoc/texdoc.tlu texdoc
 ln -sf ../share/texmf/scripts/tetex/texdoctk.pl texdoctk
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texexec texexec
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
@@ -5877,13 +5933,6 @@ rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/generic/patch
 rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/plain/plgraph
 rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/pdf-trans
 rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/xecyr
-rm -rf $RPM_BUILD_ROOT%{texmf}/cef5conv
-rm -rf $RPM_BUILD_ROOT%{texmf}/cefsconv
-rm -rf $RPM_BUILD_ROOT%{texmf}/chktex
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/cef5conv
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/cefsconv
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/chktex
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/gzip
 
 # move format logs to BUILD, so $RPM_BUILD_ROOT is not polluted
 # and we can still analyze them
@@ -6246,10 +6295,10 @@ fi
 %postun latex-extend
 %texhash
 
-%post latex-presentation
+%post latex-presentation-bin
 %texhash
 
-%postun latex-presentation
+%postun latex-presentation-bin
 %texhash
 
 %post latex-programming
@@ -7606,6 +7655,7 @@ fi
 %{__perl}tex
 %attr(755,root,root) %{_bindir}/pkfix
 %attr(755,root,root) %{_bindir}/rungs
+%attr(755,root,root) %{texmf}/scripts/texlive/rungs.tlu
 %attr(755,root,root) %{_bindir}/simpdftex
 %attr(755,root,root) %{_bindir}/sjisconv
 %attr(755,root,root) %{_bindir}/sjislatex
@@ -7644,6 +7694,7 @@ fi
 %{_mandir}/man5/synctex.5*
 %{fmtdir}/pdftex/texsis.fmt
 %{fmtdir}/texsis
+
 
 # %files jadetex
 # %defattr(644,root,root,755)
@@ -7722,6 +7773,15 @@ fi
 %dir %{texmf}/fonts
 # %dir %{texmf}/fonts/opentype
 # %dir %{texmf}/fonts/opentype/public
+
+%files font-utils
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/afm*
+%attr(755,root,root) %{_bindir}/t1*
+%attr(755,root,root) %{_bindir}/ttfdump
+%{_mandir}/man1/afm2pl.1*
+%{_mandir}/man1/t1*.1*
+%{_mandir}/man1/ttfdump.1*
 
 # %files doc
 # %defattr(644,root,root,755)
@@ -8000,17 +8060,17 @@ fi
 %files tlmgr
 %defattr(644,root,root,755)
 %dir %{texmf}/scripts/texlive
+%attr(755,root,root) %{texmf}/scripts/texlive/*.pl
+%attr(755,root,root) %{_bindir}/tlmgr
+%{perl_vendorlib}/TeXLive
 # %dir %{texmf}/scripts/texlive/gswin32
 # %dir %{texmf}/scripts/texlive/lua
 # %dir %{texmf}/scripts/texlive/lua/texlive
 # %dir %{texmf}/scripts/texlive/tlmgrgui
 # %attr(755,root,root) %{texmf}/scripts/texlive/*.pl
-%attr(755,root,root) %{texmf}/scripts/texlive/*.tlu
 # %attr(755,root,root) %{texmf}/scripts/texlive/gswin32/*
 # %attr(755,root,root) %{texmf}/scripts/texlive/lua/texlive/*
 # %attr(755,root,root) %{texmf}/scripts/texlive/tlmgrgui/*.pl
-%attr(755,root,root) %{_bindir}/tlmgr
-%{perl_vendorlib}/TeXLive
 # %{texmf}/scripts/texlive/tlmgrgui/lang
 
 %files scripts
@@ -8047,6 +8107,7 @@ fi
 # %dir %{texmf}/texdoc
 # %doc %{texmf}/doc/texdoc
 %attr(755,root,root) %{_bindir}/texdoc
+%attr(755,root,root) %{texmf}/scripts/texdoc/texdoc.tlu
 # %config(noreplace) %verify(not md5 mtime size) %{texmf}/texdoc/texdoc.cnf
 
 # %files tex-arrayjob
@@ -8439,6 +8500,7 @@ fi
 # %{texmfdist}/source/lambda
 # %{texmf}/fmtutil/format.omega.cnf
 # %{texmf}/fmtutil/format.aleph.cnf
+%{_mandir}/man1/aleph.1*
 %{_mandir}/man1/lambda.1*
 %{_mandir}/man1/mkocp.1*
 %{_mandir}/man1/mkofm.1*
@@ -8455,7 +8517,10 @@ fi
 %{fmtdir}/aleph
 %{fmtdir}/omega
 %{fmtdir}/lambda
+%{fmtdir}/lamed
+%{fmtdir}/pdftex/aleph.fmt
 %{fmtdir}/pdftex/lambda.fmt
+%{fmtdir}/pdftex/lamed.fmt
 %{fmtdir}/pdftex/omega.fmt
 
 
@@ -8628,6 +8693,8 @@ fi
 %attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
 %attr(755,root,root) %{_bindir}/pslatex
+%attr(755,root,root) %{_bindir}/latex2man
+%attr(755,root,root) %{texmfdist}/scripts/latex2man/latex2man
 %dir %{texmfdist}/scripts/pst-pdf
 # %dir %{texmfdist}/source/generic
 # %dir %{texmfdist}/tex/latex
@@ -11130,16 +11197,17 @@ fi
 # %{texmfdist}/tex/latex/subfloat
 # %{texmfdist}/tex/latex/umoline
 # %{texmfdist}/tex/latex/underlin
-# 
-# %files latex-presentation
-# %defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/ppower4
-# %attr(755,root,root) %{_bindir}/pdfthumb
+ 
+%files latex-presentation-bin
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/ppower4
+%attr(755,root,root) %{_bindir}/pdfthumb
+%dir %{texmfdist}/scripts/ppower4
+%attr(755,root,root) %{texmfdist}/scripts/ppower4/*
 # %doc %{texmfdist}/doc/latex/powerdot
 # %doc %{texmfdist}/doc/latex/ppower4
 # %doc %{texmfdist}/doc/latex/sciposter
 # %doc %{texmfdist}/doc/latex/tpslifonts
-# %{texmfdist}/scripts/ppower4
 # %{texmfdist}/source/latex/powerdot
 # %{texmfdist}/tex/latex/powerdot
 # %{texmfdist}/tex/latex/ppower4
@@ -12083,14 +12151,14 @@ fi
 # %defattr(644,root,root,755)
 # %doc %{texmfdist}/doc/latex/xcolor
 # %{texmfdist}/source/latex/xcolor
-# 
+ 
 %files format-pdflatex
-# %defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/pdflatex
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/pdflatex
 %{fmtdir}/pdflatex
 %{fmtdir}/pdftex/pdflatex.fmt
-# %{_mandir}/man1/pdflatex.1*
-# 
+%{_mandir}/man1/pdflatex.1*
+ 
 # %files tex-babel
 # %defattr(644,root,root,755)
 # %doc %{texmfdist}/doc/generic/babel
@@ -13577,10 +13645,10 @@ fi
 # %{texmf}/fonts/lig/afm2pl
 # %{texmf}/tex/latex/afm2pl
 # 
-# %files bbox
-# %defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/bbox
-# %{_mandir}/man1/bbox*
+%files bbox
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/bbox
+%{_mandir}/man1/bbox*
 # 
 # %files cefutils
 # %defattr(644,root,root,755)
@@ -13701,8 +13769,8 @@ fi
 %files xetex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/xdvipdfmx
-# %attr(755,root,root) %{_bindir}/xelatex
-# %attr(755,root,root) %{_bindir}/xetex
+%attr(755,root,root) %{_bindir}/xelatex
+%attr(755,root,root) %{_bindir}/xetex
 %dir %{fmtdir}/xetex
 # %doc %{texmfdist}/doc/generic/ifxetex
 # %doc %{texmfdist}/doc/generic/xetex-pstricks
