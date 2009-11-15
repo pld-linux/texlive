@@ -247,6 +247,13 @@ aygıtından bağımsız bir çıktı (DeVice Independent - DVI) oluşturur.
 TeX'in becerileri ve dizgi dili, dili geliştiren Knuth'un 'The
 TeXbook' başlıklı kitabında anlatılmaktadır.
 
+%package cef-utils
+Summary:	Utils for CEF (Chinese Encoding Framework)
+Group:		Applications/Publishing/TeX
+
+%description cef-utils
+Utils for CEF (Chinese Encoding Framework).
+
 %package other-utils
 Summary:	Other utilities
 Group:		Applications/Publishing/TeX
@@ -5708,6 +5715,11 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 	texmfsysconfig=$RPM_BUILD_ROOT%{texmf}
 
 %{__mv} $RPM_BUILD_ROOT/usr/texmf* $RPM_BUILD_ROOT/usr/share/
+
+# requires wdiff but we don't have
+%{__rm} -rf $RPM_BUILD_ROOT%{texmfdist}/scripts/texdiff
+%{__rm} -rf $RPM_BUILD_ROOT%{_bindir}/man
+
 CURDIR=$(pwd)
 cd $RPM_BUILD_ROOT%{_bindir}
 
@@ -5731,7 +5743,6 @@ ln -sf ../share/texmf-dist/scripts/texlive/getnonfreefonts.pl getnonfreefonts-sy
 ln -sf ../share/texmf-dist/scripts/latex2man/latex2man latex2man
 ln -sf ../share/texmf-dist/scripts/latexmk/latexmk.pl latexmk
 ln -sf ../share/texmf-dist/scripts/listings-ext/listings-ext.sh listings-ext.sh
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/luatools luatools
 ln -sf ../share/texmf-dist/doc/man man
 ln -sf ../share/texmf-dist/scripts/mkgrkindex/mkgrkindex mkgrkindex
 ln -sf ../share/texmf-dist/scripts/accfonts/mkt1font mkt1font
@@ -5751,7 +5762,6 @@ ln -sf ../share/texmf-dist/scripts/fontools/showglyphs showglyphs
 ln -sf ../share/texmf-dist/scripts/splitindex/perl/splitindex.pl splitindex
 ln -sf ../share/texmf-dist/scripts/svn-multi/svn-multi.pl svn-multi
 ln -sf ../share/texmf-dist/scripts/texcount/TeXcount.pl texcount
-ln -sf ../share/texmf-dist/scripts/texdiff/texdiff texdiff
 ln -sf ../share/texmf-dist/scripts/texdirflatten/texdirflatten texdirflatten
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
 ln -sf ../share/texmf-dist/scripts/texloganalyser/texloganalyser texloganalyser
@@ -5780,7 +5790,7 @@ ln -sf ../share/texmf-dist/scripts/tex4ht/httex.sh httex
 ln -sf ../share/texmf-dist/scripts/tex4ht/httexi.sh httexi
 ln -sf ../share/texmf-dist/scripts/tex4ht/htxelatex.sh htxelatex
 ln -sf ../share/texmf-dist/scripts/tex4ht/htxetex.sh htxetex
-ln -sf ../share/texmf-dist/scripts/context/lua/luatools luatools
+ln -sf ../share/texmf-dist/scripts/context/lua/luatools.lua luatools
 ln -sf ../share/texmf-dist/scripts/glossaries/makeglossaries makeglossaries
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/makempy makempy
 ln -sf ../share/texmf-dist/scripts/tex4ht/mk4ht.pl mk4ht
@@ -7621,6 +7631,10 @@ fi
 %{fmtdir}/tex/tex.fmt
 %{fmtdir}/pdftex/tex.fmt
 
+%files cef-utils
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/cef*
+
 %files other-utils
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts/mkjobtexmf
@@ -7636,8 +7650,6 @@ fi
 %attr(755,root,root) %{_bindir}/extractbb
 %attr(755,root,root) %{_bindir}/gbklatex
 %attr(755,root,root) %{_bindir}/gbkpdflatex
-%attr(755,root,root) %{_bindir}/getnonfreefonts
-%attr(755,root,root) %{_bindir}/getnonfreefonts-sys
 %attr(755,root,root) %{_bindir}/hbf2gf
 %attr(755,root,root) %{_bindir}/makeglossaries
 %attr(755,root,root) %{_bindir}/mkjobtexmf
@@ -7673,8 +7685,6 @@ fi
 %attr(755,root,root) %{_bindir}/vlna
 %attr(755,root,root) %{_bindir}/vpe
 %{_mandir}/man1/cfftot1.1*
-%{_mandir}/man1/getnonfreefonts-sys.1
-%{_mandir}/man1/getnonfreefonts.1*
 %{_mandir}/man1/hbf2gf.1*
 %{_mandir}/man1/mkjobtexmf.1*
 %{_mandir}/man1/mmafm.1*
@@ -7777,9 +7787,26 @@ fi
 %files font-utils
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/afm*
+%attr(755,root,root) %{_bindir}/autoinst
+%attr(755,root,root) %{_bindir}/cmap2enc
+%attr(755,root,root) %{_bindir}/font2afm
+%attr(755,root,root) %{_bindir}/getnonfreefonts*
+%attr(755,root,root) %{_bindir}/mkt1font
+%attr(755,root,root) %{_bindir}/ot2kpx
+%attr(755,root,root) %{_bindir}/pfm2kpx
+%attr(755,root,root) %{_bindir}/showglyphs
 %attr(755,root,root) %{_bindir}/t1*
 %attr(755,root,root) %{_bindir}/ttfdump
+%attr(755,root,root) %{_bindir}/vpl*
+%dir %{texmfdist}/scripts/accfonts
+%attr(755,root,root) %{texmfdist}/scripts/accfonts/*
+%dir %{texmfdist}/scripts/fontools
+%attr(755,root,root) %{texmfdist}/scripts/fontools/*
+%dir %{texmf}/scripts/getnonfreefonts
+%attr(755,root,root) %{texmf}/scripts/getnonfreefonts/*
 %{_mandir}/man1/afm2pl.1*
+%{_mandir}/man1/getnonfreefonts-sys.1
+%{_mandir}/man1/getnonfreefonts.1*
 %{_mandir}/man1/t1*.1*
 %{_mandir}/man1/ttfdump.1*
 
@@ -8052,7 +8079,14 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/makeindex
 %attr(755,root,root) %{_bindir}/mkindex
+%attr(755,root,root) %{_bindir}/mkgrkindex
 %attr(755,root,root) %{_bindir}/rumakeindex
+%attr(755,root,root) %{_bindir}/splitindex
+%dir %{texmfdist}/scripts/splitindex
+%dir %{texmfdist}/scripts/splitindex/perl
+%attr(755,root,root) %{texmfdist}/scripts/splitindex/perl/splitindex.pl
+%dir %{texmfdist}/scripts/mkgrkindex
+%attr(755,root,root) %{texmfdist}/scripts/mkgrkindex/mkgrkindex
 %{_mandir}/man1/makeindex.1*
 %{_mandir}/man1/mkindex.1*
 %{_mandir}/man1/rumakeindex.1*
@@ -8444,6 +8478,7 @@ fi
 # %doc %{texmfdist}/doc/support/pdfcrop
 %attr(755,root,root) %{_bindir}/epstopdf
 %attr(755,root,root) %{_bindir}/pdfcrop
+%attr(755,root,root) %{_bindir}/rpdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
 # %attr(755,root,root) %{texmf}/scripts/epstopdf/epstopdf*
 %dir %{fmtdir}/pdftex
@@ -8692,9 +8727,15 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
-%attr(755,root,root) %{_bindir}/pslatex
+%attr(755,root,root) %{_bindir}/latexmk
+%attr(755,root,root) %{texmfdist}/scripts/latexmk/latexmk.pl
 %attr(755,root,root) %{_bindir}/latex2man
 %attr(755,root,root) %{texmfdist}/scripts/latex2man/latex2man
+%attr(755,root,root) %{_bindir}/pslatex
+%attr(755,root,root) %{_bindir}/svn-multi
+%attr(755,root,root) %{texmfdist}/scripts/svn-multi/svn-multi.pl
+%attr(755,root,root) %{_bindir}/texloganalyser
+%attr(755,root,root) %{texmfdist}/scripts/texloganalyser/texloganalyser
 %dir %{texmfdist}/scripts/pst-pdf
 # %dir %{texmfdist}/source/generic
 # %dir %{texmfdist}/tex/latex
@@ -12564,14 +12605,14 @@ fi
 # %defattr(644,root,root,755)
 # %{texmfdist}/fonts/tfm/monotype
 # %{texmfdist}/fonts/vf/monotype
-# 
-# %files fonts-other
-# %defattr(644,root,root,755)
+ 
+%files fonts-other
+%defattr(644,root,root,755)
+%{texmfdist}/fonts/map/glyphlist
 # %doc %{texmfdist}/doc/fonts/yi4latex
 # %{texmf}/fonts/sfd
 # %{texmfdist}/fonts/afm/itc
 # %{texmf}/fonts/map/glyphlist
-# %{texmfdist}/fonts/map/glyphlist
 # %{texmfdist}/fonts/source/public/knuthotherfonts
 # %{texmfdist}/fonts/source/public/yi4latex
 # %{texmfdist}/fonts/tfm/public/yi4latex
