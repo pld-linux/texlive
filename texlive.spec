@@ -35,7 +35,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	%{year}%{monthday}
-Release:	0.3
+Release:	0.4
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -4025,10 +4025,10 @@ Summary(pl.UTF-8):	Pakiet makr PDF LaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-jknappen = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-type1-urw = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-jknappen
+Requires:	%{name}-fonts-type1-urw
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex-psnfss = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-psnfss
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-pdflatex
 Obsoletes:	tetex-format-pdflatex
@@ -5685,11 +5685,11 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT/etc/cron.daily\
 	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap\
 	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map\
-	$RPM_BUILD_ROOT%{fmtdir}/pdftex \
-	$RPM_BUILD_ROOT%{texmfdist}/source/generic \
-	$RPM_BUILD_ROOT%{texmfdist}/tex/generic \
-	$RPM_BUILD_ROOT%{texmfdist}/tex/plain \
-	$RPM_BUILD_ROOT%{texmf}/tex
+	$RPM_BUILD_ROOT%{fmtdir}/pdftex
+# 	$RPM_BUILD_ROOT%{texmfdist}/source/generic \
+# 	$RPM_BUILD_ROOT%{texmfdist}/tex/generic \
+# 	$RPM_BUILD_ROOT%{texmfdist}/tex/plain \
+# 	$RPM_BUILD_ROOT%{texmf}/tex
 
 #    %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
 #    %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-dist $RPM_BUILD_ROOT%{texmfdist}
@@ -5714,6 +5714,7 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 
+
 %{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	bindir=$RPM_BUILD_ROOT%{_bindir} \
@@ -5727,12 +5728,50 @@ LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 	texmfsysvar=$RPM_BUILD_ROOT%{_localstatedir} \
 	texmfsysconfig=$RPM_BUILD_ROOT%{texmf}
 
-%{__mv} $RPM_BUILD_ROOT%{_prefix}/texmf* $RPM_BUILD_ROOT%{_datadir}/
+%{__mv} -f $RPM_BUILD_ROOT%{_prefix}/texmf* $RPM_BUILD_ROOT%{_datadir}
 
 # requires wdiff but we don't have
 %{__rm} -rf $RPM_BUILD_ROOT%{texmfdist}/scripts/texdiff
 %{__rm} -rf $RPM_BUILD_ROOT%{_bindir}/texdiff
 %{__rm} -rf $RPM_BUILD_ROOT%{_bindir}/man
+
+install -d \
+	$RPM_BUILD_ROOT%{texmfdist}/doc/generic \
+	$RPM_BUILD_ROOT%{texmfdist}/doc \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/afm/public \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/afm/vntex \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/afm \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/enc/dvips/vntex \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/ofm/public \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/ofm \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/opentype/public \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/opentype \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/ovf/public \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/ovf \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/ovp/public \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/ovp \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/pk/ljfour \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/pk \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/source/public \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/source/vntex \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/source \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/tfm/public \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/tfm/vntex \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/truetype \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/type1/public \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/type1/vntex \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/vf/public \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/vf/vntex \
+	$RPM_BUILD_ROOT%{texmfdist}/fonts/vf \
+	$RPM_BUILD_ROOT%{texmfdist}/source/fonts \
+	$RPM_BUILD_ROOT%{texmfdist}/source/generic \
+	$RPM_BUILD_ROOT%{texmfdist}/source \
+	$RPM_BUILD_ROOT%{texmfdist}/tex/generic \
+	$RPM_BUILD_ROOT%{texmfdist}/tex/plain \
+	$RPM_BUILD_ROOT%{texmfdist}/tex \
+	$RPM_BUILD_ROOT%{texmf}/fonts/opentype/public \
+	$RPM_BUILD_ROOT%{texmf}/fonts/opentype \
+	$RPM_BUILD_ROOT%{texmf}/tex
 
 CURDIR=$(pwd)
 cd $RPM_BUILD_ROOT%{_bindir}
@@ -7572,6 +7611,8 @@ fi
 
 %dir %{fmtdir}/tex
 %dir %{texmfdist}
+%dir %{texmfdist}/doc
+%dir %{texmfdist}/doc/generic
 %dir %{texmfdist}/scripts
 %dir %{texmfdist}/source
 %dir %{texmfdist}/source/generic
@@ -7775,12 +7816,12 @@ fi
 %files dirs-fonts
 %defattr(644,root,root,755)
 %dir %{texmfdist}/fonts
-# %dir %{texmfdist}/fonts/afm
-# %dir %{texmfdist}/fonts/afm/public
-# %dir %{texmfdist}/fonts/afm/vntex
+%dir %{texmfdist}/fonts/afm
+%dir %{texmfdist}/fonts/afm/public
+%dir %{texmfdist}/fonts/afm/vntex
 %dir %{texmfdist}/fonts/enc
 %dir %{texmfdist}/fonts/enc/dvips
-# %dir %{texmfdist}/fonts/enc/dvips/vntex
+%dir %{texmfdist}/fonts/enc/dvips/vntex
 %dir %{texmfdist}/fonts/map
 # %dir %{texmfdist}/fonts/map/dvipdfm
 # %dir %{texmfdist}/fonts/map/dvips
@@ -7788,33 +7829,33 @@ fi
 # %dir %{texmfdist}/fonts/map/fontname
 # %dir %{texmfdist}/fonts/map/public
 # %dir %{texmfdist}/fonts/map/vtex
-# %dir %{texmfdist}/fonts/ofm
-# %dir %{texmfdist}/fonts/ofm/public
-# %dir %{texmfdist}/fonts/ovf
-# %dir %{texmfdist}/fonts/ovf/public
-# %dir %{texmfdist}/fonts/ovp
-# %dir %{texmfdist}/fonts/ovp/public
-# %dir %{texmfdist}/fonts/opentype
-# %dir %{texmfdist}/fonts/opentype/public
-# %dir %{texmfdist}/fonts/pk
-# %dir %{texmfdist}/fonts/pk/ljfour
-# %dir %{texmfdist}/fonts/source
-# %dir %{texmfdist}/fonts/source/public
-# %dir %{texmfdist}/fonts/source/vntex
+%dir %{texmfdist}/fonts/ofm
+%dir %{texmfdist}/fonts/ofm/public
+%dir %{texmfdist}/fonts/ovf
+%dir %{texmfdist}/fonts/ovf/public
+%dir %{texmfdist}/fonts/ovp
+%dir %{texmfdist}/fonts/ovp/public
+%dir %{texmfdist}/fonts/opentype
+%dir %{texmfdist}/fonts/opentype/public
+%dir %{texmfdist}/fonts/pk
+%dir %{texmfdist}/fonts/pk/ljfour
+%dir %{texmfdist}/fonts/source
+%dir %{texmfdist}/fonts/source/public
+%dir %{texmfdist}/fonts/source/vntex
 %dir %{texmfdist}/fonts/tfm
-# %dir %{texmfdist}/fonts/tfm/public
-# %dir %{texmfdist}/fonts/tfm/vntex
-# %dir %{texmfdist}/fonts/truetype
+%dir %{texmfdist}/fonts/tfm/public
+%dir %{texmfdist}/fonts/tfm/vntex
+%dir %{texmfdist}/fonts/truetype
 %dir %{texmfdist}/fonts/type1
-# %dir %{texmfdist}/fonts/type1/public
-# %dir %{texmfdist}/fonts/type1/vntex
-# %dir %{texmfdist}/fonts/vf
-# %dir %{texmfdist}/fonts/vf/public
-# %dir %{texmfdist}/fonts/vf/vntex
-# %dir %{texmfdist}/source/fonts
+%dir %{texmfdist}/fonts/type1/public
+%dir %{texmfdist}/fonts/type1/vntex
+%dir %{texmfdist}/fonts/vf
+%dir %{texmfdist}/fonts/vf/public
+%dir %{texmfdist}/fonts/vf/vntex
+%dir %{texmfdist}/source/fonts
 %dir %{texmf}/fonts
-# %dir %{texmf}/fonts/opentype
-# %dir %{texmf}/fonts/opentype/public
+%dir %{texmf}/fonts/opentype
+%dir %{texmf}/fonts/opentype/public
 
 %files font-utils
 %defattr(644,root,root,755)
