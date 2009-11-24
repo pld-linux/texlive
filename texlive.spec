@@ -147,9 +147,9 @@ BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	zlib-devel >= 1.2.1
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-cm = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-misc = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts
+Requires:	%{name}-fonts-cm
+Requires:	%{name}-fonts-misc
 Requires:	awk
 Requires:	dialog
 Requires:	kpathsea = %{epoch}:%{version}-%{release}
@@ -1414,7 +1414,8 @@ Summary(pl.UTF-8):	TeX generujący pliki PDF zamiast DVI
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
+# ams provides bluesky fonts
+Requires:	%{name}-fonts-ams
 Requires:	ghostscript
 Provides:	tetex-format-pdftex = %{epoch}:%{version}-%{release}
 Provides:	tetex-pdftex
@@ -1805,22 +1806,23 @@ Summary(pl.UTF-8):	Podstawowe pliki pakietu makr LaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-latex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-ruhyphen = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-ukrhyph = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-latex
+Requires:	%{name}-tex-ruhyphen
+Requires:	%{name}-tex-ukrhyph
 # for misc/eurosym:
-Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-eurosym
 Requires:	%{name}-latex-data
-Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-pdftex
+Requires:	%{name}-tex-babel
+Requires:	%{name}-tex-pstricks
 Suggests:	%{name}-fonts-jknappen
-Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
-Provides:	tetex-format-latex = %{epoch}:%{version}-%{release}
-Provides:	tetex-latex = %{epoch}:%{version}-%{release}
+Suggests:	%{name}-latex-ucs
+# Provides:	tetex-format-latex = %{epoch}:%{version}-%{release}
+# Provides:	tetex-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-koma-script
-Obsoletes:	tetex-format-latex
-Obsoletes:	tetex-latex
+# Can't install texlive-latex-data, so must delete
+# Obsoletes:	tetex-format-latex
+# Obsoletes:	tetex-latex
 Obsoletes:	tetex-latex-SIunits
 Obsoletes:	tetex-latex-caption
 Obsoletes:	tetex-latex-curves
@@ -7813,49 +7815,49 @@ fi
 # %doc %{texmf}/doc/sjisconv
 # %doc %{texmf}/doc/vlna
 
-%files dirs-fonts
-%defattr(644,root,root,755)
-%dir %{texmfdist}/fonts
-%dir %{texmfdist}/fonts/afm
-%dir %{texmfdist}/fonts/afm/public
-%dir %{texmfdist}/fonts/afm/vntex
-%dir %{texmfdist}/fonts/enc
-%dir %{texmfdist}/fonts/enc/dvips
-%dir %{texmfdist}/fonts/enc/dvips/vntex
-%dir %{texmfdist}/fonts/map
-# %dir %{texmfdist}/fonts/map/dvipdfm
-# %dir %{texmfdist}/fonts/map/dvips
-# %dir %{texmfdist}/fonts/map/dvips/vntex
-# %dir %{texmfdist}/fonts/map/fontname
-# %dir %{texmfdist}/fonts/map/public
-# %dir %{texmfdist}/fonts/map/vtex
-%dir %{texmfdist}/fonts/ofm
-%dir %{texmfdist}/fonts/ofm/public
-%dir %{texmfdist}/fonts/ovf
-%dir %{texmfdist}/fonts/ovf/public
-%dir %{texmfdist}/fonts/ovp
-%dir %{texmfdist}/fonts/ovp/public
-%dir %{texmfdist}/fonts/opentype
-%dir %{texmfdist}/fonts/opentype/public
-%dir %{texmfdist}/fonts/pk
-%dir %{texmfdist}/fonts/pk/ljfour
-%dir %{texmfdist}/fonts/source
-%dir %{texmfdist}/fonts/source/public
-%dir %{texmfdist}/fonts/source/vntex
-%dir %{texmfdist}/fonts/tfm
-%dir %{texmfdist}/fonts/tfm/public
-%dir %{texmfdist}/fonts/tfm/vntex
-%dir %{texmfdist}/fonts/truetype
-%dir %{texmfdist}/fonts/type1
-%dir %{texmfdist}/fonts/type1/public
-%dir %{texmfdist}/fonts/type1/vntex
-%dir %{texmfdist}/fonts/vf
-%dir %{texmfdist}/fonts/vf/public
-%dir %{texmfdist}/fonts/vf/vntex
-%dir %{texmfdist}/source/fonts
-%dir %{texmf}/fonts
-%dir %{texmf}/fonts/opentype
-%dir %{texmf}/fonts/opentype/public
+#  %files dirs-fonts
+#  %defattr(644,root,root,755)
+#  %dir %{texmfdist}/fonts
+#  %dir %{texmfdist}/fonts/afm
+#  %dir %{texmfdist}/fonts/afm/public
+#  %dir %{texmfdist}/fonts/afm/vntex
+#  %dir %{texmfdist}/fonts/enc
+#  %dir %{texmfdist}/fonts/enc/dvips
+#  %dir %{texmfdist}/fonts/enc/dvips/vntex
+#  %dir %{texmfdist}/fonts/map
+#  # %dir %{texmfdist}/fonts/map/dvipdfm
+#  # %dir %{texmfdist}/fonts/map/dvips
+#  # %dir %{texmfdist}/fonts/map/dvips/vntex
+#  # %dir %{texmfdist}/fonts/map/fontname
+#  # %dir %{texmfdist}/fonts/map/public
+#  %dir %{texmfdist}/fonts/map/vtex
+#  %dir %{texmfdist}/fonts/ofm
+#  %dir %{texmfdist}/fonts/ofm/public
+#  %dir %{texmfdist}/fonts/ovf
+#  %dir %{texmfdist}/fonts/ovf/public
+#  %dir %{texmfdist}/fonts/ovp
+#  %dir %{texmfdist}/fonts/ovp/public
+#  %dir %{texmfdist}/fonts/opentype
+#  %dir %{texmfdist}/fonts/opentype/public
+#  %dir %{texmfdist}/fonts/pk
+#  %dir %{texmfdist}/fonts/pk/ljfour
+#  %dir %{texmfdist}/fonts/source
+#  %dir %{texmfdist}/fonts/source/public
+#  %dir %{texmfdist}/fonts/source/vntex
+#  %dir %{texmfdist}/fonts/tfm
+#  %dir %{texmfdist}/fonts/tfm/public
+#  %dir %{texmfdist}/fonts/tfm/vntex
+#  %dir %{texmfdist}/fonts/truetype
+#  %dir %{texmfdist}/fonts/type1
+#  %dir %{texmfdist}/fonts/type1/public
+#  %dir %{texmfdist}/fonts/type1/vntex
+#  %dir %{texmfdist}/fonts/vf
+#  %dir %{texmfdist}/fonts/vf/public
+#  %dir %{texmfdist}/fonts/vf/vntex
+#  %dir %{texmfdist}/source/fonts
+#  %dir %{texmf}/fonts
+#  %dir %{texmf}/fonts/opentype
+#  %dir %{texmf}/fonts/opentype/public
 
 %files font-utils
 %defattr(644,root,root,755)
@@ -8825,7 +8827,6 @@ fi
 %dir %{texmfdist}/scripts/fig4latex
 %attr(755,root,root) %{texmfdist}/scripts/fig4latex/fig4latex
 %attr(755,root,root) %{_bindir}/fig4latex
-%dir %{texmfdist}/scripts/pst-pdf
 # %dir %{texmfdist}/source/generic
 # %dir %{texmfdist}/tex/latex
 # %dir %{texmfdist}/tex/latex/latexconfig
@@ -8836,7 +8837,6 @@ fi
 %{_mandir}/man1/pslatex.1*
 # %{texmf}/fmtutil/format.latex.cnf
 # %{texmfdist}/tex/latex/floatflt
-%{texmfdist}/scripts/pst-pdf/ps4pdf
 # %{texmfdist}/tex/generic/pstricks
 # %{texmfdist}/tex/generic/shapepar
 # %{texmfdist}/tex/generic/textmerg
@@ -9376,8 +9376,8 @@ fi
 # %{texmfdist}/tex/plain/etex
 # %{texmf}/tex/latex/config
 # %{texmf}/tex/latex/dvipdfm
-%{fmtdir}/pdftex/latex.fmt
-%{fmtdir}/pdftex/mllatex.fmt
+# %{fmtdir}/pdftex/latex.fmt
+# %{fmtdir}/pdftex/mllatex.fmt
 %{fmtdir}/mllatex
 %{fmtdir}/latex
 
