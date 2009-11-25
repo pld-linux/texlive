@@ -35,7 +35,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	%{year}%{monthday}
-Release:	0.4
+Release:	0.5.2
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -5715,6 +5715,7 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 #	texmf/web2c/texmf.cnf
 
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
+PATH=$RPM_BUILD_ROOT%{_bindir}:$PATH; export PATH
 
 
 %{__make} install \
@@ -6023,21 +6024,21 @@ for format in \
 	pdfetex \
 	pdflatex \
 	pdftex \
-	pdfxmltex \
 	physe \
 	phyzzx \
 	tex \
 	texsis \
 	xetex \
-	xelatex \
-	xmltex; do
-%if %{with bootstrap}
-	install -d $RPM_BUILD_ROOT%{fmtdir}/${format}
-	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
-	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
-%else
+	xelatex; do
+# pdfxmltex \
+# xmltex; do
+#  %if %{with bootstrap}
+#  	install -d $RPM_BUILD_ROOT%{fmtdir}/${format}
+#  	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
+#  	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
+#  %else
 	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
-%endif
+#  %endif
 done
 %if %{with bootstrap}
 touch $RPM_BUILD_ROOT%{fmtdir}/xetex/xelatex.fmt
@@ -7689,9 +7690,9 @@ fi
 %{_mandir}/man5/fmtutil.cnf.5*
 %{_mandir}/man5/updmap.cfg.5*
 %{fmtdir}/pdftex/pdfetex.fmt
-%{fmtdir}/pdfetex
+# %{fmtdir}/pdfetex
 %{fmtdir}/tex/tex.fmt
-%{fmtdir}/pdftex/tex.fmt
+# %{fmtdir}/pdftex/tex.fmt
 
 %files cef-utils
 %defattr(644,root,root,755)
@@ -7778,7 +7779,7 @@ fi
 %{_mandir}/man1/vlna.1*
 %{_mandir}/man5/synctex.5*
 %{fmtdir}/pdftex/texsis.fmt
-%{fmtdir}/texsis
+# %{fmtdir}/texsis
 
 
 # %files jadetex
@@ -8256,7 +8257,7 @@ fi
 # %{texmfdist}/tex/physe
 # %{texmf}/fmtutil/format.physe.cnf
 %{fmtdir}/pdftex/physe.fmt
-%{fmtdir}/physe
+# %{fmtdir}/physe
 
 # %files tex-velthuis
 # %defattr(644,root,root,755)
@@ -8316,7 +8317,7 @@ fi
 %{_mandir}/man1/mptopdf.1*
 # %{texmfdist}/tex/mptopdf
 %{fmtdir}/pdftex/mptopdf.fmt
-%{fmtdir}/mptopdf
+# %{fmtdir}/mptopdf
 
 %files texdoctk
 %defattr(644,root,root,755)
@@ -8581,7 +8582,7 @@ fi
 # %{texmfdist}/tex/phyzzx/config
 # %{texmf}/fmtutil/format.phyzzx.cnf
 %{fmtdir}/pdftex/phyzzx.fmt
-%{fmtdir}/phyzzx
+# %{fmtdir}/phyzzx
 
 %files omega
 %defattr(644,root,root,755)
@@ -8631,12 +8632,12 @@ fi
 %{_mandir}/man1/ovp2ovf.1*
 %{fmtdir}/aleph
 %{fmtdir}/omega
-%{fmtdir}/lambda
-%{fmtdir}/lamed
-%{fmtdir}/pdftex/aleph.fmt
-%{fmtdir}/pdftex/lambda.fmt
-%{fmtdir}/pdftex/lamed.fmt
-%{fmtdir}/pdftex/omega.fmt
+# %{fmtdir}/lambda
+# %{fmtdir}/lamed
+# %{fmtdir}/pdftex/aleph.fmt
+# %{fmtdir}/pdftex/lambda.fmt
+# %{fmtdir}/pdftex/lamed.fmt
+# %{fmtdir}/pdftex/omega.fmt
 
 
 # %files plain
@@ -8661,7 +8662,7 @@ fi
 # %attr(755,root,root) %{_bindir}/mex
 # %{texmfdist}/tex/mex/config/mex.ini
 %{fmtdir}/pdftex/mex.fmt
-%{fmtdir}/mex
+# %{fmtdir}/mex
 
 # %files format-pdfmex
 # %defattr(644,root,root,755)
@@ -8698,13 +8699,13 @@ fi
 %files format-csplain
 %defattr(644,root,root,755)
 %{fmtdir}/pdftex/csplain.fmt
-%{fmtdir}/csplain
+# %{fmtdir}/csplain
 
 %files format-pdfcsplain
 %defattr(644,root,root,755)
 # %attr(755,root,root) %{_bindir}/pdfcsplain
 %{fmtdir}/pdftex/pdfcsplain.fmt
-%{fmtdir}/pdfcsplain
+# %{fmtdir}/pdfcsplain
 
 # %files cslatex
 # %defattr(644,root,root,755)
@@ -8737,7 +8738,7 @@ fi
 # %{_mandir}/man1/etex.1*
 # %{texmf}/fmtutil/format.eplain.cnf
 %{fmtdir}/pdftex/etex.fmt
-%{fmtdir}/etex
+# %{fmtdir}/etex
 
 %files context
 %defattr(644,root,root,755)
@@ -9376,10 +9377,10 @@ fi
 # %{texmfdist}/tex/plain/etex
 # %{texmf}/tex/latex/config
 # %{texmf}/tex/latex/dvipdfm
-# %{fmtdir}/pdftex/latex.fmt
-# %{fmtdir}/pdftex/mllatex.fmt
-%{fmtdir}/mllatex
-%{fmtdir}/latex
+%{fmtdir}/pdftex/latex.fmt
+%{fmtdir}/pdftex/mllatex.fmt
+# %{fmtdir}/mllatex
+# %{fmtdir}/latex
 
 # %files latex-12many
 # %defattr(644,root,root,755)
@@ -12285,7 +12286,7 @@ fi
 %files format-pdflatex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdflatex
-%{fmtdir}/pdflatex
+# %{fmtdir}/pdflatex
 %{fmtdir}/pdftex/pdflatex.fmt
 %{_mandir}/man1/pdflatex.1*
  
@@ -13925,9 +13926,9 @@ fi
 # %{texmf}/fmtutil/format.xetex.cnf
 %{fmtdir}/xetex/xetex.fmt
 %{fmtdir}/xetex/xelatex.fmt
-%{fmtdir}/pdftex/xelatex.fmt
-%{fmtdir}/pdftex/xetex.fmt
-%{fmtdir}/xelatex
+# %{fmtdir}/pdftex/xelatex.fmt
+# %{fmtdir}/pdftex/xetex.fmt
+# %{fmtdir}/xelatex
 
 %files xmltex
 %defattr(644,root,root,755)
@@ -13937,10 +13938,10 @@ fi
 # %{texmfdist}/source/xmltex
 # %{texmfdist}/tex/xmltex
 # %{texmf}/fmtutil/format.xmltex.cnf
-%{fmtdir}/pdftex/pdfxmltex.fmt
-%{fmtdir}/pdftex/xmltex.fmt
-%{fmtdir}/pdfxmltex
-%{fmtdir}/xmltex
+# %{fmtdir}/pdftex/pdfxmltex.fmt
+# %{fmtdir}/pdftex/xmltex.fmt
+# %{fmtdir}/pdfxmltex
+# %{fmtdir}/xmltex
 
 %files luatex
 %dir %{texmfdist}/scripts/context/lua
