@@ -27,7 +27,7 @@
    if (fread (sigbytes, 1, sizeof(sigbytes), png_file) !=
        sizeof(sigbytes) ||
 -      (!png_check_sig (sigbytes, sizeof(sigbytes))))
-+      (png_sig_cmp( (sigbytes, 0, sizeof(sigbytes))))
++      (png_sig_cmp (sigbytes, 0, sizeof(sigbytes))))
      return 0;
    else
      return 1;
