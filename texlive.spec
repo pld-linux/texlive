@@ -1521,7 +1521,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-pl >= %{texmfversion}
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Requires:	%{name}-plain >= %{texmfversion}
 Obsoletes:	tetex-mex
 
 %description mex
@@ -1535,7 +1535,7 @@ Summary:	MeX Plain Format
 Summary(pl.UTF-8):	Format MeX Plain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-mex >= %{texmfversion}
 Obsoletes:	tetex-format-mex
 
 %description format-mex
@@ -1581,8 +1581,8 @@ Summary(pl.UTF-8):	Podstawowe pliki makr AMS dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-ams >= %{texmfversion}
-Requires:	%{name}-format-amstex
-Requires:	%{name}-plain
+Requires:	%{name}-format-amstex >= %{texmfversion}
+Requires:	%{name}-plain >= %{texmfversion}
 Provides:	tetex-ams
 Obsoletes:	tetex-ams
 Obsoletes:	tetex-amstex
@@ -1663,8 +1663,8 @@ Summary:	CSLaTeX format basic files
 Summary(pl.UTF-8):	Podstawowe pliki dla formatu CSLaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-cs
-Requires:	%{name}-plain
+Requires:	%{name}-fonts-cs >= %{texmfversion}
+Requires:	%{name}-plain >= %{texmfversion}
 Provides:	tetex-cslatex
 Obsoletes:	tetex-cslatex
 
