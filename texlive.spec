@@ -6013,6 +6013,7 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/xindy
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc
 
 # Create format files
+failed=""
 for format in \
 	aleph \
 	csplain \
@@ -6043,9 +6044,16 @@ for format in \
 #  %else
 	out=$(fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format})
 	echo $out
-	[ -z $out ] && echo "fmtutil for format ${format} failed. Likely ${format}.ini file missing..." && exit 1
+	if [ -z $out ]; then
+		failed="$failed ${format}"
+	fi
 #  %endif
 done
+if [ -n "$failed" ]; then
+	echo "fmtutil formats failed: ${failed}. Missing format_name.ini files?" >&1
+	exit 1
+fi
+
 %if %{with bootstrap}
 touch $RPM_BUILD_ROOT%{fmtdir}/xetex/xelatex.fmt
 %endif
