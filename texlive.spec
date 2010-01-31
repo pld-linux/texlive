@@ -1741,6 +1741,7 @@ Summary(pl.UTF-8):	Podstawowe pliki pakietu makr ConTeXt
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-context-data
 Provides:	tetex-context
 Obsoletes:	tetex-context
 
