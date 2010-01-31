@@ -25,7 +25,7 @@
 #
 %define		year	2009
 %define		monthday	1011
-%define		texmfversion
+%define		texmfversion 20091107
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
