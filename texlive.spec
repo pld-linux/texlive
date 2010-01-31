@@ -526,6 +526,7 @@ Summary(tr.UTF-8):	dvi'dan postscript'e dönüştürücü
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dvips-data >= %{texmfversion}
 Provides:	tetex-dvips = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-dvips
 
@@ -779,6 +780,7 @@ Summary(pl.UTF-8):	Zestaw narzędzi MetaPost
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-metapost-data >= %{texmfversion}
 Obsoletes:	tetex-metapost
 
 %description metapost
@@ -789,19 +791,6 @@ MetaPost.
 
 %description metapost -l pl.UTF-8
 Zestaw narzędzi MetaPost.
-
-%package metapost-other
-Summary:	Various MetaPost utils
-Summary(hu.UTF-8):	Különböző MetaPost eszközök
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-
-%description metapost-other
-Various MetaPost utils.
-
-%description metapost-other -l hu.UTF-8
-Különböző MetaPost eszközök.
 
 %package mptopdf
 Summary:	MetaPost to PDF converter
@@ -1476,6 +1465,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-omega >= %{texmfversion}
+Requires:	%{name}-omega-data >= %{texmfversion}
 Requires:	%{name}-plain >= %{texmfversion}
 Obsoletes:	tetex-omega
 
@@ -1741,7 +1731,7 @@ Summary(pl.UTF-8):	Podstawowe pliki pakietu makr ConTeXt
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-context-data
+Requires:	%{name}-context-data >= %{texmfversion}
 Provides:	tetex-context
 Obsoletes:	tetex-context
 
@@ -6187,12 +6177,6 @@ fi
 %postun metapost
 %texhash
 
-%post metapost-other
-%texhash
-
-%postun metapost-other
-%texhash
-
 %post mptopdf
 %texhash
 
@@ -8297,33 +8281,6 @@ fi
 %{_mandir}/man1/mpost.1*
 # %{_mandir}/man1/mpto.1*
 # %{texmf}/fmtutil/format.metapost.cnf
-
-# %files metapost-other
-# %defattr(644,root,root,755)
-# %{texmfdist}/metapost/automata
-# %{texmfdist}/metapost/bbcard
-# %{texmfdist}/metapost/blockdraw_mp
-# %{texmfdist}/metapost/bpolynomial
-# %{texmfdist}/metapost/cmarrows
-# %{texmfdist}/metapost/dviincl
-# %{texmfdist}/metapost/epsincl
-# %{texmfdist}/metapost/expressg
-# %{texmfdist}/metapost/exteps
-# %{texmfdist}/metapost/featpost
-# %{texmfdist}/metapost/frcursive
-# %{texmfdist}/metapost/hatching
-# %{texmfdist}/metapost/metaobj
-# %{texmfdist}/metapost/metaplot
-# %{texmfdist}/metapost/metauml
-# %{texmfdist}/metapost/mp3d
-# %{texmfdist}/metapost/mpattern
-# %{texmfdist}/metapost/nkarta
-# %{texmfdist}/metapost/piechartmp
-# %{texmfdist}/metapost/slideshow
-# %{texmfdist}/metapost/splines
-# %{texmfdist}/metapost/tabvar
-# %{texmfdist}/metapost/textpath
-# %{texmfdist}/metapost/venn
 
 %files mptopdf
 %defattr(644,root,root,755)
