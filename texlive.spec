@@ -6041,7 +6041,9 @@ for format in \
 #  	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
 #  	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
 #  %else
-	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
+	out=$(fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format})
+	echo $out
+	[ -z $out ] && echo "fmtutil for format ${format} failed..." && exit 1
 #  %endif
 done
 %if %{with bootstrap}
