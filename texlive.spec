@@ -6043,7 +6043,7 @@ for format in \
 #  %else
 	out=$(fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format})
 	echo $out
-	[ -z $out ] && echo "fmtutil for format ${format} failed..." && exit 1
+	[ -z $out ] && echo "fmtutil for format ${format} failed. Likely ${format}.ini file missing..." && exit 1
 #  %endif
 done
 %if %{with bootstrap}
