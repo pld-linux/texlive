@@ -25,6 +25,7 @@
 #
 %define		year	2009
 %define		monthday	1011
+%define		texmfversion
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
@@ -35,7 +36,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	%{year}%{monthday}
-Release:	2
+Release:	3
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -1416,7 +1417,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 # ams provides bluesky fonts
-Requires:	%{name}-fonts-ams
+Requires:	%{name}-fonts-ams >= %{texmfversion}
 Requires:	ghostscript
 Provides:	tetex-format-pdftex = %{epoch}:%{version}-%{release}
 Provides:	tetex-pdftex
@@ -1474,8 +1475,8 @@ Summary(pl.UTF-8):	Omega - TeX ze wsparciem dla unikodu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-omega = %{epoch}:%{version}-%{release}
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-omega >= %{texmfversion}
+Requires:	%{name}-plain >= %{texmfversion}
 Obsoletes:	tetex-omega
 
 %description omega
@@ -1519,8 +1520,8 @@ Summary(pl.UTF-8):	Podstawowe pliki dla format MeX Plain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	texlive-fonts-pl = %{epoch}:%{version}-%{release}
-Requires:	texlive-plain = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-pl >= %{texmfversion}
+Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-mex
 
 %description mex
@@ -1534,7 +1535,7 @@ Summary:	MeX Plain Format
 Summary(pl.UTF-8):	Format MeX Plain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	texlive-mex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-mex
 
 %description format-mex
@@ -1548,7 +1549,7 @@ Summary:	PDFMeX Plain Format
 Summary(pl.UTF-8):	Format PDFMeX Plain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-mex >= %{texmfversion}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-pdfmex
 
@@ -1563,7 +1564,7 @@ Summary:	MeX Plain Format with UTF-8 encoded source files
 Summary(pl.UTF-8):	Format MeX Plain z plikami źródłowymi kodowanymi UTF-8
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-mex >= %{texmfversion}
 Obsoletes:	tetex-format-utf8mex
 
 %description format-utf8mex
@@ -1579,9 +1580,9 @@ Summary:	AMS macros for Plain TeX basic files
 Summary(pl.UTF-8):	Podstawowe pliki makr AMS dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-ams = %{epoch}:%{version}-%{release}
-Requires:	%{name}-format-amstex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-ams >= %{texmfversion}
+Requires:	%{name}-format-amstex
+Requires:	%{name}-plain
 Provides:	tetex-ams
 Obsoletes:	tetex-ams
 Obsoletes:	tetex-amstex
@@ -1599,7 +1600,7 @@ Summary:	AMS macros for Plain TeX
 Summary(pl.UTF-8):	Makra AMS dla formatu Plain TeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-amstex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-amstex >= %{texmfversion}
 Obsoletes:	tetex-format-amstex
 Obsoletes:	tetex-format-cyramstex
 
@@ -1616,8 +1617,8 @@ Summary:	TeX CSPlain format basic files
 Summary(pl.UTF-8):	Podstawowe pliki dla formatu TeX CSPlain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-cs = %{epoch}:%{version}-%{release}
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-cs >= %{texmfversion}
+Requires:	%{name}-plain >= %{texmfversion}
 Provides:	tetex-csplain
 Obsoletes:	tetex-csplain
 
@@ -1662,8 +1663,8 @@ Summary:	CSLaTeX format basic files
 Summary(pl.UTF-8):	Podstawowe pliki dla formatu CSLaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-cs = %{epoch}:%{version}-%{release}
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-cs
+Requires:	%{name}-plain
 Provides:	tetex-cslatex
 Obsoletes:	tetex-cslatex
 
@@ -1678,7 +1679,7 @@ Summary:	CSLaTeX format
 Summary(pl.UTF-8):	Format CSLaTeX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-cslatex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-cslatex >= %{texmfversion}
 Obsoletes:	tetex-format-cslatex
 
 %description format-cslatex
@@ -1708,7 +1709,7 @@ Summary:	EPlain format basic files
 Summary(pl.UTF-8):	Podstawowe pliki dla formatu EPlain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
+Requires:	%{name}-plain >= %{texmfversion}
 Obsoletes:	tetex-eplain
 Obsoletes:	tetex-etex
 
@@ -1723,7 +1724,7 @@ Summary:	EPlain format
 Summary(pl.UTF-8):	Format EPlain
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-eplain = %{epoch}:%{version}-%{release}
+Requires:	%{name}-eplain >= %{texmfversion}
 Obsoletes:	tetex-format-eplain
 
 %description format-eplain
@@ -1941,7 +1942,7 @@ Summary:	Virtual fonts for PDF-files with T1 encoded CMR-fonts
 Summary(pl.UTF-8):	Wirtualne fonty dla plików PDF z fontami CMR o kodowaniu T1
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-ae = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-ae >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-ae
 Obsoletes:	tetex-latex-ae
@@ -1981,7 +1982,7 @@ Summary:	AMS math facilities for LaTeX
 Summary(pl.UTF-8):	Udogodnienia matematyczne AMS dla LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-ams = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-ams >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-ams
 Obsoletes:	tetex-latex-ams
@@ -2003,7 +2004,7 @@ Summary:	Antykwa Poltawskiego, a Type 1 family of Polish traditional type
 Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych czcionek polskich jako Type 1
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-antp = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-antp >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-antp
 
@@ -2030,7 +2031,7 @@ Summary:	Antykwa Torunska, a Type 1 family of a Polish traditional type
 Summary(pl.UTF-8):	Antykwa Turuńska - rodzina tradycyjnych czcionek polskich jako Type 1
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-antt = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-antt >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-antt
 
@@ -2062,7 +2063,7 @@ Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
 Summary(pl.UTF-8):	Tablicowy wariant fontów Computer Modern z obsługą LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-bbm = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-bbm >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-bbm
 
@@ -2089,7 +2090,7 @@ Summary:	Sans serif blackboard bold for LaTeX
 Summary(pl.UTF-8):	Tablicowy tłusty font sans serif dla LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-bbold = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-bbold >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-bbold
 
@@ -2150,7 +2151,7 @@ Summary:	BibTeX style files for American Mathematical Society publications
 Summary(pl.UTF-8):	Pliki stylów BibTeXa do publikacji American Mathematical Society
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-ams >= %{texmfversion}
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-ams
 Obsoletes:	tetex-latex-bibtex-ams
@@ -2349,7 +2350,7 @@ Summary:	Support for CM Bright fonts in LaTeX
 Summary(pl.UTF-8):	Obsługa fontów CM Bright w LaTeXu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-cmbright = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-cmbright >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-cmbright
 
@@ -2385,7 +2386,7 @@ Summary:	LaTeX package and font definition files to access the Concrete math fon
 Summary(pl.UTF-8):	Pakiet LaTeXa i pliki definicji fontów udostępniające fonty matematyczne Concrete
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-concmath = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-concmath >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-concmath
 
@@ -2633,7 +2634,7 @@ Summary:	LaTeX styles for Latin Modern family fonts
 Summary(pl.UTF-8):	Style LaTeXa dla fontów z rodziny Latin Modern
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-fonts-lm = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-lm >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-lm
 Obsoletes:	texlive-fonts-type1-lm
@@ -2890,17 +2891,17 @@ Summary:	Mathematical packages
 Summary(hu.UTF-8):	Matematikai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-bbm = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-stmaryrd = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-bbm >= %{texmfversion}
+Requires:	%{name}-fonts-stmaryrd >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex-carlisle = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex-psnfss = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex-pst-3dplot = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex-wasysym = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-xkeyval = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-xypic = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-ams >= %{texmfversion}
+Requires:	%{name}-latex-carlisle >= %{texmfversion}
+Requires:	%{name}-latex-psnfss >= %{texmfversion}
+Requires:	%{name}-latex-pst-3dplot >= %{texmfversion}
+Requires:	%{name}-latex-wasysym >= %{texmfversion}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
+Requires:	%{name}-tex-xkeyval >= %{texmfversion}
+Requires:	%{name}-tex-xypic >= %{texmfversion}
 # gnuplottex needs gnuplot
 Requires:	gnuplot
 
@@ -3096,7 +3097,7 @@ Summary:	Presentations in LaTeX
 Summary(hu.UTF-8):	Prezentációk LaTeX-ben
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex-foiltex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-foiltex >= %{texmfversion}
 Requires:	luatex
 Suggests:	%{name}-latex-prosper = %{epoch}:%{version}-%{release}
 
@@ -3261,7 +3262,7 @@ Summary:	Styles for Martin Vogel's Symbol (marvosym) font
 Summary(pl.UTF-8):	Style dla fontu Symbol Martina Vogela (marvosym)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-fonts-marvosym = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-marvosym >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-marvosym
 Obsoletes:	tetex-latex-marvosym
@@ -3287,7 +3288,7 @@ Summary:	LaTeX support for MetaFont and logo fonts
 Summary(pl.UTF-8):	Obsługa LaTeXa dla MetaFonta i fontów logo
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-mflogo = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-mflogo >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-mflogo
 
@@ -3432,7 +3433,7 @@ Summary(pl.UTF-8):	Przenośny format grafiki dla TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex-xcolor = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-xcolor >= %{texmfversion}
 Obsoletes:	tetex-pgf
 
 %description latex-pgf
@@ -3579,7 +3580,7 @@ Summary:	LaTeX font support for common PostScript fonts
 Summary(pl.UTF-8):	Obsługa popularnych fontów postscriptowych w LaTeXu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-adobe = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-adobe >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-psnfss
 Obsoletes:	tetex-latex-mathptm
@@ -3599,7 +3600,7 @@ Summary:	A PSTricks package for drawing 2D curves
 Summary(hu.UTF-8):	PSTricks csomag kétdimenziós görbék rajzolásához
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-2dplot
 A PSTricks package for drawing 2D curves.
@@ -3612,7 +3613,7 @@ Summary:	Draw 3d curves and graphs using PSTricks
 Summary(hu.UTF-8):	3D-s görbék és grafikonok PSTricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-3dplot
 Draw 3d curves and graphs using PSTricks.
@@ -3626,7 +3627,7 @@ Summary:	Produces bar charts using pstricks
 Summary(hu.UTF-8):	Oszlopdiagramok pstricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-bar
 Produces bar charts using pstricks.
@@ -3639,7 +3640,7 @@ Summary:	PSTricks package for drawing electric circuits
 Summary(hu.UTF-8):	PSTricks csomag elektromos áramkörök rajzolásához
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-circ
 PSTricks package for drawing electric circuits.
@@ -3652,7 +3653,7 @@ Summary:	Print diffraction patterns from various apertures
 Summary(hu.UTF-8):	Diffrakciós képek különböző eszközökön
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-diffraction
 Print diffraction patterns from various apertures.
@@ -3665,7 +3666,7 @@ Summary:	Euclidian geometry with pstricks
 Summary(hu.UTF-8):	Euklidészi geometria a pstricks használatával
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-eucl
 Euclidian geometry with pstricks.
@@ -3679,7 +3680,7 @@ Summary:	Draw "funny" objects with PSTricks
 Summary(hu.UTF-8):	"Vicces" rajzok PSTricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-fun
 Draw "funny" objects with PSTricks.
@@ -3692,7 +3693,7 @@ Summary:	PSTricks package for plotting mathematical functions
 Summary(hu.UTF-8):	PSTricks csomag matematikai függvények ábrázolásához
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-func
 PSTricks package for plotting mathematical functions.
@@ -3705,7 +3706,7 @@ Summary:	Draw 3-dimensional framed boxes using PSTricks
 Summary(hu.UTF-8):	Háromdimenziós dobozok PSTricks segítségével
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-fr3d
 Draw 3-dimensional framed boxes using PSTricks.
@@ -3718,7 +3719,7 @@ Summary:	Draw fractal sets using PSTricks
 Summary(hu.UTF-8):	Fraktálok rajzolása PSTricks segítségével
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-fractal
 Draw fractal sets using PSTricks.
@@ -3731,7 +3732,7 @@ Summary:	Using pstricks plotting capacities with infix expressions rather than R
 Summary(hu.UTF-8):	Infix kifejezések ábrázolása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-infixplot
 Using pstricks plotting capacities with infix expressions rather than
@@ -3745,7 +3746,7 @@ Summary:	Enhancement of PostScript math operators to use with pstricks
 Summary(hu.UTF-8):	PostScript matematikai operátorok bővítése pstricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-math
 Enhancement of PostScript math operators to use with pstricks.
@@ -3758,7 +3759,7 @@ Summary:	Three dimensional objects using PSTricks
 Summary(hu.UTF-8):	Háromdimenziós objektumok PSTricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-ob3d
 Three dimensional objects using PSTricks.
@@ -3771,7 +3772,7 @@ Summary:	Drawing optical experimental setups
 Summary(hu.UTF-8):	Optikai összeállítások rajzolása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-optexp
 Drawing optical experimental setups.
@@ -3784,7 +3785,7 @@ Summary:	Drawing optics diagrams
 Summary(hu.UTF-8):	Optikai ábrák rajzolása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-optic
 Drawing optics diagrams.
@@ -3797,7 +3798,7 @@ Summary:	Text and character manipulation in PSTricks
 Summary(hu.UTF-8):	Szöveg és karakter manipulációk PSTricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-text
 Text and character manipulation in PSTricks.
@@ -3810,7 +3811,7 @@ Summary:	Other uncategorized PSTricks packages
 Summary(hu.UTF-8):	Néhány kategorizálatlan PSTricks csomag
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-pstricks >= %{texmfversion}
 
 %description latex-pst-uncategorized
 Other uncategorized PSTricks packages.
@@ -3823,7 +3824,7 @@ Summary:	PX fonts LaTeX support
 Summary(pl.UTF-8):	Obsługa fontów PX w LaTeXu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-px = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-px >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-pxfonts
 
@@ -3838,7 +3839,7 @@ Summary:	Package to typeset SI units, numbers and angles
 Summary(hu.UTF-8):	Csomag SI egységek, számok és szögek szedésére
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-ams >= %{texmfversion}
 
 %description latex-SIstyle
 Package to typeset SI units, numbers and angles.
@@ -3851,7 +3852,7 @@ Summary:	The SIunits package can be used to standardise the use of units in your
 Summary(hu.UTF-8):	Az SIunits csomag a mennyiségek egységes írásában nyújt segítséget
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-ams >= %{texmfversion}
 
 %description latex-SIunits
 The SIunits package can be used to standardise the use of units in
@@ -3927,7 +3928,7 @@ Summary:	TX fonts LaTeX support
 Summary(pl.UTF-8):	Obsługa fontów TX w LaTeXu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-tx >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-txfonts
 
@@ -3970,7 +3971,7 @@ Summary:	Extra characters from the Waldis symbol fonts
 Summary(pl.UTF-8):	Dodatkowe znaki z fontów Waldis symbol
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-wasy = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-wasy >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-wasysym
 Obsoletes:	tetex-latex-wasysym
@@ -4186,7 +4187,7 @@ Summary(pl.UTF-8):	Makra postscriptowe dla TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-dvips = %{epoch}:%{version}-%{release}
-Requires:	%{name}-tex-misc = %{epoch}:%{version}-%{release}
+Requires:	%{name}-tex-misc >= %{texmfversion}
 Provides:	tetex-tex-pstricks
 Obsoletes:	tetex-tex-pstricks
 
@@ -4213,7 +4214,7 @@ Summary(pl.UTF-8):	Wsparcie dla składu fontami QuasiTimes i TX
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-qpxqtx = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-qpxqtx >= %{texmfversion}
 Obsoletes:	tetex-tex-qpx
 Obsoletes:	tetex-tex-qtx
 
@@ -4359,7 +4360,7 @@ Summary(pl.UTF-8):	Pakiet do składania w TeXu różnych wykresów i diagramów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-xypic = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-xypic >= %{texmfversion}
 Obsoletes:	tetex-tex-xypic
 Obsoletes:	tetex-xypic
 
@@ -4414,7 +4415,7 @@ Font utilities.
 Summary:	Adobe fonts
 Summary(pl.UTF-8):	Fonty Adobe
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Provides:	tetex-fonts-adobe
 Obsoletes:	tetex-fonts-adobe
 
@@ -4427,7 +4428,7 @@ Fonty Adobe.
 %package fonts-larm
 Summary:	Larm (cyrillic) fonts
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-larm
 Larm (cyrillic) fonts.
@@ -4436,7 +4437,7 @@ Larm (cyrillic) fonts.
 Summary:	Virtual fonts for PDF-files with T1 encoded CMR-fonts
 Summary(pl.UTF-8):	Wirtualne fonty do plików PDF z fontami CMR o kodowaniu T1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-ae
 
 %description fonts-ae
@@ -4449,7 +4450,7 @@ Wirtualne fonty do plików PDF z fontami CMR o kodowaniu T1.
 Summary:	AMS fonts
 Summary(pl.UTF-8):	Fonty AMS
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-ams
 Obsoletes:	tetex-fonts-ams
@@ -4464,7 +4465,7 @@ Fonty AMS.
 Summary:	Antykwa Poltawskiego, a Type 1 family of Polish traditional type
 Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-antp
 
 %description fonts-antp
@@ -4478,7 +4479,7 @@ Type 1.
 Summary:	Antykwa Torunska, a Type 1 family of a Polish traditional type
 Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-antt
 
 %description fonts-antt
@@ -4490,7 +4491,7 @@ Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1.
 %package fonts-arphic
 Summary:	Arphic fonts
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-arphic
 Arphic fonts.
@@ -4499,7 +4500,7 @@ Arphic fonts.
 Summary:	Blackboard variant fonts for Computer Modern, with LaTeX support
 Summary(pl.UTF-8):	Tablicowy wariant fontów Computer Modern ze wsparciem dla LaTeXa
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-bbm
 
 %description fonts-bbm
@@ -4512,7 +4513,7 @@ Tablicowy wariant fontów Computer Modern ze wsparciem dla LaTeXa.
 Summary:	Sans serif blackboard bold for LaTeX
 Summary(pl.UTF-8):	Tablicowy tłusty font sans serif dla LaTeXa
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-bbold
 
 %description fonts-bbold
@@ -4525,7 +4526,7 @@ Tablicowy tłusty font sans serif dla LaTeXa.
 Summary:	Bitstream fonts
 Summary(pl.UTF-8):	Fonty Bitstream
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-bitstrea
 
 %description fonts-bitstream
@@ -4538,7 +4539,7 @@ Fonty Bitstream.
 Summary:	Polish version of Computer Concrete fonts
 Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-cc-pl
 
 %description fonts-cc-pl
@@ -4551,7 +4552,7 @@ Polska wersja fontów Computer Concrete.
 Summary:	Compugraphic fonts
 Summary(pl.UTF-8):	Fonty Compugraphic
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-cg
 
 %description fonts-cg
@@ -4564,7 +4565,7 @@ Fonty Compugraphic.
 Summary:	Computer Modern fonts
 Summary(pl.UTF-8):	Fonty Computer Modern
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Provides:	tetex-fonts-cm
 Obsoletes:	tetex-fonts-cm
 
@@ -4578,7 +4579,7 @@ Fonty Computer Modern.
 Summary:	CM Bright fonts
 Summary(pl.UTF-8):	Fonty CM Bright
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-cmbright
 
 %description fonts-cmbright
@@ -4591,7 +4592,7 @@ Fonty CM Bright.
 Summary:	CM Super fonts
 Summary(hu.UTF-8):	CM Super betűtípus
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-cmsuper
 CM Super fonts.
@@ -4604,7 +4605,7 @@ CM Super betűtípus
 Summary:	Computer Modern fonts extended with Russian letters
 Summary(pl.UTF-8):	Fonty Computer Modern rozszerzone o litery rosyjskie
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Provides:	tetex-fonts-cmcyr
 Obsoletes:	tetex-fonts-cmcyr
 Obsoletes:	texlive-fonts-type1-cmcyr
@@ -4619,7 +4620,7 @@ Fonty Computer Modern rozszerzone o litery rosyjskie.
 Summary:	Extra Computer Modern fonts, from the American Mathematical Society
 Summary(pl.UTF-8):	Dodatkowe fonty Computer Modern z AMS
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Provides:	tetex-fonts-cmextra
 Obsoletes:	tetex-fonts-cmextra
 
@@ -4633,7 +4634,7 @@ Dodatkowe fonty Computer Modern z AMS (American Mathematical Society).
 Summary:	Concrete Math fonts
 Summary(pl.UTF-8):	Fonty matematyczne Concrete Math
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-concmath
 
 %description fonts-concmath
@@ -4646,7 +4647,7 @@ Fonty matematyczne Concrete Math.
 Summary:	Concrete Roman fonts
 Summary(pl.UTF-8):	Fonty Concrete Roman
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-concrete
 
 %description fonts-concrete
@@ -4661,7 +4662,7 @@ przeznaczone do używania z fontami matematycznymi Euler.
 Summary:	Czech/Slovak-tuned MetaFont Computer Modern fonts
 Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i słowackiego
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-cs
 
 %description fonts-cs
@@ -4675,7 +4676,7 @@ czeskiego i słowackiego.
 Summary:	Sources for the European Concrete fonts
 Summary(pl.UTF-8):	Źródła dla fontów European Concrete
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-ecc
 
 %description fonts-ecc
@@ -4692,7 +4693,7 @@ tekstowymi fontami towarzyszącymi.
 Summary:	The new European currency symbol for the Euro
 Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-eurosym
 
 %description fonts-eurosym
@@ -4709,7 +4710,7 @@ różnych kształtów (normalnego, pochylonego, tłustego, szkicowanego).
 Summary:	The Virtual Euler Math fonts
 Summary(pl.UTF-8):	Fonty Virtual Euler Math
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-eulervm
 
 %description fonts-eulervm
@@ -4730,7 +4731,7 @@ matematycznych i może być dostępny używalny symbol \hslash.
 Summary:	Fonts similar to EUSM but with two more characters
 Summary(pl.UTF-8):	Fonty podobne do EUSM, ale z dwoma dodatkowymi znakami
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-euxm
 
 %description fonts-euxm
@@ -4745,7 +4746,7 @@ dla Concrete Math dołączonego w fonts3 dystrybucji TeXLive.
 Summary:	Gothic and ornamental initial fonts by Yannis Haralambous
 Summary(pl.UTF-8):	Początkowe fonty gotyckie i ornamentowe Yannisa Haralambousa
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-gothic
 
 %description fonts-gothic
@@ -4758,7 +4759,7 @@ Początkowe fonty gotyckie i ornamentowe Yannisa Haralambousa.
 Summary:	Converted mflogo font
 Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-hoekwater
 
 %description fonts-hoekwater
@@ -4775,7 +4776,7 @@ stmaryrd, wasy, wasy2, xipa.
 Summary:	Miscellaneous packages by Joerg Knappen
 Summary(pl.UTF-8):	Różne pakiety autorstwa Joerga Knappena
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-jknappen
 Obsoletes:	tetex-fonts-jknappen
@@ -4794,7 +4795,7 @@ Knappena. Zawiera sgmlcmpt.
 Summary:	A complete set of fonts for text and mathematics
 Summary(hu.UTF-8):	Betűtípusok teljes készlete (matematikai) szövegekhez
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-kpfonts
 A complete set of fonts for text and mathematics.
@@ -4806,7 +4807,7 @@ Betűtípusok teljes készlete (matematikai) szövegekhez.
 Summary:	Basic LaTeX fonts
 Summary(pl.UTF-8):	Podstawowe fonty dla LaTeXa
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Provides:	tetex-fonts-latex
 Obsoletes:	tetex-fonts-latex
 
@@ -4820,7 +4821,7 @@ Podstawowe fonty dla LaTeXa.
 Summary:	Olga Lapko's LH fonts
 Summary(pl.UTF-8):	Fonty LH Olgi Lapko
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-lh
 
 %description fonts-lh
@@ -4833,7 +4834,7 @@ Fonty lh dla kodowań `T2'/X2 (dla języków zapisywanych cyrylicą).
 Summary:	Latin Modern family fonts
 Summary(pl.UTF-8):	Fonty z rodziny Latin Modern
 Group:		Applications/Publishing/TeX
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-lm
 
 %description fonts-lm
@@ -4862,7 +4863,7 @@ tymi wszystkimi plikami. Autorem jest Bogusław Jackowski.
 Summary:	Martin Vogel's Symbol (marvosym) font
 Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-marvosym
 
 %description fonts-marvosym
@@ -4885,7 +4886,7 @@ krawieckie; znak CE i inne.
 Summary:	Logo fonts
 Summary(pl.UTF-8):	Fonty logo
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-mflogo
 
 %description fonts-mflogo
@@ -4898,7 +4899,7 @@ Fonty logo.
 Summary:	Miscellaneous fonts
 Summary(pl.UTF-8):	Różne fonty
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-misc
 
 %description fonts-misc
@@ -4911,7 +4912,7 @@ Fonty różne.
 Summary:	Monotype fonts
 Summary(pl.UTF-8):	Fonty Monotype
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-monotype
 
 %description fonts-monotype
@@ -4924,7 +4925,7 @@ Fonty Monotype.
 Summary:	Fonts for Omega - extended unicode TeX
 Summary(pl.UTF-8):	Fonty dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-omega
 
 %description fonts-omega
@@ -4937,7 +4938,7 @@ Fonty dla Omegi - TeXa ze wsparciem dla unikodu.
 Summary:	Other fonts
 Summary(hu.UTF-8):	További betűtípusok
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-cbgreek
 Obsoletes:	tetex-fonts-dstroke
 Obsoletes:	tetex-fonts-pazo
@@ -4956,7 +4957,7 @@ További betűtípusok.
 Summary:	Polish fonts
 Summary(pl.UTF-8):	Polskie fonty
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-pl
 
 %description fonts-pl
@@ -4969,7 +4970,7 @@ Polskie fonty.
 Summary:	PX fonts
 Summary(pl.UTF-8):	Fonty PX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-px
 
 %description fonts-px
@@ -4982,10 +4983,10 @@ Fonty PX.
 Summary:	Additional fonts for QTX package
 Summary(pl.UTF-8):	Dodatkowe fonty dla pakietu QTX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 # I hope qpxqtx doesn't need qfonts
-# Requires:	%{name}-fonts-qfonts = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
+# Requires:	%{name}-fonts-qfonts >= %{texmfversion}
+Requires:	%{name}-fonts-tx >= %{texmfversion}
 Obsoletes:	tetex-fonts-qpx
 Obsoletes:	tetex-fonts-qtx
 
@@ -4999,7 +5000,7 @@ Dodatkowe fonty dla pakietu QTX.
 Summary:	Fonts of uppercase script letters for scientific and mathematical typesetting
 Summary(pl.UTF-8):	Fonty wielkich liter pisanych do składania dokumentów naukowych i matematycznych
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-rsfs
 
 %description fonts-rsfs
@@ -5018,7 +5019,7 @@ matematycznym foncie TeXowym symbol.
 Summary:	St Mary Road symbols for functional programming
 Summary(pl.UTF-8):	Symbole St Mary Road do programowania funkcyjnego
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Provides:	tetex-fonts-stmaryrd
 Obsoletes:	tetex-fonts-stmaryrd
 
@@ -5032,7 +5033,7 @@ Symbole St Mary Road do programowania funkcyjnego.
 Summary:	TX fonts
 Summary(pl.UTF-8):	Fonty TX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-tx
 
 %description fonts-tx
@@ -5044,7 +5045,7 @@ Fonty TX.
 %package fonts-uhc
 Summary:	UHC fonts
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-uhc
 UHC fonts.
@@ -5053,7 +5054,7 @@ UHC fonts.
 Summary:	URW fonts
 Summary(pl.UTF-8):	Fonty URW
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-urw
 
 %description fonts-urw
@@ -5066,7 +5067,7 @@ Fonty URW.
 Summary:	URWVN fonts
 Summary(pl.UTF-8):	Fonty URWVN
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-urwvn
 
 %description fonts-urwvn
@@ -5079,7 +5080,7 @@ Fonty URWVN.
 Summary:	VNR fonts
 Summary(pl.UTF-8):	Fonty VNR
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-vnr
 
 %description fonts-vnr
@@ -5093,7 +5094,7 @@ Summary:	urw35vf fonts
 Summary(hu.UTF-8):	urw35vf betűtípus
 Summary(pl.UTF-8):	Fonty urw35vf
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-urw35vf
 urw35vf fonts.
@@ -5104,7 +5105,7 @@ urw35vf betűtípus.
 %package fonts-wadalab
 Summary:	Wadalab fonts
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-wadalab
 Wadalab fonts.
@@ -5113,7 +5114,7 @@ Wadalab fonts.
 Summary:	Waldis symbol fonts
 Summary(pl.UTF-8):	Fonty Waldis symbol
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Provides:	tetex-fonts-wasy
 Obsoletes:	tetex-fonts-wasy
 
@@ -5127,7 +5128,7 @@ Fonty Waldis symbol.
 Summary:	Xy-pic fonts
 Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-xypic
 
 %description fonts-xypic
@@ -5140,7 +5141,7 @@ Fonty Xy-pic.
 Summary:	European Modern fonts from Y&Y
 Summary(pl.UTF-8):	Fonty European Modern od Y&Y
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-yandy
 
 %description fonts-yandy
@@ -5153,7 +5154,7 @@ Fonty European Modern od Y&Y.
 Summary:	Antykwa Poltawskiego, a Type 1 family of Polish traditional type
 Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-antp
 
 %description fonts-type1-antp
@@ -5167,7 +5168,7 @@ Type 1.
 Summary:	Antykwa Torunska, a Type 1 family of a Polish traditional type
 Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-antt
 
 %description fonts-type1-antt
@@ -5179,7 +5180,7 @@ Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1.
 %package fonts-type1-arphic
 Summary:	Type1 Arphic fonts
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-type1-arphic
 Type1 Arphic fonts.
@@ -5188,7 +5189,7 @@ Type1 Arphic fonts.
 Summary:	Free replacement for basic MathTime fonts
 Summary(pl.UTF-8):	Wolnodostępny zamiennik podstawowych fontów MathTime
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-belleek
 
 %description fonts-type1-belleek
@@ -5201,7 +5202,7 @@ Wolnodostępny zamiennik podstawowych fontów MathTime.
 Summary:	Bitstream fonts
 Summary(pl.UTF-8):	Fonty Bitstream
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-bitstrea
 
 %description fonts-type1-bitstream
@@ -5214,7 +5215,7 @@ Fonty Bitstream.
 Summary:	Computer Modern family fonts
 Summary(pl.UTF-8):	Fonty z rodziny Computer Modern
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Provides:	tetex-fonts-type1-bluesky
 Obsoletes:	tetex-fonts-type1-bluesky
 
@@ -5228,7 +5229,7 @@ Fonty z rodzony Computer Modern.
 Summary:	Polish version of Computer Concrete fonts
 Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-cc-pl
 
 %description fonts-type1-cc-pl
@@ -5241,7 +5242,7 @@ Polska wersja fontów Computer Concrete.
 Summary:	Computer Modern fonts extended with Russian letters
 Summary(pl.UTF-8):	Fonty Computer Modern rozszerzone o litery rosyjskie
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-cmcyr
 
 %description fonts-type1-cmcyr
@@ -5254,7 +5255,7 @@ Fonty Computer Modern rozszerzone o litery rosyjskie.
 Summary:	Czech/Slovak-tuned MetaFont Computer Modern fonts
 Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i słowackiego
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-cs
 
 %description fonts-type1-cs
@@ -5268,7 +5269,7 @@ czeskiego i słowackiego.
 Summary:	The new European currency symbol for the Euro
 Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-eurosym
 
 %description fonts-type1-eurosym
@@ -5285,7 +5286,7 @@ różnych kształtów (normalnego, pochylonego, tłustego, szkicowanego).
 Summary:	Converted mflogo font
 Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-hoekwater
 
 %description fonts-type1-hoekwater
@@ -5302,7 +5303,7 @@ stmaryrd, wasy, wasy2, xipa.
 Summary:	SC/OsF fonts for URW Palladio L
 Summary(pl.UTF-8):	Fonty SC/OsF dla URW Palladio L
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-fpl
 
 %description fonts-type1-fpl
@@ -5335,7 +5336,7 @@ Palatino Waltera Schmidta.
 Summary:	Type1 Latin Modern family fonts
 Summary(pl.UTF-8):	Fonty Type1 z rodziny Latin Modern
 Group:		Applications/Publishing/TeX
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-lm
 
 %description fonts-type1-lm
@@ -5364,7 +5365,7 @@ tymi wszystkimi plikami. Autorem jest Bogusław Jackowski.
 Summary:	Martin Vogel's Symbol (marvosym) font
 Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-marvosym
 
 %description fonts-type1-marvosym
@@ -5387,7 +5388,7 @@ krawieckie; znak CE i inne.
 Summary:	Pazo Math fonts
 Summary(pl.UTF-8):	Fonty matematyczne Pazo Math
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-mathpazo
 
 %description fonts-type1-mathpazo
@@ -5400,7 +5401,7 @@ Fonty matematyczne Pazo Math.
 Summary:	Type1 fonts for Omega - extended unicode TeX
 Summary(pl.UTF-8):	Fonty Type1 dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-omega
 
 %description fonts-type1-omega
@@ -5413,8 +5414,8 @@ Fonty Type1 dla Omegi - TeXa ze wsparciem dla unikodu.
 Summary:	Polish fonts
 Summary(pl.UTF-8):	Polskie fonty
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
+Requires:	%{name}-fonts-type1-bluesky >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-pl
 
 %description fonts-type1-pl
@@ -5427,7 +5428,7 @@ Polskie fonty.
 Summary:	PX fonts
 Summary(pl.UTF-8):	Fonty PX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-px
 
 %description fonts-type1-px
@@ -5440,7 +5441,7 @@ Fonty PX.
 Summary:	TX fonts
 Summary(pl.UTF-8):	Fonty TX
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-tx
 
 %description fonts-type1-tx
@@ -5452,7 +5453,7 @@ Fonty TX.
 %package fonts-type1-uhc
 Summary:	Type1 UHC fonts
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-type1-uhc
 Type1 UHC fonts.
@@ -5461,7 +5462,7 @@ Type1 UHC fonts.
 Summary:	URW fonts
 Summary(pl.UTF-8):	Fonty URW
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Provides:	tetex-fonts-type1-urw
 Obsoletes:	tetex-fonts-type1-urw
 
@@ -5475,7 +5476,7 @@ Fonty URW.
 Summary:	Type1 VNR fonts
 Summary(pl.UTF-8):	Fonty Type1 VNR
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-vnr
 
 %description fonts-type1-vnr
@@ -5487,7 +5488,7 @@ Fonty Type1 VNR.
 %package fonts-type1-wadalab
 Summary:	Type1 Wadalab fonts
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 
 %description fonts-type1-wadalab
 Type1 Wadalab fonts.
@@ -5496,7 +5497,7 @@ Type1 Wadalab fonts.
 Summary:	Xy-pic fonts
 Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dirs-fonts >= %{texmfversion}
 Obsoletes:	tetex-fonts-type1-xypic
 
 %description fonts-type1-xypic
@@ -5574,7 +5575,7 @@ equation representation.
 Summary:	Extended TeX / LaTeX version for unicode
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-fonts-misc = %{epoch}:%{version}-%{release}
+Requires:	%{name}-fonts-misc >= %{texmfversion}
 
 %description xetex
 XeTeX extends the TeX typesetting system (and macro packages such as
