@@ -99,7 +99,6 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel
 BuildRequires:	freetype1-devel
 BuildRequires:	gd-devel >= 2.0.33
-BuildRequires:	kpathsea-devel
 BuildRequires:	libpng-devel >= 1.2.8
 BuildRequires:	libtool
 # should this be somewhere in clisp?
@@ -112,12 +111,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	texinfo
-%if %{with bootstrap}
-BuildRequires:	tetex-format-latex
-BuildRequires:	tetex-format-pdflatex
-BuildRequires:	tetex-latex-cyrillic
-BuildRequires:	tetex-tex-babel
-%else
+%if %{without bootstrap}
 BuildRequires:	%{name}-context
 BuildRequires:	%{name}-csplain
 BuildRequires:	%{name}-fonts-cmsuper
@@ -141,7 +135,6 @@ BuildRequires:	%{name}-xetex
 BuildRequires:	%{name}-xmltex
 # fill with future texlive BR. guesses ones for now
 %endif
-BuildRequires:	/usr/bin/latex
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libXaw-devel
@@ -5980,6 +5973,7 @@ rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.html
 rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.php
 rm -f $RPM_BUILD_ROOT%{texmf}/doc/mkhtml*
 rm -f $RPM_BUILD_ROOT%{texmf}/doc/programs/texinfo.*
+rm -rf $RPM_BUILD_ROOT%{texmf}/doc/tetex
 rm -f $RPM_BUILD_ROOT%{texmf}/fonts/pk/ljfour/lh/lh-lcy/*.600pk
 rm -f $RPM_BUILD_ROOT%{texmf}/generic/config/pdftex-dvi.tex
 rm -f $RPM_BUILD_ROOT%{texmf}/release-tetex-{src,texmf}.txt
@@ -6026,13 +6020,14 @@ for format in \
 	xelatex; do
 # pdfxmltex \
 # xmltex; do
-#  %if %{with bootstrap}
-#  	install -d $RPM_BUILD_ROOT%{fmtdir}/${format}
-#  	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
-#  	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
-#  %else
+
+%if %{with bootstrap}
+  	install -d $RPM_BUILD_ROOT%{fmtdir}/${format}
+  	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
+  	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
+%else
 	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
-#  %endif
+%endif
 done
 
 %if %{with bootstrap}
@@ -7599,30 +7594,6 @@ fi
 %attr(1777,root,root) %dir %{_localstatedir}
 %attr(1777,root,root) %dir %{_localstatedir}/fonts
 %attr(1777,root,root) %dir %{_localstatedir}/fonts/map
-%attr(1777,root,root) %dir %{fmtdir}
-
-%dir %{fmtdir}/tex
-%dir %{texmfdist}
-%dir %{texmfdist}/doc
-%dir %{texmfdist}/doc/generic
-%dir %{texmfdist}/scripts
-%dir %{texmfdist}/source
-%dir %{texmfdist}/source/generic
-%dir %{texmfdist}/tex
-%dir %{texmfdist}/tex/generic
-%dir %{texmfdist}/tex/plain
-%dir %{texmf}
-%dir %{texmf}/doc
-%dir %{texmf}/doc/tetex
-%dir %{texmf}/dvips
-%dir %{texmf}/fonts/map
-%dir %{texmf}/scripts
-%dir %{texmf}/tex
-%dir %{texmf}/web2c
-
-# Docs
-%doc %{texmf}/doc/tetex/TETEXDOC.*
-%doc %{texmf}/doc/tetex/teTeX-FAQ
 
 %{_mandir}/man1/afm2tfm.1*
 %{_mandir}/man1/allcm.1*
@@ -7680,6 +7651,7 @@ fi
 %{_mandir}/man5/updmap.cfg.5*
 %{fmtdir}/pdftex/pdfetex.fmt
 # %{fmtdir}/pdfetex
+%dir %{fmtdir}/tex
 %{fmtdir}/tex/tex.fmt
 # %{fmtdir}/pdftex/tex.fmt
 
