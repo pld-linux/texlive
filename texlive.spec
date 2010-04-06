@@ -12,6 +12,32 @@
 #error: removing texlive-dvips-20080816-5.x86_64 "Requires(auto): libkpathsea.so.4()(64bit)" from tsort relations.
 #error:     texlive-dvips-20080816-5.x86_64          Requires(auto): libkpathsea.so.4()(64bit)
 #Preparing...                ########################################### [100%]
+#
+# unpackaged files:
+#   /usr/bin/repstopdf
+#   /usr/share/texmf-dist/scripts/pst-pdf/ps4pdf
+#   /var/lib/texmf/web2c/csplain/csplain.fmt
+#   /var/lib/texmf/web2c/etex/etex.fmt
+#   /var/lib/texmf/web2c/lambda/lambda.fmt
+#   /var/lib/texmf/web2c/lamed/lamed.fmt
+#   /var/lib/texmf/web2c/latex/latex.fmt
+#   /var/lib/texmf/web2c/mex/mex.fmt
+#   /var/lib/texmf/web2c/mllatex/mllatex.fmt
+#   /var/lib/texmf/web2c/mptopdf/mptopdf.fmt
+#   /var/lib/texmf/web2c/pdfcsplain/pdfcsplain.fmt
+#   /var/lib/texmf/web2c/pdfetex/pdfetex.fmt
+#   /var/lib/texmf/web2c/pdflatex/pdflatex.fmt
+#   /var/lib/texmf/web2c/pdftex/aleph.fmt
+#   /var/lib/texmf/web2c/pdftex/lambda.fmt
+#   /var/lib/texmf/web2c/pdftex/lamed.fmt
+#   /var/lib/texmf/web2c/pdftex/omega.fmt
+#   /var/lib/texmf/web2c/pdftex/tex.fmt
+#   /var/lib/texmf/web2c/pdftex/xelatex.fmt
+#   /var/lib/texmf/web2c/pdftex/xetex.fmt
+#   /var/lib/texmf/web2c/physe/physe.fmt
+#   /var/lib/texmf/web2c/phyzzx/phyzzx.fmt
+#   /var/lib/texmf/web2c/texsis/texsis.fmt
+#   /var/lib/texmf/web2c/xelatex/xelatex.fmt
 
 %include	/usr/lib/rpm/macros.perl
 # Conditional build:
@@ -24,7 +50,7 @@
 
 #
 %define		year	2009
-%define		monthday	1011
+%define		monthday	1107
 %define		texmfversion 20091107
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
@@ -36,12 +62,12 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	%{year}%{monthday}
-Release:	5
+Release:	0.1
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
-Source0:	http://tug.org/svn/texlive/branches/branch%{year}/Master/source/%{name}-%{version}-source.tar.xz
-# Source0-md5:	053395f260549b5d48892d40b5e083eb
+Source0:	ftp://tug.org/historic/systems/texlive/%{year}/%{name}-%{version}-source.tar.xz
+# Source0-md5:	18f992b4e6394770fb80e42719c0ec84
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
