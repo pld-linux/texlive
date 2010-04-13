@@ -2117,6 +2117,7 @@ Summary(pl.UTF-8):	Zarządzenie bibliografią dla LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-bibtex-data >= %{texmfversion}
 Provides:	tetex-latex-bibtex
 Obsoletes:	tetex-bibtex
 Obsoletes:	tetex-latex-bibtex
