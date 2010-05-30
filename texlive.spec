@@ -6053,7 +6053,9 @@ for format in \
   	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
   	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
 %else
-	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
+#######
+#	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
+#######
 %endif
 done
 
@@ -8240,11 +8242,11 @@ fi
 # %doc %{texmfdist}/doc/generic/ofs
 # %{texmfdist}/tex/generic/ofs
 
-%files tex-physe
-%defattr(644,root,root,755)
+# %files tex-physe
+# %defattr(644,root,root,755)
 # %{texmfdist}/tex/physe
 # %{texmf}/fmtutil/format.physe.cnf
-%{fmtdir}/pdftex/physe.fmt
+# %{fmtdir}/pdftex/physe.fmt
 # %{fmtdir}/physe
 
 # %files tex-velthuis
