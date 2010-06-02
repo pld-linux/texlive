@@ -136,6 +136,7 @@ BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	t1lib-devel >= 5.0.2
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
 %if %{without bootstrap}
 BuildRequires:	%{name}-context
