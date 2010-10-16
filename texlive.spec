@@ -221,7 +221,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoreq 'perl(path_tre)'
 
 %description
-TeXLive is an implementation of TeX for Linux or UNIX systems. TeX
+TeX Live is an implementation of TeX for Linux or UNIX systems. TeX
 takes a text file and a set of formatting commands as input and
 creates a typesetter independent .dvi (DeVice Independent) file as
 output. Usually, TeX is used in conjunction with a higher level
@@ -246,7 +246,7 @@ raccourci pour Device Independant). Les possibilités de TeX et son
 langage sont décrites dans l'ouvrage TeXbook, de Knuth.
 
 %description -l hu.UTF-8
-TeXLive a TeX egy implementációja Linux és UNIX rendszerekre. TeX egy
+TeX Live a TeX egy implementációja Linux és UNIX rendszerekre. TeX egy
 egyszerű szövegfájlt fogad bemenetként, és formázó parancsok
 segítségével a szövegszedő egy független .dvi (DeVice Independent)
 fájlt készít. A TeX-et leginkább magasabb szintű formázó parancsokkal
@@ -254,10 +254,12 @@ kiegészítve használják, mint pl. LaTeX-hel vagy PlainTeX-hel, mivel a
 TeX önmaga nem túlzottan "felhasználóbarát".
 
 %description -l pl.UTF-8
-TeX formatuje przygotowany tekst oraz komendy i produkuje niezależny
-od urządzenia plik wynikowy (tzw. DVI -- skrót od DeVice Independent).
-Możliwości TeXa, oraz jego język zostały opisane w ,,The TeXbook''
-Donalda E. Knutha.
+TeX Live to implementacja TeXa dla systemów Linux i UNIX. TeX to system
+składu przyjmujący na wejściu tekst oraz polecenia formatujące i
+tworzący niezależny od urządzenia plik wynikowy (tzw. DVI -- skrót od
+DeVice Independent). Zwykle TeX jest używany w połączeniu z pakietem
+formatującym wyższego poziomu, jak LaTeX lub PlainTeX, jako że sam TeX
+nie jest zbyt przyjazny dla użytkownika.
 
 %description -l pt_BR.UTF-8
 Tex formata arquivos de texto e comandos para uma saída independente
@@ -269,21 +271,6 @@ TeX, içinde metin ve komutların yer aldığı bir dosyayı okur ve dizgi
 aygıtından bağımsız bir çıktı (DeVice Independent - DVI) oluşturur.
 TeX'in becerileri ve dizgi dili, dili geliştiren Knuth'un 'The
 TeXbook' başlıklı kitabında anlatılmaktadır.
-
-%package cef-utils
-Summary:	Utils for CEF (Chinese Encoding Framework)
-Group:		Applications/Publishing/TeX
-
-%description cef-utils
-Utils for CEF (Chinese Encoding Framework).
-
-%package other-utils
-Summary:	Other utilities
-Group:		Applications/Publishing/TeX
-Obsoletes:	tetex-format-cyrtexinfo
-
-%description other-utils
-Other utilities.
 
 %package jadetex
 Summary:	LaTeX macros for converting Jade TeX output into DVI/PS/PDF
@@ -299,177 +286,297 @@ Obsoletes:	jadetex
 JadeTeX contains the additional LaTeX macros necessary for taking Jade
 TeX output files and processing them as LaTeX files.
 
-%description -l pl.UTF-8
+%description jadetex -l pl.UTF-8
 JadeTeX zawiera dodatkowe makra LaTeXa potrzebne do konwersji plików
 otrzymanych z Jade TeXa i przetworzenia ich jako plików LaTeXa.
 
+%package cef-utils
+Summary:	Utils for CEF (Chinese Encoding Framework)
+Summary(pl.UTF-8):	Narzędzia dla środowiska CEF (Chinese Encoding Framework)
+Group:		Applications/Publishing/TeX
+
+%description cef-utils
+Utils for CEF (Chinese Encoding Framework).
+
+%description cef-utils -l pl.UTF-8
+Narzędzia dla środowiska CEF (Chinese Encoding Framework) służącego do
+kodowania języka chińskiego.
+
+%package other-utils
+Summary:	Other TeX Live utilities
+Summary(pl.UTF-8):	Pozostałe narzędzia z systemu TeX Live
+Group:		Applications/Publishing/TeX
+Obsoletes:	tetex-format-cyrtexinfo
+
+%description other-utils
+Other TeX Live utilities.
+
+%description other-utils -l pl.UTF-8
+Pozostałe narzędzia z systemu TeX Live.
+
 %package other-utils-doc
 Summary:	Other utilities documentation
+Summary(pl.UTF-8):	Dokumentacja do narzędzi z pakietu %{name}-other-utils-doc
 Group:		Applications/Publishing/TeX
 
 %description other-utils-doc
 Other utilities documentation.
 
+%description other-utils-doc -l pl.UTF-8
+Dokumentacja do narzędzi z pakietu %{name}-other-utils-doc.
+
 %package doc
 Summary:	Documentation for TeX Live
+Summary(pl.UTF-8):	Dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc
 Assorted useful documentation for TeX Live.
 
+%description doc -l pl.UTF-8
+Przydatna dokumentacja do systemu TeX Live.
+
 %package doc-bg
 Summary:	Bulgarian documentation for TeX Live
+Summary(pl.UTF-8):	Bułgarska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-bg
 Assorted useful Bulgarian documentation for TeX Live.
 
+%description doc-bg -l pl.UTF-8
+Przydatna bułgarska dokumentacja do systemu TeX Live.
+
 %package doc-cs
 Summary:	Czech documentation for TeX Live
+Summary(pl.UTF-8):	Czeska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-cs
 Assorted useful Czech documentation for TeX Live.
 
+%description doc-cs -l pl.UTF-8
+Przydatna czeska dokumentacja do systemu TeX Live.
+
 %package doc-de
 Summary:	German documentation for TeX Live
+Summary(pl.UTF-8):	Niemiecka dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-de
 Assorted useful German documentation for TeX Live.
 
+%description doc-de -l pl.UTF-8
+Przydatna niemiecka dokumentacja do systemu TeX Live.
+
 %package doc-el
 Summary:	Greek documentation for TeX Live
+Summary(pl.UTF-8):	Grecka dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-el
 Assorted useful Greek documentation for TeX Live.
 
+%description doc-el -l pl.UTF-8
+Przydatna grecka dokumentacja do systemu TeX Live.
+
 %package doc-es
 Summary:	Spanish documentation for TeX Live
+Summary(pl.UTF-8):	Hiszpańska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-es
 Assorted useful Spanish documentation for TeX Live.
 
+%description doc-es -l pl.UTF-8
+Przydatna hiszpańska dokumentacja do systemu TeX Live.
+
 %package doc-fi
 Summary:	Finnish documentation for TeX Live
+Summary(pl.UTF-8):	Fińska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-fi
 Assorted useful Finnish documentation for TeX Live.
 
+%description doc-fi -l pl.UTF-8
+Przydatna fińska dokumentacja do systemu TeX Live.
+
 %package doc-fr
 Summary:	French documentation for TeX Live
+Summary(pl.UTF-8):	Francuska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-fr
 Assorted useful French documentation for TeX Live.
 
+%description doc-fr -l pl.UTF-8
+Przydatna francuska dokumentacja do systemu TeX Live.
+
 %package doc-it
 Summary:	Italian documentation for TeX Live
+Summary(pl.UTF-8):	Włoska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-it
 Assorted useful Italian documentation for TeX Live.
 
+%description doc-it -l pl.UTF-8
+Przydatna włoska dokumentacja do systemu TeX Live.
+
 %package doc-ja
 Summary:	Japanese documentation for TeX Live
+Summary(pl.UTF-8):	Japońska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-ja
 Assorted useful Japanese documentation for TeX Live.
 
+%description doc-ja -l pl.UTF-8
+Przydatna japońska dokumentacja do systemu TeX Live.
+
 %package doc-ko
 Summary:	Korean documentation for TeX Live
+Summary(pl.UTF-8):	Koreańska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-ko
 Assorted useful Korean documentation for TeX Live.
 
+%description doc-ja -l pl.UTF-8
+Przydatna koreańska dokumentacja do systemu TeX Live.
+
 %package doc-mn
 Summary:	Mongolian documentation for TeX Live
+Summary(pl.UTF-8):	Mongolska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-mn
 Assorted useful Mongolian documentation for TeX Live.
 
+%description doc-mn -l pl.UTF-8
+Przydatna mongolska dokumentacja do systemu TeX Live.
+
 %package doc-nl
 Summary:	Dutch documentation for TeX Live
+Summary(pl.UTF-8):	Holenderska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-nl
 Assorted useful Dutch documentation for TeX Live.
 
+%description doc-nl -l pl.UTF-8
+Przydatna holenderska dokumentacja do systemu TeX Live.
+
 %package doc-pl
 Summary:	Polish documentation for TeX Live
+Summary(pl.UTF-8):	Polska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-pl
 Assorted useful Polish documentation for TeX Live.
 
+%description doc-pl -l pl.UTF-8
+Przydatna polska dokumentacja do systemu TeX Live.
+
 %package doc-pt
 Summary:	Portuguese documentation for TeX Live
+Summary(pl.UTF-8):	Portugalska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-pt
 Assorted useful Portuguese documentation for TeX Live.
 
+%description doc-pt -l pl.UTF-8
+Przydatna portugalska dokumentacja do systemu TeX Live.
+
 %package doc-ru
 Summary:	Russian documentation for TeX Live
+Summary(pl.UTF-8):	Rosyjska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-ru
 Assorted useful Russian documentation for TeX Live.
 
+%description doc-ru -l pl.UTF-8
+Przydatna rosyjska dokumentacja do systemu TeX Live.
+
 %package doc-sk
 Summary:	Slovak documentation for TeX Live
+Summary(pl.UTF-8):	Słowacka dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-sk
 Assorted useful Slovak documentation for TeX Live.
 
+%description doc-sk -l pl.UTF-8
+Przydatna słowacka dokumentacja do systemu TeX Live.
+
 %package doc-sl
 Summary:	Slovenian documentation for TeX Live
+Summary(pl.UTF-8):	Słoweńska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-sl
 Assorted useful Slovenian documentation for TeX Live.
 
+%description doc-sl -l pl.UTF-8
+Przydatna słoweńska dokumentacja do systemu TeX Live.
+
 %package doc-th
 Summary:	Thai documentation for TeX Live
+Summary(pl.UTF-8):	Tajska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-th
 Assorted useful Thai documentation for TeX Live.
 
+%description doc-th -l pl.UTF-8
+Przydatna tajska dokumentacja do systemu TeX Live.
+
 %package doc-tr
 Summary:	Turkish documentation for TeX Live
+Summary(pl.UTF-8):	Turecka dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-tr
 Assorted useful Turkish documentation for TeX Live.
 
+%description doc-tr -l pl.UTF-8
+Przydatna turecka dokumentacja do systemu TeX Live.
+
 %package doc-uk
 Summary:	Ukrainian documentation for TeX Live
+Summary(pl.UTF-8):	Ukraińska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-uk
 Assorted useful Ukrainian documentation for TeX Live.
 
+%description doc-tr -l pl.UTF-8
+Przydatna ukraińska dokumentacja do systemu TeX Live.
+
 %package doc-vi
 Summary:	Vietnamese documentation for TeX Live
+Summary(pl.UTF-8):	Wietnamska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-vi
 Assorted useful Vietnamese documentation for TeX Live.
 
+%description doc-vi -l pl.UTF-8
+Przydatna wietnamska dokumentacja do systemu TeX Live.
+
 %package doc-zh_CN
 Summary:	Chinese documentation for TeX Live
+Summary(pl.UTF-8):	Chińska dokumentacja do systemu TeX Live
 Group:		Documentation
 
 %description doc-zh_CN
 Assorted useful Chinese documentation for TeX Live.
+
+%description doc-zh_CN -l pl.UTF-8
+Przydatna chińska dokumentacja do systemu TeX Live.
 
 %package doc-latex
 Summary:	Basic LaTeX packages documentation
@@ -489,7 +596,6 @@ Az alap LaTeX csomagok dokumentációja
 %description doc-latex -l pl.UTF-8
 Podstawowa dokumentacja do pakietów LaTeXa.
 
-# # libraries #
 %package -n kpathsea
 Summary:	File name lookup library
 Summary(hu.UTF-8):	Fájlnév-kereső könyvtár
@@ -533,7 +639,6 @@ Pliki nagłówkowe oraz dokumentacja biblioteki kpathsea.
 Bibliotecas, headers e outros componentes que podem ser utilizados
 para desenvolver aplicações TeX.
 
-# # programs #
 %package dvips
 Summary:	DVI to PostScript converter
 Summary(de.UTF-8):	dvi-Postscript-Konvertierungsprogramm
@@ -698,6 +803,7 @@ LaTeX.
 %package tex-arrayjob
 Summary:	Array data structures for (La)TeX
 Summary(hu.UTF-8):	Tömb adatstruktúra (La)TeX-hez
+Summary(pl.UTF-8):	Tablicowe struktury danych dla (La)TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
@@ -707,6 +813,9 @@ Array data structures for (La)TeX.
 
 %description tex-arrayjob -l hu.UTF-8
 Tömb adatstruktúra (La)TeX-hez.
+
+%description tex-arrayjob -l pl.UTF-8
+Tablicowe struktury danych dla (La)TeXa.
 
 %package tex-mathdots
 Summary:	Commands to produce dots in math that respect font size
@@ -7685,6 +7794,18 @@ fi
 %{fmtdir}/tex/tex.fmt
 # %{fmtdir}/pdftex/tex.fmt
 
+# %files jadetex
+# %defattr(644,root,root,755)
+# %dir %{texmfdist}/doc/jadetex
+# %doc %{texmfdist}/doc/jadetex/base
+# %doc %{texmfdist}/source/jadetex/base/ChangeLog*
+# %attr(755,root,root) %{_bindir}/jadetex
+# %attr(755,root,root) %{_bindir}/pdfjadetex
+# %{texmfdist}/source/jadetex
+# %exclude %{texmfdist}/source/jadetex/base/ChangeLog*
+# %{texmfdist}/tex/jadetex
+# %{texmf}/fmtutil/format.jadetex.cnf
+
 %files cef-utils
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/cef*
@@ -7772,18 +7893,6 @@ fi
 %{fmtdir}/pdftex/texsis.fmt
 # %{fmtdir}/texsis
 
-
-# %files jadetex
-# %defattr(644,root,root,755)
-# %dir %{texmfdist}/doc/jadetex
-# %doc %{texmfdist}/doc/jadetex/base
-# %doc %{texmfdist}/source/jadetex/base/ChangeLog*
-# %attr(755,root,root) %{_bindir}/jadetex
-# %attr(755,root,root) %{_bindir}/pdfjadetex
-# %{texmfdist}/source/jadetex
-# %exclude %{texmfdist}/source/jadetex/base/ChangeLog*
-# %{texmfdist}/tex/jadetex
-# %{texmf}/fmtutil/format.jadetex.cnf
 
 # %files other-utils-doc
 # %defattr(644,root,root,755)
