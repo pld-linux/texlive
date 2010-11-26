@@ -49,8 +49,8 @@
 %endif
 
 #
-%define		year	2009
-%define		monthday	1107
+%define		year	2010
+%define		monthday	0722
 %define		texmfversion 20091107
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
@@ -67,7 +67,7 @@ Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
 Source0:	ftp://tug.org/historic/systems/texlive/%{year}/%{name}-%{version}-source.tar.xz
-# Source0-md5:	18f992b4e6394770fb80e42719c0ec84
+# Source0-md5:	156fa34c56acb901fdc687b8d9860f1f
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
@@ -110,6 +110,7 @@ Patch3:		%{name}-getline.patch
 Patch4:		%{name}-stdio.patch
 Patch5:		%{name}-aclocal.patch
 Patch6:		%{name}-libpng.patch
+Patch7:		icuinfo.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -219,6 +220,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		fmtutil(f:) [ ! \\\( -f %{_localstatedir}/web2c/%{-f*}.fmt.rpmnew -o -f %{_localstatedir}/web2c/%{-f*}.efmt.rpmnew \\\) ] || %{_bindir}/fmtutil-sys --byfmt %{-f*} >/dev/null 2>/dev/null || echo "Regenerating %{-f*} failed. See %{_localstatedir}/web2c/%{-f*}.log for details" 1>&2 && exit 0 ;
 
 %define		_noautoreq 'perl(path_tre)'
+%define		skip_post_check_so libptexenc.so.1.1.1
 
 %description
 TeX Live is an implementation of TeX for Linux or UNIX systems. TeX
@@ -5727,16 +5729,17 @@ language and as an extension to the typesetting engine itself.
 
 %prep
 %setup -q -n %{name}-%{version}-source
-%patch0 -p1
+# %patch0 -p1
 # %patch1 -p1
-%patch2 -p1
+# %patch2 -p1
 # %patch3 -p1
-%patch4 -p1
+# %patch4 -p1
 # %patch5 -p1
-%patch6 -p1
+# %patch6 -p1
+%patch7 -p1
 CURDIR=$(pwd)
 
-cd utils/xindy/make-rules/alphabets
+cd utils/xindy/xindy/make-rules/alphabets
 tar xvf %{SOURCE11}
 cp $(find fonts -type f) .
 for i in larm?00.tfm; do ln -s $i $(echo $i | sed "s@larm\(.\).*@larm0\100.tfm@") ; done
@@ -5770,7 +5773,6 @@ ulimit -s unlimited
 %endif
 
 export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES"
-# ./reautoconf
 %configure \
 	--prefix=%{_prefix} \
 	--with%{!?with_xindy:out}-xindy \
@@ -5798,8 +5800,7 @@ export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES"
 	--without-dialog \
 	--without-t1utils \
 	--without-texinfo
-
-%{__make} -j1
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -5913,23 +5914,23 @@ ln -sf ../share/texmf-dist/scripts/fontools/autoinst autoinst
 ln -sf ../share/texmf-dist/scripts/cachepic/cachepic.tlu cachepic
 ln -sf ../share/texmf-dist/scripts/fontools/cmap2enc cmap2enc
 ln -sf ../share/texmf-dist/scripts/epstopdf/epstopdf.pl epstopdf
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/exatools exatools
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/exatools exatools
 ln -sf ../share/texmf-dist/scripts/fig4latex/fig4latex fig4latex
 ln -sf ../share/texmf-dist/scripts/findhyph/findhyph findhyph
 ln -sf ../share/texmf-dist/scripts/fontools/font2afm font2afm
 ln -sf ../share/texmf-dist/scripts/fragmaster/fragmaster.pl fragmaster
-ln -sf ../share/texmf-dist/scripts/texlive/getnonfreefonts.pl getnonfreefonts
-ln -sf ../share/texmf-dist/scripts/texlive/getnonfreefonts.pl getnonfreefonts-sys
+# ln -sf ../share/texmf-dist/scripts/texlive/getnonfreefonts.pl getnonfreefonts
+# ln -sf ../share/texmf-dist/scripts/texlive/getnonfreefonts.pl getnonfreefonts-sys
 ln -sf ../share/texmf-dist/scripts/latex2man/latex2man latex2man
 ln -sf ../share/texmf-dist/scripts/latexmk/latexmk.pl latexmk
 ln -sf ../share/texmf-dist/scripts/listings-ext/listings-ext.sh listings-ext.sh
 ln -sf ../share/texmf-dist/scripts/mkgrkindex/mkgrkindex mkgrkindex
 ln -sf ../share/texmf-dist/scripts/accfonts/mkt1font mkt1font
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxrun mtxrun
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxrun mtxrun
 ln -sf ../share/texmf-dist/scripts/fontools/ot2kpx ot2kpx
 ln -sf ../share/texmf-dist/scripts/pax/pdfannotextractor.pl pdfannotextractor
 ln -sf ../share/texmf-dist/scripts/ppower4/pdfthumb.texlua pdfthumb
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftrimwhite pdftrimwhite
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftrimwhite pdftrimwhite
 ln -sf ../share/texmf-dist/scripts/perltex/perltex.pl perltex
 ln -sf ../share/texmf-dist/scripts/fontools/pfm2kpx pfm2kpx
 ln -sf ../share/texmf-dist/scripts/pkfix/pkfix.pl pkfix
@@ -5942,25 +5943,25 @@ ln -sf ../share/texmf-dist/scripts/splitindex/perl/splitindex.pl splitindex
 ln -sf ../share/texmf-dist/scripts/svn-multi/svn-multi.pl svn-multi
 ln -sf ../share/texmf-dist/scripts/texcount/TeXcount.pl texcount
 ln -sf ../share/texmf-dist/scripts/texdirflatten/texdirflatten texdirflatten
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
 ln -sf ../share/texmf-dist/scripts/texloganalyser/texloganalyser texloganalyser
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texshow texshow
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texshow texshow
 ln -sf ../share/texmf-dist/scripts/ulqda/ulqda.pl ulqda
 ln -sf ../share/texmf-dist/scripts/accfonts/vpl2ovp vpl2ovp
 ln -sf ../share/texmf-dist/scripts/accfonts/vpl2vpl vpl2vpl
 
 ln -sf ../share/texmf/scripts/a2ping/a2ping.pl a2ping
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/context context
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/ctxtools ctxtools
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/context context
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/ctxtools ctxtools
 ln -sf ../share/texmf-dist/scripts/dviasm/dviasm.py dviasm
 ln -sf ../share/texmf/scripts/tetex/e2pall.pl e2pall
 ln -sf ../share/texmf-dist/scripts/bengali/ebong.py ebong
 ln -sf ../share/texmf-dist/scripts/epspdf/epspdf epspdf
 ln -sf ../share/texmf-dist/scripts/epspdf/epspdftk epspdftk
 ln -sf ../share/texmf-dist/scripts/epstopdf/epstopdf.pl epstopdf
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/exatools exatools
-ln -sf ../share/texmf/scripts/getnonfreefonts/getnonfreefonts.pl getnonfreefonts
-ln -sf ../share/texmf/scripts/getnonfreefonts/getnonfreefonts.pl getnonfreefonts-sys
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/exatools exatools
+# ln -sf ../share/texmf/scripts/getnonfreefonts/getnonfreefonts.pl getnonfreefonts
+# ln -sf ../share/texmf/scripts/getnonfreefonts/getnonfreefonts.pl getnonfreefonts-sys
 ln -sf ../share/texmf-dist/scripts/tex4ht/ht.sh ht
 ln -sf ../share/texmf-dist/scripts/tex4ht/htcontext.sh htcontext
 ln -sf ../share/texmf-dist/scripts/tex4ht/htlatex.sh htlatex
@@ -5969,14 +5970,14 @@ ln -sf ../share/texmf-dist/scripts/tex4ht/httex.sh httex
 ln -sf ../share/texmf-dist/scripts/tex4ht/httexi.sh httexi
 ln -sf ../share/texmf-dist/scripts/tex4ht/htxelatex.sh htxelatex
 ln -sf ../share/texmf-dist/scripts/tex4ht/htxetex.sh htxetex
-ln -sf ../share/texmf-dist/scripts/context/lua/luatools.lua luatools
+# ln -sf ../share/texmf-dist/scripts/context/lua/luatools.lua luatools
 ln -sf ../share/texmf-dist/scripts/glossaries/makeglossaries makeglossaries
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/makempy makempy
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/makempy makempy
 ln -sf ../share/texmf-dist/scripts/tex4ht/mk4ht.pl mk4ht
 ln -sf ../share/texmf-dist/scripts/mkjobtexmf/mkjobtexmf.pl mkjobtexmf
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mpstools mpstools
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mptopdf mptopdf
-ln -sf ../share/texmf-dist/scripts/context/lua/mtxrun.lua mtxrun
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mpstools mpstools
+# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mptopdf mptopdf
+# ln -sf ../share/texmf-dist/scripts/context/lua/mtxrun.lua mtxrun
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxtools mtxtools
 ln -sf ../share/texmf-dist/scripts/oberdiek/pdfatfi.pl pdfatfi
 ln -sf ../share/texmf-dist/scripts/pdfcrop/pdfcrop.pl pdfcrop
@@ -6000,7 +6001,7 @@ ln -sf ../share/texmf/scripts/tetex/texdoctk.pl texdoctk
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texexec texexec
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfont texfont
-ln -sf ../share/texmf-dist/scripts/context/ruby/texmfstart.rb texmfstart
+# ln -sf ../share/texmf-dist/scripts/context/ruby/texmfstart.rb texmfstart
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texshow texshow
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/textools textools
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texutil texutil
@@ -7754,7 +7755,7 @@ fi
 %{_mandir}/man1/kpsereadlink.1*
 %{_mandir}/man1/kpsewhere.1*
 %{_mandir}/man1/mag.1*
-%{_mandir}/man1/makempy.1*
+# %{_mandir}/man1/makempy.1*
 %{_mandir}/man1/mf.1*
 %{_mandir}/man1/mf-nowin.1*
 %{_mandir}/man1/mft.1*
@@ -7966,7 +7967,7 @@ fi
 %attr(755,root,root) %{_bindir}/autoinst
 %attr(755,root,root) %{_bindir}/cmap2enc
 %attr(755,root,root) %{_bindir}/font2afm
-%attr(755,root,root) %{_bindir}/getnonfreefonts*
+# %attr(755,root,root) %{_bindir}/getnonfreefonts*
 %attr(755,root,root) %{_bindir}/mkt1font
 %attr(755,root,root) %{_bindir}/ot2kpx
 %attr(755,root,root) %{_bindir}/pfm2kpx
@@ -7978,11 +7979,11 @@ fi
 %attr(755,root,root) %{texmfdist}/scripts/accfonts/*
 %dir %{texmfdist}/scripts/fontools
 %attr(755,root,root) %{texmfdist}/scripts/fontools/*
-%dir %{texmf}/scripts/getnonfreefonts
-%attr(755,root,root) %{texmf}/scripts/getnonfreefonts/*
+# %dir %{texmf}/scripts/getnonfreefonts
+# %attr(755,root,root) %{texmf}/scripts/getnonfreefonts/*
 %{_mandir}/man1/afm2pl.1*
-%{_mandir}/man1/getnonfreefonts-sys.1
-%{_mandir}/man1/getnonfreefonts.1*
+# %{_mandir}/man1/getnonfreefonts-sys.1
+# %{_mandir}/man1/getnonfreefonts.1*
 %{_mandir}/man1/t1*.1*
 %{_mandir}/man1/ttfdump.1*
 
@@ -8690,7 +8691,7 @@ fi
 # %{texmf}/fmtutil/format.omega.cnf
 # %{texmf}/fmtutil/format.aleph.cnf
 %{_mandir}/man1/aleph.1*
-%{_mandir}/man1/lambda.1*
+# %{_mandir}/man1/lambda.1*
 %{_mandir}/man1/mkocp.1*
 %{_mandir}/man1/mkofm.1*
 # %{_mandir}/man1/omega.1*
@@ -8816,16 +8817,16 @@ fi
 %files context
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts/context
-%dir %{texmfdist}/scripts/context/ruby
-%dir %{texmfdist}/scripts/context/stubs
-%dir %{texmfdist}/scripts/context/stubs/unix
-%attr(755,root,root) %{texmfdist}/scripts/context/stubs/unix/*
+# %dir %{texmfdist}/scripts/context/ruby
+# %dir %{texmfdist}/scripts/context/stubs
+# %dir %{texmfdist}/scripts/context/stubs/unix
+# %attr(755,root,root) %{texmfdist}/scripts/context/stubs/unix/*
 %attr(755,root,root) %{_bindir}/context
 %attr(755,root,root) %{_bindir}/ctxtools
-%attr(755,root,root) %{_bindir}/exatools
+# %attr(755,root,root) %{_bindir}/exatools
 %attr(755,root,root) %{_bindir}/luatools
-%attr(755,root,root) %{_bindir}/makempy
-%attr(755,root,root) %{_bindir}/mpstools
+# %attr(755,root,root) %{_bindir}/makempy
+# %attr(755,root,root) %{_bindir}/mpstools
 %attr(755,root,root) %{_bindir}/mtxrun
 %attr(755,root,root) %{_bindir}/mtxtools
 %attr(755,root,root) %{_bindir}/pdftools
@@ -8836,7 +8837,7 @@ fi
 %attr(755,root,root) %{_bindir}/texexec
 %attr(755,root,root) %{_bindir}/texfind
 %attr(755,root,root) %{_bindir}/texfont
-%attr(755,root,root) %{texmfdist}/scripts/context/ruby/texmfstart.rb
+# %attr(755,root,root) %{texmfdist}/scripts/context/ruby/texmfstart.rb
 %attr(755,root,root) %{_bindir}/texmfstart
 %attr(755,root,root) %{_bindir}/texshow
 %attr(755,root,root) %{_bindir}/textools
@@ -8844,13 +8845,13 @@ fi
 %attr(755,root,root) %{_bindir}/tmftools
 %attr(755,root,root) %{_bindir}/xmltools
 %{_mandir}/man1/ctxtools.1*
-%{_mandir}/man1/pdftools.1*
+# %{_mandir}/man1/pdftools.1*
 %{_mandir}/man1/pstopdf.1*
-%{_mandir}/man1/texfind.1*
-%{_mandir}/man1/texfont.1*
+# %{_mandir}/man1/texfind.1*
+# %{_mandir}/man1/texfont.1*
 %{_mandir}/man1/texmfstart.1*
-%{_mandir}/man1/textools.1*
-%{_mandir}/man1/texutil.1*
+# %{_mandir}/man1/textools.1*
+# %{_mandir}/man1/texutil.1*
 # %{texmfdist}/context
 # %{texmfdist}/fonts/enc/dvips/context
 # %{texmfdist}/metapost/context
@@ -14017,14 +14018,14 @@ fi
 # %{fmtdir}/xmltex
 
 %files luatex
-%dir %{texmfdist}/scripts/context/lua
+# %dir %{texmfdist}/scripts/context/lua
 %attr(755,root,root) %{_bindir}/luatex
-%attr(755,root,root) %{_bindir}/luatangle
+# %attr(755,root,root) %{_bindir}/luatangle
 %attr(755,root,root) %{_bindir}/texlua
 %attr(755,root,root) %{_bindir}/texluac
 %attr(755,root,root) %{texmfdist}/scripts/cachepic/cachepic.tlu
 %attr(755,root,root) %{_bindir}/cachepic
-%attr(755,root,root) %{texmfdist}/scripts/context/lua/*
+# %attr(755,root,root) %{texmfdist}/scripts/context/lua/*
 %attr(755,root,root) %{_bindir}/luatools
 %attr(755,root,root) %{_bindir}/mtxrun
 %attr(755,root,root) %{texmf}/scripts/texlive/rungs.tlu
