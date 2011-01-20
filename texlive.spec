@@ -6160,9 +6160,9 @@ for format in \
 # xmltex; do
 
 %if %{with bootstrap}
-  	install -d $RPM_BUILD_ROOT%{fmtdir}/${format}
-  	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
-  	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
+	install -d $RPM_BUILD_ROOT%{fmtdir}/${format}
+	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
+	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
 %else
 #######
 #	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
@@ -7716,7 +7716,7 @@ fi
 %attr(755,root,root) %{texmf}/web2c/mktexdir
 %attr(755,root,root) %{texmf}/web2c/mktexupd
 
-%attr(750,root,root) /etc/cron.daily/texlive
+%config(noreplace,missingok) %verify(not md5 mtime size) %attr(750,root,root) /etc/cron.daily/texlive
 
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/fmtutil.cnf
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktex.opt
