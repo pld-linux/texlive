@@ -445,7 +445,7 @@ Group:		Documentation
 %description doc-ko
 Assorted useful Korean documentation for TeX Live.
 
-%description doc-ja -l pl.UTF-8
+%description doc-ko -l pl.UTF-8
 Przydatna koreańska dokumentacja do systemu TeX Live.
 
 %package doc-mn
@@ -555,7 +555,7 @@ Group:		Documentation
 %description doc-uk
 Assorted useful Ukrainian documentation for TeX Live.
 
-%description doc-tr -l pl.UTF-8
+%description doc-uk -l pl.UTF-8
 Przydatna ukraińska dokumentacja do systemu TeX Live.
 
 %package doc-vi
