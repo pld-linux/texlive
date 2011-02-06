@@ -39,7 +39,6 @@
 #   /var/lib/texmf/web2c/texsis/texsis.fmt
 #   /var/lib/texmf/web2c/xelatex/xelatex.fmt
 
-%include	/usr/lib/rpm/macros.perl
 # Conditional build:
 %bcond_without	bootstrap	# bootstrap build
 %bcond_without	xindy		# do not build xindy packages
@@ -48,7 +47,8 @@
 %undefine	with_xindy
 %endif
 
-#
+%include	/usr/lib/rpm/macros.perl
+
 %define		year	2010
 %define		monthday	0722
 %define		texmfversion 20091107
