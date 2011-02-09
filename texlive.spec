@@ -327,8 +327,6 @@ Other utilities documentation.
 %description other-utils-doc -l pl.UTF-8
 Dokumentacja do narzędzi z pakietu %{name}-other-utils-doc.
 
-<<<<<<< texlive.spec
-=======
 %package doc
 Summary:	Documentation for TeX Live
 Summary(pl.UTF-8):	Dokumentacja do systemu TeX Live
@@ -582,7 +580,6 @@ Assorted useful Chinese documentation for TeX Live.
 %description doc-zh_CN -l pl.UTF-8
 Przydatna chińska dokumentacja do systemu TeX Live.
 
->>>>>>> 1.330
 %package doc-latex
 Summary:	Basic LaTeX packages documentation
 Summary(hu.UTF-8):	Az alap LaTeX csomagok dokumentációja
