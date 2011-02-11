@@ -470,6 +470,7 @@ Summary(pl.UTF-8):	Generator hierarchicznych indeksów ogólnego przeznaczenia
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-makeindex-data
 Provides:	tetex-makeindex
 Obsoletes:	tetex-makeindex
 Obsoletes:	tetex-rumakeindex
