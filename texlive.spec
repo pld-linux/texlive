@@ -5771,10 +5771,9 @@ install %{SOURCE60} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
 install %{SOURCE61} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
 install %{SOURCE62} $RPM_BUILD_ROOT%{perl_vendorlib}/TeXLive
 
+install -d $RPM_BUILD_ROOT%{texmf}/tex/latex/misc
 
 cd $RPM_BUILD_ROOT%{texmfdist}/tex/latex
-
-install -d misc
 
 # floatflt
 unzip %{SOURCE10}
