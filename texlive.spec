@@ -49,9 +49,9 @@
 
 %include	/usr/lib/rpm/macros.perl
 
-%define		year	2010
-%define		monthday	0722
-%define		texmfversion 20091107
+%define		year	2011
+%define		monthday	0705
+%define		texmfversion 20110705
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
@@ -67,7 +67,7 @@ Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
 Source0:	ftp://tug.org/historic/systems/texlive/%{year}/%{name}-%{version}-source.tar.xz
-# Source0-md5:	156fa34c56acb901fdc687b8d9860f1f
+# Source0-md5:	968d238949e8a34a1fd74c374ddfe6f1
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
@@ -1541,6 +1541,8 @@ Obsoletes:	tetex-latex-units
 Obsoletes:	tetex-mwcls
 Obsoletes:	tetex-revtex4
 
+%define		skip_post_check_so		libptexenc.so.1.2.0
+
 %description latex
 LaTeX is a front end for the TeX text formatting system. Easier to use
 than TeX, LaTeX is essentially a set of TeX macros which provide
@@ -2683,7 +2685,7 @@ fi
 %attr(755,root,root) %{_bindir}/vpe
 %{_mandir}/man1/cfftot1.1*
 %{_mandir}/man1/hbf2gf.1*
-%{_mandir}/man1/mkjobtexmf.1*
+# %{_mandir}/man1/mkjobtexmf.1*
 %{_mandir}/man1/mmafm.1*
 %{_mandir}/man1/mmpfb.1*
 %{_mandir}/man1/otfinfo.1*
@@ -2757,7 +2759,7 @@ fi
 %defattr(644,root,root,755)
 # %dir %{texmfdist}/fonts/map/dvips/cmex
 # %dir %{texmf}/dvipdfm
-%dir %{texmf}/fonts/map/dvipdfm
+# %dir %{texmf}/fonts/map/dvipdfm
 # %dir %{texmf}/fonts/map/dvips
 # %dir %{texmf}/fonts/map/dvips/tetex
 # %doc %{texmf}/doc/dvips
@@ -2793,7 +2795,7 @@ fi
 # %{texmf}/fonts/enc/dvips/tetex/mtex.enc
 # %{texmf}/fonts/enc/dvips/afm2pl
 # %{texmf}/fonts/map/dvipdfm/updmap
-%{texmf}/fonts/map/dvipdfm/dvipdfmx
+# %{texmf}/fonts/map/dvipdfm/dvipdfmx
 
 %files dvilj
 %defattr(644,root,root,755)
@@ -2843,7 +2845,7 @@ fi
 
 %files scripts
 %defattr(644,root,root,755)
-%dir %{texmfdist}/scripts/bengali
+# %dir %{texmfdist}/scripts/bengali
 %dir %{texmfdist}/scripts/glossaries
 %dir %{texmfdist}/scripts/perltex
 # %dir %{texmfdist}/scripts/pgfplots
@@ -2855,7 +2857,7 @@ fi
 # %dir %{texmf}/scripts/pkfix
 %dir %{texmf}/scripts/simpdftex
 %dir %{texmf}/scripts/tetex
-%attr(755,root,root) %{texmfdist}/scripts/bengali/*
+# %attr(755,root,root) %{texmfdist}/scripts/bengali/*
 %attr(755,root,root) %{texmfdist}/scripts/glossaries/*
 %attr(755,root,root) %{texmfdist}/scripts/perltex/perltex*
 # %attr(755,root,root) %{texmfdist}/scripts/pgfplots/*
