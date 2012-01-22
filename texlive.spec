@@ -111,8 +111,10 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	texinfo
 %if %{with bootstrap}
+BuildRequires:	texconfig
 BuildRequires:	tetex-format-latex
 BuildRequires:	tetex-format-pdflatex
+BuildRequires:	tetex-format-plain
 BuildRequires:	tetex-latex-cyrillic
 BuildRequires:	tetex-tex-babel
 %else
