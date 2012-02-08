@@ -33,7 +33,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	15
+Release:	16
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -83,6 +83,7 @@ Patch3:		%{name}-getline.patch
 Patch4:		%{name}-stdio.patch
 Patch5:		%{name}-aclocal.patch
 Patch6:		%{name}-libpng.patch
+Patch7:		%{name}-libpng15.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -5581,6 +5582,7 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch4 -p1
 %patch5 -p1
 %patch6 -p0
+%patch7 -p1
 CURDIR=$(pwd)
 
 cd utils/xindy/make-rules/alphabets
