@@ -5810,14 +5810,14 @@ tar xvf %{SOURCE11}
 cd fonts/tfm/la
 for i in larm?00.tfm; do ln -s $i $(echo $i | sed "s@larm\(.\).*@larm0\100.tfm@") ; done
 
-## wrong dvi in formlett, should be regenerate
-#cd $RPM_BUILD_ROOT%{texmfdist}/doc/latex/formlett
-#cp $RPM_BUILD_ROOT%{texmfdist}/tex/latex/formlett/formlett.sty .
-#tex user_manual.tex
-#yes | tex prog_manual.tex
-#tex example1.tex
-#tex example2.tex
-#rm formlett.sty
+# wrong dvi in formlett, should be regenerate
+cd $RPM_BUILD_ROOT%{texmfdist}/doc/latex/formlett
+cp $RPM_BUILD_ROOT%{texmfdist}/tex/latex/formlett/formlett.sty .
+tex user_manual.tex
+yes | tex prog_manual.tex
+tex example1.tex
+tex example2.tex
+rm formlett.sty
 
 cd $CURDIR
 
