@@ -33,7 +33,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	16
+Release:	16.1
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -84,6 +84,8 @@ Patch4:		%{name}-stdio.patch
 Patch5:		%{name}-aclocal.patch
 Patch6:		%{name}-libpng.patch
 Patch7:		%{name}-libpng15.patch
+Patch8:		%{name}-extramembot.patch
+Patch9:		%{name}-5yr-old.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -5583,6 +5585,7 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch5 -p1
 %patch6 -p0
 %patch7 -p1
+%patch8 -p1
 CURDIR=$(pwd)
 
 cd utils/xindy/make-rules/alphabets
@@ -5657,6 +5660,10 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT%{fmtdir}/pdftex
 
 lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
+
+# we don't care that our tex is more than 5 years old
+patch --directory=$RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf -p1 < %{PATCH9}
+
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-dist $RPM_BUILD_ROOT%{texmfdist}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-doc $RPM_BUILD_ROOT%{texmfdoc}
@@ -5803,14 +5810,14 @@ tar xvf %{SOURCE11}
 cd fonts/tfm/la
 for i in larm?00.tfm; do ln -s $i $(echo $i | sed "s@larm\(.\).*@larm0\100.tfm@") ; done
 
-# wrong dvi in formlett, should be regenerate
-cd $RPM_BUILD_ROOT%{texmfdist}/doc/latex/formlett
-cp $RPM_BUILD_ROOT%{texmfdist}/tex/latex/formlett/formlett.sty .
-tex user_manual.tex
-yes | tex prog_manual.tex
-tex example1.tex
-tex example2.tex
-rm formlett.sty
+## wrong dvi in formlett, should be regenerate
+#cd $RPM_BUILD_ROOT%{texmfdist}/doc/latex/formlett
+#cp $RPM_BUILD_ROOT%{texmfdist}/tex/latex/formlett/formlett.sty .
+#tex user_manual.tex
+#yes | tex prog_manual.tex
+#tex example1.tex
+#tex example2.tex
+#rm formlett.sty
 
 cd $CURDIR
 
