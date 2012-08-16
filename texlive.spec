@@ -49,9 +49,9 @@
 
 %include	/usr/lib/rpm/macros.perl
 
-%define		year	2011
-%define		monthday	0705
-%define		texmfversion 20110705
+%define		year	2012
+%define		monthday	0701
+%define		texmfversion 20120701
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
@@ -67,7 +67,7 @@ Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
 Source0:	ftp://tug.org/historic/systems/texlive/%{year}/%{name}-%{version}-source.tar.xz
-# Source0-md5:	968d238949e8a34a1fd74c374ddfe6f1
+# Source0-md5:	1d38be7dac26440fd022a4708f454a2b
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
@@ -108,27 +108,27 @@ BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
 %if %{without bootstrap}
-BuildRequires:	%{name}-context
-BuildRequires:	%{name}-csplain
-BuildRequires:	%{name}-fonts-cmsuper
-#BuildRequires:	%{name}-format-amstex
-#BuildRequires:	%{name}-format-cslatex
-BuildRequires:	%{name}-format-eplain
-BuildRequires:	%{name}-format-mex
-BuildRequires:	%{name}-format-pdflatex
-BuildRequires:	%{name}-latex
-BuildRequires:	%{name}-latex-cyrillic
-BuildRequires:	%{name}-metapost
-BuildRequires:	%{name}-mex
-BuildRequires:	%{name}-omega
-BuildRequires:	%{name}-other-utils
-BuildRequires:	%{name}-pdftex
-BuildRequires:	%{name}-phyzzx
-BuildRequires:	%{name}-plain
-BuildRequires:	%{name}-tex-babel
-BuildRequires:	%{name}-tex-physe
-BuildRequires:	%{name}-xetex
-BuildRequires:	%{name}-xmltex
+### BuildRequires:	%{name}-context
+### BuildRequires:	%{name}-csplain
+### BuildRequires:	%{name}-fonts-cmsuper
+### #BuildRequires:	%{name}-format-amstex
+### #BuildRequires:	%{name}-format-cslatex
+### BuildRequires:	%{name}-format-eplain
+### BuildRequires:	%{name}-format-mex
+### BuildRequires:	%{name}-format-pdflatex
+### BuildRequires:	%{name}-latex
+### BuildRequires:	%{name}-latex-cyrillic
+### BuildRequires:	%{name}-metapost
+### BuildRequires:	%{name}-mex
+### BuildRequires:	%{name}-omega
+### BuildRequires:	%{name}-other-utils
+### BuildRequires:	%{name}-pdftex
+### BuildRequires:	%{name}-phyzzx
+### BuildRequires:	%{name}-plain
+### BuildRequires:	%{name}-tex-babel
+### BuildRequires:	%{name}-tex-physe
+### BuildRequires:	%{name}-xetex
+### BuildRequires:	%{name}-xmltex
 # fill with future texlive BR. guesses ones for now
 %endif
 BuildRequires:	unzip
@@ -1825,7 +1825,7 @@ language and as an extension to the typesetting engine itself.
 # %patch4 -p1
 # %patch5 -p1
 # %patch6 -p1
-%patch7 -p1
+# %patch7 -p1
 
 %build
 # find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
@@ -1872,7 +1872,8 @@ export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES"
 	--with-xdvi-x-toolkit=xaw \
 	--without-dialog \
 	--without-t1utils \
-	--without-texinfo
+	--without-texinfo \
+ 	--enable-build-in-source-tree
 %{__make}
 
 %install
@@ -1928,8 +1929,6 @@ PATH=$RPM_BUILD_ROOT%{_bindir}:$PATH; export PATH
 	texmf=$RPM_BUILD_ROOT%{texmf} \
 	texmfsysvar=$RPM_BUILD_ROOT%{_localstatedir} \
 	texmfsysconfig=$RPM_BUILD_ROOT%{texmf}
-
-%{__mv} -f $RPM_BUILD_ROOT%{_prefix}/texmf* $RPM_BUILD_ROOT%{_datadir}
 
 # requires wdiff but we don't have
 %{__rm} -rf $RPM_BUILD_ROOT%{texmfdist}/scripts/texdiff
