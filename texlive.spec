@@ -2672,7 +2672,6 @@ fi
 %attr(755,root,root) %{_bindir}/t1lint
 %attr(755,root,root) %{_bindir}/t1reencode
 %attr(755,root,root) %{_bindir}/t1testpage
-%attr(755,root,root) %{_bindir}/tcdialog
 %attr(755,root,root) %{_bindir}/texcount
 %attr(755,root,root) %{_bindir}/ttf2pk
 %attr(755,root,root) %{_bindir}/ttf2tfm
@@ -2695,7 +2694,6 @@ fi
 %{_mandir}/man1/t1lint.1*
 %{_mandir}/man1/t1reencode.1*
 %{_mandir}/man1/t1testpage.1*
-%{_mandir}/man1/tcdialog.1*
 %{_mandir}/man1/ttf2pk.1*
 %{_mandir}/man1/ttf2tfm.1*
 %{_mandir}/man1/ttftotype42.1*
@@ -2917,18 +2915,13 @@ fi
 %files -n texconfig
 %defattr(644,root,root,755)
 %dir %{texmf}/texconfig
-%doc %{texmf}/texconfig/README
 %attr(755,root,root) %{_bindir}/texconfig
 %attr(755,root,root) %{_bindir}/texconfig-dialog
 %attr(755,root,root) %{_bindir}/texconfig-sys
 %attr(755,root,root) %{texmf}/texconfig/tcfmgr
 %{_mandir}/man1/texconfig.1*
 %{_mandir}/man1/texconfig-sys.1*
-%{texmf}/texconfig/g
-%{texmf}/texconfig/generic
 %{texmf}/texconfig/tcfmgr.map
-%{texmf}/texconfig/v
-%{texmf}/texconfig/x
 
 %if %{with xindy}
 %files -n xindy
@@ -3378,8 +3371,6 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ppower4
 %attr(755,root,root) %{_bindir}/pdfthumb
-%dir %{texmfdist}/scripts/ppower4
-%attr(755,root,root) %{texmfdist}/scripts/ppower4/*
 
 %files format-pdflatex
 %defattr(644,root,root,755)
