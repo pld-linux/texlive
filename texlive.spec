@@ -2474,6 +2474,8 @@ fi
 %attr(755,root,root) %{_bindir}/allcm
 %attr(755,root,root) %{_bindir}/allec
 %attr(755,root,root) %{_bindir}/allneeded
+%attr(755,root,root) %{_bindir}/arlatex
+%attr(755,root,root) %{_bindir}/bundledoc
 %attr(755,root,root) %{_bindir}/cweave
 %attr(755,root,root) %{_bindir}/ctangle
 %attr(755,root,root) %{_bindir}/ctie
@@ -3275,6 +3277,7 @@ fi
 # %attr(755,root,root) %{texmfdist}/scripts/context/stubs/unix/*
 %attr(755,root,root) %{_bindir}/context
 %attr(755,root,root) %{_bindir}/ctxtools
+%attr(755,root,root) %{_bindir}/convbkmk
 # %attr(755,root,root) %{_bindir}/exatools
 %attr(755,root,root) %{_bindir}/luatools
 # %attr(755,root,root) %{_bindir}/makempy
@@ -3363,7 +3366,12 @@ fi
 %{_mandir}/man1/bibtex.1*
 %{_mandir}/man1/rubibtex.1*
 
+%attr(755,root,root) %{_bindir}/authorindex
+%attr(755,root,root) %{_bindir}/biber
+%attr(755,root,root) %{_bindir}/bibexport
 %attr(755,root,root) %{_bindir}/bibtex
+%attr(755,root,root) %{_bindir}/bibtexu
+%attr(755,root,root) %{_bindir}/checkcites
 %attr(755,root,root) %{_bindir}/rubibtex
 %{texmfdist}/bibtex/csf/base
  
