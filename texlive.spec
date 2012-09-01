@@ -3584,3 +3584,5 @@ fi
 %attr(755,root,root) %{_bindir}/texdoc
 %attr(755,root,root) %{texmf}/scripts/texdoc/texdoc.tlu
 %{_mandir}/man1/luatex.1*
+%{_mandir}/man1/texlua.1*
+%{_mandir}/man1/texluac.1*
