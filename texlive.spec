@@ -2476,9 +2476,13 @@ fi
 %attr(755,root,root) %{_bindir}/allneeded
 %attr(755,root,root) %{_bindir}/arlatex
 %attr(755,root,root) %{_bindir}/bundledoc
-%attr(755,root,root) %{_bindir}/cweave
 %attr(755,root,root) %{_bindir}/ctangle
+%attr(755,root,root) %{_bindir}/ctanify
+%attr(755,root,root) %{_bindir}/ctanupload
 %attr(755,root,root) %{_bindir}/ctie
+%attr(755,root,root) %{_bindir}/cweave
+%attr(755,root,root) %{_bindir}/de-macro
+%attr(755,root,root) %{_bindir}/deweb
 %attr(755,root,root) %{_bindir}/dvipng
 %attr(755,root,root) %{_bindir}/ebb
 %attr(755,root,root) %{_bindir}/fmtutil
@@ -2488,6 +2492,9 @@ fi
 %attr(755,root,root) %{_bindir}/gftopk
 %attr(755,root,root) %{_bindir}/gftype
 %attr(755,root,root) %{_bindir}/gsftopk
+%attr(755,root,root) %{_bindir}/inimf
+%attr(755,root,root) %{_bindir}/initex
+%attr(755,root,root) %{_bindir}/installfont-tl
 %attr(755,root,root) %{_bindir}/kpseaccess
 %attr(755,root,root) %{_bindir}/kpsereadlink
 %attr(755,root,root) %{_bindir}/kpsewhere
@@ -3355,6 +3362,7 @@ fi
 
 %files latex-bibtex
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/listbib
 %dir %{texmfdist}/bibtex
 # %dir %{texmfdist}/bibtex/bib
 # %dir %{texmfdist}/bibtex/bst
