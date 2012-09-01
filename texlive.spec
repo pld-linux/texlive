@@ -3327,6 +3327,10 @@ fi
 %attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
 %attr(755,root,root) %{_bindir}/pslatex
+%attr(755,root,root) %{_bindir}/latexdiff
+%attr(755,root,root) %{_bindir}/latexdiff-vc
+%attr(755,root,root) %{_bindir}/latexfileversion
+%attr(755,root,root) %{_bindir}/latexrevise
 
 %dir %{texmfdist}/scripts/latexmk
 %attr(755,root,root) %{texmfdist}/scripts/latexmk/latexmk.pl
