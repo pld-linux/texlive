@@ -2628,16 +2628,18 @@ fi
 
 %files cef-utils
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/cef*
-
-%files other-utils
-%defattr(644,root,root,755)
-%dir %{texmfdist}/scripts/mkjobtexmf
 %attr(755,root,root) %{_bindir}/bg5+latex
 %attr(755,root,root) %{_bindir}/bg5+pdflatex
 %attr(755,root,root) %{_bindir}/bg5conv
 %attr(755,root,root) %{_bindir}/bg5latex
 %attr(755,root,root) %{_bindir}/bg5pdflatex
+%attr(755,root,root) %{_bindir}/cef*
+%{_mandir}/man1/bg5conv.1*
+%{_mandir}/man1/cef?conv.1*
+
+%files other-utils
+%defattr(644,root,root,755)
+%dir %{texmfdist}/scripts/mkjobtexmf
 %attr(755,root,root) %{_bindir}/bibtex8
 %attr(755,root,root) %{_bindir}/cfftot1
 %attr(755,root,root) %{_bindir}/ebong
@@ -2690,6 +2692,7 @@ fi
 %attr(755,root,root) %{_bindir}/ulqda
 %attr(755,root,root) %{_bindir}/vlna
 %attr(755,root,root) %{_bindir}/vpe
+%{texmfdist}/fonts/sfd
 %{_mandir}/man1/cfftot1.1*
 %{_mandir}/man1/hbf2gf.1*
 # %{_mandir}/man1/mkjobtexmf.1*
@@ -2710,8 +2713,8 @@ fi
 %{_mandir}/man5/synctex.5*
 %{fmtdir}/pdftex/texsis.fmt
 # %{fmtdir}/texsis
-
-
+%{texmf}/hbf2gf
+%{texmf}/ttf2pk
 
 %files font-utils
 %defattr(644,root,root,755)
@@ -2778,6 +2781,7 @@ fi
 %attr(755,root,root) %{_bindir}/dvips
 %attr(755,root,root) %{_bindir}/dvired
 %attr(755,root,root) %{_bindir}/dvitomp
+%attr(755,root,root) %{_bindir}/dvisvgm
 %attr(755,root,root) %{_bindir}/dvitype
 %{_infodir}/dvips.info*
 %{_mandir}/man1/dvi2fax.1*
