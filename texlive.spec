@@ -40,12 +40,7 @@
 #   /var/lib/texmf/web2c/xelatex/xelatex.fmt
 
 # Conditional build:
-%bcond_without	bootstrap	# bootstrap build
 %bcond_without	xindy		# do not build xindy packages
-
-%if %{with bootstrap}
-%undefine	with_xindy
-%endif
 
 %include	/usr/lib/rpm/macros.perl
 
@@ -107,30 +102,6 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
-%if %{without bootstrap}
-### BuildRequires:	%{name}-context
-### BuildRequires:	%{name}-csplain
-### BuildRequires:	%{name}-fonts-cmsuper
-### #BuildRequires:	%{name}-format-amstex
-### #BuildRequires:	%{name}-format-cslatex
-### BuildRequires:	%{name}-format-eplain
-### BuildRequires:	%{name}-format-mex
-### BuildRequires:	%{name}-format-pdflatex
-### BuildRequires:	%{name}-latex
-### BuildRequires:	%{name}-latex-cyrillic
-### BuildRequires:	%{name}-metapost
-### BuildRequires:	%{name}-mex
-### BuildRequires:	%{name}-omega
-### BuildRequires:	%{name}-other-utils
-### BuildRequires:	%{name}-pdftex
-### BuildRequires:	%{name}-phyzzx
-### BuildRequires:	%{name}-plain
-### BuildRequires:	%{name}-tex-babel
-### BuildRequires:	%{name}-tex-physe
-### BuildRequires:	%{name}-xetex
-### BuildRequires:	%{name}-xmltex
-# fill with future texlive BR. guesses ones for now
-%endif
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libXaw-devel
@@ -2150,6 +2121,9 @@ rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/xecyr
 rm -rf $RPM_BUILD_ROOT%{_datadir}/xindy
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc
 
+TEXMFMAIN=$RPM_BUILD_ROOT%{texmf}; export TEXMFMAIN
+# problems? run: kpsewhich --show-path=ls-R
+mktexlsr $RPM_BUILD_ROOT%{texmf}
 # Create format files
 for format in \
 	aleph \
@@ -2174,23 +2148,8 @@ for format in \
 	xelatex; do
 # pdfxmltex \
 # xmltex; do
-
-%if %{with bootstrap}
-	install -d $RPM_BUILD_ROOT%{fmtdir}/${format}
-	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
-	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
-%else
-#######
-#	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
-#######
-%endif
+	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
 done
-
-%if %{with bootstrap}
-touch $RPM_BUILD_ROOT%{fmtdir}/xetex/xelatex.fmt
-%endif
-# We don't need the log files
-rm -f $(find $RPM_BUILD_ROOT%{fmtdir} -name "*.log")
 
 %clean
 rm -rf $RPM_BUILD_ROOT
