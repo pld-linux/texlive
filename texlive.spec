@@ -13,34 +13,8 @@
 #error:     texlive-dvips-20080816-5.x86_64          Requires(auto): libkpathsea.so.4()(64bit)
 #Preparing...                ########################################### [100%]
 #
-# unpackaged files:
-#   /usr/bin/repstopdf
-#   /usr/share/texmf-dist/scripts/pst-pdf/ps4pdf
-#   /var/lib/texmf/web2c/csplain/csplain.fmt
-#   /var/lib/texmf/web2c/etex/etex.fmt
-#   /var/lib/texmf/web2c/lambda/lambda.fmt
-#   /var/lib/texmf/web2c/lamed/lamed.fmt
-#   /var/lib/texmf/web2c/latex/latex.fmt
-#   /var/lib/texmf/web2c/mex/mex.fmt
-#   /var/lib/texmf/web2c/mllatex/mllatex.fmt
-#   /var/lib/texmf/web2c/mptopdf/mptopdf.fmt
-#   /var/lib/texmf/web2c/pdfcsplain/pdfcsplain.fmt
-#   /var/lib/texmf/web2c/pdfetex/pdfetex.fmt
-#   /var/lib/texmf/web2c/pdflatex/pdflatex.fmt
-#   /var/lib/texmf/web2c/pdftex/aleph.fmt
-#   /var/lib/texmf/web2c/pdftex/lambda.fmt
-#   /var/lib/texmf/web2c/pdftex/lamed.fmt
-#   /var/lib/texmf/web2c/pdftex/omega.fmt
-#   /var/lib/texmf/web2c/pdftex/tex.fmt
-#   /var/lib/texmf/web2c/pdftex/xelatex.fmt
-#   /var/lib/texmf/web2c/pdftex/xetex.fmt
-#   /var/lib/texmf/web2c/physe/physe.fmt
-#   /var/lib/texmf/web2c/phyzzx/phyzzx.fmt
-#   /var/lib/texmf/web2c/texsis/texsis.fmt
-#   /var/lib/texmf/web2c/xelatex/xelatex.fmt
-
 # Conditional build:
-%bcond_without	xindy		# do not build xindy packages
+%bcond_with	xindy		# do not build xindy packages
 
 %include	/usr/lib/rpm/macros.perl
 
@@ -79,7 +53,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
 %if %{with xindy}
-BuildRequires:	clisp
+#BuildRequires:	clisp
 %endif
 BuildRequires:	ed
 BuildRequires:	expat-devel
@@ -156,7 +130,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		texhash	umask 022; [ ! -x %{_bindir}/texhash ] || %{_bindir}/texhash 1>&2;
 %define		_localstatedir	/var/lib/texmf
 %define		fixinfodir [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1 ;
-%define		fmtutil(f:) [ ! \\\( -f %{_localstatedir}/web2c/%{-f*}.fmt.rpmnew -o -f %{_localstatedir}/web2c/%{-f*}.efmt.rpmnew \\\) ] || %{_bindir}/fmtutil-sys --byfmt %{-f*} >/dev/null 2>/dev/null || echo "Regenerating %{-f*} failed. See %{_localstatedir}/web2c/%{-f*}.log for details" 1>&2 && exit 0 ;
 
 %define		_noautoreq 'perl(path_tre)'
 %define		skip_post_check_so libptexenc.so.1.1.1
@@ -2118,38 +2091,8 @@ rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/xecyr
 # mv -fv $RPM_BUILD_ROOT%{fmtdir}/*.log format-logs
 
 # xindy files are in %%{texmf}
-rm -rf $RPM_BUILD_ROOT%{_datadir}/xindy
-rm -rf $RPM_BUILD_ROOT%{_datadir}/doc
-
-TEXMFMAIN=$RPM_BUILD_ROOT%{texmf}; export TEXMFMAIN
-# problems? run: kpsewhich --show-path=ls-R
-mktexlsr $RPM_BUILD_ROOT%{texmf}
-# Create format files
-for format in \
-	aleph \
-	csplain \
-	etex \
-	lambda \
-	lamed \
-	latex \
-	mex \
-	mllatex \
-	mptopdf \
-	omega \
-	pdfcsplain \
-	pdfetex \
-	pdflatex \
-	pdftex \
-	physe \
-	phyzzx \
-	tex \
-	texsis \
-	xetex \
-	xelatex; do
-# pdfxmltex \
-# xmltex; do
-	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
-done
+#rm -r $RPM_BUILD_ROOT%{_datadir}/xindy
+#rm -r $RPM_BUILD_ROOT%{_datadir}/doc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -2567,11 +2510,8 @@ fi
 %{_mandir}/man1/weave.1*
 %{_mandir}/man5/fmtutil.cnf.5*
 %{_mandir}/man5/updmap.cfg.5*
-%{fmtdir}/pdftex/pdfetex.fmt
 # %{fmtdir}/pdfetex
-%dir %{fmtdir}/tex
-%{fmtdir}/tex/tex.fmt
-# %{fmtdir}/pdftex/tex.fmt
+#%dir %{fmtdir}/tex
 
 # %files jadetex
 # %defattr(644,root,root,755)
@@ -2670,7 +2610,7 @@ fi
 %{_mandir}/man1/ttftotype42.1*
 %{_mandir}/man1/vlna.1*
 %{_mandir}/man5/synctex.5*
-%{fmtdir}/pdftex/texsis.fmt
+#%{fmtdir}/pdftex/texsis.fmt
 # %{fmtdir}/texsis
 %{texmf}/hbf2gf
 %{texmf}/ttf2pk
@@ -2875,7 +2815,7 @@ fi
 %attr(755,root,root) %{_bindir}/mptopdf
 %{_mandir}/man1/mptopdf.1*
 # %{texmfdist}/tex/mptopdf
-%{fmtdir}/pdftex/mptopdf.fmt
+#%{fmtdir}/pdftex/mptopdf.fmt
 # %{fmtdir}/mptopdf
 
 %files texdoctk
@@ -3124,7 +3064,6 @@ fi
 # %{texmfdist}/fonts/map/pdftex
 # %{texmf}/fmtutil/format.pdftex.cnf
 # %{texmf}/fonts/map/pdftex/updmap
-%{fmtdir}/pdftex/pdftex.fmt
 
 %files phyzzx
 %defattr(644,root,root,755)
@@ -3135,7 +3074,6 @@ fi
 # %{texmfdist}/tex/phyzzx/base
 # %{texmfdist}/tex/phyzzx/config
 # %{texmf}/fmtutil/format.phyzzx.cnf
-%{fmtdir}/pdftex/phyzzx.fmt
 # %{fmtdir}/phyzzx
 
 %files omega
@@ -3184,8 +3122,8 @@ fi
 %{_mandir}/man1/outocp.1*
 %{_mandir}/man1/ovf2ovp.1*
 %{_mandir}/man1/ovp2ovf.1*
-%{fmtdir}/aleph
-%{fmtdir}/omega
+# %{fmtdir}/aleph
+# %{fmtdir}/omega
 # %{fmtdir}/lambda
 # %{fmtdir}/lamed
 # %{fmtdir}/pdftex/aleph.fmt
@@ -3197,7 +3135,6 @@ fi
 %defattr(644,root,root,755)
 # %attr(755,root,root) %{_bindir}/mex
 # %{texmfdist}/tex/mex/config/mex.ini
-%{fmtdir}/pdftex/mex.fmt
 # %{fmtdir}/mex
 
 %files format-amstex
@@ -3219,13 +3156,11 @@ fi
 
 %files format-csplain
 %defattr(644,root,root,755)
-%{fmtdir}/pdftex/csplain.fmt
 # %{fmtdir}/csplain
 
 %files format-pdfcsplain
 %defattr(644,root,root,755)
 # %attr(755,root,root) %{_bindir}/pdfcsplain
-%{fmtdir}/pdftex/pdfcsplain.fmt
 # %{fmtdir}/pdfcsplain
 
 %files format-eplain
@@ -3235,7 +3170,6 @@ fi
 %{_mandir}/man1/eplain.1*
 # %{_mandir}/man1/etex.1*
 # %{texmf}/fmtutil/format.eplain.cnf
-%{fmtdir}/pdftex/etex.fmt
 # %{fmtdir}/etex
 
 %files context
@@ -3320,8 +3254,6 @@ fi
 %{_mandir}/man1/lacheck.1*
 %{_mandir}/man1/latex.1*
 %{_mandir}/man1/pslatex.1*
-%{fmtdir}/pdftex/latex.fmt
-%{fmtdir}/pdftex/mllatex.fmt
 
 %files latex-bibtex
 %defattr(644,root,root,755)
@@ -3359,7 +3291,7 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdflatex
 # %{fmtdir}/pdflatex
-%{fmtdir}/pdftex/pdflatex.fmt
+# %{fmtdir}/pdftex/pdflatex.fmt
 %{_mandir}/man1/pdflatex.1*
  
 %files tex-thumbpdf
@@ -3512,8 +3444,8 @@ fi
 # %{texmfdist}/tex/xelatex
 # %{texmfdist}/tex/xetex
 # %{texmf}/fmtutil/format.xetex.cnf
-%{fmtdir}/xetex/xetex.fmt
-%{fmtdir}/xetex/xelatex.fmt
+# %{fmtdir}/xetex/xetex.fmt
+# %{fmtdir}/xetex/xelatex.fmt
 # %{fmtdir}/pdftex/xelatex.fmt
 # %{fmtdir}/pdftex/xetex.fmt
 # %{fmtdir}/xelatex
