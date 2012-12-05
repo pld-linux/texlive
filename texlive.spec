@@ -204,6 +204,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreq 'perl(path_tre)'
 
+# this package is a complete mess, lets just live with it here
+# and concentrate on cleaning master
+%define		_duplicate_files_terminate_build	0
+
 %description
 TeXLive is an implementation of TeX for Linux or UNIX systems. TeX
 takes a text file and a set of formatting commands as input and
@@ -7798,8 +7802,9 @@ fi
 %doc %{texmfdist}/source/jadetex/base/ChangeLog*
 %attr(755,root,root) %{_bindir}/jadetex
 %attr(755,root,root) %{_bindir}/pdfjadetex
-%{texmfdist}/source/jadetex
-%exclude %{texmfdist}/source/jadetex/base/ChangeLog*
+%dir %{texmfdist}/source/jadetex
+%dir %{texmfdist}/source/jadetex/base
+%{texmfdist}/source/jadetex/base/jadetex.*
 %{texmfdist}/tex/jadetex
 %{texmf}/fmtutil/format.jadetex.cnf
 
