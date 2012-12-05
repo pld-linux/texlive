@@ -20,7 +20,7 @@
  #include "image.h"
  
 -static const char _svn_version[] =
--    "$Id$ $URL: http://scm.foundry.supelec.fr/svn/pdftex/branches/stable/source/src/texk/web2c/pdftexdir/writepng.c $";
+-    "$Id: writepng.c 7945 2008-05-08 14:25:16Z martin $ $URL: http://scm.foundry.supelec.fr/svn/pdftex/branches/stable/source/src/texk/web2c/pdftexdir/writepng.c $";
 -
 -static int transparent_page_group = -1;
 +static int transparent_page_group = 0;
