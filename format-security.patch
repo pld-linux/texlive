@@ -32,6 +32,17 @@
  }
  
  @ The token lists for translated \TEX/ output contain some special control
+--- texlive-20080816-source/texk/web2c/cwebboot.c~	2012-12-05 13:43:15.382444744 +0100
++++ texlive-20080816-source/texk/web2c/cwebboot.c	2012-12-05 13:47:45.715768541 +0100
+@@ -1113,7 +1113,7 @@
+  fatal P2C(char*,s,char*,t)
+ #line 1182 "./cwebdir/common.w"
+ {
+-if(*s)printf(s);
++if(*s)puts(s);
+ err_print(t);
+ history= fatal_message;exit(wrap_up());
+ }
 --- texlive-20080816-source/texk/web2c/tiedir/tie.w~	2006-01-17 22:41:51.000000000 +0100
 +++ texlive-20080816-source/texk/web2c/tiedir/tie.w	2012-12-05 13:50:25.915762890 +0100
 @@ -465,7 +465,7 @@
