@@ -1931,9 +1931,9 @@ ln -sf ../share/texmf-dist/scripts/ulqda/ulqda.pl ulqda
 ln -sf ../share/texmf-dist/scripts/accfonts/vpl2ovp vpl2ovp
 ln -sf ../share/texmf-dist/scripts/accfonts/vpl2vpl vpl2vpl
 
-ln -sf ../share/texmf/scripts/a2ping/a2ping.pl a2ping
+ln -sf ../share/texmf-dist/scripts/a2ping/a2ping.pl a2ping
 ln -sf ../share/texmf-dist/scripts/dviasm/dviasm.py dviasm
-ln -sf ../share/texmf/scripts/tetex/e2pall.pl e2pall
+ln -sf ../share/texmf-dist/scripts/tetex/e2pall.pl e2pall
 ln -sf ../share/texmf-dist/scripts/bengali/ebong.py ebong
 ln -sf ../share/texmf-dist/scripts/epspdf/epspdf epspdf
 ln -sf ../share/texmf-dist/scripts/epspdf/epspdftk epspdftk
@@ -1958,17 +1958,17 @@ ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftrimwhite pdftrimwhite
 ln -sf ../share/texmf-dist/scripts/perltex/perltex perltex
 ln -sf ../share/texmf-dist/scripts/pkfix/pkfix.pl pkfix
 ln -sf ../share/texmf-dist/scripts/ppower4/ppower4.tlu ppower4
-ln -sf ../share/texmf/scripts/ps2eps/ps2eps.pl ps2eps
+ln -sf ../share/texmf-dist/scripts/ps2eps/ps2eps.pl ps2eps
 ln -sf ../share/texmf-dist/scripts/pst-pdf/ps4pdf ps4pdf
 ln -sf ../share/texmf-dist/scripts/pst2pdf/pst2pdf.pl pst2pdf
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pstopdf pstopdf
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/rlxtools rlxtools
-ln -sf ../share/texmf/scripts/texlive/rungs.tlu rungs
+ln -sf ../share/texmf-dist/scripts/texlive/rungs.tlu rungs
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/runtools runtools
-ln -sf ../share/texmf/scripts/simpdftex/simpdftex simpdftex
+ln -sf ../share/texmf-dist/scripts/simpdftex/simpdftex simpdftex
 ln -sf ../share/texmf-dist/scripts/texcount/texcount.pl texcount
-ln -sf ../share/texmf/scripts/texdoc/texdoc.tlu texdoc
-ln -sf ../share/texmf/scripts/tetex/texdoctk.pl texdoctk
+ln -sf ../share/texmf-dist/scripts/texdoc/texdoc.tlu texdoc
+ln -sf ../share/texmf-dist/scripts/tetex/texdoctk.pl texdoctk
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texexec texexec
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfont texfont
@@ -1976,7 +1976,7 @@ ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texshow texshow
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/textools textools
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texutil texutil
 ln -sf ../share/texmf-dist/scripts/thumbpdf/thumbpdf.pl thumbpdf
-ln -sf ../share/texmf/scripts/texlive/tlmgr.pl tlmgr
+ln -sf ../share/texmf-dist/scripts/texlive/tlmgr.pl tlmgr
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/tmftools tmftools
 ln -sf ../share/texmf-dist/scripts/vpe/vpe.pl vpe
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/xmltools xmltools
@@ -2369,6 +2369,18 @@ fi
 %attr(755,root,root) %{_bindir}/vftovp
 %attr(755,root,root) %{_bindir}/vptovf
 %attr(755,root,root) %{_bindir}/weave
+%attr(755,root,root) %{texmfdist}/scripts/installfont/installfont-tl
+%attr(755,root,root) %{texmfdist}/scripts/pst-pdf/ps4pdf
+%attr(755,root,root) %{texmfdist}/scripts/texlive/allcm.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/allneeded.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/fmtutil-sys.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/fmtutil.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/fontinst.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/kpsewhere.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/ps2frag.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/texlinks.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/updmap-sys.sh
+
 
 %attr(755,root,root) %{texmfdist}/web2c/mktexnam
 %attr(755,root,root) %{texmfdist}/web2c/mktexdir
@@ -2579,6 +2591,7 @@ fi
 %attr(755,root,root) %{_bindir}/kpsewhich
 %attr(755,root,root) %{_bindir}/kpsexpand
 %attr(755,root,root) %{_libdir}/libkpathsea.so.*
+%attr(755,root,root) %{texmfdist}/scripts/texlive/kpsetool.sh
 %{_libdir}/libkpathsea.la
 %{_mandir}/man1/kpsexpand.1*
 %{_mandir}/man1/kpsepath.1*
@@ -2624,6 +2637,8 @@ fi
 # %{texmf}/dvips/getafm
 %{texmfdist}/dvips/gsftopk
 %{texmfdist}/fonts/enc/dvips/base
+%attr(755,root,root) %{texmfdist}/scripts/texlive/dvi2fax.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/dvired.sh
 # %{texmfdist}/fonts/map/dvips/allrunes
 # %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
 # %{texmfdist}/tex/generic/dvips
@@ -2657,9 +2672,8 @@ fi
 %attr(755,root,root) %{_bindir}/mkgrkindex
 %attr(755,root,root) %{_bindir}/rumakeindex
 %attr(755,root,root) %{_bindir}/splitindex
-#%dir %{texmfdist}/scripts/splitindex
-#%dir %{texmfdist}/scripts/splitindex/perl
-#%attr(755,root,root) %{texmfdist}/scripts/splitindex/perl/splitindex.pl
+%attr(755,root,root) %{texmfdist}/scripts/splitindex/splitindex.pl
+%attr(755,root,root) %{texmfdist}/scripts/texlive/rumakeindex.sh
 %dir %{texmfdist}/scripts/mkgrkindex
 %attr(755,root,root) %{texmfdist}/scripts/mkgrkindex/mkgrkindex
 %{_mandir}/man1/makeindex.1*
@@ -2760,6 +2774,9 @@ fi
 %attr(755,root,root) %{_bindir}/texconfig-dialog
 %attr(755,root,root) %{_bindir}/texconfig-sys
 %attr(755,root,root) %{texmfdist}/texconfig/tcfmgr
+%attr(755,root,root) %{texmfdist}/scripts/texlive/texconfig-dialog.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/texconfig-sys.sh
+%attr(755,root,root) %{texmfdist}/scripts/texlive/texconfig.sh
 %{_mandir}/man1/texconfig.1*
 %{_mandir}/man1/texconfig-sys.1*
 %{texmfdist}/texconfig/tcfmgr.map
@@ -3158,14 +3175,18 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
-%attr(755,root,root) %{_bindir}/pslatex
 %attr(755,root,root) %{_bindir}/latexdiff
 %attr(755,root,root) %{_bindir}/latexdiff-vc
 %attr(755,root,root) %{_bindir}/latexfileversion
 %attr(755,root,root) %{_bindir}/latexrevise
 
+%attr(755,root,root) %{_bindir}/pslatex
+%attr(755,root,root) %{texmfdist}/scripts/texlive/pslatex.sh
+
+# make new spec for latexmk (http://users.phys.psu.edu/~collins/software/latexmk-jcc/)
 %dir %{texmfdist}/scripts/latexmk
 %attr(755,root,root) %{texmfdist}/scripts/latexmk/latexmk.pl
+
 %attr(755,root,root) %{_bindir}/latexmk
 %dir %{texmfdist}/scripts/latex2man
 %attr(755,root,root) %{texmfdist}/scripts/latex2man/latex2man
@@ -3208,6 +3229,7 @@ fi
 %attr(755,root,root) %{_bindir}/bibtexu
 %attr(755,root,root) %{_bindir}/checkcites
 %attr(755,root,root) %{_bindir}/rubibtex
+%attr(755,root,root) %{texmfdist}/scripts/texlive/rubibtex.sh
 %{texmfdist}/bibtex/csf/base
  
 %files latex-presentation-bin
@@ -3306,7 +3328,7 @@ fi
 %dir %{texmfdist}/scripts/purifyeps
 %attr(755,root,root) %{texmfdist}/scripts/purifyeps/purifyeps
 %attr(755,root,root) %{_bindir}/purifyeps
-# %attr(755,root,root) %{texmf}/scripts/ps2eps/ps2eps*
+%attr(755,root,root) %{texmfdist}/scripts/ps2eps/ps2eps*
 %{_mandir}/man1/epsffit*
 %{_mandir}/man1/extractres*
 %{_mandir}/man1/fix*
@@ -3320,7 +3342,7 @@ fi
 %{_mandir}/man1/psselect*
 %{_mandir}/man1/pstops*
 %{texmfdist}/scripts/epspdf
-# %{texmf}/dvips/psutils
+%{texmfdist}/dvips/psutils
 
 %files uncategorized-utils
 %defattr(644,root,root,755)
@@ -3401,10 +3423,10 @@ fi
 %attr(755,root,root) %{_bindir}/cachepic
 # %attr(755,root,root) %{texmfdist}/scripts/context/lua/*
 %attr(755,root,root) %{_bindir}/luatools
-#%attr(755,root,root) %{texmf}/scripts/texlive/rungs.tlu
+%attr(755,root,root) %{texmfdist}/scripts/texlive/rungs.tlu
 %attr(755,root,root) %{_bindir}/rungs
 %attr(755,root,root) %{_bindir}/texdoc
-#%attr(755,root,root) %{texmf}/scripts/texdoc/texdoc.tlu
+%attr(755,root,root) %{texmfdist}/scripts/texdoc/texdoc.tlu
 %{_mandir}/man1/luatex.1*
 %{_mandir}/man1/texlua.1*
 %{_mandir}/man1/texluac.1*
