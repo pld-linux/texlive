@@ -1,18 +1,79 @@
---- texlive-20080816-source/libs/icu-xetex/tools/ctestfw/uperf.cpp~	2008-03-04 14:26:36.000000000 +0100
-+++ texlive-20080816-source/libs/icu-xetex/tools/ctestfw/uperf.cpp	2012-12-05 13:40:23.702450798 +0100
-@@ -485,8 +485,7 @@
-         this->runIndexedTest( index, FALSE, name );
-         if (!name)
-             break;
--        fprintf(stdout,name);
--        fprintf(stdout,"\n");
-+        fprintf(stdout,"%s\n", name);
-         index++;
-     }while (name && (name[0] != 0));
-     verbose = save_verbose;
---- texlive-20080816-source/texk/web2c/cwebdir/common.w~	2008-04-28 11:22:39.000000000 +0200
-+++ texlive-20080816-source/texk/web2c/cwebdir/common.w	2012-12-05 13:43:03.025778512 +0100
-@@ -1180,7 +1180,7 @@
+--- texlive-20130530-source/texk/devnag/src/devnag.c.wiget	2012-07-09 13:59:05.000000000 +0200
++++ texlive-20130530-source/texk/devnag/src/devnag.c	2013-07-06 13:32:29.571327342 +0200
+@@ -2395,7 +2395,7 @@ void put_macro(short macro) {
+ void err_ill(const char *str) {
+    fprintf(stderr, "Error: illegal character(s) \"%s\" detected at line %d:\n",
+ 	  str, linenumber);
+-   fprintf(stderr, inbuf);
++   fputs(inbuf, stderr);
+    exit(1);
+ }
+ 
+--- texlive-20130530-source/texk/dvidvi/dvidvi.c.wiget	2012-07-09 14:13:15.000000000 +0200
++++ texlive-20130530-source/texk/dvidvi/dvidvi.c	2013-07-06 13:42:29.426582698 +0200
+@@ -327,7 +327,7 @@ static void stringdvibuf(integer p, inte
+  *   Print a usage error messsage, and quit.
+  */
+ static void usage(void) {
+-   (void)fprintf(stderr,banner);
++   (void)fprintf(stderr,"%s", banner);
+    (void)fprintf(stderr,"Usage:  dvidvi [options] input[.dvi] [output]\n");
+    (void)fprintf(stderr,"where options are:\n");
+    (void)fprintf(stderr,"    [-f n] first page printed     [-l n] last page printed\n");
+@@ -806,7 +806,7 @@ default:
+       } /* else argument with '-' */
+    }  /* for */
+    if (*iname == 0) {
+-       (void)fprintf(stderr, banner) ;
++       (void)fprintf(stderr, "%s", banner) ;
+        error("! no input file specified");
+    }
+    /* Inserted by djc@dsmail.hmi.de 3.8.1994 */
+@@ -817,7 +817,7 @@ default:
+    }
+ 
+    if (*oname != 0 && !quiet) {
+-       (void)fprintf(stderr, banner) ;
++       (void)fprintf(stderr, "%s", banner) ;
+        (void)fprintf(stderr, "%s -> %s\n",iname,oname);
+        temp = nextstring ;
+    }
+--- texlive-20130530-source/texk/ps2pkm/objects.h.wiget	2009-06-22 16:33:57.000000000 +0200
++++ texlive-20130530-source/texk/ps2pkm/objects.h	2013-07-06 13:32:29.574660538 +0200
+@@ -232,7 +232,7 @@ struct xobject {
+ /*SHARED*/
+ /* NDW: personally, I want to see status and error messages! */
+ #define IfTrace0(condition,model)                                 \
+-        {if (condition) printf(model);}
++        {if (condition) puts(model);}
+ #define IfTrace1(condition,model,arg0)                            \
+         {if (condition) printf(model,arg0);}
+ #define IfTrace2(condition,model,arg0,arg1)                       \
+--- texlive-20130530-source/texk/tex4htk/t4ht.c.wiget	2013-01-08 15:07:20.000000000 +0100
++++ texlive-20130530-source/texk/tex4htk/t4ht.c	2013-07-06 13:32:29.574660538 +0200
+@@ -1095,7 +1095,7 @@ static void warn_i_str
+ ;
+ #undef SEP
+ #endif
+-{  (IGNORED) fprintf(stderr,"--- warning --- ");
++{  (IGNORED) fputs("--- warning --- ",stderr);
+    (IGNORED) fprintf(stderr,warn_err_mssg[n], str);
+ }
+ 
+--- texlive-20130530-source/texk/web2c/cwebboot.cin.wiget	2012-09-11 01:03:53.000000000 +0200
++++ texlive-20130530-source/texk/web2c/cwebboot.cin	2013-07-06 13:32:29.567994146 +0200
+@@ -1088,7 +1088,7 @@ void
+  fatal(const char*s,const char*t)
+ #line 1182 "cwebdir/common.w"
+ {
+-if(*s)printf(s);
++if(*s)printf("%s", s);
+ err_print(t);
+ history= fatal_message;exit(wrap_up());
+ }
+--- texlive-20130530-source/texk/web2c/cwebdir/common.w.wiget	2012-09-05 15:27:45.000000000 +0200
++++ texlive-20130530-source/texk/web2c/cwebdir/common.w	2013-07-06 13:32:29.561327754 +0200
+@@ -1180,7 +1180,7 @@ concatenated to print the final error me
  fatal(s,t)
    char *s,*t;
  {
@@ -21,9 +82,9 @@
    err_print(t);
    history=fatal_message; exit(wrap_up());
  }
---- texlive-20080816-source/texk/web2c/cwebdir/cweave.w~	2008-04-28 11:22:39.000000000 +0200
-+++ texlive-20080816-source/texk/web2c/cwebdir/cweave.w	2012-12-05 13:48:17.152434099 +0100
-@@ -1784,7 +1784,7 @@
+--- texlive-20130530-source/texk/web2c/cwebdir/cweave.w.wiget	2012-09-05 15:27:45.000000000 +0200
++++ texlive-20130530-source/texk/web2c/cwebdir/cweave.w	2013-07-06 13:32:29.564660950 +0200
+@@ -1784,7 +1784,7 @@ void
  print_cat(c) /* symbolic printout of a category */
  eight_bits c;
  {
@@ -32,20 +93,18 @@
  }
  
  @ The token lists for translated \TEX/ output contain some special control
---- texlive-20080816-source/texk/web2c/cwebboot.c~	2012-12-05 13:43:15.382444744 +0100
-+++ texlive-20080816-source/texk/web2c/cwebboot.c	2012-12-05 13:47:45.715768541 +0100
-@@ -1113,7 +1113,7 @@
-  fatal P2C(char*,s,char*,t)
- #line 1182 "./cwebdir/common.w"
+--- texlive-20130530-source/texk/web2c/omegafonts/out_routines.c.wiget	2009-11-10 11:27:09.000000000 +0100
++++ texlive-20130530-source/texk/web2c/omegafonts/out_routines.c	2013-07-06 13:32:29.567994146 +0200
+@@ -383,5 +383,5 @@ out_digits(unsigned counter)
+ void
+ out(const_string sval)
  {
--if(*s)printf(s);
-+if(*s)puts(s);
- err_print(t);
- history= fatal_message;exit(wrap_up());
+-	fprintf(file_output, sval);
++	fputs(sval, file_output);
  }
---- texlive-20080816-source/texk/web2c/tiedir/tie.w~	2006-01-17 22:41:51.000000000 +0100
-+++ texlive-20080816-source/texk/web2c/tiedir/tie.w	2012-12-05 13:50:25.915762890 +0100
-@@ -465,7 +465,7 @@
+--- texlive-20130530-source/texk/web2c/tiedir/tie.w.wiget	2009-03-09 09:29:33.000000000 +0100
++++ texlive-20130530-source/texk/web2c/tiedir/tie.w	2013-07-06 13:32:29.567994146 +0200
+@@ -465,7 +465,7 @@ for terminating an output line and writi
  @d new_line(v)  fputc('\n',v) /* start new line */
  @d term_new_line  new_line(term_out)
  	/* start new line of the terminal */
@@ -53,30 +112,45 @@
 +@d print_ln(v)  {fputs(v,term_out);term_new_line;}
  	/* `|print|' and then start new line */
  @d print2_ln(a,b)  {print2(a,b);term_new_line;} /* same with two arguments */
- @d print3_ln(a,b,c)  {print3(a,b,c);term_new_line;} 
---- texlive-20080816-source/texk/web2c/pdftexdir/subfont.c~	2008-05-08 16:25:16.000000000 +0200
-+++ texlive-20080816-source/texk/web2c/pdftexdir/subfont.c	2012-12-05 13:52:33.919091705 +0100
-@@ -127,7 +127,7 @@
-         return NULL;
-     }
-     tex_printf("{");
--    tex_printf(cur_file_name);
-+    tex_printf("%s", cur_file_name);
-     sfd = new_sfd_entry();
-     sfd->name = xstrdup(sfd_name);
-     while (!sfd_eof()) {
---- texlive-20080816-source/texk/web2c/omegafonts/out_routines.c~	2006-01-17 22:41:51.000000000 +0100
-+++ texlive-20080816-source/texk/web2c/omegafonts/out_routines.c	2012-12-05 14:00:41.645741167 +0100
-@@ -377,5 +377,5 @@
- void
- out(string sval)
- {
--	fprintf(file_output, sval);
-+	fputs(sval, file_output);
- }
---- texlive-20080816-source/texk/web2c/omegafonts/error_routines.c.orig	2006-01-17 22:41:51.000000000 +0100
-+++ texlive-20080816-source/texk/web2c/omegafonts/error_routines.c	2012-12-05 13:59:28.005743765 +0100
-@@ -31,6 +31,71 @@
+ @d print3_ln(a,b,c)  {print3(a,b,c);term_new_line;}
+--- texlive-20130530-source/texk/xdvik/gui/message-window.c.wiget	2009-06-22 16:29:44.000000000 +0200
++++ texlive-20130530-source/texk/xdvik/gui/message-window.c	2013-07-06 13:32:29.574660538 +0200
+@@ -713,7 +713,7 @@ internal_popup_window(Widget parent,
+     Widget ret;
+ 
+     ASSERT(type < (sizeof my_msg_map / sizeof my_msg_map[0]), "too few elements in my_msg_map");
+-    sprintf(win_title, my_msg_map[type].window_title);
++    sprintf(win_title, "%s", my_msg_map[type].window_title);
+ 
+ #if DEBUG
+     fprintf(stderr, "internal_popup_window called with prompt: \"%s\"\n", msg_buf);
+@@ -725,11 +725,10 @@ internal_popup_window(Widget parent,
+ 	   supposed to be printf-format strings (i.e. with doubled `%' to escape them)
+ 	*/
+ 	fprintf(stderr, "\n%s:\n", my_msg_map[type].window_title);
+-	fprintf(stderr, msg_buf);
+-	fprintf(stderr, "\n");
++	fprintf(stderr, "%s\n", msg_buf);
+ 	if (helptext) {
+ 	    fprintf(stderr, "---------- helptext ----------\n");
+-	    fprintf(stderr, helptext);
++	    fprintf(stderr, "%s", helptext);
+ 	    fprintf(stderr, "\n---------- end of helptext ----------\n");
+ 	}
+ 	return NULL;
+@@ -741,8 +740,7 @@ internal_popup_window(Widget parent,
+     if (my_popup_num == MAX_POPUPS) {
+ 	/* already enough popups on screen, just dump it to stderr */
+ 	fprintf(stderr, "%s: ", win_title);
+-	fprintf(stderr, msg_buf);
+-	fputc('\n', stderr);
++	fprintf(stderr, "%s\n", msg_buf);
+ 	/* Note: If a mad function continues to open popups, this will
+ 	 * stop after MAX_POPUPS, but open a new window for each
+ 	 * window the user pops down. Maybe we ought to do something
+--- texlive-20130530-source/texk/web2c/omegafonts/error_routines.c.orig	2009-11-10 11:27:09.000000000 +0100
++++ texlive-20130530-source/texk/web2c/omegafonts/error_routines.c	2013-07-06 14:38:00.368383713 +0200
+@@ -32,6 +32,71 @@ They
  
  */
  
@@ -146,20 +220,19 @@
 +#else
 +
  void
- lex_error_0(string fmt)
+ lex_error_0(const_string fmt)
  {
-@@ -182,3 +247,4 @@
+@@ -183,3 +248,4 @@ internal_error_s(const_string fmt, const
      fprintf(stderr, "\n");
      exit(2);
  }
 +#endif
---- texlive-20080816-source/texk/web2c/omegafonts/error_routines.h.orig	2012-12-05 13:59:34.879076856 +0100
-+++ texlive-20080816-source/texk/web2c/omegafonts/error_routines.h	2012-12-05 14:00:00.305742626 +0100
-@@ -20,7 +20,30 @@
- 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+--- texlive-20130530-source/texk/web2c/omegafonts/error_routines.h.orig	2013-07-06 14:38:00.378383329 +0200
++++ texlive-20130530-source/texk/web2c/omegafonts/error_routines.h	2013-07-06 14:40:20.693000755 +0200
+@@ -21,6 +21,30 @@ along with Omega; if not, write to the F
  
  */
--
+ 
 +#if defined(__GNUC__) && (__GNUC__ >= 3)
 +#define lex_error_0(a) lex_error("%s", a)
 +#define lex_error_1(a, b) lex_error(a, b)
@@ -184,426 +257,11 @@
 +#define internal_error_s(a, b) internal_error(a, b)
 +extern void internal_error(string, ...) __attribute__ ((format (printf, 1, 2)));
 +#else
- extern void lex_error_0(string);
- extern void lex_error_1(string, int);
- extern void lex_error_s(string, string);
-@@ -43,5 +66,5 @@
- extern void internal_error_0(string);
- extern void internal_error_1(string, int);
- extern void internal_error_s(string, string);
--
+ extern void lex_error_0(const_string);
+ extern void lex_error_1(const_string, int);
+ extern void lex_error_s(const_string, const_string);
+@@ -43,3 +67,4 @@ extern void warning_s_2(const_string, co
+ extern void internal_error_0(const_string);
+ extern void internal_error_1(const_string, int);
+ extern void internal_error_s(const_string, const_string);
 +#endif
- 
---- texlive-20080816-source/texk/devnag/src/devnag.c~	2008-07-03 23:45:54.000000000 +0200
-+++ texlive-20080816-source/texk/devnag/src/devnag.c	2012-12-05 14:02:07.348229812 +0100
-@@ -2396,7 +2396,7 @@
- void err_ill(char *str) {
-    fprintf(stderr, "Error: illegal character(s) \"%s\" detected at line %d:\n",
- 	  str, linenumber);
--   fprintf(stderr, inbuf);
-+   fputs(inbuf, stderr);
-    exit(1);
- }
- 
---- texlive-20080816-source/texk/dvidvi/dvidvi.c.orig	2012-12-05 14:02:36.438365452 +0100
-+++ texlive-20080816-source/texk/dvidvi/dvidvi.c	2012-12-05 14:03:19.851697257 +0100
-@@ -337,7 +337,7 @@
-  *   Print a usage error messsage, and quit.
-  */
- void usage() {
--   (void)fprintf(stderr,banner);
-+   (void)fprintf(stderr,"%s", banner);
-    (void)fprintf(stderr,"Usage:  dvidvi [options] input[.dvi] [output]\n");
-    (void)fprintf(stderr,"where options are:\n");
-    (void)fprintf(stderr,"    [-f n] first page printed     [-l n] last page printed\n");
-@@ -842,7 +842,7 @@
-       } /* else argument with '-' */
-    }  /* for */
-    if (*iname == 0) {
--       (void)fprintf(stderr, banner) ;
-+       (void)fprintf(stderr, "%s", banner) ;
-        error("! no input file specified");
-    }
-    /* Inserted by djc@dsmail.hmi.de 3.8.1994 */
-@@ -853,7 +853,7 @@
-    }
- 
-    if (*oname != 0 && !quiet) {
--       (void)fprintf(stderr, banner) ;
-+       (void)fprintf(stderr, "%s", banner) ;
-        (void)fprintf(stderr, "%s -> %s\n",iname,oname);
-        temp = nextstring ;
-    }
---- texlive-20080816-source/texk/dvipdfm/error.h~	2006-01-17 22:41:51.000000000 +0100
-+++ texlive-20080816-source/texk/dvipdfm/error.h	2012-12-05 14:05:35.501692469 +0100
-@@ -34,9 +34,9 @@
- #define NO_ERROR 0
- 
- #define ERROR(string) { \
--  fprintf(stderr, "\n"); \
--  fprintf (stderr,  string); \
--  fprintf (stderr, "\n");  \
-+  fputs ("\n", stderr); \
-+  fputs (string, stderr); \
-+  fputs ("\n", stderr);  \
-   error_cleanup(); \
-   exit(1);}
- typedef int error_t;
---- texlive-20080816-source/texk/ps2pkm/objects.h~	2006-01-17 22:41:51.000000000 +0100
-+++ texlive-20080816-source/texk/ps2pkm/objects.h	2012-12-05 14:08:58.475018644 +0100
-@@ -236,7 +236,7 @@
- /*SHARED*/
- /* NDW: personally, I want to see status and error messages! */
- #define IfTrace0(condition,model)                                 \
--        {if (condition) printf(model);}
-+        {if (condition) puts(model);}
- #define IfTrace1(condition,model,arg0)                            \
-         {if (condition) printf(model,arg0);}
- #define IfTrace2(condition,model,arg0,arg1)                       \
---- texlive-20080816-source/texk/tex4htk/tex4ht.c.orig	2012-12-05 14:09:57.661683224 +0100
-+++ texlive-20080816-source/texk/tex4htk/tex4ht.c	2012-12-05 14:14:25.335007114 +0100
-@@ -1628,11 +1628,11 @@
- if( no_root_file ){  open_o_file(); }
- 
- 
--       (IGNORED) fprintf(cur_o_file, end_span[0]);
-+       (IGNORED) fputs(end_span[0], cur_o_file);
- }  }
- 
- 
--   (IGNORED) fprintf(cur_o_file, t_accent_fifth);
-+   (IGNORED) fputs(t_accent_fifth, cur_o_file);
-    needs_end_accent = FALSE; 
- needs_accented_sym--;
- 
-@@ -1662,11 +1662,11 @@
- if( no_root_file ){  open_o_file(); }
- 
- 
--       (IGNORED) fprintf(cur_o_file, end_span[0]);
-+       (IGNORED) fputs(end_span[0], cur_o_file);
- }  }
- 
- 
--   (IGNORED) fprintf(cur_o_file, t_accent_fifth);
-+   (IGNORED) fputs(t_accent_fifth, cur_o_file);
-    needs_end_accent = FALSE; 
- needs_accented_sym--;
- 
-@@ -1810,11 +1810,11 @@
- if( no_root_file ){  open_o_file(); }
- 
- 
--       (IGNORED) fprintf(cur_o_file, end_span[0]);
-+       (IGNORED) fputs(end_span[0], cur_o_file);
- }  }
- 
- 
--   (IGNORED) fprintf(cur_o_file, t_accent_fifth);
-+   (IGNORED) fputs(t_accent_fifth, cur_o_file);
-    needs_end_accent = FALSE; 
- needs_accented_sym--;
- 
-@@ -2884,7 +2884,7 @@
- );
-     (IGNORED) fprintf(stderr,
-      "\n----------------------------------------------------\n");
--    (IGNORED) fprintf(stderr, "environment file\n");
-+    (IGNORED) fputs("environment file\n", stderr);
-     (IGNORED) fprintf(stderr,
-      "----------------------------------------------------\n");
-     while( (ch = getc(dot_file)) != EOF  ){
-@@ -2978,7 +2978,7 @@
-          i = i * 10 + ch - '0';  ch = get_html_ch(file);  }
-       if( i != bound ){
-          
--(IGNORED) fprintf(stderr,"--- warning --- ");
-+(IGNORED) fputs("--- warning --- ",stderr);
- (IGNORED) fprintf(stderr,warn_err_mssg[22]
- 
- , new_font_name, i, bound); show_err_context();
-@@ -4573,11 +4573,11 @@
- if( no_root_file ){  open_o_file(); }
- 
- 
--       (IGNORED) fprintf(cur_o_file, end_span[0]);
-+       (IGNORED) fputs(end_span[0], cur_o_file);
- }  }
- 
- 
--   (IGNORED) fprintf(cur_o_file, t_accent_fifth);
-+   (IGNORED) fputs(t_accent_fifth, cur_o_file);
-    needs_end_accent = FALSE; 
- needs_accented_sym--;
- 
-@@ -4597,7 +4597,7 @@
- 
- 
-        if( span_open[0] )  if( *span_open[0] )
--           (IGNORED) fprintf(cur_o_file, span_open[0]);
-+           (IGNORED) fputs(span_open[0], cur_o_file);
-        if( span_name[0] )  if( *span_name[0] )
-            (IGNORED) fprintf(cur_o_file,
-                span_name[0], font_tbl[cur_fnt].family_name);
-@@ -4609,7 +4609,7 @@
-            (IGNORED) fprintf(cur_o_file,
-                        span_mag[0], font_tbl[cur_fnt].mag);
-        if( span_ch[0] )  if( *span_ch[0] )
--           (IGNORED) fprintf(cur_o_file, span_ch[0]);
-+           (IGNORED) fputs(span_ch[0], cur_o_file);
-     }
-     start_span = FALSE;
-   }
-@@ -5335,7 +5335,7 @@
- }
- 
- if( a_accent_template && needs_accented_sym ){
--   (IGNORED) fprintf(cur_o_file, a_accent_fifth);
-+   (IGNORED) fputs(a_accent_fifth, cur_o_file);
- }
- 
- 
-@@ -5395,11 +5395,11 @@
- if( no_root_file ){  open_o_file(); }
- 
- 
--       (IGNORED) fprintf(cur_o_file, end_span[0]);
-+       (IGNORED) fputs(end_span[0], cur_o_file);
- }  }
- 
- 
--   (IGNORED) fprintf(cur_o_file, t_accent_fifth);
-+   (IGNORED) fputs(t_accent_fifth, cur_o_file);
-    needs_end_accent = FALSE; 
- needs_accented_sym--;
- 
-@@ -5656,8 +5656,8 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- warning --- ");
--   (IGNORED) fprintf(stderr,warn_err_mssg[n]);
-+{  (IGNORED) fputs("--- warning --- ",stderr);
-+   (IGNORED) fputs(warn_err_mssg[n],stderr);
-    show_err_context();
- }
- 
-@@ -5677,7 +5677,7 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- warning --- ");
-+{  (IGNORED) fputs("--- warning --- ",stderr);
-    (IGNORED) fprintf(stderr, warn_err_mssg[n], i);
-    show_err_context();
- }
-@@ -5698,7 +5698,7 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- warning --- ");
-+{  (IGNORED) fputs("--- warning --- ",stderr);
-    (IGNORED) fprintf(stderr, warn_err_mssg[n], i, j);
-    show_err_context();
- }
-@@ -5724,7 +5724,7 @@
- #undef SEP
- #endif
- {
--   (IGNORED) fprintf(stderr,"--- warning --- ");
-+   (IGNORED) fputs("--- warning --- ",stderr);
-    (IGNORED) fprintf(stderr,warn_err_mssg[n], str);
-    show_err_context();
- }
-@@ -5751,7 +5751,7 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- warning --- ");
-+{  (IGNORED) fputs("--- warning --- ",stderr);
-    (IGNORED) fprintf(stderr,warn_err_mssg[n], str1,str2);
-    show_err_context();
- }
-@@ -5772,8 +5772,8 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- error --- ");
--   (IGNORED) fprintf(stderr, warn_err_mssg[n]);
-+{  (IGNORED) fputs("--- error --- ",stderr);
-+   (IGNORED) fputs(warn_err_mssg[n], stderr);
-    show_err_context();
-    exit(EXIT_FAILURE);
- }
-@@ -5794,7 +5794,7 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- error --- ");
-+{  (IGNORED) fputs("--- error --- ",stderr);
-    (IGNORED) fprintf(stderr, warn_err_mssg[n], i);
-    show_err_context();
-    exit(EXIT_FAILURE);
-@@ -5820,7 +5820,7 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- error --- ");
-+{  (IGNORED) fputs("--- error --- ",stderr);
-    (IGNORED) fprintf(stderr, warn_err_mssg[n], str);
-    show_err_context();
-    exit(EXIT_FAILURE);
-@@ -8762,7 +8762,7 @@
- if( no_root_file ){  open_o_file(); }
- 
- 
--       (IGNORED) fprintf(cur_o_file, end_span[0]);
-+       (IGNORED) fputs(end_span[0], cur_o_file);
-     }
- } }
- 
-@@ -8772,7 +8772,7 @@
-   
-                                                long int width;
- if( i_accent_template ){
--  (IGNORED) fprintf(cur_o_file, i_accent_second); }
-+  (IGNORED) fputs(i_accent_second, cur_o_file); }
- needs_end_accent = (needs_accent_sym == 2 * TRUE);
- if( needs_end_accent && t_accent_template )
- {  
-@@ -8825,7 +8825,7 @@
-          m_accent_fourth);
-     }
-     if( i_accent_template ){
--      (IGNORED) fprintf(cur_o_file, i_accent_first); }
-+      (IGNORED) fputs(i_accent_first, cur_o_file); }
-     in_accenting = TRUE;
-   }
- }
-@@ -9149,11 +9149,11 @@
- if( no_root_file ){  open_o_file(); }
- 
- 
--       (IGNORED) fprintf(cur_o_file, end_span[0]);
-+       (IGNORED) fputs(end_span[0], cur_o_file);
- }  }
- 
- 
--   (IGNORED) fprintf(cur_o_file, t_accent_fifth);
-+   (IGNORED) fputs(t_accent_fifth, cur_o_file);
-    needs_end_accent = FALSE; 
- needs_accented_sym--;
- 
-@@ -10397,7 +10397,7 @@
-     }
-     p++;
-     if( dim_on ){    (IGNORED) fprintf(cur_o_file, p, dim);  }
--    else        {    (IGNORED) fprintf(cur_o_file, p); }
-+    else        {    (IGNORED) fputs(p, cur_o_file); }
-     while( * (p++) );
-   }
- }
-@@ -12232,7 +12232,7 @@
- 
- {                                               int   ch, i, mag;
-                                                 U_CHAR  str[256];
--   (IGNORED) fprintf(log_file, begin_char_gif);
-+   (IGNORED) fputs(begin_char_gif, log_file);
-    dvi_flag = TRUE;
-    for( cur_fnt = font_tbl_size; cur_fnt--; ){
-       
---- texlive-20080816-source/texk/tex4htk/t4ht.c~	2008-05-10 02:31:48.000000000 +0200
-+++ texlive-20080816-source/texk/tex4htk/t4ht.c	2012-12-05 14:15:13.328338752 +0100
-@@ -1048,8 +1048,8 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- error --- ");
--   (IGNORED) fprintf(stderr, warn_err_mssg[n]);
-+{  (IGNORED) fputs("--- error --- ",stderr);
-+   (IGNORED) fputs( warn_err_mssg[n],stderr);
-    exit(EXIT_FAILURE);
- }
- 
-@@ -1069,8 +1069,8 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- error --- ");
--   (IGNORED) fprintf(stderr, warn_err_mssg[n]);
-+{  (IGNORED) fputs("--- error --- ",stderr);
-+   (IGNORED) fputs( warn_err_mssg[n],stderr);
-    exit(EXIT_FAILURE);
- }
- 
-@@ -1094,7 +1094,7 @@
- ;
- #undef SEP
- #endif
--{  (IGNORED) fprintf(stderr,"--- warning --- ");
-+{  (IGNORED) fputs("--- warning --- ",stderr);
-    (IGNORED) fprintf(stderr,warn_err_mssg[n], str);
- }
- 
-@@ -2804,7 +2804,7 @@
-    (IGNORED) fprintf(css_file, "font-size:%d%c;", second, '%');
- }
- if( font_sty  ) {
--   (IGNORED) fprintf(css_file, font_sty->body);
-+   (IGNORED) fputs( font_sty->body,css_file);
- }
- (IGNORED) fprintf(css_file, "}\n");
- 
-@@ -2823,7 +2823,7 @@
- }
- (IGNORED) fprintf(css_file, "{");
- if( font_sty  ) {
--   (IGNORED) fprintf(css_file, font_sty->body);
-+   (IGNORED) fputs( font_sty->body,css_file);
- }
- (IGNORED) fprintf(css_file, "}}\n");
- 
-@@ -2846,7 +2846,7 @@
-    (IGNORED) fprintf(css_file, "font-size:%d%c;", second, '%');
- }
- if( font_sty  ) {
--   (IGNORED) fprintf(css_file, font_sty->body);
-+   (IGNORED) fputs( font_sty->body,css_file);
- }
- (IGNORED) fprintf(css_file, "}\n");
- 
---- texlive-20080816-source/texk/xdvik/gui/message-window.c~	2008-07-01 17:42:36.000000000 +0200
-+++ texlive-20080816-source/texk/xdvik/gui/message-window.c	2012-12-05 14:16:52.958335241 +0100
-@@ -704,7 +704,7 @@
-     Widget ret;
- 
-     ASSERT(type < (sizeof my_msg_map / sizeof my_msg_map[0]), "too few elements in my_msg_map");
--    sprintf(win_title, my_msg_map[type].window_title);
-+    sprintf(win_title, "%s", my_msg_map[type].window_title);
- 
- #if DEBUG
-     fprintf(stderr, "internal_popup_window called with prompt: \"%s\"\n", msg_buf);
-@@ -716,11 +716,10 @@
- 	   supposed to be printf-format strings (i.e. with doubled `%' to escape them)
- 	*/
- 	fprintf(stderr, "\n%s:\n", my_msg_map[type].window_title);
--	fprintf(stderr, msg_buf);
--	fprintf(stderr, "\n");
-+	fprintf(stderr, "%s\n", msg_buf);
- 	if (helptext) {
- 	    fprintf(stderr, "---------- helptext ----------\n");
--	    fprintf(stderr, helptext);
-+	    fprintf(stderr, "%s", helptext);
- 	    fprintf(stderr, "\n---------- end of helptext ----------\n");
- 	}
- 	return NULL;
-@@ -732,8 +731,7 @@
-     if (my_popup_num == MAX_POPUPS) {
- 	/* already enough popups on screen, just dump it to stderr */
- 	fprintf(stderr, "%s: ", win_title);
--	fprintf(stderr, msg_buf);
--	fputc('\n', stderr);
-+	fprintf(stderr, "%s\n", msg_buf);
- 	/* Note: If a mad function continues to open popups, this will
- 	 * stop after MAX_POPUPS, but open a new window for each
- 	 * window the user pops down. Maybe we ought to do something

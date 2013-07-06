@@ -18,9 +18,9 @@
 
 %include	/usr/lib/rpm/macros.perl
 
-%define		year	2012
-%define		monthday	0701
-%define		texmfversion 20120701
+%define		year	2013
+%define		monthday	0530
+%define		texmfversion 20130530
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
@@ -36,18 +36,11 @@ Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
 Source0:	ftp://tug.org/historic/systems/texlive/%{year}/%{name}-%{version}-source.tar.xz
-# Source0-md5:	1d38be7dac26440fd022a4708f454a2b
+# Source0-md5:	f52599c99fb1035399b907f4c54f1125
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
-Patch0:		%{name}-am.patch
-Patch1:		%{name}-20080816-kpathsea-ar.patch
-Patch2:		%{name}-gcc44.patch
-Patch3:		%{name}-getline.patch
-Patch4:		%{name}-stdio.patch
-Patch5:		%{name}-aclocal.patch
-Patch6:		%{name}-libpng.patch
-Patch7:		icuinfo.patch
+Patch0:		format-security.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -1762,14 +1755,7 @@ language and as an extension to the typesetting engine itself.
 
 %prep
 %setup -q -n %{name}-%{version}-source
-# %patch0 -p1
-# %patch1 -p1
-# %patch2 -p1
-# %patch3 -p1
-# %patch4 -p1
-# %patch5 -p1
-# %patch6 -p1
-# %patch7 -p1
+%patch0 -p1
 
 %build
 # find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
@@ -1792,7 +1778,7 @@ ulimit -s unlimited
 export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES"
 %configure \
 	--prefix=%{_prefix} \
-	--with%{!?with_xindy:out}-xindy \
+	%{__enable_disable xindy} \
 	--enable-shared \
 	--disable-native-texlive-build \
 	--without-luatex \
@@ -1802,6 +1788,8 @@ export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES"
 	--enable-gf \
 	--enable-ipc \
 	--enable-shared \
+	--enable-ttf2pk2 \
+	--disable-t1utils \
 	--with-fontconfig \
 	--with-fonts-dir=/var/cache/fonts \
 	--with-ncurses \
@@ -1813,6 +1801,13 @@ export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES"
 	--with-system-pnglib \
 	--with-system-t1lib \
 	--with-system-zlib \
+	--with-system-harfbuzz \
+	--with-system-icu \
+	--with-system-graphite2 \
+	--with-system-zziplib \
+	--with-system-poppler \
+	--with-system-cairo \
+	--with-system-pixman \
 	--with-xdvi-x-toolkit=xaw \
 	--without-dialog \
 	--without-t1utils \
@@ -1831,31 +1826,6 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap\
 	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map\
 	$RPM_BUILD_ROOT%{fmtdir}/pdftex
-# 	$RPM_BUILD_ROOT%{texmfdist}/source/generic \
-# 	$RPM_BUILD_ROOT%{texmfdist}/tex/generic \
-# 	$RPM_BUILD_ROOT%{texmfdist}/tex/plain \
-# 	$RPM_BUILD_ROOT%{texmf}/tex
-
-#    %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
-#    %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-dist $RPM_BUILD_ROOT%{texmfdist}
-#    %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-doc $RPM_BUILD_ROOT%{texmfdoc}
-#    %{__mv} $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pgfplots/* $RPM_BUILD_ROOT%{texmfdist}/doc/latex/pgfplots
-#    rmdir $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pgfplots
-#    # imho it is unneeded
-#    %{__rm} -r $RPM_BUILD_ROOT%{texmfdist}/doc/fonts/{ec,fc,utopia}
-#    %{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/cefconv
-#
-#    # This is an empty directory
-#    %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf
-#    # Useless binary
-#    %{__rm} $RPM_BUILD_ROOT%{_datadir}/texmf-dist/doc/latex/splitindex/splitindex{.exe,-Linux-i386,-OpenBSD-i386}
-#
-# commented out because of following (non-fatal) error:
-# Can't open texmf/web2c/texmf.cnf: No such file or directory.
-#perl -pi \
-#	-e "s|\.\./\.\./texmf|$RPM_BUILD_ROOT%{texmf}|g;" \
-#	-e "s|/var/cache/fonts|$RPM_BUILD_ROOT/var/cache/fonts|g;" \
-#	texmf/web2c/texmf.cnf
 
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 PATH=$RPM_BUILD_ROOT%{_bindir}:$PATH; export PATH
@@ -1872,7 +1842,9 @@ PATH=$RPM_BUILD_ROOT%{_bindir}:$PATH; export PATH
 	sbindir=$RPM_BUILD_ROOT%{_sbindir} \
 	texmf=$RPM_BUILD_ROOT%{texmf} \
 	texmfsysvar=$RPM_BUILD_ROOT%{_localstatedir} \
-	texmfsysconfig=$RPM_BUILD_ROOT%{texmf}
+	texmfsysconfig=$RPM_BUILD_ROOT%{texmf} \
+	encdir=$RPM_BUILD_ROOT%{texmfdist}/fonts/enc/dvips/base \
+	glyphlistdir=$RPM_BUILD_ROOT%{texmfdist}/fonts/map/glyphlist
 
 # requires wdiff but we don't have
 %{__rm} -rf $RPM_BUILD_ROOT%{texmfdist}/scripts/texdiff
@@ -1930,23 +1902,18 @@ ln -sf ../share/texmf-dist/scripts/fontools/autoinst autoinst
 ln -sf ../share/texmf-dist/scripts/cachepic/cachepic.tlu cachepic
 ln -sf ../share/texmf-dist/scripts/fontools/cmap2enc cmap2enc
 ln -sf ../share/texmf-dist/scripts/epstopdf/epstopdf.pl epstopdf
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/exatools exatools
 ln -sf ../share/texmf-dist/scripts/fig4latex/fig4latex fig4latex
 ln -sf ../share/texmf-dist/scripts/findhyph/findhyph findhyph
 ln -sf ../share/texmf-dist/scripts/fontools/font2afm font2afm
 ln -sf ../share/texmf-dist/scripts/fragmaster/fragmaster.pl fragmaster
-# ln -sf ../share/texmf-dist/scripts/texlive/getnonfreefonts.pl getnonfreefonts
-# ln -sf ../share/texmf-dist/scripts/texlive/getnonfreefonts.pl getnonfreefonts-sys
 ln -sf ../share/texmf-dist/scripts/latex2man/latex2man latex2man
 ln -sf ../share/texmf-dist/scripts/latexmk/latexmk.pl latexmk
 ln -sf ../share/texmf-dist/scripts/listings-ext/listings-ext.sh listings-ext.sh
 ln -sf ../share/texmf-dist/scripts/mkgrkindex/mkgrkindex mkgrkindex
 ln -sf ../share/texmf-dist/scripts/accfonts/mkt1font mkt1font
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxrun mtxrun
 ln -sf ../share/texmf-dist/scripts/fontools/ot2kpx ot2kpx
 ln -sf ../share/texmf-dist/scripts/pax/pdfannotextractor.pl pdfannotextractor
 ln -sf ../share/texmf-dist/scripts/ppower4/pdfthumb.texlua pdfthumb
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftrimwhite pdftrimwhite
 ln -sf ../share/texmf-dist/scripts/perltex/perltex.pl perltex
 ln -sf ../share/texmf-dist/scripts/fontools/pfm2kpx pfm2kpx
 ln -sf ../share/texmf-dist/scripts/pkfix/pkfix.pl pkfix
@@ -1959,25 +1926,18 @@ ln -sf ../share/texmf-dist/scripts/splitindex/perl/splitindex.pl splitindex
 ln -sf ../share/texmf-dist/scripts/svn-multi/svn-multi.pl svn-multi
 ln -sf ../share/texmf-dist/scripts/texcount/TeXcount.pl texcount
 ln -sf ../share/texmf-dist/scripts/texdirflatten/texdirflatten texdirflatten
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
 ln -sf ../share/texmf-dist/scripts/texloganalyser/texloganalyser texloganalyser
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texshow texshow
 ln -sf ../share/texmf-dist/scripts/ulqda/ulqda.pl ulqda
 ln -sf ../share/texmf-dist/scripts/accfonts/vpl2ovp vpl2ovp
 ln -sf ../share/texmf-dist/scripts/accfonts/vpl2vpl vpl2vpl
 
 ln -sf ../share/texmf/scripts/a2ping/a2ping.pl a2ping
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/context context
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/ctxtools ctxtools
 ln -sf ../share/texmf-dist/scripts/dviasm/dviasm.py dviasm
 ln -sf ../share/texmf/scripts/tetex/e2pall.pl e2pall
 ln -sf ../share/texmf-dist/scripts/bengali/ebong.py ebong
 ln -sf ../share/texmf-dist/scripts/epspdf/epspdf epspdf
 ln -sf ../share/texmf-dist/scripts/epspdf/epspdftk epspdftk
 ln -sf ../share/texmf-dist/scripts/epstopdf/epstopdf.pl epstopdf
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/exatools exatools
-# ln -sf ../share/texmf/scripts/getnonfreefonts/getnonfreefonts.pl getnonfreefonts
-# ln -sf ../share/texmf/scripts/getnonfreefonts/getnonfreefonts.pl getnonfreefonts-sys
 ln -sf ../share/texmf-dist/scripts/tex4ht/ht.sh ht
 ln -sf ../share/texmf-dist/scripts/tex4ht/htcontext.sh htcontext
 ln -sf ../share/texmf-dist/scripts/tex4ht/htlatex.sh htlatex
@@ -1986,14 +1946,9 @@ ln -sf ../share/texmf-dist/scripts/tex4ht/httex.sh httex
 ln -sf ../share/texmf-dist/scripts/tex4ht/httexi.sh httexi
 ln -sf ../share/texmf-dist/scripts/tex4ht/htxelatex.sh htxelatex
 ln -sf ../share/texmf-dist/scripts/tex4ht/htxetex.sh htxetex
-# ln -sf ../share/texmf-dist/scripts/context/lua/luatools.lua luatools
 ln -sf ../share/texmf-dist/scripts/glossaries/makeglossaries makeglossaries
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/makempy makempy
 ln -sf ../share/texmf-dist/scripts/tex4ht/mk4ht.pl mk4ht
 ln -sf ../share/texmf-dist/scripts/mkjobtexmf/mkjobtexmf.pl mkjobtexmf
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mpstools mpstools
-# ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mptopdf mptopdf
-# ln -sf ../share/texmf-dist/scripts/context/lua/mtxrun.lua mtxrun
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxtools mtxtools
 ln -sf ../share/texmf-dist/scripts/oberdiek/pdfatfi.pl pdfatfi
 ln -sf ../share/texmf-dist/scripts/pdfcrop/pdfcrop.pl pdfcrop
@@ -2017,7 +1972,6 @@ ln -sf ../share/texmf/scripts/tetex/texdoctk.pl texdoctk
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texexec texexec
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfont texfont
-# ln -sf ../share/texmf-dist/scripts/context/ruby/texmfstart.rb texmfstart
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texshow texshow
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/textools textools
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texutil texutil
@@ -2028,24 +1982,6 @@ ln -sf ../share/texmf-dist/scripts/vpe/vpe.pl vpe
 ln -sf ../share/texmf-dist/scripts/context/stubs/unix/xmltools xmltools
 
 cd $CURDIR
-
-#install %{SOURCE7} $RPM_BUILD_ROOT%{_bindir}
-#touch $RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap/maps.lst
-
-# %{__make} init \
-# 	prefix=$RPM_BUILD_ROOT%{_prefix} \
-# 	bindir=$RPM_BUILD_ROOT%{_bindir} \
-# 	mandir=$RPM_BUILD_ROOT%{_mandir} \
-# 	libdir=$RPM_BUILD_ROOT%{_libdir} \
-# 	datadir=$RPM_BUILD_ROOT%{_datadir} \
-# 	infodir=$RPM_BUILD_ROOT%{_infodir} \
-# 	includedir=$RPM_BUILD_ROOT%{_includedir} \
-# 	sbindir=$RPM_BUILD_ROOT%{_sbindir} \
-# 	texmf=$RPM_BUILD_ROOT%{texmf}
-
-# We don't need it
-# %{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/man
-# %{__rm} -r $RPM_BUILD_ROOT%{texmfdoc}/source
 
 perl -pi \
 	-e "s|$RPM_BUILD_ROOT||g;" \
@@ -2373,6 +2309,7 @@ fi
 # executables
 # ***********
 %attr(755,root,root) %{_bindir}/afm2tfm
+%attr(755,root,root) %{_bindir}/afm2pl
 %attr(755,root,root) %{_bindir}/allcm
 %attr(755,root,root) %{_bindir}/allec
 %attr(755,root,root) %{_bindir}/allneeded
@@ -2433,17 +2370,17 @@ fi
 %attr(755,root,root) %{_bindir}/vptovf
 %attr(755,root,root) %{_bindir}/weave
 
-%attr(755,root,root) %{texmf}/web2c/mktexnam
-%attr(755,root,root) %{texmf}/web2c/mktexdir
-%attr(755,root,root) %{texmf}/web2c/mktexupd
+%attr(755,root,root) %{texmfdist}/web2c/mktexnam
+%attr(755,root,root) %{texmfdist}/web2c/mktexdir
+%attr(755,root,root) %{texmfdist}/web2c/mktexupd
 
 %config(noreplace,missingok) %verify(not md5 mtime size) %attr(750,root,root) /etc/cron.daily/texlive
 
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/fmtutil.cnf
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktex.opt
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktexdir.opt
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/mktexnam.opt
-%config(noreplace) %verify(not md5 mtime size) %{texmf}/web2c/texmf.cnf
+%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/fmtutil.cnf
+%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/mktex.opt
+%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/mktexdir.opt
+%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/mktexnam.opt
+%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/texmf.cnf
 
 %attr(1777,root,root) /var/cache/fonts
 
@@ -2457,6 +2394,7 @@ fi
 %attr(1777,root,root) %dir %{_localstatedir}/fonts/map
 
 %{_mandir}/man1/afm2tfm.1*
+%{_mandir}/man1/afm2pl.1*
 %{_mandir}/man1/allcm.1*
 %{_mandir}/man1/allec.1*
 %{_mandir}/man1/allneeded.1*
@@ -2497,7 +2435,7 @@ fi
 %{_mandir}/man1/ps2pk.1*
 %{_mandir}/man1/tangle.1*
 %{_mandir}/man1/tex.1*
-%{_mandir}/man1/texexec.1*
+#%{_mandir}/man1/texexec.1*
 %{_mandir}/man1/texhash.1*
 %{_mandir}/man1/texlinks.1*
 %{_mandir}/man1/tftopl.1*
@@ -2578,10 +2516,6 @@ fi
 %attr(755,root,root) %{_bindir}/sjislatex
 %attr(755,root,root) %{_bindir}/sjispdflatex
 %attr(755,root,root) %{_bindir}/synctex
-%attr(755,root,root) %{_bindir}/t1dotlessj
-%attr(755,root,root) %{_bindir}/t1lint
-%attr(755,root,root) %{_bindir}/t1reencode
-%attr(755,root,root) %{_bindir}/t1testpage
 %attr(755,root,root) %{_bindir}/texcount
 %attr(755,root,root) %{_bindir}/ttf2pk
 %attr(755,root,root) %{_bindir}/ttf2tfm
@@ -2601,10 +2535,6 @@ fi
 %{_mandir}/man1/otftotfm.1*
 %{_mandir}/man1/pdftosrc.1*
 %{_mandir}/man1/synctex.1*
-%{_mandir}/man1/t1dotlessj.1*
-%{_mandir}/man1/t1lint.1*
-%{_mandir}/man1/t1reencode.1*
-%{_mandir}/man1/t1testpage.1*
 %{_mandir}/man1/ttf2pk.1*
 %{_mandir}/man1/ttf2tfm.1*
 %{_mandir}/man1/ttftotype42.1*
@@ -2612,12 +2542,12 @@ fi
 %{_mandir}/man5/synctex.5*
 #%{fmtdir}/pdftex/texsis.fmt
 # %{fmtdir}/texsis
-%{texmf}/hbf2gf
-%{texmf}/ttf2pk
+%{texmfdist}/hbf2gf
+%{texmfdist}/ttf2pk
 
 %files font-utils
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/afm*
+%attr(755,root,root) %{_bindir}/afm2afm
 %attr(755,root,root) %{_bindir}/autoinst
 %attr(755,root,root) %{_bindir}/cmap2enc
 %attr(755,root,root) %{_bindir}/font2afm
@@ -2635,7 +2565,6 @@ fi
 %attr(755,root,root) %{texmfdist}/scripts/fontools/*
 # %dir %{texmf}/scripts/getnonfreefonts
 # %attr(755,root,root) %{texmf}/scripts/getnonfreefonts/*
-%{_mandir}/man1/afm2pl.1*
 # %{_mandir}/man1/getnonfreefonts-sys.1
 # %{_mandir}/man1/getnonfreefonts.1*
 %{_mandir}/man1/t1*.1*
@@ -2690,10 +2619,10 @@ fi
 %{_mandir}/man1/dvired.1*
 %{_mandir}/man1/dvitomp.1*
 %{_mandir}/man1/dvitype.1*
-%{texmf}/dvips/base
-# %{texmf}/dvips/config
+%{texmfdist}/dvips/base
+%{texmfdist}/dvips/config
 # %{texmf}/dvips/getafm
-%{texmf}/dvips/gsftopk
+%{texmfdist}/dvips/gsftopk
 %{texmfdist}/fonts/enc/dvips/base
 # %{texmfdist}/fonts/map/dvips/allrunes
 # %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
@@ -2728,9 +2657,9 @@ fi
 %attr(755,root,root) %{_bindir}/mkgrkindex
 %attr(755,root,root) %{_bindir}/rumakeindex
 %attr(755,root,root) %{_bindir}/splitindex
-%dir %{texmfdist}/scripts/splitindex
-%dir %{texmfdist}/scripts/splitindex/perl
-%attr(755,root,root) %{texmfdist}/scripts/splitindex/perl/splitindex.pl
+#%dir %{texmfdist}/scripts/splitindex
+#%dir %{texmfdist}/scripts/splitindex/perl
+#%attr(755,root,root) %{texmfdist}/scripts/splitindex/perl/splitindex.pl
 %dir %{texmfdist}/scripts/mkgrkindex
 %attr(755,root,root) %{texmfdist}/scripts/mkgrkindex/mkgrkindex
 %{_mandir}/man1/makeindex.1*
@@ -2739,8 +2668,8 @@ fi
 
 %files tlmgr
 %defattr(644,root,root,755)
-%dir %{texmf}/scripts/texlive
-%attr(755,root,root) %{texmf}/scripts/texlive/*.pl
+%dir %{texmfdist}/scripts/texlive
+%attr(755,root,root) %{texmfdist}/scripts/texlive/*.pl
 %attr(755,root,root) %{_bindir}/tlmgr
 # %dir %{texmf}/scripts/texlive/gswin32
 # %dir %{texmf}/scripts/texlive/lua
@@ -2762,10 +2691,10 @@ fi
 # %dir %{texmfdist}/scripts/shipunov
 %dir %{texmfdist}/scripts/texcount
 %dir %{texmfdist}/scripts/vpe
-%dir %{texmf}/scripts/a2ping
+%dir %{texmfdist}/scripts/a2ping
 # %dir %{texmf}/scripts/pkfix
-%dir %{texmf}/scripts/simpdftex
-%dir %{texmf}/scripts/tetex
+%dir %{texmfdist}/scripts/simpdftex
+#%dir %{texmf}/scripts/tetex
 # %attr(755,root,root) %{texmfdist}/scripts/bengali/*
 %attr(755,root,root) %{texmfdist}/scripts/glossaries/*
 %attr(755,root,root) %{texmfdist}/scripts/perltex/perltex*
@@ -2774,10 +2703,10 @@ fi
 # %attr(755,root,root) %{texmfdist}/scripts/shipunov/*
 %attr(755,root,root) %{texmfdist}/scripts/texcount/*
 %attr(755,root,root) %{texmfdist}/scripts/vpe/vpe.pl
-%attr(755,root,root) %{texmf}/scripts/a2ping/a2ping*
+%attr(755,root,root) %{texmfdist}/scripts/a2ping/a2ping*
 # %attr(755,root,root) %{texmf}/scripts/pkfix/pkfix*
-%attr(755,root,root) %{texmf}/scripts/simpdftex/simpdftex*
-%attr(755,root,root) %{texmf}/scripts/tetex/*
+%attr(755,root,root) %{texmfdist}/scripts/simpdftex/simpdftex*
+#%attr(755,root,root) %{texmf}/scripts/tetex/*
 %attr(755,root,root) %{_bindir}/a2ping
 %attr(755,root,root) %{_bindir}/e2pall
 %dir %{texmfdist}/scripts/findhyph
@@ -2813,7 +2742,7 @@ fi
 %files mptopdf
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mptopdf
-%{_mandir}/man1/mptopdf.1*
+#%{_mandir}/man1/mptopdf.1*
 # %{texmfdist}/tex/mptopdf
 #%{fmtdir}/pdftex/mptopdf.fmt
 # %{fmtdir}/mptopdf
@@ -2826,14 +2755,14 @@ fi
 
 %files -n texconfig
 %defattr(644,root,root,755)
-%dir %{texmf}/texconfig
+%dir %{texmfdist}/texconfig
 %attr(755,root,root) %{_bindir}/texconfig
 %attr(755,root,root) %{_bindir}/texconfig-dialog
 %attr(755,root,root) %{_bindir}/texconfig-sys
-%attr(755,root,root) %{texmf}/texconfig/tcfmgr
+%attr(755,root,root) %{texmfdist}/texconfig/tcfmgr
 %{_mandir}/man1/texconfig.1*
 %{_mandir}/man1/texconfig-sys.1*
-%{texmf}/texconfig/tcfmgr.map
+%{texmfdist}/texconfig/tcfmgr.map
 
 %if %{with xindy}
 %files -n xindy
@@ -3041,7 +2970,7 @@ fi
 %{_mandir}/man1/xdvi.1*
 %{_desktopdir}/xdvi.desktop
 %{_pixmapsdir}/xdvi.png
-%{texmf}/xdvi
+#%{texmf}/xdvi
 
 %files pdftex
 %defattr(644,root,root,755)
@@ -3183,7 +3112,6 @@ fi
 %attr(755,root,root) %{_bindir}/ctxtools
 %attr(755,root,root) %{_bindir}/convbkmk
 # %attr(755,root,root) %{_bindir}/exatools
-%attr(755,root,root) %{_bindir}/luatools
 # %attr(755,root,root) %{_bindir}/makempy
 # %attr(755,root,root) %{_bindir}/mpstools
 %attr(755,root,root) %{_bindir}/mtxrun
@@ -3203,12 +3131,12 @@ fi
 %attr(755,root,root) %{_bindir}/texutil
 %attr(755,root,root) %{_bindir}/tmftools
 %attr(755,root,root) %{_bindir}/xmltools
-%{_mandir}/man1/ctxtools.1*
+#%{_mandir}/man1/ctxtools.1*
 # %{_mandir}/man1/pdftools.1*
-%{_mandir}/man1/pstopdf.1*
+#%{_mandir}/man1/pstopdf.1*
 # %{_mandir}/man1/texfind.1*
 # %{_mandir}/man1/texfont.1*
-%{_mandir}/man1/texmfstart.1*
+#%{_mandir}/man1/texmfstart.1*
 # %{_mandir}/man1/textools.1*
 # %{_mandir}/man1/texutil.1*
 # %{texmfdist}/context
@@ -3269,7 +3197,7 @@ fi
 # %doc %{texmfdist}/doc/latex/bibunits
 # %doc %{texmfdist}/doc/latex/footbib
 # %doc %{texmfdist}/doc/latex/natbib
-%doc %{texmf}/doc/bibtex8
+%doc %{texmfdist}/doc/bibtex8
 %{_mandir}/man1/bibtex.1*
 %{_mandir}/man1/rubibtex.1*
 
@@ -3298,7 +3226,7 @@ fi
 %defattr(644,root,root,755)
 # %doc %{texmfdist}/doc/generic/thumbpdf
 %attr(755,root,root) %{_bindir}/thumbpdf
-%{_mandir}/man1/thumbpdf.1*
+#%{_mandir}/man1/thumbpdf.1*
 # %{texmfdist}/tex/generic/thumbpdf
 %{texmfdist}/scripts/thumbpdf
 
@@ -3319,7 +3247,7 @@ fi
 %files dviutils
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts/dviasm
-%dir %{texmf}/fonts/cmap
+#%dir %{texmf}/fonts/cmap
 # %doc %{texmf}/fonts/cmap/README
 %attr(755,root,root) %{_bindir}/disdvi
 %attr(755,root,root) %{_bindir}/dt2dv
@@ -3345,9 +3273,9 @@ fi
 %{_mandir}/man1/dvipos*
 %{_mandir}/man1/dviselect*
 %{_mandir}/man1/dvitodvi*
-%{texmf}/dvipdfmx
-%{texmf}/fonts/cmap/dvipdfmx
-# %{texmf}/fonts/map/dvipdfmx
+%{texmfdist}/dvipdfmx
+%{texmfdist}/fonts/cmap/dvipdfmx
+%{texmfdist}/fonts/map/dvipdfmx
 
 %files psutils
 %defattr(644,root,root,755)
@@ -3431,7 +3359,7 @@ fi
 %attr(755,root,root) %{_bindir}/xdvipdfmx
 %attr(755,root,root) %{_bindir}/xelatex
 %attr(755,root,root) %{_bindir}/xetex
-%dir %{fmtdir}/xetex
+#%dir %{fmtdir}/xetex
 # %doc %{texmfdist}/doc/generic/ifxetex
 # %doc %{texmfdist}/doc/generic/xetex-pstricks
 # %doc %{texmfdist}/doc/xelatex
@@ -3473,11 +3401,10 @@ fi
 %attr(755,root,root) %{_bindir}/cachepic
 # %attr(755,root,root) %{texmfdist}/scripts/context/lua/*
 %attr(755,root,root) %{_bindir}/luatools
-%attr(755,root,root) %{_bindir}/mtxrun
-%attr(755,root,root) %{texmf}/scripts/texlive/rungs.tlu
+#%attr(755,root,root) %{texmf}/scripts/texlive/rungs.tlu
 %attr(755,root,root) %{_bindir}/rungs
 %attr(755,root,root) %{_bindir}/texdoc
-%attr(755,root,root) %{texmf}/scripts/texdoc/texdoc.tlu
+#%attr(755,root,root) %{texmf}/scripts/texdoc/texdoc.tlu
 %{_mandir}/man1/luatex.1*
 %{_mandir}/man1/texlua.1*
 %{_mandir}/man1/texluac.1*
