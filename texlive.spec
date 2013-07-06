@@ -3175,10 +3175,14 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
-%attr(755,root,root) %{_bindir}/latexdiff
-%attr(755,root,root) %{_bindir}/latexdiff-vc
 %attr(755,root,root) %{_bindir}/latexfileversion
+%attr(755,root,root) %{texmfdist}/scripts/latexfileversion/latexfileversion
+%attr(755,root,root) %{_bindir}/latexdiff-vc
+%attr(755,root,root) %{texmfdist}/scripts/latexdiff/latexdiff-vc.pl
+%attr(755,root,root) %{_bindir}/latexdiff
+%attr(755,root,root) %{texmfdist}/scripts/latexdiff/latexdiff.pl
 %attr(755,root,root) %{_bindir}/latexrevise
+%attr(755,root,root) %{texmfdist}/scripts/latexdiff/latexrevise.pl
 
 %attr(755,root,root) %{_bindir}/pslatex
 %attr(755,root,root) %{texmfdist}/scripts/texlive/pslatex.sh
