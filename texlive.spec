@@ -1992,6 +1992,7 @@ install %{SOURCE5} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 # not included in package
+#FIXME why not included????
 rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir*
 rm -f $RPM_BUILD_ROOT%{_infodir}/dvipng*
@@ -2303,6 +2304,8 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%dir %{texmfdist}/doc
+%dir %{texmfdist}/source
 
 # ***********
 # executables
@@ -2368,6 +2371,10 @@ fi
 %attr(755,root,root) %{_bindir}/vftovp
 %attr(755,root,root) %{_bindir}/vptovf
 %attr(755,root,root) %{_bindir}/weave
+%dir %{texmfdist}/scripts
+%dir %{texmfdist}/scripts/installfont
+%dir %{texmfdist}/scripts/pst-pdf
+%dir %{texmfdist}/scripts/texlive
 %attr(755,root,root) %{texmfdist}/scripts/installfont/installfont-tl
 %attr(755,root,root) %{texmfdist}/scripts/pst-pdf/ps4pdf
 %attr(755,root,root) %{texmfdist}/scripts/texlive/allcm.sh
@@ -2381,6 +2388,7 @@ fi
 %attr(755,root,root) %{texmfdist}/scripts/texlive/updmap-sys.sh
 
 
+%dir %{texmfdist}/web2c
 %attr(755,root,root) %{texmfdist}/web2c/mktexnam
 %attr(755,root,root) %{texmfdist}/web2c/mktexdir
 %attr(755,root,root) %{texmfdist}/web2c/mktexupd
@@ -2403,6 +2411,8 @@ fi
 %attr(1777,root,root) %dir %{_localstatedir}
 %attr(1777,root,root) %dir %{_localstatedir}/fonts
 %attr(1777,root,root) %dir %{_localstatedir}/fonts/map
+%dir %{fmtdir}
+%dir %{texmfdist}
 
 %{_mandir}/man1/afm2tfm.1*
 %{_mandir}/man1/afm2pl.1*
@@ -2606,13 +2616,6 @@ fi
 
 %files dvips-basic
 %defattr(644,root,root,755)
-# %dir %{texmfdist}/fonts/map/dvips/cmex
-# %dir %{texmf}/dvipdfm
-# %dir %{texmf}/fonts/map/dvipdfm
-# %dir %{texmf}/fonts/map/dvips
-# %dir %{texmf}/fonts/map/dvips/tetex
-# %doc %{texmf}/doc/dvips
-# %doc %{texmf}/doc/dvipdfm
 # dvi2fax requires ghostscript
 %attr(755,root,root) %{_bindir}/dvi2fax
 %attr(755,root,root) %{_bindir}/dvicopy
@@ -2626,28 +2629,17 @@ fi
 %{_infodir}/dvips.info*
 %{_mandir}/man1/dvi2fax.1*
 %{_mandir}/man1/dvicopy.1*
-# %{_mandir}/man1/dvipdfm.1*
 %{_mandir}/man1/dvips.1*
 %{_mandir}/man1/dvired.1*
 %{_mandir}/man1/dvitomp.1*
 %{_mandir}/man1/dvitype.1*
+%dir %{texmfdist}/dvips
 %{texmfdist}/dvips/base
 %{texmfdist}/dvips/config
-# %{texmf}/dvips/getafm
 %{texmfdist}/dvips/gsftopk
 %{texmfdist}/fonts/enc/dvips/base
 %attr(755,root,root) %{texmfdist}/scripts/texlive/dvi2fax.sh
 %attr(755,root,root) %{texmfdist}/scripts/texlive/dvired.sh
-# %{texmfdist}/fonts/map/dvips/allrunes
-# %{texmfdist}/fonts/map/dvips/cmex/ttcmex.map
-# %{texmfdist}/tex/generic/dvips
-# %{texmfdist}/dvips
-# %{texmf}/dvipdfm/config
-# %{texmf}/dvips/tetex/config.*
-# %{texmf}/fonts/enc/dvips/tetex/mtex.enc
-# %{texmf}/fonts/enc/dvips/afm2pl
-# %{texmf}/fonts/map/dvipdfm/updmap
-# %{texmf}/fonts/map/dvipdfm/dvipdfmx
 
 %files dvilj
 %defattr(644,root,root,755)
@@ -2671,6 +2663,7 @@ fi
 %attr(755,root,root) %{_bindir}/mkgrkindex
 %attr(755,root,root) %{_bindir}/rumakeindex
 %attr(755,root,root) %{_bindir}/splitindex
+%dir %{texmfdist}/scripts/splitindex
 %attr(755,root,root) %{texmfdist}/scripts/splitindex/splitindex.pl
 %attr(755,root,root) %{texmfdist}/scripts/texlive/rumakeindex.sh
 %dir %{texmfdist}/scripts/mkgrkindex
@@ -2682,17 +2675,13 @@ fi
 %files tlmgr
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts/texlive
-%attr(755,root,root) %{texmfdist}/scripts/texlive/*.pl
+
+#FIXME: this 2 file are porobably in wrong subpackage
+%attr(755,root,root) %{texmfdist}/scripts/texlive/e2pall.pl
+%attr(755,root,root) %{texmfdist}/scripts/texlive/udpmap.pl
+
+%attr(755,root,root) %{texmfdist}/scripts/texlive/tlmgr.pl
 %attr(755,root,root) %{_bindir}/tlmgr
-# %dir %{texmf}/scripts/texlive/gswin32
-# %dir %{texmf}/scripts/texlive/lua
-# %dir %{texmf}/scripts/texlive/lua/texlive
-# %dir %{texmf}/scripts/texlive/tlmgrgui
-# %attr(755,root,root) %{texmf}/scripts/texlive/*.pl
-# %attr(755,root,root) %{texmf}/scripts/texlive/gswin32/*
-# %attr(755,root,root) %{texmf}/scripts/texlive/lua/texlive/*
-# %attr(755,root,root) %{texmf}/scripts/texlive/tlmgrgui/*.pl
-# %{texmf}/scripts/texlive/tlmgrgui/lang
 
 %files scripts
 %defattr(644,root,root,755)
@@ -2986,15 +2975,9 @@ fi
 %{_mandir}/man1/xdvi.1*
 %{_desktopdir}/xdvi.desktop
 %{_pixmapsdir}/xdvi.png
-#%{texmf}/xdvi
 
 %files pdftex
 %defattr(644,root,root,755)
-# %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftexconfig.tex
-# %dir %{texmfdist}/doc/support
-# %dir %{texmf}/fonts/map/pdftex
-# %doc %{texmfdist}/doc/pdftex
-# %doc %{texmfdist}/doc/support/pdfcrop
 %dir %{texmfdist}/scripts/pdfcrop
 %attr(755,root,root) %{texmfdist}/scripts/pdfcrop/pdfcrop.pl
 %attr(755,root,root) %{_bindir}/pdfcrop
@@ -3002,40 +2985,16 @@ fi
 %attr(755,root,root) %{_bindir}/pdftex
 %attr(755,root,root) %{_bindir}/tpic2pdftex
 %dir %{fmtdir}/pdftex
-# %{_mandir}/man1/epstopdf.1*
 %{_mandir}/man1/pdftex.1*
 %{_mandir}/man1/tpic2pdftex.1*
-# %{texmfdist}/fonts/enc/pdftex
-# %{texmfdist}/fonts/map/pdftex
-# %{texmf}/fmtutil/format.pdftex.cnf
-# %{texmf}/fonts/map/pdftex/updmap
-
-%files phyzzx
-%defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/phyzzx
-# %dir %{texmfdist}/doc/phyzzx
-# %dir %{texmfdist}/tex/phyzzx
-# %doc %{texmfdist}/doc/phyzzx/base
-# %{texmfdist}/tex/phyzzx/base
-# %{texmfdist}/tex/phyzzx/config
-# %{texmf}/fmtutil/format.phyzzx.cnf
-# %{fmtdir}/phyzzx
 
 %files omega-basic
 %defattr(644,root,root,755)
-# %doc %{texmfdist}/doc/aleph
-# %doc %{texmfdist}/doc/omega
-# %doc %{texmfdist}/doc/lambda
-# %dir %{texmfdist}/omega
-# %dir %{texmfdist}/dvips/omega
 %attr(755,root,root) %{_bindir}/aleph
-# %attr(755,root,root) %{_bindir}/lambda
 %attr(755,root,root) %{_bindir}/mkocp
 %attr(755,root,root) %{_bindir}/mkofm
 %attr(755,root,root) %{_bindir}/odvicopy
-# %attr(755,root,root) %{_bindir}/odvips
 %attr(755,root,root) %{_bindir}/odvitype
-# %attr(755,root,root) %{_bindir}/omega
 %attr(755,root,root) %{_bindir}/omfonts
 %attr(755,root,root) %{_bindir}/opl2ofm
 %attr(755,root,root) %{_bindir}/otangle
@@ -3043,23 +3002,10 @@ fi
 %attr(755,root,root) %{_bindir}/outocp
 %attr(755,root,root) %{_bindir}/ovf2ovp
 %attr(755,root,root) %{_bindir}/ovp2ovf
-# %{texmfdist}/dvips/omega/config.omega
-# %{texmfdist}/dvips/omega/omega.cfg
-# %{texmfdist}/fonts/map/dvips/omega
-# %{texmfdist}/tex/generic/omegahyph
-# %{texmfdist}/omega/ocp
-# %{texmfdist}/omega/otp
-# %{texmfdist}/tex/lambda
-# %{texmfdist}/source/lambda
-# %{texmf}/fmtutil/format.omega.cnf
-# %{texmf}/fmtutil/format.aleph.cnf
 %{_mandir}/man1/aleph.1*
-# %{_mandir}/man1/lambda.1*
 %{_mandir}/man1/mkocp.1*
 %{_mandir}/man1/mkofm.1*
-# %{_mandir}/man1/omega.1*
 %{_mandir}/man1/odvicopy.1*
-# %{_mandir}/man1/odvips.1*
 %{_mandir}/man1/odvitype.1*
 %{_mandir}/man1/ofm2opl.1*
 %{_mandir}/man1/opl2ofm.1*
@@ -3067,69 +3013,13 @@ fi
 %{_mandir}/man1/outocp.1*
 %{_mandir}/man1/ovf2ovp.1*
 %{_mandir}/man1/ovp2ovf.1*
-# %{fmtdir}/aleph
-# %{fmtdir}/omega
-# %{fmtdir}/lambda
-# %{fmtdir}/lamed
-# %{fmtdir}/pdftex/aleph.fmt
-# %{fmtdir}/pdftex/lambda.fmt
-# %{fmtdir}/pdftex/lamed.fmt
-# %{fmtdir}/pdftex/omega.fmt
-
-%files format-mex
-%defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/mex
-# %{texmfdist}/tex/mex/config/mex.ini
-# %{fmtdir}/mex
-
-%files format-amstex
-%defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/amstex
-# %doc %{texmfdist}/doc/amstex
-# %{texmfdist}/tex/amstex
-# %{texmf}/fmtutil/format.amstex.cnf
-# %{texmf}/fmtutil/format.cyramstex.cnf
-%{_mandir}/man1/amstex.1*
-
-# %files csplain
-# %defattr(644,root,root,755)
-# %dir %{texmfdist}/doc/cslatex
-# %doc %{texmfdist}/doc/cslatex/base
-# %attr(755,root,root) %{_bindir}/csplain
-# %{texmfdist}/tex/csplain
-# %{texmf}/fmtutil/format.csplain.cnf
-
-%files format-csplain
-%defattr(644,root,root,755)
-# %{fmtdir}/csplain
-
-%files format-pdfcsplain
-%defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/pdfcsplain
-# %{fmtdir}/pdfcsplain
-
-%files format-eplain
-%defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/eplain
-# %attr(755,root,root) %{_bindir}/etex
-%{_mandir}/man1/eplain.1*
-# %{_mandir}/man1/etex.1*
-# %{texmf}/fmtutil/format.eplain.cnf
-# %{fmtdir}/etex
 
 %files context
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts/context
-# %dir %{texmfdist}/scripts/context/ruby
-# %dir %{texmfdist}/scripts/context/stubs
-# %dir %{texmfdist}/scripts/context/stubs/unix
-# %attr(755,root,root) %{texmfdist}/scripts/context/stubs/unix/*
 %attr(755,root,root) %{_bindir}/context
 %attr(755,root,root) %{_bindir}/ctxtools
 %attr(755,root,root) %{_bindir}/convbkmk
-# %attr(755,root,root) %{_bindir}/exatools
-# %attr(755,root,root) %{_bindir}/makempy
-# %attr(755,root,root) %{_bindir}/mpstools
 %attr(755,root,root) %{_bindir}/mtxrun
 %attr(755,root,root) %{_bindir}/mtxtools
 %attr(755,root,root) %{_bindir}/pdftools
@@ -3140,43 +3030,22 @@ fi
 %attr(755,root,root) %{_bindir}/texexec
 %attr(755,root,root) %{_bindir}/texfind
 %attr(755,root,root) %{_bindir}/texfont
-# %attr(755,root,root) %{texmfdist}/scripts/context/ruby/texmfstart.rb
 %attr(755,root,root) %{_bindir}/texmfstart
 %attr(755,root,root) %{_bindir}/texshow
 %attr(755,root,root) %{_bindir}/textools
 %attr(755,root,root) %{_bindir}/texutil
 %attr(755,root,root) %{_bindir}/tmftools
 %attr(755,root,root) %{_bindir}/xmltools
-#%{_mandir}/man1/ctxtools.1*
-# %{_mandir}/man1/pdftools.1*
-#%{_mandir}/man1/pstopdf.1*
-# %{_mandir}/man1/texfind.1*
-# %{_mandir}/man1/texfont.1*
-#%{_mandir}/man1/texmfstart.1*
-# %{_mandir}/man1/textools.1*
-# %{_mandir}/man1/texutil.1*
-# %{texmfdist}/context
-# %{texmfdist}/fonts/enc/dvips/context
-# %{texmfdist}/metapost/context
-# %{texmfdist}/tex/context
-# %exclude %{texmfdist}/tex/context/config/cont-de.ini
-# %exclude %{texmfdist}/tex/context/config/cont-en.ini
-# %exclude %{texmfdist}/tex/context/config/cont-nl.ini
-# %exclude %{texmfdist}/tex/context/config/cont-uk.ini
-# %{texmfdist}/tex/generic/context
-# %{texmfdist}/tex/latex/context
-# %{texmfdist}/bibtex/bst/context
-# %{texmf}/fmtutil/format.context.cnf
-# %{texmf}/fmtutil/format.luatex.cnf
-# %{texmf}/web2c/context.cnf
 
 %files latex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
 %attr(755,root,root) %{_bindir}/latexfileversion
+%dir %{texmfdist}/scripts/latexfileversion
 %attr(755,root,root) %{texmfdist}/scripts/latexfileversion/latexfileversion
 %attr(755,root,root) %{_bindir}/latexdiff-vc
+%dir %{texmfdist}/scripts/latexdiff
 %attr(755,root,root) %{texmfdist}/scripts/latexdiff/latexdiff-vc.pl
 %attr(755,root,root) %{_bindir}/latexdiff
 %attr(755,root,root) %{texmfdist}/scripts/latexdiff/latexdiff.pl
@@ -3211,16 +3080,7 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/listbib
 %dir %{texmfdist}/bibtex
-# %dir %{texmfdist}/bibtex/bib
-# %dir %{texmfdist}/bibtex/bst
 %dir %{texmfdist}/bibtex/csf
-# %dir %{texmfdist}/doc/bibtex
-# %dir %{texmf}/bibtex
-# %doc %{texmfdist}/doc/bibtex/base
-# %doc %{texmfdist}/doc/latex/bibtopic
-# %doc %{texmfdist}/doc/latex/bibunits
-# %doc %{texmfdist}/doc/latex/footbib
-# %doc %{texmfdist}/doc/latex/natbib
 %doc %{texmfdist}/doc/bibtex8
 %{_mandir}/man1/bibtex.1*
 %{_mandir}/man1/rubibtex.1*
@@ -3243,16 +3103,11 @@ fi
 %files format-pdflatex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdflatex
-# %{fmtdir}/pdflatex
-# %{fmtdir}/pdftex/pdflatex.fmt
 %{_mandir}/man1/pdflatex.1*
  
 %files tex-thumbpdf
 %defattr(644,root,root,755)
-# %doc %{texmfdist}/doc/generic/thumbpdf
 %attr(755,root,root) %{_bindir}/thumbpdf
-#%{_mandir}/man1/thumbpdf.1*
-# %{texmfdist}/tex/generic/thumbpdf
 %{texmfdist}/scripts/thumbpdf
 
 %files fonts-other
@@ -3272,8 +3127,6 @@ fi
 %files dviutils
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts/dviasm
-#%dir %{texmf}/fonts/cmap
-# %doc %{texmf}/fonts/cmap/README
 %attr(755,root,root) %{_bindir}/disdvi
 %attr(755,root,root) %{_bindir}/dt2dv
 %attr(755,root,root) %{_bindir}/dv2dt
@@ -3288,6 +3141,8 @@ fi
 %attr(755,root,root) %{_bindir}/dviselect
 %attr(755,root,root) %{_bindir}/dvitodvi
 %attr(755,root,root) %{texmfdist}/scripts/dviasm/dviasm*
+%ghost /usr/lib64/libptexenc.so.1
+%attr(755,root,root) /usr/lib64/libptexenc.so.1.3.1
 %{_mandir}/man1/dt2dv*
 %{_mandir}/man1/dv2dt*
 %{_mandir}/man1/dvi2tty*
@@ -3304,8 +3159,6 @@ fi
 
 %files psutils
 %defattr(644,root,root,755)
-# %dir %{texmf}/scripts/ps2eps
-# %doc %{texmfdist}/doc/epspdf
 %attr(755,root,root) %{_bindir}/epsffit
 %attr(755,root,root) %{_bindir}/epspdf
 %attr(755,root,root) %{_bindir}/epspdftk
@@ -3345,7 +3198,6 @@ fi
 %{_mandir}/man1/psselect*
 %{_mandir}/man1/pstops*
 %{texmfdist}/scripts/epspdf
-%{texmfdist}/dvips/psutils
 
 %files uncategorized-utils
 %defattr(644,root,root,755)
@@ -3354,7 +3206,6 @@ fi
 %files tex4ht
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts/tex4ht
-# %doc %{texmfdist}/doc/generic/tex4ht
 %attr(755,root,root) %{_bindir}/ht
 %attr(755,root,root) %{_bindir}/htcontext
 %attr(755,root,root) %{_bindir}/htlatex
@@ -3375,56 +3226,20 @@ fi
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxelatex.sh
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxetex.sh
 %attr(755,root,root) %{texmfdist}/scripts/tex4ht/mk4ht.pl
-# %{texmfdist}/tex/generic/tex4ht
-# %{texmfdist}/tex4ht
-# %{texmf}/scripts/tex4ht
 
 %files xetex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/xdvipdfmx
 %attr(755,root,root) %{_bindir}/xelatex
 %attr(755,root,root) %{_bindir}/xetex
-#%dir %{fmtdir}/xetex
-# %doc %{texmfdist}/doc/generic/ifxetex
-# %doc %{texmfdist}/doc/generic/xetex-pstricks
-# %doc %{texmfdist}/doc/xelatex
-# %doc %{texmfdist}/doc/xetex
-# %{texmfdist}/scripts/xetex
-# %{texmfdist}/tex/generic/ifxetex
-# %{texmfdist}/tex/generic/xetexconfig
-# %{texmfdist}/tex/latex/latexconfig/xelatex.ini
-# %{texmfdist}/tex/plain/config/xetex.ini
-# %{texmfdist}/tex/xelatex
-# %{texmfdist}/tex/xetex
-# %{texmf}/fmtutil/format.xetex.cnf
-# %{fmtdir}/xetex/xetex.fmt
-# %{fmtdir}/xetex/xelatex.fmt
-# %{fmtdir}/pdftex/xelatex.fmt
-# %{fmtdir}/pdftex/xetex.fmt
-# %{fmtdir}/xelatex
-
-%files xmltex
-%defattr(644,root,root,755)
-# %attr(755,root,root) %{_bindir}/pdfxmltex
-# %attr(755,root,root) %{_bindir}/xmltex
-# %doc %{texmfdist}/doc/xmltex
-# %{texmfdist}/source/xmltex
-# %{texmfdist}/tex/xmltex
-# %{texmf}/fmtutil/format.xmltex.cnf
-# %{fmtdir}/pdftex/pdfxmltex.fmt
-# %{fmtdir}/pdftex/xmltex.fmt
-# %{fmtdir}/pdfxmltex
-# %{fmtdir}/xmltex
 
 %files luatex
-# %dir %{texmfdist}/scripts/context/lua
+%defattr(755,root,root,644)
 %attr(755,root,root) %{_bindir}/luatex
-# %attr(755,root,root) %{_bindir}/luatangle
 %attr(755,root,root) %{_bindir}/texlua
 %attr(755,root,root) %{_bindir}/texluac
 %attr(755,root,root) %{texmfdist}/scripts/cachepic/cachepic.tlu
 %attr(755,root,root) %{_bindir}/cachepic
-# %attr(755,root,root) %{texmfdist}/scripts/context/lua/*
 %attr(755,root,root) %{_bindir}/luatools
 %attr(755,root,root) %{texmfdist}/scripts/texlive/rungs.tlu
 %attr(755,root,root) %{_bindir}/rungs
