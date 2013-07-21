@@ -280,7 +280,7 @@ Pliki nagłówkowe oraz dokumentacja biblioteki kpathsea.
 Bibliotecas, headers e outros componentes que podem ser utilizados
 para desenvolver aplicações TeX.
 
-%package dvips
+%package dvips-basic
 Summary:	DVI to PostScript converter
 Summary(de.UTF-8):	dvi-Postscript-Konvertierungsprogramm
 Summary(es.UTF-8):	Convertidor dvi para postscript
@@ -292,46 +292,43 @@ Summary(tr.UTF-8):	dvi'dan postscript'e dönüştürücü
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-dvips-data >= %{texmfversion}
-Provides:	tetex-dvips = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-dvips
 
-%description dvips
+%description dvips-basic
 The program dvips takes a DVI file file[.dvi] produced by TeX (or by
 some other processor such as GFtoDVI) and converts it to PostScript,
 normally sending the result directly to the laserprinter.
 
-%description dvips -l de.UTF-8
+%description dvips-basic -l de.UTF-8
 Das dvips-Programm nimmt eine dvi-Datei ([.dvi]), die von TeX bzw.
 durch einen anderen Prozessor wie GFtoDVI) erzeugt wurde, und
 konvertiert diese in PostScript, wobei das Ergebnis in der Regel
 direkt an einen Laserdrucker gesandt wird.
 
-%description dvips -l es.UTF-8
+%description dvips-basic -l es.UTF-8
 El programa dvips coge un archivo DVI (.dvi) producido por TeX (o por
 otro procesador como GFtoDVI) y lo convierte a PostScript, normalmente
 enviando el resultado directamente a la impresora láser.
 
-%description dvips -l fr.UTF-8
+%description dvips-basic -l fr.UTF-8
 Le programme dvips convertit les fichiers DVI en PostScript, en
 envoyant normalement le résultat directement sur une imprimante Laser.
 
-%description dvips -l hu.UTF-8
+%description dvips-basic -l hu.UTF-8
 A dvips program egy TeX által készített DVI-fájlból PostScript
 állományt készít, amelyet a legtöbb esetben közvetlenül a
 lézernyomtatóra küldhetsz.
 
-%description dvips -l pl.UTF-8
+%description dvips-basic -l pl.UTF-8
 Program dvips bierze plik DVI wygenerowany przez TeXa (lub jakiś inny
 program, jak na przykład GFtoDVI) i konwertuje go do PostScriptu.
 Domyślnie wynik jest wysyłany bezpośrednio do drukarki.
 
-%description dvips -l pt_BR.UTF-8
+%description dvips-basic -l pt_BR.UTF-8
 O programa dvips toma um arquivo DVI (.dvi) produzido pelo TeX (ou por
 outro processador como o GFtoDVI) e o converte para PostScript,
 normalmente enviando o resultado diretamente para a impressora laser.
 
-%description dvips -l tr.UTF-8
+%description dvips-basic -l tr.UTF-8
 dvips programı, dvi biçiminde bir girdi dosyası alır ve onu
 PostScript'e dönüştürür. Kaynak dosya TeX tarafından oluşturulmuş
 olabileceği gibi başka işleyiciler tarafından da (GFtoDVI gibi)
@@ -515,7 +512,7 @@ Summary(hu.UTF-8):	TeX szövegszedő rendszer beállítása
 Summary(pl.UTF-8):	Konfigurator systemu składu TeX
 Group:		Applications/Publishing/TeX
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-dvips = %{epoch}:%{version}-%{release}
+Requires:	%{name}-dvips-basic = %{epoch}:%{version}-%{release}
 Requires:	xdvi = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-texconfig
 
@@ -2076,11 +2073,11 @@ fi
 %fixinfodir
 %texhash
 
-%post dvips
+%post dvips-basic
 %fixinfodir
 %texhash
 
-%postun dvips
+%postun dvips-basic
 %fixinfodir
 %texhash
 
@@ -2610,7 +2607,7 @@ fi
 %{_includedir}/kpathsea
 %{_infodir}/kpathsea.info*
 
-%files dvips
+%files dvips-basic
 %defattr(644,root,root,755)
 # %dir %{texmfdist}/fonts/map/dvips/cmex
 # %dir %{texmf}/dvipdfm
