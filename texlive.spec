@@ -1848,9 +1848,6 @@ PATH=$RPM_BUILD_ROOT%{_bindir}:$PATH; export PATH
 	encdir=$RPM_BUILD_ROOT%{texmfdist}/fonts/enc/dvips/base \
 	glyphlistdir=$RPM_BUILD_ROOT%{texmfdist}/fonts/map/glyphlist
 
-# requires wdiff but we don't have
-%{__rm} -rf $RPM_BUILD_ROOT%{texmfdist}/scripts/texdiff
-%{__rm} -rf $RPM_BUILD_ROOT%{_bindir}/texdiff
 %{__rm} -rf $RPM_BUILD_ROOT%{_bindir}/man
 
 install -d \
