@@ -1124,7 +1124,7 @@ A TeX format for physicists.
 %description phyzzx -l hu.UTF-8
 TeX formátum fizikusoknak.
 
-%package omega
+%package omega-basic
 Summary:	Extended unicode TeX
 Summary(pl.UTF-8):	Omega - TeX ze wsparciem dla unikodu
 Group:		Applications/Publishing/TeX
@@ -1135,7 +1135,7 @@ Requires:	%{name}-omega-data >= %{texmfversion}
 Requires:	%{name}-plain >= %{texmfversion}
 Obsoletes:	tetex-omega
 
-%description omega
+%description omega-basic
 Omega is a version of the TeX program modified for multilingual
 typesetting. It uses unicode, and has additional primitives for (among
 other things) bidirectional typesetting.
@@ -2135,10 +2135,10 @@ fi
 %postun phyzzx
 %texhash
 
-%post omega
+%post omega-basic
 %texhash
 
-%postun omega
+%postun omega-basic
 %texhash
 
 %post plain
@@ -3024,7 +3024,7 @@ fi
 # %{texmf}/fmtutil/format.phyzzx.cnf
 # %{fmtdir}/phyzzx
 
-%files omega
+%files omega-basic
 %defattr(644,root,root,755)
 # %doc %{texmfdist}/doc/aleph
 # %doc %{texmfdist}/doc/omega
