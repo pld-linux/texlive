@@ -287,6 +287,9 @@ otrzymanych z Jade TeXa i przetworzenia ich jako plików LaTeXa.
 %package other-utils-doc
 Summary:	Other utilities documentation
 Group:		Applications/Publishing/TeX
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description other-utils-doc
 Other utilities documentation.
@@ -294,6 +297,9 @@ Other utilities documentation.
 %package doc
 Summary:	Documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc
 Assorted useful documentation for TeX Live.
@@ -301,6 +307,9 @@ Assorted useful documentation for TeX Live.
 %package doc-bg
 Summary:	Bulgarian documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-bg
 Assorted useful Bulgarian documentation for TeX Live.
@@ -308,6 +317,9 @@ Assorted useful Bulgarian documentation for TeX Live.
 %package doc-cs
 Summary:	Czech documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-cs
 Assorted useful Czech documentation for TeX Live.
@@ -315,6 +327,9 @@ Assorted useful Czech documentation for TeX Live.
 %package doc-de
 Summary:	German documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-de
 Assorted useful German documentation for TeX Live.
@@ -322,6 +337,9 @@ Assorted useful German documentation for TeX Live.
 %package doc-el
 Summary:	Greek documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-el
 Assorted useful Greek documentation for TeX Live.
@@ -329,6 +347,9 @@ Assorted useful Greek documentation for TeX Live.
 %package doc-es
 Summary:	Spanish documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-es
 Assorted useful Spanish documentation for TeX Live.
@@ -336,6 +357,9 @@ Assorted useful Spanish documentation for TeX Live.
 %package doc-fi
 Summary:	Finnish documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-fi
 Assorted useful Finnish documentation for TeX Live.
@@ -343,6 +367,9 @@ Assorted useful Finnish documentation for TeX Live.
 %package doc-fr
 Summary:	French documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-fr
 Assorted useful French documentation for TeX Live.
@@ -350,6 +377,9 @@ Assorted useful French documentation for TeX Live.
 %package doc-it
 Summary:	Italian documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-it
 Assorted useful Italian documentation for TeX Live.
@@ -357,6 +387,9 @@ Assorted useful Italian documentation for TeX Live.
 %package doc-ja
 Summary:	Japanese documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-ja
 Assorted useful Japanese documentation for TeX Live.
@@ -364,6 +397,9 @@ Assorted useful Japanese documentation for TeX Live.
 %package doc-ko
 Summary:	Korean documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-ko
 Assorted useful Korean documentation for TeX Live.
@@ -371,6 +407,9 @@ Assorted useful Korean documentation for TeX Live.
 %package doc-mn
 Summary:	Mongolian documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-mn
 Assorted useful Mongolian documentation for TeX Live.
@@ -378,6 +417,9 @@ Assorted useful Mongolian documentation for TeX Live.
 %package doc-nl
 Summary:	Dutch documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-nl
 Assorted useful Dutch documentation for TeX Live.
@@ -385,6 +427,9 @@ Assorted useful Dutch documentation for TeX Live.
 %package doc-pl
 Summary:	Polish documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-pl
 Assorted useful Polish documentation for TeX Live.
@@ -392,6 +437,9 @@ Assorted useful Polish documentation for TeX Live.
 %package doc-pt
 Summary:	Portuguese documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-pt
 Assorted useful Portuguese documentation for TeX Live.
@@ -399,6 +447,9 @@ Assorted useful Portuguese documentation for TeX Live.
 %package doc-ru
 Summary:	Russian documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-ru
 Assorted useful Russian documentation for TeX Live.
@@ -406,6 +457,9 @@ Assorted useful Russian documentation for TeX Live.
 %package doc-sk
 Summary:	Slovak documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-sk
 Assorted useful Slovak documentation for TeX Live.
@@ -413,6 +467,9 @@ Assorted useful Slovak documentation for TeX Live.
 %package doc-sl
 Summary:	Slovenian documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-sl
 Assorted useful Slovenian documentation for TeX Live.
@@ -420,6 +477,9 @@ Assorted useful Slovenian documentation for TeX Live.
 %package doc-th
 Summary:	Thai documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-th
 Assorted useful Thai documentation for TeX Live.
@@ -427,6 +487,9 @@ Assorted useful Thai documentation for TeX Live.
 %package doc-tr
 Summary:	Turkish documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-tr
 Assorted useful Turkish documentation for TeX Live.
@@ -434,6 +497,9 @@ Assorted useful Turkish documentation for TeX Live.
 %package doc-uk
 Summary:	Ukrainian documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-uk
 Assorted useful Ukrainian documentation for TeX Live.
@@ -441,6 +507,9 @@ Assorted useful Ukrainian documentation for TeX Live.
 %package doc-vi
 Summary:	Vietnamese documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-vi
 Assorted useful Vietnamese documentation for TeX Live.
@@ -448,6 +517,9 @@ Assorted useful Vietnamese documentation for TeX Live.
 %package doc-zh_CN
 Summary:	Chinese documentation for TeX Live
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-zh_CN
 Assorted useful Chinese documentation for TeX Live.
@@ -460,6 +532,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-doc-latex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc-latex
 Basic LaTeX packages documentation.
@@ -681,6 +756,9 @@ Summary(hu.UTF-8):	Tömb adatstruktúra (La)TeX-hez
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-arrayjob
 Array data structures for (La)TeX.
@@ -694,6 +772,9 @@ Summary(hu.UTF-8):	Pontok előállítása matematikai módban a font méret figy
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-mathdots
 Commands to produce dots in math that respect font size.
@@ -707,6 +788,9 @@ Summary(hu.UTF-8):	Hasznos makrók gyűjteménye
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-midnight
 A set of useful macro tools.
@@ -719,6 +803,9 @@ Summary:	Convert numbers into binary, octal and hexadecimal
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-kastrup
 Convert numbers into binary, octal and hexadecimal.
@@ -728,6 +815,9 @@ Summary:	Olsak's Font System
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-ofs
 Olsak's Font System.
@@ -751,6 +841,9 @@ Summary(hu.UTF-8):	Ezzel a csomaggal lehetőséged nyílik Devanagari szövegek 
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-velthuis
 This package provides support for typesetting texts in Devanagari
@@ -766,6 +859,9 @@ Summary(hu.UTF-8):	MIT-en fejlesztett makrócsomag
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-ytex
 Macro package developed at MIT.
@@ -797,6 +893,9 @@ Summary(hu.UTF-8):	Különböző MetaPost eszközök
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description metapost-other
 Various MetaPost utils.
@@ -1497,6 +1596,9 @@ Obsoletes:	tetex-cyrplain
 Obsoletes:	tetex-format-cyrplain
 Obsoletes:	tetex-format-plain
 Obsoletes:	tetex-plain
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description plain
 Plain TeX format basic files.
@@ -1515,6 +1617,9 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	texlive-fonts-pl = %{epoch}:%{version}-%{release}
 Requires:	texlive-plain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-mex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description mex
 MeX Plain Format basic files.
@@ -1579,6 +1684,9 @@ Provides:	tetex-ams
 Obsoletes:	tetex-ams
 Obsoletes:	tetex-amstex
 Obsoletes:	tetex-plain-amsfonts
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description amstex
 American Mathematical Society macros for Plain TeX basic files.
@@ -1659,6 +1767,9 @@ Requires:	%{name}-fonts-cs = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Provides:	tetex-cslatex
 Obsoletes:	tetex-cslatex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description cslatex
 CSLaTeX format basic files.
@@ -1704,6 +1815,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-eplain
 Obsoletes:	tetex-etex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description eplain
 EPlain format basic files.
@@ -1735,8 +1849,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-context
 Obsoletes:	tetex-context
-
-%define		_noautoreq	'perl(path_tre)'
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description context
 A full featured, parameter driven macro package, which fully supports
@@ -1757,6 +1872,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-context = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-context-de
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-context-de
 German ConTeXt format.
@@ -1771,6 +1889,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-context = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-context-en
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-context-en
 English ConTeXt format.
@@ -1785,6 +1906,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-context = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-context-nl
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-context-nl
 Dutch ConTeXt format.
@@ -1872,6 +1996,9 @@ Summary:	Shade cells of tables and halign
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-colortab
 Shade cells of tables and halign.
@@ -1882,6 +2009,9 @@ Summary(hu.UTF-8):	A matematikai halmazok indexelésének általánosítása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-12many
 Generalising mathematical index sets.
@@ -1895,6 +2025,10 @@ Summary(hu.UTF-8):	Az "abstract" környezet szedésének irányítása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
 
 %description latex-abstract
 Control the typesetting of the abstract environment.
@@ -1907,6 +2041,10 @@ Summary:	Utilities to derive new fonts from existing ones
 Summary(hu.UTF-8):	Eszközök új betűtípusok származtatására már létezőkből
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
 
 %description latex-accfonts
 Utilities to derive new fonts from existing ones.
@@ -1920,6 +2058,9 @@ Summary(hu.UTF-8):	BibTeX stílusok cím-adatbázis megvalósításához
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-adrconv
 BibTeX styles to implement an address database.
@@ -1936,6 +2077,9 @@ Requires:	%{name}-fonts-ae = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-ae
 Obsoletes:	tetex-latex-ae
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-ae
 A set of virtual fonts which emulates T1 coded fonts using the
@@ -1958,6 +2102,9 @@ Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-algorith
 Obsoletes:	tetex-latex-algorithms
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-algorithms
 Defines a floating algorithm environment designed to work with the
@@ -1979,6 +2126,9 @@ Obsoletes:	tetex-latex-ams
 Obsoletes:	tetex-latex-amscls
 Obsoletes:	tetex-latex-amsfonts
 Obsoletes:	tetex-latex-amsmath
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-ams
 This package is the principal package in the AMS-LaTeX distribution.
@@ -1997,6 +2147,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-antp = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-antp
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-antp
 A replica of Antykwa Poltawskiego font in PostScript Type 1 format
@@ -2024,6 +2177,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-antt = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-antt
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-antt
 Antykwa Torunska is a serif font designed by the late Polish
@@ -2041,6 +2197,9 @@ Summary(hu.UTF-8):	Az appendixek nagyobb irányítása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-appendix
 Extra control of appendices.
@@ -2056,6 +2215,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-bbm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-bbm
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bbm
 Blackboard variant fonts for Computer Modern, with LaTeX support.
@@ -2068,6 +2230,9 @@ Summary:	LateX package for drawing bar diagrams
 Summary(pl.UTF-8):	LaTeX csomag oszlopdiagramok rajzolására
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bardiag
 LateX package for drawing bar diagrams.
@@ -2083,6 +2248,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-bbold = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-bbold
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bbold
 A geometric sans serif blackboard bold font, for use in mathematics.
@@ -2116,6 +2284,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-beamer
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-beamer
 A LaTeX class for producing presentations and slides.
@@ -2129,6 +2300,9 @@ Summary(hu.UTF-8):	Javier Bezos csomagjai (további matematikai eszközök)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bezos
 Packages by Javier Bezos (additional math tools).
@@ -2145,6 +2319,9 @@ Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-ams
 Obsoletes:	tetex-latex-bibtex-ams
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bibtex-ams
 BibTeX style files for American Mathematical Society publications.
@@ -2159,7 +2336,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-bibtex-dk
-
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bibtex-dk
 Dk-bib is a translation of the four standard BibTeX style files
@@ -2181,6 +2360,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-plbib
 Obsoletes:	tetex-latex-bibtex-pl
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bibtex-pl
 Polish bibliography management for LaTeX.
@@ -2196,6 +2378,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-germbib
 Obsoletes:	tetex-latex-bibtex-german
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bibtex-german
 German variants of standard BibTeX styles.
@@ -2211,6 +2396,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-revtex4
 Obsoletes:	tetex-latex-bibtex-revtex4
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bibtex-revtex4
 BibTeX styles for REVTeX4.
@@ -2226,6 +2414,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-jurabib
 Obsoletes:	tetex-latex-bibtex-jurabib
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bibtex-jurabib
 Extended BibTeX citation support for the humanities and legal texts.
@@ -2240,6 +2431,9 @@ Summary(hu.UTF-8):	Vegyes BibTeX stílusok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bibtex-styles
 Various BibTeX styles.
@@ -2253,6 +2447,9 @@ Summary(hu.UTF-8):	Irodalomjegyzék-stílus a Biomedical Journal-hoz
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-bibtex-vancouver
 Bibliographic style file for Biomedical Journals.
@@ -2266,6 +2463,9 @@ Summary(hu.UTF-8):	Nyomdai minőségű táblázatok LaTeX-ben
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-booktabs
 Publication quality tables in LaTeX.
@@ -2279,6 +2479,9 @@ Summary(hu.UTF-8):	Feliratok testreszabása úszó környezetekben
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-caption
 Customising captions in floating environments.
@@ -2294,6 +2497,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-carlisle
 Obsoletes:	tetex-latex-carlisle
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-carlisle
 Miscellaneous small packages by David Carlisle.
@@ -2308,6 +2514,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-ccfonts
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-ccfonts
 LaTeX font definition files for the Concrete fonts and a LaTeX package
@@ -2328,6 +2537,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-cite
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-cite
 Supports compressed, sorted lists of numerical citations.
@@ -2343,6 +2555,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-cmbright = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-cmbright
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-cmbright
 A family of sans serif fonts for TeX and LaTeX, based on Donald
@@ -2364,6 +2579,9 @@ Summary(hu.UTF-8):	A szöveg részeinek beillesztése/kihagyása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-comment
 Selectively include/excludes portions of text.
@@ -2379,6 +2597,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-concmath = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-concmath
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-concmath
 LaTeX package and font definition files to access the Concrete math
@@ -2397,6 +2618,9 @@ Summary(hu.UTF-8):	Önéletrajzok írása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-currvita
 Typeset a curriculum vitae.
@@ -2410,6 +2634,9 @@ Summary(hu.UTF-8):	Görbék LaTeX picture környezetébe
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-curves
 Curves for LaTeX picture environment.
@@ -2424,6 +2651,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-custom-bib
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-custom-bib
 Package generating customized BibTeX bibliography styles from a
@@ -2441,6 +2671,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-cyrillic
 Obsoletes:	tetex-latex-cyrillic
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-cyrillic
 LaTeX Cyrillic support.
@@ -2454,6 +2687,9 @@ Summary(hu.UTF-8):	Egy csomag, amivel testreszabhatod a három alapvető listát
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-enumitem
 A package to customize the three basic lists (enumerate, itemize and
@@ -2469,6 +2705,9 @@ Summary(hu.UTF-8):	Különböző dokumentumosztályok vizsgák, feladatsorok sze
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-exams
 Various document classes to typeset exams.
@@ -2482,6 +2721,9 @@ Summary(hu.UTF-8):	Eszközök úszó objektuomok kezeléséhez
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-float
 Tools to manipulate float objects.
@@ -2495,6 +2737,9 @@ Summary(hu.UTF-8):	A FoilTeX a LaTeX fájlok gyűjteménye fóliák készítés�
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-foiltex
 The FoilTeX is a collection of LaTeX files for making foils.
@@ -2521,6 +2766,9 @@ Summary(hu.UTF-8):	Kézzel kitöltendő űrlapok készítése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-formular
 Create forms containing field for manual entry.
@@ -2534,6 +2782,9 @@ Summary(hu.UTF-8):	Levél dokumentumosztály
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-gbrief
 Letter document class.
@@ -2547,6 +2798,9 @@ Summary(hu.UTF-8):	A billentyűk grafikus megjelenítése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-keystroke
 Graphical representation of keys on keyboard.
@@ -2560,6 +2814,9 @@ Summary(hu.UTF-8):	Laborjegyzőkönyvek szedése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-labbook
 Typeset laboratory journals.
@@ -2573,6 +2830,9 @@ Summary(hu.UTF-8):	Alfanumerikus LCD-szerű kijelzés
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-lcd
 Alphanumerical LCD-style displays.
@@ -2586,6 +2846,9 @@ Summary(hu.UTF-8):	Kis "kézikönyvek" készítése (brossúrák)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-leaflet
 Create small handouts (flyers).
@@ -2599,6 +2862,9 @@ Summary(hu.UTF-8):	Bal és jobboldali alsó és felső indexek matematikai módb
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-leftidx
 Left and right subscripts and superscripts in math mode.
@@ -2612,6 +2878,9 @@ Summary(hu.UTF-8):	Lewis struktúrák készítése (kémia)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-lewis
 Draw Lewis structures (chemistry).
@@ -2628,6 +2897,9 @@ Requires:	%{name}-fonts-lm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-lm
 Obsoletes:	texlive-fonts-type1-lm
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -2656,6 +2928,9 @@ Summary:	Reference last page for "Page N of M" type footers
 Summary(hu.UTF-8):	Az utolsó oldalra hivatkozás "N/M. oldal" típusú lábfejekhez
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-lastpage
 Reference last page for Page N of M type footers.
@@ -2670,6 +2945,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-lineno
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-lineno
 The LaTeX package lineno.sty provides line numbers on paragraphs.
@@ -2688,6 +2966,9 @@ Summary:	Support for the work of classicists
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-metre
 Support for the work of classicists.
@@ -2698,6 +2979,9 @@ Summary(hu.UTF-8):	Játékok szedése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-games
 Chess, chinese chess, crosswords, go, backgammon and more.
@@ -2713,6 +2997,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-ltablex
 Obsoletes:	tetex-latex-ltablex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-extend
 This package contains:
@@ -2826,6 +3113,9 @@ Summary(hu.UTF-8):	További effektek betűkhöz, szövegekhez,...
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-effects
 This package contains:
@@ -2869,6 +3159,9 @@ Ez a csomag a következőket tartalmazza:
 Summary:	Sources of latex-math
 Summary(hu.UTF-8):	A latex-math forrása
 Group:		Applications/Publishing/TeX
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-math-sources
 Sources of latex-math.
@@ -2894,6 +3187,9 @@ Requires:	%{name}-tex-xkeyval = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-xypic = %{epoch}:%{version}-%{release}
 # gnuplottex needs gnuplot
 Requires:	gnuplot
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-math
 This package contains:
@@ -2994,6 +3290,9 @@ Summary(hu.UTF-8):	Vegyes csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-misc
 This packages contains:
@@ -3017,6 +3316,9 @@ Summary(hu.UTF-8):	Zenei csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-music
 This package contains:
@@ -3039,6 +3341,9 @@ Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-latex-SIstyle
 Suggests:	%{name}-latex-SIunits
 Suggests:	%{name}-latex-siunitx
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-physics
 This package contains:
@@ -3071,6 +3376,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-xetex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-biology
 This package contains:
@@ -3089,6 +3397,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-foiltex = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-latex-prosper = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-presentation
 This package contains:
@@ -3111,6 +3422,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-latex-lewis
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-chem
 This package contains:
@@ -3139,6 +3453,9 @@ Summary(hu.UTF-8):	Informatikai csomagok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-informatic
 This package contains:
@@ -3171,6 +3488,9 @@ Summary(hu.UTF-8):	Különböző eszközök pdf output-hoz
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pdftools
 This package contains:
@@ -3202,6 +3522,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-microtype
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-microtype
 The `microtype' package provides a LaTeX interface to pdfTeX's
@@ -3225,6 +3548,9 @@ Summary(hu.UTF-8):	Zenék szedése TeX-hel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-musictex
 Typesetting music with TeX.
@@ -3239,6 +3565,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-lucidabr
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-lucidabr
 Package to make Lucida Bright fonts usable with LaTeX.
@@ -3255,6 +3584,9 @@ Requires:	%{name}-fonts-marvosym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-marvosym
 Obsoletes:	tetex-latex-marvosym
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -3280,6 +3612,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-mflogo = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-mflogo
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-mflogo
 LaTeX package and font definition file to access the Knuthian `logo'
@@ -3298,6 +3633,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-mfnfss
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-mfnfss
 Font description files to use extra fonts like yinit and ygoth.
@@ -3312,6 +3650,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-minitoc
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-minitoc
 Produce a table of contents for each chapter.
@@ -3326,6 +3667,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-mltex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-mltex
 Support for MLTeX, the multilingual TeX extension from Michael J.
@@ -3341,6 +3685,9 @@ Summary(hu.UTF-8):	Többoszlopos számozott listák
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-multienum
 Multi-column enumerated lists.
@@ -3348,13 +3695,15 @@ Multi-column enumerated lists.
 %description latex-multienum -l hu.UTF-8
 Többoszlopos számozott listák.
 
-
 %package latex-moreverb
 Summary:	Extended verbatim
 Summary(hu.UTF-8):	Kiterjesztett verbatim
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-moreverb
 Extended verbatim.
@@ -3368,6 +3717,9 @@ Summary(hu.UTF-8):	Bővített tétel környezet
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-ntheorem
 Enhanced theorem environment.
@@ -3382,6 +3734,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-platex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-other
 Other LaTeX packages.
@@ -3395,6 +3750,9 @@ Summary(hu.UTF-8):	Néhány további LaTeX csomag dokumentációja
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-other-doc
 Other LaTeX packages documentation.
@@ -3408,6 +3766,9 @@ Summary(hu.UTF-8):	Prezentáció készítése pdftex-hel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pdfslide
 Presentation slides using pdftex.
@@ -3424,6 +3785,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-xcolor = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-pgf
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pgf
 A macro package for creating graphics directly in TeX and LaTeX.
@@ -3440,6 +3804,9 @@ Summary(hu.UTF-8):	Makrók polinomokkal való műveletekre
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-polynom
 Macros for manipulating polynomials.
@@ -3453,6 +3820,9 @@ Summary(hu.UTF-8):	Egyváltozós polinomok szedése
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-polynomial
 Typeset (univariate) polynomials.
@@ -3466,6 +3836,9 @@ Summary(hu.UTF-8):	További eszközök LaTeX programozásához
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-programming
 This package contains:
@@ -3544,6 +3917,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-xetex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-prosper
 LaTeX class for high quality slides.
@@ -3557,6 +3933,9 @@ Summary(hu.UTF-8):	LaTeX környezet algoritmusok bevitelére
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pseudocode
 LaTeX enviroment for specifying algorithms in a natural way.
@@ -3575,6 +3954,9 @@ Provides:	tetex-latex-psnfss
 Obsoletes:	tetex-latex-mathptm
 Obsoletes:	tetex-latex-mathptmx
 Obsoletes:	tetex-latex-psnfss
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-psnfss
 LaTeX font definition files, macros and font metrics for common
@@ -3590,6 +3972,9 @@ Summary(hu.UTF-8):	PSTricks csomag kétdimenziós görbék rajzolásához
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-2dplot
 A PSTricks package for drawing 2D curves.
@@ -3603,6 +3988,9 @@ Summary(hu.UTF-8):	3D-s görbék és grafikonok PSTricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-3dplot
 Draw 3d curves and graphs using PSTricks.
@@ -3610,13 +3998,15 @@ Draw 3d curves and graphs using PSTricks.
 %description latex-pst-3dplot -l hu.UTF-8
 3D-s görbék és grafikonok PSTricks-szel.
 
-
 %package latex-pst-bar
 Summary:	Produces bar charts using pstricks
 Summary(hu.UTF-8):	Oszlopdiagramok pstricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-bar
 Produces bar charts using pstricks.
@@ -3630,6 +4020,9 @@ Summary(hu.UTF-8):	PSTricks csomag elektromos áramkörök rajzolásához
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-circ
 PSTricks package for drawing electric circuits.
@@ -3643,6 +4036,9 @@ Summary(hu.UTF-8):	Diffrakciós képek különböző eszközökön
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-diffraction
 Print diffraction patterns from various apertures.
@@ -3656,6 +4052,9 @@ Summary(hu.UTF-8):	Euklidészi geometria a pstricks használatával
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-eucl
 Euclidian geometry with pstricks.
@@ -3663,13 +4062,15 @@ Euclidian geometry with pstricks.
 %description latex-pst-eucl -l hu.UTF-8
 Euklidészi geometria a pstricks használatával.
 
-
 %package latex-pst-fun
 Summary:	Draw "funny" objects with PSTricks
 Summary(hu.UTF-8):	"Vicces" rajzok PSTricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-fun
 Draw "funny" objects with PSTricks.
@@ -3683,6 +4084,9 @@ Summary(hu.UTF-8):	PSTricks csomag matematikai függvények ábrázolásához
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-func
 PSTricks package for plotting mathematical functions.
@@ -3696,6 +4100,9 @@ Summary(hu.UTF-8):	Háromdimenziós dobozok PSTricks segítségével
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-fr3d
 Draw 3-dimensional framed boxes using PSTricks.
@@ -3709,6 +4116,9 @@ Summary(hu.UTF-8):	Fraktálok rajzolása PSTricks segítségével
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-fractal
 Draw fractal sets using PSTricks.
@@ -3722,6 +4132,9 @@ Summary(hu.UTF-8):	Infix kifejezések ábrázolása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-infixplot
 Using pstricks plotting capacities with infix expressions rather than
@@ -3736,6 +4149,9 @@ Summary(hu.UTF-8):	PostScript matematikai operátorok bővítése pstricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-math
 Enhancement of PostScript math operators to use with pstricks.
@@ -3749,6 +4165,9 @@ Summary(hu.UTF-8):	Háromdimenziós objektumok PSTricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-ob3d
 Three dimensional objects using PSTricks.
@@ -3762,6 +4181,9 @@ Summary(hu.UTF-8):	Optikai összeállítások rajzolása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-optexp
 Drawing optical experimental setups.
@@ -3775,6 +4197,9 @@ Summary(hu.UTF-8):	Optikai ábrák rajzolása
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-optic
 Drawing optics diagrams.
@@ -3788,6 +4213,9 @@ Summary(hu.UTF-8):	Szöveg és karakter manipulációk PSTricks-szel
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-text
 Text and character manipulation in PSTricks.
@@ -3801,6 +4229,9 @@ Summary(hu.UTF-8):	Néhány kategorizálatlan PSTricks csomag
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pst-uncategorized
 Other uncategorized PSTricks packages.
@@ -3816,6 +4247,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-px = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-pxfonts
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-pxfonts
 PX fonts LaTeX support.
@@ -3829,6 +4263,9 @@ Summary(hu.UTF-8):	Csomag SI egységek, számok és szögek szedésére
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-SIstyle
 Package to typeset SI units, numbers and angles.
@@ -3842,6 +4279,9 @@ Summary(hu.UTF-8):	Az SIunits csomag a mennyiségek egységes írásában nyújt
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-SIunits
 The SIunits package can be used to standardise the use of units in
@@ -3856,6 +4296,9 @@ Summary(hu.UTF-8):	Egy minden részletre kiterjedő (SI) egységek kezelését v
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-siunitx
 A comprehensive (SI) units package.
@@ -3880,6 +4323,9 @@ Summary(hu.UTF-8):	Különböző LaTeX stílusok
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-styles
 Various LaTeX styles.
@@ -3893,6 +4339,9 @@ Summary(hu.UTF-8):	LaTeX támogatás nem-angol nyelvekhez
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-lang
 LaTeX support for non-english languages.
@@ -3905,6 +4354,9 @@ Summary:	Tabbing with accented letters
 Summary(hu.UTF-8):	Tabbing környezet ékezetes betűk használatával
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-Tabbing
 Tabbing with accented letters.
@@ -3920,6 +4372,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-txfonts
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-txfonts
 TX fonts LaTeX support.
@@ -3933,6 +4388,9 @@ Summary(hu.UTF-8):	Ez a csomag lehetővé teszi UTF-8 kódolást a LaTeX dokumen
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-ucs
 This package contains support for using UTF-8 as input encoding in
@@ -3948,6 +4406,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-umlaute
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-umlaute
 An interface to inputenc for using alternate input encodings.
@@ -3964,6 +4425,9 @@ Requires:	%{name}-fonts-wasy = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-wasysym
 Obsoletes:	tetex-latex-wasysym
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-wasysym
 Makes some additional characters available that come from the wasy
@@ -3991,6 +4455,9 @@ Summary(hu.UTF-8):	Hozzáférés színekhez, tónusokhoz, átmenetekhez, stb.
 Summary(pl.UTF-8):	Pozwala na dostęp do odcieni, gradientów itp.
 Group:		Applications/Publishing/TeX
 Obsoletes:	tetex-latex-xcolor
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-xcolor
 `xcolor' provides easy driver-independent access to several kinds of
@@ -4057,6 +4524,9 @@ Néhány szkript.
 Summary:	TeXLive manager
 Summary(hu.UTF-8):	TeXLive manager
 Group:		Applications/Publishing/TeX
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tlmgr
 tlmgr manages an existing TeX Live installation, both packages and
@@ -4078,6 +4548,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-babel
 Obsoletes:	tetex-tex-babel
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-babel
 Multilingual support for TeX.
@@ -4093,6 +4566,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-german
 Obsoletes:	tetex-tex-german
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-german
 Supports the new German orthography (neue deutsche Rechtschreibung).
@@ -4106,6 +4582,9 @@ Summary(hu.UTF-8):	TeX makró képek/dobozok beszúrására bekezdésekbe
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-insbox
 A TeX macro for inserting pictures/boxes into paragraphs.
@@ -4120,6 +4599,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-mfpic
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-mfpic
 Macros which generate Metafont or Metapost for drawing pictures.
@@ -4136,6 +4618,9 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-misc
 Obsoletes:	tetex-tex-eijkhout
 Obsoletes:	tetex-tex-misc
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-misc
 Miscellaneous TeX macros.
@@ -4150,6 +4635,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-pictex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-pictex
 Picture drawing macros for TeX and LaTeX.
@@ -4163,6 +4651,9 @@ Summary(hu.UTF-8):	TeX formátum fizikai kiadványokhoz
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-psizzl
 A TeX format for physics papers.
@@ -4179,6 +4670,9 @@ Requires:	%{name}-dvips = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-misc = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-pstricks
 Obsoletes:	tetex-tex-pstricks
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-pstricks
 An extensive collection of PostScript macros that is compatible with
@@ -4206,6 +4700,9 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-qpxqtx = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-qpx
 Obsoletes:	tetex-tex-qtx
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-qpxqtx
 QuasiTimes and TX fonts typesetting support.
@@ -4219,6 +4716,9 @@ Summary(hu.UTF-8):	Magyar elválasztás
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-huhyphen
 Hungarian hyphenation.
@@ -4234,6 +4734,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-ruhyphen
 Obsoletes:	tetex-tex-ruhyphen
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-ruhyphen
 A collection of Russian hyphenation patterns supporting a number of
@@ -4253,6 +4756,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-spanish
 Obsoletes:	tetex-tex-spanishb
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-spanish
 Various TeX related files for typesetting documents written in
@@ -4269,6 +4775,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-texdraw
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-texdraw
 Graphical macros, using embedded PostScript.
@@ -4283,6 +4792,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-thumbpdf
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-thumbpdf
 Provides support, using Perl, for thumbnails in pdfTeX and
@@ -4305,6 +4817,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-ukrhyph
 Obsoletes:	tetex-tex-ukrhyph
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-ukrhyph
 This package allows the use of different hyphenation patterns for the
@@ -4323,6 +4838,9 @@ Summary:	Typeset tables of variations of functions
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-variations
 Typeset tables of variations of functions.
@@ -4336,6 +4854,9 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-urwvn
 Obsoletes:	tetex-latex-vietnam
 Obsoletes:	tetex-tex-vietnam
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-vietnam
 Vietnamese language support.
@@ -4352,6 +4873,9 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-xypic = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-xypic
 Obsoletes:	tetex-xypic
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-xypic
 A package for typesetting a variety of graphs and diagrams with TeX.
@@ -4371,6 +4895,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-xkeyval
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-xkeyval
 Extension to keyval package.
@@ -4384,6 +4911,9 @@ Summary(pl.UTF-8):	Katalogi fontów TeXa
 Group:		Fonts
 Provides:	tetex-dirs-fonts
 Obsoletes:	tetex-dirs-fonts
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description dirs-fonts
 TeX font directories.
@@ -4400,6 +4930,9 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-adobe
 Obsoletes:	tetex-fonts-adobe
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-adobe
 Adobe fonts.
@@ -4411,6 +4944,9 @@ Fonty Adobe.
 Summary:	Larm (cyrillic) fonts
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-larm
 Larm (cyrillic) fonts.
@@ -4421,6 +4957,9 @@ Summary(pl.UTF-8):	Wirtualne fonty do plików PDF z fontami CMR o kodowaniu T1
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-ae
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-ae
 Virtual fonts for PDF-files with T1 encoded CMR-fonts.
@@ -4436,6 +4975,9 @@ Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-ams
 Obsoletes:	tetex-fonts-ams
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-ams
 AMS fonts.
@@ -4449,6 +4991,9 @@ Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcion
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-antp
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-antp
 Antykwa Poltawskiego, a Type 1 family of Polish traditional type.
@@ -4463,6 +5008,9 @@ Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek ja
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-antt
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-antt
 Antykwa Torunska, a Type 1 family of a Polish traditional type.
@@ -4474,6 +5022,9 @@ Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1.
 Summary:	Arphic fonts
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-arphic
 Arphic fonts.
@@ -4484,6 +5035,9 @@ Summary(pl.UTF-8):	Tablicowy wariant fontów Computer Modern ze wsparciem dla La
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-bbm
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-bbm
 Blackboard variant fonts for Computer Modern, with LaTeX support.
@@ -4497,6 +5051,9 @@ Summary(pl.UTF-8):	Tablicowy tłusty font sans serif dla LaTeXa
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-bbold
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-bbold
 Sans serif blackboard bold for LaTeX.
@@ -4510,6 +5067,9 @@ Summary(pl.UTF-8):	Fonty Bitstream
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-bitstrea
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-bitstream
 Bitstream fonts.
@@ -4523,6 +5083,9 @@ Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-cc-pl
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-cc-pl
 Polish version of Computer Concrete fonts.
@@ -4536,6 +5099,9 @@ Summary(pl.UTF-8):	Fonty Compugraphic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-cg
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-cg
 Compugraphic fonts.
@@ -4550,6 +5116,9 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-cm
 Obsoletes:	tetex-fonts-cm
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-cm
 Computer Modern fonts.
@@ -4563,6 +5132,9 @@ Summary(pl.UTF-8):	Fonty CM Bright
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-cmbright
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-cmbright
 CM Bright fonts.
@@ -4575,6 +5147,9 @@ Summary:	CM Super fonts
 Summary(hu.UTF-8):	CM Super betűtípus
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-cmsuper
 CM Super fonts.
@@ -4591,6 +5166,9 @@ Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-cmcyr
 Obsoletes:	tetex-fonts-cmcyr
 Obsoletes:	texlive-fonts-type1-cmcyr
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-cmcyr
 Computer Modern fonts extended with Russian letters.
@@ -4605,6 +5183,9 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-cmextra
 Obsoletes:	tetex-fonts-cmextra
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-cmextra
 Extra Computer Modern fonts, from the American Mathematical Society.
@@ -4618,6 +5199,9 @@ Summary(pl.UTF-8):	Fonty matematyczne Concrete Math
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-concmath
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-concmath
 Concrete Math fonts.
@@ -4631,6 +5215,9 @@ Summary(pl.UTF-8):	Fonty Concrete Roman
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-concrete
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-concrete
 Concrete Roman fonts, designed by Donald E. Knuth, originally for use
@@ -4646,6 +5233,9 @@ Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i sło
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-cs
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-cs
 Czech/Slovak-tuned MetaFont Computer Modern fonts.
@@ -4660,6 +5250,9 @@ Summary(pl.UTF-8):	Źródła dla fontów European Concrete
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-ecc
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-ecc
 The MetaFont sources and tfm files of the European Concrete Fonts.
@@ -4677,6 +5270,9 @@ Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-eurosym
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-eurosym
 The new European currency symbol for the Euro implemented in Metafont,
@@ -4694,6 +5290,9 @@ Summary(pl.UTF-8):	Fonty Virtual Euler Math
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-eulervm
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-eulervm
 Euler-VM is a set of _virtual_ math fonts based on Euler and CM. This
@@ -4715,6 +5314,9 @@ Summary(pl.UTF-8):	Fonty podobne do EUSM, ale z dwoma dodatkowymi znakami
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-euxm
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-euxm
 Fonts like EUSM but with two more characters needed for Concrete Math
@@ -4730,6 +5332,9 @@ Summary(pl.UTF-8):	Początkowe fonty gotyckie i ornamentowe Yannisa Haralambousa
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-gothic
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-gothic
 Gothic and ornamental initial fonts by Yannis Haralambous.
@@ -4743,6 +5348,9 @@ Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-hoekwater
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-hoekwater
 Fonts originally created in MetaFont, transformed to PostScript by
@@ -4764,6 +5372,9 @@ Provides:	tetex-fonts-jknappen
 Obsoletes:	tetex-fonts-jknappen
 Obsoletes:	tetex-latex-jknappen
 Obsoletes:	texlive-latex-jknappen
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-jknappen
 Miscellaneous macros, mostly for making use of extra fonts, by Joerg
@@ -4778,6 +5389,9 @@ Summary:	A complete set of fonts for text and mathematics
 Summary(hu.UTF-8):	Betűtípusok teljes készlete (matematikai) szövegekhez
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-kpfonts
 A complete set of fonts for text and mathematics.
@@ -4792,6 +5406,9 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-latex
 Obsoletes:	tetex-fonts-latex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-latex
 Basic LaTeX fonts.
@@ -4805,6 +5422,9 @@ Summary(pl.UTF-8):	Fonty LH Olgi Lapko
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-lh
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-lh
 The lh fonts for the `T2'/X2 encodings (for cyrillic languages).
@@ -4818,6 +5438,9 @@ Summary(pl.UTF-8):	Fonty z rodziny Latin Modern
 Group:		Applications/Publishing/TeX
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-lm
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -4847,6 +5470,9 @@ Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-marvosym
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -4870,6 +5496,9 @@ Summary(pl.UTF-8):	Fonty logo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-mflogo
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-mflogo
 Logo fonts.
@@ -4883,6 +5512,9 @@ Summary(pl.UTF-8):	Różne fonty
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-misc
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-misc
 Miscellaneous fonts.
@@ -4896,6 +5528,9 @@ Summary(pl.UTF-8):	Fonty Monotype
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-monotype
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-monotype
 Monotype fonts.
@@ -4909,6 +5544,9 @@ Summary(pl.UTF-8):	Fonty dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-omega
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-omega
 Fonts for Omega - extended unicode TeX.
@@ -4928,6 +5566,9 @@ Obsoletes:	tetex-fonts-type1-dstroke
 Obsoletes:	tetex-fonts-type1-qfonts
 Obsoletes:	tetex-fonts-type1-tt2001
 Obsoletes:	tetex-qfonts
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-other
 Other fonts.
@@ -4941,6 +5582,9 @@ Summary(pl.UTF-8):	Polskie fonty
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-pl
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-pl
 Polish fonts.
@@ -4954,6 +5598,9 @@ Summary(pl.UTF-8):	Fonty PX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-px
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-px
 PX fonts.
@@ -4971,6 +5618,9 @@ Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-qpx
 Obsoletes:	tetex-fonts-qtx
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-qpxqtx
 Additional fonts for QTX package.
@@ -4984,6 +5634,9 @@ Summary(pl.UTF-8):	Fonty wielkich liter pisanych do składania dokumentów nauko
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-rsfs
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-rsfs
 Fonts of uppercase script letters for use as symbols in scientific and
@@ -5004,6 +5657,9 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-stmaryrd
 Obsoletes:	tetex-fonts-stmaryrd
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-stmaryrd
 St Mary Road symbols for functional programming.
@@ -5017,6 +5673,9 @@ Summary(pl.UTF-8):	Fonty TX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-tx
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-tx
 TX fonts.
@@ -5028,6 +5687,9 @@ Fonty TX.
 Summary:	UHC fonts
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-uhc
 UHC fonts.
@@ -5038,6 +5700,9 @@ Summary(pl.UTF-8):	Fonty URW
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-urw
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-urw
 URW fonts.
@@ -5051,6 +5716,9 @@ Summary(pl.UTF-8):	Fonty URWVN
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-urwvn
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-urwvn
 URWVN fonts.
@@ -5064,6 +5732,9 @@ Summary(pl.UTF-8):	Fonty VNR
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-vnr
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-vnr
 VNR fonts.
@@ -5077,6 +5748,9 @@ Summary(hu.UTF-8):	urw35vf betűtípus
 Summary(pl.UTF-8):	Fonty urw35vf
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-urw35vf
 urw35vf fonts.
@@ -5088,6 +5762,9 @@ urw35vf betűtípus.
 Summary:	Wadalab fonts
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-wadalab
 Wadalab fonts.
@@ -5099,6 +5776,9 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-wasy
 Obsoletes:	tetex-fonts-wasy
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-wasy
 Waldis symbol fonts.
@@ -5112,6 +5792,9 @@ Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-xypic
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-xypic
 Xy-pic fonts.
@@ -5125,6 +5808,9 @@ Summary(pl.UTF-8):	Fonty European Modern od Y&Y
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-yandy
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-yandy
 European Modern fonts from Y&Y.
@@ -5138,6 +5824,9 @@ Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcion
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-antp
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-antp
 Antykwa Poltawskiego, a Type 1 family of Polish traditional type.
@@ -5152,6 +5841,9 @@ Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek ja
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-antt
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-antt
 Antykwa Torunska, a Type 1 family of a Polish traditional type.
@@ -5163,6 +5855,9 @@ Antykwa Toruńska - rodzina tradycyjnych polskich czcionek jako Type 1.
 Summary:	Type1 Arphic fonts
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-arphic
 Type1 Arphic fonts.
@@ -5173,6 +5868,9 @@ Summary(pl.UTF-8):	Wolnodostępny zamiennik podstawowych fontów MathTime
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-belleek
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-belleek
 Free replacement for basic MathTime fonts.
@@ -5186,6 +5884,9 @@ Summary(pl.UTF-8):	Fonty Bitstream
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-bitstrea
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-bitstream
 Bitstream fonts.
@@ -5200,6 +5901,9 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-type1-bluesky
 Obsoletes:	tetex-fonts-type1-bluesky
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-bluesky
 Computer Modern family fonts.
@@ -5213,6 +5917,9 @@ Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-cc-pl
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-cc-pl
 Polish version of Computer Concrete fonts.
@@ -5239,6 +5946,9 @@ Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i sło
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-cs
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-cs
 Czech/Slovak-tuned MetaFont Computer Modern fonts.
@@ -5253,6 +5963,9 @@ Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-eurosym
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-eurosym
 The new European currency symbol for the Euro implemented in Metafont,
@@ -5270,6 +5983,9 @@ Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-hoekwater
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-hoekwater
 Fonts originally created in MetaFont, transformed to PostScript by
@@ -5287,6 +6003,9 @@ Summary(pl.UTF-8):	Fonty SC/OsF dla URW Palladio L
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-fpl
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-fpl
 The FPL Fonts provide a set of SC/OsF fonts for URW Palladio L which
@@ -5349,6 +6068,9 @@ Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-marvosym
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -5372,6 +6094,9 @@ Summary(pl.UTF-8):	Fonty matematyczne Pazo Math
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-mathpazo
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-mathpazo
 Pazo Math fonts.
@@ -5385,6 +6110,9 @@ Summary(pl.UTF-8):	Fonty Type1 dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-omega
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-omega
 Type1 fonts for Omega - extended unicode TeX.
@@ -5399,6 +6127,9 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-pl
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-pl
 Polish fonts.
@@ -5412,6 +6143,9 @@ Summary(pl.UTF-8):	Fonty PX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-px
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-px
 PX fonts.
@@ -5425,6 +6159,9 @@ Summary(pl.UTF-8):	Fonty TX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-tx
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-tx
 TX fonts.
@@ -5436,6 +6173,9 @@ Fonty TX.
 Summary:	Type1 UHC fonts
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-uhc
 Type1 UHC fonts.
@@ -5447,6 +6187,9 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-type1-urw
 Obsoletes:	tetex-fonts-type1-urw
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-urw
 URW fonts.
@@ -5460,6 +6203,9 @@ Summary(pl.UTF-8):	Fonty Type1 VNR
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-vnr
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-vnr
 Type1 VNR fonts.
@@ -5471,6 +6217,9 @@ Fonty Type1 VNR.
 Summary:	Type1 Wadalab fonts
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-wadalab
 Type1 Wadalab fonts.
@@ -5481,6 +6230,9 @@ Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-xypic
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description fonts-type1-xypic
 Xy-pic fonts.
