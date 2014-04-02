@@ -5066,7 +5066,7 @@ Summary:	Bitstream fonts
 Summary(pl.UTF-8):	Fonty Bitstream
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-fonts-bitstrea
+Obsoletes:	tetex-fonts-bitstream
 %if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
 %endif
