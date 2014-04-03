@@ -22,7 +22,6 @@
 %undefine	with_xindy
 %endif
 
-#
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
@@ -33,7 +32,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	22
+Release:	23
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
