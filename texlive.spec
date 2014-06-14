@@ -18,9 +18,9 @@
 
 %include	/usr/lib/rpm/macros.perl
 
-%define		year	2013
-%define		monthday	0530
-%define		texmfversion 20130530
+%define		year	2014
+%define		monthday	0525
+%define		texmfversion 20140525
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
@@ -36,7 +36,7 @@ Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
 Source0:	ftp://tug.org/historic/systems/texlive/%{year}/%{name}-%{version}-source.tar.xz
-# Source0-md5:	f52599c99fb1035399b907f4c54f1125
+# Source0-md5:	09ee265ff51637827559affc7304078c
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
@@ -66,6 +66,7 @@ BuildRequires:	libtool
 BuildRequires:	libsigsegv
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	poppler-devel >= 0.18
 BuildRequires:	pango-devel
 BuildRequires:	readline-devel
 BuildRequires:	rpm-perlprov
@@ -81,6 +82,7 @@ BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	zlib-devel >= 1.2.1
+BuildRequires:	zziplib-devel >= 0.12
 Requires:	%{name}-dirs-fonts
 Requires:	%{name}-fonts-cm
 Requires:	%{name}-fonts-misc
@@ -1140,7 +1142,7 @@ Omega is a version of the TeX program modified for multilingual
 typesetting. It uses unicode, and has additional primitives for (among
 other things) bidirectional typesetting.
 
-%description omega -l pl.UTF-8
+%description omega-basic -l pl.UTF-8
 Omega to wersja TeXa zmodyfikowana dla potrzeb składu wielojęzycznego.
 Używa unikodu i ma dodatkowe prymitywy do (między innymi) składania
 tekstu pisanego w obu kierunkach.
@@ -1761,7 +1763,7 @@ language and as an extension to the typesetting engine itself.
 
 %build
 # find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
-%{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk/*.c
+%{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk2/*.c
 cd texk/kpathsea
 %{__sed} -i 's@^TEXMFMAIN =.*@TEXMFMAIN = %{texmf}@' texmf.cnf
 %{__sed} -i 's@^TEXMFDIST =.*@TEXMFDIST = %{texmfdist}@' texmf.cnf
@@ -1990,6 +1992,8 @@ install %{SOURCE4} $RPM_BUILD_ROOT/etc/cron.daily/texlive
 
 install %{SOURCE5} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
+
+cp -a texk/texlive/linked_scripts/context/stubs/unix/ctxtools $RPM_BUILD_ROOT%{_bindir}
 
 # not included in package
 #FIXME why not included????
@@ -2518,6 +2522,20 @@ fi
 %dir %{texmfdist}/scripts/oberdiek
 %attr(755,root,root) %{texmfdist}/scripts/oberdiek/pdfatfi.pl
 %attr(755,root,root) %{_bindir}/pdfatfi
+%attr(755,root,root) %{_bindir}/pdf180
+%attr(755,root,root) %{_bindir}/pdf270
+%attr(755,root,root) %{_bindir}/pdf90
+%attr(755,root,root) %{_bindir}/pdfbook
+%attr(755,root,root) %{_bindir}/pdfflip
+%attr(755,root,root) %{_bindir}/pdfjam
+%attr(755,root,root) %{_bindir}/pdfjam-pocketmod
+%attr(755,root,root) %{_bindir}/pdfjam-slides3up
+%attr(755,root,root) %{_bindir}/pdfjam-slides6up
+%attr(755,root,root) %{_bindir}/pdfjoin
+%attr(755,root,root) %{_bindir}/pdfnup
+%attr(755,root,root) %{_bindir}/pdfpun
+%dir %{texmfdist}/scripts/pdfjam
+%attr(755,root,root) %{texmfdist}/scripts/pdfjam/*
 %dir %{texmfdist}/scripts/pax
 %attr(755,root,root) %{texmfdist}/scripts/pax/pdfannotextractor.pl
 %attr(755,root,root) %{_bindir}/pdfannotextractor
@@ -2531,6 +2549,10 @@ fi
 %dir %{texmfdist}/scripts/pkfix-helper
 %attr(755,root,root) %{texmfdist}/scripts/pkfix-helper/pkfix-helper
 %attr(755,root,root) %{_bindir}/pkfix-helper
+%attr(755,root,root) %{_bindir}/pmx2pdf
+%attr(755,root,root) %{_bindir}/ptex2pdf
+%dir %{texmfdist}/scripts/ptex2pdf
+%attr(755,root,root) %{texmfdist}/scripts/ptex2pdf/*
 %attr(755,root,root) %{_bindir}/teckit_compile
 %attr(755,root,root) %{_bindir}/simpdftex
 %attr(755,root,root) %{_bindir}/sjisconv
@@ -2554,6 +2576,8 @@ fi
 %{_mandir}/man1/mmpfb.1*
 %{_mandir}/man1/otfinfo.1*
 %{_mandir}/man1/otftotfm.1*
+%{_mandir}/man1/pdfclose.1*
+%{_mandir}/man1/pdfopen.1*
 %{_mandir}/man1/pdftosrc.1*
 %{_mandir}/man1/synctex.1*
 %{_mandir}/man1/ttf2pk.1*
@@ -2676,9 +2700,9 @@ fi
 %defattr(644,root,root,755)
 %dir %{texmfdist}/scripts/texlive
 
-#FIXME: this 2 file are porobably in wrong subpackage
+#FIXME: this 2 file are probably in wrong subpackage
 %attr(755,root,root) %{texmfdist}/scripts/texlive/e2pall.pl
-%attr(755,root,root) %{texmfdist}/scripts/texlive/udpmap.pl
+#%attr(755,root,root) %{texmfdist}/scripts/texlive/udpmap.pl
 
 %attr(755,root,root) %{texmfdist}/scripts/texlive/tlmgr.pl
 %attr(755,root,root) %{_bindir}/tlmgr
@@ -3086,7 +3110,7 @@ fi
 %{_mandir}/man1/rubibtex.1*
 
 %attr(755,root,root) %{_bindir}/authorindex
-%attr(755,root,root) %{_bindir}/biber
+#%attr(755,root,root) %{_bindir}/biber
 %attr(755,root,root) %{_bindir}/bibexport
 %attr(755,root,root) %{_bindir}/bibtex
 %attr(755,root,root) %{_bindir}/bibtexu
@@ -3142,7 +3166,7 @@ fi
 %attr(755,root,root) %{_bindir}/dvitodvi
 %attr(755,root,root) %{texmfdist}/scripts/dviasm/dviasm*
 %ghost /usr/lib64/libptexenc.so.1
-%attr(755,root,root) /usr/lib64/libptexenc.so.1.3.1
+%attr(755,root,root) /usr/lib64/libptexenc.so.1.3.2
 %{_mandir}/man1/dt2dv*
 %{_mandir}/man1/dv2dt*
 %{_mandir}/man1/dvi2tty*
@@ -3166,18 +3190,21 @@ fi
 %dir %{texmfdist}/scripts/fragmaster
 %attr(755,root,root) %{texmfdist}/scripts/fragmaster/fragmaster.pl
 %attr(755,root,root) %{_bindir}/fragmaster
-%attr(755,root,root) %{_bindir}/fix*
-%attr(755,root,root) %{_bindir}/getafm
+#%attr(755,root,root) %{_bindir}/fix*
+#%attr(755,root,root) %{_bindir}/getafm
 %attr(755,root,root) %{_bindir}/includeres
 %attr(755,root,root) %{_bindir}/ps2eps
 %attr(755,root,root) %{_bindir}/psbook
-%attr(755,root,root) %{_bindir}/psmerge
+%attr(755,root,root) %{_bindir}/psjoin
+%dir %{texmfdist}/scripts/psutils
+%attr(755,root,root) %{texmfdist}/scripts/psutils/*
+#%attr(755,root,root) %{_bindir}/psmerge
 %attr(755,root,root) %{_bindir}/psnup
 %attr(755,root,root) %{_bindir}/psresize
 %attr(755,root,root) %{_bindir}/psselect
 %attr(755,root,root) %{_bindir}/pst2pdf
 %attr(755,root,root) %{_bindir}/pstops
-%attr(755,root,root) %{_bindir}/showchar
+#%attr(755,root,root) %{_bindir}/showchar
 %dir %{texmfdist}/scripts/epstopdf
 %attr(755,root,root) %{texmfdist}/scripts/epstopdf/epstopdf.pl
 %attr(755,root,root) %{_bindir}/epstopdf
@@ -3187,16 +3214,18 @@ fi
 %attr(755,root,root) %{texmfdist}/scripts/ps2eps/ps2eps*
 %{_mandir}/man1/epsffit*
 %{_mandir}/man1/extractres*
-%{_mandir}/man1/fix*
-%{_mandir}/man1/getafm*
+#%{_mandir}/man1/fix*
+#%{_mandir}/man1/getafm*
 %{_mandir}/man1/includeres*
 %{_mandir}/man1/ps2eps.1*
 %{_mandir}/man1/psbook*
-%{_mandir}/man1/psmerge*
+%{_mandir}/man1/psjoin*
+#%{_mandir}/man1/psmerge*
 %{_mandir}/man1/psnup*
 %{_mandir}/man1/psresize*
 %{_mandir}/man1/psselect*
 %{_mandir}/man1/pstops*
+%{_mandir}/man1/psutils*
 %{texmfdist}/scripts/epspdf
 
 %files uncategorized-utils
