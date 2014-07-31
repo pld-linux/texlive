@@ -1,0 +1,61 @@
+diff -ur texlive-20080816-source.orig/utils/xindy/configure texlive-20080816-source/utils/xindy/configure
+--- texlive-20080816-source.orig/utils/xindy/configure	2008-05-18 06:07:54.000000000 +0000
++++ texlive-20080816-source/utils/xindy/configure	2014-07-30 18:17:31.444000000 +0000
+@@ -3961,11 +3961,11 @@
+   CLISP_LIB=`$CLISP -q -norc -x '(progn (princ *lib-directory*) (values))'`
+   { echo "$as_me:$LINENO: result: $CLISP_LIB" >&5
+ echo "${ECHO_T}$CLISP_LIB" >&6; }
+-  test -f "$CLISP_LIB/clisp-link" || { { echo "$as_me:$LINENO: error: clisp is not usable: expected file is not found: $CLISP_LIB/clisp-link" >&5
+-echo "$as_me: error: clisp is not usable: expected file is not found: $CLISP_LIB/clisp-link" >&2;}
++  test -f "/usr/bin/clisp-link" || { { echo "$as_me:$LINENO: error: clisp is not usable: expected file is not found: /usr/bin/clisp-link" >&5
++echo "$as_me: error: clisp is not usable: expected file is not found: /usr/bin/clisp-link" >&2;}
+    { (exit 1); exit 1; }; }
+-  test -d "$CLISP_LIB/full" || { { echo "$as_me:$LINENO: error: clisp is not usable: expected directory is not found: $CLISP_LIB/full" >&5
+-echo "$as_me: error: clisp is not usable: expected directory is not found: $CLISP_LIB/full" >&2;}
++  test -d "$CLISP_LIB/base" || { { echo "$as_me:$LINENO: error: clisp is not usable: expected directory is not found: $CLISP_LIB/base" >&5
++echo "$as_me: error: clisp is not usable: expected directory is not found: $CLISP_LIB/base" >&2;}
+    { (exit 1); exit 1; }; }
+   test -d "$CLISP_LIB/linkkit" || { { echo "$as_me:$LINENO: error: clisp is not usable: expected directory is not found: $CLISP_LIB/linkkit" >&5
+ echo "$as_me: error: clisp is not usable: expected directory is not found: $CLISP_LIB/linkkit" >&2;}
+diff -ur texlive-20080816-source.orig/utils/xindy/configure.ac texlive-20080816-source/utils/xindy/configure.ac
+--- texlive-20080816-source.orig/utils/xindy/configure.ac	2008-05-18 06:07:54.000000000 +0000
++++ texlive-20080816-source/utils/xindy/configure.ac	2014-07-30 18:16:55.832000000 +0000
+@@ -85,8 +85,8 @@
+   AC_MSG_CHECKING([for clisp library directory])
+   CLISP_LIB=`$CLISP -q -norc -x '(progn (princ *lib-directory*) (values))'`
+   AC_MSG_RESULT([$CLISP_LIB])
+-  test -f "$CLISP_LIB/clisp-link" || AC_MSG_ERROR([clisp is not usable: expected file is not found: $CLISP_LIB/clisp-link])
+-  test -d "$CLISP_LIB/full" || AC_MSG_ERROR([clisp is not usable: expected directory is not found: $CLISP_LIB/full])
++  test -f "/usr/bin/clisp-link" || AC_MSG_ERROR([clisp is not usable: expected file is not found: $CLISP_LIB/clisp-link])
++  test -d "$CLISP_LIB/base" || AC_MSG_ERROR([clisp is not usable: expected directory is not found: $CLISP_LIB/full])
+   test -d "$CLISP_LIB/linkkit" || AC_MSG_ERROR([clisp is not usable: expected directory is not found: $CLISP_LIB/linkkit])
+ else
+   AC_MSG_ERROR([clisp is required but not found in PATH.
+diff -ur texlive-20080816-source.orig/utils/xindy/rte/Makefile.am texlive-20080816-source/utils/xindy/rte/Makefile.am
+--- texlive-20080816-source.orig/utils/xindy/rte/Makefile.am	2008-05-16 07:58:07.000000000 +0000
++++ texlive-20080816-source/utils/xindy/rte/Makefile.am	2014-07-31 15:54:58.139000000 +0000
+@@ -33,8 +33,8 @@
+ 	rm -rf xindy-build-dir
+ 	test -f ordrules/link.sh || for i in $(ORDRULES_FILES); do cp -p $(top_srcdir)/rte/ordrules/$$i ordrules/$$i; done
+ 	$(MAKE) -C ordrules ordrulei.c
+-	env CLISP_LINKKIT='@CLISP_LIB@/linkkit' MAKE="$(MAKE)" \
+-	sh '@CLISP_LIB@/clisp-link' add-module-set ordrules '@CLISP_LIB@/full' xindy-build-dir
++	env CLISP_LINKKIT='@CLISP_LIB@/linkkit' MAKE="$(MAKE)" with_dynamic_modules=no \
++	sh '/usr/bin/clisp-link' add '@CLISP_LIB@/base' xindy-build-dir ordrules
+ 	cp xindy-build-dir/$(LISP_RUN) $(binariesdir)/$(XINDY_RUN)
+ 	cp xindy-build-dir/lispinit.mem $(binariesdir)/base.mem
+ 
+diff -ur texlive-20080816-source.orig/utils/xindy/rte/Makefile.in texlive-20080816-source/utils/xindy/rte/Makefile.in
+--- texlive-20080816-source.orig/utils/xindy/rte/Makefile.in	2008-05-16 07:58:07.000000000 +0000
++++ texlive-20080816-source/utils/xindy/rte/Makefile.in	2014-07-31 15:54:45.434000000 +0000
+@@ -473,8 +473,8 @@
+ 	rm -rf xindy-build-dir
+ 	test -f ordrules/link.sh || for i in $(ORDRULES_FILES); do cp -p $(top_srcdir)/rte/ordrules/$$i ordrules/$$i; done
+ 	$(MAKE) -C ordrules ordrulei.c
+-	env CLISP_LINKKIT='@CLISP_LIB@/linkkit' MAKE="$(MAKE)" \
+-	sh '@CLISP_LIB@/clisp-link' add-module-set ordrules '@CLISP_LIB@/full' xindy-build-dir
++	env CLISP_LINKKIT='@CLISP_LIB@/linkkit' MAKE="$(MAKE)" with_dynamic_modules=no \
++	sh '/usr/bin/clisp-link' add '@CLISP_LIB@/base' xindy-build-dir ordrules
+ 	cp xindy-build-dir/$(LISP_RUN) $(binariesdir)/$(XINDY_RUN)
+ 	cp xindy-build-dir/lispinit.mem $(binariesdir)/base.mem
+ 

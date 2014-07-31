@@ -86,6 +86,7 @@ Patch7:		%{name}-libpng15.patch
 Patch8:		%{name}-extramembot.patch
 Patch9:		%{name}-5yr-old.patch
 Patch10:	format-security.patch
+Patch11:	%{name}-clisp.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -6343,6 +6344,7 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch7 -p1
 %patch8 -p1
 %patch10 -p1
+%patch11 -p1
 CURDIR=$(pwd)
 
 cd utils/xindy/make-rules/alphabets
