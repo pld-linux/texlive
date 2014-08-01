@@ -32,7 +32,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	23
+Release:	24
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
