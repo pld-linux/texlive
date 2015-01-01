@@ -22,6 +22,11 @@
 %undefine	with_xindy
 %endif
 
+%ifarch x32
+# no clisp on x32 as of 31-12-2014
+%undefine	with_xindy
+%endif
+
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
@@ -6611,6 +6616,9 @@ install %{SOURCE4} $RPM_BUILD_ROOT/etc/cron.daily/texlive
 
 install %{SOURCE5} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
+
+# crashes file/libmagick
+rm -f $RPM_BUILD_ROOT%{_datadir}/texmf-dist/doc/latex/jeopardy/example/aleq.jpg
 
 # not included in package
 rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
