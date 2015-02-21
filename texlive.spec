@@ -37,7 +37,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	24
+Release:	25
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -6616,9 +6616,6 @@ install %{SOURCE4} $RPM_BUILD_ROOT/etc/cron.daily/texlive
 
 install %{SOURCE5} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
-
-# crashes file/libmagick
-rm -f $RPM_BUILD_ROOT%{_datadir}/texmf-dist/doc/latex/jeopardy/example/aleq.jpg
 
 # not included in package
 rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
