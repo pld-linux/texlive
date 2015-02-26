@@ -40,6 +40,7 @@ Source0:	ftp://tug.org/historic/systems/texlive/%{year}/%{name}-%{version}-sourc
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
+# Source6-md5:	1e412b0d19d41353a7966bbeba70be8d
 Patch0:		format-security.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
