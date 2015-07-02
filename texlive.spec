@@ -37,7 +37,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	26
+Release:	27
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -120,12 +120,12 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	texinfo
 %if %{with bootstrap}
-BuildRequires:	texconfig
 BuildRequires:	tetex-format-latex
 BuildRequires:	tetex-format-pdflatex
 BuildRequires:	tetex-format-plain
 BuildRequires:	tetex-latex-cyrillic
 BuildRequires:	tetex-tex-babel
+BuildRequires:	texconfig
 %else
 BuildRequires:	%{name}-context
 BuildRequires:	%{name}-csplain
@@ -280,6 +280,9 @@ Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	jadetex = %{epoch}:%{version}-%{release}
 Obsoletes:	jadetex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description jadetex
 JadeTeX contains the additional LaTeX macros necessary for taking Jade
@@ -833,6 +836,9 @@ Summary(hu.UTF-8):	PHYSE formátum
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description tex-physe
 The PHYSE format.
@@ -916,6 +922,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-metapost = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-mptopdf
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description mptopdf
 MetaPost to PDF converter.
@@ -933,6 +942,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-texdoctk
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description texdoctk
 A Perl/Tk-based GUI for easy access to package documentation for TeX
@@ -964,6 +976,9 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-dvips = %{epoch}:%{version}-%{release}
 Requires:	xdvi = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-texconfig
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n texconfig
 TeX typesetting system configurator.
@@ -1558,6 +1573,9 @@ Summary(hu.UTF-8):	TeX formátum fizikusoknak
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description phyzzx
 A TeX format for physicists.
@@ -1639,6 +1657,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	texlive-mex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-mex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-mex
 MeX Plain Format.
@@ -1654,6 +1675,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-pdfmex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-pdfmex
 PDFMeX Plain Format.
@@ -1668,6 +1692,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-utf8mex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-utf8mex
 MeX Plain Format with UTF-8 encoded source files.
@@ -1708,6 +1735,9 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-amstex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-amstex
 Obsoletes:	tetex-format-cyramstex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-amstex
 American Mathematical Society macros for Plain TeX.
@@ -1726,6 +1756,9 @@ Requires:	%{name}-fonts-cs = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Provides:	tetex-csplain
 Obsoletes:	tetex-csplain
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description csplain
 TeX CSPlain format basic files.
@@ -1740,6 +1773,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-csplain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-csplain
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-csplain
 TeX CSPlain format.
@@ -1754,6 +1790,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-csplain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-pdfcsplain
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-pdfcsplain
 PDFTeX CSPlain format.
@@ -1789,6 +1828,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-cslatex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-cslatex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-cslatex
 CSLaTeX format.
@@ -1803,6 +1845,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-cslatex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-pdfcslatex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-pdfcslatex
 PDF CSLaTeX format.
@@ -1837,6 +1882,9 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-eplain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-eplain
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-eplain
 EPlain format.
@@ -2758,6 +2806,9 @@ Summary(hu.UTF-8):	Levél több címzettnek ("körlevél")
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-formlett
 Letters to multiple recipients.
@@ -4315,6 +4366,9 @@ Egy minden részletre kiterjedő (SI) egységek kezelését végző csomag.
 Summary:	LaTeX sources
 Summary(hu.UTF-8):	LaTeX források
 Group:		Applications/Publishing/TeX
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description latex-sources
 LaTeX sources.
@@ -4497,6 +4551,9 @@ Requires:	%{name}-latex-psnfss = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-pdflatex
 Obsoletes:	tetex-format-pdflatex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description format-pdflatex
 LaTeX is a front end for the TeX text formatting system. Easier to use
@@ -4518,6 +4575,9 @@ Summary(hu.UTF-8):	Néhány szkript
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description scripts
 Various scripts.
@@ -6330,11 +6390,13 @@ Provides:	passivetex = 1.26
 Provides:	xmltex
 Obsoletes:	passivetex
 Obsoletes:	xmltex
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description xmltex
 XMLTeX is a non-validating, namespace-aware XML parser written in TeX.
 It allows TeX to directly process XML files.
-
 
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
@@ -6659,7 +6721,7 @@ rm -rf $RPM_BUILD_ROOT%{texmf}/doc/gzip
 
 # xindy files are in %%{texmf}
 rm -rf $RPM_BUILD_ROOT%{_datadir}/xindy
-rm -rf $RPM_BUILD_ROOT%{_datadir}/doc
+rm -rf $RPM_BUILD_ROOT%{_docdir}
 
 # Create format files
 for format in \
