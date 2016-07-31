@@ -84,7 +84,6 @@ Patch0:		%{name}-am.patch
 Patch1:		%{name}-20080816-kpathsea-ar.patch
 Patch2:		%{name}-gcc44.patch
 Patch3:		%{name}-getline.patch
-Patch4:		%{name}-stdio.patch
 Patch5:		%{name}-aclocal.patch
 Patch6:		%{name}-libpng.patch
 Patch7:		%{name}-libpng15.patch
@@ -92,6 +91,8 @@ Patch8:		%{name}-extramembot.patch
 Patch9:		%{name}-5yr-old.patch
 Patch10:	format-security.patch
 Patch11:	%{name}-clisp.patch
+Patch12:	%{name}-system-libpng.patch
+Patch13:	%{name}-system-zzip.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -158,6 +159,7 @@ BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	zlib-devel >= 1.2.1
+BuildRequires:	zziplib-devel
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-cm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-misc = %{epoch}:%{version}-%{release}
@@ -6398,6 +6400,20 @@ BuildArch:	noarch
 XMLTeX is a non-validating, namespace-aware XML parser written in TeX.
 It allows TeX to directly process XML files.
 
+%package luatex
+Summary:	Extended version of pdfTeX using Lua as an embedded scripting language
+Summary(pl.UTF-8):	Rozszerzona wersja pdfTeXa wykorzystująca Lua jako wbudowany język skryptowy
+Group:		Applications/Publishing/TeX
+Requires(post,postun):	/usr/bin/texhash
+
+%description luatex
+LuaTeX is an extended version of pdfTeX using Lua as an embedded
+scripting language.
+
+%description luatex -l pl.UTF-8
+LuaTeX to rozszerzona wersja pdfTeXa, wykorzystująca Lua jako
+wbudowany język skryptowy.
+
 %prep
 %setup -q -c -T -n %{name}-%{version}-source
 lzma -dc %{SOURCE0} | tar xf - -C ..
@@ -6405,20 +6421,32 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 %patch5 -p1
 %patch6 -p0
 %patch7 -p1
 %patch8 -p1
 %patch10 -p1
 %patch11 -p1
-CURDIR=$(pwd)
+%patch12 -p1
+%patch13 -p1
 
+CURDIR=$(pwd)
 cd utils/xindy/make-rules/alphabets
 tar xvf %{SOURCE11}
 cp $(find fonts -type f) .
 for i in larm?00.tfm; do ln -s $i $(echo $i | sed "s@larm\(.\).*@larm0\100.tfm@") ; done
 cd ${CURDIR}
+
+%build
+find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
+%{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk/*.c
+%{__sed} -e 's@^TEXMFMAIN =.*@TEXMFMAIN = %{texmf}@' \
+	-e 's@^TEXMFDIST =.*@TEXMFDIST = %{texmfdist}@' \
+	-e 's@^TEXMFLOCAL =.*@TEXMFLOCAL = %{texmf}@' \
+	-e 's@^TEXMFSYSVAR =.*@TEXMFSYSVAR = %{_localstatedir}@' \
+	-e 's@^TEXMFSYSCONFIG =.*@TEXMFSYSCONFIG = %{_sysconfdir}/%{name}@' \
+	-e 's@^TEXMFVAR =.*@TEXMFVAR = %{_localstatedir}@' \
+	-e 's@^trie_size.*@trie_size = 1262000@' -i texk/kpathsea/texmf.cnf
 
 cd libs/teckit
 cat ax*.m4 > acinclude.m4
@@ -6426,18 +6454,6 @@ cat ax*.m4 > acinclude.m4
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-
-%build
-find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
-%{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk/*.c
-cd texk/kpathsea
-%{__sed} -i 's@^TEXMFMAIN =.*@TEXMFMAIN = %{texmf}@' texmf.cnf
-%{__sed} -i 's@^TEXMFDIST =.*@TEXMFDIST = %{texmfdist}@' texmf.cnf
-%{__sed} -i 's@^TEXMFLOCAL =.*@TEXMFLOCAL = %{texmf}@' texmf.cnf
-%{__sed} -i 's@^TEXMFSYSVAR =.*@TEXMFSYSVAR = %{_localstatedir}@' texmf.cnf
-%{__sed} -i 's@^TEXMFSYSCONFIG =.*@TEXMFSYSCONFIG = %{_sysconfdir}/%{name}@' texmf.cnf
-%{__sed} -i 's@^TEXMFVAR =.*@TEXMFVAR = %{_localstatedir}@' texmf.cnf
-%{__sed} -i 's@^trie_size.*@trie_size = 1262000@' texmf.cnf
 cd ../..
 
 %ifarch ppc ppc64
@@ -6445,9 +6461,11 @@ cd ../..
 ulimit -s unlimited
 %endif
 
-%configure \
-	--with%{!?with_xindy:out}-xindy \
-	--without-luatex \
+install -d build/utils/xindy/make-rules/alphabets
+for f in utils/xindy/make-rules/alphabets/larm????.* ; do ln -sf ../../../../../$f build/$f ; done
+cd build
+../%configure \
+	--with-xindy%{!?with_xindy:=no}\
 	--disable-multiplatform \
 	--disable-static \
 	--enable-a4 \
@@ -6515,7 +6533,7 @@ install -d $RPM_BUILD_ROOT%{texmf}/fonts/opentype/public
 
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 
-%{__make} install \
+%{__make} -C build install \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	bindir=$RPM_BUILD_ROOT%{_bindir} \
 	mandir=$RPM_BUILD_ROOT%{_mandir} \
@@ -6643,7 +6661,7 @@ tex user_manual.tex
 yes | tex prog_manual.tex
 tex example1.tex
 tex example2.tex
-rm formlett.sty
+%{__rm} formlett.sty
 
 cd $CURDIR
 
@@ -6670,7 +6688,7 @@ cp $RPM_BUILD_ROOT%{texmfdist}/doc/latex/xstring/xstring.tex $RPM_BUILD_ROOT%{te
 %{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/man
 %{__rm} -r $RPM_BUILD_ROOT%{texmfdoc}/source
 
-perl -pi \
+%{__perl} -pi \
 	-e "s|$RPM_BUILD_ROOT||g;" \
 	$RPM_BUILD_ROOT%{texmf}/web2c/texmf.cnf
 
@@ -6682,37 +6700,20 @@ install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
 # not included in package
 rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir*
-rm -f $RPM_BUILD_ROOT%{_infodir}/dvipng*
-rm -f $RPM_BUILD_ROOT%{_mandir}/{README.*,hu/man1/readlink.1*}
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/Makefile
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/fonts/oldgerman/COPYING
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/help/Catalogue-upd.sh
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/help/faq/uktug-faq-upd.sh
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/helpfile
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/helpindex.html
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.html
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.php
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/mkhtml*
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/programs/texinfo.*
-rm -f $RPM_BUILD_ROOT%{texmf}/fonts/pk/ljfour/lh/lh-lcy/*.600pk
-rm -f $RPM_BUILD_ROOT%{texmf}/generic/config/pdftex-dvi.tex
-rm -f $RPM_BUILD_ROOT%{texmf}/release-tetex-{src,texmf}.txt
-rm -f $RPM_BUILD_ROOT%{texmf}/scripts/uniqleaf/uniqleaf.pl
-rm -f $RPM_BUILD_ROOT%{texmf}/tex/generic/pdftex/glyphtounicode.tex
-rm -rf $RPM_BUILD_ROOT%{_datadir}/lcdf-typetools
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pdf-trans
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/generic/hyph-utf8
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/generic/patch
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/plain/plgraph
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/pdf-trans
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/xecyr
-rm -rf $RPM_BUILD_ROOT%{texmf}/cef5conv
-rm -rf $RPM_BUILD_ROOT%{texmf}/cefsconv
-rm -rf $RPM_BUILD_ROOT%{texmf}/chktex
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/cef5conv
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/cefsconv
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/chktex
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/gzip
+%{__rm} $RPM_BUILD_ROOT%{_infodir}/dvipng*
+%{__rm} $RPM_BUILD_ROOT%{texmf}/tex/generic/pdftex/glyphtounicode.tex
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/lcdf-typetools
+%{__rm} -r $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pdf-trans
+%{__rm} -r $RPM_BUILD_ROOT%{texmfdist}/source/generic/hyph-utf8
+%{__rm} -r $RPM_BUILD_ROOT%{texmfdist}/source/generic/patch
+%{__rm} -r $RPM_BUILD_ROOT%{texmfdist}/source/plain/plgraph
+%{__rm} -r $RPM_BUILD_ROOT%{texmfdist}/tex/generic/pdf-trans
+%{__rm} -r $RPM_BUILD_ROOT%{texmfdist}/tex/generic/xecyr
+%{__rm} -r $RPM_BUILD_ROOT%{texmf}/chktex
+%{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/cef5conv
+%{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/cefsconv
+%{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/chktex
+%{__rm} -r $RPM_BUILD_ROOT%{texmf}/doc/gzip
 
 # move format logs to BUILD, so $RPM_BUILD_ROOT is not polluted
 # and we can still analyze them
@@ -6720,8 +6721,10 @@ rm -rf $RPM_BUILD_ROOT%{texmf}/doc/gzip
 # mv -fv $RPM_BUILD_ROOT%{fmtdir}/*.log format-logs
 
 # xindy files are in %%{texmf}
-rm -rf $RPM_BUILD_ROOT%{_datadir}/xindy
-rm -rf $RPM_BUILD_ROOT%{_docdir}
+%if %{with xindy}
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/xindy
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}
+%endif
 
 # Create format files
 for format in \
@@ -6758,8 +6761,9 @@ done
 %if %{with bootstrap}
 touch $RPM_BUILD_ROOT%{fmtdir}/xetex/xelatex.fmt
 %endif
+
 # We don't need the log files
-rm -f $(find $RPM_BUILD_ROOT%{fmtdir} -name "*.log")
+find $RPM_BUILD_ROOT%{fmtdir} -name "*.log" | xargs -r %{__rm}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -8251,6 +8255,12 @@ fi
 %postun xmltex
 %texhash
 
+%post luatex
+%texhash
+
+%postun luatex
+%texhash
+
 %files
 %defattr(644,root,root,755)
 # There isn't doc/fonts directory
@@ -9361,6 +9371,7 @@ fi
 %files pdftex
 %defattr(644,root,root,755)
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftexconfig.tex
+%config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/pdftex-dvi.tex
 %dir %{texmfdist}/doc/support
 %dir %{texmf}/fonts/map/pdftex
 %dir %{texmf}/scripts/epstopdf
@@ -13283,6 +13294,7 @@ fi
 %dir %{texmfdist}/fonts/map/dvips
 %dir %{texmfdist}/fonts/pk/ljfour/public
 %doc %{texmfdist}/doc/fonts/cm
+%{texmfdist}/fonts/afm/bluesky/ams
 %{texmfdist}/fonts/afm/bluesky/cm
 %{texmfdist}/fonts/map/dvips/cm
 %{texmfdist}/fonts/pk/ljfour/public/cm
@@ -14702,3 +14714,13 @@ fi
 %{texmf}/fmtutil/format.xmltex.cnf
 %{fmtdir}/pdftex/pdfxmltex.fmt
 %{fmtdir}/pdftex/xmltex.fmt
+
+%files luatex
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/lualatex
+%attr(755,root,root) %{_bindir}/luatex
+%attr(755,root,root) %{_bindir}/pdflualatex
+%attr(755,root,root) %{_bindir}/pdfluatex
+%attr(755,root,root) %{_bindir}/texlua
+%attr(755,root,root) %{_bindir}/texluac
+

@@ -1,0 +1,38 @@
+--- texlive-20080816-source/texk/web2c/luatexdir/luatexlib.mk.orig	2016-07-23 18:50:09.881978420 +0200
++++ texlive-20080816-source/texk/web2c/luatexdir/luatexlib.mk	2016-07-23 18:50:13.578838019 +0200
+@@ -72,20 +72,12 @@
+ endif
+ 
+ 
+-ZZIPLIBDIR=../../libs/zziplib
+-ZZIPLIBSRCDIR=$(srcdir)/$(ZZIPLIBDIR)
+-ZZIPLIBDEP = $(ZZIPLIBDIR)/zzip/libzzip.a
+-
+-$(ZZIPLIBDEP): $(ZZIPLIBSRCDIR)
+-	mkdir -p $(ZZIPLIBDIR)/zzip && cd $(ZZIPLIBDIR)/zzip && \
+-	cp ../$(ZZIPLIBSRCDIR)/zzip/Makefile . && $(MAKE) $(common_makeargs)
+-
+ # luazip
+ 
+ LUAZIPDIR=../../libs/luazip
+ LUAZIPSRCDIR=$(srcdir)/$(LUAZIPDIR)
+ LUAZIPDEP=$(LUAZIPDIR)/src/luazip.o
+-LUAZIPINC=-I../../lua51 -I../$(ZZIPLIBSRCDIR) -I../$(ZZIPLIBDIR)
++LUAZIPINC=-I../../lua51
+ 
+ $(LUAZIPDEP): $(LUAZIPDIR)/src/luazip.c
+ 	mkdir -p $(LUAZIPDIR) && cd $(LUAZIPDIR) && cp -R $(LUAZIPSRCDIR)/* . && \
+@@ -142,11 +134,11 @@
+ # Convenience variables.
+ 
+ luatexlibs = $(luapdflib) $(LDLIBPNG) $(LDZLIB) $(LDLIBXPDF) $(LIBMD5DEP) $(LDLIBOBSD) \
+-             $(LIBLUADEP) $(SLNUNICODEDEP)  $(LUAZIPDEP) $(ZZIPLIBDEP) $(LUAFSDEP) \
++             $(LIBLUADEP) $(SLNUNICODEDEP)  $(LUAZIPDEP) -lzzip $(LUAFSDEP) \
+              $(LUAPEGDEP) $(LUAMDVDEP)  $(LUAZLIBDEP) $(LUAFFDEP)
+ 
+ luatexlibsdep = $(luapdflib) $(LIBPNGDEP) $(ZLIBDEP) $(LIBXPDFDEP) $(LIBMD5DEP) $(LIBOBSDDEP) \
+-                $(LIBLUADEP) $(SLNUNICODEDEP) $(ZZIPLIBDEP) $(LUAZIPDEP)  $(LUAFSDEP) \
++                $(LIBLUADEP) $(SLNUNICODEDEP) $(LUAZIPDEP)  $(LUAFSDEP) \
+                 $(LUAPEGDEP) $(LUAMDVDEP)  $(LUAZLIBDEP) $(LUAFFDEP) $(makecpool)
+ 
+ ## end of luatexlib.mk - Makefile fragment for libraries used by pdf[ex]tex.

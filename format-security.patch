@@ -607,3 +607,54 @@
  	/* Note: If a mad function continues to open popups, this will
  	 * stop after MAX_POPUPS, but open a new window for each
  	 * window the user pops down. Maybe we ought to do something
+--- texlive-20080816-source/texk/web2c/luatexdir/font/subfont.c.orig	2008-03-24 16:47:15.000000000 +0100
++++ texlive-20080816-source/texk/web2c/luatexdir/font/subfont.c	2016-07-20 18:08:12.696272467 +0200
+@@ -162,7 +162,7 @@
+       sfd_close();
+     }
+     tex_printf ("{");
+-    tex_printf (cur_file_name);
++    tex_printf ("%s", cur_file_name);
+     sfd = new_sfd_entry ();
+     sfd->name = xstrdup (sfd_name);
+     while (!sfd_eof ()) {
+--- texlive-20080816-source/texk/web2c/luatexdir/font/writet1.c.orig	2008-03-24 16:47:15.000000000 +0100
++++ texlive-20080816-source/texk/web2c/luatexdir/font/writet1.c	2016-07-20 19:32:56.457541671 +0200
+@@ -27,7 +27,7 @@
+ #  include <string.h>
+ #  include "luatex-api.h"
+ 
+-#  define t1_log(s)        if(tracefilenames) tex_printf(s)
++#  define t1_log(s)        if(tracefilenames) tex_printf("%s", s)
+ #  define get_length1()    t1_length1 = t1_offset() - t1_save_offset
+ #  define get_length2()    t1_length2 = t1_offset() - t1_save_offset
+ #  define get_length3()    t1_length3 = fixedcontent? t1_offset() - t1_save_offset : 0
+--- texlive-20080816-source/texk/web2c/luatexdir/image/pdftoepdf.cc.orig	2008-04-18 14:27:06.000000000 +0200
++++ texlive-20080816-source/texk/web2c/luatexdir/image/pdftoepdf.cc	2016-07-20 19:33:45.793414942 +0200
+@@ -858,13 +858,13 @@
+         if (writematrix) {      // The matrix is only written if the image is rotated.
+             sprintf(s, "/Matrix [%.8f %.8f %.8f %.8f %.8f %.8f]\n",
+                     scale[0], scale[1], scale[2], scale[3], scale[4], scale[5]);
+-            pdf_printf(stripzeros(s));
++            pdf_printf("%s", stripzeros(s));
+         }
+     }
+ 
+     sprintf(s, "/BBox [%.8f %.8f %.8f %.8f]\n",
+             pagebox->x1, pagebox->y1, pagebox->x2, pagebox->y2);
+-    pdf_printf(stripzeros(s));
++    pdf_printf("%s", stripzeros(s));
+ 
+     // write the page Group if it's there
+     if (page->getGroup() != NULL) {
+--- texlive-20080816-source/texk/web2c/luatexdir/image/writeimg.c.orig	2008-04-28 10:45:24.000000000 +0200
++++ texlive-20080816-source/texk/web2c/luatexdir/image/writeimg.c	2016-07-20 19:34:04.597716369 +0200
+@@ -269,7 +269,7 @@
+ void pdf_print_resname_prefix()
+ {
+     if (pdf_resname_prefix != 0)
+-        pdf_printf(makecstring(pdf_resname_prefix));
++        pdf_printf("%s", makecstring(pdf_resname_prefix));
+ }
+ 
+ void read_img(image_dict * idict, integer pdf_minor_version,
