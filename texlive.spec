@@ -37,7 +37,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	29
+Release:	30
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -6763,7 +6763,10 @@ touch $RPM_BUILD_ROOT%{fmtdir}/xetex/xelatex.fmt
 %endif
 
 %{__sed} -i -e '1s,/usr/bin/env perl,%{__perl},' \
-	$RPM_BUILD_ROOT%{_bindir}/{extractres,fix{dlsr,fm,mac,psdit,psp,scribe,tp,wfw,wp,ww}ps,includeres,psmerge,texindy,xindy} \
+	$RPM_BUILD_ROOT%{_bindir}/{extractres,fix{dlsr,fm,mac,psdit,psp,scribe,tp,wfw,wp,ww}ps,includeres,psmerge} \
+%if %{with xindy}
+	$RPM_BUILD_ROOT%{_bindir}/{texindy,xindy} \
+%endif
 	$RPM_BUILD_ROOT%{texmf}/scripts/tetex/{e2pall,texdoctk}.pl \
 	$RPM_BUILD_ROOT%{texmf}/scripts/texlive/{getnonfreefonts,tlmgr}.pl \
 	$RPM_BUILD_ROOT%{texmf}/scripts/texlive/tlmgrgui/{tlmgrgui,tlmgrgui-real}.pl \
