@@ -37,7 +37,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	30
+Release:	31
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -268,6 +268,8 @@ TeXbook' başlıklı kitabında anlatılmaktadır.
 %package other-utils
 Summary:	Other utilities
 Group:		Applications/Publishing/TeX
+# contains texlua scripts
+Requires:	%{name}-luatex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-cyrtexinfo
 
 %description other-utils
@@ -1902,6 +1904,8 @@ Summary(pl.UTF-8):	Podstawowe pliki pakietu makr ConTeXt
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+# contains texlua scripts
+Requires:	%{name}-luatex = %{epoch}:%{version}-%{release}
 Provides:	tetex-context
 Obsoletes:	tetex-context
 %if "%{_rpmversion}" >= "5"
