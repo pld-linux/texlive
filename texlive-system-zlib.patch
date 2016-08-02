@@ -1,0 +1,44 @@
+--- texlive-20080816-source/texk/web2c/luatexdir/luatexlib.mk.orig	2016-07-31 21:34:57.966066392 +0200
++++ texlive-20080816-source/texk/web2c/luatexdir/luatexlib.mk	2016-08-02 17:26:11.464532754 +0200
+@@ -126,7 +126,7 @@
+ LUAZLIBDIR=../../libs/luazlib
+ LUAZLIBSRCDIR=$(srcdir)/$(LUAZLIBDIR)
+ LUAZLIBDEP=$(LUAZLIBDIR)/lgzip.o $(LUAZLIBDIR)/lzlib.o
+-LUAZLIBINC=-I$(ZLIBSRCDIR) -I$(LIBLUASRCDIR)
++LUAZLIBINC=-I$(LIBLUASRCDIR)
+ $(LUAZLIBDEP): $(LUAZLIBDIR)/lgzip.c $(LUAZLIBDIR)/lzlib.c
+ 	mkdir -p $(LUAZLIBDIR) && cd $(LUAZLIBDIR) && cp -f $(LUAZLIBSRCDIR)/* . && $(CC) $(CFLAGS) $(LUAZLIBINC) -g -o lgzip.o -c lgzip.c && $(CC) $(CFLAGS) $(LUAZLIBINC) -g -o lzlib.o -c lzlib.c
+ 
+--- texlive-20080816-source/texk/web2c/luatexdir/luatex.mk.orig	2008-06-02 16:54:32.000000000 +0200
++++ texlive-20080816-source/texk/web2c/luatexdir/luatex.mk	2016-08-02 17:26:51.543284293 +0200
+@@ -19,7 +19,7 @@
+ LIBOBSDCOMPATDIR=../../libs/obsdcompat
+ LIBOBSDCOMPATFSRCDIR=$(srcdir)/$(LIBOBSDCOMPATDIR)
+ 
+-XCPPFLAGS=-I$(LIBOBSDCOMPATDIR) -I$(LIBOBSDCOMPATDIR)/.. -I$(LIBOBSDCOMPATFSRCDIR) -I$(LIBOBSDCOMPATFSRCDIR)/..  -I$(ZLIBSRCDIR) -I$(LIBPNGSRCDIR) -I$(LIBXPDFSRCDIR) -Dextra_version_info=`date +-%Y%m%d%H`
++XCPPFLAGS=-I$(LIBOBSDCOMPATDIR) -I$(LIBOBSDCOMPATDIR)/.. -I$(LIBOBSDCOMPATFSRCDIR) -I$(LIBOBSDCOMPATFSRCDIR)/..  -I$(LIBXPDFSRCDIR) -Dextra_version_info=`date +-%Y%m%d%H`
+ 
+ Makefile: $(srcdir)/$(luatexdir)/luatex.mk
+ 
+--- texlive-20080816-source/texk/web2c/pdftexdir/pdftex.mk.orig	2008-07-11 08:51:52.000000000 +0200
++++ texlive-20080816-source/texk/web2c/pdftexdir/pdftex.mk	2016-08-02 17:27:17.234620739 +0200
+@@ -9,7 +9,7 @@
+ 
+ LIBOBSDCOMPATDIR=../../libs/obsdcompat
+ LIBOBSDCOMPATSRCDIR=$(srcdir)/$(LIBOBSDCOMPATDIR)
+-XCPPFLAGS=-I$(LIBOBSDCOMPATDIR) -I$(LIBOBSDCOMPATDIR)/.. -I$(LIBOBSDCOMPATSRCDIR) -I$(LIBOBSDCOMPATSRCDIR)/.. -I$(ZLIBSRCDIR)
++XCPPFLAGS=-I$(LIBOBSDCOMPATDIR) -I$(LIBOBSDCOMPATDIR)/.. -I$(LIBOBSDCOMPATSRCDIR) -I$(LIBOBSDCOMPATSRCDIR)/..
+ 
+ Makefile: $(srcdir)/$(pdftexdir)/pdftex.mk
+ 
+--- texlive-20080816-source/texk/web2c/luatexdir/Makefile.in.orig	2008-04-16 01:20:46.000000000 +0200
++++ texlive-20080816-source/texk/web2c/luatexdir/Makefile.in	2016-08-02 19:01:12.353782328 +0200
+@@ -8,7 +8,7 @@
+ kpathsea_srcdir_parent = $(srcdir)/../..
+ kpathsea_dir_parent = ../..
+ 
+-ALL_CXXFLAGS = @CXXFLAGS@ @DEFS@ $(XXCFLAGS) -I. -I$(srcdir) -I$(kpathsea_dir_parent) -I$(kpathsea_srcdir_parent) @LIBXPDFCPPFLAGS@ -I$(LIBOBSDCOMPATDIR) -I$(LIBOBSDCOMPATDIR)/.. -I$(LIBOBSDCOMPATFSRCDIR) -I$(LIBOBSDCOMPATFSRCDIR)/.. -I$(LIBPNGSRCDIR) -I$(ZLIBSRCDIR)
++ALL_CXXFLAGS = @CXXFLAGS@ @DEFS@ $(XXCFLAGS) -I. -I$(srcdir) -I$(kpathsea_dir_parent) -I$(kpathsea_srcdir_parent) @LIBXPDFCPPFLAGS@ -I$(LIBOBSDCOMPATDIR) -I$(LIBOBSDCOMPATDIR)/.. -I$(LIBOBSDCOMPATFSRCDIR) -I$(LIBOBSDCOMPATFSRCDIR)/..
+ CXX = @CXX@
+ 
+ CTANGLE = ../ctangle
