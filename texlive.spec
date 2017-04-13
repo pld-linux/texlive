@@ -94,6 +94,7 @@ Patch11:	%{name}-clisp.patch
 Patch12:	%{name}-system-libpng.patch
 Patch13:	%{name}-system-zzip.patch
 Patch14:	%{name}-system-zlib.patch
+Patch15:	%{name}-xetex-zlib.patch
 URL:		http://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -6435,6 +6436,7 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 
 CURDIR=$(pwd)
 cd utils/xindy/make-rules/alphabets

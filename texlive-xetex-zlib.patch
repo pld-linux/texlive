@@ -1,0 +1,10 @@
+--- texlive-20080816-source/texk/web2c/xetexdir/xetex.ch.orig
++++ texlive-20080816-source/texk/web2c/xetexdir/xetex.ch
+@@ -6804,7 +6804,6 @@ if (x<>69069)or feof(fmt_file) then goto bad_fmt
+ @y
+ undump_int(x);
+ if (x<>69069) then goto bad_fmt;
+-if not w_eof(fmt_file) then goto bad_fmt
+ @z
+ 
+ @x
