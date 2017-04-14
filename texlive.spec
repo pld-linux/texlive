@@ -131,6 +131,7 @@ BuildRequires:	tetex-tex-babel
 BuildRequires:	texconfig
 %else
 BuildRequires:	%{name}-context
+BuildRequires:	%{name}-cslatex
 BuildRequires:	%{name}-csplain
 BuildRequires:	%{name}-fonts-cmsuper
 #BuildRequires:	%{name}-format-amstex
@@ -6506,10 +6507,9 @@ install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT%{_pixmapsdir} \
 	$RPM_BUILD_ROOT%{_mandir}/man5 \
 	$RPM_BUILD_ROOT/var/cache/fonts \
-	$RPM_BUILD_ROOT/etc/cron.daily\
-	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap\
-	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map\
-	$RPM_BUILD_ROOT%{fmtdir}/pdftex
+	$RPM_BUILD_ROOT/etc/cron.daily \
+	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap \
+	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map
 
 lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 
@@ -6735,40 +6735,40 @@ rm -f $RPM_BUILD_ROOT%{_infodir}/dir*
 %endif
 
 # Create format files
-for format in \
-	aleph \
-	csplain \
-	etex \
-	lambda \
-	lamed \
-	latex \
-	mex \
-	mllatex \
-	mptopdf \
-	omega \
-	pdfcsplain \
-	pdfetex \
-	pdflatex \
-	pdftex \
-	pdfxmltex \
-	physe \
-	phyzzx \
-	tex \
-	texsis \
-	xetex \
-	xelatex \
-	xmltex; do
+for format_dir in \
+	aleph:aleph \
+	csplain:pdftex \
+	etex:pdftex \
+	lambda:omega \
+	lamed:aleph \
+	latex:pdftex \
+	lualatex:luatex \
+	luatex:luatex \
+	mex:pdftex \
+	mllatex:pdftex \
+	mptopdf:pdftex \
+	omega:omega \
+	pdfcsplain:pdftex \
+	pdfetex:pdftex \
+	pdflatex:pdftex \
+	pdftex:pdftex \
+	pdfxmltex:pdftex \
+	physe:pdftex \
+	phyzzx:pdftex \
+	tex:tex \
+	texsis:pdftex \
+	xetex:xetex \
+	xelatex:xetex \
+	xmltex:pdftex ; do
+	format=${format_dir%:*}
+	subdir=${format_dir#*:}
 %if %{with bootstrap}
-	install -d $RPM_BUILD_ROOT%{fmtdir}/${format}
-	touch $RPM_BUILD_ROOT%{fmtdir}/${format}/${format}.fmt
-	touch $RPM_BUILD_ROOT%{fmtdir}/pdftex/${format}.fmt
+	install -d $RPM_BUILD_ROOT%{fmtdir}/${subdir}
+	touch $RPM_BUILD_ROOT%{fmtdir}/${subdir}/${format}.fmt
 %else
 	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
 %endif
 done
-%if %{with bootstrap}
-touch $RPM_BUILD_ROOT%{fmtdir}/xetex/xelatex.fmt
-%endif
 
 %{__sed} -i -e '1s,/usr/bin/env perl,%{__perl},' \
 	$RPM_BUILD_ROOT%{_bindir}/{extractres,fix{dlsr,fm,mac,psdit,psp,scribe,tp,wfw,wp,ww}ps,includeres,psmerge} \
@@ -8377,11 +8377,11 @@ fi
 %ghost %{texmf}/ls-R
 %ghost %{texmfdist}/ls-R
 
-%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/cslatex/base/fonttext.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.dat
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.def
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.us
 %config(noreplace) %verify(not md5 mtime size) %{texmf}/tex/generic/config/language.us.def
+%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/cslatex/base/fonttext.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/latex/base/fontmath.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/latex/base/fonttext.cfg
 %config(noreplace) %verify(not md5 mtime size) %{texmfdist}/tex/latex/base/preload.cfg
@@ -8407,7 +8407,6 @@ fi
 %attr(1777,root,root) %dir %{_localstatedir}/fonts/map
 %attr(1777,root,root) %dir %{fmtdir}
 
-%dir %{fmtdir}/tex
 %dir %{texmfdist}
 %dir %{texmfdist}/doc
 %dir %{texmfdist}/doc/generic
@@ -8562,7 +8561,9 @@ fi
 %{_mandir}/man1/weave.1*
 %{_mandir}/man5/fmtutil.cnf.5*
 %{_mandir}/man5/updmap.cfg.5*
+%dir %{fmtdir}/pdftex
 %{fmtdir}/pdftex/pdfetex.fmt
+%dir %{fmtdir}/tex
 %{fmtdir}/tex/tex.fmt
 
 %files other-utils
@@ -9435,7 +9436,6 @@ fi
 %attr(755,root,root) %{_bindir}/pdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
 %attr(755,root,root) %{texmf}/scripts/epstopdf/epstopdf*
-%dir %{fmtdir}/pdftex
 %{_mandir}/man1/epstopdf.1*
 %{_mandir}/man1/pdftex.1*
 %{texmfdist}/fonts/enc/pdftex
@@ -9501,8 +9501,12 @@ fi
 %{_mandir}/man1/outocp.1*
 %{_mandir}/man1/ovf2ovp.1*
 %{_mandir}/man1/ovp2ovf.1*
-%{fmtdir}/aleph
-%{fmtdir}/omega
+%dir %{fmtdir}/aleph
+%{fmtdir}/aleph/aleph.fmt
+%{fmtdir}/aleph/lamed.fmt
+%dir %{fmtdir}/omega
+%{fmtdir}/omega/lambda.fmt
+%{fmtdir}/omega/omega.fmt
 
 %files plain
 %defattr(644,root,root,755)
@@ -14738,7 +14742,6 @@ fi
 %attr(755,root,root) %{_bindir}/xdvipdfmx
 %attr(755,root,root) %{_bindir}/xelatex
 %attr(755,root,root) %{_bindir}/xetex
-%dir %{fmtdir}/xetex
 %doc %{texmfdist}/doc/generic/ifxetex
 %doc %{texmfdist}/doc/generic/xetex-pstricks
 %doc %{texmfdist}/doc/xelatex
@@ -14751,6 +14754,7 @@ fi
 %{texmfdist}/tex/xelatex
 %{texmfdist}/tex/xetex
 %{texmf}/fmtutil/format.xetex.cnf
+%dir %{fmtdir}/xetex
 %{fmtdir}/xetex/xetex.fmt
 %{fmtdir}/xetex/xelatex.fmt
 
@@ -14777,3 +14781,6 @@ fi
 %{texmf}/fmtutil/format.luatex.cnf
 %{texmfdist}/tex/latex/latexconfig/lualatex.ini
 %{texmfdist}/tex/latex/latexconfig/pdflualatex.ini
+%dir %{fmtdir}/luatex
+%{fmtdir}/luatex/luatex.fmt
+%{fmtdir}/luatex/lualatex.fmt
