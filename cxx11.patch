@@ -9,3 +9,22 @@
      } ranges[] =
      {
  #if 0
+--- texlive-20080816-source/libs/graphite-engine/src/segment/Segment.cpp~	2008-03-18 12:29:11.000000000 +0100
++++ texlive-20080816-source/libs/graphite-engine/src/segment/Segment.cpp	2017-12-07 09:32:35.371698201 +0100
+@@ -570,6 +570,7 @@
+ 	Swap the guts of the two segments.
+ 	OBSOLETE
+ ----------------------------------------------------------------------------------------------*/
++/*
+ void Segment::SwapWith(Segment * pgrseg)
+ {
+ 	int crefThis = m_cref;
+@@ -580,7 +581,7 @@
+ 	m_cref = crefThis;
+ 	pgrseg->m_cref = crefOther;
+ }
+-
++*/
+ /*----------------------------------------------------------------------------------------------
+ 	Delete the pointer to the alternate-end-of-line segment.
+ ----------------------------------------------------------------------------------------------*/
