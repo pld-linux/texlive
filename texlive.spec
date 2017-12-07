@@ -6770,6 +6770,7 @@ for format_dir in \
 	install -d $RPM_BUILD_ROOT%{fmtdir}/${subdir}
 	touch $RPM_BUILD_ROOT%{fmtdir}/${subdir}/${format}.fmt
 %else
+	PATH=$RPM_BUILD_ROOT%{_bindir}:$PATH \
 	fmtutil --fmtdir $RPM_BUILD_ROOT%{fmtdir} --byfmt=${format}
 %endif
 done
