@@ -16,7 +16,6 @@
 # Conditional build:
 %bcond_with	xindy		# do not build xindy packages
 
-%include	/usr/lib/rpm/macros.perl
 
 %define		year	2014
 %define		monthday	0525
