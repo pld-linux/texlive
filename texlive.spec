@@ -6397,6 +6397,7 @@ fonts.
 Summary:	TeX package for processing XML files
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
+Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	passivetex = 1.26
 Provides:	xmltex
 Obsoletes:	passivetex
