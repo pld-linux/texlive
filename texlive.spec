@@ -13,7 +13,6 @@
 #error:     texlive-dvips-20080816-5.x86_64          Requires(auto): libkpathsea.so.4()(64bit)
 #Preparing...                ########################################### [100%]
 
-%include	/usr/lib/rpm/macros.perl
 # Conditional build:
 %bcond_with	bootstrap	# bootstrap build
 %bcond_without	xindy		# do not build xindy packages
