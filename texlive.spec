@@ -6794,8 +6794,10 @@ done
 	$RPM_BUILD_ROOT%{texmfdist}/scripts/texcount/TeXcount.pl \
 	$RPM_BUILD_ROOT%{texmfdist}/source/latex/latex-tds/build.pl
 
-%{__sed} -i -e '1s,/usr/bin/env python,%{__python},' \
+%{__sed} -i -e '1s,/usr/bin/python$,%{__python},' \
 	$RPM_BUILD_ROOT%{texmfdist}/doc/generic/enctex/unimap.py \
+
+%{__sed} -i -e '1s,/usr/bin/env python,%{__python},' \
 	$RPM_BUILD_ROOT%{texmfdist}/scripts/bengali/ebong.py \
 	$RPM_BUILD_ROOT%{texmfdist}/scripts/dviasm/dviasm.py
 
