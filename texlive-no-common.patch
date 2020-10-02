@@ -1,0 +1,122 @@
+--- texlive-20080816-source/texk/ttf2pk/pklib.c.orig	2020-10-01 21:54:57.655974958 +0200
++++ texlive-20080816-source/texk/ttf2pk/pklib.c	2020-10-02 15:47:49.597242228 +0200
+@@ -60,7 +60,7 @@
+ #define PK_POST (char)245
+ #define PK_NOP  (char)246
+ 
+-int dpi;
++static int dpi;
+ 
+ FILE *pk_file;
+ 
+@@ -69,32 +69,32 @@
+  *   Information from the .tfm file.
+  */
+ 
+-int tfm_lengths[12];
++static int tfm_lengths[12];
+ 
+ #define lh tfm_lengths[1]
+ #define bc tfm_lengths[2]
+ #define ec tfm_lengths[3]
+ #define nw tfm_lengths[4]
+ 
+-long checksum;
+-long design;
+-byte width_index[256];
+-long tfm_widths[256];
++static long checksum;
++static long design;
++static byte width_index[256];
++static long tfm_widths[256];
+ 
+ /*
+  *   Information on the bitmap currently being worked on.
+  */
+ 
+-byte   *bitmap;
+-int    width;
+-int    skip;
+-int    height;
+-int    hoff;
+-int    voff;
+-int    bytes_wide;
+-size_t bm_size;
+-byte   *bitmap_end;
+-int    pk_len;
++static byte   *bitmap;
++static int    width;
++static int    skip;
++static int    height;
++static int    hoff;
++static int    voff;
++static int    bytes_wide;
++static size_t bm_size;
++static byte   *bitmap_end;
++static int    pk_len;
+ 
+ /*
+  *   Here's the path searching stuff.  First the typedefs and variables.
+--- texlive-20080816-source/texk/ttf2pk/ttflib.c.orig	2020-10-01 21:54:57.659308273 +0200
++++ texlive-20080816-source/texk/ttf2pk/ttflib.c	2020-10-02 15:49:35.973332606 +0200
+@@ -44,38 +44,38 @@
+ #define FEATURE_vert MAKE_TT_TAG('v', 'e', 'r', 't')
+ 
+ 
+-TT_Engine   engine;
+-TT_Face     face;
+-TT_Instance instance;
+-TT_Glyph    glyph;
+-TT_CharMap  char_map;
++static TT_Engine   engine;
++static TT_Face     face;
++static TT_Instance instance;
++static TT_Glyph    glyph;
++static TT_CharMap  char_map;
+ 
+-TT_Outline         outline;
+-TT_Face_Properties properties;
+-TT_BBox            bbox;
++static TT_Outline         outline;
++static TT_Face_Properties properties;
++static TT_BBox            bbox;
+ 
+-TT_Post post;
++static TT_Post post;
+ 
+-TT_Raster_Map Bit, Bit2;
+-void          *Bitp, *Bit2p;
++static TT_Raster_Map Bit, Bit2;
++static void          *Bitp, *Bit2p;
+ 
+-int dpi;
+-int ptsize;
++static int dpi;
++static int ptsize;
+ 
+-int x_offset, y_offset;
+-int ppem;
++static int x_offset, y_offset;
++static int ppem;
+ 
+-TT_Big_Glyph_Metrics metrics;
++static TT_Big_Glyph_Metrics metrics;
+ 
+-TT_Matrix matrix1, matrix2;
++static TT_Matrix matrix1, matrix2;
+ 
+-TTO_GSUBHeader  gsub_;
+-TTO_GSUBHeader  *gsub;
++static TTO_GSUBHeader  gsub_;
++static TTO_GSUBHeader  *gsub;
+ 
+-TT_UShort in_string[2];
+-TTO_GSUB_String in, out;
++static TT_UShort in_string[2];
++static TTO_GSUB_String in, out;
+ 
+-Boolean has_gsub;
++static Boolean has_gsub;
+ 
+ 
+ static void  
