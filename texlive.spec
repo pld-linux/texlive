@@ -83,6 +83,7 @@ Patch0:		%{name}-am.patch
 Patch1:		%{name}-20080816-kpathsea-ar.patch
 Patch2:		%{name}-gcc44.patch
 Patch3:		%{name}-getline.patch
+Patch4:		%{name}-no-common.patch
 Patch5:		%{name}-aclocal.patch
 Patch6:		%{name}-libpng.patch
 Patch7:		%{name}-libpng15.patch
@@ -7419,6 +7420,7 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 %patch5 -p1
 %patch6 -p0
 %patch7 -p1
