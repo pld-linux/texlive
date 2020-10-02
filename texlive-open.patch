@@ -1,0 +1,11 @@
+--- texlive-20080816-source/texk/xdvik/util.c.orig	2008-07-13 03:21:34.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/util.c	2020-10-02 17:13:20.392779656 +0200
+@@ -273,7 +273,7 @@
+     int fd = open(fname, flags, mode);
+     if (fd < 0 && (errno == EMFILE || errno == ENFILE)) {
+ 	close_a_file();
+-	fd = open(fname, flags);
++	fd = open(fname, flags, mode);
+     }
+     return fd;
+ }
