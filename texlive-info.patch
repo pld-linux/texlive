@@ -1,0 +1,734 @@
+--- texlive-20080816-source/texk/kpathsea/kpathsea.texi.orig	2008-07-08 20:21:45.000000000 +0200
++++ texlive-20080816-source/texk/kpathsea/kpathsea.texi	2020-10-03 10:30:32.495639438 +0200
+@@ -48,16 +48,16 @@
+ @syncodeindex tp cp
+ @syncodeindex vr cp
+ 
+-@dircategory TeX
++@dircategory TeX:
+ @direntry
+-* Kpathsea: (kpathsea).                       File lookup along search paths.
+-* kpsewhich: (kpathsea)Invoking kpsewhich.    TeX file searching.
+-* mktexfmt: (kpathsea)mktex scripts.          Format (fmt/base/mem) generation.
+-* mktexlsr: (kpathsea)Filename database.      Update ls-R.
+-* mktexmf: (kpathsea)mktex scripts.           MF source generation.
+-* mktexpk: (kpathsea)mktex scripts.           PK bitmap generation.
+-* mktextex: (kpathsea)mktex scripts.          TeX source generation.
+-* mktextfm: (kpathsea)mktex scripts.          TeX font metric generation.
++* Kpathsea: (kpathsea).			File lookup along search paths
++* kpsewhich: (kpathsea)kpsewhich.	TeX file searching
++* mktexfmt: (kpathsea)mktex scripts.	Format (fmt/base/mem) generation
++* mktexlsr: (kpathsea)Filename database.	Update ls-R
++* mktexmf: (kpathsea)mktex scripts.	MF source generation
++* mktexpk: (kpathsea)mktex scripts.	PK bitmap generation
++* mktextex: (kpathsea)mktex scripts.	TeX source generation
++* mktextfm: (kpathsea)mktex scripts.	TeX font metric generation
+ @end direntry
+ 
+ 
+@@ -281,7 +281,7 @@
+ * Path sources::                Where search paths can be defined.
+ * Path expansion::              Special constructs in search paths.
+ * Filename database::           Using an externally-built list to search.
+-* Invoking kpsewhich::          Standalone path lookup.
++* kpsewhich::                   Standalone path lookup.
+ @end menu
+ 
+ 
+@@ -1033,7 +1033,7 @@
+ @end example
+ 
+ 
+-@node Invoking kpsewhich
++@node kpsewhich
+ @section @code{kpsewhich}: Standalone path searching
+ 
+ @pindex kpsewhich
+--- texlive-20080816-source/texk/kpathsea/bugs.texi.orig	2007-02-26 02:23:54.000000000 +0100
++++ texlive-20080816-source/texk/kpathsea/bugs.texi	2020-10-03 11:19:29.499728322 +0200
+@@ -222,7 +222,7 @@
+ 
+ @cindex Kpsewhich, and debugging
+ It is sometimes helpful to run the standalone Kpsewhich utility
+-(@pxref{Invoking kpsewhich}), instead of the original program.
++(@pxref{kpsewhich}), instead of the original program.
+ 
+ @cindex numeric debugging values
+ In any case, you can @emph{not} use the @emph{names} below; you must
+--- texlive-20080816-source/texk/dvipsk/dvips.texi.orig	2008-07-10 01:40:36.000000000 +0200
++++ texlive-20080816-source/texk/dvipsk/dvips.texi	2020-10-03 10:32:52.794879372 +0200
+@@ -25,11 +25,11 @@
+ 
+ @ifclear INSTALLONLY
+ 
+-@dircategory TeX
++@dircategory TeX:
+ @direntry
+-* DVI-to-Postscript: (dvips).        Translating TeX DVI files to PostScript.
+-* afm2tfm: (dvips)Invoking afm2tfm.  Making Type 1 fonts available to TeX.
+-* dvips: (dvips)Invoking Dvips.      DVI-to-PostScript translator.
++* DVI-to-Postscript: (dvips).		Translating TeX DVI files to PostScript
++* afm2tfm: (dvips)afm2tfm.		Making Type 1 fonts available to TeX
++* dvips: (dvips)Dvips.			DVI-to-PostScript translator
+ @end direntry
+ 
+ @titlepage
+@@ -55,7 +55,7 @@
+ @menu
+ * Why Dvips::                   Why use Dvips?
+ * Installation::                How to compile and install Dvips.
+-* Invoking Dvips::              Command-line options, configuration files, etc.
++* Dvips::                       Command-line options, configuration files, etc.
+ * Paper size and landscape::    Changing the paper dimensions.
+ * Interaction with PostScript:: TeX meets Dvips meets PostScript.
+ * PostScript fonts::            Installing and using PostScript fonts.
+@@ -553,7 +553,7 @@
+ 
+ 
+ @ifclear INSTALLONLY
+-@node Invoking Dvips
++@node Dvips
+ @chapter Invoking Dvips
+ 
+ @cindex command-line options
+@@ -3117,7 +3117,7 @@
+ @menu
+ * Font concepts::               Metrics, glyphs, virtual fonts, and encodings.
+ * Making a font available::     Installing and using a PostScript font.
+-* Invoking afm2tfm::            Creating TFM and AFM files for a virtual font.
++* afm2tfm::                     Creating TFM and AFM files for a virtual font.
+ * psfonts.map::                 Defining available PostScript fonts.
+ @end menu
+ 
+@@ -3221,7 +3221,7 @@
+ 
+ The Afm2tfm program distributed with Dvips converts an AFM file
+ to a TFM file and performs other useful transformations as well.
+-@xref{Invoking afm2tfm}.
++@xref{afm2tfm}.
+ 
+ 
+ @node Glyph files
+@@ -3629,7 +3629,7 @@
+ the built-in PostScript fonts.
+ 
+ 
+-@node Invoking afm2tfm
++@node afm2tfm
+ @section Invoking Afm2tfm
+ 
+ @pindex afm2tfm
+--- texlive-20080816-source/texk/web2c/doc/web2c.texi.orig	2008-07-08 20:21:45.000000000 +0200
++++ texlive-20080816-source/texk/web2c/doc/web2c.texi	2020-10-03 10:39:40.139339264 +0200
+@@ -28,38 +28,35 @@
+ @syncodeindex pg cp
+ @syncodeindex vr cp
+ 
+-@dircategory TeX
++@dircategory TeX:
+ @direntry
+-* Web2c: (web2c).               TeX, Metafont, and companion programs.
+-@end direntry
+-@dircategory Individual utilities
+-@direntry
+-* bibtex: (web2c)bibtex invocation.             Maintaining bibliographies.
+-* dmp: (web2c)dmp invocation.                   Troff->MPX (MetaPost pictures).
+-* dvicopy: (web2c)dvicopy invocation.           Virtual font expansion
+-* dvitomp: (web2c)dvitomp invocation.           DVI to MPX (MetaPost pictures).
+-* dvitype: (web2c)dvitype invocation.           DVI to human-readable text.
+-* gftodvi: (web2c)gftodvi invocation.           Generic font proofsheets.
+-* gftopk: (web2c)gftopk invocation.             Generic to packed fonts.
+-* gftype: (web2c)gftype invocation.             GF to human-readable text.
+-* makempx: (web2c)makempx invocation.           MetaPost label typesetting.
+-* mf: (web2c)mf invocation.                     Creating typeface families.
+-* mft: (web2c)mft invocation.                   Prettyprinting Metafont source.
+-* mltex: (web2c)MLTeX.                          Multi-lingual TeX.
+-* mpost: (web2c)mpost invocation.               Creating technical diagrams.
+-* mpto: (web2c)mpto invocation.                 MetaPost label extraction.
+-* newer: (web2c)newer invocation.               Compare modification times.
+-* patgen: (web2c)patgen invocation.             Creating hyphenation patterns.
+-* pktogf: (web2c)pktogf invocation.             Packed to generic fonts.
+-* pktype: (web2c)pktype invocation.             PK to human-readable text.
+-* pltotf: (web2c)pltotf invocation.             Property list to TFM.
+-* pooltype: (web2c)pooltype invocation.         Display WEB pool files.
+-* tangle: (web2c)tangle invocation.             WEB to Pascal.
+-* tex: (web2c)tex invocation.                   Typesetting.
+-* tftopl: (web2c)tftopl invocation.             TFM -> property list.
+-* vftovp: (web2c)vftovp invocation.             Virtual font -> virtual pl.
+-* vptovf: (web2c)vptovf invocation.             Virtual pl -> virtual font.
+-* weave: (web2c)weave invocation.               WEB to TeX.
++* Web2c: (web2c).			TeX, Metafont, and companion programs
++* bibtex: (web2c)bibtex.		Maintaining bibliographies
++* dmp: (web2c)dmp.			Troff->MPX (MetaPost pictures)
++* dvicopy: (web2c)dvicopy.		Virtual font expansion
++* dvitomp: (web2c)dvitomp.		DVI to MPX (MetaPost pictures)
++* dvitype: (web2c)dvitype.		DVI to human-readable text
++* gftodvi: (web2c)gftodvi.		Generic font proofsheets
++* gftopk: (web2c)gftopk.		Generic to packed fonts
++* gftype: (web2c)gftype.		GF to human-readable text
++* makempx: (web2c)makempx.		MetaPost label typesetting
++* mf: (web2c)mf.			Creating typeface families
++* mft: (web2c)mft.			Prettyprinting Metafont source
++* mltex: (web2c)MLTeX.			Multi-lingual TeX
++* mpost: (web2c)mpost.			Creating technical diagrams
++* mpto: (web2c)mpto.			MetaPost label extraction.
++* newer: (web2c)newer.			Compare modification times
++* patgen: (web2c)patgen.		Creating hyphenation patterns
++* pktogf: (web2c)pktogf.		Packed to generic fonts
++* pktype: (web2c)pktype.		PK to human-readable text
++* pltotf: (web2c)pltotf.		Property list to TFM
++* pooltype: (web2c)pooltype.		Display WEB pool files
++* tangle: (web2c)tangle.		WEB to Pascal
++* tex: (web2c)tex.			Typesetting
++* tftopl: (web2c)tftopl.		TFM -> property list
++* vftovp: (web2c)vftovp.		Virtual font -> virtual pl
++* vptovf: (web2c)vptovf.		Virtual pl -> virtual font
++* weave: (web2c)weave.			WEB to TeX
+ @end direntry
+ 
+ @copying
+@@ -903,7 +900,7 @@
+ otherwise, are available.
+ 
+ @menu
+-* tex invocation::              Invoking TeX.
++* tex::                         Invoking TeX.
+ * Initial TeX::                 Making format files.
+ * Formats::                     Major TeX macro packages.
+ * Languages and hyphenation::   TeX supports many human languages.
+@@ -912,7 +909,7 @@
+ @end menu
+ 
+ 
+-@node tex invocation
++@node tex
+ @section @code{tex} invocation
+ 
+ @pindex tex
+@@ -1156,7 +1153,7 @@
+ @command{initex} was installed to invoke the initial form, but this is
+ no longer the case.
+ 
+-For a list of options and other information, @pxref{tex invocation}.
++For a list of options and other information, @pxref{tex}.
+ 
+ @flindex plain.fmt
+ @flindex tex.fmt
+@@ -1275,7 +1272,7 @@
+ 
+ @menu
+ * MLTeX::                Multi-lingual TeX.
+-* patgen invocation::    Creating hyphenation patterns.
++* patgen::               Creating hyphenation patterns.
+ * TCX files::            Support for different character sets & fonts.
+ @end menu
+ 
+@@ -1569,7 +1566,7 @@
+ the dump is ignored and the data from the file used instead.
+ 
+ 
+-@node patgen invocation
++@node patgen
+ @subsection Patgen: Creating hyphenation patterns
+ 
+ @pindex patgen
+@@ -1706,16 +1703,16 @@
+ (@pxref{References}).
+ 
+ @menu
+-* mf invocation::               Invoking Metafont.
++* mf::                          Invoking Metafont.
+ * Initial Metafont::            Making bases.
+ * Modes::                       Device definitions for Metafont.
+ * Online Metafont graphics::    Seeing MF output online.
+-* gftodvi invocation::          Making proofsheets for fonts.
+-* mft invocation::              Prettyprinting Metafont sources.
++* gftodvi::                     Making proofsheets for fonts.
++* mft::                         Prettyprinting Metafont sources.
+ @end menu
+ 
+ 
+-@node mf invocation
++@node mf
+ @section @code{mf} invocation
+ 
+ @pindex mf
+@@ -1729,7 +1726,7 @@
+ 
+ Metafont processes its command line and determines its memory dump
+ (base) file in a way exactly analogous to MetaPost and @TeX{}
+-(@pxref{tex invocation}, and @pxref{Memory dumps}).  Synopses:
++(@pxref{tex}, and @pxref{Memory dumps}).  Synopses:
+ 
+ @example
+ mf [@var{option}]@dots{} [@var{mfname}[.mf]] [@var{mf-commands}]
+@@ -1768,8 +1765,8 @@
+ resolution in pixels per inch, and @var{basemfname} is the basename of
+ @var{mfname}, or @samp{mfput} if no input file was specified.  A GF file
+ contains bitmaps of the actual character shapes.  Usually GF files are
+-converted immediately to PK files with GFtoPK (@pxref{gftopk
+-invocation}), since PK files contain equivalent information, but are
++converted immediately to PK files with GFtoPK (@pxref{gftopk}),
++since PK files contain equivalent information, but are
+ more compact.  (Metafont output in GF format rather than PK for only
+ historical reasons.)
+ 
+@@ -1856,7 +1853,7 @@
+ and virgin}.  In past releases, a separate program @command{inimf} was
+ installed to invoke the initial form, but this is no longer the case.
+ 
+-For a list of options and other information, see @ref{mf invocation}.
++For a list of options and other information, see @ref{mf}.
+ 
+ @flindex plain.base
+ @flindex mf.base
+@@ -1939,7 +1936,7 @@
+ mode.
+ 
+ The @var{magnification} and @var{mfname} arguments are explained in
+-@ref{mf invocation}.  In the file @file{newmode.mf}, you should have the
++@ref{mf}.  In the file @file{newmode.mf}, you should have the
+ following (with no @code{mode_def} or @code{enddef}), if you are using
+ @file{modes.mf} conventions:
+ @example
+@@ -2085,7 +2082,7 @@
+ use MFtalk (see @file{web2c/window/mftalk.c}).
+ 
+ 
+-@node gftodvi invocation
++@node gftodvi
+ @section GFtoDVI: Character proofs of fonts
+ 
+ @pindex gftodvi
+@@ -2173,7 +2170,7 @@
+ @end table
+ 
+ 
+-@node mft invocation
++@node mft
+ @section MFT: Prettyprinting Metafont source
+ 
+ @pindex mft
+@@ -2306,17 +2303,17 @@
+ supported) and a number of other subsidiary programs, described below.
+ 
+ @menu
+-* mpost invocation::            Invoking MetaPost.
++* mpost::                       Invoking MetaPost.
+ * Initial MetaPost::            Making mems.
+-* makempx invocation::          Create MPX files for labels.
+-* dvitomp invocation::          DVI-to-MPX translation.
+-* dmp invocation::              Ditroff-to-MPX translation.
+-* mpto invocation::             Extracting labels from MetaPost programs.
+-* newer invocation::            Is one file newer than another?
++* makempx::                     Create MPX files for labels.
++* dvitomp::                     DVI-to-MPX translation.
++* dmp::                         Ditroff-to-MPX translation.
++* mpto::                        Extracting labels from MetaPost programs.
++* newer::                       Is one file newer than another?
+ @end menu
+ 
+ 
+-@node mpost invocation
++@node mpost
+ @section @code{mpost} invocation
+ 
+ @pindex mpost
+@@ -2344,8 +2341,8 @@
+ generally stored alongside @file{mpman.ps}.
+ 
+ MetaPost processes its command line and determines its memory dump (mem)
+-file in a way exactly analogous to Metafont and @TeX{} (@pxref{tex
+-invocation,,@code{tex} invocation}, and @pxref{Memory dumps}).
++file in a way exactly analogous to Metafont and @TeX{}
++(@pxref{tex,,@code{tex} invocation}, and @pxref{Memory dumps}).
+ Synopses:
+ 
+ @example
+@@ -2393,8 +2390,7 @@
+ @end example
+ @noindent
+ calls MakeMPX to generate a MPX file containing a MetaPost picture
+-expression corresponding to @var{tex-input} (@pxref{makempx
+-invocation}).
++expression corresponding to @var{tex-input} (@pxref{makempx}).
+ 
+ The construct
+ @example
+@@ -2406,8 +2402,7 @@
+ must start with a @code{verbatimtex} block that gives the necessary
+ @code{\documentclass} (or @code{\documentstyle})
+ @code{\begin@{document@}} command.  You will also need to set the
+-enviroment variable @code{TEX} to @samp{latex} (@pxref{makempx
+-invocation}).
++enviroment variable @code{TEX} to @samp{latex} (@pxref{makempx}).
+ 
+ @var{tex-input} need not be specifically @TeX{} input; it could also be
+ Troff.  In that case, you will need the @samp{-m pictures} Troff macro
+@@ -2451,7 +2446,7 @@
+ need to be downloaded (@pxref{psfonts.map,,, dvips, Dvips}).
+ 
+ MetaPost can write output files, via the @code{write} primitive; this
+-opens a security hole.  @xref{tex invocation}.
++opens a security hole.  @xref{tex}.
+ 
+ The program accepts the following options, as well as the standard
+ @samp{-help} and @samp{-version} (@pxref{Common options}):
+@@ -2504,7 +2499,7 @@
+ @command{inimpost} was installed for the initial form, but this is no
+ longer the case.
+ 
+-For a list of options and other information, see @ref{mpost invocation}.
++For a list of options and other information, see @ref{mpost}.
+ 
+ @flindex plain.mem
+ @flindex mpost.mem
+@@ -2533,7 +2528,7 @@
+ @file{mfplain.mem} file lets you directly process Metafont source files
+ with MetaPost, producing character proofs (one file for each character)
+ similar to those produced with Metafont in proof mode and GFtoDVI
+-(@pxref{gftodvi invocation}).
++(@pxref{gftodvi}).
+ 
+ @flindex metafun.mp
+ @cindex MetaFun, enhanced MetaPost
+@@ -2544,7 +2539,7 @@
+ Pragma: @url{http://www.pragma-ade.com/}.
+ 
+ 
+-@node makempx invocation
++@node makempx
+ @section MakeMPX: Support MetaPost labels
+ 
+ @pindex makempx
+@@ -2574,7 +2569,7 @@
+ @item
+ @cindex MPto, invoked by MakeMPX
+ MPto is run to extract the label text from the
+-MetaPost source file @var{mpfile} (@pxref{mpto invocation}).
++MetaPost source file @var{mpfile} (@pxref{mpto}).
+ 
+ @item
+ The typesetting program itself is run, either @TeX{} or Troff (see
+@@ -2586,8 +2581,8 @@
+ @cindex DVItoMP, invoked by MakeMPX
+ @cindex DMP, invoked by MakeMPX
+ The typesetter output (a DVI file in the case of @TeX{}, Ditroff output
+-for Troff) is translated back to MetaPost, by DVItoMP (@pxref{dvitomp
+-invocation}) or DMP (@pxref{dmp invocation}) respectively.
++for Troff) is translated back to MetaPost, by DVItoMP (@pxref{dvitomp})
++or DMP (@pxref{dmp}) respectively.
+ @end enumerate
+ 
+ @flindex mpxerr.log
+@@ -2644,7 +2639,7 @@
+ The command run to typeset the labels in @TeX{}; the default is
+ @samp{etex}, set in @file{texmf.cnf}.  If you use @LaTeX{}, set this to
+ @code{latex}, and supply an appropriate @code{verbatimtex} header in
+-the MP source (@pxref{mpost invocation}).  Or put @samp{%&latex} as
++the MP source (@pxref{mpost}).  Or put @samp{%&latex} as
+ the first line of your @LaTeX{} source.
+ 
+ @item TROFF
+@@ -2668,7 +2663,7 @@
+ @end vtable
+ 
+ 
+-@node dvitomp invocation
++@node dvitomp
+ @section DVItoMP: DVI to MPX conversion
+ 
+ @pindex dvitomp
+@@ -2677,7 +2672,7 @@
+ 
+ DVItoMP converts DVI files into low-level MetaPost commands in a
+ so-called MPX file.  This program is generally invoked only by MakeMPX
+-(@pxref{makempx invocation}).  Synopsis:
++(@pxref{makempx}).  Synopsis:
+ 
+ @example
+ dvitomp @var{dvifile}[.dvi] [@var{mpxfile}[.mpx]]
+@@ -2697,7 +2692,7 @@
+ options}).
+ 
+ 
+-@node dmp invocation
++@node dmp
+ @section DMP: Ditroff to MPX conversion
+ 
+ @pindex DMP
+@@ -2706,7 +2701,7 @@
+ 
+ DMP converts device-independent Troff (ditroff) output files into
+ low-level MetaPost commands in a so-called MPX file.  This program is
+-generally invoked by MakeMPX (@pxref{makempx invocation}).  Synopsis:
++generally invoked by MakeMPX (@pxref{makempx}).  Synopsis:
+ 
+ @example
+ dmp [@var{ditroff-file} [@var{mpxfile}]]
+@@ -2723,7 +2718,7 @@
+ @findex BeginPath @r{ditroff command}
+ @findex DrawPath @r{ditroff command}
+ DMP was written to process the output of a Troff pipeline fed the output
+-of @code{mpto -troff} (@pxref{mpto invocation}).  DMP understands all
++of @code{mpto -troff} (@pxref{mpto}).  DMP understands all
+ the @samp{D@var{c}} graphics functions that @code{dpost} does, but it
+ ignores @samp{x X} device control functions such as @samp{x X
+ SetColor:@dots{}}, @samp{x X BeginPath:}, and @samp{x X
+@@ -2806,7 +2801,7 @@
+ options}).
+ 
+ 
+-@node mpto invocation
++@node mpto
+ @section MPto: Extract labels from MetaPost input
+ 
+ @pindex MPto
+@@ -2820,8 +2815,8 @@
+ @findex verbatimtex @r{MetaPost command}
+ MPto extracts the labels from a MetaPost input file; this is the
+ contents of any @code{btex@dots{}etex} and @code{verbatimtex@dots{}etex}
+-sections.  This program is generally invoked by MakeMPX (@pxref{makempx
+-invocation}).  Synopsis:
++sections.  This program is generally invoked by MakeMPX (@pxref{makempx}).
++Synopsis:
+ 
+ @example
+ mpto [@var{option}]@dots{} @var{mpfile}
+@@ -2846,7 +2841,7 @@
+ @end table
+ 
+ 
+-@node newer invocation
++@node newer
+ @section Newer: Compare file modification times
+ 
+ @pindex newer @r{file comparison}
+@@ -2880,7 +2875,7 @@
+ List missing source files to STDERR.  This is the default.
+ @end table
+ 
+-This is used by MakeMPX (@pxref{makempx invocation}).
++This is used by MakeMPX (@pxref{makempx}).
+ 
+ 
+ @node BibTeX
+@@ -2893,12 +2888,12 @@
+ makes bibliography entries reusable in many different contexts.
+ 
+ @menu
+-* bibtex invocation::
++* bibtex::
+ * Basic BibTeX style files::    The standard and semi-standard styles.
+ @end menu
+ 
+ 
+-@node bibtex invocation
++@node bibtex
+ @section Bib@TeX{} invocation
+ 
+ @pindex bibtex
+@@ -3083,13 +3078,13 @@
+ (and available in many other places, of course).
+ 
+ @menu
+-* tangle invocation::           
+-* weave invocation::            
+-* pooltype invocation::         
++* tangle::           
++* weave::            
++* pooltype::         
+ @end menu
+ 
+ 
+-@node tangle invocation
++@node tangle
+ @section Tangle: Translate WEB to Pascal
+ 
+ @pindex tangle
+@@ -3163,7 +3158,7 @@
+ 
+ @end table
+ 
+-@node weave invocation
++@node weave
+ @section Weave: Translate WEB to @TeX{}
+ 
+ @pindex weave
+@@ -3209,7 +3204,7 @@
+ first change in the change file).
+ 
+ 
+-@node pooltype invocation
++@node pooltype
+ @section Pooltype: Display WEB pool files
+ 
+ @pindex pooltype
+@@ -3218,8 +3213,8 @@
+ @cindex WEB pool files, displaying
+ 
+ Pooltype shows the so-called @dfn{string number} of each string in a WEB
+-pool file (@pxref{WEB}), as output by Tangle (@pxref{tangle
+-invocation}), including the first 256 strings corresponding to the
++pool file (@pxref{WEB}), as output by Tangle (@pxref{tangle}),
++including the first 256 strings corresponding to the
+ possible input characters.  Pooltype primarily serves as an example of
+ WEB conventions to implementors of the @TeX{} system.  Synopsis:
+ 
+@@ -3277,11 +3272,11 @@
+ drivers; they perform generic utility functions.
+ 
+ @menu
+-* dvicopy invocation::          Expand virtual fonts.
+-* dvitype invocation::          DVI to human-readable text.
++* dvicopy::                     Expand virtual fonts.
++* dvitype::                     DVI to human-readable text.
+ @end menu
+ 
+-@node dvicopy invocation
++@node dvicopy
+ @section DVIcopy: Canonicalize virtual font references
+ 
+ @pindex dvicopy
+@@ -3327,7 +3322,7 @@
+ @end table
+ 
+ 
+-@node dvitype invocation
++@node dvitype
+ @section DVItype: Plain text transliteration of DVI files
+ 
+ @pindex dvitype @r{DVI validation}
+@@ -3520,14 +3515,14 @@
+ 
+ @menu
+ * Font file formats::       Explanations of GF, PK, TFM, VF, ...
+-* gftopk invocation::       GF -> PK (compact)
+-* pktogf invocation::       PK -> GF (expand).
+-* pktype invocation::       PK -> human-readable text.
+-* gftype invocation::       GF -> human-readable text.
+-* tftopl invocation::       TFM -> PL (for editing TFM).
+-* pltotf invocation::       PL -> TFM (make editing results usable).
+-* vftovp invocation::       VF -> VPL (tftopl for virtual fonts).
+-* vptovf invocation::       VPL -> VF (pltotf for virtual fonts).
++* gftopk::                  GF -> PK (compact)
++* pktogf::                  PK -> GF (expand).
++* pktype::                  PK -> human-readable text.
++* gftype::                  GF -> human-readable text.
++* tftopl::                  TFM -> PL (for editing TFM).
++* pltotf::                  PL -> TFM (make editing results usable).
++* vftovp::                  VF -> VPL (tftopl for virtual fonts).
++* vptovf::                  VPL -> VF (pltotf for virtual fonts).
+ * Font utilities available elsewhere:: Type 1, BDF, editors, etc.
+ @end menu
+ 
+@@ -3596,7 +3591,7 @@
+ Font files with the @samp{.pl} (property list) suffix are the plain text
+ (human-readable) analog of the binary @samp{.tfm} files.  
+ The TFtoPL and PLtoTF programs convert between the two formats
+-(@pxref{tftopl invocation} and @ref{pltotf invocation}).
++(@pxref{tftopl} and @ref{pltotf}).
+ 
+ Font files with the @samp{.mf} suffix are in Metafont source format.
+ These are the files used by Metafont to generate rastered fonts for
+@@ -3606,8 +3601,8 @@
+ @flindex virtual-fonts.knuth
+ @flindex virtualfonts.txt
+ The suffix @samp{.vf} identifies ``virtual font'' files, for which
+-@samp{.vpl} is the human-readable analog.  See @xref{vftovp invocation},
+-and @ref{vptovf invocation}.  For further discussion of virtual fonts,
++@samp{.vpl} is the human-readable analog.  See @xref{vftovp},
++and @ref{vptovf}.  For further discussion of virtual fonts,
+ see @file{@var{CTAN:}/doc/virtual-fonts.knuth},
+ @file{@var{CTAN:}/help/virtualfonts.txt}, and @ref{Virtual fonts,,,
+ dvips, Dvips}.
+@@ -3618,7 +3613,7 @@
+ distribution by Pierre MacKay and Elizabeth Tachikawa.)
+ 
+ 
+-@node gftopk invocation
++@node gftopk
+ @section GFtoPK: Generic to packed font conversion
+ 
+ @pindex gftopk
+@@ -3627,7 +3622,7 @@
+ @cindex GF, converting to PK
+ 
+ GFtoPK converts a generic font (GF) file output by, for example,
+-Metafont (@pxref{mf invocation}) to a packed font (PK) file.  PK files
++Metafont (@pxref{mf}) to a packed font (PK) file.  PK files
+ are considerably smaller than the corresponding gf files, so they are
+ generally the bitmap font format of choice.  Some DVI-processing
+ programs, notably Dvips, only support PK files and not GF files.
+@@ -3655,7 +3650,7 @@
+ @samp{--version} (@pxref{Common options}).
+ 
+ 
+-@node pktogf invocation
++@node pktogf
+ @section PKtoGF: Packed to generic font conversion
+ 
+ @pindex pktogf
+@@ -3665,7 +3660,7 @@
+ 
+ PKtoGF converts a packed font (PK) file to a generic font (GF) file.
+ Since PK format is much more compact than GF format, the most likely
+-reason to do this is to run GFtype (@pxref{gftype invocation}) on the
++reason to do this is to run GFtype (@pxref{gftype}) on the
+ result, so you can see the bitmap images.  Also, a few old utility
+ programs do not support PK format.  Synopsis:
+ 
+@@ -3691,7 +3686,7 @@
+ @samp{--version} (@pxref{Common options}).
+ 
+ 
+-@node pktype invocation
++@node pktype
+ @section PKtype: Plain text transliteration of packed fonts
+ 
+ @pindex pktype @r{PK validation}
+@@ -3808,7 +3803,7 @@
+ @end table
+ 
+ 
+-@node gftype invocation
++@node gftype
+ @section GFtype: Plain text transliteration of generic fonts
+ 
+ @pindex gftype @r{GF validation}
+@@ -3969,7 +3964,7 @@
+ @end table
+ 
+ 
+-@node tftopl invocation
++@node tftopl
+ @section TFtoPL: @TeX{} font metric to property list conversion
+ 
+ @pindex tftopl
+@@ -4129,7 +4124,7 @@
+ @end itemize
+ 
+ 
+-@node pltotf invocation
++@node pltotf
+ @section PLtoTF: Property list to @TeX{} font metric conversion
+ 
+ @pindex pltotf
+@@ -4159,7 +4154,7 @@
+ For an example of property list format, see the previous section.
+ 
+ 
+-@node vftovp invocation
++@node vftovp
+ @section VFtoVP: Virtual font to virtual property lists
+ 
+ @pindex vftovp
+@@ -4218,7 +4213,7 @@
+ @end table
+ 
+ 
+-@node vptovf invocation
++@node vptovf
+ @section VPtoVF: Virtual property lists to virtual font
+ 
+ @pindex vptovf
