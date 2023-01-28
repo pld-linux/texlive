@@ -112,6 +112,7 @@ BuildRequires:	libsigsegv
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.752
@@ -282,7 +283,7 @@ Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	jadetex = %{epoch}:%{version}-%{release}
 Obsoletes:	jadetex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description jadetex
 JadeTeX contains the additional LaTeX macros necessary for taking Jade
@@ -296,7 +297,7 @@ otrzymanych z Jade TeXa i przetworzenia ich jako plików LaTeXa.
 Summary:	Other utilities documentation
 Summary(pl.UTF-8):	Dokumentacja do narzędzi innych
 Group:		Applications/Publishing/TeX
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description other-utils-doc
 Other utilities documentation.
@@ -308,7 +309,7 @@ Dokumentacja do narzędzi innych.
 Summary:	Documentation for TeX Live
 Summary(pl.UTF-8):	Dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc
 Assorted useful documentation for TeX Live.
@@ -320,7 +321,7 @@ Zbiór przydatnej dokumentacji do TeX Live'a.
 Summary:	Bulgarian documentation for TeX Live
 Summary(pl.UTF-8):	Bułgarska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-bg
 Assorted useful Bulgarian documentation for TeX Live.
@@ -332,7 +333,7 @@ Zbiór przydatnej bułgarskiej dokumentacji do TeX Live'a.
 Summary:	Czech documentation for TeX Live
 Summary(pl.UTF-8):	Czeska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-cs
 Assorted useful Czech documentation for TeX Live.
@@ -344,7 +345,7 @@ Zbiór przydatnej czeskiej dokumentacji do TeX Live'a.
 Summary:	German documentation for TeX Live
 Summary(pl.UTF-8):	Niemiecka dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-de
 Assorted useful German documentation for TeX Live.
@@ -356,7 +357,7 @@ Zbiór przydatnej niemieckiej dokumentacji do TeX Live'a.
 Summary:	Greek documentation for TeX Live
 Summary(pl.UTF-8):	Grecka dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-el
 Assorted useful Greek documentation for TeX Live.
@@ -368,7 +369,7 @@ Zbiór przydatnej greckiej dokumentacji do TeX Live'a.
 Summary:	Spanish documentation for TeX Live
 Summary(pl.UTF-8):	Hiszpańska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-es
 Assorted useful Spanish documentation for TeX Live.
@@ -380,7 +381,7 @@ Zbiór przydatnej hiszpańskiej dokumentacji do TeX Live'a.
 Summary:	Finnish documentation for TeX Live
 Summary(pl.UTF-8):	Fińska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-fi
 Assorted useful Finnish documentation for TeX Live.
@@ -392,7 +393,7 @@ Zbiór przydatnej fińskiej dokumentacji do TeX Live'a.
 Summary:	French documentation for TeX Live
 Summary(pl.UTF-8):	Francuska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-fr
 Assorted useful French documentation for TeX Live.
@@ -404,7 +405,7 @@ Zbiór przydatnej francuskiej dokumentacji do TeX Live'a.
 Summary:	Italian documentation for TeX Live
 Summary(pl.UTF-8):	Włoska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-it
 Assorted useful Italian documentation for TeX Live.
@@ -416,7 +417,7 @@ Zbiór przydatnej włoskiej dokumentacji do TeX Live'a.
 Summary:	Japanese documentation for TeX Live
 Summary(pl.UTF-8):	Japońska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-ja
 Assorted useful Japanese documentation for TeX Live.
@@ -428,7 +429,7 @@ Zbiór przydatnej japońskiej dokumentacji do TeX Live'a.
 Summary:	Korean documentation for TeX Live
 Summary(pl.UTF-8):	Koreańska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-ko
 Assorted useful Korean documentation for TeX Live.
@@ -440,7 +441,7 @@ Zbiór przydatnej koreańskiej dokumentacji do TeX Live'a.
 Summary:	Mongolian documentation for TeX Live
 Summary(pl.UTF-8):	Mongolska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-mn
 Assorted useful Mongolian documentation for TeX Live.
@@ -452,7 +453,7 @@ Zbiór przydatnej mongolskiej dokumentacji do TeX Live'a.
 Summary:	Dutch documentation for TeX Live
 Summary(pl.UTF-8):	Holenderska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-nl
 Assorted useful Dutch documentation for TeX Live.
@@ -464,7 +465,7 @@ Zbiór przydatnej holenderskiej dokumentacji do TeX Live'a.
 Summary:	Polish documentation for TeX Live
 Summary(pl.UTF-8):	Polska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-pl
 Assorted useful Polish documentation for TeX Live.
@@ -476,7 +477,7 @@ Zbiór przydatnej polskiej dokumentacji do TeX Live'a.
 Summary:	Portuguese documentation for TeX Live
 Summary(pl.UTF-8):	Portugalska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-pt
 Assorted useful Portuguese documentation for TeX Live.
@@ -488,7 +489,7 @@ Zbiór przydatnej portugalskiej dokumentacji do TeX Live'a.
 Summary:	Russian documentation for TeX Live
 Summary(pl.UTF-8):	Rosyjska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-ru
 Assorted useful Russian documentation for TeX Live.
@@ -500,7 +501,7 @@ Zbiór przydatnej rosyjskiej dokumentacji do TeX Live'a.
 Summary:	Slovak documentation for TeX Live
 Summary(pl.UTF-8):	Słowacka dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-sk
 Assorted useful Slovak documentation for TeX Live.
@@ -512,7 +513,7 @@ Zbiór przydatnej słowackiej dokumentacji do TeX Live'a.
 Summary:	Slovenian documentation for TeX Live
 Summary(pl.UTF-8):	Słoweńska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-sl
 Assorted useful Slovenian documentation for TeX Live.
@@ -524,7 +525,7 @@ Zbiór przydatnej słoweńskiej dokumentacji do TeX Live'a.
 Summary:	Thai documentation for TeX Live
 Summary(pl.UTF-8):	Tajska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-th
 Assorted useful Thai documentation for TeX Live.
@@ -536,7 +537,7 @@ Zbiór przydatnej tajskiej dokumentacji do TeX Live'a.
 Summary:	Turkish documentation for TeX Live
 Summary(pl.UTF-8):	Turecka dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-tr
 Assorted useful Turkish documentation for TeX Live.
@@ -548,7 +549,7 @@ Zbiór przydatnej tureckiej dokumentacji do TeX Live'a.
 Summary:	Ukrainian documentation for TeX Live
 Summary(pl.UTF-8):	Ukraińska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-uk
 Assorted useful Ukrainian documentation for TeX Live.
@@ -560,7 +561,7 @@ Zbiór przydatnej ukraińskiej dokumentacji do TeX Live'a.
 Summary:	Vietnamese documentation for TeX Live
 Summary(pl.UTF-8):	Wietnamska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-vi
 Assorted useful Vietnamese documentation for TeX Live.
@@ -572,7 +573,7 @@ Zbiór przydatnej wietnamskiej dokumentacji do TeX Live'a.
 Summary:	Chinese documentation for TeX Live
 Summary(pl.UTF-8):	Chińska dokumentacja do TeX Live'a
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-zh_CN
 Assorted useful Chinese documentation for TeX Live.
@@ -588,7 +589,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-doc-latex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description doc-latex
 Basic LaTeX packages documentation.
@@ -809,7 +810,7 @@ Summary(pl.UTF-8):	Tablicowe struktury danych dla (La)TeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-arrayjob
 Array data structures for (La)TeX.
@@ -827,7 +828,7 @@ Summary(pl.UTF-8):	Polecenia do wstawiania we wzorach kropek respektujących roz
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-mathdots
 Commands to produce dots in math that respect font size.
@@ -846,7 +847,7 @@ Summary(pl.UTF-8):	Zbiór przydatnych narzędzi do makr
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-midnight
 A set of useful macro tools.
@@ -863,7 +864,7 @@ Summary(pl.UTF-8):	Konwersja liczb na binarne, ósemkowe i szesnastkowe
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-kastrup
 Convert numbers into binary, octal and hexadecimal.
@@ -877,7 +878,7 @@ Summary(pl.UTF-8):	System fontów Olsaka
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-ofs
 Olsak's Font System.
@@ -892,7 +893,7 @@ Summary(pl.UTF-8):	Format PHYSE
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-physe
 The PHYSE format.
@@ -910,7 +911,7 @@ Summary(pl.UTF-8):	Obsługa składu tekstu w piśmie dewanagari (sakskryt i hind
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-velthuis
 This package provides support for typesetting texts in Devanagari
@@ -931,7 +932,7 @@ Summary(pl.UTF-8):	Pakiet makr stworzonych w MIT
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-ytex
 Macro package developed at MIT.
@@ -967,7 +968,7 @@ Summary(pl.UTF-8):	Różne narzędzia MetaPost
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description metapost-other
 Various MetaPost utils.
@@ -986,7 +987,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-metapost = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-mptopdf
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description mptopdf
 MetaPost to PDF converter.
@@ -1004,7 +1005,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-texdoctk
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description texdoctk
 A Perl/Tk-based GUI for easy access to package documentation for TeX
@@ -1036,7 +1037,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-dvips = %{epoch}:%{version}-%{release}
 Requires:	xdvi = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-texconfig
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description -n texconfig
 TeX typesetting system configurator.
@@ -1855,7 +1856,7 @@ Summary(pl.UTF-8):	Format TeXa dla fizyków
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description phyzzx
 A TeX format for physicists.
@@ -1902,7 +1903,7 @@ Obsoletes:	tetex-cyrplain
 Obsoletes:	tetex-format-cyrplain
 Obsoletes:	tetex-format-plain
 Obsoletes:	tetex-plain
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description plain
 Plain TeX format basic files.
@@ -1921,7 +1922,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	texlive-fonts-pl = %{epoch}:%{version}-%{release}
 Requires:	texlive-plain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-mex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description mex
 MeX Plain Format basic files.
@@ -1936,7 +1937,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	texlive-mex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-mex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-mex
 MeX Plain Format.
@@ -1952,7 +1953,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-pdfmex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-pdfmex
 PDFMeX Plain Format.
@@ -1967,7 +1968,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-mex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-utf8mex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-utf8mex
 MeX Plain Format with UTF-8 encoded source files.
@@ -1989,7 +1990,7 @@ Provides:	tetex-ams
 Obsoletes:	tetex-ams
 Obsoletes:	tetex-amstex
 Obsoletes:	tetex-plain-amsfonts
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description amstex
 American Mathematical Society macros for Plain TeX basic files.
@@ -2006,7 +2007,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-amstex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-amstex
 Obsoletes:	tetex-format-cyramstex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-amstex
 American Mathematical Society macros for Plain TeX.
@@ -2025,7 +2026,7 @@ Requires:	%{name}-fonts-cs = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Provides:	tetex-csplain
 Obsoletes:	tetex-csplain
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description csplain
 TeX CSPlain format basic files.
@@ -2040,7 +2041,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-csplain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-csplain
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-csplain
 TeX CSPlain format.
@@ -2055,7 +2056,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-csplain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-pdfcsplain
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-pdfcsplain
 PDFTeX CSPlain format.
@@ -2074,7 +2075,7 @@ Requires:	%{name}-fonts-cs = %{epoch}:%{version}-%{release}
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Provides:	tetex-cslatex
 Obsoletes:	tetex-cslatex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description cslatex
 CSLaTeX format basic files.
@@ -2089,7 +2090,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-cslatex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-cslatex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-cslatex
 CSLaTeX format.
@@ -2104,7 +2105,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-cslatex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-pdfcslatex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-pdfcslatex
 PDF CSLaTeX format.
@@ -2122,7 +2123,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-plain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-eplain
 Obsoletes:	tetex-etex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description eplain
 EPlain format basic files.
@@ -2137,7 +2138,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-eplain = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-eplain
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-eplain
 EPlain format.
@@ -2157,7 +2158,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-luatex = %{epoch}:%{version}-%{release}
 Provides:	tetex-context
 Obsoletes:	tetex-context
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description context
 A full featured, parameter driven macro package, which fully supports
@@ -2178,7 +2179,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-context = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-context-de
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-context-de
 German ConTeXt format.
@@ -2193,7 +2194,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-context = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-context-en
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-context-en
 English ConTeXt format.
@@ -2208,7 +2209,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-context = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-format-context-nl
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-context-nl
 Dutch ConTeXt format.
@@ -2296,7 +2297,7 @@ Summary(pl.UTF-8):	Wyszarzanie komórek tabel i halign
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-colortab
 Shade cells of tables and halign.
@@ -2311,7 +2312,7 @@ Summary(pl.UTF-8):	Uogólnienie zbiorów indeksów matematycznych
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-12many
 Generalising mathematical index sets.
@@ -2329,7 +2330,7 @@ Summary(pl.UTF-8):	Sterowanie składem środowiska abstract
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-abstract
 Control the typesetting of the abstract environment.
@@ -2346,7 +2347,7 @@ Summary(hu.UTF-8):	Eszközök új betűtípusok származtatására már létező
 Summary(pl.UTF-8):	Narzędzia do tworzenia nowych fontów w oparciu o istniejące
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-accfonts
 Utilities to derive new fonts from existing ones.
@@ -2364,7 +2365,7 @@ Summary(pl.UTF-8):	Style BibTeXa do implementowania bazy danych adresów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-adrconv
 BibTeX styles to implement an address database.
@@ -2384,7 +2385,7 @@ Requires:	%{name}-fonts-ae = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-ae
 Obsoletes:	tetex-latex-ae
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-ae
 A set of virtual fonts which emulates T1 coded fonts using the
@@ -2407,7 +2408,7 @@ Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-algorith
 Obsoletes:	tetex-latex-algorithms
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-algorithms
 Defines a floating algorithm environment designed to work with the
@@ -2429,7 +2430,7 @@ Obsoletes:	tetex-latex-ams
 Obsoletes:	tetex-latex-amscls
 Obsoletes:	tetex-latex-amsfonts
 Obsoletes:	tetex-latex-amsmath
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-ams
 This package is the principal package in the AMS-LaTeX distribution.
@@ -2448,7 +2449,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-antp = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-antp
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-antp
 A replica of Antykwa Poltawskiego font in PostScript Type 1 format
@@ -2476,7 +2477,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-antt = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-antt
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-antt
 Antykwa Torunska is a serif font designed by the late Polish
@@ -2495,7 +2496,7 @@ Summary(pl.UTF-8):	Dodatkowe sterowanie załącznikami
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-appendix
 Extra control of appendices.
@@ -2514,7 +2515,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-bbm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-bbm
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bbm
 Blackboard variant fonts for Computer Modern, with LaTeX support.
@@ -2528,7 +2529,7 @@ Summary(hu.UTF-8):	LaTeX csomag oszlopdiagramok rajzolására
 Summary(pl.UTF-8):	Pakiet LaTeXa do wykresów słupkowych
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bardiag
 LateX package for drawing bar diagrams.
@@ -2547,7 +2548,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-bbold = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-bbold
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bbold
 A geometric sans serif blackboard bold font, for use in mathematics.
@@ -2583,7 +2584,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-beamer
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-beamer
 A LaTeX class for producing presentations and slides.
@@ -2601,7 +2602,7 @@ Summary(pl.UTF-8):	Pakiety Javiera Bezosa (dodatkowe narzędzia matematyczne)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bezos
 Packages by Javier Bezos (additional math tools).
@@ -2621,7 +2622,7 @@ Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-ams
 Obsoletes:	tetex-latex-bibtex-ams
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bibtex-ams
 BibTeX style files for American Mathematical Society publications.
@@ -2636,7 +2637,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-bibtex-dk
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bibtex-dk
 Dk-bib is a translation of the four standard BibTeX style files
@@ -2658,7 +2659,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-plbib
 Obsoletes:	tetex-latex-bibtex-pl
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bibtex-pl
 Polish bibliography management for LaTeX.
@@ -2674,7 +2675,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-germbib
 Obsoletes:	tetex-latex-bibtex-german
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bibtex-german
 German variants of standard BibTeX styles.
@@ -2690,7 +2691,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-revtex4
 Obsoletes:	tetex-latex-bibtex-revtex4
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bibtex-revtex4
 BibTeX styles for REVTeX4.
@@ -2706,7 +2707,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-bibtex-jurabib
 Obsoletes:	tetex-latex-bibtex-jurabib
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bibtex-jurabib
 Extended BibTeX citation support for the humanities and legal texts.
@@ -2722,7 +2723,7 @@ Summary(pl.UTF-8):	Różne style BibTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bibtex-styles
 Various BibTeX styles.
@@ -2740,7 +2741,7 @@ Summary(pl.UTF-8):	Plik stylu bibliografii dla Biomedical Journals
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-bibtex-vancouver
 Bibliographic style file for Biomedical Journals.
@@ -2758,7 +2759,7 @@ Summary(pl.UTF-8):	Tabele o jakości publikacji w LaTeXu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-booktabs
 Publication quality tables in LaTeX.
@@ -2776,7 +2777,7 @@ Summary(pl.UTF-8):	Dostosowywanie podpisów w środowiskach pływających
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-caption
 Customising captions in floating environments.
@@ -2795,7 +2796,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-carlisle
 Obsoletes:	tetex-latex-carlisle
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-carlisle
 Miscellaneous small packages by David Carlisle.
@@ -2810,7 +2811,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-ccfonts
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-ccfonts
 LaTeX font definition files for the Concrete fonts and a LaTeX package
@@ -2831,7 +2832,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-cite
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-cite
 Supports compressed, sorted lists of numerical citations.
@@ -2847,7 +2848,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-cmbright = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-cmbright
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-cmbright
 A family of sans serif fonts for TeX and LaTeX, based on Donald
@@ -2870,7 +2871,7 @@ Summary(pl.UTF-8):	Wybiórcze włączanie/wyłączanie części tekstu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-comment
 Selectively include/excludes portions of text.
@@ -2889,7 +2890,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-concmath = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-concmath
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-concmath
 LaTeX package and font definition files to access the Concrete math
@@ -2909,7 +2910,7 @@ Summary(pl.UTF-8):	Skład życiorysu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-currvita
 Typeset a curriculum vitae.
@@ -2927,7 +2928,7 @@ Summary(pl.UTF-8):	Krzywe do środowiska LaTeXa picture
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-curves
 Curves for LaTeX picture environment.
@@ -2945,7 +2946,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-custom-bib
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-custom-bib
 Package generating customized BibTeX bibliography styles from a
@@ -2963,7 +2964,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-cyrillic
 Obsoletes:	tetex-latex-cyrillic
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-cyrillic
 LaTeX Cyrillic support.
@@ -2978,7 +2979,7 @@ Summary(pl.UTF-8):	Pakiet do dostosowywania trzech podstawowych list
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-enumitem
 A package to customize the three basic lists (enumerate, itemize and
@@ -2999,7 +3000,7 @@ Summary(pl.UTF-8):	Różne klasy dokumentów do składu egzaminów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-exams
 Various document classes to typeset exams.
@@ -3017,7 +3018,7 @@ Summary(pl.UTF-8):	Narzędzia do operowania obiektami pływającymi
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-float
 Tools to manipulate float objects.
@@ -3035,7 +3036,7 @@ Summary(pl.UTF-8):	FoilTeX - zbiór plików LaTeXa do tworzenia folii
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-foiltex
 The FoilTeX is a collection of LaTeX files for making foils.
@@ -3053,7 +3054,7 @@ Summary(pl.UTF-8):	Listy do wielu adresatów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-formlett
 Letters to multiple recipients.
@@ -3071,7 +3072,7 @@ Summary(pl.UTF-8):	Tworzenie formularzy z polami do ręcznego wypełnienia
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-formular
 Create forms containing field for manual entry.
@@ -3089,7 +3090,7 @@ Summary(pl.UTF-8):	Klasa dokumentu listowego
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-gbrief
 Letter document class.
@@ -3107,7 +3108,7 @@ Summary(pl.UTF-8):	Graficzna reprezentacja klawiszy na klawiaturze
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-keystroke
 Graphical representation of keys on keyboard.
@@ -3125,7 +3126,7 @@ Summary(pl.UTF-8):	Składanie dzienników laboratoryjnych
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-labbook
 Typeset laboratory journals.
@@ -3143,7 +3144,7 @@ Summary(pl.UTF-8):	Alfanumeryczne wyświetlacze w stylu LCD
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-lcd
 Alphanumerical LCD-style displays.
@@ -3161,7 +3162,7 @@ Summary(pl.UTF-8):	Tworzenie małych ulotek
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-leaflet
 Create small handouts (flyers).
@@ -3179,7 +3180,7 @@ Summary(pl.UTF-8):	Lewe i prawe indeksy dolne i górne w trybie matematycznym
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-leftidx
 Left and right subscripts and superscripts in math mode.
@@ -3197,7 +3198,7 @@ Summary(pl.UTF-8):	Rysowanie struktur Lewisa (chemicznych)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-lewis
 Draw Lewis structures (chemistry).
@@ -3216,7 +3217,7 @@ Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-fonts-lm = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-lm
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -3246,7 +3247,7 @@ Summary(hu.UTF-8):	Az utolsó oldalra hivatkozás "N/M. oldal" típusú lábfeje
 Summary(pl.UTF-8):	Odnośnik do ostatniej strony na potrzeby stopek typu "Strona N z M"
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-lastpage
 Reference last page for Page N of M type footers.
@@ -3264,7 +3265,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-lineno
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-lineno
 The LaTeX package lineno.sty provides line numbers on paragraphs.
@@ -3284,7 +3285,7 @@ Summary(pl.UTF-8):	Wsparcie pracy dla filologów klasycznych
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-metre
 Support for the work of classicists.
@@ -3299,7 +3300,7 @@ Summary(pl.UTF-8):	Pakiety do składu gier
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-games
 Chess, chinese chess, crosswords, go, backgammon and more.
@@ -3319,7 +3320,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-ltablex
 Obsoletes:	tetex-latex-ltablex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-extend
 This package contains:
@@ -3485,7 +3486,7 @@ Summary(pl.UTF-8):	Dodatkowe efekty do fontów, tekstów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-effects
 This package contains:
@@ -3549,7 +3550,7 @@ Summary:	Sources of latex-math
 Summary(hu.UTF-8):	A latex-math forrása
 Summary(pl.UTF-8):	Źródła latex-math
 Group:		Applications/Publishing/TeX
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-math-sources
 Sources of latex-math.
@@ -3579,7 +3580,7 @@ Requires:	%{name}-tex-xkeyval = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-xypic = %{epoch}:%{version}-%{release}
 # gnuplottex needs gnuplot
 Requires:	gnuplot
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-math
 This package contains:
@@ -3727,7 +3728,7 @@ Summary(pl.UTF-8):	Różne pakiety
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-misc
 This packages contains:
@@ -3760,7 +3761,7 @@ Summary(pl.UTF-8):	Pakiety muzyczne
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-music
 This package contains:
@@ -3790,7 +3791,7 @@ Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-latex-SIstyle
 Suggests:	%{name}-latex-SIunits
 Suggests:	%{name}-latex-siunitx
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-physics
 This package contains:
@@ -3836,7 +3837,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-xetex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-biology
 This package contains:
@@ -3861,7 +3862,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex-foiltex = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-latex-prosper = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-presentation
 This package contains:
@@ -3892,7 +3893,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-latex-lewis
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-chem
 This package contains:
@@ -3932,7 +3933,7 @@ Summary(pl.UTF-8):	Pakiety informatyczne
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-informatic
 This package contains:
@@ -3978,7 +3979,7 @@ Summary(pl.UTF-8):	Różne narzędzia do wyjścia PDF
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pdftools
 This package contains:
@@ -4020,7 +4021,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-microtype
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-microtype
 The `microtype' package provides a LaTeX interface to pdfTeX's
@@ -4045,7 +4046,7 @@ Summary(pl.UTF-8):	Skład muzyki w LaTeXu
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-musictex
 Typesetting music with TeX.
@@ -4063,7 +4064,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-lucidabr
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-lucidabr
 Package to make Lucida Bright fonts usable with LaTeX.
@@ -4080,7 +4081,7 @@ Requires:	%{name}-fonts-marvosym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-marvosym
 Obsoletes:	tetex-latex-marvosym
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -4106,7 +4107,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-mflogo = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-mflogo
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-mflogo
 LaTeX package and font definition file to access the Knuthian `logo'
@@ -4125,7 +4126,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-mfnfss
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-mfnfss
 Font description files to use extra fonts like yinit and ygoth.
@@ -4140,7 +4141,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-minitoc
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-minitoc
 Produce a table of contents for each chapter.
@@ -4155,7 +4156,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-mltex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-mltex
 Support for MLTeX, the multilingual TeX extension from Michael J.
@@ -4172,7 +4173,7 @@ Summary(pl.UTF-8):	Wielokolumnowe listy numerowane
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-multienum
 Multi-column enumerated lists.
@@ -4190,7 +4191,7 @@ Summary(pl.UTF-8):	Rozszerzony maszynopis
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-moreverb
 Extended verbatim.
@@ -4208,7 +4209,7 @@ Summary(pl.UTF-8):	Rozszerzone środowisko theorem
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-ntheorem
 Enhanced theorem environment.
@@ -4227,7 +4228,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-platex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-other
 Other LaTeX packages.
@@ -4245,7 +4246,7 @@ Summary(pl.UTF-8):	Dokumentacja do innych pakietów LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-other-doc
 Other LaTeX packages documentation.
@@ -4263,7 +4264,7 @@ Summary(pl.UTF-8):	Slajdy do prezentacji z użyciem pdftexa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pdfslide
 Presentation slides using pdftex.
@@ -4283,7 +4284,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-xcolor = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-pgf
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pgf
 A macro package for creating graphics directly in TeX and LaTeX.
@@ -4301,7 +4302,7 @@ Summary(pl.UTF-8):	Makra do operacji na wielomianach
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-polynom
 Macros for manipulating polynomials.
@@ -4319,7 +4320,7 @@ Summary(pl.UTF-8):	Skład wielomianów (jednej zmiennej)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-polynomial
 Typeset (univariate) polynomials.
@@ -4337,7 +4338,7 @@ Summary(pl.UTF-8):	Dodatkowe narzędzia do programowania LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-programming
 This package contains:
@@ -4453,7 +4454,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-xetex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-prosper
 LaTeX class for high quality slides.
@@ -4471,7 +4472,7 @@ Summary(pl.UTF-8):	Środowisko LaTeXa do opisu algorytmów w sposób naturalny
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pseudocode
 LaTeX enviroment for specifying algorithms in a natural way.
@@ -4493,7 +4494,7 @@ Provides:	tetex-latex-psnfss
 Obsoletes:	tetex-latex-mathptm
 Obsoletes:	tetex-latex-mathptmx
 Obsoletes:	tetex-latex-psnfss
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-psnfss
 LaTeX font definition files, macros and font metrics for common
@@ -4510,7 +4511,7 @@ Summary(pl.UTF-8):	Pakiet PSTricks do rysowania krzywych 2D
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-2dplot
 A PSTricks package for drawing 2D curves.
@@ -4528,7 +4529,7 @@ Summary(pl.UTF-8):	Rysowanie krzywych i wykresów 3D przy użyciu PSTricks
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-3dplot
 Draw 3d curves and graphs using PSTricks.
@@ -4546,7 +4547,7 @@ Summary(pl.UTF-8):	Tworzenie wykresów słupkowych przy użyciu PSTricks
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-bar
 Produces bar charts using PSTricks.
@@ -4564,7 +4565,7 @@ Summary(pl.UTF-8):	Pakiet PSTricks do rysowania schematów elektrycznych
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-circ
 PSTricks package for drawing electric circuits.
@@ -4582,7 +4583,7 @@ Summary(pl.UTF-8):	Drukowanie wzorów dyfrakcji z różnych szczelin
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-diffraction
 Print diffraction patterns from various apertures.
@@ -4600,7 +4601,7 @@ Summary(pl.UTF-8):	Geometria euklidesowa przy użyciu PSTricks
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-eucl
 Euclidian geometry with PSTricks.
@@ -4618,7 +4619,7 @@ Summary(pl.UTF-8):	Rysowanie "zabawnych" obiektów przy użyciu PSTricks
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-fun
 Draw "funny" objects with PSTricks.
@@ -4636,7 +4637,7 @@ Summary(pl.UTF-8):	Pakiet PSTricks do rysowania funkcji matematycznych
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-func
 PSTricks package for plotting mathematical functions.
@@ -4654,7 +4655,7 @@ Summary(pl.UTF-8):	Rysowanie trójwymiarowych obramowań przy użyciu PSTricks
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-fr3d
 Draw 3-dimensional framed boxes using PSTricks.
@@ -4672,7 +4673,7 @@ Summary(pl.UTF-8):	Rysowanie zbiorów fraktalnych przy użyciu PSTricks
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-fractal
 Draw fractal sets using PSTricks.
@@ -4690,7 +4691,7 @@ Summary(pl.UTF-8):	Używanie PSTricks z wyrażeniami infiksowymi zamiast RPN
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-infixplot
 Using PSTricks plotting capacities with infix expressions rather than
@@ -4709,7 +4710,7 @@ Summary(pl.UTF-8):	Rozszerzenie operatorów matematycznych PostScriptu do użyci
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-math
 Enhancement of PostScript math operators to use with pstricks.
@@ -4728,7 +4729,7 @@ Summary(pl.UTF-8):	Obiekty trójwymiarowe przy użyciu PSTricks
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-ob3d
 Three dimensional objects using PSTricks.
@@ -4746,7 +4747,7 @@ Summary(pl.UTF-8):	Rysowanie konfiguracji doświadczeń optycznych
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-optexp
 Drawing optical experimental setups.
@@ -4764,7 +4765,7 @@ Summary(pl.UTF-8):	Rysowanie diagramów optycznych
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-optic
 Drawing optics diagrams.
@@ -4782,7 +4783,7 @@ Summary(pl.UTF-8):	Operacje na tekście i znakach przy użyciu PSTricks
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-text
 Text and character manipulation in PSTricks.
@@ -4800,7 +4801,7 @@ Summary(pl.UTF-8):	Inne nieskategoryzowane pakiety PSTricks
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pst-uncategorized
 Other uncategorized PSTricks packages.
@@ -4819,7 +4820,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-px = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-pxfonts
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-pxfonts
 PX fonts LaTeX support.
@@ -4834,7 +4835,7 @@ Summary(pl.UTF-8):	Pakiet do składu jednostek SI, liczb i kątów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-SIstyle
 Package to typeset SI units, numbers and angles.
@@ -4852,7 +4853,7 @@ Summary(pl.UTF-8):	Pakiet SIunits - standaryzacja użycia jednostek w artykułac
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-SIunits
 The SIunits package can be used to standardise the use of units in
@@ -4872,7 +4873,7 @@ Summary(pl.UTF-8):	Obszerny pakiet jednostek (SI)
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-siunitx
 A comprehensive (SI) units package.
@@ -4888,7 +4889,7 @@ Summary:	LaTeX sources
 Summary(hu.UTF-8):	LaTeX források
 Summary(pl.UTF-8):	Źródła LaTeXa
 Group:		Applications/Publishing/TeX
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-sources
 LaTeX sources.
@@ -4906,7 +4907,7 @@ Summary(pl.UTF-8):	Różne style LaTeXa
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-styles
 Various LaTeX styles.
@@ -4924,7 +4925,7 @@ Summary(pl.UTF-8):	Wsparcie LaTeXa dla języków nieangielskich
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-lang
 LaTeX support for non-english languages.
@@ -4941,7 +4942,7 @@ Summary(hu.UTF-8):	Tabbing környezet ékezetes betűk használatával
 Summary(pl.UTF-8):	Tabele z literami akcentowanymi
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-Tabbing
 Tabbing with accented letters.
@@ -4960,7 +4961,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-txfonts
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-txfonts
 TX fonts LaTeX support.
@@ -4975,7 +4976,7 @@ Summary(pl.UTF-8):	Obsługa UTF-8 jako kodowania wejściowego w dokumentach LaTe
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-ucs
 This package contains support for using UTF-8 as input encoding in
@@ -4995,7 +4996,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-umlaute
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-umlaute
 An interface to inputenc for using alternate input encodings.
@@ -5012,7 +5013,7 @@ Requires:	%{name}-fonts-wasy = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
 Provides:	tetex-latex-wasysym
 Obsoletes:	tetex-latex-wasysym
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-wasysym
 Makes some additional characters available that come from the wasy
@@ -5040,7 +5041,7 @@ Summary(hu.UTF-8):	Hozzáférés színekhez, tónusokhoz, átmenetekhez, stb.
 Summary(pl.UTF-8):	Pozwala na dostęp do odcieni, gradientów itp.
 Group:		Applications/Publishing/TeX
 Obsoletes:	tetex-latex-xcolor
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-xcolor
 `xcolor' provides easy driver-independent access to several kinds of
@@ -5075,7 +5076,7 @@ Requires:	%{name}-latex-psnfss = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-pdflatex
 Obsoletes:	tetex-format-pdflatex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description format-pdflatex
 LaTeX is a front end for the TeX text formatting system. Easier to use
@@ -5098,7 +5099,7 @@ Summary(pl.UTF-8):	Różne pisma
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description scripts
 Various scripts.
@@ -5114,7 +5115,7 @@ Summary:	TeXLive manager
 Summary(hu.UTF-8):	TeXLive manager
 Summary(pl.UTF-8):	Zarządca TeXLive'a
 Group:		Applications/Publishing/TeX
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tlmgr
 tlmgr manages an existing TeX Live installation, both packages and
@@ -5141,7 +5142,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-babel
 Obsoletes:	tetex-tex-babel
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-babel
 Multilingual support for TeX.
@@ -5157,7 +5158,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-german
 Obsoletes:	tetex-tex-german
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-german
 Supports the new German orthography (neue deutsche Rechtschreibung).
@@ -5172,7 +5173,7 @@ Summary(pl.UTF-8):	Makro TeXa do wstawiania obrazów/pól wewnątrz ustępów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-insbox
 A TeX macro for inserting pictures/boxes into paragraphs.
@@ -5190,7 +5191,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-mfpic
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-mfpic
 Macros which generate Metafont or Metapost for drawing pictures.
@@ -5207,7 +5208,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-misc
 Obsoletes:	tetex-tex-eijkhout
 Obsoletes:	tetex-tex-misc
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-misc
 Miscellaneous TeX macros.
@@ -5222,7 +5223,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-pictex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-pictex
 Picture drawing macros for TeX and LaTeX.
@@ -5237,7 +5238,7 @@ Summary(pl.UTF-8):	Format TeXa do artykułów fizycznych
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-psizzl
 A TeX format for physics papers.
@@ -5257,7 +5258,7 @@ Requires:	%{name}-dvips = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-misc = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-pstricks
 Obsoletes:	tetex-tex-pstricks
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-pstricks
 An extensive collection of PostScript macros that is compatible with
@@ -5285,7 +5286,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-qpxqtx = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-qpx
 Obsoletes:	tetex-tex-qtx
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-qpxqtx
 QuasiTimes and TX fonts typesetting support.
@@ -5300,7 +5301,7 @@ Summary(pl.UTF-8):	Węgierskie reguły przenoszenia wyrazów
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-huhyphen
 Hungarian hyphenation.
@@ -5319,7 +5320,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-ruhyphen
 Obsoletes:	tetex-tex-ruhyphen
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-ruhyphen
 A collection of Russian hyphenation patterns supporting a number of
@@ -5339,7 +5340,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-spanish
 Obsoletes:	tetex-tex-spanishb
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-spanish
 Various TeX related files for typesetting documents written in
@@ -5356,7 +5357,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-texdraw
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-texdraw
 Graphical macros, using embedded PostScript.
@@ -5371,7 +5372,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-thumbpdf
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-thumbpdf
 Provides support, using Perl, for thumbnails in pdfTeX and
@@ -5394,7 +5395,7 @@ Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	tetex-tex-ukrhyph
 Obsoletes:	tetex-tex-ukrhyph
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-ukrhyph
 This package allows the use of different hyphenation patterns for the
@@ -5414,7 +5415,7 @@ Summary(pl.UTF-8):	Skład tabeli wahań funkcji
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-variations
 Typeset tables of variations of functions.
@@ -5431,7 +5432,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-latex-urwvn
 Obsoletes:	tetex-latex-vietnam
 Obsoletes:	tetex-tex-vietnam
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description latex-vietnam
 Vietnamese language support.
@@ -5448,7 +5449,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-xypic = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-xypic
 Obsoletes:	tetex-xypic
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-xypic
 A package for typesetting a variety of graphs and diagrams with TeX.
@@ -5468,7 +5469,7 @@ Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-tex-xkeyval
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description tex-xkeyval
 Extension to keyval package.
@@ -5482,7 +5483,7 @@ Summary(pl.UTF-8):	Katalogi fontów TeXa
 Group:		Fonts
 Provides:	tetex-dirs-fonts
 Obsoletes:	tetex-dirs-fonts
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description dirs-fonts
 TeX font directories.
@@ -5499,7 +5500,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-adobe
 Obsoletes:	tetex-fonts-adobe
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-adobe
 Adobe fonts.
@@ -5512,7 +5513,7 @@ Summary:	Larm (cyrillic) fonts
 Summary(pl.UTF-8):	Fonty Larm (cyrylickie)
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-larm
 Larm (cyrillic) fonts.
@@ -5526,7 +5527,7 @@ Summary(pl.UTF-8):	Wirtualne fonty do plików PDF z fontami CMR o kodowaniu T1
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-ae
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-ae
 Virtual fonts for PDF-files with T1 encoded CMR-fonts.
@@ -5542,7 +5543,7 @@ Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex-bibtex = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-ams
 Obsoletes:	tetex-fonts-ams
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-ams
 AMS fonts.
@@ -5556,7 +5557,7 @@ Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcion
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-antp
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-antp
 Antykwa Poltawskiego, a Type 1 family of Polish traditional type.
@@ -5571,7 +5572,7 @@ Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek ja
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-antt
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-antt
 Antykwa Torunska, a Type 1 family of a Polish traditional type.
@@ -5584,7 +5585,7 @@ Summary:	Arphic fonts
 Summary(pl.UTF-8):	Fonty Arphic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-arphic
 Arphic fonts.
@@ -5598,7 +5599,7 @@ Summary(pl.UTF-8):	Tablicowy wariant fontów Computer Modern ze wsparciem dla La
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-bbm
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-bbm
 Blackboard variant fonts for Computer Modern, with LaTeX support.
@@ -5612,7 +5613,7 @@ Summary(pl.UTF-8):	Tablicowy tłusty font sans serif dla LaTeXa
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-bbold
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-bbold
 Sans serif blackboard bold for LaTeX.
@@ -5626,7 +5627,7 @@ Summary(pl.UTF-8):	Fonty Bitstream
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-bitstream
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-bitstream
 Bitstream fonts.
@@ -5640,7 +5641,7 @@ Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-cc-pl
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-cc-pl
 Polish version of Computer Concrete fonts.
@@ -5654,7 +5655,7 @@ Summary(pl.UTF-8):	Fonty Compugraphic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-cg
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-cg
 Compugraphic fonts.
@@ -5669,7 +5670,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-cm
 Obsoletes:	tetex-fonts-cm
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-cm
 Computer Modern fonts.
@@ -5683,7 +5684,7 @@ Summary(pl.UTF-8):	Fonty CM Bright
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-cmbright
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-cmbright
 CM Bright fonts.
@@ -5697,7 +5698,7 @@ Summary(hu.UTF-8):	CM Super betűtípus
 Summary(pl.UTF-8):	Fonty CM Super
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-cmsuper
 CM Super fonts.
@@ -5716,7 +5717,7 @@ Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-cmcyr
 Obsoletes:	tetex-fonts-cmcyr
 Obsoletes:	texlive-fonts-type1-cmcyr
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-cmcyr
 Computer Modern fonts extended with Russian letters.
@@ -5731,7 +5732,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-cmextra
 Obsoletes:	tetex-fonts-cmextra
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-cmextra
 Extra Computer Modern fonts, from the American Mathematical Society.
@@ -5745,7 +5746,7 @@ Summary(pl.UTF-8):	Fonty matematyczne Concrete Math
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-concmath
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-concmath
 Concrete Math fonts.
@@ -5759,7 +5760,7 @@ Summary(pl.UTF-8):	Fonty Concrete Roman
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-concrete
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-concrete
 Concrete Roman fonts, designed by Donald E. Knuth, originally for use
@@ -5775,7 +5776,7 @@ Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i sło
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-cs
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-cs
 Czech/Slovak-tuned MetaFont Computer Modern fonts.
@@ -5790,7 +5791,7 @@ Summary(pl.UTF-8):	Źródła dla fontów European Concrete
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-ecc
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-ecc
 The MetaFont sources and tfm files of the European Concrete Fonts.
@@ -5808,7 +5809,7 @@ Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-eurosym
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-eurosym
 The new European currency symbol for the Euro implemented in Metafont,
@@ -5826,7 +5827,7 @@ Summary(pl.UTF-8):	Fonty Virtual Euler Math
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-eulervm
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-eulervm
 Euler-VM is a set of _virtual_ math fonts based on Euler and CM. This
@@ -5848,7 +5849,7 @@ Summary(pl.UTF-8):	Fonty podobne do EUSM, ale z dwoma dodatkowymi znakami
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-euxm
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-euxm
 Fonts like EUSM but with two more characters needed for Concrete Math
@@ -5864,7 +5865,7 @@ Summary(pl.UTF-8):	Początkowe fonty gotyckie i ornamentowe Yannisa Haralambousa
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-gothic
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-gothic
 Gothic and ornamental initial fonts by Yannis Haralambous.
@@ -5878,7 +5879,7 @@ Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-hoekwater
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-hoekwater
 Fonts originally created in MetaFont, transformed to PostScript by
@@ -5900,7 +5901,7 @@ Provides:	tetex-fonts-jknappen
 Obsoletes:	tetex-fonts-jknappen
 Obsoletes:	tetex-latex-jknappen
 Obsoletes:	texlive-latex-jknappen
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-jknappen
 Miscellaneous macros, mostly for making use of extra fonts, by Joerg
@@ -5916,7 +5917,7 @@ Summary(hu.UTF-8):	Betűtípusok teljes készlete (matematikai) szövegekhez
 Summary(pl.UTF-8):	Kompletny zbiór fontów do tekstu i matematyki
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-kpfonts
 A complete set of fonts for text and mathematics.
@@ -5934,7 +5935,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-latex
 Obsoletes:	tetex-fonts-latex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-latex
 Basic LaTeX fonts.
@@ -5948,7 +5949,7 @@ Summary(pl.UTF-8):	Fonty LH Olgi Lapko
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-lh
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-lh
 The lh fonts for the `T2'/X2 encodings (for cyrillic languages).
@@ -5963,7 +5964,7 @@ Group:		Applications/Publishing/TeX
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-lm
 Obsoletes:	texlive-fonts-type1-lm
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-lm
 Latin Modern family of fonts, based on the Computer Modern fonts
@@ -5993,7 +5994,7 @@ Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-marvosym
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -6017,7 +6018,7 @@ Summary(pl.UTF-8):	Fonty logo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-mflogo
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-mflogo
 Logo fonts.
@@ -6031,7 +6032,7 @@ Summary(pl.UTF-8):	Różne fonty
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-misc
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-misc
 Miscellaneous fonts.
@@ -6045,7 +6046,7 @@ Summary(pl.UTF-8):	Fonty Monotype
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-monotype
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-monotype
 Monotype fonts.
@@ -6059,7 +6060,7 @@ Summary(pl.UTF-8):	Fonty dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-omega
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-omega
 Fonts for Omega - extended unicode TeX.
@@ -6080,7 +6081,7 @@ Obsoletes:	tetex-fonts-type1-dstroke
 Obsoletes:	tetex-fonts-type1-qfonts
 Obsoletes:	tetex-fonts-type1-tt2001
 Obsoletes:	tetex-qfonts
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-other
 Other fonts.
@@ -6097,7 +6098,7 @@ Summary(pl.UTF-8):	Polskie fonty
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-pl
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-pl
 Polish fonts.
@@ -6111,7 +6112,7 @@ Summary(pl.UTF-8):	Fonty PX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-px
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-px
 PX fonts.
@@ -6129,7 +6130,7 @@ Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-tx = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-qpx
 Obsoletes:	tetex-fonts-qtx
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-qpxqtx
 Additional fonts for QTX package.
@@ -6143,7 +6144,7 @@ Summary(pl.UTF-8):	Fonty wielkich liter pisanych do składania dokumentów nauko
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-rsfs
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-rsfs
 Fonts of uppercase script letters for use as symbols in scientific and
@@ -6164,7 +6165,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-stmaryrd
 Obsoletes:	tetex-fonts-stmaryrd
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-stmaryrd
 St Mary Road symbols for functional programming.
@@ -6178,7 +6179,7 @@ Summary(pl.UTF-8):	Fonty TX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-tx
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-tx
 TX fonts.
@@ -6191,7 +6192,7 @@ Summary:	UHC fonts
 Summary(pl.UTF-8):	Fonty UHC
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-uhc
 UHC fonts.
@@ -6205,7 +6206,7 @@ Summary(pl.UTF-8):	Fonty URW
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-urw
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-urw
 URW fonts.
@@ -6219,7 +6220,7 @@ Summary(pl.UTF-8):	Fonty URWVN
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-urwvn
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-urwvn
 URWVN fonts.
@@ -6233,7 +6234,7 @@ Summary(pl.UTF-8):	Fonty VNR
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-vnr
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-vnr
 VNR fonts.
@@ -6247,7 +6248,7 @@ Summary(hu.UTF-8):	urw35vf betűtípus
 Summary(pl.UTF-8):	Fonty urw35vf
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-urw35vf
 urw35vf fonts.
@@ -6263,7 +6264,7 @@ Summary:	Wadalab fonts
 Summary(pl.UTF-8):	Fonty Wadalab
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-wadalab
 Wadalab fonts.
@@ -6278,7 +6279,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-wasy
 Obsoletes:	tetex-fonts-wasy
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-wasy
 Waldis symbol fonts.
@@ -6292,7 +6293,7 @@ Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-xypic
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-xypic
 Xy-pic fonts.
@@ -6306,7 +6307,7 @@ Summary(pl.UTF-8):	Fonty European Modern od Y&Y
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-yandy
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-yandy
 European Modern fonts from Y&Y.
@@ -6320,7 +6321,7 @@ Summary(pl.UTF-8):	Antykwa Półtawskiego - rodzina tradycyjnych polskich czcion
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-antp
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-antp
 Antykwa Poltawskiego, a Type 1 family of Polish traditional type.
@@ -6335,7 +6336,7 @@ Summary(pl.UTF-8):	Antykwa Toruńska - rodzina tradycyjnych polskich czcionek ja
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-antt
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-antt
 Antykwa Torunska, a Type 1 family of a Polish traditional type.
@@ -6348,7 +6349,7 @@ Summary:	Type1 Arphic fonts
 Summary(pl.UTF-8):	Fonty Type1 Arphic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-arphic
 Type1 Arphic fonts.
@@ -6362,7 +6363,7 @@ Summary(pl.UTF-8):	Wolnodostępny zamiennik podstawowych fontów MathTime
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-belleek
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-belleek
 Free replacement for basic MathTime fonts.
@@ -6376,7 +6377,7 @@ Summary(pl.UTF-8):	Fonty Bitstream
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-bitstrea
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-bitstream
 Bitstream fonts.
@@ -6391,7 +6392,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-type1-bluesky
 Obsoletes:	tetex-fonts-type1-bluesky
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-bluesky
 Computer Modern family fonts.
@@ -6405,7 +6406,7 @@ Summary(pl.UTF-8):	Polska wersja fontów Computer Concrete
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-cc-pl
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-cc-pl
 Polish version of Computer Concrete fonts.
@@ -6432,7 +6433,7 @@ Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i sło
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-cs
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-cs
 Czech/Slovak-tuned MetaFont Computer Modern fonts.
@@ -6447,7 +6448,7 @@ Summary(pl.UTF-8):	Symbol nowej europejskiej waluty Euro
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-eurosym
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-eurosym
 The new European currency symbol for the Euro implemented in Metafont,
@@ -6465,7 +6466,7 @@ Summary(pl.UTF-8):	Przekonwertowany font mflogo
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-hoekwater
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-hoekwater
 Fonts originally created in MetaFont, transformed to PostScript by
@@ -6483,7 +6484,7 @@ Summary(pl.UTF-8):	Fonty SC/OsF dla URW Palladio L
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-fpl
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-fpl
 The FPL Fonts provide a set of SC/OsF fonts for URW Palladio L which
@@ -6546,7 +6547,7 @@ Summary(pl.UTF-8):	Font Symbol Martina Vogela (marvosym)
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-marvosym
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-marvosym
 Martin Vogel's Symbol (marvosym) font is a font containing: the Euro
@@ -6570,7 +6571,7 @@ Summary(pl.UTF-8):	Fonty matematyczne Pazo Math
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-mathpazo
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-mathpazo
 Pazo Math fonts.
@@ -6584,7 +6585,7 @@ Summary(pl.UTF-8):	Fonty Type1 dla Omegi - TeXa ze wsparciem dla unikodu
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-omega
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-omega
 Type1 fonts for Omega - extended unicode TeX.
@@ -6599,7 +6600,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Requires:	%{name}-fonts-type1-bluesky = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-pl
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-pl
 Polish fonts.
@@ -6613,7 +6614,7 @@ Summary(pl.UTF-8):	Fonty Type1 PX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-px
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-px
 PX Type1 fonts.
@@ -6627,7 +6628,7 @@ Summary(pl.UTF-8):	Fonty Type1 TX
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-tx
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-tx
 TX Type1 fonts.
@@ -6640,7 +6641,7 @@ Summary:	Type1 UHC fonts
 Summary(pl.UTF-8):	Fonty Type1 UHC
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-uhc
 Type1 UHC fonts.
@@ -6655,7 +6656,7 @@ Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Provides:	tetex-fonts-type1-urw
 Obsoletes:	tetex-fonts-type1-urw
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-urw
 URW fonts.
@@ -6669,7 +6670,7 @@ Summary(pl.UTF-8):	Fonty Type1 VNR
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-vnr
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-vnr
 Type1 VNR fonts.
@@ -6682,7 +6683,7 @@ Summary:	Type1 Wadalab fonts
 Summary(pl.UTF-8):	Fonty Type1 Wadalab
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-wadalab
 Type1 Wadalab fonts.
@@ -6696,7 +6697,7 @@ Summary(pl.UTF-8):	Fonty Xy-pic
 Group:		Fonts
 Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-fonts-type1-xypic
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description fonts-type1-xypic
 Xy-pic fonts.
@@ -6829,7 +6830,7 @@ Provides:	passivetex = 1.26
 Provides:	xmltex
 Obsoletes:	passivetex
 Obsoletes:	xmltex
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description xmltex
 XMLTeX is a non-validating, namespace-aware XML parser written in TeX.
