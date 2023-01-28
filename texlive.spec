@@ -107,8 +107,6 @@ BuildRequires:	freetype1-devel
 BuildRequires:	gd-devel >= 2.0.33
 BuildRequires:	libpng-devel >= 1.2.8
 BuildRequires:	libtool
-# should this be somewhere in clisp?
-BuildRequires:	libsigsegv
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
