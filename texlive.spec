@@ -6,7 +6,7 @@
 
 # Conditional build:
 %bcond_with	bootstrap	# bootstrap build
-%bcond_without	xindy		# do not build xindy packages
+%bcond_without	xindy		# xindy packages
 
 %if %{with bootstrap}
 %undefine	with_xindy
@@ -31,18 +31,21 @@ Release:	39
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
-Source0:	http://tug.org/svn/texlive/branches/branch2008/Master/source/%{name}-%{version}-source.tar.lzma
+Source0:	https://tug.org/svn/texlive/branches/branch2008/Master/source/%{name}-%{version}-source.tar.lzma
 # Source0-md5:	554287c3e458da776edd684506048d45
 Source1:	ftp://tug.org/texlive/historic/2008/%{name}-20080822-texmf.tar.lzma
 # Source1-md5:	fa74072e1344e8390eb156bcda61a8b2
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
-Source10:	http://tug.ctan.org/get/macros/latex/contrib/floatflt.zip
+# current (until 20230128) version is 2012-02-29, here is some older (2008-03-30)
+#Source10:	http://tug.ctan.org/macros/latex/contrib/floatflt.zip
+Source10:	floatflt.zip
 # Source10-md5:	5d9fe14d289aa81ebb6b4761169dd5f2
 Source11:	http://carme.pld-linux.org/~uzsolt/sources/%{name}-fonts-larm.tar.bz2
 # Source11-md5:	df2fcc66f0c2e90785ca6c9b27dacd34
-Source12:	http://www.ctan.org/get/macros/latex/contrib/foiltex.zip
+# dated 2008-01-29
+Source12:	http://www.ctan.org/macros/latex/contrib/foiltex.zip
 # Source12-md5:	0a6b4e64fb883a68d9b288bf3421db25
 Source50:	http://sunsite2.icm.edu.pl/pub/tex/systems/texlive/tlnet/2008/tlpkg/TeXLive/Splashscreen.pm
 # Source50-md5:	5cc49f49010f27fdb02dd7053797ba19
@@ -90,7 +93,7 @@ Patch16:	cxx11.patch
 Patch17:	perl-syntax.patch
 Patch18:	%{name}-open.patch
 Patch19:	%{name}-info.patch
-URL:		http://www.tug.org/texlive/
+URL:		https://tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
