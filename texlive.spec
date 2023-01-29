@@ -104,7 +104,7 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel
 BuildRequires:	freetype1-devel
 BuildRequires:	gd-devel >= 2.0.33
-BuildRequires:	libpng-devel >= 1.2.8
+BuildRequires:	libpng-devel >= 2:1.2.8
 BuildRequires:	libtool
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
