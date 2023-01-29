@@ -107,6 +107,7 @@ BuildRequires:	gd-devel >= 2.0.33
 BuildRequires:	libpng-devel >= 2:1.2.8
 BuildRequires:	libtool
 BuildRequires:	libstdc++-devel
+BuildRequires:	lzma
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
 BuildRequires:	rpm-build >= 4.6
