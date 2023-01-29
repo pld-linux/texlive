@@ -122,7 +122,6 @@ BuildRequires:	tetex-format-pdflatex
 BuildRequires:	tetex-format-plain
 BuildRequires:	tetex-latex-cyrillic
 BuildRequires:	tetex-tex-babel
-BuildRequires:	texconfig
 %else
 BuildRequires:	%{name}-context
 BuildRequires:	%{name}-cslatex
@@ -149,6 +148,7 @@ BuildRequires:	%{name}-xmltex
 # fill with future texlive BR. guesses ones for now
 %endif
 BuildRequires:	/usr/bin/latex
+BuildRequires:	texconfig
 BuildRequires:	unzip
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libXaw-devel
