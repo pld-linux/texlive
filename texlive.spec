@@ -12,11 +12,6 @@
 %undefine	with_xindy
 %endif
 
-%ifarch x32
-# no clisp on x32 as of 31-12-2014
-%undefine	with_xindy
-%endif
-
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
