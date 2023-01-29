@@ -1,0 +1,405 @@
+--- texlive-20080816-source/libs/graphite-engine/src/font/TtfUtil.h.orig	2008-02-08 18:28:24.000000000 +0100
++++ texlive-20080816-source/libs/graphite-engine/src/font/TtfUtil.h	2023-01-28 21:30:00.407467396 +0100
+@@ -51,7 +51,7 @@ namespace TtfUtil
+ 	size_t  GlyphCount(const void * pMaxp); 
+ 	size_t  MaxCompositeComponentCount(const void * pMaxp);
+ 	size_t  MaxCompositeLevelCount(const void * pMaxp);
+-	size_t  LocaGlyphCount(size_t lLocaSize, const void * pHead) throw (std::domain_error); 
++	size_t  LocaGlyphCount(size_t lLocaSize, const void * pHead);
+ 	int DesignUnits(const void * pHead);
+ 	int HeadTableCheckSum(const void * pHead);
+ 	void HeadTableCreateTime(const void * pHead, unsigned int * pnDateBC, unsigned int * pnDateAD);
+@@ -73,7 +73,7 @@ namespace TtfUtil
+ 	//size_t NameTableLength(const gr::byte * pTable);
+ 	int GetLangsForNames(const void * pName, int nPlatformId, int nEncodingId,
+ 		int *nameIdList, int cNameIds, short *langIdList);
+-	void SwapWString(void * pWStr, size_t nSize = 0) throw (std::invalid_argument);
++	void SwapWString(void * pWStr, size_t nSize = 0);
+ 
+ 	////////////////////////////////// cmap lookup tools 
+ 	void * FindCmapSubtable(const void * pCmap, int nPlatformId = 3, 
+@@ -96,7 +96,7 @@ namespace TtfUtil
+ 
+ 	////////////////////////////////// primitives for loca and glyf lookup 
+ 	size_t LocaLookup(gr::gid16 nGlyphId, const void * pLoca, size_t lLocaSize, 
+-		const void * pHead) throw (std::out_of_range); 
++		const void * pHead);
+ 	void * GlyfLookup(const void * pGlyf, size_t lGlyfOffset);
+ 
+ 	////////////////////////////////// primitves for simple glyph data
+--- texlive-20080816-source/libs/graphite-engine/src/font/TtfUtil.cpp.orig	2008-03-07 17:25:23.000000000 +0100
++++ texlive-20080816-source/libs/graphite-engine/src/font/TtfUtil.cpp	2023-01-28 21:30:20.630928296 +0100
+@@ -414,7 +414,7 @@ size_t  MaxCompositeLevelCount(const voi
+ 	Return the number of glyphs in the font according to a differt source.
+ 	Should never be less than zero. Return -1 on failure.
+ ----------------------------------------------------------------------------------------------*/
+-size_t LocaGlyphCount(size_t lLocaSize, const void * pHead) throw(std::domain_error)
++size_t LocaGlyphCount(size_t lLocaSize, const void * pHead)
+ {
+ 
+ 	const Sfnt::FontHeader * pTable 
+@@ -776,7 +776,7 @@ int PostLookup(const void * pPost, size_
+ 	defaults to 0.
+ 	Return true if successful, false otherwise. 
+ ----------------------------------------------------------------------------------------------*/
+-void SwapWString(void * pWStr, size_t nSize /* = 0 */) throw (std::invalid_argument)
++void SwapWString(void * pWStr, size_t nSize /* = 0 */)
+ {
+ 	if (pWStr == 0)
+ 		throw std::invalid_argument("null pointer given");
+@@ -1099,7 +1099,7 @@ unsigned int Cmap310NextCodepoint(const
+ ----------------------------------------------------------------------------------------------*/
+ size_t LocaLookup(gr::gid16 nGlyphId, 
+ 		const void * pLoca, size_t lLocaSize, 
+-		const void * pHead) throw (std::out_of_range)
++		const void * pHead)
+ {
+ 	const Sfnt::FontHeader * pTable = reinterpret_cast<const Sfnt::FontHeader *>(pHead);
+ 
+--- texlive-20080816-source/texk/lcdf-typetools/include/efont/otfdata.hh.orig	2008-02-17 20:29:39.000000000 +0100
++++ texlive-20080816-source/texk/lcdf-typetools/include/efont/otfdata.hh	2023-01-28 22:57:05.593808104 +0100
+@@ -60,14 +60,14 @@ class Data { public:
+     const uint8_t *udata() const	{ return _str.udata(); }
+     int length() const			{ return _str.length(); }
+ 
+-    inline uint8_t operator[](unsigned offset) const throw (Bounds);
+-    inline uint16_t u16(unsigned offset) const throw (Bounds);
+-    inline int16_t s16(unsigned offset) const throw (Bounds);
+-    inline uint32_t u32(unsigned offset) const throw (Bounds);    
+-    inline int32_t s32(unsigned offset) const throw (Bounds);
++    inline uint8_t operator[](unsigned offset) const;
++    inline uint16_t u16(unsigned offset) const;
++    inline int16_t s16(unsigned offset) const;
++    inline uint32_t u32(unsigned offset) const;
++    inline int32_t s32(unsigned offset) const;
+ 
+-    Data subtable(unsigned offset) const throw (Bounds);
+-    Data offset_subtable(unsigned offset_offset) const throw (Bounds);
++    Data subtable(unsigned offset) const;
++    Data offset_subtable(unsigned offset_offset) const;
+     inline Data substring(int left, int len = -1) const throw ();
+ 
+     void align_long()			{ _str.align(4); }
+@@ -78,7 +78,7 @@ class Data { public:
+     
+ };
+ 
+-inline uint8_t Data::operator[](unsigned offset) const throw (Bounds)
++inline uint8_t Data::operator[](unsigned offset) const
+ {
+     if (offset >= static_cast<unsigned>(_str.length()))
+ 	throw Bounds();
+@@ -86,7 +86,7 @@ inline uint8_t Data::operator[](unsigned
+ 	return _str[offset];
+ }
+ 
+-inline uint16_t Data::u16(unsigned offset) const throw (Bounds)
++inline uint16_t Data::u16(unsigned offset) const
+ {
+     if (offset + 1 >= static_cast<unsigned>(_str.length()) || offset + 1 == 0)
+ 	throw Bounds();
+@@ -94,7 +94,7 @@ inline uint16_t Data::u16(unsigned offse
+ 	return ntohs(*reinterpret_cast<const uint16_t *>(_str.data() + offset));
+ }
+ 
+-inline int16_t Data::s16(unsigned offset) const throw (Bounds)
++inline int16_t Data::s16(unsigned offset) const
+ {
+     if (offset + 1 >= static_cast<unsigned>(_str.length()) || offset + 1 == 0)
+ 	throw Bounds();
+@@ -102,7 +102,7 @@ inline int16_t Data::s16(unsigned offset
+ 	return ntohs(*reinterpret_cast<const int16_t *>(_str.data() + offset));
+ }
+ 
+-inline uint32_t Data::u32(unsigned offset) const throw (Bounds)
++inline uint32_t Data::u32(unsigned offset) const
+ {
+     if (offset + 3 >= static_cast<unsigned>(_str.length()) || offset + 3 < 3)
+ 	throw Bounds();
+@@ -111,7 +111,7 @@ inline uint32_t Data::u32(unsigned offse
+ 	    | ntohs(*reinterpret_cast<const uint16_t *>(_str.data() + offset + 2));
+ }
+ 
+-inline int32_t Data::s32(unsigned offset) const throw (Bounds)
++inline int32_t Data::s32(unsigned offset) const
+ {
+     if (offset + 3 >= static_cast<unsigned>(_str.length()) || offset + 3 < 3)
+ 	throw Bounds();
+--- texlive-20080816-source/texk/lcdf-typetools/include/efont/otfgsub.hh.orig	2008-02-17 20:29:39.000000000 +0100
++++ texlive-20080816-source/texk/lcdf-typetools/include/efont/otfgsub.hh	2023-01-28 22:59:04.121207433 +0100
+@@ -9,7 +9,7 @@ class Substitution;
+ 
+ class Gsub { public:
+ 
+-    Gsub(const Data &, const Font *, ErrorHandler * = 0) throw (Error);
++    Gsub(const Data &, const Font *, ErrorHandler * = 0);
+     // default destructor
+ 
+     const ScriptList &script_list() const { return _script_list; }
+@@ -31,7 +31,7 @@ class Gsub { public:
+ };
+ 
+ class GsubLookup { public:
+-    GsubLookup(const Data &) throw (Error);
++    GsubLookup(const Data &);
+     int type() const			{ return _type; }
+     uint16_t flags() const		{ return _d.u16(2); }
+     bool unparse_automatics(const Gsub &, Vector<Substitution> &) const;
+@@ -48,7 +48,7 @@ class GsubLookup { public:
+ };
+ 
+ class GsubSingle { public:
+-    GsubSingle(const Data &) throw (Error);
++    GsubSingle(const Data &);
+     // default destructor
+     Coverage coverage() const throw ();
+     Glyph map(Glyph) const;
+@@ -60,7 +60,7 @@ class GsubSingle { public:
+ };
+ 
+ class GsubMultiple { public:
+-    GsubMultiple(const Data &) throw (Error);
++    GsubMultiple(const Data &);
+     // default destructor
+     Coverage coverage() const throw ();
+     bool map(Glyph, Vector<Glyph> &) const;
+@@ -73,7 +73,7 @@ class GsubMultiple { public:
+ };
+ 
+ class GsubLigature { public:
+-    GsubLigature(const Data &) throw (Error);
++    GsubLigature(const Data &);
+     // default destructor
+     Coverage coverage() const throw ();
+     bool map(const Vector<Glyph> &, Glyph &, int &) const;
+@@ -87,7 +87,7 @@ class GsubLigature { public:
+ };
+ 
+ class GsubContext { public:
+-    GsubContext(const Data &) throw (Error);
++    GsubContext(const Data &);
+     // default destructor
+     Coverage coverage() const throw ();
+     bool unparse(const Gsub &, Vector<Substitution> &) const;
+@@ -99,7 +99,7 @@ class GsubContext { public:
+ };
+ 
+ class GsubChainContext { public:
+-    GsubChainContext(const Data &) throw (Error);
++    GsubChainContext(const Data &);
+     // default destructor
+     Coverage coverage() const throw ();
+     bool unparse(const Gsub &, Vector<Substitution> &) const;
+--- texlive-20080816-source/texk/lcdf-typetools/include/efont/otfgpos.hh.orig	2008-02-17 20:29:39.000000000 +0100
++++ texlive-20080816-source/texk/lcdf-typetools/include/efont/otfgpos.hh	2023-01-28 23:00:11.438290212 +0100
+@@ -9,7 +9,7 @@ class Positioning;
+ 
+ class Gpos { public:
+ 
+-    Gpos(const Data &, ErrorHandler * = 0) throw (Error);
++    Gpos(const Data &, ErrorHandler * = 0);
+     // default destructor
+ 
+     const ScriptList &script_list() const { return _script_list; }
+@@ -29,7 +29,7 @@ class Gpos { public:
+ };
+ 
+ class GposLookup { public:
+-    GposLookup(const Data &) throw (Error);
++    GposLookup(const Data &);
+     int type() const			{ return _type; }
+     uint16_t flags() const		{ return _d.u16(2); }
+     bool unparse_automatics(Vector<Positioning> &, ErrorHandler * = 0) const;
+@@ -66,7 +66,7 @@ class GposValue { public:
+ };
+ 
+ class GposSingle { public:
+-    GposSingle(const Data &) throw (Error);
++    GposSingle(const Data &);
+     // default destructor
+     Coverage coverage() const throw ();
+     void unparse(Vector<Positioning> &) const;
+@@ -76,7 +76,7 @@ class GposSingle { public:
+ };
+ 
+ class GposPair { public:
+-    GposPair(const Data &) throw (Error);
++    GposPair(const Data &);
+     // default destructor
+     Coverage coverage() const throw ();
+     void unparse(Vector<Positioning> &) const;
+--- texlive-20080816-source/texk/lcdf-typetools/include/efont/otfos2.hh.orig	2008-02-17 20:29:39.000000000 +0100
++++ texlive-20080816-source/texk/lcdf-typetools/include/efont/otfos2.hh	2023-01-29 07:55:01.828072318 +0100
+@@ -24,11 +24,11 @@ class Os2 { public:
+ 		   O_XHEIGHT = 86, O_CAPHEIGHT = 88 };
+     enum { HEADER_SIZE = 2 };
+ 
+-    inline int16_t typo_ascender() const throw (Bounds);
+-    inline int16_t typo_descender() const throw (Bounds);
+-    inline int16_t typo_line_gap() const throw (Bounds);
+-    inline int16_t x_height() const throw (Bounds);
+-    inline int16_t cap_height() const throw (Bounds);
++    inline int16_t typo_ascender() const;
++    inline int16_t typo_descender() const;
++    inline int16_t typo_line_gap() const;
++    inline int16_t x_height() const;
++    inline int16_t cap_height() const;
+ 
+   private:
+ 
+@@ -40,27 +40,27 @@ class Os2 { public:
+ };
+ 
+ 
+-inline int16_t Os2::typo_ascender() const throw (Bounds)
++inline int16_t Os2::typo_ascender() const
+ {
+     return _data.s16(O_TYPOASCENDER);
+ }
+ 
+-inline int16_t Os2::typo_descender() const throw (Bounds)
++inline int16_t Os2::typo_descender() const
+ {
+     return _data.s16(O_TYPODESCENDER);
+ }
+ 
+-inline int16_t Os2::typo_line_gap() const throw (Bounds)
++inline int16_t Os2::typo_line_gap() const
+ {
+     return _data.s16(O_TYPOLINEGAP);
+ }
+ 
+-inline int16_t Os2::x_height() const throw (Bounds)
++inline int16_t Os2::x_height() const
+ {
+     return _data.s16(O_XHEIGHT);
+ }
+ 
+-inline int16_t Os2::cap_height() const throw (Bounds)
++inline int16_t Os2::cap_height() const
+ {
+     return _data.s16(O_CAPHEIGHT);
+ }
+--- texlive-20080816-source/texk/lcdf-typetools/libefont/otfdata.cc.orig	2008-02-17 20:29:39.000000000 +0100
++++ texlive-20080816-source/texk/lcdf-typetools/libefont/otfdata.cc	2023-01-28 22:59:33.948058471 +0100
+@@ -21,7 +21,7 @@
+ namespace Efont { namespace OpenType {
+ 
+ Data
+-Data::subtable(unsigned offset) const throw (Bounds)
++Data::subtable(unsigned offset) const
+ {
+     if (offset > (unsigned) _str.length())
+ 	throw Bounds();
+@@ -29,7 +29,7 @@ Data::subtable(unsigned offset) const th
+ }
+ 
+ Data
+-Data::offset_subtable(unsigned offset_offset) const throw (Bounds)
++Data::offset_subtable(unsigned offset_offset) const
+ {
+     int offset = u16(offset_offset);
+     if (offset > _str.length())
+--- texlive-20080816-source/texk/lcdf-typetools/libefont/otfgpos.cc.orig	2008-02-17 20:29:39.000000000 +0100
++++ texlive-20080816-source/texk/lcdf-typetools/libefont/otfgpos.cc	2023-01-28 23:00:52.105208256 +0100
+@@ -32,7 +32,7 @@ namespace Efont { namespace OpenType {
+  *                        *
+  **************************/
+ 
+-Gpos::Gpos(const Data &d, ErrorHandler *errh) throw (Error)
++Gpos::Gpos(const Data &d, ErrorHandler *errh)
+ {
+     // Fixed	Version
+     // Offset	ScriptList
+@@ -79,7 +79,7 @@ const int GposValue::nibble_bitcount_x2[
+  *                        *
+  **************************/
+ 
+-GposLookup::GposLookup(const Data &d) throw (Error)
++GposLookup::GposLookup(const Data &d)
+     : _d(d)
+ {
+     if (_d.length() < 6)
+@@ -143,7 +143,7 @@ GposLookup::unparse_automatics(Vector<Po
+  *                        *
+  **************************/
+ 
+-GposSingle::GposSingle(const Data &d) throw (Error)
++GposSingle::GposSingle(const Data &d)
+     : _d(d)
+ {
+     if (_d[0] != 0
+@@ -183,7 +183,7 @@ GposSingle::unparse(Vector<Positioning>
+  *                        *
+  **************************/
+ 
+-GposPair::GposPair(const Data &d) throw (Error)
++GposPair::GposPair(const Data &d)
+     : _d(d)
+ {
+     if (_d[0] != 0
+--- texlive-20080816-source/texk/lcdf-typetools/libefont/otfgsub.cc.orig	2008-04-28 19:43:51.000000000 +0200
++++ texlive-20080816-source/texk/lcdf-typetools/libefont/otfgsub.cc	2023-01-29 07:56:12.791845050 +0100
+@@ -564,7 +564,7 @@ Substitution::unparse(const Vector<PermS
+  *                        *
+  **************************/
+ 
+-Gsub::Gsub(const Data &d, const Font *otf, ErrorHandler *errh) throw (Error)
++Gsub::Gsub(const Data &d, const Font *otf, ErrorHandler *errh)
+     : _chaincontext_reverse_backtrack(false)
+ {
+     // Fixed	Version
+@@ -614,7 +614,7 @@ Gsub::lookup(unsigned i) const
+  *                        *
+  **************************/
+ 
+-GsubLookup::GsubLookup(const Data &d) throw (Error)
++GsubLookup::GsubLookup(const Data &d)
+     : _d(d)
+ {
+     if (_d.length() < 6)
+@@ -734,7 +734,7 @@ GsubLookup::apply(const Glyph *g, int po
+  *                        *
+  **************************/
+ 
+-GsubSingle::GsubSingle(const Data &d) throw (Error)
++GsubSingle::GsubSingle(const Data &d)
+     : _d(d)
+ {
+     if (_d[0] != 0
+@@ -797,7 +797,7 @@ GsubSingle::apply(const Glyph *g, int po
+  *                        *
+  **************************/
+ 
+-GsubMultiple::GsubMultiple(const Data &d) throw (Error)
++GsubMultiple::GsubMultiple(const Data &d)
+     : _d(d)
+ {
+     if (_d[0] != 0 || _d[1] != 1)
+@@ -864,7 +864,7 @@ GsubMultiple::apply(const Glyph *g, int
+  *                        *
+  **************************/
+ 
+-GsubLigature::GsubLigature(const Data &d) throw (Error)
++GsubLigature::GsubLigature(const Data &d)
+     : _d(d)
+ {
+     if (_d[0] != 0
+@@ -956,7 +956,7 @@ GsubLigature::apply(const Glyph *g, int
+  *                        *
+  **************************/
+ 
+-GsubContext::GsubContext(const Data &d) throw (Error)
++GsubContext::GsubContext(const Data &d)
+     : _d(d)
+ {
+     switch (_d.u16(0)) {
+@@ -1044,7 +1044,7 @@ GsubContext::unparse(const Gsub &gsub, V
+  *                        *
+  **************************/
+ 
+-GsubChainContext::GsubChainContext(const Data &d) throw (Error)
++GsubChainContext::GsubChainContext(const Data &d)
+     : _d(d)
+ {
+     switch (_d.u16(0)) {

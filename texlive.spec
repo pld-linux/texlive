@@ -93,6 +93,7 @@ Patch16:	cxx11.patch
 Patch17:	perl-syntax.patch
 Patch18:	%{name}-open.patch
 Patch19:	%{name}-info.patch
+Patch20:	%{name}-throw.patch
 URL:		https://tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -6879,6 +6880,7 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch17 -p1
 %patch18 -p1
 %patch19 -p1
+%patch20 -p1
 
 CURDIR=$(pwd)
 cd utils/xindy/make-rules/alphabets
