@@ -133,6 +133,7 @@ BuildRequires:	%{name}-fonts-cmsuper
 BuildRequires:	%{name}-format-eplain
 BuildRequires:	%{name}-format-mex
 BuildRequires:	%{name}-format-pdflatex
+BuildRequires:	%{name}-jadetex
 BuildRequires:	%{name}-latex
 BuildRequires:	%{name}-latex-cyrillic
 BuildRequires:	%{name}-metapost
