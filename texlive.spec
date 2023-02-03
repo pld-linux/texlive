@@ -22,7 +22,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	41
+Release:	42
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -7191,6 +7191,7 @@ for format_dir in \
 	aleph:aleph \
 	csplain:pdftex \
 	etex:pdftex \
+	jadetex:pdftex \
 	lambda:omega \
 	lamed:aleph \
 	latex:pdftex \
@@ -9128,6 +9129,7 @@ fi
 %{texmfdist}/source/jadetex/base/jadetex.*
 %{texmfdist}/tex/jadetex
 %{texmf}/fmtutil/format.jadetex.cnf
+%{fmtdir}/pdftex/jadetex.fmt
 
 %files other-utils-doc
 %defattr(644,root,root,755)
