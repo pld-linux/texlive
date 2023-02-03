@@ -278,6 +278,8 @@ Summary(pl.UTF-8):	Makra LaTeXa do konwersji Jade TeXa do DVI/PS/PDF
 Group:		Applications/Publishing/TeX
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-extend = %{epoch}:%{version}-%{release}
+Requires:	%{name}-latex-marvosym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	jadetex = %{epoch}:%{version}-%{release}
 Obsoletes:	jadetex < 3.14
@@ -6825,6 +6827,7 @@ Summary:	TeX package for processing XML files
 Summary(pl.UTF-8):	Pakiet TeXa do przetwarzania plików XML
 Group:		Applications/Publishing/TeX
 Requires(post,postun):	/usr/bin/texhash
+Requires:	%{name}-latex-ams = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	passivetex = 1.26
 Provides:	xmltex
