@@ -22,7 +22,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	42
+Release:	43
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -89,6 +89,7 @@ Patch17:	perl-syntax.patch
 Patch18:	%{name}-open.patch
 Patch19:	%{name}-info.patch
 Patch20:	%{name}-throw.patch
+Patch21:	python3.patch
 URL:		https://tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -135,7 +136,10 @@ BuildRequires:	%{name}-format-mex
 BuildRequires:	%{name}-format-pdflatex
 BuildRequires:	%{name}-jadetex
 BuildRequires:	%{name}-latex
+BuildRequires:	%{name}-latex-ams
 BuildRequires:	%{name}-latex-cyrillic
+BuildRequires:	%{name}-latex-extend
+BuildRequires:	%{name}-latex-marvosym
 BuildRequires:	%{name}-metapost
 BuildRequires:	%{name}-mex
 BuildRequires:	%{name}-omega
@@ -6968,6 +6972,9 @@ lzma -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_datadir}
 # we don't care that our tex is more than 5 years old
 patch --directory=$RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf -p1 < %{PATCH9}
 
+# update python scripts to Python 3
+patch --directory=$RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf -p1 < %{PATCH21}
+
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf $RPM_BUILD_ROOT%{texmf}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-dist $RPM_BUILD_ROOT%{texmfdist}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/texlive-20080822-texmf/texmf-doc $RPM_BUILD_ROOT%{texmfdoc}
@@ -7247,13 +7254,6 @@ done
 	$RPM_BUILD_ROOT%{texmfdist}/scripts/tex4ht/mk4ht.pl \
 	$RPM_BUILD_ROOT%{texmfdist}/scripts/texcount/TeXcount.pl \
 	$RPM_BUILD_ROOT%{texmfdist}/source/latex/latex-tds/build.pl
-
-%{__sed} -i -e '1s,/usr/bin/python$,%{__python},' \
-	$RPM_BUILD_ROOT%{texmfdist}/doc/generic/enctex/unimap.py \
-
-%{__sed} -i -e '1s,/usr/bin/env python,%{__python},' \
-	$RPM_BUILD_ROOT%{texmfdist}/scripts/bengali/ebong.py \
-	$RPM_BUILD_ROOT%{texmfdist}/scripts/dviasm/dviasm.py
 
 %{__sed} -i -e '1s,/usr/bin/env ruby,%{__ruby},' \
 	$RPM_BUILD_ROOT%{texmfdist}/scripts/context/ruby/{texmfstart,kpseserver,kpseclient}.rb \

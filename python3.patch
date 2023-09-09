@@ -1,0 +1,387 @@
+--- a/texmf-dist/scripts/dviasm/dviasm.py.orig	2023-09-09 01:52:06.083781756 +0200
++++ a/texmf-dist/scripts/dviasm/dviasm.py	2023-09-09 02:42:09.470504982 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # -*- coding: utf_8 -*-
+ #
+ # This is DVIasm, a DVI utility for editing DVI files directly.
+@@ -63,7 +63,7 @@
+   sys.stderr.write('%s\n' % msg)
+ 
+ def BadDVI(msg):
+-  raise AttributeError, 'Bad DVI file: %s!' % msg
++  raise AttributeError('Bad DVI file: %s!' % msg)
+ 
+ def GetByte(fp): # { returns the next byte, unsigned }
+   try: return ord(fp.read(1))
+@@ -134,22 +134,26 @@
+   except: return -1
+ 
+ def GetStrASCII(s): # used in Parse()
+-  if len(s) > 1 and ((s[0] == "'" and s[-1] == "'") or (s[0] == '"' and s[-1] == '"')): return [ord(c) for c in s[1:-1].decode('unicode_escape')]
++  if len(s) > 1 and ((s[0] == "'" and s[-1] == "'") or (s[0] == '"' and s[-1] == '"')):
++    return [ord(c) for c in s[1:-1].decode('unicode_escape')]
+   else: return ''
+ 
+ def UCS2toJIS(c):
+-  s = c.encode('iso2022-jp')
++  try:
++    s = c.encode('iso2022-jp')
++  except UnicodeEncodeError:
++    s = c.encode('raw_unicode_escape')
+   if len(s) == 1: return ord(s)
+   else:           return (ord(s[3]) << 8) + ord(s[4])
+ 
+ def GetStrUTF8(s): # used in Parse()
+   if len(s) > 1 and ((s[0] == "'" and s[-1] == "'") or (s[0] == '"' and s[-1] == '"')):
+-    t = s[1:-1].decode('string_escape').decode('utf8')
++    t = s[1:-1].encode('raw_unicode_escape').decode('unicode_escape')
+     if is_ptex: return [UCS2toJIS(c) for c in t]
+     else:       return [ord(c)       for c in t]
+   else:         return ''
+ 
+-def PutStrASCII(t): # unsed in Dump()
++def PutStrASCII(t): # used in Dump()
+   s = ''
+   for o in t:
+     if o == 92:         s += '\\\\'
+@@ -160,7 +164,7 @@
+       Warning('Not support characters > 65535; may skip %d.\n' % o)
+   return "'%s'" % s
+ 
+-def PutStrLatin1(t): # unsed in Dump()
++def PutStrLatin1(t): # used in Dump()
+   s = ''
+   for o in t:
+     if o == 92:                           s += '\\\\'
+@@ -171,11 +175,11 @@
+       Warning('Not support characters > 65535; may skip %d.\n' % o)
+   return "'%s'" % s
+ 
+-def PutStrUTF8(t): # unsed in Dump()
++def PutStrUTF8(t): # used in Dump()
+   s = ''
+   if is_subfont:
+     for o in t:
+-      s += unichr((subfont_idx << 8) + o).encode('utf8')
++      s += unichr((subfont_idx << 8) + o)
+   else: # not the case of subfont
+     for o in t:
+       if o == 92:         s += '\\\\'
+@@ -186,16 +190,6 @@
+       else:               s += unichr(o).encode('utf8')
+   return "'%s'" % s
+ 
+-def PutStrSJIS(t): # unsed in Dump()
+-  s = ''
+-  for o in t:
+-    if o == 92:         s += '\\\\'
+-    elif 32 <= o < 127: s += chr(o)
+-    elif o < 128:       s += ('\\x%02x' % o)
+-    else:
+-      s += ''.join(['\x1b$B', chr(o/256), chr(o%256)]).decode('iso2022-jp').encode('sjis')
+-  return "'%s'" % s
+-
+ def IsFontChanged(f, z):
+   global cur_font, cur_ssize, subfont_idx, is_subfont
+   for n in subfont_list:
+@@ -342,9 +336,9 @@
+       f = self.font_def[e]
+     except KeyError:
+       self.font_def[e] = {'name':n, 'checksum':c, 'scaled_size':q, 'design_size':d}
+-      if q <= 0 or q >= 01000000000:
++      if q <= 0 or q >= 0o1000000000:
+         Warning("%s---not loaded, bad scale (%d)!" % (n, q))
+-      elif d <= 0 or d >= 01000000000:
++      elif d <= 0 or d >= 0o1000000000:
+         msssage("%s---not loaded, bad design size (%d)!" % (n, d))
+     else:
+       if f['checksum'] != c:
+@@ -374,7 +368,7 @@
+       if o == SET_RULE:
+         s.append([SET_RULE, [p, SignedQuad(fp)]])
+       elif o in (PUT1, PUT2, PUT3, PUT4):
+-        s.append([PUT1, p])
++        s.append([PUT1, [p]])
+       elif o == PUT_RULE:
+         s.append([PUT_RULE, [p, SignedQuad(fp)]])
+       elif o == NOP:
+@@ -476,11 +470,11 @@
+         if cmd[0] == SET1:
+           for o in cmd[1]:
+             if o < 128: s.append(chr(SET_CHAR_0 + o))
+-            else:       s.append(self.CmdPair([SET1, o]))
++            else:       s.append(self.CmdPairU([SET1, o]))
+         elif cmd[0] in (SET_RULE, PUT_RULE):
+           s.append(chr(cmd[0]) + PutSignedQuad(cmd[1][0]) + PutSignedQuad(cmd[1][1]))
+         elif cmd[0] == PUT1:
+-          s.append(self.CmdPair([PUT1, cmd[1][0]]))
++          s.append(self.CmdPairU([PUT1, cmd[1][0]]))
+         elif cmd[0] in (RIGHT1, DOWN1):
+           s.append(self.CmdPair(cmd))
+         elif cmd[0] in (W0, X0, Y0, Z0):
+@@ -502,11 +496,22 @@
+           z = cmd[1]; s.append(self.CmdPair(cmd))
+         elif cmd[0] == FNT1:
+           if cmd[1] < 64: s.append(chr(FNT_NUM_0 + cmd[1]))
+-          else:           s.append(self.CmdPair(cmd))
++          else:           s.append(self.CmdPairU(cmd))
+         elif cmd[0] == XXX1:
+-          l = len(cmd[1])
+-          if l < 256: s.append(chr(XXX1) + chr(l) + cmd[1])
+-          else:       s.append(chr(XXX4) + PutSignedQuad(l) + cmd[1])
++          if options.xxx_encoding == "none":
++            l = len(cmd[1]) # leave encoding untouched
++          else:
++            cmd1 = cmd[1].encode(options.xxx_encoding)
++            l = len(cmd1)
++          if l < 256:
++            s.append(bytes.fromhex('%02x' % XXX1) + bytes.fromhex('%02x' % l))
++          else:
++            s.append(bytes.fromhex('%02x' % XXX4) + PutSignedQuad(l))
++          if options.xxx_encoding == "none":
++            for o in cmd[1]:
++              s.append(bytes.fromhex('%02x' % ord(o)))
++          else:
++              s.append(cmd1)
+         elif cmd[0] == DIR:
+           s.append(chr(DIR) + chr(cmd[1]))
+         else:
+@@ -539,6 +544,10 @@
+       s.append(self.font_def[e]['name'])
+     fp.write(''.join(s))
+ 
++  def CmdPairU(self, cmd):
++    l, q = PutUnsigned(cmd[1])
++    return bytes.fromhex('%02x' % (cmd[0] + l)) + q
++
+   def CmdPair(self, cmd):
+     l, q = PutSigned(cmd[1])
+     return chr(cmd[0] + l) + q
+@@ -547,7 +556,7 @@
+   # Parse: Text -> Internal Format
+   ##########################################################
+   def Parse(self, fn, encoding=''):
+-    fp = file(fn, 'r')
++    fp = open(fn, 'r', encoding=encoding)
+     s = fp.read()
+     fp.close()
+     self.ParseFromString(s, encoding=encoding)
+@@ -636,7 +645,10 @@
+         else:
+           self.cur_page.append([SET1, ol])
+       elif key == 'put':
+-        self.cur_page.append([PUT1, GetStr(val)])
++        ol = GetStr(val)
++        if len(ol) != 1:
++          warning('only one character is allowed for put!')
++        self.cur_page.append([PUT1, ol])
+       elif key == 'setrule':
+         v = val.split(' ')
+         if len(v) != 2:
+@@ -707,7 +719,7 @@
+   # Dump: Internal Format -> Text
+   ##########################################################
+   def Dump(self, fn, tabsize=2, encoding=''):
+-    fp = file(fn, 'w')
++    fp = open(fn, 'w', encoding=encoding)
+     self.DumpToFile(fp, tabsize=tabsize, encoding=encoding)
+     fp.close()
+ 
+@@ -715,7 +727,6 @@
+     global PutStr
+     if   encoding == 'ascii':  PutStr = PutStrASCII
+     elif encoding == 'latin1': PutStr = PutStrLatin1
+-    elif encoding == 'sjis':   PutStr = PutStrSJIS
+     else:                      PutStr = PutStrUTF8
+     # DumpPreamble
+     fp.write("[preamble]\n")
+@@ -751,7 +762,10 @@
+           fp.write("push:\n")
+           indent += tabsize
+         elif cmd[0] == XXX1:
+-          fp.write("xxx: %s\n" % repr(cmd[1]))
++          if options.xxx_encoding == "none":
++            fp.write("xxx: %s\n" % PutStrASCII(cmd[1])) # leave encoding untouched
++          else:
++            fp.write("xxx: '%s'\n" % cmd[1].decode(options.xxx_encoding))
+         elif cmd[0] == DIR:
+           fp.write("dir: %d\n" % cmd[1])
+         elif cmd[0] == SET_RULE:
+@@ -895,6 +909,10 @@
+                     action="store", type="string", dest="encoding",
+                     metavar="STR",
+                     help="encoding for input/output [default=%default]")
++  parser.add_option("-x", "--xxx-encoding",
++                    action="store", type="string", dest="xxx_encoding",
++                    metavar="STR",
++                    help="encoding for interpreting xxx strings [default=%default]")
+   parser.add_option("-t", "--tabsize",
+                     action="store", type="int", dest="tabsize",
+                     metavar="INT",
+@@ -906,18 +924,20 @@
+                     action="append", type="string", dest="subfont",
+                     metavar="STR",
+                     help="the list of fonts with UCS2 subfont scheme (comma separated); disable internal subfont list if STR is empty")
+-  parser.set_defaults(unit='pt', encoding='utf8', tabsize=2)
++  parser.set_defaults(unit='pt', encoding='utf8', xxx_encoding='none', tabsize=2)
+   (options, args) = parser.parse_args()
+   if not options.unit in ['sp', 'pt', 'bp', 'mm', 'cm', 'in']:
+     parser.error("invalid unit name '%s'!" % options.unit)
+-  if options.tabsize < 0: 
++  if options.tabsize < 0:
+     parser.error("negative tabsize!")
+-  if not options.encoding in ['ascii', 'latin1', 'utf8', 'sjis']:
++  if not options.xxx_encoding in ['none', 'utf8', 'sjis', 'eucjp']:
++    parser.error("invalid xxx-encoding '%s'!" % options.xxx_encoding)
++  if not options.encoding in ['ascii', 'latin1', 'utf8', 'sjis', 'eucjp']:
+     parser.error("invalid encoding '%s'!" % options.encoding)
+   if options.ptex:
+     global is_ptex
+     is_ptex = True
+-    if not options.encoding in ['utf8', 'sjis']:
++    if not options.encoding in ['utf8', 'sjis', 'eucjp']:
+       parser.error("invalid encoding '%s' for Japanese pTeX!" % options.encoding)
+   if options.subfont:
+     global subfont_list
+@@ -957,4 +977,4 @@
+   else: # dump -> dvi
+     aDVI.Parse(args[0], encoding=options.encoding)
+     if options.output: aDVI.Save(options.output)
+-    else:              aDVI.SaveToFile(sys.stdout)
++    else:              aDVI.SaveToFile(sys.stdout.buffer)
+--- a/texmf-dist/scripts/bengali/ebong.py.orig	2023-09-09 01:42:36.612458071 +0200
++++ a/texmf-dist/scripts/bengali/ebong.py	2023-09-09 01:46:51.695723500 +0200
+@@ -1,6 +1,6 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # look in newbong
+-import sre
++import re
+ A='A'
+ B='B'
+ S='S'
+@@ -164,7 +164,7 @@
+ 
+ def blocked(line):
+     #print '@ blocked', line , '->',
+-    m = sre.findall('@[^@]+@',line)
++    m = re.findall('@[^@]+@',line)
+     outline = line
+     if not m :
+         #print  outline
+@@ -178,7 +178,7 @@
+ 
+ def unblock(line):
+     #print '@unblock', line, '->',
+-    m = sre.findall('@[^\s]+',line)
++    m = re.findall('@[^\s]+',line)
+     outline = line
+     if not m :
+         #print outline
+@@ -192,7 +192,7 @@
+ 
+ def printamp(line):
+     #print '@unblock', line, '->',
+-    m = sre.findall('#AT',line)
++    m = re.findall('#AT',line)
+     outline = line
+     if not m :
+         #print outline
+@@ -207,14 +207,14 @@
+     syllparts=[]
+     start = 0; end = len(syll)
+     while syll[start : end]:
+-	slice = syll[start : end]
+-	#print slice
+-	if AKSAR.has_key(slice):
+-		syllparts.append(AKSAR[slice])
+-		start = start + len(slice)
+-		end = len(syll)
+-	else :
+-		end = end -1
++        slice = syll[start : end]
++        #print slice
++        if AKSAR.has_key(slice):
++                syllparts.append(AKSAR[slice])
++                start = start + len(slice)
++                end = len(syll)
++        else :
++                end = end -1
+     return(syllparts)
+ 
+ def fuse(list1,list2):
+@@ -226,10 +226,10 @@
+     if Type2 == s:
+        Type3 = str(list2[2])
+     elif Type2 == X:
+-	Type1=A
+-	Type3=''
++        Type1=A
++        Type3=''
+     else:
+-	Type3 =''
++        Type3 =''
+ 
+     Type = Type1+Type2+Type3
+ 
+@@ -258,7 +258,7 @@
+         #print CATCODE
+         return(fused)
+     except KeyError:
+-        print '\n ERROR AT LINE:', NCLINE, 'WORD:',NCWORD, '(',CWORD,')'
++        print('\n ERROR AT LINE:', NCLINE, 'WORD:',NCWORD, '(',CWORD,')')
+         return(['ERROR','UNKNOWN CATCODE'])
+ 
+ def fuseatoms(syll):
+@@ -341,6 +341,6 @@
+ if OK == 1:
+     fout.writelines(textout)
+     fout.close()
+-    print 'done'
++    print('done')
+ else:
+-    print 'Unknown CATCODE, Fix The errors and try again'
++    print('Unknown CATCODE, Fix The errors and try again')
+--- a/texmf-dist/doc/generic/enctex/unimap.py.orig	2023-09-09 02:20:52.972386009 +0200
++++ a/texmf-dist/doc/generic/enctex/unimap.py	2023-09-09 02:22:13.845582832 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ ###################################################################
+ # unimap.py
+ # Generates utf8raw.tex file containing math character definitions
+@@ -48,8 +48,6 @@
+ output = 'utf8raw.tex'   # Output file
+ 
+ # Compatibility with Pyhton-2.1
+-if not __builtins__.__dict__.has_key('True'):
+-    True = 1; False = 0
+ if not __builtins__.__dict__.has_key('file'):
+     file = open
+ if not __builtins__.__dict__.has_key('dict'):
+@@ -91,12 +89,12 @@
+         return LineType.Character, (int(line[:m.end()], 16),
+                                     line[m.end():].strip().lower())
+     if not line.startswith('\t'):
+-        raise ValueError, 'Queer line doesn\'t start with @ or Tab'
++        raise ValueError('Queer line doesn\'t start with @ or Tab')
+     line = line.strip()
+     if not line:
+         return LineType.Empty, None
+     if not LineType.map.has_key(line[0]):
+-        raise ValueError, 'Queer character info line (marker %s)' % line[0]
++        raise ValueError('Queer character info line (marker %s)' % line[0])
+     return line[0], line[1:].strip()
+ 
+ def utf8chars(u):
+@@ -132,7 +130,7 @@
+         char = val
+     elif typ == LineType.TeX:
+         if not val.startswith('\\'):
+-            raise ValueError, '%s is not a control seq (U%X)' % (val, char[0])
++            raise ValueError('%s is not a control seq (U%X)' % (val, char[0]))
+         if sect:
+             fw.write('\n%% %s\n' % sect)
+             sect = None
