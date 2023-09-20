@@ -22,7 +22,7 @@ Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	20080816
-Release:	43
+Release:	44
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
@@ -2237,6 +2237,7 @@ Requires:	%{name}-fonts-eurosym = %{epoch}:%{version}-%{release}
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-babel = %{epoch}:%{version}-%{release}
 Requires:	%{name}-tex-pstricks = %{epoch}:%{version}-%{release}
+Requires:	%{name}-xetex = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-fonts-jknappen
 Suggests:	%{name}-latex-ucs = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-latex = %{epoch}:%{version}-%{release}
