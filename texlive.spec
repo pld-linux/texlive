@@ -1759,7 +1759,7 @@ language and as an extension to the typesetting engine itself.
 
 %prep
 %setup -q -n %{name}-%{version}-source
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 # find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
