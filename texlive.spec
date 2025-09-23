@@ -114,7 +114,7 @@ BuildRequires:	readline-devel
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.752
+BuildRequires:	rpmbuild(macros) >= 2.043
 BuildRequires:	sed >= 4.0
 BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	texinfo
@@ -6930,7 +6930,8 @@ cd ../../..
 install -d build/utils/xindy/make-rules/alphabets
 for f in utils/xindy/make-rules/alphabets/larm????.* ; do ln -sf ../../../../../$f build/$f ; done
 cd build
-../%configure \
+%define	configuredir	..
+%configure \
 	--with-xindy%{!?with_xindy:=no}\
 	--disable-multiplatform \
 	--disable-static \
