@@ -6421,19 +6421,6 @@ Polish version of Computer Concrete fonts.
 %description fonts-type1-cc-pl -l pl.UTF-8
 Polska wersja fontów Computer Concrete.
 
-%package fonts-type1-cmcyr
-Summary:	Computer Modern fonts extended with Russian letters
-Summary(pl.UTF-8):	Fonty Computer Modern rozszerzone o litery rosyjskie
-Group:		Fonts
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-fonts-type1-cmcyr < 1:3.1
-
-%description fonts-type1-cmcyr
-Computer Modern fonts extended with Russian letters.
-
-%description fonts-type1-cmcyr -l pl.UTF-8
-Fonty Computer Modern rozszerzone o litery rosyjskie.
-
 %package fonts-type1-cs
 Summary:	Czech/Slovak-tuned MetaFont Computer Modern fonts
 Summary(pl.UTF-8):	Fonty MetaFont Computer Modern dla języków czeskiego i słowackiego
@@ -6518,35 +6505,6 @@ xipa.
 Fonty oryginalnie stworzone w MetaFoncie, przekształcone do
 PostScriptu przez Taco Hoekwatera; zawierają: logo, manfnt, rsfs,
 stmaryrd, wasy, wasy2, xipa.
-
-%package fonts-type1-lm
-Summary:	Type1 Latin Modern family fonts
-Summary(pl.UTF-8):	Fonty Type1 z rodziny Latin Modern
-Group:		Applications/Publishing/TeX
-Requires:	%{name}-dirs-fonts = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-fonts-type1-lm < 1:3.1
-
-%description fonts-type1-lm
-Latin Modern family of fonts, based on the Computer Modern fonts
-released into public domain by AMS (copyright (C) 1997 AMS). Contain a
-lot of additional characters, mainly accented ones, but not only.
-There is a one set of PostScript fonts and four sets of TeX Font
-Metric files, corresponding to: Cork encoding (cork-*.tfm); QX
-encoding (qx-*.tfm); TeX'n'ANSI aka LY1 encoding (texnansi-*.tfm); and
-Text Companion for EC fonts aka TS1 (ts1-*.tfm). It is presumed that a
-potential user knows what to do with all these files. The author is
-Boguslaw Jackowski.
-
-%description fonts-type1-lm -l pl.UTF-8
-Rodzina fontów Latin Modern, oparta na fontach Computer Modern
-przekazanych do domeny publicznej przez AMS (copyright (C) 1997 AMS).
-Zawiera wiele dodatkowych znaków, głównie z akcentami, ale nie tylko.
-Jest jeden zbiór fontów postscriptowych oraz cztery zbiory plików TeX
-Font Metric, odpowiadających: kodowaniu Cork (cork-*.tfm); kodowaniu
-QX (qx-*.tfm); kodowaniu TeX'n'ANSI zwanemu także LY1
-(texnansi-*.tfm); oraz Text Companion dla fontów EC zwanemu także TS1
-(ts1-*.tfm). Zakłada się, że potencjalny użytkownik wie, co zrobić z
-tymi wszystkimi plikami. Autorem jest Bogusław Jackowski.
 
 %package fonts-type1-marvosym
 Summary:	Martin Vogel's Symbol (marvosym) font
@@ -8651,12 +8609,6 @@ fi
 %postun fonts-type1-cc-pl
 %texhash
 
-%post fonts-type1-cmcyr
-%texhash
-
-%postun fonts-type1-cmcyr
-%texhash
-
 %post fonts-type1-cs
 %texhash
 
@@ -8673,12 +8625,6 @@ fi
 %texhash
 
 %postun fonts-type1-hoekwater
-%texhash
-
-%post fonts-type1-lm
-%texhash
-
-%postun fonts-type1-lm
 %texhash
 
 %post fonts-type1-marvosym
