@@ -212,6 +212,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreq_perl	path_tre
 
+%define		filterout_cpp	-DNDEBUG
+
 %description
 TeXLive is an implementation of TeX for Linux or UNIX systems. TeX
 takes a text file and a set of formatting commands as input and
