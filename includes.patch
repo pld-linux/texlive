@@ -1,0 +1,42 @@
+--- texlive-20080816-source/texk/kpathsea/tex-make.c.orig	2008-05-31 18:15:55.000000000 +0200
++++ texlive-20080816-source/texk/kpathsea/tex-make.c	2025-09-23 23:46:48.878392977 +0200
+@@ -27,6 +27,7 @@
+ #include <kpathsea/tex-make.h>
+ #include <kpathsea/variable.h>
+ 
++#include <sys/wait.h>
+ 
+ /* We never throw away stdout, since that is supposed to be the filename
+    found, if all is successful.  This variable controls whether stderr
+--- texlive-20080816-source/texk/xdvipdfmx/src/epdf.c.orig	2008-05-25 17:00:35.000000000 +0200
++++ texlive-20080816-source/texk/xdvipdfmx/src/epdf.c	2025-09-26 01:37:28.977159601 +0200
+@@ -42,6 +42,7 @@
+ 
+ #include "pdfobj.h"
+ #include "pdfdev.h"
++#include "pdfdoc.h"
+ #include "pdfdraw.h"
+ #include "pdfparse.h"
+ 
+--- texlive-20080816-source/texk/xdvipdfmx/src/pdfdev.c.orig	2008-06-18 16:25:06.000000000 +0200
++++ texlive-20080816-source/texk/xdvipdfmx/src/pdfdev.c	2025-09-26 01:39:00.781127346 +0200
+@@ -52,6 +52,8 @@
+ 
+ #include "pdfdev.h"
+ 
++#include "dvi.h"
++
+ static int verbose = 0;
+ 
+ void
+--- texlive-20080816-source/texk/xdvipdfmx/src/spc_dvips.c.orig	2008-06-24 15:12:22.000000000 +0200
++++ texlive-20080816-source/texk/xdvipdfmx/src/spc_dvips.c	2025-09-26 01:43:02.704025085 +0200
+@@ -46,6 +46,8 @@
+ #include "pdfcolor.h"
+ #include "pdfdev.h"
+ 
++#include "epdf.h"
++
+ #include "specials.h"
+ #include "spc_util.h"
+ #include "mfileio.h"

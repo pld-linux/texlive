@@ -1,0 +1,3722 @@
+--- texlive-20080816-source/texk/kpathsea/c-std.h.orig	2008-05-04 19:19:13.000000000 +0200
++++ texlive-20080816-source/texk/kpathsea/c-std.h	2025-09-23 22:21:22.369548841 +0200
+@@ -90,8 +90,8 @@
+ #ifndef WIN32
+ /* `popen' and `pclose' are part of POSIX.2, not POSIX.1.  So
+    STDC_HEADERS isn't enough.  */
+-extern FILE *popen ();
+-extern int pclose ();
++extern FILE *popen (const char*, const char*);
++extern int pclose (FILE*);
+ #endif /* not WIN32 */
+ #endif /* not VMS */
+ 
+--- texlive-20080816-source/libs/obsdcompat/configure.ac.orig	2006-12-26 00:52:20.000000000 +0100
++++ texlive-20080816-source/libs/obsdcompat/configure.ac	2025-09-23 22:49:08.815694868 +0200
+@@ -259,7 +259,7 @@
+ AC_MSG_CHECKING(compiler and flags for sanity)
+ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([
+-#include <stdio.h>
++#include <stdlib.h>
+ int main(){exit(0);}
+ 	])],
+ 	[	AC_MSG_RESULT(yes) ],
+@@ -322,6 +322,7 @@
+ 	AC_RUN_IFELSE(
+ 		[AC_LANG_SOURCE([[
+ #include <stdio.h>
++#include <stdlib.h>
+ int main(void){char b[5];snprintf(b,5,"123456789");exit(b[4]!='\0');}
+ 		]])],
+ 		[AC_MSG_RESULT(yes)],
+--- texlive-20080816-source/texk/xdvik/acinclude.m4.orig	2008-07-01 17:42:36.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/acinclude.m4	2025-09-23 23:06:19.389466186 +0200
+@@ -237,7 +237,8 @@
+ AC_CACHE_VAL(xdvi_cv_bitmap_type,
+ [AC_TRY_RUN(
+ [#include <stdio.h>
+-main()
++#include <stdlib.h>
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+--- texlive-20080816-source/texk/kpathsea/xputenv.c.orig	2008-05-04 19:19:13.000000000 +0200
++++ texlive-20080816-source/texk/kpathsea/xputenv.c	2025-09-24 00:14:38.449766104 +0200
+@@ -24,7 +24,7 @@
+ #else
+ /* Avoid implicit declaration warning.  But since some systems do
+    declare it, don't use a prototype, for fear of conflicts.  */
+-extern int putenv ();
++extern int putenv (char*);
+ #endif /* not WIN32 */
+ 
+ /* These record the strings we've set and have to keep around.
+--- texlive-20080816-source/texk/web2c/web2c/web2c.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/web2c/web2c/web2c.h	2025-09-24 00:31:09.067648782 +0200
+@@ -66,7 +66,7 @@
+ 
+ extern void get_string_literal P1H(char*);
+ extern void get_single_char P1H(char*);
+-extern void get_return_type P1H(char*);
++extern void get_result_type P1H(char*);
+ 
+ /* No prototypes for these two. As used, neither takes arguments. */
+ extern int yylex(), yyparse();
+--- texlive-20080816-source/texk/web2c/web2c/makecpool.c.orig	2008-05-20 20:10:52.000000000 +0200
++++ texlive-20080816-source/texk/web2c/web2c/makecpool.c	2025-09-24 00:55:23.530763425 +0200
+@@ -45,6 +45,7 @@
+            "#include <string.h>\n"
+            "#include \"%s\"\n"
+            "\n"
++           "extern strnumber makestring(void);\n"
+            "static const char *poolfilearr[] = {\n", argv[0], filename,
+            headername, headername);
+     while (fgets(data, 1024, fh)) {
+--- texlive-20080816-source/texk/web2c/window/x11-Xt.c.orig	2008-02-29 16:40:00.000000000 +0100
++++ texlive-20080816-source/texk/web2c/window/x11-Xt.c	2025-09-24 02:43:26.048781543 +0200
+@@ -79,10 +79,10 @@
+ };
+ 
+ static void mf_events ();
+-static void mf_mapstatus ();
++static void mf_mapstatus P4H(Widget, XtPointer, XEvent*, Boolean*);
+ static void mf_newpixmap P2H(unsigned int, unsigned int);
+ static void mf_redraw ();
+-static void mf_repaint ();
++static void mf_repaint P4H(Widget, XtPointer, XEvent*, Boolean*);
+ 
+ /* Return 1 if display opened successfully, else 0.  */
+ 
+@@ -310,7 +310,7 @@
+ }
+ 
+ static void
+-mf_repaint P3C(Widget, w, XtPointer, data, XEvent*, ev)
++mf_repaint P4C(Widget, w, XtPointer, data, XEvent*, ev, Boolean*, cd)
+ {
+   if (!mf_mapped || !ev || ev->type != Expose)
+     return;
+@@ -330,7 +330,7 @@
+ 
+ 
+ static void
+-mf_mapstatus P3C(Widget, w, XtPointer, data, XEvent*, ev)
++mf_mapstatus P4C(Widget, w, XtPointer, data, XEvent*, ev, Boolean*, cd)
+ {
+   switch (ev->type)
+     {
+--- texlive-20080816-source/texk/web2c/c-auto.in.orig	2008-06-26 12:21:46.000000000 +0200
++++ texlive-20080816-source/texk/web2c/c-auto.in	2025-09-24 13:11:08.217371932 +0200
+@@ -218,4 +218,7 @@
+ #undef inline
+ #endif
+ 
++/* Define to 1 if your compiler understands prototypes. */
++#undef HAVE_PROTOTYPES
++
+ #endif /* !WEB2C_C_AUTO_H */
+--- texlive-20080816-source/texk/web2c/configure.in.orig	2008-07-08 20:21:45.000000000 +0200
++++ texlive-20080816-source/texk/web2c/configure.in	2025-09-24 13:14:10.499436001 +0200
+@@ -50,6 +50,17 @@
+ dnl pdfTeX likes inline functions in C code.
+ AC_C_INLINE
+ 
++# Check whether prototypes work.
++AC_MSG_CHECKING(whether the compiler accepts prototypes)
++AC_CACHE_VAL(kb_cv_c_prototypes,
++[AC_TRY_COMPILE([#include <stdarg.h>], [extern void foo(int i,...);],
++  kb_cv_c_prototypes=yes, kb_cv_c_prototypes=no)])dnl
++AC_MSG_RESULT($kb_cv_c_prototypes)
++if test "$kb_cv_c_prototypes" = yes; then
++  AC_DEFINE([HAVE_PROTOTYPES], 1,
++    [Define to 1 if your compiler understands prototypes.])
++fi
++
+ dnl These are standard among *NIX systems, but not when cross-compiling
+ AC_DEFUN([CF_SUBST],
+ [AC_MSG_CHECKING(for $1 (symbol $2))
+--- texlive-20080816-source/texk/web2c/mpdir/utils.c.orig	2008-04-11 18:33:03.000000000 +0200
++++ texlive-20080816-source/texk/web2c/mpdir/utils.c	2025-09-24 13:49:52.086311439 +0200
+@@ -19,6 +19,8 @@
+ $Id $
+ */
+ 
++#include "config.h"
++
+ #ifdef HAVE_ASPRINTF            /* asprintf is not defined in openbsd-compat.h, but in stdio.h */
+ #  include <stdio.h>
+ #endif
+--- texlive-20080816-source/texk/web2c/omegadir/omegamem.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/web2c/omegadir/omegamem.h	2025-09-24 14:07:21.644400824 +0200
+@@ -24,10 +24,10 @@
+ extern boolean new_input_line (FILE *, halfword); 
+ /* argument(s) added to function, by team 18 */
+ extern boolean newinputln (FILE*, halfword, halfword, boolean); 
+-extern int getc_two ();
++extern int getc_two P1H(FILE*);
+ /* argument(s) added to function, by team 18 */
+ extern int getfilemode (FILE*, int);
+-extern void ungetc_two ();
++extern void ungetc_two P2H(int, FILE*);
+ extern int ocptemp;
+ 
+ #define newinputline(stream, mode, flag)   new_input_line (stream, mode)
+--- texlive-20080816-source/texk/web2c/omegadir/omega.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/web2c/omegadir/omega.c	2025-09-24 14:21:14.083395464 +0200
+@@ -254,7 +254,7 @@
+ }
+ 
+  
+-extern boolean zpnewinputln ();
++extern boolean zpnewinputln (alphafile,halfword,halfword,boolean);
+ 
+ boolean
+ newinputln P4C(FILE *,f, halfword,themode, halfword,translation, boolean,bypass)
+@@ -337,7 +337,7 @@
+     return true;
+ }
+ 
+-extern memoryword ziniteqtbentry () ;
++extern memoryword ziniteqtbentry (halfword) ;
+ 
+ hashword hashtable[HASHTABLESIZE];
+ 
+--- texlive-20080816-source/texk/web2c/alephdir/aleph.c.orig	2006-05-25 18:11:33.000000000 +0200
++++ texlive-20080816-source/texk/web2c/alephdir/aleph.c	2025-09-24 14:27:49.861362946 +0200
+@@ -130,7 +130,7 @@
+     ungetc((c>>8), f);
+ }
+  
+-extern boolean zpnewinputln ();
++extern boolean zpnewinputln (alphafile,halfword,halfword,boolean);
+ 
+ boolean
+ newinputln P4C(FILE *,f, halfword,themode, halfword,translation, boolean,bypass)
+@@ -192,7 +192,7 @@
+     return true;
+ }
+ 
+-extern memoryword ziniteqtbentry () ;
++extern memoryword ziniteqtbentry (halfword) ;
+ 
+ hashword hashtable[HASHTABLESIZE];
+ 
+--- texlive-20080816-source/texk/web2c/alephdir/alephmem.h.orig	2006-05-25 18:11:33.000000000 +0200
++++ texlive-20080816-source/texk/web2c/alephdir/alephmem.h	2025-09-24 16:00:39.086658238 +0200
+@@ -21,11 +21,11 @@
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  */
+ 
+ 
+-extern boolean new_input_line ();
+-extern boolean newinputln ();
+-extern int getc_two ();
+-extern int getfilemode ();
+-extern void ungetc_two ();
++extern boolean new_input_line (FILE*, halfword);
++extern boolean newinputln (FILE *, halfword, halfword, boolean);
++extern int getc_two (FILE*);
++extern int getfilemode (FILE*, int);
++extern void ungetc_two (int, FILE*);
+ extern int ocptemp;
+ 
+ #define newinputline(stream, mode, flag)   new_input_line (stream, mode)
+@@ -42,24 +42,24 @@
+ } hashword;
+ 
+ extern hashword hashtable[];
+-extern hashword *createhashpos();
+-extern hashword *createeqtbpos();
+-extern hashword *createxeqlevel();
++extern hashword *createhashpos(int);
++extern hashword *createeqtbpos(int);
++extern hashword *createxeqlevel(int);
+ extern void inithhashtable();
+ extern void dumphhashtable();
+ extern void undumphhashtable();
+-extern void allocatefonttable();
+-extern void dumpfonttable();
+-extern void undumpfonttable();
+-extern void allocatefontsorttable();
+-extern void dumpfontsorttable();
+-extern void undumpfontsorttable();
+-extern void allocateocptable();
+-extern void dumpocptable();
+-extern void undumpocptable();
+-extern void odateandtime();
++extern void allocatefonttable(int, int);
++extern void dumpfonttable(int, int);
++extern void undumpfonttable(int);
++extern void allocatefontsorttable(int, int);
++extern void dumpfontsorttable(int, int);
++extern void undumpfontsorttable(int);
++extern void allocateocptable(int, int);
++extern void dumpocptable(int);
++extern void undumpocptable(int);
++extern void odateandtime(int, int, int, int);
+ extern void btestin();
+-extern void runexternalocp();
++extern void runexternalocp(string);
+ 
+ #define initeqtbtable()		inithhashtable();
+ #define dumpeqtbtable()		dumphhashtable();
+--- texlive-20080816-source/texk/web2c/pdftexdir/pdftex.web.orig	2008-07-16 16:09:41.000000000 +0200
++++ texlive-20080816-source/texk/web2c/pdftexdir/pdftex.web	2025-09-24 16:14:12.076588515 +0200
+@@ -10751,7 +10751,7 @@
+ @!save_scanner_status:small_number; {|scanner_status| upon entry}
+ @!save_def_ref: pointer; {|def_ref| upon entry, important if inside `\.{\\message}'}
+ @!save_warning_index: pointer;
+-@!bool: boolean; {temp boolean}
++@!boolv: boolean; {temp boolean}
+ @!i: integer; {first temp integer}
+ @!j: integer; {second temp integer}
+ @!b:pool_pointer; {base of temporary string}
+@@ -10935,7 +10935,7 @@
+     save_warning_index := warning_index;
+     save_def_ref := def_ref;
+     save_cur_string;
+-    bool := scan_keyword("file");
++    boolv := scan_keyword("file");
+     scan_pdf_ext_toks;
+     s := tokens_to_string(def_ref);
+     delete_token_ref(def_ref);
+@@ -10943,7 +10943,7 @@
+     warning_index := save_warning_index;
+     scanner_status := save_scanner_status;
+     b := pool_ptr;
+-    getmd5sum(s, bool);
++    getmd5sum(s, boolv);
+     link(garbage) := str_toks(b);
+     flush_str(s);
+     ins_list(link(temp_head));
+@@ -11006,7 +11006,7 @@
+     save_def_ref := def_ref;
+     save_cur_string;
+     {scan for icase}
+-    bool := scan_keyword("icase");
++    boolv := scan_keyword("icase");
+     {scan for subcount}
+     i := -1; {default for subcount}
+     if scan_keyword("subcount") then begin
+@@ -11023,7 +11023,7 @@
+     warning_index := save_warning_index;
+     scanner_status := save_scanner_status;
+     b := pool_ptr;
+-    matchstrings(s, t, i, bool);
++    matchstrings(s, t, i, boolv);
+     link(garbage) := str_toks(b);
+     flush_str(t);
+     flush_str(s);
+@@ -11062,7 +11062,7 @@
+   end;
+ pdf_colorstack_init_code:
+   begin
+-    bool := scan_keyword("page");
++    boolv := scan_keyword("page");
+     if scan_keyword("direct") then
+         cur_val := direct_always
+     else
+@@ -11080,7 +11080,7 @@
+     def_ref := save_def_ref;
+     warning_index := save_warning_index;
+     scanner_status := save_scanner_status;
+-    cur_val := newcolorstack(s, cur_val, bool);
++    cur_val := newcolorstack(s, cur_val, boolv);
+     flush_str(s);
+     cur_val_level := int_val;
+     if cur_val < 0 then begin
+--- texlive-20080816-source/texk/web2c/synctexdir/synctex.mk.orig	2008-06-21 02:42:36.000000000 +0200
++++ texlive-20080816-source/texk/web2c/synctexdir/synctex.mk	2025-09-24 19:02:53.100975178 +0200
+@@ -60,7 +60,7 @@
+ 	echo "s|\#include \"texmfmp.h\"|&\\"> synctex_sed_command.txt;\
+ 	echo "/* Start of SyncTeX Section */\\" >> synctex_sed_command.txt;\
+ 	echo "\#define __SyncTeX__\\" >> synctex_sed_command.txt;\
+-	echo "\#include \"$(synctex_dir)/synctex-common.h\"\\" >> synctex_sed_command.txt;\
++	echo "\#include \"$(synctex_dir)/synctex.h\"\\" >> synctex_sed_command.txt;\
+ 	echo "/* End  of SyncTeX Section */|g" >> synctex_sed_command.txt
+ 
+ ### SyncTeX support in tex
+--- texlive-20080816-source/texk/web2c/synctexdir/synctex.h.orig	2008-06-21 02:42:36.000000000 +0200
++++ texlive-20080816-source/texk/web2c/synctexdir/synctex.h	2025-09-24 21:42:29.364633172 +0200
+@@ -43,6 +43,8 @@
+ 
+ #include "synctex-common.h"
+ 
++typedef integer halfword;
++
+ /*  Send this message when starting a new input.  */
+ extern void synctexstartinput(void);
+ 
+--- texlive-20080816-source/texk/web2c/pdftexdir/utils.c.orig	2008-05-08 16:25:16.000000000 +0200
++++ texlive-20080816-source/texk/web2c/pdftexdir/utils.c	2025-09-24 21:46:52.018120052 +0200
+@@ -18,6 +18,7 @@
+ Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+ 
++#include "config.h"
+ #include "openbsd-compat.h"
+ #ifdef HAVE_ASPRINTF            /* asprintf is not defined in openbsd-compat.h, but in stdio.h */
+ #  include <stdio.h>
+--- texlive-20080816-source/texk/web2c/xetexdir/XeTeX_ext.h.orig	2008-05-08 15:28:50.000000000 +0200
++++ texlive-20080816-source/texk/web2c/xetexdir/XeTeX_ext.h	2025-09-24 22:15:47.057709171 +0200
+@@ -277,7 +277,7 @@
+ 	int input_line(UFILE* f);
+ 	void makeutf16name();
+ 
+-	int initpool();
++	int initpool(int);
+ 	void terminatefontmanager();
+ 	int maketexstring(const char* s);
+ 
+--- texlive-20080816-source/texk/web2c/xetexdir/jpegimage.c.orig	2007-11-21 13:32:29.000000000 +0100
++++ texlive-20080816-source/texk/web2c/xetexdir/jpegimage.c	2025-09-24 22:18:17.716661089 +0200
+@@ -74,6 +74,8 @@
+  *  Level 2.
+  */
+ 
++#include "config.h"
++
+ #include "mfileio.h"
+ #include "numbers.h"
+ 
+--- texlive-20080816-source/texk/web2c/luatexdir/luatex.web.orig	2008-07-17 23:41:42.000000000 +0200
++++ texlive-20080816-source/texk/web2c/luatexdir/luatex.web	2025-09-24 22:28:27.428944538 +0200
+@@ -11195,7 +11195,7 @@
+ @!save_scanner_status:small_number; {|scanner_status| upon entry}
+ @!save_def_ref: pointer; {|def_ref| upon entry, important if inside `\.{\\message}'}
+ @!save_warning_index: pointer;
+-@!bool: boolean; {temp boolean}
++@!boolv: boolean; {temp boolean}
+ @!i: integer; {first temp integer}
+ @!j: integer; {second temp integer}
+ @!b:pool_pointer; {base of temporary string}
+@@ -11262,7 +11262,7 @@
+ job_name_code: if job_name=0 then open_log_file;
+ pdf_colorstack_init_code:
+   begin
+-    bool := scan_keyword("page");
++    boolv := scan_keyword("page");
+     if scan_keyword("direct") then
+         cur_val := direct_always
+     else
+@@ -11280,7 +11280,7 @@
+     def_ref := save_def_ref;
+     warning_index := save_warning_index;
+     scanner_status := save_scanner_status;
+-    cur_val := newcolorstack(s, cur_val, bool);
++    cur_val := newcolorstack(s, cur_val, boolv);
+     flush_str(s);
+     cur_val_level := int_val;
+     if cur_val < 0 then begin
+--- texlive-20080816-source/texk/web2c/luatexdir/ptexlib.h.orig	2008-03-24 16:47:15.000000000 +0100
++++ texlive-20080816-source/texk/web2c/luatexdir/ptexlib.h	2025-09-24 22:36:56.393721296 +0200
+@@ -606,6 +606,7 @@
+ void pdf_print(str_number n);
+ void pdf_print_str(str_number n);
+ void pdf_print_int(integer n);
++void pdf_print_real(integer, integer);
+ 
+ /* textoken.c */
+ 
+--- texlive-20080816-source/texk/web2c/luatexdir/luatex.h.orig	2008-03-24 16:47:15.000000000 +0100
++++ texlive-20080816-source/texk/web2c/luatexdir/luatex.h	2025-09-24 22:38:30.374225290 +0200
+@@ -72,11 +72,11 @@
+ 
+ extern int **ocp_tables;
+ 
+-extern void allocate_ocp_table();
+-extern void dump_ocp_table();
+-extern void undump_ocp_table();
++extern void allocate_ocp_table(int, int);
++extern void dump_ocp_table(int);
++extern void undump_ocp_table(int);
+ 
+-extern void run_external_ocp();
++extern void run_external_ocp(string);
+ extern void b_test_in();
+ 
+ /* Additions to texmfmp.h for pdfTeX */
+--- texlive-20080816-source/texk/web2c/luatexdir/font/texfont.h.orig	2008-03-24 16:47:15.000000000 +0100
++++ texlive-20080816-source/texk/web2c/luatexdir/font/texfont.h	2025-09-24 23:40:01.566535211 +0200
+@@ -372,6 +372,9 @@
+ extern void set_charinfo_kerns       (charinfo *ci, kerninfo *val);
+ extern void set_charinfo_packets     (charinfo *ci, real_eight_bits *val);
+ extern void set_charinfo_extensible  (charinfo *ci, int a, int b, int c, int d);
++extern void set_charinfo_ef          (charinfo *ci, scaled val);
++extern void set_charinfo_lp          (charinfo *ci, scaled val);
++extern void set_charinfo_rp          (charinfo *ci, scaled val);
+ 
+ #define set_char_used(f,a,b)  set_charinfo_used(get_charinfo(f,a),b)
+ 
+@@ -389,6 +392,9 @@
+ extern kerninfo *get_charinfo_kerns          (charinfo *ci);
+ extern real_eight_bits *get_charinfo_packets (charinfo *ci);
+ extern integer get_charinfo_extensible       (charinfo *ci, int which);
++extern integer get_charinfo_ef               (charinfo *ci);
++extern integer get_charinfo_rp               (charinfo *ci);
++extern integer get_charinfo_lp               (charinfo *ci);
+ 
+ extern integer ext_top                       (internal_font_number f, integer c);
+ extern integer ext_bot                       (internal_font_number f, integer c);
+--- texlive-20080816-source/texk/web2c/luatexdir/utils.c.orig	2008-03-24 16:47:15.000000000 +0100
++++ texlive-20080816-source/texk/web2c/luatexdir/utils.c	2025-09-24 23:54:00.191097130 +0200
+@@ -20,6 +20,7 @@
+ $Id: utils.c 7124 2008-03-24 15:47:15Z martin $
+ */
+ 
++#include "config.h"
+ #include "sys/types.h"
+ #ifndef __MINGW32__
+ #include "sysexits.h"
+--- texlive-20080816-source/libs/luafontforge/fontforge/fontforge/splineutil2.c.orig	2008-03-24 16:47:15.000000000 +0100
++++ texlive-20080816-source/libs/luafontforge/fontforge/fontforge/splineutil2.c	2025-09-24 23:56:38.809676931 +0200
+@@ -3607,7 +3607,7 @@
+     Spline *spline, *first, *next;
+     BasePoint tp;
+     SplinePoint *temp;
+-    int bool;
++    int boolv;
+     /* reverse the splineset so that what was the start point becomes the end */
+     /*  and vice versa. This entails reversing every individual spline, and */
+     /*  each point */
+@@ -3620,12 +3620,12 @@
+     tp = spline->from->nextcp;
+     spline->from->nextcp = spline->from->prevcp;
+     spline->from->prevcp = tp;
+-    bool = spline->from->nonextcp;
++    boolv = spline->from->nonextcp;
+     spline->from->nonextcp = spline->from->noprevcp;
+-    spline->from->noprevcp = bool;
+-    bool = spline->from->nextcpdef;
++    spline->from->noprevcp = boolv;
++    boolv = spline->from->nextcpdef;
+     spline->from->nextcpdef = spline->from->prevcpdef;
+-    spline->from->prevcpdef = bool;
++    spline->from->prevcpdef = boolv;
+ 
+     for ( ; spline!=NULL && spline!=first; spline=next ) {
+ 	next = spline->to->next;
+@@ -3634,12 +3634,12 @@
+ 	    tp = spline->to->nextcp;
+ 	    spline->to->nextcp = spline->to->prevcp;
+ 	    spline->to->prevcp = tp;
+-	    bool = spline->to->nonextcp;
++	    boolv = spline->to->nonextcp;
+ 	    spline->to->nonextcp = spline->to->noprevcp;
+-	    spline->to->noprevcp = bool;
+-	    bool = spline->to->nextcpdef;
++	    spline->to->noprevcp = boolv;
++	    boolv = spline->to->nextcpdef;
+ 	    spline->to->nextcpdef = spline->to->prevcpdef;
+-	    spline->to->prevcpdef = bool;
++	    spline->to->prevcpdef = boolv;
+ 	}
+ 
+ 	temp = spline->to;
+--- texlive-20080816-source/libs/luafontforge/fontforge/Unicode/ustring.c.orig	2008-03-24 16:47:15.000000000 +0100
++++ texlive-20080816-source/libs/luafontforge/fontforge/Unicode/ustring.c	2025-09-25 00:00:13.536540897 +0200
+@@ -392,7 +392,7 @@
+     char buf[60], *pt, *ret;
+     const unichar_t *upt;
+     double val;
+-    extern double strtod();		/* Please don't delete this, not all of us have good ansi headers */
++    extern double strtod(const char*, char**);		/* Please don't delete this, not all of us have good ansi headers */
+ 
+     for ( upt=str, pt=buf; *upt<128 && *upt!='\0'; )
+ 	*pt++ = *upt++;
+@@ -411,7 +411,7 @@
+     char buf[60], *pt, *ret;
+     const unichar_t *upt;
+     long val;
+-    extern long strtol();		/* Please don't delete this, not all of us have good ansi headers */
++    extern long strtol(const char*, char**, int);		/* Please don't delete this, not all of us have good ansi headers */
+ 
+     for ( upt=str, pt=buf; *upt<128 && *upt!='\0' && pt<buf+sizeof(buf)-1; )
+ 	*pt++ = *upt++;
+--- texlive-20080816-source/texk/web2c/mpware/dmp.h.orig	2006-11-28 14:24:53.000000000 +0100
++++ texlive-20080816-source/texk/web2c/mpware/dmp.h	2025-09-25 00:03:54.229827158 +0200
+@@ -11,6 +11,7 @@
+ 
+ extern FILE *fsearch(char *nam, char *ext, int path_type);
+ extern void fsearch_init(int argc, char **argv);
++extern void quit(char *msg1, char *msg2, char *msg3);
+ 
+ #define POOLMAX	65000		/* total characters in all font and char names */
+ 
+--- texlive-20080816-source/texk/web2c/otps/routines.h.orig	2006-05-25 23:55:05.000000000 +0200
++++ texlive-20080816-source/texk/web2c/otps/routines.h	2025-09-25 00:11:26.489517837 +0200
+@@ -76,15 +76,15 @@
+         left val; } lcell;
+ typedef lcell *llist;
+ 
+-extern list cons();
+-extern list list1();
+-extern list list2();
+-extern list append();
+-extern list append1();
++extern list cons(int, list);
++extern list list1(int);
++extern list list2(int, int);
++extern list append(list, list);
++extern list append1(list, int);
+ 
+-extern llist lcons();
++extern llist lcons(left, llist);
+ extern llist llist1 P1H(left);
+-extern llist llist2();
++extern llist llist2(left, left);
+ extern llist lappend P2H(llist,llist);
+ extern llist lappend1 P2H(llist,left);
+ 
+@@ -98,7 +98,7 @@
+ extern left CompleteLeft P3H(left,int,int);
+ extern left BeginningLeft();
+ extern left EndLeft();
+-extern list gen_left();
++extern list gen_left(left);
+ extern void fill_in_left();
+ extern void out_left P1H(llist);
+ extern int no_lefts;
+--- texlive-20080816-source/texk/bibtex8/getopt.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/bibtex8/getopt.h	2025-09-25 00:26:13.012956028 +0200
+@@ -95,14 +95,7 @@
+ #define optional_argument	2
+ 
+ #if defined (__STDC__) && __STDC__
+-#ifdef __GNU_LIBRARY__
+-/* Many other libraries have conflicting prototypes for getopt, with
+-   differences in the consts, in stdlib.h.  To avoid compilation
+-   errors, only prototype getopt for the GNU C library.  */
+ extern int getopt (int argc, char *const *argv, const char *shortopts);
+-#else /* not __GNU_LIBRARY__ */
+-extern int getopt ();
+-#endif /* __GNU_LIBRARY__ */
+ extern int getopt_long (int argc, char *const *argv, const char *shortopts,
+ 		        const struct option *longopts, int *longind);
+ extern int getopt_long_only (int argc, char *const *argv,
+--- texlive-20080816-source/texk/cjkutils/hbf2gf/hbf.c.orig	2006-10-21 12:06:15.000000000 +0200
++++ texlive-20080816-source/texk/cjkutils/hbf2gf/hbf.c	2025-09-25 00:28:56.824724151 +0200
+@@ -82,7 +82,7 @@
+ 
+ #define	reg	register
+ 
+-typedef	int	bool;
++typedef	int	bool_t;
+ #define	TRUE	1
+ #define	FALSE	0
+ 
+@@ -176,8 +176,8 @@
+ 	BM_FILE		*code_bm_file;
+ 	long		code_offset;
+ 	CHAR_INDEX	code_pos;
+-	bool		code_transposed;
+-	bool		code_inverted;
++	bool_t		code_transposed;
++	bool_t		code_inverted;
+ 	CODE_RANGE	*code_next;
+ };
+ 
+@@ -222,7 +222,7 @@
+ #endif
+ 
+ static	void	add_b2r _((B2_RANGE **last_b2r, int start, int finish));
+-static	bool	add_code_range _((HBF_STRUCT *hbf, const char *line));
++static	bool_t	add_code_range _((HBF_STRUCT *hbf, const char *line));
+ static	void	add_property _((HBF_STRUCT *hbf, const char *lp));
+ static	CHAR_INDEX	b2_pos _((HBF_STRUCT *hbf, HBF_CHAR code));
+ static	int	b2_size _((B2_RANGE *b2r));
+@@ -235,17 +235,17 @@
+ static	byte	*local_buffer _((HBF_STRUCT *hbf));
+ static	void	invert _((byte *buffer, unsigned length));
+ #ifdef IN_MEMORY
+-static	bool	read_bitmap_file _((BM_FILE *bmf, FILE *f));
+-static	bool	copy_transposed
++static	bool_t	read_bitmap_file _((BM_FILE *bmf, FILE *f));
++static	bool_t	copy_transposed
+ 		_((HBF *hbf, byte *bitmap, const byte *source));
+ #else
+-static	bool	get_transposed _((HBF *hbf, FILE *f, byte *bitmap));
++static	bool_t	get_transposed _((HBF *hbf, FILE *f, byte *bitmap));
+ #endif
+-static	bool	match _((const char *lp, const char *sp));
+-static	bool	parse_file _((FILE *f, HBF_STRUCT *hbf));
++static	bool_t	match _((const char *lp, const char *sp));
++static	bool_t	parse_file _((FILE *f, HBF_STRUCT *hbf));
+ static	FILE	*path_open
+ 		_((const char *path, const char *filename, char **fullp));
+-static	bool	real_open _((const char *filename, HBF_STRUCT *hbf));
++static	bool_t	real_open _((const char *filename, HBF_STRUCT *hbf));
+ 
+ /* Error reporting */
+ 
+@@ -381,7 +381,7 @@
+  *	String stuff
+  */
+ 
+-static bool
++static bool_t
+ match(lp, sp)
+ reg	const	char	*lp;
+ reg	const	char	*sp;
+@@ -649,7 +649,7 @@
+ 	char	*bmfname;
+ #ifdef IN_MEMORY
+ #ifdef unix
+-	bool	from_pipe;
++	bool_t	from_pipe;
+ #endif
+ #endif
+ 
+@@ -720,7 +720,7 @@
+ #ifdef IN_MEMORY
+ #define	GRAIN_SIZE	512
+ 
+-static bool
++static bool_t
+ read_bitmap_file(bmf, f)
+ 	BM_FILE	*bmf;
+ 	FILE	*f;
+@@ -759,7 +759,7 @@
+  */
+ 
+ /* check that a code range fits within its bitmap file */
+-static bool
++static bool_t
+ too_short(hbf, cp)
+ 	HBF_STRUCT	*hbf;
+ 	CODE_RANGE	*cp;
+@@ -828,7 +828,7 @@
+ 	}
+ }
+ 
+-static bool
++static bool_t
+ add_code_range(hbf, line)
+ 	HBF_STRUCT	*hbf;
+ 	const char	*line;
+@@ -895,7 +895,7 @@
+  */
+ 
+ /* get line, truncating to len, and trimming trailing spaces */
+-static bool
++static bool_t
+ get_line(buf, len, f)
+ 	char	*buf;
+ 	int	len;
+@@ -925,7 +925,7 @@
+ }
+ 
+ /* get next non-COMMENT line */
+-static bool
++static bool_t
+ get_text_line(buf, len, f)
+ 	char	*buf;
+ 	int	len;
+@@ -937,7 +937,7 @@
+ 	return FALSE;
+ }
+ 
+-static bool
++static bool_t
+ get_property(line, keyword, hbf)
+ 	const	char	*line;
+ 	const	char	*keyword;
+@@ -951,7 +951,7 @@
+ 	return TRUE;
+ }
+ 
+-static bool
++static bool_t
+ get_bbox(line, keyword, bbox)
+ 	const	char	*line;
+ 	const	char	*keyword;
+@@ -994,7 +994,7 @@
+  * Anything after HBF_END_FONT is ignored.
+  */
+ 
+-static bool
++static bool_t
+ parse_file(f, hbf)
+ 	FILE	*f;
+ reg	HBF_STRUCT *hbf;
+@@ -1127,7 +1127,7 @@
+ 	}
+ }
+ 
+-static bool
++static bool_t
+ real_open(filename, hbf)
+ 	const	char	*filename;
+ reg	HBF_STRUCT *hbf;
+@@ -1352,7 +1352,7 @@
+ }
+ 
+ #ifdef IN_MEMORY
+-static bool
++static bool_t
+ copy_transposed(hbf, bitmap, source)
+ 	HBF	*hbf;
+ reg	byte	*bitmap;
+@@ -1401,7 +1401,7 @@
+ 	return TRUE;
+ }
+ #else /* ! IN_MEMORY */
+-static bool
++static bool_t
+ get_transposed(hbf, f, bitmap)
+ 	HBF	*hbf;
+ 	FILE	*f;
+--- texlive-20080816-source/texk/detex/detex.l.orig	2007-01-20 12:02:18.000000000 +0100
++++ texlive-20080816-source/texk/detex/detex.l	2025-09-26 02:09:27.045503307 +0200
+@@ -60,18 +60,18 @@
+ #endif
+ 
+ extern void SetEnvIgnore(char *sbEnvList);
+-extern int BeginEnv(char *sbEnv);
+-extern int EndEnv(char *sbEnv);
++int BeginEnv(char *sbEnv);
++int EndEnv(char *sbEnv);
+ extern void InputFile(char *sbFile);
+ extern void IncludeFile(char *sbFile);
+ extern void AddInclude(char *sbFile);
+-extern int InList(char *sbFile);
++int InList(char *sbFile);
+ extern void SetInputPaths();
+-extern int SeparateList(char *sbList,char **rgsbList ,char chSep,int csbMax);
+-extern FILE * TexOpen(char *sbFile);
+-extern char * SafeMalloc(int cch,char *sbMessage);
++int SeparateList(char *sbList,char **rgsbList ,char chSep,int csbMax);
++FILE * TexOpen(char *sbFile);
++char * SafeMalloc(int cch,char *sbMessage);
+ extern void Warning(char *sb1,char *sb2);
+-extern int ErrorExit(char *sb1);
++int ErrorExit(char *sb1);
+ 
+ #define	LaBEGIN		if (fLatex) BEGIN
+ #define	CITEBEGIN	if (fLatex && !fCite) BEGIN
+@@ -79,7 +79,6 @@
+ #define	SPACE		if (!fWord) putchar(' ')
+ #define	NEWLINE		if (!fWord) putchar('\n')
+ 
+-char	*SafeMalloc();
+ #ifdef OS2
+ void	yyless(int);
+ #endif
+@@ -271,12 +270,11 @@
+ **	If no input files are specified on the command line, process stdin.
+ ******/
+ 
+-main(cArgs,rgsbArgs)
++int main(cArgs,rgsbArgs)
+ int	cArgs;
+ char	*rgsbArgs[];
+ {
+ 	char	*pch, *sbEnvList = DEFAULTENV, sbBadOpt[2];
+-	FILE	*TexOpen();
+ 	int	fSawFile = 0, iArgs = 1;
+ 	
+ 	/* get base name and decide what we are doing, detex or delatex */
+@@ -382,7 +380,7 @@
+ **	return the termination signal for lex.
+ ******/
+ 
+-yywrap()
++int yywrap()
+ {
+ 	(void)fclose(yyin);
+ 	if (cfp > 0) {
+@@ -432,7 +430,7 @@
+ **	is, sbCurrentEnv is set to sbEnv.
+ ******/
+ 
+-BeginEnv(sbEnv)
++int BeginEnv(sbEnv)
+ char	*sbEnv;
+ {
+ 	int	i;
+@@ -450,7 +448,7 @@
+ ** EndEnv -- checks to see if sbEnv is the current environment being ignored.
+ ******/
+ 
+-EndEnv(sbEnv)
++int EndEnv(sbEnv)
+ char	*sbEnv;
+ {
+ 	if (!fLatex) return(0);
+@@ -468,7 +466,6 @@
+ InputFile(sbFile)
+ char	*sbFile;
+ {
+-	FILE	*TexOpen();
+ 
+ 	if (!fFollow)
+ 	    return;
+@@ -488,7 +485,6 @@
+ IncludeFile(sbFile)
+ char	*sbFile;
+ {
+-	FILE	*TexOpen();
+ 
+ 	if (!fFollow)
+ 	    return;
+@@ -523,7 +519,7 @@
+ **	no list, all files are assumed to be "in the list".
+ ******/
+ 
+-InList(sbFile)
++int InList(sbFile)
+ char	*sbFile;
+ {
+ 	char	*pch, sbBase[PATH_MAX];
+@@ -555,7 +551,7 @@
+ {
+ 	char *sb, *sbPaths;
+ #ifndef WIN32
+-	char *getenv();
++	char *getenv(const char*);
+ #endif
+ 	int cchDefaults, cchPaths;
+ 
+@@ -594,7 +590,7 @@
+ **	ERROR is returned if there are more than csbMax words.
+ ******/
+ 
+-SeparateList(sbList, rgsbList, chSep, csbMax)
++int SeparateList(sbList, rgsbList, chSep, csbMax)
+ char	*sbList, *rgsbList[], chSep;
+ int	csbMax;
+ {
+@@ -717,7 +713,7 @@
+ **	Stdout is flushed and detex exits.
+ ******/
+ 
+-ErrorExit(sb1)
++int ErrorExit(sb1)
+ char	*sb1;
+ {
+ 	(void)fflush(stdout);
+--- texlive-20080816-source/texk/dvi2tty/dvi2tty.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/dvi2tty/dvi2tty.h	2025-09-25 00:42:09.533282569 +0200
+@@ -54,22 +54,22 @@
+ 
+ /*---------------------------------------------------------------------------*/
+ 
+-typedef char bool;
++typedef char bool_t;
+ 
+ typedef struct prlistptr {      /* list of pages selected for output         */
+     int       pag;                      /* number of pages                   */
+-    bool      all;                      /* pages in interval selected        */
++    bool_t      all;                      /* pages in interval selected        */
+     struct prlistptr *prv;              /* previous item in list             */
+     struct prlistptr *nxt;              /* next item in list                 */
+ } printlisttype;
+ 
+ /*---------------------------------------------------------------------------*/
+ 
+-extern bool   outputtofile;            /* output to file or stdout(dvi2tty.c)*/
+-extern bool   pageswitchon;            /* user-set pages to print(dvistuff.c)*/
+-extern bool   sequenceon;              /* not TeX pagenrs (dvistuff.c)       */
+-extern bool   scascii;                 /* Scand. nat. chars (dvistuff.c)     */
+-extern bool   noffd;                   /* output ^L or formfeed (dvistuff.c) */
++extern bool_t   outputtofile;            /* output to file or stdout(dvi2tty.c)*/
++extern bool_t   pageswitchon;            /* user-set pages to print(dvistuff.c)*/
++extern bool_t   sequenceon;              /* not TeX pagenrs (dvistuff.c)       */
++extern bool_t   scascii;                 /* Scand. nat. chars (dvistuff.c)     */
++extern bool_t   noffd;                   /* output ^L or formfeed (dvistuff.c) */
+ 
+ extern printlisttype *currentpage;     /* current page to print (dvi2tty.c)  */
+ extern printlisttype *firstpage;       /* first page selected (dvi2tty.c)    */
+--- texlive-20080816-source/texk/dvi2tty/dvi2tty.c.orig	2007-01-20 12:00:43.000000000 +0100
++++ texlive-20080816-source/texk/dvi2tty/dvi2tty.c	2025-09-25 00:42:30.331735450 +0200
+@@ -151,13 +151,13 @@
+ 
+ FILE *          DVIfile;
+ FILE *          output;
+-bool            outputtofile;   /* tells if output goes to file or stdout    */
++bool_t            outputtofile;   /* tells if output goes to file or stdout    */
+ int             ttywidth;       /* max nr of chars per printed line          */
+ int             espace;         /* to fake calcs with ttywidth               */
+ 
+ long            foo;            /* utility variable, "register"              */
+ #if !defined(MSDOS) && !defined(VMS)
+-bool            pager;          /* tells if output is piped to a pager       */
++bool_t            pager;          /* tells if output is piped to a pager       */
+ char  *         path;           /* name of the pager to run                  */
+ #endif
+ char  *         progname;       /* our name                                  */
+@@ -329,7 +329,7 @@
+ void getargs()
+ {
+     char *str, *envp;
+-    bool DVIfound;                      /* if a dvi filename found           */
++    bool_t DVIfound;                      /* if a dvi filename found           */
+ 
+     if (Argc <= 1)
+         usage(ign);
+--- texlive-20080816-source/texk/dvi2tty/dvistuff.c.orig	2025-09-26 13:53:03.620750731 +0200
++++ texlive-20080816-source/texk/dvi2tty/dvistuff.c	2025-09-25 00:43:04.047444087 +0200
+@@ -79,10 +79,10 @@
+ 
+ /*---------------------------------------------------------------------------*/
+ 
+-bool        pageswitchon;       /* true if user-set pages to print           */
+-bool        sequenceon;         /* false if pagesw-nrs refers to TeX-nrs     */
+-bool        scascii;            /* if true make Scand. nat. chars right      */
+-bool        noffd;              /* if true output ^L instead of formfeed     */
++bool_t        pageswitchon;       /* true if user-set pages to print           */
++bool_t        sequenceon;         /* false if pagesw-nrs refers to TeX-nrs     */
++bool_t        scascii;            /* if true make Scand. nat. chars right      */
++bool_t        noffd;              /* if true output ^L instead of formfeed     */
+ 
+ int         opcode;             /* dvi-opcodes                               */
+ 
+@@ -118,8 +118,8 @@
+ void            dopage          P1H(void);
+ void            skippage        P1H(void);
+ void            printpage       P1H(void);
+-bool            inlist          P1H(long);
+-void            rule            P3H(bool, long, long);
++bool_t            inlist          P1H(long);
++void            rule            P3H(bool_t, long, long);
+ void            ruleaux         P3H(long, long, char);
+ long            horizontalmove  P1H(long);
+ int             skipnops        P1H(void);
+@@ -144,8 +144,8 @@
+ void            dopage          (void);
+ void            skippage        (void);
+ void            printpage       (void);
+-bool            inlist          (long);
+-void            rule            (bool, long, long);
++bool_t            inlist          (long);
++void            rule            (bool_t, long, long);
+ void            ruleaux         (long, long, char);
+ long            horizontalmove  (long);
+ int             skipnops        (void);
+@@ -169,7 +169,7 @@
+ void            dopage          ();
+ void            skippage        ();
+ void            printpage       ();
+-bool            inlist          ();
++bool_t            inlist          ();
+ void            rule            ();
+ void            ruleaux         ();
+ long            horizontalmove  ();
+@@ -276,7 +276,7 @@
+ 
+ void walkpages()                  /* process the pages in the DVI-file */
+ {
+-    register bool wantpage;
++    register bool_t wantpage;
+ 
+     pagecounter = 0L;
+     while ((opcode = skipnops()) != POST) {
+@@ -554,7 +554,7 @@
+ 
+ /*----------------------------------------------------------------------------*/
+ 
+-bool inlist(pagenr)                         /* ret true if in list of pages */
++bool_t inlist(pagenr)                         /* ret true if in list of pages */
+ register long pagenr;
+ {
+ 
+@@ -576,7 +576,7 @@
+ 
+ /*----------------------------------------------------------------------------*/
+ 
+-void rule(bool moving, long rulewt, long ruleht)
++void rule(bool_t moving, long rulewt, long ruleht)
+ {   /* output a rule (vertical or horizontal), increment h if moving is true */
+ 
+     register char ch;               /* character to set rule with            */
+--- texlive-20080816-source/texk/dviljk/config.h.orig	2008-02-17 14:34:01.000000000 +0100
++++ texlive-20080816-source/texk/dviljk/config.h	2025-09-25 00:45:37.213065339 +0200
+@@ -156,8 +156,8 @@
+ #endif
+ 
+ 
+-#define  _TRUE      (bool) 1
+-#define  _FALSE     (bool) 0
++#define  _TRUE      (bool_t) 1
++#define  _FALSE     (bool_t) 0
+ #define  UNKNOWN     -1
+ 
+ #define  STRSIZE         255     /* stringsize for file specifications  */
+@@ -165,10 +165,10 @@
+ 
+ #ifdef __riscos
+ # ifndef types_H                  /* for compatibility with OSLib */
+-typedef  int     bool;
++typedef  int     bool_t;
+ # endif
+ #else
+-typedef  char    bool;
++typedef  char    bool_t;
+ #endif
+ 
+ 
+--- texlive-20080816-source/texk/dviljk/dvi2xx.h.orig	2008-02-17 13:58:17.000000000 +0100
++++ texlive-20080816-source/texk/dviljk/dvi2xx.h	2025-09-25 00:47:08.313776999 +0200
+@@ -382,7 +382,7 @@
+     short   xOffset, yOffset, yyOffset; /* x offset and y offset in pixels*/
+ #endif
+     struct {
+-        bool isloaded;
++        bool_t isloaded;
+         union {
+             long4    fileOffset;
+             long4    *pixptr;
+@@ -409,9 +409,9 @@
+     struct font_entry *next;
+     unsigned short ncdl;      /* #of different chars actually downloaded   */
+     unsigned short plusid;    /* Font id in Printer                        */
+-    bool used_on_this_page;
++    bool_t used_on_this_page;
+ #ifdef LJ_RESIDENT_FONTS
+-    bool resident_p;          /* is font resident in printer?              */
++    bool_t resident_p;          /* is font resident in printer?              */
+     char symbol_set[40];      /* symbol set value (resident fonts)         */
+     unsigned short resid;     /* typeface id (resident fonts)              */
+     unsigned spacing;         /* 0=monospace, 1=variable (resident fonts)  */
+@@ -465,7 +465,7 @@
+ #endif
+ 
+ double  ActualFactor DVIPROTO((long4));
+-void    AllDone DVIPROTO((bool));
++void    AllDone DVIPROTO((bool_t));
+ #ifdef  MSC5
+ void    AssureBinary DVIPROTO((FILEPTR));  /* DOS and Microsoft C dependent !!! */
+ #endif
+@@ -487,8 +487,8 @@
+ void    FormFeed DVIPROTO((void));
+ void    GetFontDef DVIPROTO((void));
+ char    *GetKeyStr DVIPROTO((char *, KeyWord *));
+-bool    GetKeyVal DVIPROTO((KeyWord *, KeyDesc[], int, int *));
+-bool    IsSame DVIPROTO((char *, char *));
++bool_t    GetKeyVal DVIPROTO((KeyWord *, KeyDesc[], int, int *));
++bool_t    IsSame DVIPROTO((char *, char *));
+ void    LoadAChar DVIPROTO((long4, register struct char_entry *));
+ long4   NoSignExtend DVIPROTO((FILEPTR, int));
+ void    OpenFontFile DVIPROTO((void));
+@@ -498,15 +498,15 @@
+ 			     unsigned int, unsigned char *));
+ void    RasterChar DVIPROTO((struct char_entry *));
+ void    ReadFontDef DVIPROTO((long4));
+-void    ReadPostAmble DVIPROTO((bool));
+-void    SetChar DVIPROTO((long4, short, int, bool, bool));
+-void    SetFntNum DVIPROTO((long4, bool));
++void    ReadPostAmble DVIPROTO((bool_t));
++void    SetChar DVIPROTO((long4, short, int, bool_t, bool_t));
++void    SetFntNum DVIPROTO((long4, bool_t));
+ void    SetPosn DVIPROTO((long4, long4));
+ void    SetRule DVIPROTO((long4, long4, int));
+ void    SetString DVIPROTO((short, int));
+ long4   SignExtend DVIPROTO((FILEPTR, int));
+ void    SkipFontDef DVIPROTO((void));
+-bool    tfm_read_info  DVIPROTO((char *, tfm_info_type *));
++bool_t    tfm_read_info  DVIPROTO((char *, tfm_info_type *));
+ void    Warning DVIELI();
+ unsigned char   skip_specials DVIPROTO((long4 *));
+ #ifdef LJ4
+@@ -531,12 +531,12 @@
+ /**********************************************************************/
+ /*************************  Global Variables  *************************/
+ /**********************************************************************/
+-bool    ManualFeed = _FALSE;
++bool_t    ManualFeed = _FALSE;
+ long4    FirstPage  = -1000000;  /* first page to print (uses count0)   */
+ long4    LastPage   = 1000000;   /* last page to print                  */
+ long4    PrintPages = 1000000;   /* nr of pages to print                */
+-bool    FirstPageSpecified = _FALSE;
+-bool    LastPageSpecified = _FALSE;
++bool_t    FirstPageSpecified = _FALSE;
++bool_t    LastPageSpecified = _FALSE;
+ #ifndef KPATHSEA
+ char   *PXLpath = FONTAREA;
+ #endif
+@@ -548,35 +548,35 @@
+ char    tmp_dir[STRSIZE] = "";	 /* temporary directory for auxiliary files */
+ enum   { Ignore, PSFile_dvilj /*, PSFile_dvips */ } PSFileSyntaxTyp = PSFile_dvilj;
+ #ifdef IBM3812
+-bool    FirstAlternate = _FALSE; /* first page from alternate casette ?   */
++bool_t    FirstAlternate = _FALSE; /* first page from alternate casette ?   */
+ #endif
+-bool    Reverse = _FALSE;        /* process DVI pages in reverse order?   */
+-bool    Landscape = _FALSE;      /* print document in ladscape mode       */
+-bool    ResetPrinter = _TRUE;    /* reset printer at the begin of the job */
+-bool    DoublePage = _FALSE;     /* print on both sides of a paper        */
+-bool    PrintSecondPart = _TRUE; /* print First Part when DoublePage      */
+-bool    PrintFirstPart  = _TRUE; /* print Second Part when DoublePage     */
+-bool    PrintEmptyPages = _TRUE; /* print Empty pages in DoublePage mode  */
++bool_t    Reverse = _FALSE;        /* process DVI pages in reverse order?   */
++bool_t    Landscape = _FALSE;      /* print document in ladscape mode       */
++bool_t    ResetPrinter = _TRUE;    /* reset printer at the begin of the job */
++bool_t    DoublePage = _FALSE;     /* print on both sides of a paper        */
++bool_t    PrintSecondPart = _TRUE; /* print First Part when DoublePage      */
++bool_t    PrintFirstPart  = _TRUE; /* print Second Part when DoublePage     */
++bool_t    PrintEmptyPages = _TRUE; /* print Empty pages in DoublePage mode  */
+ short   PageParity = 1;
+ #ifdef MAKETEXPK
+ #ifdef KPATHSEA
+-bool    makeTexPK = MAKE_TEX_PK_BY_DEFAULT;
++bool_t    makeTexPK = MAKE_TEX_PK_BY_DEFAULT;
+ #else
+-bool    makeTexPK = _TRUE;
++bool_t    makeTexPK = _TRUE;
+ #endif
+ #endif
+ 
+ #ifdef LJ
+-bool    kyocera_mode = _FALSE;  /* bug fixes for Kyocera F-1200 LJ-Emulation */
+-bool    brother_mode = _FALSE;  /* bug fixes for Brother HL-8D LJ-Emulation */
++bool_t    kyocera_mode = _FALSE;  /* bug fixes for Kyocera F-1200 LJ-Emulation */
++bool_t    brother_mode = _FALSE;  /* bug fixes for Brother HL-8D LJ-Emulation */
+ #ifdef LJ2P
+ int     DuplexMode = 0;
+ #endif
+ #ifdef LJ4
+-bool    econoMode = _FALSE;
+-bool    LJ6 = _FALSE;
++bool_t    econoMode = _FALSE;
++bool_t    LJ6 = _FALSE;
+ #endif
+-bool    PrintTestPage = _FALSE; /* print testpage with pagecounter after job */
++bool_t    PrintTestPage = _FALSE; /* print testpage with pagecounter after job */
+ unsigned short pagesize = 0;    /* page size value                      */
+ unsigned short pgsiz_dots = 0;  /* page size in dots (for rule-clipping)*/
+ #endif
+@@ -587,10 +587,10 @@
+ #else
+ long4    G_errenc = SS$_NORMAL;  /* has an error been encountered?      */
+ #endif
+-bool    G_header = _FALSE;      /* copy header file to output?         */
+-bool    G_quiet = _FALSE;       /* for quiet operation                 */
+-bool    G_verbose = _FALSE;     /* inform user about pxl-files used    */
+-bool    G_nowarn = _FALSE;      /* don't print out warnings            */
++bool_t    G_header = _FALSE;      /* copy header file to output?         */
++bool_t    G_quiet = _FALSE;       /* for quiet operation                 */
++bool_t    G_verbose = _FALSE;     /* inform user about pxl-files used    */
++bool_t    G_nowarn = _FALSE;      /* don't print out warnings            */
+ short   x_origin;               /* x-origin in dots                    */
+ short   y_origin;               /* y-origin in dots                    */
+ short   x_goffset;              /* global x-offset in dots             */
+@@ -624,8 +624,8 @@
+ static int      last_rx = UNKNOWN;      /* last x-position on page     */
+ long4  StartPrintPages;         /* notpad for double paged output      */
+ int    WouldPrint    = 0;
+-bool   ZeroPage = _FALSE;       /* Document starts with a Zero Page    */
+-bool   EvenPage = _FALSE;       /* Document starts with an even Page   */
++bool_t   ZeroPage = _FALSE;       /* Document starts with a Zero Page    */
++bool_t   EvenPage = _FALSE;       /* Document starts with an even Page   */
+ long4  LastPtobePrinted = 0;
+ int    G_ncdl = 0;
+ 
+@@ -656,7 +656,7 @@
+ int PrevSize = 0;               /* Size of PrevLine */
+ /* Downloaded chars compression */
+ int CChar_Off, CChar_Last;      /* For compressed character downloading */
+-bool CompressFontMode = _TRUE;  /* Download characters compressed */
++bool_t CompressFontMode = _TRUE;  /* Download characters compressed */
+ #endif /* LJ4 */
+ 
+ #ifdef RISC_USE_OSL
+@@ -673,8 +673,8 @@
+ #define DIAGDIRSIZE 32
+ char diagdir[DIAGDIRSIZE] = "LJdiag"; /* Prefix name of directory for
+ 					 cached printouts */
+-bool cachediag = _FALSE;       /* cache PDriver's output in document folder */
+-bool printdiag = _TRUE;        /* printf diagrams */
++bool_t cachediag = _FALSE;       /* cache PDriver's output in document folder */
++bool_t printdiag = _TRUE;        /* printf diagrams */
+ FILEPTR metafile = FPNULL;     /* Filepointer of file containing
+ 				  metafont directives*/
+ 
+--- texlive-20080816-source/texk/dviljk/dvi2xx.c.orig	2008-02-18 00:36:52.000000000 +0100
++++ texlive-20080816-source/texk/dviljk/dvi2xx.c	2025-09-25 00:55:12.803030023 +0200
+@@ -140,12 +140,12 @@
+   short   command;           /* current command                         */
+   long4   count[10];         /* the 10 counters at begining of each page*/
+   long4   cpagep = 0;        /* current page pointer                    */
+-  bool    Emitting = _FALSE; /* outputting typsetting instructions?     */
++  bool_t    Emitting = _FALSE; /* outputting typsetting instructions?     */
+   int     i;                 /* command parameter; loop index           */
+   int     k;                 /* temporary parameter                     */
+   char    n[STRSIZE];        /* command parameter                       */
+   int     PassNo = 0;        /* which pass over the DVI page are we on? */
+-  bool    SkipMode = _FALSE; /* in skip mode flag                       */
++  bool_t    SkipMode = _FALSE; /* in skip mode flag                       */
+   int     sp = 0;            /* stack pointer                           */
+   struct  stack_entry stack[STACK_SIZE];  /* stack                      */
+   char    SpecialStr[STRSIZE]; /* "\special" strings                    */
+@@ -319,7 +319,7 @@
+   if (DoublePage) {
+     StartPrintPages = PrintPages;
+ #ifdef IBM3812
+-    Reverse = (bool)!Reverse; /* perverse and strange */
++    Reverse = (bool_t)!Reverse; /* perverse and strange */
+ #endif
+   }
+ 
+@@ -398,7 +398,7 @@
+         fprintf(ERR_STREAM,"skimode %d, count %d, F %d, L %d\n",
+         (int)SkipMode,(int)count[0],(int)FirstPageSpecified,(int)LastPageSpecified);
+         */
+-      SkipMode = (bool)((FirstPageSpecified && count[0] < FirstPage) ||
++      SkipMode = (bool_t)((FirstPageSpecified && count[0] < FirstPage) ||
+                         (LastPageSpecified && count[0] > LastPage ));
+       /*
+         fprintf(ERR_STREAM,"skimode %d, count %d, F %d, L %d\n",
+@@ -414,7 +414,7 @@
+               EvenPage = _FALSE;
+             }
+             else {
+-              EvenPage = (bool)( (count[0]<0? labs(count[0])+1: count[0]) %2 == 0);
++              EvenPage = (bool_t)( (count[0]<0? labs(count[0])+1: count[0]) %2 == 0);
+ 
+               if (PrintEmptyPages && EvenPage && PageParity==1) {
+                 WouldPrint ++;
+@@ -444,13 +444,13 @@
+             fprintf(ERR_STREAM,"FirstPart\n count %d, mod %d, pp %d\n",(int)count[0],(int)count[0]%2,PageParity);
+             */
+           SkipMode =
+-            (bool)(PageParity != (short)((count[0]<0 ?
++            (bool_t)(PageParity != (short)((count[0]<0 ?
+                                           labs(count[0])+1 : count[0])%2));
+-          if (count[0] == 0) SkipMode = (bool)!SkipMode;
++          if (count[0] == 0) SkipMode = (bool_t)!SkipMode;
+         }
+ 
+       }
+-      Emitting = (bool)((PassNo != 0) && !SkipMode);
++      Emitting = (bool_t)((PassNo != 0) && !SkipMode);
+       /*
+         fprintf(ERR_STREAM,"Emitting= %d, PassNo=%d, SkipMode = %d\n",(int)Emitting,(int)PassNo,(int)SkipMode);
+         */
+@@ -493,12 +493,12 @@
+           FSEEK(dvifp, ppagep, SEEK_SET);
+         else {
+           if (DoublePage && !SkipMode)
+-            ZeroPage = (bool)(count[0] == 0);
++            ZeroPage = (bool_t)(count[0] == 0);
+ 
+           if (ZeroPage)
+             EvenPage = _FALSE;
+           else
+-            EvenPage = (bool)((int)LastPtobePrinted%2 == 0);
++            EvenPage = (bool_t)((int)LastPtobePrinted%2 == 0);
+ 
+           AllDone(_FALSE);
+         }
+@@ -1222,7 +1222,7 @@
+   static char           buffer[OUTBUFSIZE];
+   static unsigned short bp = 0;         /* range 0..OUTBUFSIZE */
+   static long4          continuous = 0l;
+-  static bool           buffered = _TRUE;
++  static bool_t           buffered = _TRUE;
+ 
+   if (l == 0) {
+     if (bp == 0)
+@@ -1236,7 +1236,7 @@
+     continuous = (long4)s;
+     if (continuous + (long4)bp + 5l > (long4)OUTBUFSIZE)
+       PMPflush;
+-    buffered = (bool)((continuous + 5l <= (long4)OUTBUFSIZE));
++    buffered = (bool_t)((continuous + 5l <= (long4)OUTBUFSIZE));
+     if (!buffered) {
+       EMIT3("\033[C%c%c", (unsigned char)(continuous & 0xFF),
+             (unsigned char)((continuous >> 8) & 0xFF));
+@@ -1252,7 +1252,7 @@
+     bp += (unsigned short)l;
+   } else {
+     EMITB((int)l, s);
+-    buffered = (bool)((continuous -= (long4)l) <= 0);
++    buffered = (bool_t)((continuous -= (long4)l) <= 0);
+   }
+ }
+ 
+@@ -1666,7 +1666,7 @@
+   int     rp;
+   int     current_line;
+   int     wordwidth;
+-  bool turnon;
++  bool_t turnon;
+   unsigned short  nbpl;
+   long4    rowsleft, word, wordweight, hbit, count, i, j, tl;
+   long4    row[101];
+@@ -1681,7 +1681,7 @@
+   current_line = 0;
+   pkloc = (unsigned char *)ce->where.address.pixptr;
+   dyn_f = (unsigned char)(ce->flag_byte >> 4);
+-  turnon = (bool)((ce->flag_byte & 8) == 8);
++  turnon = (bool_t)((ce->flag_byte & 8) == 8);
+   wordwidth = (int)(ce->width + 31) >> 5;
+   nbpl = ((int)(ce->width) +  7) >> 3;
+ 
+@@ -1697,7 +1697,7 @@
+       printf("     |");
+ #endif
+       for (j = 1; j <= (long4)ce->width; j++) {
+-        bool getbit;
++        bool_t getbit;
+         /* bp = 0;               SOWA */
+         /*******************************************begin Getbit *********/
+         bitweight /= 2;
+@@ -1705,7 +1705,7 @@
+           inputbyte = PKBYTE;
+           bitweight = 128;
+         }
+-        getbit = (bool)
++        getbit = (bool_t)
+           ( inputbyte >= bitweight );
+         if ( getbit )
+           inputbyte -= bitweight;
+@@ -2480,17 +2480,17 @@
+ /**********************************************************************/
+ void
+ #if NeedFunctionPrototypes
+-SetChar(long4 c, short command, int PassNo, bool do_posn, bool in_string)
++SetChar(long4 c, short command, int PassNo, bool_t do_posn, bool_t in_string)
+ #else
+ SetChar(c, command, PassNo, do_posn,in_string)
+ long4    c;
+ short   command;
+ int     PassNo;
+-bool do_posn,in_string;
++bool_t do_posn,in_string;
+ #endif
+ {
+   register struct char_entry *ptr;  /* temporary char_entry pointer */
+-  bool pos_after = _FALSE;
++  bool_t pos_after = _FALSE;
+ 
+   ptr = &(fontptr->ch[c]);
+   if (!((ptr->where.isloaded) || (ptr->charsize == HUGE_SIZE)))
+@@ -2714,7 +2714,7 @@
+     if (Debug)
+       fprintf(ERR_STREAM, "%d(%c) ", c, c);
+ #endif
+-    SetChar((long4)c, c, PassNo, (bool)(i==0), _TRUE);
++    SetChar((long4)c, c, PassNo, (bool_t)(i==0), _TRUE);
+     c = (short)NoSignExtend(dvifp, 1);
+   }
+   FSEEK(dvifp, -1l, SEEK_CUR);    /* backup one character */
+@@ -3215,7 +3215,7 @@
+         G_quiet = _TRUE;
+         break;
+       case 'r':       /* switch order to process pages */
+-        Reverse = (bool)(!Reverse);
++        Reverse = (bool_t)(!Reverse);
+         break;
+ #ifdef LJ
+       case 's':       /* specify X-origin in dots */
+@@ -3285,7 +3285,7 @@
+         break;
+ #ifdef LJ
+       case 'z':
+-        PrintTestPage = (bool)(!PrintTestPage);
++        PrintTestPage = (bool_t)(!PrintTestPage);
+         break;
+ #endif
+ #ifdef LJ4
+@@ -3566,10 +3566,10 @@
+ /****************************** AllDone  ******************************/
+ /**********************************************************************/
+ #if NeedFunctionPrototypes
+-void AllDone(bool PFlag)
++void AllDone(bool_t PFlag)
+ #else
+ void AllDone(PFlag)
+-bool PFlag;
++bool_t PFlag;
+ #endif
+ {
+ #ifdef TIMING
+@@ -3586,7 +3586,7 @@
+       FormFeed();
+     }
+ #ifdef LJ
+-    Reverse = (bool)!Reverse;
++    Reverse = (bool_t)!Reverse;
+ #endif
+     if (Reverse) {
+       if (!PFlag) {
+@@ -3782,9 +3782,9 @@
+    s1 pointer to null-terminated keyword, s2 pointer to parseline;
+    returns (if successful) pointer to character following keyword in s2 */
+ #if NeedFunctionPrototypes
+-bool StrCompare(char *s1, char *s2, char **end)
++bool_t StrCompare(char *s1, char *s2, char **end)
+ #else
+-bool StrCompare(s1, s2, end)
++bool_t StrCompare(s1, s2, end)
+ char *s1;
+ char *s2;
+ char **end;
+@@ -3837,9 +3837,9 @@
+ /* Diagram commands are parsed separately since the format varies from the one
+ +    used by the other special commands */
+ #if NeedFunctionPrototypes
+-bool ParseDiagram(char *str)
++bool_t ParseDiagram(char *str)
+ #else
+-bool ParseDiagram(str)
++bool_t ParseDiagram(str)
+ char *str;
+ #endif
+ {
+@@ -3944,7 +3944,7 @@
+ int  n;
+ #endif
+ {
+-  bool	  first_keyword = _TRUE;
++  bool_t	  first_keyword = _TRUE;
+   char    xs[STRSIZE], ys[STRSIZE];
+   char    *include_file = NULL;
+   enum    { None, VerbFile, HPFile, PSFile } file_type = None;
+@@ -3953,9 +3953,9 @@
+   KeyWord k;
+   int     i, j, j1;
+   static  int   GrayScale = 10, Pattern = 1;
+-  static  bool  GrayFill = _TRUE;
++  static  bool_t  GrayFill = _TRUE;
+   static  long4 p_x[MAX_SPECIAL_DEFPOINTS], p_y[MAX_SPECIAL_DEFPOINTS];
+-  static  bool  need_init_pxy = _TRUE;
++  static  bool_t  need_init_pxy = _TRUE;
+   int llx=0, lly=0, urx=0, ury=0, rwi=0;
+ 
+   str[n] = '\0';
+@@ -4408,9 +4408,9 @@
+ /**********************************************************************/
+ /* get next keyword-value pair decode value according to table entry  */
+ #if NeedFunctionPrototypes
+-bool GetKeyVal(KeyWord *kw, KeyDesc tab[], int nt, int *tno)
++bool_t GetKeyVal(KeyWord *kw, KeyDesc tab[], int nt, int *tno)
+ #else
+-bool    GetKeyVal( kw, tab, nt, tno)
++bool_t    GetKeyVal( kw, tab, nt, tno)
+ KeyWord *kw;
+ KeyDesc tab[];
+ int     nt;
+@@ -4452,9 +4452,9 @@
+ /**********************************************************************/
+ /* compare strings, ignore case */
+ #if NeedFunctionPrototypes
+-bool IsSame(char *a, char *b)
++bool_t IsSame(char *a, char *b)
+ #else
+-bool IsSame(a, b)
++bool_t IsSame(a, b)
+ char    *a, *b;
+ #endif
+ {
+@@ -4509,10 +4509,10 @@
+     starting printing the document.
+ ***********************************************************************/
+ #if NeedFunctionPrototypes
+-void ReadPostAmble(bool load)
++void ReadPostAmble(bool_t load)
+ #else
+ void ReadPostAmble(load)
+-bool load;
++bool_t load;
+ #endif
+ {
+   FindPostAmblePtr(&postambleptr);
+@@ -4981,13 +4981,12 @@
+ /****************************  TryResident  ***************************/
+ /**********************************************************************/
+ #if NeedFunctionPrototypes
+-bool TryResident(struct font_entry *fontptr)
++bool_t TryResident(struct font_entry *fontptr)
+ #else
+-bool TryResident(fontptr)
++bool_t TryResident(fontptr)
+ struct font_entry *fontptr;
+ #endif
+ {
+-  extern bool tfm_read_info();
+   tfm_info_type tfm_info;
+ 
+   /* To determine if a font is resident, check for a special family
+@@ -5138,9 +5137,9 @@
+   struct font_entry *tfontptr; /* temporary font_entry pointer   */
+   struct char_entry *tcharptr; /* temporary char_entry pointer  */
+   static int      plusid = 0;
+-  bool font_found = _FALSE;
++  bool_t font_found = _FALSE;
+ #ifdef LJ_RESIDENT_FONTS
+-  bool resident_font_located = _FALSE;
++  bool_t resident_font_located = _FALSE;
+ #endif
+ #ifdef LJ
+   int depth, max_depth;
+@@ -5196,7 +5195,7 @@
+ #ifdef LJ_RESIDENT_FONTS
+   /* Pass in the name; fills in resident_p and resid (if resident). */
+ 
+-  resident_font_located = (bool)TryResident(tfontptr);
++  resident_font_located = (bool_t)TryResident(tfontptr);
+ 
+   if (tfontptr->resident_p)
+     return;
+@@ -5555,11 +5554,11 @@
+ /****************************  SetFntNum  *****************************/
+ /**********************************************************************/
+ #if NeedFunctionPrototypes
+-void SetFntNum(long4 k, bool Emitting)
++void SetFntNum(long4 k, bool_t Emitting)
+ #else
+ void SetFntNum(k, Emitting)
+ long4    k;
+-bool Emitting;
++bool_t Emitting;
+ #endif
+ /*  this routine is used to specify the font to be used in printing future
+     characters */
+--- texlive-20080816-source/texk/dviljk/tfm.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/dviljk/tfm.c	2025-09-25 00:47:48.952604069 +0200
+@@ -41,7 +41,7 @@
+ #define TFM_GET_TWO()  NoSignExtend (tfm_fp, 2)
+ #define TFM_GET_FOUR() NoSignExtend (tfm_fp, 4)
+ 
+-extern bool G_quiet;
++extern bool_t G_quiet;
+ extern void Warning();
+ 
+ /* Read N words (N * 4 bytes) from TFM_FP and return it in *OUTBUF, unless
+@@ -112,7 +112,7 @@
+    The first (BigEndian) byte of header word #18 is DATA[0].
+    Assume DATA is long enough for everything we might try to read. */
+ 
+-static bool
++static bool_t
+ #if NeedFunctionPrototypes
+ get_pcl_info (unsigned char *data, unsigned *spacing, unsigned *style, 
+ 	      int *weight, unsigned *typeface_id)
+@@ -148,7 +148,7 @@
+ /* If the TFM file NAME exists, set the elements of RET and return true.
+    Otherwise, return false.  */
+ 
+-bool
++bool_t
+ #if NeedFunctionPrototypes
+ tfm_read_info (char *name, tfm_info_type *ret)
+ #else
+--- texlive-20080816-source/texk/dvipdfmx/src/pngimage.c.orig	2025-09-23 22:35:33.457648550 +0200
++++ texlive-20080816-source/texk/dvipdfmx/src/pngimage.c	2025-09-25 00:58:24.004100823 +0200
+@@ -533,7 +533,7 @@
+   png_uint_32 proflen;
+ 
+   if (!png_get_valid(png_ptr, info_ptr, PNG_INFO_iCCP) ||
+-      !png_get_iCCP(png_ptr, info_ptr, &name, &compression_type, &profile, &proflen))
++      !png_get_iCCP(png_ptr, info_ptr, &name, &compression_type, (unsigned char**) &profile, &proflen))
+     return NULL;
+ 
+   color_type = png_get_color_type(png_ptr, info_ptr);
+--- texlive-20080816-source/texk/dvipsk/afm2tfm.c.orig	2025-09-23 22:35:33.440694472 +0200
++++ texlive-20080816-source/texk/dvipsk/afm2tfm.c	2025-09-25 01:02:00.867739296 +0200
+@@ -67,7 +67,7 @@
+ /* debug.h redefines fopen to my_real_fopen, but it's still a FILE * */
+ #ifdef fopen
+ #undef fopen
+-extern FILE *fopen ();
++extern FILE *fopen (const char*, const char*);
+ #endif
+ 
+ struct encoding {
+--- texlive-20080816-source/texk/dvipsk/dvips.c.orig	2008-07-10 01:40:36.000000000 +0200
++++ texlive-20080816-source/texk/dvipsk/dvips.c	2025-09-25 01:06:14.480286927 +0200
+@@ -565,7 +565,6 @@
+ /*
+  *   Finally, our main routine.
+  */
+-extern void handlepapersize() ;
+ #ifdef VMS
+ main P1H(void)
+ #else
+--- texlive-20080816-source/texk/dvipsk/writet1.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/dvipsk/writet1.c	2025-09-25 01:32:11.833538633 +0200
+@@ -104,9 +104,10 @@
+ #define make_subset_tag(a, b)
+ #define update_subset_tag()
+ 
++#include "protos.h"
++
+ static char *dvips_extra_charset ;
+ extern FILE *bitfile ;
+-extern FILE *search();
+ static char *cur_file_name;
+ static char *cur_enc_name;
+ static unsigned char *grid;
+--- texlive-20080816-source/texk/dvipsk/t1part.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/dvipsk/t1part.h	2025-09-25 01:33:23.715891006 +0200
+@@ -35,7 +35,6 @@
+ #endif
+ 
+ #ifdef DVIPS
+-extern FILE *search();
+ #ifndef KPATHSEA
+ extern char *headerpath ;
+ #endif /* not KPATHSEA */
+--- texlive-20080816-source/texk/lacheck/lacheck.lex.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/lacheck/lacheck.lex	2025-09-25 01:41:12.690797836 +0200
+@@ -145,16 +145,16 @@
+ #define CG_ITALIC gstack[gstackp-1].italic
+ #define CG_FILE gstack[gstackp-1].s_file
+ 
+-char *bg_command();
++char *bg_command(char*);
+ void pop();
+-void push();
++void push(unsigned char *, int, int);
+ void linecount();
+-void g_checkend();
+-void e_checkend();
+-void f_checkend();
+-void input_file();
+-void print_bad_match();
+-int check_top_level_end();
++void g_checkend(int);
++void e_checkend(int, char*);
++void f_checkend(char*);
++void input_file(char*);
++void print_bad_match(char*, int);
++int check_top_level_end(char*,int);
+ 
+   /* global variables */
+ 
+--- texlive-20080816-source/texk/ps2pkm/arith.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/arith.h	2025-09-25 02:04:35.504370454 +0200
+@@ -29,12 +29,10 @@
+ /*SHARED*/
+ 
+ #include "types.h"
+-
+-void DLmult(),DLdiv(),DLadd(),DLsub();
+  
+-fractpel FPmult();
+-fractpel FPdiv();
+-fractpel FPstarslash();
++fractpel FPmult(fractpel,fractpel);
++fractpel FPdiv(fractpel,fractpel);
++fractpel FPstarslash(fractpel,fractpel,fractpel);
+  
+ /*END SHARED*/
+ /*SHARED*/
+@@ -55,6 +53,11 @@
+        LONG high;
+        ULONG low;
+ } doublelong;
++
++void DLmult(doublelong*, ULONG, ULONG);
++void DLdiv(doublelong*, ULONG);
++void DLadd(doublelong*, doublelong*);
++void DLsub(doublelong*, doublelong*);
+  
+ /*END SHARED*/
+ /*SHARED*/
+--- texlive-20080816-source/texk/ps2pkm/blues.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/blues.h	2025-09-25 23:24:54.309740919 +0200
+@@ -31,8 +31,6 @@
+ 
+ #include "types.h"
+ 
+-extern psobj *GetType1CharString();
+- 
+ #define TOPLEFT 1
+ #define BOTTOMRIGHT 2
+  
+--- texlive-20080816-source/texk/ps2pkm/curves.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/curves.h	2025-09-25 10:18:36.602736081 +0200
+@@ -35,6 +35,6 @@
+ #define   FlattenBezier(xB,yB,xC,yC,xD,yD)   t1_StepBezier(NULL,(fractpel)0,(fractpel)0,xB,yB,xC,yC,xD,yD)
+  
+ struct segment *t1_StepConic();
+-struct segment *t1_StepBezier();
++extern struct segment *t1_StepBezier(struct region *R,fractpel xA,fractpel yA,fractpel xB,fractpel yB,fractpel xC,fractpel yC,fractpel xD,fractpel yD);
+  
+ /*END SHARED*/
+--- texlive-20080816-source/texk/ps2pkm/ffilest.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/ffilest.h	2025-09-25 21:54:14.035811538 +0200
+@@ -119,9 +119,9 @@
+     char    *fileSuffix;
+     int	    fileSuffixLen;
+     int	    (*OpenBitmap)(/* fpe, pFont, flags, entry, fileName, format, fmask */);
+-    int	    (*OpenScalable)(/* fpe, pFont, flags, entry, fileName, vals, format, fmask */);
++    int	    (*OpenScalable)(char*[256], FontPtr *, int, FontEntryPtr, char *, FontScalablePtr, fsBitmapFormat, fsBitmapFormatMask, DOUBLE, DOUBLE);
+     int	    (*GetInfoBitmap)(/* fpe, pFontInfo, entry, fileName */);
+-    int	    (*GetInfoScalable)(/* fpe, pFontInfo, entry, fileName, vals */);
++    int	    (*GetInfoScalable)(FontPathElementPtr, FontInfoPtr, FontEntryPtr, FontNamePtr, char *, FontScalablePtr);
+     int	    number;
+ } FontRendererRec;
+ 
+--- texlive-20080816-source/texk/ps2pkm/fontfcn.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/fontfcn.c	2025-09-25 12:58:44.977215795 +0200
+@@ -40,7 +40,7 @@
+ extern void objFormatName(psobj *, int, char *);
+ #endif
+  
+-extern xobject Type1Char();
++extern struct xobject *Type1Char(char, struct XYspace *, psobj *c, psobj *, psobj *, struct blues_struct *, int *);
+ extern boolean Init_BuiltInEncoding();
+ 
+ /***================================================================***/
+@@ -171,14 +171,14 @@
+   /* scale the Adobe fonts to 1 unit high */
+   S = Permanent(Scale(S, 1.0 , 1.0));
+   /* call the type 1 routine to rasterize the character     */
+-  charpath = Type1Char(FontP,S,theStringP,SubrsArrayP,NULL,
++  charpath = (path) Type1Char((char)FontP,(void*)S,theStringP,SubrsArrayP,NULL,
+                FontP->BluesP , mode);
+   Destroy(S);
+   /* if Type1Char reported an error, then return */
+   if ( *mode == FF_PARSE_ERROR)  return(NULL);
+   /* fill with winding rule unless path was requested */
+   if (*mode != FF_PATH) {
+-    charpath =  Interior(charpath,WINDINGRULE+CONTINUITY);
++    charpath = (path) Interior((void *)charpath,WINDINGRULE+CONTINUITY);
+   }
+   return(charpath);
+ }
+--- texlive-20080816-source/texk/ps2pkm/fontfcn.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/fontfcn.h	2025-09-25 23:57:11.029705448 +0200
+@@ -42,8 +42,9 @@
+ /***================================================================***/
+  
+ extern boolean Init_StdEnc();
+-extern int scan_font();
++extern int scan_font(struct ps_font*);
+ extern int GetFontInfo();
++extern psobj *GetType1CharString(psfont *, unsigned char);
+ /***================================================================***/
+ /*  Return codes from scan_font                                       */
+ /***================================================================***/
+--- texlive-20080816-source/texk/ps2pkm/fontstruct.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/fontstruct.h	2025-09-25 21:42:22.507350656 +0200
+@@ -118,13 +118,13 @@
+     char        glyph;
+     char        scan;
+     fsBitmapFormat format;
+-    int         (*get_glyphs) ( /* font, count, chars, encoding, count, glyphs */ );
+-    int         (*get_metrics) ( /* font, count, chars, encoding, count, glyphs */ );
++    int         (*get_glyphs) (FontPtr, ULONG, unsigned char *, FontEncoding, ULONG *, CharInfoPtr *);
++    int         (*get_metrics) (FontPtr, ULONG, unsigned char *, FontEncoding, ULONG *, xCharInfo **);
+     int         (*get_bitmaps) (/* client, font, flags, ranges, nranges,
+ 				    nextents, extents */ );
+     int         (*get_extents) (/* client, font, format, flags, ranges,
+ 				    nranges, nglyphs, offsets, glyphs */ );
+-    void        (*unload_font) ( /* font */ );
++    void        (*unload_font) (FontPtr);
+     FontPathElementPtr fpe;
+     pointer     svrPrivate;
+     pointer     fontPrivate;
+--- texlive-20080816-source/texk/ps2pkm/hints.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/hints.c	2025-09-25 13:03:14.465846925 +0200
+@@ -630,7 +630,7 @@
+ A debug tool.
+ */
+  
+-static struct edgelist *before();  /* subroutine of DumpSubPaths             */
++static struct edgelist *before(struct edgelist*);  /* subroutine of DumpSubPaths             */
+  
+ static void DumpSubPaths(anchor)
+        struct edgelist *anchor;
+--- texlive-20080816-source/texk/ps2pkm/hints.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/hints.h	2025-09-25 13:03:54.301325824 +0200
+@@ -30,13 +30,13 @@
+  
+ #define   InitHints()   t1_InitHints()
+ void t1_InitHints();   /* Initialize hint data structure */
+- 
++
+ #define   CloseHints(hintP)   t1_CloseHints(hintP)
+-void t1_CloseHints();   /* Reverse hints that are still open */
++void t1_CloseHints(struct fractpoint*);   /* Reverse hints that are still open */
+  
+ #define   ProcessHint(hP, currX, currY, hintP)   t1_ProcessHint(hP, currX, currY, hintP)
+-void t1_ProcessHint();   /* Process a rasterization hint */
++void t1_ProcessHint(struct hintsegment*, fractpel, fractpel, struct fractpoint *);   /* Process a rasterization hint */
+  
+ #define   ApplyContinuity(R)  t1_ApplyContinuity(R)
+-void t1_ApplyContinuity();    /* fix false connection breaks in a region      */
++void t1_ApplyContinuity(struct region*);    /* fix false connection breaks in a region      */
+ /*END SHARED*/
+--- texlive-20080816-source/texk/ps2pkm/lines.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/lines.h	2025-09-25 13:42:48.446415774 +0200
+@@ -31,7 +31,7 @@
+ #define   StepLine(R,x1,y1,x2,y2)   t1_StepLine(R,x1,y1,x2,y2)
+ #define   Bresenham(e,x1,y1,x2,y2)  t1_Bresenham(e,x1,y1,x2,y2)
+  
+-void t1_StepLine();           /* check for special conditions, call Bresenham */
+-void t1_Bresenham();          /* produce run ends for lines                   */
++extern void t1_StepLine(struct region *R,fractpel x1,fractpel y1,fractpel x2,fractpel y2);           /* check for special conditions, call Bresenham */
++void t1_Bresenham(pel*, fractpel, fractpel, fractpel, fractpel);          /* produce run ends for lines                   */
+  
+ /*END SHARED*/
+--- texlive-20080816-source/texk/ps2pkm/objects.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/objects.c	2025-09-25 14:15:42.927286629 +0200
+@@ -73,7 +73,7 @@
+ #include  "pictures.h"
+ #include  "strokes.h"
+ #include  "cluts.h"
+-static char *TypeFmt();
++static char *TypeFmt(int);
+ static int ObjectPostMortem(struct xobject *obj);
+ 
+ /*
+@@ -287,11 +287,7 @@
+        register struct xobject *template;  /* example structure to allocate  */
+        register int extra;   /* any extra uninitialized bytes needed contiguously */
+ {
+-#ifdef WIN32
+        extern char *Xalloc(int); /* standard C routine */
+-#else
+-       extern char *Xalloc();  /* standard C routine                         */
+-#endif 
+        register struct xobject *r;
+  
+        /*
+@@ -535,15 +531,15 @@
+                return(NULL);
+  
+        if (ISPATHTYPE(obj->type))
+-               obj = (struct xobject *) CopyPath(obj);
++               obj = (struct xobject *) CopyPath((struct segment*)obj);
+        else
+                switch (obj->type) {
+                    case SPACETYPE:
+-                       obj = (struct xobject *) CopySpace(obj); break;
++                       obj = (struct xobject *) CopySpace((struct XYspace*)obj); break;
+                    case FONTTYPE:
+                        obj = (struct xobject *) CopyFont(obj); break;
+                    case REGIONTYPE:
+-                       obj = (struct xobject *) CopyRegion(obj); break;
++                       obj = (struct xobject *) CopyRegion((struct region*)obj); break;
+                    case PICTURETYPE:
+                        obj = (struct xobject *) CopyPicture(obj); break;
+                    case LINESTYLETYPE:
+@@ -577,11 +573,11 @@
+                return(NULL);
+        }
+        if (ISPATHTYPE(obj->type))
+-               KillPath(obj);
++               KillPath((struct segment*)obj);
+        else {
+                switch (obj->type) {
+                    case REGIONTYPE:
+-                       KillRegion(obj);
++                       KillRegion((struct region*)obj);
+                        break;
+                    case SPACETYPE:
+                        KillSpace(obj);
+--- texlive-20080816-source/texk/ps2pkm/objects.h.orig	2025-09-23 22:35:33.496469395 +0200
++++ texlive-20080816-source/texk/ps2pkm/objects.h	2025-09-25 21:32:20.478908365 +0200
+@@ -49,13 +49,13 @@
+ #define   Pragmatics(f,v)   t1_Pragmatics(f,v)
+ #define   ErrorMsg()        t1_ErrorMsg()
+  
+-struct xobject *t1_Permanent();  /* make an object permanent                  */
++struct xobject *t1_Permanent(struct xobject*);  /* make an object permanent                  */
+ struct xobject *t1_Temporary();  /* make an object temporary                  */
+-struct xobject *t1_Destroy();    /* destroy an object                         */
+-struct xobject *t1_Dup();     /* duplicate an object                          */
++struct xobject *t1_Destroy(struct xobject*);    /* destroy an object                         */
++struct xobject *t1_Dup(struct xobject*);     /* duplicate an object                          */
+ void t1_InitImager();         /* initialize TYPE1IMAGER                           */
+ void t1_TermImager();         /* terminate TYPE1IMAGER                            */
+-void t1_Pragmatics();         /* set debug flags, etc.                        */
++void t1_Pragmatics(char*,int);         /* set debug flags, etc.                        */
+ char *t1_ErrorMsg();          /* return last TYPE1IMAGER error message            */
+  
+ /*END SHARED*/
+@@ -70,18 +70,18 @@
+ #define   Copy(obj)         t1_Copy(obj)
+ #define   Unique(obj)       t1_Unique(obj)
+  
+-void t1_abort();              /* crash; software logic error                  */
+-struct xobject *t1_Allocate();    /* allocate memory                          */
+-void t1_Free();               /* free memory                                  */
+-struct xobject *t1_Unique();  /* make a unique temporary copy of an object    */
+-struct xobject *t1_ArgErr();  /* handle argument errors                       */
+-struct xobject *t1_TypeErr(); /* handle 'bad type' argument errors            */
++void t1_abort(char*);              /* crash; software logic error                  */
++struct xobject *t1_Allocate(int, struct xobject*, int);    /* allocate memory                          */
++void t1_Free(struct xobject*);               /* free memory                                  */
++struct xobject *t1_Unique(struct xobject*);  /* make a unique temporary copy of an object    */
++struct xobject *t1_ArgErr(char*, struct xobject*, struct xobject*);  /* handle argument errors                       */
++struct xobject *t1_TypeErr(char*, struct xobject*, int, struct xobject*); /* handle 'bad type' argument errors            */
+ #ifdef KPATHSEA
+ void t1_Consume PVAR1H(int);  /* consume a variable number of arguments       */
+ #else
+ void t1_Consume();            /* consume a variable number of arguments       */
+ #endif
+-struct xobject *t1_Copy();    /* make a new copy, not reference bump PNM      */
++struct xobject *t1_Copy(struct xobject*);    /* make a new copy, not reference bump PNM      */
+  
+ /*END SHARED*/
+ /*SHARED*/
+@@ -300,21 +300,5 @@
+  
+ extern void Xfree(void*);
+ 
+-/*
+-We define other routines formatting parameters
+-*/
+-#define    DumpArea(area)    t1_DumpArea(area)
+-#define    DumpText(text)    t1_DumpText(text)
+-#define    DumpPath(path)    t1_DumpPath(path)
+-#define    DumpSpace(space)  t1_DumpSpace(space)
+-#define    DumpEdges(e)      t1_DumpEdges(e)
+-#define    FormatFP(s,p)     t1_FormatFP(s,p)
+- 
+-void t1_DumpArea();           /* dump a region structure                      */
+-void t1_DumpText();           /* dump a textpath structure                    */
+-void t1_DumpPath();           /* dump a path list                             */
+-void t1_DumpSpace();          /* dump a coordinate space structure            */
+-void t1_DumpEdges();          /* dump a region's edge list                    */
+-void t1_FormatFP();           /* dump a format a "fractpel" coordinate        */
+  
+ /*END SHARED*/
+--- texlive-20080816-source/texk/ps2pkm/paths.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/paths.c	2025-09-25 18:52:38.602300630 +0200
+@@ -53,8 +53,8 @@
+ #include  "trig.h"
+ 
+ #ifdef KPATHSEA
+-static int UnClose P1H(struct segment *);
+-extern void DumpText P1H(struct segment *);
++static int UnClose (struct segment *);
++extern void DumpText (struct segment *);
+ #else
+ static Unclose();
+ #endif
+@@ -128,12 +128,12 @@
+        for (p = p0, anchor = NULL; p != NULL; p = p->link) {
+  
+                ARGCHECK((!ISPATHTYPE(p->type) || (p != p0 && p->last != NULL)),
+-                       "CopyPath: invalid segment", p, NULL, (0), struct segment *);
++                       "CopyPath: invalid segment", (struct xobject*) p, NULL, (0), struct segment *);
+  
+                if (p->type == TEXTTYPE)
+                        n = (struct segment *) CopyText(p);
+                else
+-                       n = (struct segment *)Allocate(p->size, p, 0);
++                       n = (struct segment *)Allocate(p->size, (struct xobject*) p, 0);
+                n->last = NULL;
+                if (anchor == NULL)
+                        anchor = n;
+@@ -170,14 +170,14 @@
+  
+        while (p != NULL) {
+                if (!ISPATHTYPE(p->type)) {
+-                       ArgErr("KillPath: bad segment", p, NULL);
++                       ArgErr("KillPath: bad segment", (struct xobject*) p, NULL);
+                        return;
+                }
+                linkp = p->link;
+                if (p->type == TEXTTYPE)
+                        KillText(p);
+                else
+-                       Free(p);
++                       Free((struct xobject*) p);
+                p = linkp;
+        }
+ }
+@@ -217,8 +217,8 @@
+  
+        IfTrace3((MustTraceCalls),"..Loc(S=%z, x=%f, y=%f)\n", S, &x, &y);
+  
+-       r = (struct segment *)Allocate(sizeof(struct segment), &movetemplate, 0);
+-       TYPECHECK("Loc", S, SPACETYPE, r, (0), struct segment *);
++       r = (struct segment *)Allocate(sizeof(struct segment), (struct xobject*) &movetemplate, 0);
++       TYPECHECK("Loc", (struct xobject*) S, SPACETYPE, (struct xobject*) r, (0), struct segment *);
+  
+        r->last = r;
+        r->context = S->context;
+@@ -238,8 +238,8 @@
+  
+        IfTrace3((MustTraceCalls),"..ILoc(S=%z, x=%d, y=%d)\n",
+                                     S, (LONG) x, (LONG) y);
+-       r = (struct segment *)Allocate(sizeof(struct segment), &movetemplate, 0);
+-       TYPECHECK("Loc", S, SPACETYPE, r, (0), struct segment *);
++       r = (struct segment *)Allocate(sizeof(struct segment), (struct xobject*) &movetemplate, 0);
++       TYPECHECK("Loc", (struct xobject*) S, SPACETYPE, (struct xobject*) r, (0), struct segment *);
+  
+        r->last = r;
+        r->context = S->context;
+@@ -264,8 +264,8 @@
+ {
+        IfTrace2((MustTraceCalls),"SubLoc(%z, %z)\n", p1, p2);
+  
+-       ARGCHECK(!ISLOCATION(p1), "SubLoc: bad first arg", p1, NULL, (0), struct segment *);
+-       ARGCHECK(!ISLOCATION(p2), "SubLoc: bad second arg", p2, NULL, (0), struct segment *);
++       ARGCHECK(!ISLOCATION(p1), "SubLoc: bad first arg", (struct xobject*) p1, NULL, (0), struct segment *);
++       ARGCHECK(!ISLOCATION(p2), "SubLoc: bad second arg", (struct xobject*) p2, NULL, (0), struct segment *);
+        p1 = UniquePath(p1);
+        p1->dest.x -= p2->dest.x;
+        p1->dest.y -= p2->dest.y;
+@@ -291,7 +291,7 @@
+ {
+        register struct segment *r;  /* newly created segment                 */
+  
+-       r = (struct segment *)Allocate(sizeof(struct segment), &movetemplate, 0);
++       r = (struct segment *)Allocate(sizeof(struct segment), (struct xobject*) &movetemplate, 0);
+        r->type = type;
+        r->last = r;          /* last points to itself for singleton          */
+        r->dest.x = x;
+@@ -308,7 +308,7 @@
+ {
+  
+        IfTrace1((MustTraceCalls),"..Line(%z)\n", P);
+-       ARGCHECK(!ISLOCATION(P), "Line: arg not a location", P, NULL, (0), struct segment *);
++       ARGCHECK(!ISLOCATION(P), "Line: arg not a location", (struct xobject*) P, NULL, (0), struct segment *);
+  
+        P = UniquePath(P);
+        P->type = LINETYPE;
+@@ -351,11 +351,11 @@
+        register struct beziersegment *r;  /* output segment                  */
+  
+        IfTrace3((MustTraceCalls),"..Bezier(%z, %z, %z)\n", B, C, D);
+-       ARGCHECK(!ISLOCATION(B), "Bezier: bad B", B, NULL, (2,C,D), struct beziersegment *);
+-       ARGCHECK(!ISLOCATION(C), "Bezier: bad C", C, NULL, (2,B,D), struct beziersegment *);
+-       ARGCHECK(!ISLOCATION(D), "Bezier: bad D", D, NULL, (2,B,C), struct beziersegment *);
++       ARGCHECK(!ISLOCATION(B), "Bezier: bad B", (struct xobject*) B, NULL, (2,C,D), struct beziersegment *);
++       ARGCHECK(!ISLOCATION(C), "Bezier: bad C", (struct xobject*) C, NULL, (2,B,D), struct beziersegment *);
++       ARGCHECK(!ISLOCATION(D), "Bezier: bad D", (struct xobject*) D, NULL, (2,B,C), struct beziersegment *);
+  
+-       r = (struct beziersegment *)Allocate(sizeof(struct beziersegment), &template, 0);
++       r = (struct beziersegment *)Allocate(sizeof(struct beziersegment), (struct xobject*) &template, 0);
+        r->last = (struct segment *) r;
+        r->dest.x = D->dest.x;
+        r->dest.y = D->dest.y;
+@@ -396,7 +396,7 @@
+  
+        register struct hintsegment *r;
+  
+-       r = (struct hintsegment *)Allocate(sizeof(struct hintsegment), &template, 0);
++       r = (struct hintsegment *)Allocate(sizeof(struct hintsegment), (struct xobject*) &template, 0);
+  
+        r->orientation = orientation;
+        if (width == 0.0)  width = 1.0;
+@@ -433,11 +433,11 @@
+ */
+ #define POP(p) \
+      { register struct segment *linkp; \
+-       linkp = p->link; \
++       linkp = (struct segment*) p->link; \
+        if (linkp != NULL) \
+-               linkp->last = p->last; \
+-       Free(p); \
+-       p = linkp; }
++               linkp->last = (struct segment*)p->last; \
++       Free((struct xobject*)p); \
++       p = (void*)linkp; }
+ /*
+ INSERT inserts a single segment in the middle of a chain.  'b' is
+ the segment before, 'p' the segment to be inserted, and 'a' the
+@@ -466,7 +466,7 @@
+                if (!ISPATHTYPE(p2->type)) {
+  
+                        if (p1 == NULL)
+-                               return((struct segment *)Unique(p2));
++                               return((struct segment *)Unique((struct xobject*) p2));
+  
+                        switch (p1->type) {
+  
+@@ -481,7 +481,7 @@
+                        }
+                }
+  
+-               ARGCHECK((p2->last == NULL), "Join: right arg not anchor", p2, NULL, (1,p1), struct segment *);
++               ARGCHECK((p2->last == NULL), "Join: right arg not anchor", (struct xobject*) p2, NULL, (1,p1), struct segment *);
+                p2 = UniquePath(p2);
+  
+ /*
+@@ -501,7 +501,7 @@
+                }
+        }
+        else
+-               return((struct segment *)Unique(p1));
++               return((struct segment *)Unique((struct xobject*) p1));
+  
+        if (p1 != NULL) {
+                if (!ISPATHTYPE(p1->type))
+@@ -518,7 +518,7 @@
+                                return((struct segment *)EndHandle(p1, p2));
+                        }
+  
+-               ARGCHECK((p1->last == NULL), "Join: left arg not anchor", p1, NULL, (1,p2), struct segment *);
++               ARGCHECK((p1->last == NULL), "Join: left arg not anchor", (struct xobject*) p1, NULL, (1,p2), struct segment *);
+                p1 = UniquePath(p1);
+        }
+        else
+@@ -555,7 +555,7 @@
+                        if (ISLOCATION(p1)) {
+                                p2->dest.x += p1->dest.x;
+                                p2->dest.y += p1->dest.y;
+-                               Free(p1);
++                               Free((struct xobject*) p1);
+                                return(p2);
+                        }
+                        else
+@@ -617,7 +617,7 @@
+        if (p0 != NULL && p0->type == TEXTTYPE)
+                return(UniquePath(p0));
+        if (p0->type == STROKEPATHTYPE)
+-               return((struct segment *)Unique(p0));
++               return((struct segment *)Unique((struct xobject*) p0));
+        /*
+        * NOTE: a null closed path is different from a null open path
+        * and is denoted by a closed (0,0) move segment.  We make
+@@ -625,7 +625,7 @@
+        */
+        if (p0 == NULL || p0->type != MOVETYPE)
+                p0 = JoinSegment(NULL, MOVETYPE, 0, 0, p0);
+-       TYPECHECK("ClosePath", p0, MOVETYPE, NULL, (0), struct segment *);
++       TYPECHECK("ClosePath", (struct xobject*) p0, MOVETYPE, NULL, (0), struct segment *);
+        if (p0->last->type != MOVETYPE)
+                p0 = JoinSegment(p0, MOVETYPE, 0, 0, NULL);
+  
+@@ -697,9 +697,9 @@
+ We need three subroutines:
+ */
+  
+-static struct segment *SplitPath(); /* break a path at any point             */
+-static struct segment *DropSubPath();  /* breaks a path after first sub-path */
+-static struct segment *ReverseSubPath();  /* reverses a single sub-path      */
++static struct segment *SplitPath(struct segment*, struct segment*); /* break a path at any point             */
++static struct segment *DropSubPath(struct segment*);  /* breaks a path after first sub-path */
++static struct segment *ReverseSubPath(struct segment*);  /* reverses a single sub-path      */
+  
+ /*
+ :h3.Reverse() - User Operator to Reverse a Path
+@@ -718,7 +718,7 @@
+        if (p == NULL)
+                return(NULL);
+  
+-       ARGCHECK(!ISPATHANCHOR(p), "Reverse: invalid path", p, NULL, (0), struct segment *);
++       ARGCHECK(!ISPATHANCHOR(p), "Reverse: invalid path", (struct xobject*) p, NULL, (0), struct segment *);
+  
+        if (p->type == TEXTTYPE)
+                p = CoerceText(p);
+@@ -882,7 +882,7 @@
+        if (p == NULL)
+                return(NULL);
+  
+-       ARGCHECK(!ISPATHANCHOR(p), "ReverseSubPaths: invalid path", p, NULL, (0), struct segment *);
++       ARGCHECK(!ISPATHANCHOR(p), "ReverseSubPaths: invalid path", (struct xobject*) p, NULL, (0), struct segment *);
+  
+        if (p->type == TEXTTYPE)
+                p = CoerceText(p);
+@@ -924,7 +924,7 @@
+        return(r);
+ }
+  
+-static UnClose(p0)
++static int UnClose(p0)
+        register struct segment *p0;
+ {
+        register struct segment *p;
+@@ -934,7 +934,7 @@
+        if (!LASTCLOSED(p->link->flag))
+                t1_abort("UnClose:  no LASTCLOSED");
+  
+-       Free(SplitPath(p0, p));
++       Free((struct xobject*) SplitPath(p0, p));
+        p0->flag &= ~ISCLOSED(ON);
+ }
+  
+@@ -1102,14 +1102,14 @@
+        IfTrace4((MustTraceCalls),"QueryLoc(P=%z, S=%z, (%x, %x))\n",
+                                             P, S, xP, yP);
+        if (!ISLOCATION(P)) {
+-               ArgErr("QueryLoc: first arg not a location", P, NULL);
++               ArgErr("QueryLoc: first arg not a location", (struct xobject*) P, NULL);
+                return;
+        }
+        if (S->type != SPACETYPE) {
+-               ArgErr("QueryLoc: second arg not a space", S, NULL);
++               ArgErr("QueryLoc: second arg not a space", (struct xobject*) S, NULL);
+                return;
+        }
+-       UnConvert(S, &P->dest, xP, yP);
++       UnConvert(S, (void*)&P->dest, xP, yP);
+ }
+ /*
+ :h3.QueryPath() - Find Out the Type of Segment at the Head of a Path
+@@ -1139,7 +1139,7 @@
+                return;
+        }
+        if (!ISPATHANCHOR(path)) {
+-               ArgErr("QueryPath: arg not a valid path", path, NULL);
++               ArgErr("QueryPath: arg not a valid path", (struct xobject*) path, NULL);
+        }
+        if (path->type == TEXTTYPE) {
+                path = CoerceText(path);
+@@ -1214,7 +1214,7 @@
+        IfTrace4((MustTraceCalls), " %x, %x, %x, %x)\n",
+                                   xminP, yminP, xmaxP, ymaxP);
+        if (S->type != SPACETYPE) {
+-               ArgErr("QueryBounds:  bad XYspace", S, NULL);
++               ArgErr("QueryBounds:  bad XYspace", (struct xobject*) S, NULL);
+                return;
+        }
+  
+@@ -1224,10 +1224,10 @@
+                        switch(p0->type) {
+                            case STROKEPATHTYPE:
+       /* replaced DupStrokePath() with Dup() 3-26-91 PNM */
+-                               p0 = (struct segment *) DoStroke(Dup(p0));
++                               p0 = (struct segment *) DoStroke(Dup((struct xobject*) p0));
+                                /* no break here, we have a region in p0 */
+                            case REGIONTYPE:
+-                               p0 = RegionBounds(p0);
++                               p0 = RegionBounds((struct region*)p0);
+                                break;
+  
+                            case PICTURETYPE:
+@@ -1235,14 +1235,14 @@
+                                break;
+  
+                            default:
+-                               ArgErr("QueryBounds:  bad object", p0, NULL);
++                               ArgErr("QueryBounds:  bad object", (struct xobject*) p0, NULL);
+                                return;
+                        }
+                        coerced = TRUE;
+                }
+                if (p0->type == TEXTTYPE) {
+     /* replaced CopyPath() with Dup() 3-26-91 PNM */
+-                       p0 = (struct segment *)CoerceText(Dup(p0));  /* there are faster ways */
++                       p0 = (struct segment *)CoerceText(Dup((struct xobject*) p0));  /* there are faster ways */
+                        coerced = TRUE;
+                }
+                if (p0->type == MOVETYPE) {
+@@ -1359,7 +1359,7 @@
+        else if (y4 > *ymaxP)  *ymaxP = y4;
+  
+        if (coerced)
+-               Destroy(p0);
++               Destroy((struct xobject*) p0);
+ }
+ /*
+ :h3.BoxPath()
+@@ -1390,7 +1390,7 @@
+        if (path != NULL && path->type == STROKEPATHTYPE)
+                path = CoercePath(path);
+        ARGCHECK((path == NULL || !ISPATHANCHOR(path)),
+-                 "DropSegment: arg not a non-null path", path, path, (0), struct segment *);
++                 "DropSegment: arg not a non-null path", (struct xobject*) path, (struct xobject*) path, (0), struct segment *);
+        if (path->type == TEXTTYPE)
+                path = CoerceText(path);
+        path = UniquePath(path);
+@@ -1413,7 +1413,7 @@
+                return(NULL);
+        if (path->type == STROKEPATHTYPE)
+                path = CoercePath(path);
+-       ARGCHECK(!ISPATHANCHOR(path), "HeadSegment: arg not a path", path, path, (0), struct segment *);
++       ARGCHECK(!ISPATHANCHOR(path), "HeadSegment: arg not a path", (struct xobject*) path, (struct xobject*) path, (0), struct segment *);
+        if (path->type == TEXTTYPE)
+                path = CoerceText(path);
+        path = UniquePath(path);
+--- texlive-20080816-source/texk/ps2pkm/paths.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/paths.h	2025-09-25 20:09:37.729138835 +0200
+@@ -28,6 +28,8 @@
+  */
+ /*SHARED*/
+ 
++#pragma once
++
+ #include "types.h"
+ 
+ #define   Loc(S,x,y)                   t1_Loc(S,(DOUBLE)x,(DOUBLE)y)
+@@ -51,27 +53,31 @@
+ #define   QueryLoc(P,S,x,y)            t1_QueryLoc(P,S,x,y)
+ #define   QueryPath(p,t,B,C,D,r)       t1_QueryPath(p,t,B,C,D,r)
+ #define   QueryBounds(p,S,x1,y1,x2,y2)  t1_QueryBounds(p,S,x1,y1,x2,y2)
++#define    DumpPath(path)    t1_DumpPath(path)
++#define    DumpText(text)    t1_DumpText(text)
+  
+  
+-struct segment *t1_Loc();     /* create a location object (or "move" segment) */
+-struct segment *t1_ILoc();    /* integer argument version of same             */
+-struct segment *t1_Line();    /* straight line path segment                   */
+-struct segment *t1_Join();    /* join two paths or regions together           */
+-struct segment *t1_ClosePath();  /* close a path or path set                  */
++struct segment *t1_Loc(struct XYspace*,DOUBLE,DOUBLE);     /* create a location object (or "move" segment) */
++struct segment *t1_ILoc(struct XYspace*, int, int);    /* integer argument version of same             */
++struct segment *t1_Line(struct segment*);    /* straight line path segment                   */
++struct segment *t1_Join(struct segment*, struct segment*);    /* join two paths or regions together           */
++struct segment *t1_ClosePath(struct segment*, int);  /* close a path or path set                  */
+ struct conicsegment *t1_Conic();  /* conic curve path segment                 */
+ struct conicsegment *t1_RoundConic();  /* ditto, specified another way        */
+ struct conicsegment *t1_ArcP3(); /* circular path segment with three points   */
+ struct conicsegment *t1_ArcCA(); /* ditto, with center point and angle        */
+-struct beziersegment *t1_Bezier();  /* Bezier third order curve path segment  */
+-struct hintsegment *t1_Hint();  /* produce a font 'hint' path segment         */
+-struct segment *t1_Reverse(); /* reverse the complete order of paths          */
+-struct segment *t1_ReverseSubPaths();  /* reverse only sub-paths; moves unchanged */
+-struct segment *t1_SubLoc();  /* subtract two location objects                */
+-struct segment *t1_DropSegment();  /* Drop the first segment in a path        */
+-struct segment *t1_HeadSegment();  /* return the first segment in a path      */
+-void t1_QueryLoc();           /* Query location; return its (x,y)             */
+-void t1_QueryPath();          /* Query segment at head of a path              */
+-void t1_QueryBounds();        /* Query the bounding box of a path             */
++struct beziersegment *t1_Bezier(struct segment*,struct segment*,struct segment*);  /* Bezier third order curve path segment  */
++struct hintsegment *t1_Hint(struct XYspace *, float, float, char, char, char, char, int);  /* produce a font 'hint' path segment         */
++struct segment *t1_Reverse(struct segment*); /* reverse the complete order of paths          */
++struct segment *t1_ReverseSubPaths(struct segment*);  /* reverse only sub-paths; moves unchanged */
++struct segment *t1_SubLoc(struct segment*, struct segment*);  /* subtract two location objects                */
++struct segment *t1_DropSegment(struct segment*);  /* Drop the first segment in a path        */
++struct segment *t1_HeadSegment(struct segment*);  /* return the first segment in a path      */
++void t1_QueryLoc(struct segment*, struct XYspace*, DOUBLE*, DOUBLE*);           /* Query location; return its (x,y)             */
++void t1_QueryPath(struct segment*,int*,struct segment**,struct segment**,struct segment**,DOUBLE*);          /* Query segment at head of a path              */
++void t1_QueryBounds(struct segment*,struct XYspace*,DOUBLE*,DOUBLE*,DOUBLE*,DOUBLE*);        /* Query the bounding box of a path             */
++void t1_DumpPath(struct segment*);           /* dump a path list                             */
++void t1_DumpText(struct segment*);           /* dump a textpath structure                    */
+  
+ /*END SHARED*/
+ /*SHARED*/
+@@ -86,14 +92,14 @@
+ #define   Hypoteneuse(dx,dy)      t1_Hypoteneuse(dx,dy)
+ #define   BoxPath(S,h,w)          t1_BoxPath(S,h,w)
+  
+-struct segment *t1_CopyPath(); /* duplicate a path                            */
+-void t1_KillPath();           /* destroy a path                               */
+-struct segment *t1_PathXform();  /* transform a path arbitrarily              */
+-void t1_PathDelta();          /* calculate the ending point of a path         */
+-struct segment *t1_PathSegment(); /* produce a MOVE or LINE segment           */
+-struct segment *t1_JoinSegment(); /* join a MOVE or LINE segment to a path    */
++struct segment *t1_CopyPath(struct segment*); /* duplicate a path                            */
++void t1_KillPath(struct segment*);           /* destroy a path                               */
++struct segment *t1_PathXform(struct segment*, struct XYspace*);  /* transform a path arbitrarily              */
++void t1_PathDelta(struct segment*, struct fractpoint*);          /* calculate the ending point of a path         */
++struct segment *t1_PathSegment(int, fractpel, fractpel); /* produce a MOVE or LINE segment           */
++struct segment *t1_JoinSegment(struct segment *, int, fractpel, fractpel, struct segment *); /* join a MOVE or LINE segment to a path    */
+ DOUBLE t1_Hypoteneuse();      /* returns the length of a line                 */
+-struct segment *t1_BoxPath();   /* returns a rectangular path                 */
++struct segment *t1_BoxPath(struct XYspace*,int,int);   /* returns a rectangular path                 */
+  
+ /*END SHARED*/
+ /*SHARED*/
+--- texlive-20080816-source/texk/ps2pkm/pictures.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/pictures.h	2025-09-25 23:48:57.210426003 +0200
+@@ -44,5 +44,5 @@
+ #define    Phantom(o)             t1_Phantom(o)
+ #define    Snap(o)                t1_Snap(o)
+  
+-struct segment *t1_Phantom();
+-struct segment *t1_Snap();
++struct segment *t1_Phantom(struct xobject*);
++struct segment *t1_Snap(struct segment*);
+--- texlive-20080816-source/texk/ps2pkm/pk2bm.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/pk2bm.c	2025-09-25 01:48:22.442338401 +0200
+@@ -33,13 +33,14 @@
+ #include <stdio.h>
+ #include "pkin.h"
+ 
++void dots(quarterword u, int n);
++quarterword lsbf(quarterword u);
++
+ int main(int argc, char *argv[])
+ {
+    int done, C = 0, c, h = 0, w = 0, row, col;
+    unsigned int bitmap = 0, hexmap = 0;
+    halfword *word;
+-   quarterword lsbf();
+-   void dots();
+    chardesc cd;
+    char *myname = "pk2bm", *pkname;
+    int atoo(char *);
+--- texlive-20080816-source/texk/ps2pkm/pkin.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/pkin.c	2025-09-25 01:53:17.313982562 +0200
+@@ -25,7 +25,7 @@
+ /*
+  * Forward declaration
+  */
+-static void error();
++static void error(char*);
+ 
+ /*
+  *   Now we have some routines to get stuff from the pk file.  pkbyte returns
+@@ -149,7 +149,7 @@
+ 
+ static halfword (*realfunc)() ;
+ long PKremainder ;
+-static halfword handlehuge() ;
++static halfword handlehuge(unsigned short, unsigned short) ;
+ 
+ static halfword pkpackednum () {
+ register halfword i, j ; 
+--- texlive-20080816-source/texk/ps2pkm/pkin.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/pkin.h	2025-09-25 01:45:45.066714255 +0200
+@@ -58,4 +58,4 @@
+    halfword *raster ;
+ } chardesc ;
+ 
+-int readchar();
++int readchar(char name[], shalfword c, chardesc *cd);
+--- texlive-20080816-source/texk/ps2pkm/ps2pk.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/ps2pk.c	2025-09-26 00:05:12.335812597 +0200
+@@ -201,7 +201,10 @@
+ FontEntryRec entry;
+ #define Succesful	85
+ 
+-extern int  Type1OpenScalable ();
++extern int Type1OpenScalable(char **ev, struct _Font **ppFont, int flags,
++		      struct _FontEntry *entry, char *fileName,
++		      struct _FontScalable *vals, fsBitmapFormat format,
++		      ULONG fmask, double efactor,double slant);
+ extern int  Type1RegisterFontFileFunctions();
+ extern void Type1CloseFont();
+ 
+@@ -231,7 +234,7 @@
+ UINT32 old_checksum(encoding, int [256]);
+ UINT32 (*pchecksum)(encoding, int [256]) = checksum;
+ 
+-main(argc, argv)
++int main(argc, argv)
+ int argc; char *argv[];
+ {  char *argp, c;
+    int done, i;
+@@ -673,7 +676,7 @@
+        return (long)p;
+ }
+ 
+-GetClientResolutions(resP)
++int GetClientResolutions(resP)
+        int *resP;
+ {
+        *resP = 0;
+@@ -702,9 +705,9 @@
+  
+ void FontFileRegisterRenderer() { ; }
+  
+-GenericGetBitmaps() { ; }
+-GenericGetExtents() { ; }
++int GenericGetBitmaps() { ; }
++int GenericGetExtents() { ; }
+  
+ void FontParseXLFDName() { ; }
+-FontComputeInfoAccelerators() { ; }
++int FontComputeInfoAccelerators() { ; }
+ #endif
+--- texlive-20080816-source/texk/ps2pkm/regions.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/regions.c	2025-09-25 20:15:46.087988016 +0200
+@@ -51,7 +51,7 @@
+ #include  "fonts.h"
+ #include  "hints.h"
+ #include  "strokes.h"      /* to pick up 'DoStroke'                        */
+-static int Unwind();
++static int Unwind(struct edgelist*);
+ #ifdef HAVE_PROTOTYPES
+ static void newfilledge(register struct region *, fractpel, fractpel,
+ 			fractpel, fractpel, int);
+@@ -68,11 +68,11 @@
+ static int edgemin();
+ static int edgemax();
+ #endif
+-static struct edgelist *splitedge();
+-static int touches();
+-static int crosses();
+-static int edgecheck();
+-static struct edgelist *NewEdge();
++static struct edgelist *splitedge(struct edgelist*,pel);
++static int touches(int, pel*, pel*);
++static int crosses(int, pel*, pel*);
++static int edgecheck(struct edgelist *, int, int);
++static struct edgelist *NewEdge(pel,pel,pel,pel,pel*,int);
+  
+ /*
+ :h3.Functions Provided to the TYPE1IMAGER User
+@@ -249,11 +249,11 @@
+  
+         for (p=area->anchor; p != NULL; p=next) {
+                next = p->link;
+-               Free(p);
++               Free((struct xobject*) p);
+         }
+         if (area->thresholded != NULL)
+                  KillPicture(area->thresholded);
+-        Free(area);
++        Free((struct xobject*) area);
+ }
+ /*
+ :h3.CopyRegion() - Makes a Copy of a Region
+@@ -265,7 +265,7 @@
+         register struct edgelist *last;  /* loop variable                    */
+         register struct edgelist *p,*newp;  /* loop variables                */
+  
+-        r = (struct region *)Allocate(sizeof(struct region), area, 0);
++        r = (struct region *)Allocate(sizeof(struct region), (struct xobject*) area, 0);
+         r->anchor = NULL;
+  
+         for (p=area->anchor; VALIDEDGE(p); p=p->link) {
+@@ -280,7 +280,7 @@
+         }
+         if (area->thresholded != NULL)
+     /* replaced DupPicture with Dup() 3-26-91 PNM */
+-               r->thresholded = (struct picture *)Dup(area->thresholded);
++               r->thresholded = (struct picture *)Dup((struct xobject*) area->thresholded);
+         return(r);
+ }
+ /*
+@@ -321,7 +321,7 @@
+ #else
+        iy = ymin - (((int) xvalues) & (sizeof(LONG) - 1)) / sizeof(pel);
+ #endif 
+-       r = (struct edgelist *)Allocate(sizeof(struct edgelist), &template,
++       r = (struct edgelist *)Allocate(sizeof(struct edgelist), (struct xobject*) &template,
+                              (ymax - iy) * sizeof(pel));
+  
+        if (isdown) r->flag = ISDOWN(ON);
+@@ -416,10 +416,10 @@
+                else
+                        p = CoercePath(p);
+  
+-       R = (struct region *)Allocate(sizeof(struct region), &EmptyRegion, 0);
++       R = (struct region *)Allocate(sizeof(struct region), (struct xobject*) &EmptyRegion, 0);
+  
+-       ARGCHECK(!ISPATHANCHOR(p), "Interior:  bad path", p, R, (0), struct region *);
+-       ARGCHECK((p->type != MOVETYPE), "Interior:  path not closed", p, R, (0), struct region *);
++       ARGCHECK(!ISPATHANCHOR(p), "Interior:  bad path", (struct xobject*) p, (struct xobject*) R, (0), struct region *);
++       ARGCHECK((p->type != MOVETYPE), "Interior:  path not closed", (struct xobject*) p, (struct xobject*) R, (0), struct region *);
+  
+  
+ /* changed definition from !ISPERMANENT to references <= 1 3-26-91 PNM */
+@@ -497,14 +497,14 @@
+  
+                while ((nextP != NULL) && (nextP->type == HINTTYPE))  {
+                        if (ProcessHints)
+-                               ProcessHint(nextP, x + hint.x, y + hint.y, &hint);
++                               ProcessHint((struct hintsegment*)nextP, x + hint.x, y + hint.y, &hint);
+  
+                        {
+                                register struct segment *saveP = nextP;
+  
+                                nextP = nextP->link;
+                                if (tempflag)
+-                                       Free(saveP);
++                                       Free((struct xobject*) saveP);
+                        }
+                }
+  
+@@ -563,7 +563,7 @@
+ MOVETYPE at the end of the path, if it isn't closed:
+ */
+                        if (!ISCLOSED(p->flag) && p->link != NULL)
+-                               return((struct region *)ArgErr("Fill: sub-path not closed", p, NULL));
++                               return((struct region *)ArgErr("Fill: sub-path not closed", (struct xobject*) p, NULL));
+                        break;
+  
+                    default:
+@@ -576,7 +576,7 @@
+                lastx = x;  lasty = y;
+  
+                if (tempflag)
+-                       Free(p);
++                       Free((struct xobject*) p);
+                p = nextP;
+        }
+        ChangeDirection(CD_LAST, R, lastx, lasty, (fractpel) 0);
+@@ -758,7 +758,7 @@
+        int isdown;           /* flag:  TRUE means edge goes down, else up    */
+ #endif
+ {
+-       struct edgelist *swathxsort();  /* 'SortSwath' function               */
++       struct edgelist *swathxsort(struct edgelist*, struct edgelist*);  /* 'SortSwath' function               */
+  
+        register pel pelxmin,pelymin,pelxmax,pelymax;  /* pel versions of bounds */
+        register struct edgelist *edge;  /* newly created edge                */
+@@ -813,7 +813,7 @@
+ struct edgelist *SortSwath(anchor, edge, swathfcn)
+        struct edgelist *anchor;  /* list being built                         */
+        register struct edgelist *edge;  /* incoming edge or pair of edges    */
+-       struct edgelist *(*swathfcn)();  /* horizontal sorter                 */
++       struct edgelist *(*swathfcn)(struct edgelist *, struct edgelist *);  /* horizontal sorter                 */
+ {
+        register struct edgelist *before,*after;
+        struct edgelist base;
+@@ -946,7 +946,7 @@
+                if (y == list->ymin)
+                        t1_abort("splitedge: would be null");
+  
+-               r = (struct edgelist *)Allocate(sizeof(struct edgelist), list, 0);
++               r = (struct edgelist *)Allocate(sizeof(struct edgelist), (struct xobject*) list, 0);
+ /*
+ At this point 'r' points to a copy of the single structure at 'list'.
+ We will make 'r' be the new split 'edgelist'--the lower half.
+@@ -1482,7 +1482,7 @@
+ /*
+ */
+  
+-static OptimizeRegion(R)
++static int OptimizeRegion(R)
+        struct region *R;     /* region to optimize                           */
+ {
+        register pel *xP;     /* pel pointer for inner loop                   */
+--- texlive-20080816-source/texk/ps2pkm/regions.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/regions.h	2025-09-25 20:13:12.502637293 +0200
+@@ -27,6 +27,8 @@
+  * THIS SOFTWARE.
+  */
+ /*SHARED*/
++
++#include "paths.h"
+  
+ #define   Interior(p,rule)        t1_Interior(p,rule)
+ #define   Union(a1,a2)            t1_Union(a1,a2)
+@@ -34,7 +36,7 @@
+ #define   Complement(area)        t1_Complement(area)
+ #define   Overlap(a1,a2)          t1_OverLap(a1,a2)
+  
+-struct region *t1_Interior(); /* returns the interior of a closed path        */
++struct region *t1_Interior(struct segment*,int); /* returns the interior of a closed path        */
+ struct region *t1_Union();   /* set union of paths or regions                */
+ struct region *t1_Intersect();  /* set intersection of regions                */
+ struct region *t1_Complement();  /* complement of a region                    */
+@@ -47,11 +49,11 @@
+  
+ #define   ChangeDirection(type,R,x,y,dy)  t1_ChangeDirection(type,R,x,y,dy)
+  
+-void t1_ChangeDirection();    /* called when we change direction in Y         */
++void t1_ChangeDirection(int, struct region*, fractpel, fractpel, fractpel);    /* called when we change direction in Y         */
+ #define   CD_FIRST         -1  /* enumeration of ChangeDirection type       */
+ #define   CD_CONTINUE       0  /* enumeration of ChangeDirection type        */
+ #define   CD_LAST           1  /* enumeration of ChangeDirection type        */
+- 
++
+ #define    MoreWorkArea(R,x1,y1,x2,y2)     t1_MoreWorkArea(R,x1,y1,x2,y2)
+ #define    KillRegion(area)   t1_KillRegion(area)
+ #define    CopyRegion(area)   t1_CopyRegion(area)
+@@ -62,17 +64,21 @@
+ #define    CoerceRegion(p)    t1_CoerceRegion(p)
+ #define    MoveEdges(R,dx,dy) t1_MoveEdges(R,dx,dy)
+ #define    UnJumble(R)        t1_UnJumble(R)
++#define    DumpArea(area)    t1_DumpArea(area)
++#define    DumpEdges(e)      t1_DumpEdges(e)
+  
+-void t1_MoreWorkArea();       /* get longer edge list for stepping            */
+-struct region *t1_CopyRegion();  /* duplicate a region                       */
+-void t1_KillRegion();         /* destroy a region                             */
+-struct region *t1_BoxClip();  /* clip a region to a rectangle                 */
+-struct edgelist *t1_SortSwath();  /* sort edges onto growing edge list        */
+-struct edgelist *t1_SwathUnion();  /* 'union' two edges into a swath          */
+-struct segment *t1_RegionBounds();  /* returns bounding box of a region       */
++void t1_MoreWorkArea(struct region*, fractpel, fractpel, fractpel, fractpel);       /* get longer edge list for stepping            */
++struct region *t1_CopyRegion(struct region*);  /* duplicate a region                       */
++void t1_KillRegion(struct region*);         /* destroy a region                             */
++struct region *t1_BoxClip(struct region*, pel, pel, pel, pel);  /* clip a region to a rectangle                 */
++struct edgelist *t1_SortSwath(struct edgelist *,struct edgelist *,struct edgelist *(*)(struct edgelist *, struct edgelist *));  /* sort edges onto growing edge list        */
++struct edgelist *t1_SwathUnion(struct edgelist*, struct edgelist*);  /* 'union' two edges into a swath          */
++struct segment *t1_RegionBounds(struct region*);  /* returns bounding box of a region       */
+ struct region *t1_CoerceRegion();  /* force text to become a true region      */
+-void t1_MoveEdges();          /* moves the edge values in a region            */
+-void t1_UnJumble();           /* sort the edges and reset the jumbled flag    */
++void t1_MoveEdges(struct region*, fractpel, fractpel);          /* moves the edge values in a region            */
++void t1_UnJumble(struct region*);           /* sort the edges and reset the jumbled flag    */
++void t1_DumpArea(struct region*);           /* dump a region structure                      */
++void t1_DumpEdges(struct edgelist*);          /* dump a region's edge list                    */
+  
+ /*END SHARED*/
+ /*SHARED*/
+--- texlive-20080816-source/texk/ps2pkm/spaces.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/spaces.c	2025-09-25 21:33:18.637147821 +0200
+@@ -46,8 +46,8 @@
+ #include "arith.h"
+ #include "trig.h"
+ 
+-static void FindFfcn();
+-static void FindIfcn();
++static void FindFfcn(DOUBLE, DOUBLE, fractpel (**)(DOUBLE,DOUBLE,DOUBLE,DOUBLE));
++static void FindIfcn(DOUBLE, DOUBLE, fractpel*, fractpel*, fractpel (**)(fractpel, fractpel, LONG, LONG));
+ /*
+ :h3.Entry Points Provided to the TYPE1IMAGER User
+ */
+@@ -125,7 +125,7 @@
+ struct XYspace *CopySpace(S)
+        register struct XYspace *S;
+ {
+-       S = (struct XYspace *)Allocate(sizeof(struct XYspace), S, 0);
++       S = (struct XYspace *)Allocate(sizeof(struct XYspace), (struct xobject*) S, 0);
+        S->ID = NEXTID;
+        return(S);
+ }
+@@ -704,7 +704,7 @@
+        if (ISPATHTYPE(obj->type)) {
+                struct XYspace pseudo;  /* local temporary space              */
+                PseudoSpace(&pseudo, M);
+-               return((struct xobject *) PathTransform(obj, &pseudo));
++               return((struct xobject *) PathTransform((struct segment*)obj, &pseudo));
+        }
+  
+  
+@@ -940,7 +940,7 @@
+        DOUBLE M[2][2];       /* temp matrix to build user's answer           */
+  
+        if (S->type != SPACETYPE) {
+-               ArgErr("QuerySpace: not a space", S, NULL);
++               ArgErr("QuerySpace: not a space", (struct xobject*) S, NULL);
+                return;
+        }
+        MatrixMultiply(S->tofract.normal, IDENTITY->tofract.inverse, M);
+--- texlive-20080816-source/texk/ps2pkm/spaces.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/spaces.h	2025-09-25 21:34:55.300888320 +0200
+@@ -29,6 +29,13 @@
+ /*SHARED*/
+ 
+ #include "types.h"
++ 
++typedef SHORT pel;           /* integer pel locations                        */
++typedef LONG fractpel;       /* fractional pel locations                     */
++ 
++struct fractpoint {
++       fractpel x,y;
++} ;
+ 
+ #define   USER                       t1_User
+ #define   IDENTITY                   t1_Identity
+@@ -41,11 +48,11 @@
+ #define   Warp(s1,o,s2)              t1_Warp(s1,o,s2)
+  
+ struct XYspace *t1_Context(); /* creates a coordinate space for a device      */
+-struct xobject *t1_Transform();  /* transform an object                       */
++struct xobject *t1_Transform(struct xobject*, DOUBLE, DOUBLE, DOUBLE, DOUBLE);  /* transform an object                       */
+ struct xobject *t1_Rotate();  /* rotate an object                             */
+-struct xobject *t1_Scale();   /* scale an object                              */
++struct xobject *t1_Scale(struct xobject*,DOUBLE,DOUBLE);   /* scale an object                              */
+ struct xobject *t1_Warp();    /* transform like delta of two spaces           */
+-void t1_QuerySpace();         /* returns coordinate space matrix              */
++void t1_QuerySpace(struct XYspace*, DOUBLE*, DOUBLE*, DOUBLE*, DOUBLE*);         /* returns coordinate space matrix              */
+  
+ /*END SHARED*/
+ /*SHARED*/
+@@ -59,15 +66,20 @@
+ #define   MatrixInvert(A,B)        t1_MInvert(A,B)
+ #define   PseudoSpace(S,M)   t1_PseudoSpace(S,M)
+ #define   FindContext(M)     t1_FindContext(M)
++#define    DumpSpace(space)  t1_DumpSpace(space)
++#define    FormatFP(s,p)     t1_FormatFP(s,p)
+  
+ void t1_InitSpaces();         /* initialize pre-defined coordinate spaces     */
+-struct XYspace *t1_CopySpace(); /* duplicate a coordinate space               */
+-struct xobject *t1_Xform();   /* transform object by matrix                   */
+-void t1_UnConvert();          /* return user coordinates from device coordinates */
+-void t1_MMultiply();          /* multiply two matrices                        */
+-void t1_MInvert();            /* invert a matrix                              */
+-void t1_PseudoSpace();        /* force a coordinate space from a matrix       */
++struct XYspace *t1_CopySpace(struct XYspace*); /* duplicate a coordinate space               */
++struct xobject *t1_Xform(struct xobject*, DOUBLE[2][2]);   /* transform object by matrix                   */
++void t1_UnConvert(struct XYspace*, struct fractpoint*, DOUBLE*, DOUBLE*);          /* return user coordinates from device coordinates */
++void t1_MMultiply(DOUBLE[2][2], DOUBLE[2][2], DOUBLE[2][2]);          /* multiply two matrices                        */
++void t1_MInvert(DOUBLE[2][2], DOUBLE[2][2]);            /* invert a matrix                              */
++void t1_PseudoSpace(struct XYspace*, DOUBLE[2][2]);        /* force a coordinate space from a matrix       */
+ int t1_FindContext();         /* return the "context" represented by a matrix */
++void t1_DumpSpace(struct XYspace*);          /* dump a coordinate space structure            */
++void t1_FormatFP(char*, fractpel);           /* dump a format a "fractpel" coordinate        */
++ 
+  
+ /*END SHARED*/
+ /*SHARED*/
+@@ -78,7 +90,7 @@
+  
+ #define KillSpace(s)      if ( (--(s->references) == 0) ||\
+                       ( (s->references == 1) && ISPERMANENT(s->flag) ) )\
+-                        Free(s)
++                        Free((struct xobject*)(s))
+  
+ #define    ConsumeSpace(s)  MAKECONSUME(s,KillSpace(s))
+ #define    UniqueSpace(s)   MAKEUNIQUE(s,CopySpace(s))
+@@ -86,9 +98,6 @@
+ /*END SHARED*/
+ /*SHARED*/
+  
+-typedef SHORT pel;           /* integer pel locations                        */
+-typedef LONG fractpel;       /* fractional pel locations                     */
+- 
+ #define   FRACTBITS     16   /* number of fractional bits in 'fractpel'      */
+ /*
+ We define the following macros to convert from 'fractpel' to 'pel' and
+@@ -113,12 +122,12 @@
+ struct XYspace {
+        XOBJ_COMMON           /* xobject common data define 3-26-91 PNM       */
+ 			     /* type = SPACETYPE			     */
+-       void (*convert)();     /* calculate "fractpoint" X,Y from float X,Y    */
+-       void (*iconvert)();    /* calculate "fractpoint" X,Y from int X,Y      */
+-       fractpel (*xconvert)();  /* subroutine of convert                     */
+-       fractpel (*yconvert)();  /* subroutine of convert                     */
+-       fractpel (*ixconvert)();  /* subroutine of iconvert                   */
+-       fractpel (*iyconvert)();  /* subroutine of iconvert                   */
++       void (*convert)(struct fractpoint*, struct XYspace*, DOUBLE, DOUBLE);     /* calculate "fractpoint" X,Y from float X,Y    */
++       void (*iconvert)(struct fractpoint*, struct XYspace*, LONG, LONG);    /* calculate "fractpoint" X,Y from int X,Y      */
++       fractpel (*xconvert)(DOUBLE, DOUBLE, DOUBLE, DOUBLE);  /* subroutine of convert                     */
++       fractpel (*yconvert)(DOUBLE, DOUBLE, DOUBLE, DOUBLE);  /* subroutine of convert                     */
++       fractpel (*ixconvert)(fractpel, fractpel, LONG, LONG);  /* subroutine of iconvert                   */
++       fractpel (*iyconvert)(fractpel, fractpel, LONG, LONG);  /* subroutine of iconvert                   */
+        int ID;               /* unique identifier (used in font caching)     */
+        unsigned char context;  /* device context of coordinate space         */
+        struct doublematrix tofract;  /* xform to get to fractional pels      */
+@@ -130,10 +139,6 @@
+ /*END SHARED*/
+ /*SHARED*/
+  
+-struct fractpoint {
+-       fractpel x,y;
+-} ;
+- 
+ /*END SHARED*/
+ /*SHARED*/
+  
+--- texlive-20080816-source/texk/ps2pkm/t1funcs.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/t1funcs.c	2025-09-25 21:55:42.309806008 +0200
+@@ -204,23 +204,23 @@
+ 	  int rc;
+ 	  QueryFontLib(fileName,"FontMatrix",fontmatrix,&rc);
+ 	  if (!rc) {
+-	     S = (struct XYspace *) Transform(IDENTITY,
++	     S = (struct XYspace *) Transform((struct xobject*) IDENTITY,
+ 		    fontmatrix[0], fontmatrix[1], fontmatrix[2], fontmatrix[3]);
+ 	  }
+ 	  else {
+-   	     S = (struct XYspace *) Scale(IDENTITY,0.001,0.001);
++   	     S = (struct XYspace *) Scale((struct xobject*) IDENTITY,0.001,0.001);
+ 	  }
+        }
+        /* End of additional code */
+        
+        if (efactor == 1.0 && slant == 0.0)
+-	  S = (struct XYspace *)Permanent(Scale(S, scale, - scale));
++	  S = (struct XYspace *)Permanent(Scale((struct xobject*)S, scale, - scale));
+        else {
+           txx = (DOUBLE)vals->x * efactor * vals->point / DECIPOINTSPERINCH;
+           tyy = (DOUBLE)vals->y * vals->point / DECIPOINTSPERINCH;
+           tyx = 0.0;
+           txy = (DOUBLE)vals->x * slant * vals->point / DECIPOINTSPERINCH;
+-          S = (struct XYspace *) Permanent(Transform(S, txx, tyx, txy, -tyy));
++          S = (struct XYspace *) Permanent(Transform((struct xobject*)S, txx, tyx, txy, -tyy));
+        }
+  
+        glyphs = type1->glyphs;
+@@ -279,7 +279,7 @@
+                        fill(glyphs[i].bits, h, paddedW, area, byte, bit, wordsize );
+                }
+  
+-               Destroy(area);
++               Destroy((struct xobject*) area);
+        }
+ 
+        if (i != 256 - FIRSTCOL) {
+@@ -542,7 +542,7 @@
+        }
+ }
+  
+- 
++
+ static FontRendererRec renderers[] = {
+   { ".pfa", 4, (int (*)()) 0, Type1OpenScalable,
+         (int (*)()) 0, Type1GetInfoScalable, 0 },
+@@ -550,7 +550,7 @@
+         (int (*)()) 0, Type1GetInfoScalable, 0 }
+ };
+  
+-Type1RegisterFontFileFunctions()
++int Type1RegisterFontFileFunctions()
+ {
+     int i;
+  
+--- texlive-20080816-source/texk/ps2pkm/t1imager.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/t1imager.h	2025-09-25 12:39:35.401508194 +0200
+@@ -43,18 +43,18 @@
+ */
+ extern path    t1_Bezier();
+ extern path    t1_ClosePath();
+-extern xobject t1_Destroy();
++extern xobject t1_Destroy(xobject);
+ extern xobject t1_Dup();
+ extern char   *t1_ErrorMsg();
+ extern void    t1_InitImager();
+-extern region  t1_Interior();
++extern region  t1_Interior(struct segment *,int);
+ extern location  t1_ILoc();
+ extern xobject t1_Join();
+ extern path    t1_Line();
+-extern xobject t1_Permanent();
++extern xobject t1_Permanent(xobject);
+ extern path    t1_Phantom();
+ extern location   t1_Loc();
+-extern xobject t1_Scale();
++extern xobject t1_Scale(xobject,DOUBLE,DOUBLE);
+ extern xobject t1_Snap();
+ extern location  t1_SubLoc();
+ extern xobject t1_Temporary();
+--- texlive-20080816-source/texk/ps2pkm/t1io.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/t1io.c	2025-09-25 21:58:32.911308291 +0200
+@@ -59,10 +59,7 @@
+ STATIC unsigned char TheBuffer[F_BUFSIZ];
+  
+ /* Our routines */
+-F_FILE *T1Open(), *T1Eexec();
+-int T1Close();
+-int T1Read(), T1Getc(), T1Ungetc();
+-STATIC int T1Decrypt(), T1Fill();
++STATIC int T1Decrypt(unsigned char*, int), T1Fill(F_FILE*);
+  
+ /* -------------------------------------------------------------- */
+ /*ARGSUSED*/
+--- texlive-20080816-source/texk/ps2pkm/t1snap.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/t1snap.c	2025-09-25 21:59:33.461544379 +0200
+@@ -48,7 +48,7 @@
+        if (obj == NULL)
+                pt.x = pt.y = 0;
+        else
+-               PathDelta(obj, &pt);
++               PathDelta((struct segment*)obj, &pt);
+  
+        return(PathSegment(MOVETYPE, pt.x, pt.y));
+ }
+--- texlive-20080816-source/texk/ps2pkm/t1stdio.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/t1stdio.h	2025-09-25 21:00:28.903542554 +0200
+@@ -96,8 +96,11 @@
+    T1Getc(f) \
+   )
+  
+-extern FILE *T1Open(), *T1eexec();
+-extern int T1Close(), T1ungetc(), T1Read();
++extern FILE *T1Open(char*, char*);
++extern FILE *T1eexec(F_FILE*);
++extern int T1Close(F_FILE*);
++extern int T1ungetc();
++extern int T1Read(char*, int, int, F_FILE*);
+  
+ #define  fclose(f)          T1Close(f)
+ #define  fopen(name,mode)   T1Open(name,mode)
+--- texlive-20080816-source/texk/ps2pkm/t1stub.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/t1stub.c	2025-09-25 22:00:34.400963936 +0200
+@@ -30,7 +30,7 @@
+ 
+ #include "objects.h"	/* get #define for t1_abort() */
+  
+-xiStub()
++int xiStub()
+ {
+        printf("xiStub called\n");
+        t1_abort("xiStub called");
+--- texlive-20080816-source/texk/ps2pkm/token.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/token.c	2025-09-25 23:22:47.137032978 +0200
+@@ -1160,7 +1160,7 @@
+   int ch;
+   unsigned char *stateP = s0;
+   unsigned char entry;
+-  int (*actionP)();
++  int (*actionP)(int);
+  
+   /* Define input source */
+   inputFileP = inputP->data.fileP;
+--- texlive-20080816-source/texk/ps2pkm/token.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/token.h	2025-09-25 20:18:23.755455583 +0200
+@@ -56,7 +56,7 @@
+ #define TOKEN_IMMED_NAME    (16)
+  
+ /* Token routines */
+-extern void scan_token();
++extern void scan_token(psobj*);
+  
+ /*
+  * -------------------------------------------------------------------------
+--- texlive-20080816-source/texk/ps2pkm/tokst.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/tokst.h	2025-09-25 23:22:14.998042993 +0200
+@@ -291,41 +291,41 @@
+  *   state. There are several entries for each state.
+  *
+  */
+-static int AAH_NAME();
+-static int BREAK_SIGNAL();
+-static int HEX_STRING();
+-static int IMMED_NAME();
+-static int INTEGER();
+-static int LEFT_BRACE();
+-static int LEFT_BRACKET();
+-static int LITERAL_NAME();
+-static int NAME();
+-static int NO_TOKEN();
+-static int OOPS_NAME();
+-static int RADIX_NUMBER();
+-static int REAL();
+-static int RIGHT_ANGLE();
+-static int RIGHT_BRACE();
+-static int RIGHT_BRACKET();
+-static int RIGHT_PAREN();
+-static int STRING();
+-static int add_1st_decpt();
+-static int add_1st_digits();
+-static int add_char();
+-static int add_decpt();
+-static int add_digits();
+-static int add_e_sign();
+-static int add_exponent();
+-static int add_fraction();
+-static int add_r_digits();
+-static int add_radix();
+-static int add_sign();
+-static int next_char();
+-static int skip_comment();
+-static int skip_space();
++static int AAH_NAME(int);
++static int BREAK_SIGNAL(int);
++static int HEX_STRING(int);
++static int IMMED_NAME(int);
++static int INTEGER(int);
++static int LEFT_BRACE(int);
++static int LEFT_BRACKET(int);
++static int LITERAL_NAME(int);
++static int NAME(int);
++static int NO_TOKEN(int);
++static int OOPS_NAME(int);
++static int RADIX_NUMBER(int);
++static int REAL(int);
++static int RIGHT_ANGLE(int);
++static int RIGHT_BRACE(int);
++static int RIGHT_BRACKET(int);
++static int RIGHT_PAREN(int);
++static int STRING(int);
++static int add_1st_decpt(int);
++static int add_1st_digits(int);
++static int add_char(int);
++static int add_decpt(int);
++static int add_digits(int);
++static int add_e_sign(int);
++static int add_exponent(int);
++static int add_fraction(int);
++static int add_r_digits(int);
++static int add_radix(int);
++static int add_sign(int);
++static int next_char(int);
++static int skip_comment(int);
++static int skip_space(int);
+  
+ static struct cat {
+-  int (*actionRoutineP)();
++  int (*actionRoutineP)(int);
+   unsigned char *nextStateP;
+ } classActionTable[] = {
+  
+--- texlive-20080816-source/texk/ps2pkm/type1.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/type1.c	2025-09-25 23:59:16.836085798 +0200
+@@ -58,7 +58,8 @@
+ typedef struct xobject xobject;
+ #include  "util.h"       /* PostScript objects */
+ #include  "blues.h"          /* Blues structure for font-level hints */
+- 
++#include  "fontfcn.h"          /* Blues structure for font-level hints */
++
+ /**********************************/
+ /* Type1 Constants and Structures */
+ /**********************************/
+@@ -129,6 +130,9 @@
+ #define Error0(errmsg) { CC; IfTrace0(TRUE, errmsg); Error;}
+  
+ #define Error1(errmsg,arg) { CC; IfTrace1(TRUE, errmsg, arg); Error;}
++
++#define Error_return(r) {errflag = TRUE; return (r);}
++#define Error0_return(errmsg, r) { CC; IfTrace0(TRUE, errmsg); Error_return(r);}
+  
+ /********************/
+ /* global variables */
+@@ -266,10 +270,10 @@
+     if (i < blues->numFamilyBlues) {    /* we must consider FamilyBlues */
+       p = ILoc(CharSpace,0,blues->BlueValues[i] - blues->BlueValues[i+1]);
+       QueryLoc(p, IDENTITY, &dummy, &bluezonepixels);
+-      Destroy(p);
++      Destroy((struct xobject*) p);
+       p = ILoc(CharSpace,0,blues->FamilyBlues[i]-blues->FamilyBlues[i+1]);
+       QueryLoc(p, IDENTITY, &dummy, &familyzonepixels);
+-      Destroy(p);
++      Destroy((struct xobject*) p);
+       /* is the difference in size of the zones less than 1 pixel? */
+       if (FABS(bluezonepixels - familyzonepixels) < 1.0) {
+         /* use the Family zones */
+@@ -292,11 +296,11 @@
+     if (i < blues->numFamilyOtherBlues) {/* consider FamilyOtherBlues  */
+       p = ILoc(CharSpace,0,blues->OtherBlues[i] - blues->OtherBlues[i+1]);
+       QueryLoc(p, IDENTITY, &dummy, &bluezonepixels);
+-      Destroy(p);
++      Destroy((struct xobject*) p);
+       p = ILoc(CharSpace,0,blues->FamilyOtherBlues[i] -
+         blues->FamilyOtherBlues[i+1]);
+       QueryLoc(p, IDENTITY, &dummy, &familyzonepixels);
+-      Destroy(p);
++      Destroy((struct xobject*) p);
+       /* is the difference in size of the zones less than 1 pixel? */
+       if (FABS(bluezonepixels - familyzonepixels) < 1.0) {
+         /* use the Family zones */
+@@ -337,10 +341,10 @@
+   int i;
+  
+   for (i = 0; i < numstems; i++) {
+-    Destroy(stems[i].lbhint);
+-    Destroy(stems[i].lbrevhint);
+-    Destroy(stems[i].rthint);
+-    Destroy(stems[i].rtrevhint);
++    Destroy((struct xobject*) stems[i].lbhint);
++    Destroy((struct xobject*) stems[i].lbrevhint);
++    Destroy((struct xobject*) stems[i].rthint);
++    Destroy((struct xobject*) stems[i].rtrevhint);
+   }
+ }
+  
+@@ -404,7 +408,7 @@
+   else
+     p = ILoc(CharSpace, 0, 1);
+   QueryLoc(p, IDENTITY, &Xpixels, &Ypixels);
+-  Destroy(p);
++  Destroy((struct xobject*) p);
+   if (verticalondevice)
+     unitpixels = FABS(Xpixels);
+   else
+@@ -571,10 +575,10 @@
+         rthintvalue = stemshift + widthdiff; /* top    */
+       }
+  
+-      stems[stemno].lbhint    = (struct segment *)Permanent(Loc(CharSpace, 0.0,  lbhintvalue));
+-      stems[stemno].lbrevhint = (struct segment *)Permanent(Loc(CharSpace, 0.0, -lbhintvalue));
+-      stems[stemno].rthint    = (struct segment *)Permanent(Loc(CharSpace, 0.0,  rthintvalue));
+-      stems[stemno].rtrevhint = (struct segment *)Permanent(Loc(CharSpace, 0.0, -rthintvalue));
++      stems[stemno].lbhint    = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, 0.0,  lbhintvalue));
++      stems[stemno].lbrevhint = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, 0.0, -lbhintvalue));
++      stems[stemno].rthint    = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, 0.0,  rthintvalue));
++      stems[stemno].rtrevhint = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, 0.0, -rthintvalue));
+  
+       return;
+  
+@@ -594,15 +598,15 @@
+   rthintvalue = stemshift + widthdiff / 2; /* right or top    */
+  
+   if (stems[stemno].vertical) {
+-    stems[stemno].lbhint    = (struct segment *)Permanent(Loc(CharSpace,  lbhintvalue, 0.0));
+-    stems[stemno].lbrevhint = (struct segment *)Permanent(Loc(CharSpace, -lbhintvalue, 0.0));
+-    stems[stemno].rthint    = (struct segment *)Permanent(Loc(CharSpace,  rthintvalue, 0.0));
+-    stems[stemno].rtrevhint = (struct segment *)Permanent(Loc(CharSpace, -rthintvalue, 0.0));
++    stems[stemno].lbhint    = (struct segment *)Permanent((struct xobject*) Loc(CharSpace,  lbhintvalue, 0.0));
++    stems[stemno].lbrevhint = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, -lbhintvalue, 0.0));
++    stems[stemno].rthint    = (struct segment *)Permanent((struct xobject*) Loc(CharSpace,  rthintvalue, 0.0));
++    stems[stemno].rtrevhint = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, -rthintvalue, 0.0));
+   } else {
+-    stems[stemno].lbhint    = (struct segment *)Permanent(Loc(CharSpace, 0.0,  lbhintvalue));
+-    stems[stemno].lbrevhint = (struct segment *)Permanent(Loc(CharSpace, 0.0, -lbhintvalue));
+-    stems[stemno].rthint    = (struct segment *)Permanent(Loc(CharSpace, 0.0,  rthintvalue));
+-    stems[stemno].rtrevhint = (struct segment *)Permanent(Loc(CharSpace, 0.0, -rthintvalue));
++    stems[stemno].lbhint    = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, 0.0,  lbhintvalue));
++    stems[stemno].lbrevhint = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, 0.0, -lbhintvalue));
++    stems[stemno].rthint    = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, 0.0,  rthintvalue));
++    stems[stemno].rtrevhint = (struct segment *)Permanent((struct xobject*) Loc(CharSpace, 0.0, -rthintvalue));
+   }
+ }
+  
+@@ -800,7 +804,7 @@
+ static DOUBLE PSFakePop ()
+ {
+   if (PSFakeTop >= 0) return(PSFakeStack[PSFakeTop--]);
+-  else Error0("PSFakePop : Stack empty\n");
++  else Error0_return("PSFakePop : Stack empty\n", 0);
+   /*NOTREACHED*/
+ }
+  
+@@ -823,7 +827,7 @@
+  
+   p = Join(p, Loc(CharSpace, edge2, 0.0));
+   QueryLoc(p, IDENTITY, &rightx, &righty);
+-  Destroy(p);
++  Destroy((struct xobject*) p);
+  
+   widthx = FABS(rightx - leftx);
+   widthy = FABS(righty - lefty);
+@@ -1239,10 +1243,10 @@
+   /* Since XIMAGER is not completely relative, */
+   /* we need to add up the delta values */
+  
+-  C = Join(C, Dup(B));
+-  D = Join(D, Dup(C));
++  C = Join(C, (struct segment*) Dup((struct xobject*) B));
++  D = Join(D, (struct segment*) Dup((struct xobject*) C));
+  
+-  path = Join(path, Bezier(B, C, D));
++  path = Join(path, (struct segment*)Bezier(B, C, D));
+ }
+  
+ /* - CLOSEPATH |- */
+@@ -1253,7 +1257,7 @@
+   struct segment *CurrentPoint;
+  
+   IfTrace0((FontDebug), "DoClosePath\n");
+-  CurrentPoint = Phantom(path);
++  CurrentPoint = Phantom((struct xobject*) path);
+   path = ClosePath(path);
+   path = Join(Snap(path), CurrentPoint);
+ }
+@@ -1357,7 +1361,7 @@
+   path = NULL;
+  
+   /* Go find the CharString for the accent's code via an upcall */
+-  CharStringP = GetType1CharString(Environment, achar);
++  CharStringP = GetType1CharString((psfont*)Environment, achar);
+   if (CharStringP == NULL) {
+      Error1("Invalid accent ('%03o) in SEAC\n", achar);
+      return;
+@@ -1381,7 +1385,7 @@
+   accentoffsetX = accentoffsetY = 0;
+  
+   /* go find the CharString for the base char's code via an upcall */
+-  CharStringP = GetType1CharString(Environment, bchar);
++  CharStringP = GetType1CharString((psfont*)Environment, bchar);
+   StartDecrypt();
+  
+   ClearStack();
+@@ -1453,13 +1457,13 @@
+ #define dtransform(dxusr,dyusr,dxdev,dydev) { \
+   register struct segment *point = Loc(CharSpace, dxusr, dyusr); \
+   QueryLoc(point, IDENTITY, dxdev, dydev); \
+-  Destroy(point); \
++  Destroy((struct xobject*) point); \
+ }
+  
+ #define itransform(xdev,ydev,xusr,yusr) { \
+   register struct segment *point = Loc(IDENTITY, xdev, ydev); \
+   QueryLoc(point, CharSpace, xusr, yusr); \
+-  Destroy(point); \
++  Destroy((struct xobject*) point); \
+ }
+  
+ #define transform(xusr,yusr,xdev,ydev) dtransform(xusr,yusr,xdev,ydev)
+@@ -1469,18 +1473,18 @@
+ #define lineto(x,y) { \
+   struct segment *CurrentPoint; \
+   DOUBLE CurrentX, CurrentY; \
+-  CurrentPoint = Phantom(path); \
++  CurrentPoint = Phantom((struct xobject*) path); \
+   QueryLoc(CurrentPoint, CharSpace, &CurrentX, &CurrentY); \
+-  Destroy(CurrentPoint); \
++  Destroy((struct xobject*) CurrentPoint); \
+   RLineTo(x - CurrentX, y - CurrentY); \
+ }
+  
+ #define curveto(x0,y0,x1,y1,x2,y2) { \
+   struct segment *CurrentPoint; \
+   DOUBLE CurrentX, CurrentY; \
+-  CurrentPoint = Phantom(path); \
++  CurrentPoint = Phantom((struct xobject*) path); \
+   QueryLoc(CurrentPoint, CharSpace, &CurrentX, &CurrentY); \
+-  Destroy(CurrentPoint); \
++  Destroy((struct xobject*) CurrentPoint); \
+   RRCurveTo(x0 - CurrentX, y0 - CurrentY, x1 - x0, y1 - y0, x2 - x1, y2 - y1); \
+ }
+  
+@@ -1533,7 +1537,7 @@
+   DOUBLE cx, cy;
+   DOUBLE ex, ey;
+  
+-  Destroy(path);
++  Destroy((struct xobject*) path);
+   path = FlxOldPath; /* Restore previous path (stored in FlxProc1) */
+  
+   if (ProcessHints) {
+@@ -1678,7 +1682,7 @@
+ {
+   struct segment *CurrentPoint;
+  
+-  CurrentPoint = Phantom(path);
++  CurrentPoint = Phantom((struct xobject*) path);
+  
+   FlxOldPath = path;
+   path = CurrentPoint;
+@@ -1692,9 +1696,9 @@
+   struct segment *CurrentPoint;
+   DOUBLE CurrentX, CurrentY;
+  
+-  CurrentPoint = Phantom(path);
++  CurrentPoint = Phantom((struct xobject*) path);
+   QueryLoc(CurrentPoint, CharSpace, &CurrentX, &CurrentY);
+-  Destroy(CurrentPoint);
++  Destroy((struct xobject*) CurrentPoint);
+  
+   /* Push CurrentPoint on fake PostScript stack */
+   PSFakePush(CurrentX);
+@@ -1816,7 +1820,7 @@
+   /* Clean up if an error has occurred */
+   if (errflag) {
+     if (path != NULL) {
+-      Destroy(path); /* Reclaim storage */
++      Destroy((struct xobject*) path); /* Reclaim storage */
+       path = NULL;   /* Indicate that character could not be built */
+     }
+   }
+--- texlive-20080816-source/texk/ps2pkm/util.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/util.c	2025-09-26 00:01:43.528520029 +0200
+@@ -34,7 +34,7 @@
+ #include "util.h"
+ #include "fontmisc.h"
+ 
+-extern char *Xalloc();
++extern char *Xalloc(size_t);
+ 
+ static char *vm_base = NULL;  /* Start of virtual memory area */
+        char *vm_next = NULL;  /* Pointer to first free byte */
+--- texlive-20080816-source/texk/ps2pkm/util.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/ps2pkm/util.h	2025-09-25 21:02:54.029048329 +0200
+@@ -77,7 +77,7 @@
+ extern LONG     vm_free;
+ extern LONG     vm_size;
+ extern char    *vm_next;
+-extern char    *vm_alloc();
++extern char    *vm_alloc(unsigned int);
+ /***================================================================***/
+ /*  Macros for managing virtual memory                                */
+ /***================================================================***/
+@@ -176,9 +176,4 @@
+ #define objPSetName(o)           ((o)->type = OBJ_NAME)
+ #define objPSetFile(o)           ((o)->type = OBJ_FILE)
+  
+-/***================================================================***/
+-/* Entry point for Type1Char to get entry from CharStrings            */
+-/***================================================================***/
+-extern psobj *GetType1CharString();
+- 
+ #endif
+--- texlive-20080816-source/texk/seetexk/dviconcat.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/dviconcat.c	2025-09-26 00:29:00.510283415 +0200
+@@ -94,7 +94,7 @@
+ void HandleDVIFile();
+ void HandleFontDef(i32);
+ void HandleSpecial(int, int, i32);
+-void UseFont();
++void UseFont(i32);
+ #ifdef _AMIGA
+ #define bcmp(s1, s2, len) memcmp(s1, s2, len)
+ #define bzero(s, len) memset(s, '\0', len)
+--- texlive-20080816-source/texk/seetexk/dviselect.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/dviselect.c	2025-09-26 00:46:31.249217429 +0200
+@@ -184,7 +184,7 @@
+ /*
+  * Return true iff the 10 \counts are one of the desired output pages.
+  */
+-DesiredPageP()
++int DesiredPageP()
+ {
+ 	register struct pagelist *pl;
+ 
+--- texlive-20080816-source/texk/seetexk/error.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/error.c	2025-09-26 00:36:40.613300519 +0200
+@@ -41,7 +41,7 @@
+ #endif
+ 
+ static FILE *trap_file;		/* error diversion file, if any */
+-static void (*trap_fn)();	/* trap function */
++static void (*trap_fn)(int, char*);	/* trap function */
+ static char *trap_buf;		/* buffer for trapped error strings */
+ static int trap_size;		/* size of trap_buf */
+ 
+@@ -49,7 +49,7 @@
+ extern char *malloc(), *realloc();
+ #endif
+ 
+-extern int MakeRWTempFile();
++extern int MakeRWTempFile(char*);
+ 
+ 
+ #if !defined (HAVE_STRERROR) && !defined (strerror)
+@@ -106,6 +106,7 @@
+  */
+ static void
+ verror(quit, a0, fmt, l, e)
++	int quit;
+ 	char *a0, *fmt;
+ 	va_list l;
+ 	int e;
+--- texlive-20080816-source/texk/seetexk/fio.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/fio.h	2025-09-26 00:29:26.182851672 +0200
+@@ -50,4 +50,4 @@
+ /*
+  * Function types
+  */
+-i32	GetByte(), GetWord(), Get3Byte(), GetLong();
++i32	GetByte(FILE*), GetWord(FILE*), Get3Byte(FILE*), GetLong(FILE*);
+--- texlive-20080816-source/texk/seetexk/gripes0.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/gripes0.c	2025-09-26 00:42:30.522974552 +0200
+@@ -19,7 +19,7 @@
+ #include "gripes.h"
+ 
+ #ifndef WIN32
+-extern	errno;
++extern	int errno;
+ #endif
+ 
+ /*
+--- texlive-20080816-source/texk/seetexk/gripes.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/gripes.h	2025-09-26 00:27:44.875874060 +0200
+@@ -9,8 +9,8 @@
+  * Declarations for the various gripes.
+  */
+ 
+-void GripeOutOfMemory(), GripeCannotGetFont(), GripeDifferentChecksums();
+-void GripeMissingFontsPreventOutput(), GripeNoSuchFont();
+-void GripeFontAlreadyDefined(), GripeUnexpectedDVIEOF(), GripeUnexpectedOp();
+-void GripeMissingOp(), GripeCannotFindPostamble(), GripeMismatchedValue();
+-void GripeUndefinedOp(), GripeBadGlyph();
++void GripeOutOfMemory(int, char*), GripeCannotGetFont(char*, i32, i32, char*, char*), GripeDifferentChecksums(char*, i32, i32);
++void GripeMissingFontsPreventOutput(int), GripeNoSuchFont(i32);
++void GripeFontAlreadyDefined(i32), GripeUnexpectedDVIEOF(), GripeUnexpectedOp(char*);
++void GripeMissingOp(char*), GripeCannotFindPostamble(), GripeMismatchedValue(char*);
++void GripeUndefinedOp(int), GripeBadGlyph(i32, struct font*);
+--- texlive-20080816-source/texk/seetexk/search.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/search.c	2025-09-26 00:41:12.465715579 +0200
+@@ -168,7 +168,7 @@
+ void
+ SEnumerate(s, f)
+ 	register struct search *s;
+-	register void (*f)();
++	register void (*f)(char*, long);
+ {
+ 	register int n;
+ 	register char *p;
+--- texlive-20080816-source/texk/seetexk/search.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/search.h	2025-09-26 00:40:41.836178878 +0200
+@@ -15,10 +15,10 @@
+ };
+ 
+ /* returns a pointer to the search table (for future search/installs) */
+-struct	search *SCreate();	/* create a search table */
++struct	search *SCreate(unsigned int);	/* create a search table */
+ 
+ /* returns a pointer to the data object found or created */
+-char	*SSearch();		/* search for a data object */
++char	*SSearch(struct search*, i32, int*);		/* search for a data object */
+ 
+ /* clears a search table (wipes out all entries) */
+ #define	SClear(s)	((s)->s_space += (s)->s_n, (s)->s_n = 0)
+@@ -34,4 +34,4 @@
+ #define	S_NEW		0x10	/* created (occurs iff S_CREATE && !S_EXCL) */
+ #define	S_ERROR		0x20	/* problem creating (out of memory) */
+ 
+-void SEnumerate();
++void SEnumerate(struct search*, void (*)(char*, long));
+--- texlive-20080816-source/texk/seetexk/seek.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/seek.h	2025-09-26 00:44:55.738696375 +0200
+@@ -10,9 +10,4 @@
+  * version of `fp' on which `fseek' functions properly;
+  * CopyFile(FILE *fp) returns a temporary copy of fp.
+  */
+-#ifdef WIN32
+-#undef CopyFile
+ FILE *SeekFile(FILE *fp), *CopyFile(FILE *fp);
+-#else
+-FILE *SeekFile(/* FILE *fp */), *CopyFile(/* FILE *fp */);
+-#endif
+--- texlive-20080816-source/texk/seetexk/tempfile.c.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/seetexk/tempfile.c	2025-09-26 00:43:54.077179261 +0200
+@@ -14,6 +14,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ 
+ #ifdef _AMIGA
+@@ -25,8 +26,6 @@
+ #else
+ #include <sys/file.h>
+ 
+-char	*getenv();
+-
+ #endif
+ 
+ #ifdef KPATHSEA
+--- texlive-20080816-source/texk/tex4htk/t4ht.c.orig	2025-09-23 22:35:33.502071854 +0200
++++ texlive-20080816-source/texk/tex4htk/t4ht.c	2025-09-26 00:53:43.556588279 +0200
+@@ -221,15 +221,7 @@
+ 
+ 
+ 
+-#ifdef DOS
+ #define PROTOTYP
+-#endif
+-#ifdef ANSI
+-#define PROTOTYP
+-#endif
+-#ifdef KWIN32
+-#define PROTOTYP
+-#endif
+ 
+ 
+ #ifdef KPATHSEA
+--- texlive-20080816-source/texk/tex4htk/tex4ht.c.orig	2025-09-23 22:35:33.498224010 +0200
++++ texlive-20080816-source/texk/tex4htk/tex4ht.c	2025-09-26 00:52:39.461716649 +0200
+@@ -262,15 +262,7 @@
+ 
+ 
+ 
+-#ifdef DOS
+ #define PROTOTYP
+-#endif
+-#ifdef ANSI
+-#define PROTOTYP
+-#endif
+-#ifdef KWIN32
+-#define PROTOTYP
+-#endif
+ 
+ 
+ 
+--- texlive-20080816-source/texk/xdvik/dvi-draw.c.orig	2008-07-01 17:42:36.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/dvi-draw.c	2025-09-26 01:17:17.066067524 +0200
+@@ -637,7 +637,6 @@
+ #ifdef	VMS
+ #define	off_t	int
+ #endif
+-extern off_t lseek();
+ 
+ #ifndef	SEEK_SET	/* if <unistd.h> is not provided (or for <X11R5) */
+ #define	SEEK_SET	0
+@@ -6195,8 +6194,6 @@
+ 
+ #if GREY
+ 
+-extern	double	pow();
+-
+ static void
+ mask_shifts(Pixel mask, int *pshift1, int *pshift2)
+ {
+--- texlive-20080816-source/texk/xdvik/gui/menu.c.orig	2008-07-01 17:42:36.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/gui/menu.c	2025-09-26 01:08:33.044603646 +0200
+@@ -62,7 +62,7 @@
+ 
+ 
+ static void
+-set_menu_info(void *val, XtActionProc proc, Boolean (*cmp)(), struct button_info *item)
++set_menu_info(void *val, XtActionProc proc, Boolean (*cmp)(void*, const char*), struct button_info *item)
+ {
+     size_t i;
+     ASSERT(item != NULL, "item in set_menu_info musn't be NULL!");
+@@ -95,7 +95,7 @@
+ 
+ /* set a menu according to val and the compare function cmp */
+ void
+-set_menu(void *val, XtActionProc proc, Boolean (*cmp)())
++set_menu(void *val, XtActionProc proc, Boolean (*cmp)(void*, const char*))
+ {
+     /* removed following since cast from function pointer to void pointer is not supported by ANSI C */
+     /* TRACE_GUI((stderr, "set_menu_info: %d, %p, %p", *(int *)val, (void *)proc, (void *)cmp)); */
+--- texlive-20080816-source/texk/xdvik/gui/menu.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/xdvik/gui/menu.h	2025-09-26 01:09:36.889423372 +0200
+@@ -68,6 +68,6 @@
+ #endif
+ 				);
+ 
+-extern void set_menu(void *val, XtActionProc proc, Boolean (*cmp)());
++extern void set_menu(void *val, XtActionProc proc, Boolean (*cmp)(void*, const char*));
+ 
+ #endif /* MENU_H_ */
+--- texlive-20080816-source/texk/xdvik/gui/pagesel.c.orig	2008-07-01 17:42:36.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/gui/pagesel.c	2025-09-26 01:11:07.280138697 +0200
+@@ -536,7 +536,7 @@
+     button_width = get_panel_width() - 2 * (resource.btn_side_spacing + resource.btn_border_width);
+     /* delete and re-create list */
+     ASSERT(total_pages <= (int)page_info.index_size, "");
+-    XawListChange(LIST_WIDGET, page_info.page_labels, 0,
++    XawListChange(LIST_WIDGET, (const char **)page_info.page_labels, 0,
+ 		  MAX(button_width, pagelist_width), False);
+     /* restore selected item */
+     if (idx != XAW_LIST_NONE) {
+--- texlive-20080816-source/texk/xdvik/gui/sfDraw.c.orig	2008-07-01 17:42:36.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/gui/sfDraw.c	2025-09-26 01:14:21.677831678 +0200
+@@ -237,7 +237,7 @@
+     struct stat statBuf;
+     char save;
+     int last;
+-    extern int SFchdir();
++    extern int SFchdir(char*);
+ 
+     /*
+      * must be restored before returning
+--- texlive-20080816-source/texk/xdvik/gui/sfDraw.h.orig	2006-01-17 22:41:51.000000000 +0100
++++ texlive-20080816-source/texk/xdvik/gui/sfDraw.h	2025-09-26 01:13:06.280020711 +0200
+@@ -58,7 +58,7 @@
+ void SFpathSliderMovedCallback(Widget w, XtPointer client_data, float *new);
+ void SFpathAreaSelectedCallback(Widget w, XtPointer client_data, int pnew);
+ Boolean SFworkProc(void);
+-extern int (*SFfunc)();
++extern int (*SFfunc)(char *, char **, struct stat *);
+ 
+ extern Widget selFileField, selFileForm, selFileHScroll, selFileHScrolls[], selFileLists[], selFileVScrolls[];
+ extern Display *SFdisplay;
+--- texlive-20080816-source/texk/xdvik/gui/sfSelFile.c.orig	2008-07-01 17:42:36.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/gui/sfSelFile.c	2025-09-26 01:12:42.694038477 +0200
+@@ -117,7 +117,7 @@
+ int SFpathScrollWidth, SFvScrollHeight, SFhScrollWidth;
+ char SFtextBuffer[MAXPATHLEN];
+ XtIntervalId SFdirModTimerId;
+-int (*SFfunc) ();
++int (*SFfunc) (char *, char **, struct stat *);
+ 
+ static int SFstatus = SEL_FILE_NULL;
+ 
+--- texlive-20080816-source/texk/xdvik/squeeze.c.orig	2008-07-01 17:42:36.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/squeeze.c	2025-09-26 01:29:44.797527257 +0200
+@@ -119,7 +119,6 @@
+     int c;
+     char *b;
+     char seeking;
+-    extern void exit();
+ 
+     if (argc > 3 || (in = (argc < 2 ? stdin : fopen(argv[1], "r"))) == NULL ||
+ 	(out = (argc < 3 ? stdout : fopen(argv[2], "w"))) == NULL) {
+--- texlive-20080816-source/texk/xdvik/c-auto.in.orig	2008-07-01 17:42:36.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/c-auto.in	2025-09-26 02:47:00.616700966 +0200
+@@ -324,3 +324,6 @@
+ 
+ /* Define as `fork' if `vfork' does not work. */
+ #undef vfork
++
++/* Define to 1 if your compiler understands prototypes. */                                                                
++#undef HAVE_PROTOTYPES 
+--- texlive-20080816-source/texk/xdvik/configure.in.orig	2008-07-01 17:42:36.000000000 +0200
++++ texlive-20080816-source/texk/xdvik/configure.in	2025-09-26 01:23:48.494672672 +0200
+@@ -14,6 +14,17 @@
+ dnl allow for  --program-suffix
+ AC_ARG_PROGRAM
+ 
++# Check whether prototypes work.
++AC_MSG_CHECKING(whether the compiler accepts prototypes)
++AC_CACHE_VAL(kb_cv_c_prototypes,
++[AC_TRY_COMPILE([#include <stdarg.h>], [extern void foo(int i,...);],
++  kb_cv_c_prototypes=yes, kb_cv_c_prototypes=no)])dnl
++AC_MSG_RESULT($kb_cv_c_prototypes)
++if test "$kb_cv_c_prototypes" = yes; then
++  AC_DEFINE([HAVE_PROTOTYPES], 1,
++    [Define to 1 if your compiler understands prototypes.])
++fi
++
+ sinclude(../kpathsea/withenable.ac)
+ sinclude(../../withenable.ac)
+ sinclude(kpathsea.ac)
+--- texlive-20080816-source/texk/xdvipdfmx/src/agl.c.orig	2008-05-21 15:19:17.000000000 +0200
++++ texlive-20080816-source/texk/xdvipdfmx/src/agl.c	2025-09-26 01:35:42.163636588 +0200
+@@ -52,6 +52,8 @@
+ 
+ #include "agl.h"
+ 
++int agl_load_line(char* p, char* endptr, int is_predef);
++
+ static int verbose = 0;
+ 
+ void
+--- texlive-20080816-source/texk/xdvipdfmx/src/pngimage.c.orig	2025-09-23 22:35:33.459171297 +0200
++++ texlive-20080816-source/texk/xdvipdfmx/src/pngimage.c	2025-09-26 01:41:24.080252279 +0200
+@@ -533,7 +533,7 @@
+   png_uint_32 proflen;
+ 
+   if (!png_get_valid(png_ptr, info_ptr, PNG_INFO_iCCP) ||
+-      !png_get_iCCP(png_ptr, info_ptr, &name, &compression_type, &profile, &proflen))
++      !png_get_iCCP(png_ptr, info_ptr, &name, &compression_type, (png_bytepp) &profile, &proflen))
+     return NULL;
+ 
+   color_type = png_get_color_type(png_ptr, info_ptr);
