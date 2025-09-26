@@ -3615,17 +3615,6 @@
 +extern void set_menu(void *val, XtActionProc proc, Boolean (*cmp)(void*, const char*));
  
  #endif /* MENU_H_ */
---- texlive-20080816-source/texk/xdvik/gui/pagesel.c.orig	2008-07-01 17:42:36.000000000 +0200
-+++ texlive-20080816-source/texk/xdvik/gui/pagesel.c	2025-09-26 01:11:07.280138697 +0200
-@@ -536,7 +536,7 @@
-     button_width = get_panel_width() - 2 * (resource.btn_side_spacing + resource.btn_border_width);
-     /* delete and re-create list */
-     ASSERT(total_pages <= (int)page_info.index_size, "");
--    XawListChange(LIST_WIDGET, page_info.page_labels, 0,
-+    XawListChange(LIST_WIDGET, (const char **)page_info.page_labels, 0,
- 		  MAX(button_width, pagelist_width), False);
-     /* restore selected item */
-     if (idx != XAW_LIST_NONE) {
 --- texlive-20080816-source/texk/xdvik/gui/sfDraw.c.orig	2008-07-01 17:42:36.000000000 +0200
 +++ texlive-20080816-source/texk/xdvik/gui/sfDraw.c	2025-09-26 01:14:21.677831678 +0200
 @@ -237,7 +237,7 @@
