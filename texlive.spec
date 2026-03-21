@@ -1,47 +1,40 @@
 # TODO:
-# - get rid of /etc/cron.daily depencency from base pkg, use /etc/tmpwatch.d instead
-# - cache in /var/lib? (move to /var/cache)
-# - dep loops:
-#error: LOOP:
-#error: removing kpathsea-20080816-5.x86_64 "Requires(post): /usr/bin/texhash" from tsort relations.
-#error:     kpathsea-20080816-5.x86_64               Requires(post): /usr/bin/texhash
-#error: removing texlive-20080816-5.x86_64 "Requires: texconfig = 1:20080816-5" from tsort relations.
-#error:     texlive-20080816-5.x86_64                Requires: texconfig = 1:20080816-5
-#error: removing texconfig-20080816-5.x86_64 "Requires: texlive-dvips = 1:20080816-5" from tsort relations.
-#error:     texconfig-20080816-5.x86_64              Requires: texlive-dvips = 1:20080816-5
-#error: removing texlive-dvips-20080816-5.x86_64 "Requires(auto): libkpathsea.so.4()(64bit)" from tsort relations.
-#error:     texlive-dvips-20080816-5.x86_64          Requires(auto): libkpathsea.so.4()(64bit)
-#Preparing...                ########################################### [100%]
-#
+# - get rid of /etc/cron.daily dependency from base pkg, use systemd-tmpfiles
+#   instead; also drop the Suggests: tmpwatch
+# - dep loop: kpathsea -> texhash -> texlive -> texconfig -> dvips -> libkpathsea
+#   mitigated by [ ! -x texhash ] guard in scriptlets; cosmetic rpm warning only
+# - switch to out-of-source build (remove --enable-build-in-source-tree);
+#   aleph is disabled (--disable-aleph) so the omegafonts blocker may be gone,
+#   needs re-testing
 # Conditional build:
 %bcond_with	xindy		# do not build xindy packages
+%bcond_with	luajittex	# LuaJITTeX (system luajit lacks lua_rawlen compat)
 
 
-%define		year	2014
-%define		monthday	0525
-%define		texmfversion 20140525
+%define		year	2026
+%define		monthday	0301
+%define		texmfversion 20260301
 Summary:	TeX typesetting system and MetaFont font formatter
 Summary(de.UTF-8):	TeX-Satzherstellungssystem und MetaFont-Formatierung
 Summary(es.UTF-8):	Sistema de typesetting TeX y formateador de fuentes MetaFont
-Summary(fr.UTF-8):	Systéme de compostion TeX et formatteur de MetaFontes
+Summary(fr.UTF-8):	Système de composition TeX et formatteur de MetaFontes
 Summary(hu.UTF-8):	TeX szövegszedő rendszer és MetaFont font formázó
 Summary(pl.UTF-8):	System składu publikacji TeX oraz formater fontów MetaFont
 Summary(pt_BR.UTF-8):	Sistema de typesetting TeX e formatador de fontes MetaFont
 Summary(tr.UTF-8):	TeX dizgi sistemi ve MetaFont yazıtipi biçimlendiricisi
 Name:		texlive
 Version:	%{year}%{monthday}
-Release:	
+Release:	0.1
 Epoch:		1
 License:	distributable
 Group:		Applications/Publishing/TeX
-Source0:	ftp://tug.org/historic/systems/texlive/%{year}/%{name}-%{version}-source.tar.xz
-# Source0-md5:	09ee265ff51637827559affc7304078c
+Source0:	https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/%{year}/%{name}-%{version}-source.tar.xz
+# Source0-md5:	734e2521173e8ef6a4c04f70d1285124
 Source4:	%{name}.cron
 Source5:	xdvi.desktop
 Source6:	xdvi.png
 # Source6-md5:	1e412b0d19d41353a7966bbeba70be8d
-Patch0:		format-security.patch
-URL:		http://www.tug.org/texlive/
+URL:		https://www.tug.org/texlive/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
@@ -51,28 +44,30 @@ BuildRequires:	bison
 BuildRequires:	cairo-devel
 BuildRequires:	ed
 BuildRequires:	expat-devel
-BuildRequires:	ffcall-devel
 BuildRequires:	flex
 BuildRequires:	fontconfig-devel
-BuildRequires:	freetype-devel
-BuildRequires:	freetype1-devel
-BuildRequires:	gd-devel >= 2.0.33
+BuildRequires:	freetype-devel >= 2.0
+BuildRequires:	gd-devel
+BuildRequires:	gmp-devel
 BuildRequires:	graphite2-devel
-BuildRequires:	harfbuzz-devel
+BuildRequires:	harfbuzz-devel >= 2.6
 BuildRequires:	harfbuzz-icu-devel
+BuildRequires:	libpaper-devel
 BuildRequires:	libpng-devel >= 1.2.8
 BuildRequires:	libtool
-# should this be somewhere in clisp?
-BuildRequires:	libsigsegv
 BuildRequires:	libstdc++-devel
+BuildRequires:	lua53-devel
+%{?with_luajittex:BuildRequires:	luajit-devel}
+BuildRequires:	mpfi-devel
+BuildRequires:	mpfr-devel
 BuildRequires:	ncurses-devel
-BuildRequires:	poppler-devel >= 0.18
+BuildRequires:	poppler-devel >= 22.0
 BuildRequires:	pango-devel
+BuildRequires:	potrace-devel
 BuildRequires:	readline-devel
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
-BuildRequires:	t1lib-devel >= 5.0.2
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
 BuildRequires:	unzip
@@ -83,20 +78,25 @@ BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	zlib-devel >= 1.2.1
 BuildRequires:	zziplib-devel >= 0.12
-Requires:	%{name}-dirs-fonts
-Requires:	%{name}-fonts-cm
-Requires:	%{name}-fonts-misc
+# Old texlive-dirs-fonts/fonts-misc/fonts-cm are now in texlive-texmf
+# (texlive-cm and per-package subpackages)
 Requires:	awk
-Requires:	dialog
+Requires:	coreutils
 Requires:	kpathsea = %{epoch}:%{version}-%{release}
 Requires:	sed
-Requires:	sh-utils
-Requires:	texconfig = %{epoch}:%{version}-%{release}
-Requires:	textutils
+Requires(post):	%{name}-texlive-scripts
+Requires(post):	texlive-kpathsea
 Suggests:	tmpwatch
 Provides:	tetex = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-pdfetex = %{epoch}:%{version}-%{release}
 Provides:	tetex-metafont
+# Provides for packages needed by other PLD packages (xmlto, docbook-utils)
+Provides:	xmltex = %{epoch}:%{version}-%{release}
+Provides:	jadetex = %{epoch}:%{version}-%{release}
+Provides:	passivetex = %{epoch}:%{version}-%{release}
+# Provides for old subpackages now in texlive-texmf
+Provides:	texlive-dirs-fonts = %{epoch}:%{version}-%{release}
+Provides:	tetex-dirs-fonts = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex
 Obsoletes:	tetex-afm
 Obsoletes:	tetex-doc
@@ -120,19 +120,65 @@ Obsoletes:	tetex-plain-misc
 Obsoletes:	tetex-plain-plnfss
 Obsoletes:	tetex-tex-hyphen
 Obsoletes:	tetex-tex-vietnam
-Obsoletes:	texlive-metafont
+Obsoletes:	tetex-fonts-cbgreek
+Obsoletes:	tetex-fonts-dstroke
+Obsoletes:	tetex-fonts-pazo
+Obsoletes:	tetex-fonts-type1-dstroke
+Obsoletes:	tetex-fonts-type1-qfonts
+Obsoletes:	tetex-fonts-type1-tt2001
+Obsoletes:	tetex-qfonts
+# Packages removed in TL 2026
+Obsoletes:	texlive-omega-basic < %{epoch}:%{version}
+Obsoletes:	texlive-texdoctk < %{epoch}:%{version}
+Obsoletes:	texlive-format-context-de < %{epoch}:%{version}
+Obsoletes:	texlive-format-context-en < %{epoch}:%{version}
+Obsoletes:	texlive-format-context-nl < %{epoch}:%{version}
+Obsoletes:	texlive-tlmgr < %{epoch}:%{version}
+Obsoletes:	texlive-cefutils < %{epoch}:%{version}
+# Old zombie subpackages (moved to texlive-texmf or removed)
+Obsoletes:	texconfig < %{epoch}:%{version}
+Obsoletes:	texlive-latex-presentation-bin < %{epoch}:%{version}
+Obsoletes:	texlive-metapost-other < %{epoch}:%{version}
+Obsoletes:	texlive-other-utils-doc < %{epoch}:%{version}
+# tetex compat from zombie subpackages
+Obsoletes:	tetex-context
+Obsoletes:	tetex-csplain
+Obsoletes:	tetex-cyrplain
+Obsoletes:	tetex-eplain
+Obsoletes:	tetex-etex
+Obsoletes:	tetex-format-amstex
+Obsoletes:	tetex-format-cslatex
+Obsoletes:	tetex-format-csplain
+Obsoletes:	tetex-format-cyrplain
+Obsoletes:	tetex-format-cyramstex
+Obsoletes:	tetex-format-eplain
+Obsoletes:	tetex-format-mex
+Obsoletes:	tetex-format-pdfcslatex
+Obsoletes:	tetex-format-pdfcsplain
+Obsoletes:	tetex-format-pdfmex
+Obsoletes:	tetex-format-plain
+Obsoletes:	tetex-format-utf8mex
+Obsoletes:	tetex-mex
+Obsoletes:	tetex-mptopdf
+Obsoletes:	tetex-plain
+Obsoletes:	tetex-tex-babel
+Obsoletes:	tetex-tex-thumbpdf
+Provides:	tetex-context
+Provides:	tetex-csplain
+Provides:	tetex-format-plain
+Provides:	tetex-plain
+Provides:	tetex-tex-babel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		texmf	%{_datadir}/texmf
 %define		texmfdist %{texmf}-dist
-%define		texmfdoc %{texmf}-doc
 %define		fmtdir	/var/lib/texmf/web2c
 %define		texhash	umask 022; [ ! -x %{_bindir}/texhash ] || %{_bindir}/texhash 1>&2;
 %define		_localstatedir	/var/lib/texmf
 %define		fixinfodir [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1 ;
 
 %define		_noautoreq 'perl(path_tre)'
-%define		skip_post_check_so libptexenc.so.1.1.1
+%define		skip_post_check_so libptexenc.so.1
 
 %description
 TeX Live is an implementation of TeX for Linux or UNIX systems. TeX
@@ -186,24 +232,6 @@ aygıtından bağımsız bir çıktı (DeVice Independent - DVI) oluşturur.
 TeX'in becerileri ve dizgi dili, dili geliştiren Knuth'un 'The
 TeXbook' başlıklı kitabında anlatılmaktadır.
 
-%package jadetex
-Summary:	LaTeX macros for converting Jade TeX output into DVI/PS/PDF
-Summary(pl.UTF-8):	Makra LaTeXa do konwersji Jade TeXa do DVI/PS/PDF
-Group:		Applications/Publishing/TeX
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
-Provides:	jadetex = %{epoch}:%{version}-%{release}
-Obsoletes:	jadetex
-
-%description jadetex
-JadeTeX contains the additional LaTeX macros necessary for taking Jade
-TeX output files and processing them as LaTeX files.
-
-%description jadetex -l pl.UTF-8
-JadeTeX zawiera dodatkowe makra LaTeXa potrzebne do konwersji plików
-otrzymanych z Jade TeXa i przetworzenia ich jako plików LaTeXa.
-
 %package cef-utils
 Summary:	Utils for CEF (Chinese Encoding Framework)
 Summary(pl.UTF-8):	Narzędzia dla środowiska CEF (Chinese Encoding Framework)
@@ -217,50 +245,50 @@ Narzędzia dla środowiska CEF (Chinese Encoding Framework) służącego do
 kodowania języka chińskiego.
 
 %package other-utils
-Summary:	Other TeX Live utilities
-Summary(pl.UTF-8):	Pozostałe narzędzia z systemu TeX Live
+Summary:	Miscellaneous TeX Live utilities
+Summary(pl.UTF-8):	Różne narzędzia TeX Live
 Group:		Applications/Publishing/TeX
 Obsoletes:	tetex-format-cyrtexinfo
 
 %description other-utils
-Other TeX Live utilities.
+Miscellaneous TeX Live utilities not categorized elsewhere, including
+font manipulation and conversion tools, CJK encoding converters, and
+source-output synchronization.
 
 %description other-utils -l pl.UTF-8
-Pozostałe narzędzia z systemu TeX Live.
-
-%package other-utils-doc
-Summary:	Other utilities documentation
-Summary(pl.UTF-8):	Dokumentacja do narzędzi z pakietu %{name}-other-utils-doc
-Group:		Applications/Publishing/TeX
-
-%description other-utils-doc
-Other utilities documentation.
-
-%description other-utils-doc -l pl.UTF-8
-Dokumentacja do narzędzi z pakietu %{name}-other-utils-doc.
+Różne narzędzia TeX Live nie skategoryzowane gdzie indziej, w tym
+narzędzia do manipulacji i konwersji fontów, konwertery kodowań CJK
+oraz synchronizacja źródła z wyjściem.
 
 %package -n kpathsea
-Summary:	File name lookup library
-Summary(hu.UTF-8):	Fájlnév-kereső könyvtár
-Summary(pl.UTF-8):	Biblioteka szukająca nazw plików
+Summary:	Path searching library for TeX-related files
+Summary(hu.UTF-8):	Útvonal-kereső könyvtár TeX-hez kapcsolódó fájlokhoz
+Summary(pl.UTF-8):	Biblioteka wyszukiwania ścieżek do plików związanych z TeXem
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description -n kpathsea
-File name lookup library.
+Kpathsea is a library for path searching used by TeX and related
+programs (METAFONT, BibTeX, dvips, etc.) to locate fonts, macros,
+and other TeX-related files in the texmf directory trees.
 
 %description -n kpathsea -l hu.UTF-8
-Fájlnév-kereső könyvtár.
+A Kpathsea egy útvonal-kereső könyvtár, amelyet a TeX és kapcsolódó
+programok (METAFONT, BibTeX, dvips stb.) használnak a fontok, makrók
+és egyéb TeX-hez kapcsolódó fájlok megtalálásához a texmf
+könyvtárfákban.
 
 %description -n kpathsea -l pl.UTF-8
-Biblioteka szukająca nazw plików.
+Kpathsea to biblioteka wyszukiwania ścieżek używana przez TeXa i
+powiązane programy (METAFONT, BibTeX, dvips itp.) do lokalizowania
+fontów, makr i innych plików związanych z TeXem w drzewach
+katalogów texmf.
 
 %package -n kpathsea-devel
 Summary:	Kpathsea library filename lookup header files and documentation
 Summary(es.UTF-8):	Bibliotecas y archivos de inclusión para desarrollo TeX
 Summary(hu.UTF-8):	Kpathsea fájlnév-kereső könyvtár header fájljai és dokumentációja
-Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumetacja kpathsea
+Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumentacja kpathsea
 Summary(pt_BR.UTF-8):	Bibliotecas e headers para desenvolvimento TeX
 Group:		Development/Libraries
 Requires:	kpathsea = %{epoch}:%{version}-%{release}
@@ -287,12 +315,11 @@ Summary:	DVI to PostScript converter
 Summary(de.UTF-8):	dvi-Postscript-Konvertierungsprogramm
 Summary(es.UTF-8):	Convertidor dvi para postscript
 Summary(fr.UTF-8):	Convertisseur dvi vers PostScript
-Summary(hu.UTF-8):	DVI-ből PosctScript-be konvertáló
+Summary(hu.UTF-8):	DVI-ből PostScript-be konvertáló
 Summary(pl.UTF-8):	Konwerter plików DVI do PostScriptu
 Summary(pt_BR.UTF-8):	Conversor dvi para postscript
 Summary(tr.UTF-8):	dvi'dan postscript'e dönüştürücü
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description dvips-basic
@@ -346,7 +373,6 @@ Summary(pl.UTF-8):	Konwerter plików DVI do języka PCL
 Summary(pt_BR.UTF-8):	Conversor dvi para laserjet
 Summary(tr.UTF-8):	dvi'dan laserjet'e dönüştürücü
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tetex-dvilj
 
@@ -409,7 +435,6 @@ Summary:	A general purpose hierarchical index generator
 Summary(hu.UTF-8):	Egy általános célú hierarchikus index generáló
 Summary(pl.UTF-8):	Generator hierarchicznych indeksów ogólnego przeznaczenia
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	%{name}-makeindex-data
 Provides:	tetex-makeindex
@@ -442,90 +467,31 @@ przyjmowany jest plik wejściowy w formacie idx, wygenerowany przez
 LaTeX.
 
 %package metapost
-Summary:	MetaPost
-Summary(hu.UTF-8):	MetaPost
-Summary(pl.UTF-8):	Zestaw narzędzi MetaPost
+Summary:	MetaPost - a tool for creating technical diagrams and figures
+Summary(hu.UTF-8):	MetaPost - műszaki ábrák és diagramok készítéséhez
+Summary(pl.UTF-8):	MetaPost - narzędzie do tworzenia diagramów i rysunków technicznych
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-metapost-data >= %{texmfversion}
+Requires:	%{name}-metapost-data >= %{epoch}:%{texmfversion}
 Obsoletes:	tetex-metapost
 
 %description metapost
-MetaPost.
+MetaPost is a programming language for creating technical diagrams and
+figures. It uses a system of equations to describe geometric
+relationships and produces PostScript or SVG output suitable for
+inclusion in TeX documents.
 
 %description metapost -l hu.UTF-8
-MetaPost.
+A MetaPost egy programozási nyelv műszaki ábrák és diagramok
+készítéséhez. Egyenletrendszerekkel írja le a geometriai
+összefüggéseket, és PostScript vagy SVG kimenetet készít, amely
+beilleszthető TeX dokumentumokba.
 
 %description metapost -l pl.UTF-8
-Zestaw narzędzi MetaPost.
-
-%package mptopdf
-Summary:	MetaPost to PDF converter
-Summary(hu.UTF-8):	MetaPost-ból PDF-be konvertáló
-Summary(pl.UTF-8):	Konwerter MetaPost do PDF
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-metapost = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-mptopdf
-
-%description mptopdf
-MetaPost to PDF converter.
-
-%description mptopdf -l hu.UTF-8
-MetaPost-ból PDF-be konvertáló.
-
-%description mptopdf -l pl.UTF-8
-Konwerter MetaPost do PDF.
-
-%package texdoctk
-Summary:	Easy access to TeX documentation
-Summary(pl.UTF-8):	Łatwy dostęp do dokumentacji TeXa
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-texdoctk
-
-%description texdoctk
-A Perl/Tk-based GUI for easy access to package documentation for TeX
-on Unix platforms; the databases it uses are based on the texmf/doc
-subtrees of teTeX v.1.0.x, but database files for local configurations
-with modified/extended directories can be derived from them. Note that
-texdoctk is not a viewer itself, but an interface for finding
-documentation files and opening them with the appropriate viewer; so
-it relies on appropriate programs to be installed on the system.
-However, the choice of these programs can be configured by the
-sysadmin or user.
-
-%description texdoctk -l pl.UTF-8
-Oparty na Perlu i Tk graficzny interfejs dający łatwy dostęp do
-dokumentacji pakietów TeXowych na platformach uniksowych; używa baz
-danych opartych na poddrzewach texmf/doc z teTeXa 1.0.x, ale może
-używać konfiguracji ze zmodyfikowanymi lub rozszerzonymi katalogami.
-Należy zauważyć, że texdoctk sam w sobie nie jest przeglądarką, ale
-interfejsem do wyszukiwania plików dokumentacji i otwierania ich we
-właściwej przeglądarce; tak więc wymaga on odpowiednich programów
-zainstalowanych w systemie. Wybór tych programów może być dokonany
-przez administratora lub użytkownika.
-
-%package -n texconfig
-Summary:	TeX typesetting system configurator
-Summary(hu.UTF-8):	TeX szövegszedő rendszer beállítása
-Summary(pl.UTF-8):	Konfigurator systemu składu TeX
-Group:		Applications/Publishing/TeX
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-dvips-basic = %{epoch}:%{version}-%{release}
-Requires:	xdvi = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-texconfig
-
-%description -n texconfig
-TeX typesetting system configurator.
-
-%description -n texconfig -l hu.UTF-8
-TeX szövegszedő rendszer beállítása.
-
-%description -n texconfig -l pl.UTF-8
-Konfigurator systemu składu TeX.
+MetaPost to język programowania do tworzenia diagramów i rysunków
+technicznych. Używa układu równań do opisu zależności geometrycznych
+i generuje pliki PostScript lub SVG, które można włączać do
+dokumentów TeXowych.
 
 %package -n xdvi
 Summary:	X11 previewer
@@ -537,7 +503,6 @@ Summary(pl.UTF-8):	Przeglądarka DVI dla X11
 Summary(pt_BR.UTF-8):	Visualizador TeX X11
 Summary(tr.UTF-8):	X11 öngörüntüleyici
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-dvips
 Obsoletes:	tetex-xdvi
@@ -574,6 +539,7 @@ visualizar arquivos dvi, como os produzidos por tex e latex.
 %package -n xindy
 Summary:	Xindy creates sorted and tagged index from raw index
 Summary(hu.UTF-8):	Xindy rendezett és cimkézett indexet készít nyers indexekből
+Summary(pl.UTF-8):	Xindy - tworzenie posortowanego i otagowanego indeksu z surowego indeksu
 Group:		Applications/Publishing/TeX
 
 %description -n xindy
@@ -582,9 +548,13 @@ Xindy creates sorted and tagged index from raw index.
 %description -n xindy -l hu.UTF-8
 Xindy rendezett és cimkézett indexet készít nyers indexekből.
 
+%description -n xindy -l pl.UTF-8
+Xindy tworzy posortowany i otagowany indeks z surowego indeksu.
+
 %package -n xindy-albanian
 Summary:	Xindy albanian language
 Summary(hu.UTF-8):	Xindy albán nyelv
+Summary(pl.UTF-8):	Xindy - język albański
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-albanian
@@ -593,9 +563,13 @@ Xindy albanian language
 %description -n xindy-albanian -l hu.UTF-8
 Xindy albán nyelv
 
+%description -n xindy-albanian -l pl.UTF-8
+Xindy - język albański.
+
 %package -n xindy-belarusian
 Summary:	Xindy belarusian language
 Summary(hu.UTF-8):	Xindy belorusz nyelv
+Summary(pl.UTF-8):	Xindy - język białoruski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-belarusian
@@ -604,9 +578,13 @@ Xindy belarusian language
 %description -n xindy-belarusian -l hu.UTF-8
 Xindy belorusz nyelv
 
+%description -n xindy-belarusian -l pl.UTF-8
+Xindy - język białoruski.
+
 %package -n xindy-bulgarian
 Summary:	Xindy bulgarian language
 Summary(hu.UTF-8):	Xindy bolgár nyelv
+Summary(pl.UTF-8):	Xindy - język bułgarski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-bulgarian
@@ -615,9 +593,13 @@ Xindy bulgarian language
 %description -n xindy-bulgarian -l hu.UTF-8
 Xindy bolgár nyelv
 
+%description -n xindy-bulgarian -l pl.UTF-8
+Xindy - język bułgarski.
+
 %package -n xindy-croatian
 Summary:	Xindy croatian language
 Summary(hu.UTF-8):	Xindy horvát nyelv
+Summary(pl.UTF-8):	Xindy - język chorwacki
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-croatian
@@ -626,9 +608,13 @@ Xindy croatian language
 %description -n xindy-croatian -l hu.UTF-8
 Xindy horvát nyelv
 
+%description -n xindy-croatian -l pl.UTF-8
+Xindy - język chorwacki.
+
 %package -n xindy-czech
 Summary:	Xindy czech language
 Summary(hu.UTF-8):	Xindy cseh nyelv
+Summary(pl.UTF-8):	Xindy - język czeski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-czech
@@ -637,9 +623,13 @@ Xindy czech language
 %description -n xindy-czech -l hu.UTF-8
 Xindy cseh nyelv
 
+%description -n xindy-czech -l pl.UTF-8
+Xindy - język czeski.
+
 %package -n xindy-danish
 Summary:	Xindy danish language
 Summary(hu.UTF-8):	Xindy dán nyelv
+Summary(pl.UTF-8):	Xindy - język duński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-danish
@@ -648,9 +638,13 @@ Xindy danish language
 %description -n xindy-danish -l hu.UTF-8
 Xindy dán nyelv
 
+%description -n xindy-danish -l pl.UTF-8
+Xindy - język duński.
+
 %package -n xindy-dutch
 Summary:	Xindy dutch language
 Summary(hu.UTF-8):	Xindy holland nyelv
+Summary(pl.UTF-8):	Xindy - język holenderski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-dutch
@@ -659,9 +653,13 @@ Xindy dutch language
 %description -n xindy-dutch -l hu.UTF-8
 Xindy holland nyelv
 
+%description -n xindy-dutch -l pl.UTF-8
+Xindy - język holenderski.
+
 %package -n xindy-english
 Summary:	Xindy english language
 Summary(hu.UTF-8):	Xindy angol nyelv
+Summary(pl.UTF-8):	Xindy - język angielski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-english
@@ -670,9 +668,13 @@ Xindy english language
 %description -n xindy-english -l hu.UTF-8
 Xindy angol nyelv
 
+%description -n xindy-english -l pl.UTF-8
+Xindy - język angielski.
+
 %package -n xindy-esperanto
 Summary:	Xindy esperanto language
 Summary(hu.UTF-8):	Xindy eszperantó nyelv
+Summary(pl.UTF-8):	Xindy - język esperanto
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-esperanto
@@ -681,9 +683,13 @@ Xindy esperanto language
 %description -n xindy-esperanto -l hu.UTF-8
 Xindy eszperantó nyelv
 
+%description -n xindy-esperanto -l pl.UTF-8
+Xindy - język esperanto.
+
 %package -n xindy-estonian
 Summary:	Xindy estonian language
 Summary(hu.UTF-8):	Xindy észt nyelv
+Summary(pl.UTF-8):	Xindy - język estoński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-estonian
@@ -692,9 +698,13 @@ Xindy estonian language
 %description -n xindy-estonian -l hu.UTF-8
 Xindy észt nyelv
 
+%description -n xindy-estonian -l pl.UTF-8
+Xindy - język estoński.
+
 %package -n xindy-finnish
 Summary:	Xindy finnish language
 Summary(hu.UTF-8):	Xindy finn nyelv
+Summary(pl.UTF-8):	Xindy - język fiński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-finnish
@@ -703,9 +713,13 @@ Xindy finnish language
 %description -n xindy-finnish -l hu.UTF-8
 Xindy finn nyelv
 
+%description -n xindy-finnish -l pl.UTF-8
+Xindy - język fiński.
+
 %package -n xindy-french
 Summary:	Xindy french language
 Summary(hu.UTF-8):	Xindy francia nyelv
+Summary(pl.UTF-8):	Xindy - język francuski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-french
@@ -714,9 +728,13 @@ Xindy french language
 %description -n xindy-french -l hu.UTF-8
 Xindy francia nyelv
 
+%description -n xindy-french -l pl.UTF-8
+Xindy - język francuski.
+
 %package -n xindy-general
 Summary:	Xindy general language
 Summary(hu.UTF-8):	Xindy általános nyelv
+Summary(pl.UTF-8):	Xindy - obsługa ogólna
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-general
@@ -725,9 +743,13 @@ Xindy general language
 %description -n xindy-general -l hu.UTF-8
 Xindy általános nyelv
 
+%description -n xindy-general -l pl.UTF-8
+Xindy - obsługa ogólna.
+
 %package -n xindy-georgian
 Summary:	Xindy georgian language
 Summary(hu.UTF-8):	Xindy georgian nyelv
+Summary(pl.UTF-8):	Xindy - język gruziński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-georgian
@@ -736,9 +758,13 @@ Xindy georgian language
 %description -n xindy-georgian -l hu.UTF-8
 Xindy georgian nyelv
 
+%description -n xindy-georgian -l pl.UTF-8
+Xindy - język gruziński.
+
 %package -n xindy-german
 Summary:	Xindy german language
 Summary(hu.UTF-8):	Xindy német nyelv
+Summary(pl.UTF-8):	Xindy - język niemiecki
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-german
@@ -747,9 +773,13 @@ Xindy german language
 %description -n xindy-german -l hu.UTF-8
 Xindy német nyelv
 
+%description -n xindy-german -l pl.UTF-8
+Xindy - język niemiecki.
+
 %package -n xindy-greek
 Summary:	Xindy greek language
 Summary(hu.UTF-8):	Xindy görög nyelv
+Summary(pl.UTF-8):	Xindy - język grecki
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-greek
@@ -758,9 +788,13 @@ Xindy greek language
 %description -n xindy-greek -l hu.UTF-8
 Xindy görög nyelv
 
+%description -n xindy-greek -l pl.UTF-8
+Xindy - język grecki.
+
 %package -n xindy-gypsy
 Summary:	Xindy gypsy language
 Summary(hu.UTF-8):	Xindy cigány nyelv
+Summary(pl.UTF-8):	Xindy - język cygański
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-gypsy
@@ -769,9 +803,13 @@ Xindy gypsy language
 %description -n xindy-gypsy -l hu.UTF-8
 Xindy cigány nyelv
 
+%description -n xindy-gypsy -l pl.UTF-8
+Xindy - język cygański.
+
 %package -n xindy-hausa
 Summary:	Xindy hausa language
 Summary(hu.UTF-8):	Xindy hausa nyelv
+Summary(pl.UTF-8):	Xindy - język hausa
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-hausa
@@ -780,9 +818,13 @@ Xindy hausa language
 %description -n xindy-hausa -l hu.UTF-8
 Xindy hausa nyelv
 
+%description -n xindy-hausa -l pl.UTF-8
+Xindy - język hausa.
+
 %package -n xindy-hebrew
 Summary:	Xindy hebrew language
 Summary(hu.UTF-8):	Xindy héber nyelv
+Summary(pl.UTF-8):	Xindy - język hebrajski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-hebrew
@@ -791,9 +833,13 @@ Xindy hebrew language
 %description -n xindy-hebrew -l hu.UTF-8
 Xindy héber nyelv
 
+%description -n xindy-hebrew -l pl.UTF-8
+Xindy - język hebrajski.
+
 %package -n xindy-hungarian
 Summary:	Xindy hungarian language
 Summary(hu.UTF-8):	Xindy magyar nyelv
+Summary(pl.UTF-8):	Xindy - język węgierski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-hungarian
@@ -802,9 +848,13 @@ Xindy hungarian language
 %description -n xindy-hungarian -l hu.UTF-8
 Xindy magyar nyelv
 
+%description -n xindy-hungarian -l pl.UTF-8
+Xindy - język węgierski.
+
 %package -n xindy-icelandic
 Summary:	Xindy icelandic language
 Summary(hu.UTF-8):	Xindy izlandi nyelv
+Summary(pl.UTF-8):	Xindy - język islandzki
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-icelandic
@@ -813,9 +863,13 @@ Xindy icelandic language
 %description -n xindy-icelandic -l hu.UTF-8
 Xindy izlandi nyelv
 
+%description -n xindy-icelandic -l pl.UTF-8
+Xindy - język islandzki.
+
 %package -n xindy-italian
 Summary:	Xindy italian language
 Summary(hu.UTF-8):	Xindy olasz nyelv
+Summary(pl.UTF-8):	Xindy - język włoski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-italian
@@ -824,9 +878,13 @@ Xindy italian language
 %description -n xindy-italian -l hu.UTF-8
 Xindy olasz nyelv
 
+%description -n xindy-italian -l pl.UTF-8
+Xindy - język włoski.
+
 %package -n xindy-klingon
 Summary:	Xindy klingon language
 Summary(hu.UTF-8):	Xindy klingon nyelv
+Summary(pl.UTF-8):	Xindy - język klingoński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-klingon
@@ -835,9 +893,13 @@ Xindy klingon language
 %description -n xindy-klingon -l hu.UTF-8
 Xindy klingon nyelv
 
+%description -n xindy-klingon -l pl.UTF-8
+Xindy - język klingoński.
+
 %package -n xindy-kurdish
 Summary:	Xindy kurdish language
 Summary(hu.UTF-8):	Xindy kurd nyelv
+Summary(pl.UTF-8):	Xindy - język kurdyjski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-kurdish
@@ -846,9 +908,13 @@ Xindy kurdish language
 %description -n xindy-kurdish -l hu.UTF-8
 Xindy kurd nyelv
 
+%description -n xindy-kurdish -l pl.UTF-8
+Xindy - język kurdyjski.
+
 %package -n xindy-latin
 Summary:	Xindy latin language
 Summary(hu.UTF-8):	Xindy latin nyelv
+Summary(pl.UTF-8):	Xindy - język łaciński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-latin
@@ -857,9 +923,13 @@ Xindy latin language
 %description -n xindy-latin -l hu.UTF-8
 Xindy latin nyelv
 
+%description -n xindy-latin -l pl.UTF-8
+Xindy - język łaciński.
+
 %package -n xindy-latvian
 Summary:	Xindy latvian language
 Summary(hu.UTF-8):	Xindy lett nyelv
+Summary(pl.UTF-8):	Xindy - język łotewski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-latvian
@@ -868,9 +938,13 @@ Xindy latvian language
 %description -n xindy-latvian -l hu.UTF-8
 Xindy lett nyelv
 
+%description -n xindy-latvian -l pl.UTF-8
+Xindy - język łotewski.
+
 %package -n xindy-lithuanian
 Summary:	Xindy lithuanian language
 Summary(hu.UTF-8):	Xindy litván nyelv
+Summary(pl.UTF-8):	Xindy - język litewski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-lithuanian
@@ -879,9 +953,13 @@ Xindy lithuanian language
 %description -n xindy-lithuanian -l hu.UTF-8
 Xindy litván nyelv
 
+%description -n xindy-lithuanian -l pl.UTF-8
+Xindy - język litewski.
+
 %package -n xindy-lower-sorbian
 Summary:	Xindy lower-sorbian language
 Summary(hu.UTF-8):	Xindy lower-sorbian nyelv
+Summary(pl.UTF-8):	Xindy - język dolnołużycki
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-lower-sorbian
@@ -890,9 +968,13 @@ Xindy lower-sorbian language
 %description -n xindy-lower-sorbian -l hu.UTF-8
 Xindy lower-sorbian nyelv
 
+%description -n xindy-lower-sorbian -l pl.UTF-8
+Xindy - język dolnołużycki.
+
 %package -n xindy-macedonian
 Summary:	Xindy macedonian language
 Summary(hu.UTF-8):	Xindy macedón nyelv
+Summary(pl.UTF-8):	Xindy - język macedoński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-macedonian
@@ -901,9 +983,13 @@ Xindy macedonian language
 %description -n xindy-macedonian -l hu.UTF-8
 Xindy macedón nyelv
 
+%description -n xindy-macedonian -l pl.UTF-8
+Xindy - język macedoński.
+
 %package -n xindy-mongolian
 Summary:	Xindy mongolian language
 Summary(hu.UTF-8):	Xindy mongol nyelv
+Summary(pl.UTF-8):	Xindy - język mongolski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-mongolian
@@ -912,9 +998,13 @@ Xindy mongolian language
 %description -n xindy-mongolian -l hu.UTF-8
 Xindy mongol nyelv
 
+%description -n xindy-mongolian -l pl.UTF-8
+Xindy - język mongolski.
+
 %package -n xindy-norwegian
 Summary:	Xindy norwegian language
 Summary(hu.UTF-8):	Xindy norvég nyelv
+Summary(pl.UTF-8):	Xindy - język norweski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-norwegian
@@ -923,9 +1013,13 @@ Xindy norwegian language
 %description -n xindy-norwegian -l hu.UTF-8
 Xindy norvég nyelv
 
+%description -n xindy-norwegian -l pl.UTF-8
+Xindy - język norweski.
+
 %package -n xindy-polish
 Summary:	Xindy polish language
 Summary(hu.UTF-8):	Xindy lengyel nyelv
+Summary(pl.UTF-8):	Xindy - język polski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-polish
@@ -934,9 +1028,13 @@ Xindy polish language
 %description -n xindy-polish -l hu.UTF-8
 Xindy lengyel nyelv
 
+%description -n xindy-polish -l pl.UTF-8
+Xindy - język polski.
+
 %package -n xindy-portuguese
 Summary:	Xindy portuguese language
 Summary(hu.UTF-8):	Xindy portugál nyelv
+Summary(pl.UTF-8):	Xindy - język portugalski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-portuguese
@@ -945,9 +1043,13 @@ Xindy portuguese language
 %description -n xindy-portuguese -l hu.UTF-8
 Xindy portugál nyelv
 
+%description -n xindy-portuguese -l pl.UTF-8
+Xindy - język portugalski.
+
 %package -n xindy-romanian
 Summary:	Xindy romanian language
 Summary(hu.UTF-8):	Xindy román nyelv
+Summary(pl.UTF-8):	Xindy - język rumuński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-romanian
@@ -956,9 +1058,13 @@ Xindy romanian language
 %description -n xindy-romanian -l hu.UTF-8
 Xindy román nyelv
 
+%description -n xindy-romanian -l pl.UTF-8
+Xindy - język rumuński.
+
 %package -n xindy-russian
 Summary:	Xindy russian language
 Summary(hu.UTF-8):	Xindy orosz nyelv
+Summary(pl.UTF-8):	Xindy - język rosyjski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-russian
@@ -967,9 +1073,13 @@ Xindy russian language
 %description -n xindy-russian -l hu.UTF-8
 Xindy orosz nyelv
 
+%description -n xindy-russian -l pl.UTF-8
+Xindy - język rosyjski.
+
 %package -n xindy-serbian
 Summary:	Xindy serbian language
 Summary(hu.UTF-8):	Xindy szerb nyelv
+Summary(pl.UTF-8):	Xindy - język serbski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-serbian
@@ -978,9 +1088,13 @@ Xindy serbian language
 %description -n xindy-serbian -l hu.UTF-8
 Xindy szerb nyelv
 
+%description -n xindy-serbian -l pl.UTF-8
+Xindy - język serbski.
+
 %package -n xindy-slovak
 Summary:	Xindy slovak language
 Summary(hu.UTF-8):	Xindy szlovák nyelv
+Summary(pl.UTF-8):	Xindy - język słowacki
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-slovak
@@ -989,9 +1103,13 @@ Xindy slovak language
 %description -n xindy-slovak -l hu.UTF-8
 Xindy szlovák nyelv
 
+%description -n xindy-slovak -l pl.UTF-8
+Xindy - język słowacki.
+
 %package -n xindy-slovenian
 Summary:	Xindy slovenian language
 Summary(hu.UTF-8):	Xindy szlovén nyelv
+Summary(pl.UTF-8):	Xindy - język słoweński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-slovenian
@@ -1000,9 +1118,13 @@ Xindy slovenian language
 %description -n xindy-slovenian -l hu.UTF-8
 Xindy szlovén nyelv
 
+%description -n xindy-slovenian -l pl.UTF-8
+Xindy - język słoweński.
+
 %package -n xindy-spanish
 Summary:	Xindy spanish language
 Summary(hu.UTF-8):	Xindy spanyol nyelv
+Summary(pl.UTF-8):	Xindy - język hiszpański
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-spanish
@@ -1011,9 +1133,13 @@ Xindy spanish language
 %description -n xindy-spanish -l hu.UTF-8
 Xindy spanyol nyelv
 
+%description -n xindy-spanish -l pl.UTF-8
+Xindy - język hiszpański.
+
 %package -n xindy-swedish
 Summary:	Xindy swedish language
 Summary(hu.UTF-8):	Xindy svéd nyelv
+Summary(pl.UTF-8):	Xindy - język szwedzki
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-swedish
@@ -1022,9 +1148,13 @@ Xindy swedish language
 %description -n xindy-swedish -l hu.UTF-8
 Xindy svéd nyelv
 
+%description -n xindy-swedish -l pl.UTF-8
+Xindy - język szwedzki.
+
 %package -n xindy-turkish
 Summary:	Xindy turkish language
 Summary(hu.UTF-8):	Xindy török nyelv
+Summary(pl.UTF-8):	Xindy - język turecki
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-turkish
@@ -1033,9 +1163,13 @@ Xindy turkish language
 %description -n xindy-turkish -l hu.UTF-8
 Xindy török nyelv
 
+%description -n xindy-turkish -l pl.UTF-8
+Xindy - język turecki.
+
 %package -n xindy-ukrainian
 Summary:	Xindy ukrainian language
 Summary(hu.UTF-8):	Xindy ukrán nyelv
+Summary(pl.UTF-8):	Xindy - język ukraiński
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-ukrainian
@@ -1044,9 +1178,13 @@ Xindy ukrainian language
 %description -n xindy-ukrainian -l hu.UTF-8
 Xindy ukrán nyelv
 
+%description -n xindy-ukrainian -l pl.UTF-8
+Xindy - język ukraiński.
+
 %package -n xindy-upper-sorbian
 Summary:	Xindy upper-sorbian language
 Summary(hu.UTF-8):	Xindy upper-sorbian nyelv
+Summary(pl.UTF-8):	Xindy - język górnołużycki
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-upper-sorbian
@@ -1055,9 +1193,13 @@ Xindy upper-sorbian language
 %description -n xindy-upper-sorbian -l hu.UTF-8
 Xindy upper-sorbian nyelv
 
+%description -n xindy-upper-sorbian -l pl.UTF-8
+Xindy - język górnołużycki.
+
 %package -n xindy-vietnamese
 Summary:	Xindy vietnamese language
 Summary(hu.UTF-8):	Xindy vietnámi nyelv
+Summary(pl.UTF-8):	Xindy - język wietnamski
 Group:		Applications/Publishing/TeX
 
 %description -n xindy-vietnamese
@@ -1066,15 +1208,20 @@ Xindy vietnamese language
 %description -n xindy-vietnamese -l hu.UTF-8
 Xindy vietnám nyelv
 
+%description -n xindy-vietnamese -l pl.UTF-8
+Xindy - język wietnamski.
+
 %package pdftex
-Summary:	TeX generating PDF files instead DVI
-Summary(hu.UTF-8):	PDF fájlok készítése DVI helyett TeX-ből
-Summary(pl.UTF-8):	TeX generujący pliki PDF zamiast DVI
+Summary:	pdfTeX - TeX engine with direct PDF output
+Summary(hu.UTF-8):	pdfTeX - TeX motor közvetlen PDF kimenettel
+Summary(pl.UTF-8):	pdfTeX - silnik TeX z bezpośrednim wyjściem PDF
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-pdftex-data >= %{epoch}:%{texmfversion}
+Requires(post):	%{name}-texlive-scripts
+Requires(post):	texlive-kpathsea
 # ams provides bluesky fonts
-Requires:	%{name}-fonts-ams >= %{texmfversion}
+Requires:	%{name}-amsfonts >= %{epoch}:%{texmfversion}
 Requires:	ghostscript
 Provides:	tetex-format-pdftex = %{epoch}:%{version}-%{release}
 Provides:	tetex-pdftex
@@ -1082,16 +1229,21 @@ Obsoletes:	tetex-format-pdftex
 Obsoletes:	tetex-pdftex
 
 %description pdftex
-TeX generating PDF files instead DVI.
+pdfTeX is an extension of TeX that can create PDF output directly
+(instead of DVI), including support for microtypographic extensions,
+PDF hyperlinks, and inclusion of JPEG, PNG, and PDF images.
 
 %description pdftex -l pl.UTF-8
-TeX generujący pliki PDF zamiast DVI.
+pdfTeX to rozszerzenie TeXa, które potrafi bezpośrednio tworzyć pliki
+PDF (zamiast DVI), z obsługą rozszerzeń mikrotypograficznych,
+hiperłączy PDF oraz włączania obrazów JPEG, PNG i PDF.
 
 %package psutils
 Summary:	PostScript Utilities
 Summary(hu.UTF-8):	PostScript eszközök
 Summary(pl.UTF-8):	Narzędzia do PostScriptu
 Group:		Applications/Printing
+Requires:	%{name}-psutils-data
 Provides:	psutils
 Obsoletes:	psutils
 Obsoletes:	texlive-epsutils
@@ -1113,333 +1265,18 @@ PSutils zawiera programy pomagające manipulować plikami PostScript,
 wybierać strony przeznaczone do wydruku, ich kolejność, układ. Pozwala
 także na łączenie różnych plików PostScript w całość.
 
-%package phyzzx
-Summary:	A TeX format for physicists
-Summary(hu.UTF-8):	TeX formátum fizikusoknak
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-
-%description phyzzx
-A TeX format for physicists.
-
-%description phyzzx -l hu.UTF-8
-TeX formátum fizikusoknak.
-
-%package omega-basic
-Summary:	Extended unicode TeX
-Summary(pl.UTF-8):	Omega - TeX ze wsparciem dla unikodu
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-omega >= %{texmfversion}
-Requires:	%{name}-omega-data >= %{texmfversion}
-Requires:	%{name}-plain >= %{texmfversion}
-Obsoletes:	tetex-omega
-
-%description omega-basic
-Omega is a version of the TeX program modified for multilingual
-typesetting. It uses unicode, and has additional primitives for (among
-other things) bidirectional typesetting.
-
-%description omega-basic -l pl.UTF-8
-Omega to wersja TeXa zmodyfikowana dla potrzeb składu wielojęzycznego.
-Używa unikodu i ma dodatkowe prymitywy do (między innymi) składania
-tekstu pisanego w obu kierunkach.
-
-# # formats #
-
-# Plain format.
-
-%package plain
-Summary:	Plain TeX format basic files
-Summary(pl.UTF-8):	Podstawowe pliki dla formatu Plain TeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Provides:	tetex-format-plain
-Provides:	tetex-plain
-Obsoletes:	tetex-cyrplain
-Obsoletes:	tetex-format-cyrplain
-Obsoletes:	tetex-format-plain
-Obsoletes:	tetex-plain
-
-%description plain
-Plain TeX format basic files.
-
-%description plain -l pl.UTF-8
-Podstawowe pliki dla formatu Plain TeX.
-
-# MeX Plain format
-
-%package mex
-Summary:	MeX Plain Format basic files
-Summary(pl.UTF-8):	Podstawowe pliki dla format MeX Plain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-pl >= %{texmfversion}
-Requires:	%{name}-plain >= %{texmfversion}
-Obsoletes:	tetex-mex
-
-%description mex
-MeX Plain Format basic files.
-
-%description mex -l pl.UTF-8
-Podstawowe pliki dla formatu MeX Plain.
-
-%package format-mex
-Summary:	MeX Plain Format
-Summary(pl.UTF-8):	Format MeX Plain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-mex >= %{texmfversion}
-Obsoletes:	tetex-format-mex
-
-%description format-mex
-MeX Plain Format.
-
-%description format-mex -l pl.UTF-8
-Format MeX Plain.
-
-%package format-pdfmex
-Summary:	PDFMeX Plain Format
-Summary(pl.UTF-8):	Format PDFMeX Plain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-mex >= %{texmfversion}
-Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-format-pdfmex
-
-%description format-pdfmex
-PDFMeX Plain Format.
-
-%description format-pdfmex -l pl.UTF-8
-Format PDFMeX Plain.
-
-%package format-utf8mex
-Summary:	MeX Plain Format with UTF-8 encoded source files
-Summary(pl.UTF-8):	Format MeX Plain z plikami źródłowymi kodowanymi UTF-8
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-mex >= %{texmfversion}
-Obsoletes:	tetex-format-utf8mex
-
-%description format-utf8mex
-MeX Plain Format with UTF-8 encoded source files.
-
-%description format-utf8mex -l pl.UTF-8
-Format MeX Plain z plikami źródłowymi kodowanymi UTF-8.
-
-%package format-amstex
-Summary:	AMS macros for Plain TeX
-Summary(pl.UTF-8):	Makra AMS dla formatu Plain TeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-amstex >= %{texmfversion}
-Obsoletes:	tetex-format-amstex
-Obsoletes:	tetex-format-cyramstex
-
-%description format-amstex
-American Mathematical Society macros for Plain TeX.
-
-%description format-amstex -l pl.UTF-8
-Makra AMS (American Mathematical Society) dla formatu Plain TeX.
-
-# CSPlain format
-
-%package csplain
-Summary:	TeX CSPlain format basic files
-Summary(pl.UTF-8):	Podstawowe pliki dla formatu TeX CSPlain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-fonts-cs >= %{texmfversion}
-Requires:	%{name}-plain >= %{texmfversion}
-Provides:	tetex-csplain
-Obsoletes:	tetex-csplain
-
-%description csplain
-TeX CSPlain format basic files.
-
-%description csplain -l pl.UTF-8
-Podstawowe pliki dla formatu TeX CSPlain.
-
-%package format-csplain
-Summary:	TeX CSPlain format
-Summary(pl.UTF-8):	Format TeX CSPlain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-csplain = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-format-csplain
-
-%description format-csplain
-TeX CSPlain format.
-
-%description format-csplain -l pl.UTF-8
-Format TeX CSPlain.
-
-%package format-pdfcsplain
-Summary:	PDFTeX CSPlain format
-Summary(pl.UTF-8):	Format PDFTeX CSPlain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-csplain = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-format-pdfcsplain
-
-%description format-pdfcsplain
-PDFTeX CSPlain format.
-
-%description format-pdfcsplain -l pl.UTF-8
-Format PDFTeX CSPlain.
-
-%package format-cslatex
-Summary:	CSLaTeX format
-Summary(pl.UTF-8):	Format CSLaTeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-cslatex >= %{texmfversion}
-Obsoletes:	tetex-format-cslatex
-
-%description format-cslatex
-CSLaTeX format.
-
-%description format-cslatex -l pl.UTF-8
-Format CSLaTeX.
-
-%package format-pdfcslatex
-Summary:	PDF CSLaTeX format
-Summary(pl.UTF-8):	Format PDF CSLaTeX
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-cslatex = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-format-pdfcslatex
-
-%description format-pdfcslatex
-PDF CSLaTeX format.
-
-%description format-pdfcslatex -l pl.UTF-8
-Format PDF CSLaTeX.
-
-# EPlain format
-
-%package eplain
-Summary:	EPlain format basic files
-Summary(pl.UTF-8):	Podstawowe pliki dla formatu EPlain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-plain >= %{texmfversion}
-Obsoletes:	tetex-eplain
-Obsoletes:	tetex-etex
-
-%description eplain
-EPlain format basic files.
-
-%description eplain -l pl.UTF-8
-Podstawowe pliki dla formatu EPlain.
-
-%package format-eplain
-Summary:	EPlain format
-Summary(pl.UTF-8):	Format EPlain
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-eplain >= %{texmfversion}
-Obsoletes:	tetex-format-eplain
-
-%description format-eplain
-EPlain format.
-
-%description format-eplain -l pl.UTF-8
-Format EPlain.
-
-# ConTeXt format.
-
-%package context
-Summary:	ConTeXt macro package basic files
-Summary(pl.UTF-8):	Podstawowe pliki pakietu makr ConTeXt
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-context-data >= %{texmfversion}
-Provides:	tetex-context
-Obsoletes:	tetex-context
-
-%define		_noautoreq	'perl(path_tre)'
-
-%description context
-A full featured, parameter driven macro package, which fully supports
-advanced interactive documents.
-
-This package contains basic files.
-
-%description context -l pl.UTF-8
-Pakiet makr sterowanych przez parametry o pełnych możliwościach,
-całkowicie obsługujący zaawansowane dokumenty interaktywne.
-
-Ten pakiet zawiera podstawowe pliki.
-
-%package format-context-de
-Summary:	German ConTeXt format
-Summary(pl.UTF-8):	Niemiecka wersja formatu ConTeXt
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-context = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-format-context-de
-
-%description format-context-de
-German ConTeXt format.
-
-%description format-context-de -l pl.UTF-8
-Niemiecka wersja formatu ConTeXt.
-
-%package format-context-en
-Summary:	English ConTeXt format
-Summary(pl.UTF-8):	Angielska wersja formatu ConTeXt
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-context = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-format-context-en
-
-%description format-context-en
-English ConTeXt format.
-
-%description format-context-en -l pl.UTF-8
-Angielska wersja formatu ConTeXt.
-
-%package format-context-nl
-Summary:	Dutch ConTeXt format
-Summary(pl.UTF-8):	Holenderska wersja formatu ConTeXt
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-context = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-format-context-nl
-
-%description format-context-nl
-Dutch ConTeXt format.
-
-%description format-context-nl -l pl.UTF-8
-Holenderska wersja formatu ConTeXt.
-
-# LaTeX format.
-
 %package latex
 Summary:	LaTeX macro package basic files
 Summary(pl.UTF-8):	Podstawowe pliki pakietu makr LaTeX
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-latex
-Requires:	%{name}-tex-ruhyphen
-Requires:	%{name}-tex-ukrhyph
+Requires:	%{name}-latex-data >= %{epoch}:%{texmfversion}
+Requires(post):	%{name}-texlive-scripts
+Requires(post):	texlive-kpathsea
 # for misc/eurosym:
-Requires:	%{name}-fonts-eurosym
-Requires:	%{name}-latex-data
 Requires:	%{name}-pdftex
-Requires:	%{name}-tex-babel
-Requires:	%{name}-tex-pstricks
-Suggests:	%{name}-fonts-jknappen
-Suggests:	%{name}-latex-ucs
-# Provides:	tetex-format-latex = %{epoch}:%{version}-%{release}
-# Provides:	tetex-latex = %{epoch}:%{version}-%{release}
+Suggests:	%{name}-jknapltx
+Suggests:	%{name}-ucs
 Obsoletes:	tetex-bibtex-koma-script
 # Can't install texlive-latex-data, so must delete
 # Obsoletes:	tetex-format-latex
@@ -1482,8 +1319,6 @@ Obsoletes:	tetex-latex-units
 Obsoletes:	tetex-mwcls
 Obsoletes:	tetex-revtex4
 
-%define		skip_post_check_so		libptexenc.so.1.2.0
-
 %description latex
 LaTeX is a front end for the TeX text formatting system. Easier to use
 than TeX, LaTeX is essentially a set of TeX macros which provide
@@ -1502,9 +1337,7 @@ Ten pakiet zawiera podstawowe pliki.
 Summary:	Bibliography management for LaTeX
 Summary(pl.UTF-8):	Zarządzenie bibliografią dla LaTeXa
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex-bibtex-data >= %{texmfversion}
 Provides:	tetex-latex-bibtex
 Obsoletes:	tetex-bibtex
 Obsoletes:	tetex-latex-bibtex
@@ -1517,42 +1350,20 @@ Bibliography management for LaTeX.
 %description latex-bibtex -l pl.UTF-8
 Zarządzanie bibliografią dla LaTeXa.
 
-%package latex-presentation-bin
-Summary:	Presentations in LaTeX
-Summary(hu.UTF-8):	Prezentációk LaTeX-ben
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name}-latex-foiltex >= %{texmfversion}
-Requires:	luatex
-Suggests:	%{name}-latex-prosper = %{epoch}:%{version}-%{release}
-
-%description latex-presentation-bin
-This package contains:
-- powerdot: a presentation class.
-- ppower4: a postprocessor for PDF presentations.
-- sciposter: make posters of ISO A3 size and larger.
-- tpslifonts: a LaTeX package for configuring presentation fonts.
-
-%description latex-presentation-bin -l hu.UTF-8
-Ez a csomag a következőket tartalmazza:
-- powerdot: egy prezentáció osztály
-- ppower4: egy postprocesszor PDF prezentációkhoz
-- sciposter: poszterek készítése A3-as és nagyobb méretben
-- tpslifonts: a LaTeX package for configuring presentation fonts.
-
 %package format-pdflatex
 Summary:	PDF LaTeX macro package
 Summary(pl.UTF-8):	Pakiet makr PDF LaTeX
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	%{name}-fonts-jknappen
-Requires:	%{name}-fonts-type1-urw
+Requires:	%{name}-jknapltx
+Requires:	%{name}-collection-fontsrecommended
 Requires:	%{name}-latex = %{epoch}:%{version}-%{release}
-Requires:	%{name}-latex-psnfss
 Requires:	%{name}-pdftex = %{epoch}:%{version}-%{release}
 Provides:	tetex-format-pdflatex
 Obsoletes:	tetex-format-pdflatex
+# Force arch transition from old noarch to x86_64
+Obsoletes:	texlive-format-pdflatex < %{epoch}:%{version}
+Requires(post):	%{name}-texlive-scripts
 
 %description format-pdflatex
 LaTeX is a front end for the TeX text formatting system. Easier to use
@@ -1569,124 +1380,55 @@ dających użytkownikom wygodne, predefiniowane formaty dokumentów.
 Ten pakiet zawiera format PDF LaTeX.
 
 %package scripts
-Summary:	Various scripts
-Summary(hu.UTF-8):	Néhány szkript
+Summary:	TeX Live helper scripts
+Summary(hu.UTF-8):	TeX Live segédszkriptek
+Summary(pl.UTF-8):	Skrypty pomocnicze TeX Live
 Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description scripts
-Various scripts.
+TeX Live helper scripts for font pre-generation, format conversion,
+and font installation support.
 
 %description scripts -l hu.UTF-8
-Néhány szkript.
+TeX Live segédszkriptek fontok előgenerálásához, formátumkonverzióhoz
+és fonttelepítéshez.
 
-%package tlmgr
-Summary:	TeXLive manager
-Summary(hu.UTF-8):	TeXLive manager
-Group:		Applications/Publishing/TeX
-
-%description tlmgr
-tlmgr manages an existing TeX Live installation, both packages and
-configuration options. It performs many of the same actions as
-texconfig, and more besides.
-
-%description tlmgr -l hu.UTF-8
-tlmgr egy létező TeX Live telepítést tart karban, csomag és beállítás
-tekintetében is. Hasonló műveleteket végez, mint a texconfig, sőt,
-többet is.
-
-# # TeX generic macros #
-
-%package tex-babel
-Summary:	Multilingual support for TeX
-Summary(pl.UTF-8):	Obsługa wielu języków dla TeXa
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Provides:	tetex-tex-babel
-Obsoletes:	tetex-tex-babel
-
-%description tex-babel
-Multilingual support for TeX.
-
-%description tex-babel -l pl.UTF-8
-Obsługa wielu języków dla TeXa.
-
-%package tex-thumbpdf
-Summary:	Thumbnails for PDFTeX and dvips/ps2pdf
-Summary(pl.UTF-8):	Ikonki dla PDFTeXa i dvips/ps2pdf
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	%{_bindir}/texhash
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Obsoletes:	tetex-tex-thumbpdf
-
-%description tex-thumbpdf
-Provides support, using Perl, for thumbnails in pdfTeX and
-dvips/ps2pdf, using ghostscript to generate the thumbnails which get
-represented in a TeX readable file that is read by the package
-thumbpdf.sty to automatically include the thumbnails. Works with both
-plain TeX and LaTeX.
-
-%description tex-thumbpdf -l pl.UTF-8
-Pakiet przy pomocy Perla dodaje ikonki w pdfTeXu i dvips/ps2pdf przy
-użyciu ghostscripta. Ikonki są reprezentowane w pliku czytanym przez
-TeXa, który jest wywoływany z thumbpdf.sty, aby automatycznie dołączyć
-ikonki. Działa z formatami plain TeX i LaTeX.
-
-%package dirs-fonts
-Summary:	TeX font directories
-Summary(pl.UTF-8):	Katalogi fontów TeXa
-Group:		Fonts
-Provides:	tetex-dirs-fonts
-Obsoletes:	tetex-dirs-fonts
-
-%description dirs-fonts
-TeX font directories.
-
-%description dirs-fonts -l pl.UTF-8
-Katalogi fontów TeXa.
+%description scripts -l pl.UTF-8
+Skrypty pomocnicze TeX Live do wstępnego generowania fontów, konwersji
+formatów i wspomagania instalacji fontów.
 
 %package font-utils
-Summary:	Font utilities
+Summary:	Type1 and TrueType font utilities
+Summary(pl.UTF-8):	Narzędzia do fontów Type1 i TrueType
 Group:		Fonts
 
 %description font-utils
-Font utilities.
+Utilities for manipulating Type1 and TrueType fonts, including
+PFB/PFA conversion tools and TrueType font table inspection.
 
-# # Fonts packages #
-
-%package fonts-other
-Summary:	Other fonts
-Summary(hu.UTF-8):	További betűtípusok
-Group:		Fonts
-Requires:	%{name}-dirs-fonts >= %{texmfversion}
-Obsoletes:	tetex-fonts-cbgreek
-Obsoletes:	tetex-fonts-dstroke
-Obsoletes:	tetex-fonts-pazo
-Obsoletes:	tetex-fonts-type1-dstroke
-Obsoletes:	tetex-fonts-type1-qfonts
-Obsoletes:	tetex-fonts-type1-tt2001
-Obsoletes:	tetex-qfonts
-
-%description fonts-other
-Other fonts.
-
-%description fonts-other -l hu.UTF-8
-További betűtípusok.
+%description font-utils -l pl.UTF-8
+Narzędzia do manipulacji fontami Type1 i TrueType, w tym narzędzia do
+konwersji PFB/PFA oraz inspekcji tabel fontów TrueType.
 
 %package bbox
 Summary:	bbox prints the bounding box of images
+Summary(pl.UTF-8):	bbox wypisuje bounding box obrazów
 Group:		Applications/Publishing/TeX
 
 %description bbox
 bbox reads a rawppm or rawpbm file and prints out the bounding box of
 the image.
 
+%description bbox -l pl.UTF-8
+bbox czyta plik rawppm lub rawpbm i wypisuje bounding box obrazu.
+
 %package detex
 Summary:	A filter to strip TeX commands from a .tex file
 Summary(hu.UTF-8):	Egy szűrő, amely .tex fájlokból szűri ki a TeX parancsokat
+Summary(pl.UTF-8):	Filtr usuwający polecenia TeXa z pliku .tex
 Group:		Applications/Publishing/TeX
+Requires:	%{name}-detex-data
 
 %description detex
 A filter to strip TeX commands from a .tex file.
@@ -1694,29 +1436,48 @@ A filter to strip TeX commands from a .tex file.
 %description detex -l hu.UTF-8
 Egy szűrő, amely .tex fájlokból szűri ki a TeX parancsokat.
 
+%description detex -l pl.UTF-8
+Filtr usuwający polecenia TeXa z pliku .tex.
+
 %package dviutils
 Summary:	Various DVI utils
 Summary(hu.UTF-8):	Vegyes DVI eszközök
+Summary(pl.UTF-8):	Różne narzędzia DVI
 Group:		Applications/Publishing/TeX
 Provides:	dvi2tty
 Obsoletes:	dvi2tty
 
 %description dviutils
-This package contains various DVI utils.
+Utilities for manipulating DVI files: conversion to text, rearranging
+pages, concatenating files, converting to PDF/GIF, and other DVI
+transformations.
 
 %description dviutils -l hu.UTF-8
-Ez a csomag mindenféle DVI eszközt tartalmaz.
+DVI fájlok kezelésére szolgáló eszközök: szöveggé konvertálás, oldalak
+átrendezése, fájlok összefűzése, PDF/GIF konverzió és egyéb DVI
+átalakítások.
+
+%description dviutils -l pl.UTF-8
+Narzędzia do manipulacji plikami DVI: konwersja na tekst,
+zmiana kolejności stron, łączenie plików, konwersja do PDF/GIF i inne
+przekształcenia DVI.
 
 %package uncategorized-utils
-Summary:	Uncategorized utils
+Summary:	Additional TeX Live utilities
+Summary(pl.UTF-8):	Dodatkowe narzędzia TeX Live
 Group:		Applications/Publishing/TeX
 
 %description uncategorized-utils
-Uncategorized utilities. Needs check and categorizing.
+Additional TeX Live utilities not fitting in other subpackages.
+
+%description uncategorized-utils -l pl.UTF-8
+Dodatkowe narzędzia TeX Live nie pasujące do innych podpakietów.
 
 %package tex4ht
 Summary:	LaTeX and TeX for hypertext
+Summary(pl.UTF-8):	LaTeX i TeX do hipertekstu
 Group:		Applications/Publishing/TeX
+Requires:	%{name}-tex4ht-data
 
 %description tex4ht
 A converter from TeX and LaTeX to hypertext (HTML, XML, etc.),
@@ -1724,11 +1485,21 @@ providing a configurable (La)TeX-based authoring system for hypertext.
 When converting to XML, you can use MathML instead of images for
 equation representation.
 
+%description tex4ht -l pl.UTF-8
+Konwerter z TeXa i LaTeXa do hipertekstu (HTML, XML itp.),
+udostępniający konfigurowalny system autorski oparty na (La)TeXu.
+Przy konwersji do XML można użyć MathML zamiast obrazów do
+reprezentacji równań.
+
 %package xetex
 Summary:	Extended TeX / LaTeX version for unicode
+Summary(pl.UTF-8):	Rozszerzona wersja TeXa/LaTeXa z obsługą Unicode
 Group:		Applications/Publishing/TeX
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-xetex-data >= %{epoch}:%{texmfversion}
+Requires(post):	%{name}-texlive-scripts
+Requires(post):	texlive-kpathsea
 Requires(post,postun):	/usr/bin/texhash
-Requires:	%{name}-fonts-misc >= %{texmfversion}
 
 %description xetex
 XeTeX extends the TeX typesetting system (and macro packages such as
@@ -1736,34 +1507,40 @@ LaTeX and ConTeXt) to have native support for the Unicode character
 set, including complex Asian scripts, and for OpenType and TrueType
 fonts.
 
-%package xmltex
-Summary:	TeX package for processing XML files
-Group:		Applications/Publishing/TeX
-Requires(post,postun):	/usr/bin/texhash
-Provides:	passivetex = 1.26
-Provides:	xmltex
-Obsoletes:	passivetex
-Obsoletes:	xmltex
-
-%description xmltex
-XMLTeX is a non-validating, namespace-aware XML parser written in TeX.
-It allows TeX to directly process XML files.
+%description xetex -l pl.UTF-8
+XeTeX rozszerza system składu TeX (oraz pakiety makr takie jak LaTeX
+i ConTeXt) o natywną obsługę zestawu znaków Unicode, w tym złożonych
+pism azjatyckich, oraz fontów OpenType i TrueType.
 
 %package luatex
-Summary:	LuaTeX uses Lua scripting both as an extension to the TeX macro language and as an extension to the typesetting engine itself
+Summary:	LuaTeX - TeX engine with embedded Lua scripting
+Summary(pl.UTF-8):	LuaTeX - silnik TeX z wbudowanym skryptowaniem Lua
 Group:		Applications/Publishing/TeX
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-luatex-data >= %{epoch}:%{texmfversion}
+Requires(post):	%{name}-texlive-scripts
+Requires(post):	texlive-kpathsea
+Requires:	kpathsea = %{epoch}:%{version}-%{release}
 
 %description luatex
-LuaTeX uses Lua scripting both as an extension to the TeX macro
-language and as an extension to the typesetting engine itself.
+LuaTeX is an extended version of pdfTeX using Lua as an embedded
+scripting language. It provides access to the internals of the TeX
+engine, allowing programmatic control of typesetting. LuaHBTeX adds
+HarfBuzz support for OpenType font shaping.
+
+%description luatex -l pl.UTF-8
+LuaTeX to rozszerzona wersja pdfTeX z wbudowanym językiem
+skryptowym Lua. Zapewnia dostęp do mechanizmów silnika TeX,
+pozwalając na programistyczną kontrolę składu. LuaHBTeX dodaje
+obsługę HarfBuzz do kształtowania fontów OpenType.
 
 %prep
 %setup -q -n %{name}-%{version}-source
-%patch -P0 -p1
 
 %build
-# find . -name "config.sub" -exec cp /usr/share/automake/config.sub '{}' ';'
 %{__sed} -i 's@"extend/\(.*\)"@<\1>@' texk/ttf2pk2/*.c
+
+# Set texmf paths in kpathsea's texmf.cnf to match PLD filesystem layout
 cd texk/kpathsea
 %{__sed} -i 's@^TEXMFMAIN =.*@TEXMFMAIN = %{texmf}@' texmf.cnf
 %{__sed} -i 's@^TEXMFDIST =.*@TEXMFDIST = %{texmfdist}@' texmf.cnf
@@ -1775,35 +1552,31 @@ cd texk/kpathsea
 cd ../..
 
 %ifarch ppc ppc64
-# clisp does not work properly on forge
+# clisp (used by xindy) needs unlimited stack on ppc/ppc64
 ulimit -s unlimited
 %endif
 
 export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES"
+
 %configure \
-	--prefix=%{_prefix} \
+	--enable-build-in-source-tree \
 	%{__enable_disable xindy} \
 	--enable-shared \
 	--disable-native-texlive-build \
-	--without-luatex \
-	--disable-multiplatform \
 	--disable-static \
-	--enable-a4 \
-	--enable-gf \
 	--enable-ipc \
-	--enable-shared \
-	--enable-ttf2pk2 \
+	--enable-luatex \
+	--enable-luahbtex \
+	%{!?with_luajittex:--disable-luajittex} \
+	%{!?with_luajittex:--disable-luajithbtex} \
+	%{?with_luajittex:--with-system-luajit} \
+	--enable-uptex \
+	--disable-aleph \
 	--disable-t1utils \
-	--with-fontconfig \
-	--with-fonts-dir=/var/cache/fonts \
-	--with-ncurses \
-	--with-system-freetype \
-	--with-freetype-includes=/usr/include/freetype \
+	--disable-texdoctk \
 	--with-system-freetype2 \
 	--with-system-gd \
-	--with-system-ncurses \
-	--with-system-pnglib \
-	--with-system-t1lib \
+	--with-system-libpng \
 	--with-system-zlib \
 	--with-system-harfbuzz \
 	--with-system-icu \
@@ -1812,29 +1585,64 @@ export CPPFLAGS="%{rpmcppflags} -DHAVE_PROTOTYPES"
 	--with-system-poppler \
 	--with-system-cairo \
 	--with-system-pixman \
-	--with-xdvi-x-toolkit=xaw \
-	--without-dialog \
-	--without-t1utils \
-	--without-texinfo \
- 	--enable-build-in-source-tree
+	--with-system-mpfr \
+	--with-system-gmp \
+	--with-system-mpfi \
+	--with-system-lua \
+	--with-system-libpaper \
+	--with-system-potrace \
+	--with-xdvi-x-toolkit=xaw
 %{__make}
 
+# Ensure generated/intermediate sources exist for debuginfo extraction.
+# debuginfo runs from the source dir; paths are relative to there.
+for f in \
+	libs/luajit/buildvm_x86.dasc \
+	texk/cjkutils/cjkutils-src/Bg5conv/bg5conv.w \
+	texk/cjkutils/cjkutils-src/CEFconv/cef5conv.w \
+	texk/cjkutils/cjkutils-src/CEFconv/cefconv.w \
+	texk/cjkutils/cjkutils-src/CEFconv/cefsconv.w \
+	texk/cjkutils/cjkutils-src/SJISconv/sjisconv.w \
+	texk/cjkutils/cjkutils-src/extconv/extconv.w \
+	texk/cjkutils/cjkutils-src/hbf2gf/hbf2gf.w \
+	texk/gregorio/gabc/gabc-notes-determination-l.c \
+	texk/gregorio/gabc/gabc-notes-determination.l \
+	texk/gregorio/gabc/gabc-score-determination-l.c \
+	texk/gregorio/gabc/gabc-score-determination-l.h \
+	texk/gregorio/gabc/gabc-score-determination-y.c \
+	texk/gregorio/gabc/gabc-score-determination.l \
+	texk/gregorio/gabc/gabc-score-determination.y \
+	texk/gregorio/vowel/vowel-rules-l.c \
+	texk/gregorio/vowel/vowel-rules-y.c \
+	texk/gregorio/vowel/vowel-rules.l \
+	texk/gregorio/vowel/vowel-rules.y \
+	texk/tex4htk/tex4ht-c.tex \
+	texk/tex4htk/tex4ht-t4ht.tex \
+	texk/web2c/format.w \
+	texk/web2c/hiparser.h \
+	texk/web2c/lexer.c \
+	texk/web2c/lexer.l \
+	texk/web2c/omegafonts/pl-lexer.c \
+	texk/web2c/parser.c \
+	utils/vlna/vlna.w \
+	; do
+	[ -f "$f" ] || { install -d "$(dirname "$f")" && touch "$f"; }
+done
+
 %install
-rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir} \
 	$RPM_BUILD_ROOT%{_desktopdir} \
 	$RPM_BUILD_ROOT%{_pixmapsdir} \
 	$RPM_BUILD_ROOT%{_mandir}/man5 \
 	$RPM_BUILD_ROOT/var/cache/fonts \
 	$RPM_BUILD_ROOT/etc/cron.daily\
-	$RPM_BUILD_ROOT/etc/sysconfig/tetex-updmap\
 	$RPM_BUILD_ROOT%{_localstatedir}/fonts/map\
 	$RPM_BUILD_ROOT%{fmtdir}/pdftex
 
 LD_LIBRARY_PATH=$RPM_BUILD_ROOT%{_libdir}; export LD_LIBRARY_PATH
 PATH=$RPM_BUILD_ROOT%{_bindir}:$PATH; export PATH
 
-
+# TL's build system doesn't fully support DESTDIR; override paths explicitly
 %{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	bindir=$RPM_BUILD_ROOT%{_bindir} \
@@ -1850,189 +1658,105 @@ PATH=$RPM_BUILD_ROOT%{_bindir}:$PATH; export PATH
 	encdir=$RPM_BUILD_ROOT%{texmfdist}/fonts/enc/dvips/base \
 	glyphlistdir=$RPM_BUILD_ROOT%{texmfdist}/fonts/map/glyphlist
 
-%{__rm} -rf $RPM_BUILD_ROOT%{_bindir}/man
 
-install -d \
-	$RPM_BUILD_ROOT%{texmfdist}/doc/generic \
-	$RPM_BUILD_ROOT%{texmfdist}/doc \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/afm/public \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/afm/vntex \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/afm \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/enc/dvips/vntex \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/ofm/public \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/ofm \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/opentype/public \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/opentype \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/ovf/public \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/ovf \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/ovp/public \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/ovp \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/pk/ljfour \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/pk \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/source/public \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/source/vntex \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/source \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/tfm/public \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/tfm/vntex \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/truetype \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/type1/public \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/type1/vntex \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/vf/public \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/vf/vntex \
-	$RPM_BUILD_ROOT%{texmfdist}/fonts/vf \
-	$RPM_BUILD_ROOT%{texmfdist}/source/fonts \
-	$RPM_BUILD_ROOT%{texmfdist}/source/generic \
-	$RPM_BUILD_ROOT%{texmfdist}/source \
-	$RPM_BUILD_ROOT%{texmfdist}/tex/generic \
-	$RPM_BUILD_ROOT%{texmfdist}/tex/plain \
-	$RPM_BUILD_ROOT%{texmfdist}/tex \
-	$RPM_BUILD_ROOT%{texmf}/fonts/opentype/public \
-	$RPM_BUILD_ROOT%{texmf}/fonts/opentype \
-	$RPM_BUILD_ROOT%{texmf}/tex
-
-CURDIR=$(pwd)
+# Engine symlinks (ELF binary aliases)
 cd $RPM_BUILD_ROOT%{_bindir}
+ln -s pdftex latex
+ln -s pdftex pdflatex
+ln -s luahbtex lualatex
+ln -s xetex xelatex
+cd -
 
-ln -sf pdftex latex
-ln -sf xetex xelatex
-ln -sf pdftex pdflatex
-
-
-ln -sf ../share/texmf-dist/scripts/fontools/afm2afm afm2afm
-ln -sf ../share/texmf-dist/scripts/fontools/autoinst autoinst
-ln -sf ../share/texmf-dist/scripts/cachepic/cachepic.tlu cachepic
-ln -sf ../share/texmf-dist/scripts/fontools/cmap2enc cmap2enc
-ln -sf ../share/texmf-dist/scripts/epstopdf/epstopdf.pl epstopdf
-ln -sf ../share/texmf-dist/scripts/fig4latex/fig4latex fig4latex
-ln -sf ../share/texmf-dist/scripts/findhyph/findhyph findhyph
-ln -sf ../share/texmf-dist/scripts/fontools/font2afm font2afm
-ln -sf ../share/texmf-dist/scripts/fragmaster/fragmaster.pl fragmaster
-ln -sf ../share/texmf-dist/scripts/latex2man/latex2man latex2man
-ln -sf ../share/texmf-dist/scripts/latexmk/latexmk.pl latexmk
-ln -sf ../share/texmf-dist/scripts/listings-ext/listings-ext.sh listings-ext.sh
-ln -sf ../share/texmf-dist/scripts/mkgrkindex/mkgrkindex mkgrkindex
-ln -sf ../share/texmf-dist/scripts/accfonts/mkt1font mkt1font
-ln -sf ../share/texmf-dist/scripts/fontools/ot2kpx ot2kpx
-ln -sf ../share/texmf-dist/scripts/pax/pdfannotextractor.pl pdfannotextractor
-ln -sf ../share/texmf-dist/scripts/ppower4/pdfthumb.texlua pdfthumb
-ln -sf ../share/texmf-dist/scripts/perltex/perltex.pl perltex
-ln -sf ../share/texmf-dist/scripts/fontools/pfm2kpx pfm2kpx
-ln -sf ../share/texmf-dist/scripts/pkfix/pkfix.pl pkfix
-ln -sf ../share/texmf-dist/scripts/pkfix-helper/pkfix-helper pkfix-helper
-ln -sf ../share/texmf-dist/scripts/ppower4/ppower4.texlua ppower4
-ln -sf ../share/texmf-dist/scripts/ps2eps/ps2eps.pl ps2eps
-ln -sf ../share/texmf-dist/scripts/purifyeps/purifyeps purifyeps
-ln -sf ../share/texmf-dist/scripts/fontools/showglyphs showglyphs
-ln -sf ../share/texmf-dist/scripts/splitindex/perl/splitindex.pl splitindex
-ln -sf ../share/texmf-dist/scripts/svn-multi/svn-multi.pl svn-multi
-ln -sf ../share/texmf-dist/scripts/texcount/TeXcount.pl texcount
-ln -sf ../share/texmf-dist/scripts/texdirflatten/texdirflatten texdirflatten
-ln -sf ../share/texmf-dist/scripts/texloganalyser/texloganalyser texloganalyser
-ln -sf ../share/texmf-dist/scripts/ulqda/ulqda.pl ulqda
-ln -sf ../share/texmf-dist/scripts/accfonts/vpl2ovp vpl2ovp
-ln -sf ../share/texmf-dist/scripts/accfonts/vpl2vpl vpl2vpl
-
-ln -sf ../share/texmf-dist/scripts/a2ping/a2ping.pl a2ping
-ln -sf ../share/texmf-dist/scripts/dviasm/dviasm.py dviasm
-ln -sf ../share/texmf-dist/scripts/tetex/e2pall.pl e2pall
-ln -sf ../share/texmf-dist/scripts/bengali/ebong.py ebong
-ln -sf ../share/texmf-dist/scripts/epspdf/epspdf epspdf
-ln -sf ../share/texmf-dist/scripts/epspdf/epspdftk epspdftk
-ln -sf ../share/texmf-dist/scripts/epstopdf/epstopdf.pl epstopdf
-ln -sf ../share/texmf-dist/scripts/tex4ht/ht.sh ht
-ln -sf ../share/texmf-dist/scripts/tex4ht/htcontext.sh htcontext
-ln -sf ../share/texmf-dist/scripts/tex4ht/htlatex.sh htlatex
-ln -sf ../share/texmf-dist/scripts/tex4ht/htmex.sh htmex
-ln -sf ../share/texmf-dist/scripts/tex4ht/httex.sh httex
-ln -sf ../share/texmf-dist/scripts/tex4ht/httexi.sh httexi
-ln -sf ../share/texmf-dist/scripts/tex4ht/htxelatex.sh htxelatex
-ln -sf ../share/texmf-dist/scripts/tex4ht/htxetex.sh htxetex
-ln -sf ../share/texmf-dist/scripts/glossaries/makeglossaries makeglossaries
-ln -sf ../share/texmf-dist/scripts/tex4ht/mk4ht.pl mk4ht
-ln -sf ../share/texmf-dist/scripts/mkjobtexmf/mkjobtexmf.pl mkjobtexmf
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/mtxtools mtxtools
-ln -sf ../share/texmf-dist/scripts/oberdiek/pdfatfi.pl pdfatfi
-ln -sf ../share/texmf-dist/scripts/pdfcrop/pdfcrop.pl pdfcrop
-ln -sf ../share/texmf-dist/scripts/ppower4/pdfthumb.tlu pdfthumb
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftools pdftools
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pdftrimwhite pdftrimwhite
-ln -sf ../share/texmf-dist/scripts/perltex/perltex perltex
-ln -sf ../share/texmf-dist/scripts/pkfix/pkfix.pl pkfix
-ln -sf ../share/texmf-dist/scripts/ppower4/ppower4.tlu ppower4
-ln -sf ../share/texmf-dist/scripts/ps2eps/ps2eps.pl ps2eps
-ln -sf ../share/texmf-dist/scripts/pst-pdf/ps4pdf ps4pdf
-ln -sf ../share/texmf-dist/scripts/pst2pdf/pst2pdf.pl pst2pdf
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/pstopdf pstopdf
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/rlxtools rlxtools
-ln -sf ../share/texmf-dist/scripts/texlive/rungs.tlu rungs
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/runtools runtools
-ln -sf ../share/texmf-dist/scripts/simpdftex/simpdftex simpdftex
-ln -sf ../share/texmf-dist/scripts/texcount/texcount.pl texcount
-ln -sf ../share/texmf-dist/scripts/texdoc/texdoc.tlu texdoc
-ln -sf ../share/texmf-dist/scripts/tetex/texdoctk.pl texdoctk
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texexec texexec
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfind texfind
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texfont texfont
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texshow texshow
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/textools textools
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/texutil texutil
-ln -sf ../share/texmf-dist/scripts/thumbpdf/thumbpdf.pl thumbpdf
-ln -sf ../share/texmf-dist/scripts/texlive/tlmgr.pl tlmgr
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/tmftools tmftools
-ln -sf ../share/texmf-dist/scripts/vpe/vpe.pl vpe
-ln -sf ../share/texmf-dist/scripts/context/stubs/unix/xmltools xmltools
-
-cd $CURDIR
-
-perl -pi \
-	-e "s|$RPM_BUILD_ROOT||g;" \
-	$RPM_BUILD_ROOT%{texmf}/web2c/texmf.cnf
+# Script-based tool symlinks (/usr/bin/foo -> scripts/foo.pl) are created
+# by the texlive-texmf package, not here. Each texlive-texmf subpackage
+# owns both the script and its /usr/bin symlink.
+# Remove the ones installed by make install (linked_scripts mechanism).
+for link in $RPM_BUILD_ROOT%{_bindir}/*; do
+	[ -L "$link" ] || continue
+	target=$(readlink "$link")
+	case "$target" in
+		*texmf-dist/scripts/*) rm "$link" ;;
+	esac
+done
+# Binary-to-binary aliases (texhash->mktexlsr etc.) are also created by
+# linked_scripts. Remove them - texlive-texmf creates them in its %install.
+rm $RPM_BUILD_ROOT%{_bindir}/texhash
+rm $RPM_BUILD_ROOT%{_bindir}/mktexfmt
+rm $RPM_BUILD_ROOT%{_bindir}/allec
+rm $RPM_BUILD_ROOT%{_bindir}/ebb
+rm $RPM_BUILD_ROOT%{_bindir}/kpsexpand
+rm $RPM_BUILD_ROOT%{_bindir}/kpsepath
+rm $RPM_BUILD_ROOT%{_bindir}/rpdfcrop
+rm $RPM_BUILD_ROOT%{_bindir}/cllualatex
+rm $RPM_BUILD_ROOT%{_bindir}/clxelatex
+rm $RPM_BUILD_ROOT%{_bindir}/latexdef
+rm $RPM_BUILD_ROOT%{_bindir}/repstopdf
+# Also remove man pages for aliases (owned by texlive-texmf)
+rm $RPM_BUILD_ROOT%{_mandir}/man1/texhash.1
+rm $RPM_BUILD_ROOT%{_mandir}/man1/mktexfmt.1
+rm $RPM_BUILD_ROOT%{_mandir}/man1/allec.1
+rm $RPM_BUILD_ROOT%{_mandir}/man1/kpsexpand.1
+rm $RPM_BUILD_ROOT%{_mandir}/man1/kpsepath.1
+rm -r $RPM_BUILD_ROOT%{texmfdist}/scripts
 
 install %{SOURCE4} $RPM_BUILD_ROOT/etc/cron.daily/texlive
 
 install %{SOURCE5} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE6} $RPM_BUILD_ROOT%{_pixmapsdir}
 
-cp -a texk/texlive/linked_scripts/context/stubs/unix/ctxtools $RPM_BUILD_ROOT%{_bindir}
 
-# not included in package
-#FIXME why not included????
-rm -f $RPM_BUILD_ROOT%{_datadir}/texinfo/html/texi2html.html
-rm -f $RPM_BUILD_ROOT%{_infodir}/dir*
-rm -f $RPM_BUILD_ROOT%{_infodir}/dvipng*
-rm -f $RPM_BUILD_ROOT%{_mandir}/{README.*,hu/man1/readlink.1*}
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/Makefile
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/fonts/oldgerman/COPYING
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/help/Catalogue-upd.sh
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/help/faq/uktug-faq-upd.sh
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/helpfile
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/helpindex.html
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.html
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/index.php
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/mkhtml*
-rm -f $RPM_BUILD_ROOT%{texmf}/doc/programs/texinfo.*
-rm -rf $RPM_BUILD_ROOT%{texmf}/doc/tetex
-rm -f $RPM_BUILD_ROOT%{texmf}/fonts/pk/ljfour/lh/lh-lcy/*.600pk
-rm -f $RPM_BUILD_ROOT%{texmf}/generic/config/pdftex-dvi.tex
-rm -f $RPM_BUILD_ROOT%{texmf}/release-tetex-{src,texmf}.txt
-rm -f $RPM_BUILD_ROOT%{texmf}/scripts/uniqleaf/uniqleaf.pl
-rm -f $RPM_BUILD_ROOT%{texmf}/tex/generic/pdftex/glyphtounicode.tex
-rm -rf $RPM_BUILD_ROOT%{_datadir}/lcdf-typetools
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/doc/generic/pdf-trans
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/generic/hyph-utf8
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/generic/patch
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/source/plain/plgraph
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/pdf-trans
-rm -rf $RPM_BUILD_ROOT%{texmfdist}/tex/generic/xecyr
+# Fix #!/usr/bin/env shebangs in compiled script wrappers (PLD policy)
+grep -rl '/usr/bin/env ' $RPM_BUILD_ROOT%{_bindir} 2>/dev/null | \
+	xargs %{__sed} -i \
+	-e '1s,^#!\s*/usr/bin/env\s\+perl,#!/usr/bin/perl,' \
+	-e '1s,^#!\s*/usr/bin/env\s\+python,#!/usr/bin/python3,' \
+	2>/dev/null || :
 
-# move format logs to BUILD, so $RPM_BUILD_ROOT is not polluted
-# and we can still analyze them
-# install -d format-logs
-# mv -fv $RPM_BUILD_ROOT%{fmtdir}/*.log format-logs
+# Remove install artifacts not belonging to any package
+rm $RPM_BUILD_ROOT%{_infodir}/dir
+rm $RPM_BUILD_ROOT%{_infodir}/dvipng.info*
 
-# xindy files are in %%{texmf}
-#rm -r $RPM_BUILD_ROOT%{_datadir}/xindy
-#rm -r $RPM_BUILD_ROOT%{_datadir}/doc
+# Remove .la files (not needed, shared libs are used)
+rm $RPM_BUILD_ROOT%{_libdir}/libkpathsea.la
+rm $RPM_BUILD_ROOT%{_libdir}/libptexenc.la
+rm $RPM_BUILD_ROOT%{_libdir}/libsynctex.la
+rm $RPM_BUILD_ROOT%{_libdir}/libtexlua53.la
+
+%if %{without luajittex}
+# libtexluajit/mfluajit are built even with --disable-luajittex
+# (the library is shared, only the engine binaries are skipped)
+rm $RPM_BUILD_ROOT%{_bindir}/mfluajit
+rm $RPM_BUILD_ROOT%{_bindir}/mfluajit-nowin
+rm $RPM_BUILD_ROOT%{_mandir}/man1/luajittex.1
+rm $RPM_BUILD_ROOT%{_libdir}/libtexluajit.la
+rm $RPM_BUILD_ROOT%{_libdir}/libtexluajit.so*
+rm $RPM_BUILD_ROOT%{_libdir}/pkgconfig/texluajit.pc
+rm -r $RPM_BUILD_ROOT%{_includedir}/texluajit
+%endif
+
+# Remove texmf-dist data installed by make install that belongs to
+# the texlive-texmf package (docs, configs, font tools data)
+rm -r $RPM_BUILD_ROOT%{texmfdist}/bibtex
+rm -r $RPM_BUILD_ROOT%{texmfdist}/chktex
+rm -r $RPM_BUILD_ROOT%{texmfdist}/doc
+rm -r $RPM_BUILD_ROOT%{texmfdist}/dvipdfmx
+rm -r $RPM_BUILD_ROOT%{texmfdist}/dvips
+rm -r $RPM_BUILD_ROOT%{texmfdist}/fonts
+rm -r $RPM_BUILD_ROOT%{texmfdist}/hbf2gf
+rm -r $RPM_BUILD_ROOT%{texmfdist}/psutils
+rm -r $RPM_BUILD_ROOT%{texmfdist}/source
+rm -r $RPM_BUILD_ROOT%{texmfdist}/texconfig
+rm -r $RPM_BUILD_ROOT%{texmfdist}/ttf2pk
+rm -r $RPM_BUILD_ROOT%{texmfdist}/web2c
+rm -r $RPM_BUILD_ROOT%{texmfdist}/xdvi
+rm $RPM_BUILD_ROOT%{_mandir}/man1/texconfig.1*
+rm $RPM_BUILD_ROOT%{_mandir}/man1/texconfig-sys.1*
+
+# Install TeXLive Perl modules needed by fmtutil/updmap at runtime.
+# These come from texlive.infra upstream but we only need TLUtils + TLConfig.
+install -d $RPM_BUILD_ROOT%{_datadir}/tlpkg/TeXLive
+install -m 644 texk/tests/TeXLive/TLUtils.pm $RPM_BUILD_ROOT%{_datadir}/tlpkg/TeXLive/
+install -m 644 texk/tests/TeXLive/TLConfig.pm $RPM_BUILD_ROOT%{_datadir}/tlpkg/TeXLive/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -2040,9 +1764,13 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %fixinfodir
 %texhash
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt mf 1>&2
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt tex 1>&2
 
 %postun
 %fixinfodir
+# Only run texhash on upgrade ("1"), not on full removal ("0") -
+# the texmf trees are gone at that point
 if [ "$1" = "1" ]; then
 	%texhash
 fi
@@ -2051,12 +1779,6 @@ fi
 %texhash
 
 %postun other-utils
-%texhash
-
-%post jadetex
-%texhash
-
-%postun jadetex
 %texhash
 
 %post -n kpathsea
@@ -2107,18 +1829,6 @@ fi
 %postun metapost
 %texhash
 
-%post mptopdf
-%texhash
-
-%postun mptopdf
-%texhash
-
-%post texdoctk
-%texhash
-
-%postun texdoctk
-%texhash
-
 %post -n xdvi
 %texhash
 
@@ -2127,126 +1837,16 @@ fi
 
 %post pdftex
 %texhash
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt pdftex 1>&2
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt etex 1>&2
 
 %postun pdftex
-%texhash
-
-%post phyzzx
-%texhash
-
-%postun phyzzx
-%texhash
-
-%post omega-basic
-%texhash
-
-%postun omega-basic
-%texhash
-
-%post plain
-%texhash
-
-%postun plain
-%texhash
-
-%post mex
-%texhash
-
-%postun mex
-%texhash
-
-%post format-mex
-%texhash
-
-%postun format-mex
-%texhash
-
-%post format-pdfmex
-%texhash
-
-%postun format-pdfmex
-%texhash
-
-%postun format-utf8mex
-%texhash
-
-%post format-amstex
-%texhash
-
-%postun format-amstex
-%texhash
-
-%post csplain
-%texhash
-
-%postun csplain
-%texhash
-
-%post format-csplain
-%texhash
-
-%postun format-csplain
-%texhash
-
-%post format-pdfcsplain
-%texhash
-
-%postun format-pdfcsplain
-%texhash
-
-%post format-cslatex
-%texhash
-
-%postun format-cslatex
-%texhash
-
-%post format-pdfcslatex
-%texhash
-
-%postun format-pdfcslatex
-%texhash
-
-%post eplain
-%texhash
-
-%postun eplain
-%texhash
-
-%post format-eplain
-%texhash
-
-%postun format-eplain
-%texhash
-
-# ConTeXt format
-
-%post context
-%texhash
-
-%postun context
-%texhash
-
-%post format-context-de
-%texhash
-
-%postun format-context-de
-%texhash
-
-%post format-context-en
-%texhash
-
-%postun format-context-en
-%texhash
-
-%post format-context-nl
-%texhash
-
-%postun format-context-nl
 %texhash
 
 %post latex
 %fixinfodir
 %texhash
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt latex 1>&2
 
 %postun latex
 %fixinfodir
@@ -2258,100 +1858,56 @@ fi
 %postun latex-bibtex
 %texhash
 
-%post latex-presentation-bin
-%texhash
-
-%postun latex-presentation-bin
-%texhash
-
 %post format-pdflatex
 %texhash
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt pdflatex 1>&2
 
 %postun format-pdflatex
 %texhash
 
-%post tex-babel
-%texhash
-
-%postun tex-babel
-%texhash
-
-%post tex-thumbpdf
-%texhash
-
-%postun tex-thumbpdf
-%texhash
-
-%post fonts-other
-%texhash
-
-%postun fonts-other
-%texhash
-
-%post -n texconfig
-%texhash
-
-%postun -n texconfig
-%texhash
-
 %post xetex
 %texhash
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt xetex 1>&2
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt xelatex 1>&2
 
 %postun xetex
 %texhash
 
-%post xmltex
+%post luatex
 %texhash
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt luatex 1>&2
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt luahbtex 1>&2
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt lualatex 1>&2
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt dviluatex 1>&2
+umask 022; [ ! -x %{_bindir}/fmtutil-sys ] || %{_bindir}/fmtutil-sys --no-strict --byfmt dvilualatex 1>&2
 
-%postun xmltex
+%postun luatex
 %texhash
 
 %files
 %defattr(644,root,root,755)
-%dir %{texmfdist}/doc
-%dir %{texmfdist}/source
 
 # ***********
 # executables
 # ***********
 %attr(755,root,root) %{_bindir}/afm2tfm
 %attr(755,root,root) %{_bindir}/afm2pl
-%attr(755,root,root) %{_bindir}/allcm
-%attr(755,root,root) %{_bindir}/allec
-%attr(755,root,root) %{_bindir}/allneeded
-%attr(755,root,root) %{_bindir}/arlatex
-%attr(755,root,root) %{_bindir}/bundledoc
 %attr(755,root,root) %{_bindir}/ctangle
-%attr(755,root,root) %{_bindir}/ctanify
-%attr(755,root,root) %{_bindir}/ctanupload
 %attr(755,root,root) %{_bindir}/ctie
 %attr(755,root,root) %{_bindir}/cweave
-%attr(755,root,root) %{_bindir}/de-macro
-%attr(755,root,root) %{_bindir}/deweb
 %attr(755,root,root) %{_bindir}/dvipng
-%attr(755,root,root) %{_bindir}/ebb
-%attr(755,root,root) %{_bindir}/fmtutil
-%attr(755,root,root) %{_bindir}/fmtutil-sys
-%attr(755,root,root) %{_bindir}/fontinst
 %attr(755,root,root) %{_bindir}/gftodvi
 %attr(755,root,root) %{_bindir}/gftopk
 %attr(755,root,root) %{_bindir}/gftype
 %attr(755,root,root) %{_bindir}/gsftopk
 %attr(755,root,root) %{_bindir}/inimf
 %attr(755,root,root) %{_bindir}/initex
-%attr(755,root,root) %{_bindir}/installfont-tl
 %attr(755,root,root) %{_bindir}/kpseaccess
 %attr(755,root,root) %{_bindir}/kpsereadlink
-%attr(755,root,root) %{_bindir}/kpsewhere
 %attr(755,root,root) %{_bindir}/mag
 %attr(755,root,root) %{_bindir}/mf
 %attr(755,root,root) %{_bindir}/mf-nowin
 %attr(755,root,root) %{_bindir}/mft
-%attr(755,root,root) %{_bindir}/mktexmf
-%attr(755,root,root) %{_bindir}/mktexpk
-%attr(755,root,root) %{_bindir}/mktextfm
-%attr(755,root,root) %{_bindir}/mktexfmt
-%attr(755,root,root) %{_bindir}/mktexlsr
 %attr(755,root,root) %{_bindir}/patgen
 %attr(755,root,root) %{_bindir}/pfb2pfa
 %attr(755,root,root) %{_bindir}/pk2bm
@@ -2359,55 +1915,30 @@ fi
 %attr(755,root,root) %{_bindir}/pktype
 %attr(755,root,root) %{_bindir}/pltotf
 %attr(755,root,root) %{_bindir}/pooltype
-%attr(755,root,root) %{_bindir}/ps2frag
 %attr(755,root,root) %{_bindir}/ps2pk
-# TODO: move this file to correct subpackage ?
-%attr(755,root,root) %{_bindir}/ps4pdf
 %attr(755,root,root) %{_bindir}/tangle
 %attr(755,root,root) %{_bindir}/tex
-%attr(755,root,root) %{_bindir}/texhash
-%attr(755,root,root) %{_bindir}/texlinks
 %attr(755,root,root) %{_bindir}/tftopl
 %attr(755,root,root) %{_bindir}/tie
 %attr(755,root,root) %{_bindir}/ttf2afm
-%attr(755,root,root) %{_bindir}/updmap
-%attr(755,root,root) %{_bindir}/updmap-sys
 %attr(755,root,root) %{_bindir}/vftovp
 %attr(755,root,root) %{_bindir}/vptovf
 %attr(755,root,root) %{_bindir}/weave
-%dir %{texmfdist}/scripts
-%dir %{texmfdist}/scripts/installfont
-%dir %{texmfdist}/scripts/pst-pdf
-%dir %{texmfdist}/scripts/texlive
-%attr(755,root,root) %{texmfdist}/scripts/installfont/installfont-tl
-%attr(755,root,root) %{texmfdist}/scripts/pst-pdf/ps4pdf
-%attr(755,root,root) %{texmfdist}/scripts/texlive/allcm.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/allneeded.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/fmtutil-sys.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/fmtutil.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/fontinst.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/kpsewhere.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/ps2frag.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/texlinks.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/updmap-sys.sh
 
-
-%dir %{texmfdist}/web2c
-%attr(755,root,root) %{texmfdist}/web2c/mktexnam
-%attr(755,root,root) %{texmfdist}/web2c/mktexdir
-%attr(755,root,root) %{texmfdist}/web2c/mktexupd
 
 %config(noreplace,missingok) %verify(not md5 mtime size) %attr(750,root,root) /etc/cron.daily/texlive
 
-%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/fmtutil.cnf
-%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/mktex.opt
-%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/mktexdir.opt
-%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/mktexnam.opt
-%config(noreplace) %verify(not md5 mtime size) %{texmfdist}/web2c/texmf.cnf
+# fmtutil.cnf and texmf.cnf are owned by texlive-texmf (texlive-kpathsea)
 
 %attr(1777,root,root) /var/cache/fonts
 
-%{_datadir}/info/web2c.info*
+%{_infodir}/web2c.info*
+
+# TeXLive Perl modules (needed by fmtutil/updmap)
+%dir %{_datadir}/tlpkg
+%dir %{_datadir}/tlpkg/TeXLive
+%{_datadir}/tlpkg/TeXLive/TLConfig.pm
+%{_datadir}/tlpkg/TeXLive/TLUtils.pm
 
 # ***********
 # Directories
@@ -2416,12 +1947,81 @@ fi
 %attr(1777,root,root) %dir %{_localstatedir}/fonts
 %attr(1777,root,root) %dir %{_localstatedir}/fonts/map
 %dir %{fmtdir}
-%dir %{texmfdist}
+
+# New TL 2026 compiled binaries
+%attr(755,root,root) %{_bindir}/autosp
+%attr(755,root,root) %{_bindir}/axohelp
+%attr(755,root,root) %{_bindir}/chkdvifont
+%attr(755,root,root) %{_bindir}/chktex
+%attr(755,root,root) %{_bindir}/ctwill
+%attr(755,root,root) %{_bindir}/ctwill-proofsort
+%attr(755,root,root) %{_bindir}/ctwill-refsort
+%attr(755,root,root) %{_bindir}/ctwill-twinx
+%attr(755,root,root) %{_bindir}/dvispc
+%attr(755,root,root) %{_bindir}/eptex
+%attr(755,root,root) %{_bindir}/euptex
+%attr(755,root,root) %{_bindir}/gregorio
+%attr(755,root,root) %{_bindir}/hishrink
+%attr(755,root,root) %{_bindir}/histretch
+%attr(755,root,root) %{_bindir}/hitex
+%attr(755,root,root) %{_bindir}/makejvf
+%attr(755,root,root) %{_bindir}/mendex
+%attr(755,root,root) %{_bindir}/mflua
+%attr(755,root,root) %{_bindir}/mflua-nowin
+%attr(755,root,root) %{_bindir}/mfplain
+%attr(755,root,root) %{_bindir}/mkocp
+%attr(755,root,root) %{_bindir}/mkofm
+%attr(755,root,root) %{_bindir}/msxlint
+%attr(755,root,root) %{_bindir}/odvicopy
+%attr(755,root,root) %{_bindir}/odvitype
+%attr(755,root,root) %{_bindir}/omfonts
+%attr(755,root,root) %{_bindir}/opl2ofm
+%attr(755,root,root) %{_bindir}/otangle
+%attr(755,root,root) %{_bindir}/otp2ocp
+%attr(755,root,root) %{_bindir}/outocp
+%attr(755,root,root) %{_bindir}/ovf2ovp
+%attr(755,root,root) %{_bindir}/ovp2ovf
+%attr(755,root,root) %{_bindir}/pbibtex
+%attr(755,root,root) %{_bindir}/pdvitomp
+%attr(755,root,root) %{_bindir}/pdvitype
+%attr(755,root,root) %{_bindir}/pmpost
+%attr(755,root,root) %{_bindir}/pmxab
+%attr(755,root,root) %{_bindir}/ppltotf
+%attr(755,root,root) %{_bindir}/prepmx
+%attr(755,root,root) %{_bindir}/ptekf
+%attr(755,root,root) %{_bindir}/ptftopl
+%attr(755,root,root) %{_bindir}/r-mpost
+%attr(755,root,root) %{_bindir}/r-pmpost
+%attr(755,root,root) %{_bindir}/r-upmpost
+%attr(755,root,root) %{_bindir}/scor2prt
+%attr(755,root,root) %{_bindir}/tex2aspc
+%attr(755,root,root) %{_bindir}/texprof
+%attr(755,root,root) %{_bindir}/texprofile
+%attr(755,root,root) %{_bindir}/twill
+%attr(755,root,root) %{_bindir}/twill-refsort
+%attr(755,root,root) %{_bindir}/upbibtex
+%attr(755,root,root) %{_bindir}/updvitomp
+%attr(755,root,root) %{_bindir}/updvitype
+%attr(755,root,root) %{_bindir}/upmendex
+%attr(755,root,root) %{_bindir}/upmpost
+%attr(755,root,root) %{_bindir}/uppltotf
+%attr(755,root,root) %{_bindir}/uptex
+%attr(755,root,root) %{_bindir}/uptftopl
+%attr(755,root,root) %{_bindir}/wofm2opl
+%attr(755,root,root) %{_bindir}/wopl2ofm
+%attr(755,root,root) %{_bindir}/wovf2ovp
+%attr(755,root,root) %{_bindir}/wovp2ovf
+%attr(755,root,root) %{_bindir}/xdvipsk
+%attr(755,root,root) %{_bindir}/xml2pmx
+
+# Libraries
+%attr(755,root,root) %{_libdir}/libptexenc.so.*
+%attr(755,root,root) %{_libdir}/libsynctex.so.*
+%attr(755,root,root) %{_libdir}/libtexlua53.so.*
 
 %{_mandir}/man1/afm2tfm.1*
 %{_mandir}/man1/afm2pl.1*
 %{_mandir}/man1/allcm.1*
-%{_mandir}/man1/allec.1*
 %{_mandir}/man1/allneeded.1*
 %{_mandir}/man1/ctangle.1*
 %{_mandir}/man1/ctie.1*
@@ -2439,17 +2039,14 @@ fi
 %{_mandir}/man1/kpsereadlink.1*
 %{_mandir}/man1/kpsewhere.1*
 %{_mandir}/man1/mag.1*
-# %{_mandir}/man1/makempy.1*
 %{_mandir}/man1/mf.1*
 %{_mandir}/man1/mf-nowin.1*
 %{_mandir}/man1/mft.1*
 %{_mandir}/man1/mktexmf.1*
 %{_mandir}/man1/mktexpk.1*
 %{_mandir}/man1/mktextfm.1*
-%{_mandir}/man1/mktexfmt.1*
 %{_mandir}/man1/mktexlsr.1*
 %{_mandir}/man1/patgen.1*
-%{_mandir}/man1/pdfetex.1*
 %{_mandir}/man1/pfb2pfa.1*
 %{_mandir}/man1/pk2bm.1*
 %{_mandir}/man1/pktogf.1*
@@ -2460,8 +2057,6 @@ fi
 %{_mandir}/man1/ps2pk.1*
 %{_mandir}/man1/tangle.1*
 %{_mandir}/man1/tex.1*
-#%{_mandir}/man1/texexec.1*
-%{_mandir}/man1/texhash.1*
 %{_mandir}/man1/texlinks.1*
 %{_mandir}/man1/tftopl.1*
 %{_mandir}/man1/tie.1*
@@ -2473,20 +2068,6 @@ fi
 %{_mandir}/man1/weave.1*
 %{_mandir}/man5/fmtutil.cnf.5*
 %{_mandir}/man5/updmap.cfg.5*
-# %{fmtdir}/pdfetex
-#%dir %{fmtdir}/tex
-
-# %files jadetex
-# %defattr(644,root,root,755)
-# %dir %{texmfdist}/doc/jadetex
-# %doc %{texmfdist}/doc/jadetex/base
-# %doc %{texmfdist}/source/jadetex/base/ChangeLog*
-# %attr(755,root,root) %{_bindir}/jadetex
-# %attr(755,root,root) %{_bindir}/pdfjadetex
-# %{texmfdist}/source/jadetex
-# %exclude %{texmfdist}/source/jadetex/base/ChangeLog*
-# %{texmfdist}/tex/jadetex
-# %{texmf}/fmtutil/format.jadetex.cnf
 
 %files cef-utils
 %defattr(644,root,root,755)
@@ -2501,77 +2082,31 @@ fi
 
 %files other-utils
 %defattr(644,root,root,755)
-%dir %{texmfdist}/scripts/mkjobtexmf
 %attr(755,root,root) %{_bindir}/bibtex8
 %attr(755,root,root) %{_bindir}/cfftot1
-%attr(755,root,root) %{_bindir}/ebong
 %attr(755,root,root) %{_bindir}/extconv
-%attr(755,root,root) %{_bindir}/extractbb
 %attr(755,root,root) %{_bindir}/gbklatex
 %attr(755,root,root) %{_bindir}/gbkpdflatex
 %attr(755,root,root) %{_bindir}/hbf2gf
-%attr(755,root,root) %{_bindir}/makeglossaries
-%attr(755,root,root) %{_bindir}/mkjobtexmf
-%attr(755,root,root) %{texmfdist}/scripts/mkjobtexmf/mkjobtexmf.pl
 %attr(755,root,root) %{_bindir}/mmafm
 %attr(755,root,root) %{_bindir}/mmpfb
-%attr(755,root,root) %{_bindir}/musixflx
 %attr(755,root,root) %{_bindir}/ofm2opl
 %attr(755,root,root) %{_bindir}/otfinfo
 %attr(755,root,root) %{_bindir}/otftotfm
-%dir %{texmfdist}/scripts/oberdiek
-%attr(755,root,root) %{texmfdist}/scripts/oberdiek/pdfatfi.pl
-%attr(755,root,root) %{_bindir}/pdfatfi
-%attr(755,root,root) %{_bindir}/pdf180
-%attr(755,root,root) %{_bindir}/pdf270
-%attr(755,root,root) %{_bindir}/pdf90
-%attr(755,root,root) %{_bindir}/pdfbook
-%attr(755,root,root) %{_bindir}/pdfflip
-%attr(755,root,root) %{_bindir}/pdfjam
-%attr(755,root,root) %{_bindir}/pdfjam-pocketmod
-%attr(755,root,root) %{_bindir}/pdfjam-slides3up
-%attr(755,root,root) %{_bindir}/pdfjam-slides6up
-%attr(755,root,root) %{_bindir}/pdfjoin
-%attr(755,root,root) %{_bindir}/pdfnup
-%attr(755,root,root) %{_bindir}/pdfpun
-%dir %{texmfdist}/scripts/pdfjam
-%attr(755,root,root) %{texmfdist}/scripts/pdfjam/*
-%dir %{texmfdist}/scripts/pax
-%attr(755,root,root) %{texmfdist}/scripts/pax/pdfannotextractor.pl
-%attr(755,root,root) %{_bindir}/pdfannotextractor
 %attr(755,root,root) %{_bindir}/pdfclose
 %attr(755,root,root) %{_bindir}/pdfopen
 %attr(755,root,root) %{_bindir}/pdftosrc
-%{__perl}tex
-%dir %{texmfdist}/scripts/pkfix
-%attr(755,root,root) %{texmfdist}/scripts/pkfix/pkfix.pl
-%attr(755,root,root) %{_bindir}/pkfix
-%dir %{texmfdist}/scripts/pkfix-helper
-%attr(755,root,root) %{texmfdist}/scripts/pkfix-helper/pkfix-helper
-%attr(755,root,root) %{_bindir}/pkfix-helper
-%attr(755,root,root) %{_bindir}/pmx2pdf
-%attr(755,root,root) %{_bindir}/ptex2pdf
-%dir %{texmfdist}/scripts/ptex2pdf
-%attr(755,root,root) %{texmfdist}/scripts/ptex2pdf/*
 %attr(755,root,root) %{_bindir}/teckit_compile
-%attr(755,root,root) %{_bindir}/simpdftex
 %attr(755,root,root) %{_bindir}/sjisconv
 %attr(755,root,root) %{_bindir}/sjislatex
 %attr(755,root,root) %{_bindir}/sjispdflatex
 %attr(755,root,root) %{_bindir}/synctex
-%attr(755,root,root) %{_bindir}/texcount
 %attr(755,root,root) %{_bindir}/ttf2pk
 %attr(755,root,root) %{_bindir}/ttf2tfm
 %attr(755,root,root) %{_bindir}/ttftotype42
-%dir %{texmfdist}/scripts/ulqda
-%attr(755,root,root) %{texmfdist}/scripts/ulqda/ulqda.pl
-%attr(755,root,root) %{_bindir}/ulqda
 %attr(755,root,root) %{_bindir}/vlna
-%attr(755,root,root) %{_bindir}/vpe
-%{texmfdist}/fonts/sfd
 %{_mandir}/man1/cfftot1.1*
 %{_mandir}/man1/hbf2gf.1*
-# %{_mandir}/man1/mkjobtexmf.1*
 %{_mandir}/man1/mmafm.1*
 %{_mandir}/man1/mmpfb.1*
 %{_mandir}/man1/otfinfo.1*
@@ -2585,49 +2120,83 @@ fi
 %{_mandir}/man1/ttftotype42.1*
 %{_mandir}/man1/vlna.1*
 %{_mandir}/man5/synctex.5*
-#%{fmtdir}/pdftex/texsis.fmt
-# %{fmtdir}/texsis
-%{texmfdist}/hbf2gf
-%{texmfdist}/ttf2pk
+# New TL 2026 man pages
+%{_mandir}/man1/amstex.1*
+%{_mandir}/man1/autosp.1*
+%{_mandir}/man1/axohelp.1*
+%{_mandir}/man1/bibtex8.1*
+%{_mandir}/man1/bibtexu.1*
+%{_mandir}/man1/cefconv.1*
+%{_mandir}/man1/chkdvifont.1*
+%{_mandir}/man1/chktex.1*
+%{_mandir}/man1/chkweb.1*
+%{_mandir}/man1/ctwill.1*
+%{_mandir}/man1/ctwill-proofsort.1*
+%{_mandir}/man1/ctwill-refsort.1*
+%{_mandir}/man1/ctwill-twinx.1*
+%{_mandir}/man1/devnag.1*
+%{_mandir}/man1/deweb.1*
+%{_mandir}/man1/disdvi.1*
+%{_mandir}/man1/dvilualatex-dev.1*
+%{_mandir}/man1/dvispc.1*
+%{_mandir}/man1/eptex.1*
+%{_mandir}/man1/euptex.1*
+%{_mandir}/man1/extconv.1*
+%{_mandir}/man1/inimf.1*
+%{_mandir}/man1/initex.1*
+%{_mandir}/man1/latex-dev.1*
+%{_mandir}/man1/lualatex-dev.1*
+%{_mandir}/man1/makejvf.1*
+%{_mandir}/man1/mendex.1*
+%{_mandir}/man1/mkocp.1*
+%{_mandir}/man1/mkofm.1*
+%{_mandir}/man1/msxlint.1*
+%{_mandir}/man1/odvicopy.1*
+%{_mandir}/man1/odvitype.1*
+%{_mandir}/man1/ofm2opl.1*
+%{_mandir}/man1/opl2ofm.1*
+%{_mandir}/man1/otangle.1*
+%{_mandir}/man1/otp2ocp.1*
+%{_mandir}/man1/outocp.1*
+%{_mandir}/man1/ovf2ovp.1*
+%{_mandir}/man1/ovp2ovf.1*
+%{_mandir}/man1/pbibtex.1*
+%{_mandir}/man1/pdflatex-dev.1*
+%{_mandir}/man1/platex-dev.1*
+%{_mandir}/man1/pmxab.1*
+%{_mandir}/man1/ppltotf.1*
+%{_mandir}/man1/prepmx.1*
+%{_mandir}/man1/ptekf.1*
+%{_mandir}/man1/ptex.1*
+%{_mandir}/man1/ptftopl.1*
+%{_mandir}/man1/scor2prt.1*
+%{_mandir}/man1/sjisconv.1*
+%{_mandir}/man1/tex2aspc.1*
+%{_mandir}/man1/texprof.1*
+%{_mandir}/man1/texprofile.1*
+%{_mandir}/man1/twill.1*
+%{_mandir}/man1/twill-refsort.1*
+%{_mandir}/man1/upbibtex.1*
+%{_mandir}/man1/uplatex-dev.1*
+%{_mandir}/man1/uppltotf.1*
+%{_mandir}/man1/uptex.1*
+%{_mandir}/man1/uptftopl.1*
+%{_mandir}/man1/xdvipsk.1*
+%{_mandir}/man1/xml2pmx.1*
+
 
 %files font-utils
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/afm2afm
-%attr(755,root,root) %{_bindir}/autoinst
-%attr(755,root,root) %{_bindir}/cmap2enc
-%attr(755,root,root) %{_bindir}/font2afm
-# %attr(755,root,root) %{_bindir}/getnonfreefonts*
-%attr(755,root,root) %{_bindir}/mkt1font
-%attr(755,root,root) %{_bindir}/ot2kpx
-%attr(755,root,root) %{_bindir}/pfm2kpx
-%attr(755,root,root) %{_bindir}/showglyphs
 %attr(755,root,root) %{_bindir}/t1*
 %attr(755,root,root) %{_bindir}/ttfdump
-%attr(755,root,root) %{_bindir}/vpl*
-%dir %{texmfdist}/scripts/accfonts
-%attr(755,root,root) %{texmfdist}/scripts/accfonts/*
-%dir %{texmfdist}/scripts/fontools
-%attr(755,root,root) %{texmfdist}/scripts/fontools/*
-# %dir %{texmf}/scripts/getnonfreefonts
-# %attr(755,root,root) %{texmf}/scripts/getnonfreefonts/*
-# %{_mandir}/man1/getnonfreefonts-sys.1
-# %{_mandir}/man1/getnonfreefonts.1*
 %{_mandir}/man1/t1*.1*
 %{_mandir}/man1/ttfdump.1*
 
 %files -n kpathsea
 %defattr(644,root,root,755)
-# %doc %{texmf}/doc/kpathsea
-%attr(755,root,root) %{_bindir}/kpsepath
 %attr(755,root,root) %{_bindir}/kpsestat
-%attr(755,root,root) %{_bindir}/kpsetool
 %attr(755,root,root) %{_bindir}/kpsewhich
-%attr(755,root,root) %{_bindir}/kpsexpand
 %attr(755,root,root) %{_libdir}/libkpathsea.so.*
-%attr(755,root,root) %{texmfdist}/scripts/texlive/kpsetool.sh
-%{_libdir}/libkpathsea.la
-%{_mandir}/man1/kpsexpand.1*
-%{_mandir}/man1/kpsepath.1*
 %{_mandir}/man1/kpsestat.1*
 %{_mandir}/man1/kpsetool.1*
 %{_mandir}/man1/kpsewhich.1*
@@ -2635,18 +2204,27 @@ fi
 %files -n kpathsea-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkpathsea.so
+%attr(755,root,root) %{_libdir}/libptexenc.so
+%attr(755,root,root) %{_libdir}/libsynctex.so
+%attr(755,root,root) %{_libdir}/libtexlua53.so
 %{_includedir}/kpathsea
+%{_includedir}/ptexenc
+%{_includedir}/synctex
+%{_includedir}/texlua53
 %{_infodir}/kpathsea.info*
+%{_infodir}/tlbuild.info*
+%{_libdir}/pkgconfig/kpathsea.pc
+%{_libdir}/pkgconfig/ptexenc.pc
+%{_libdir}/pkgconfig/synctex.pc
+%{_libdir}/pkgconfig/texlua53.pc
 
 %files dvips-basic
 %defattr(644,root,root,755)
 # dvi2fax requires ghostscript
-%attr(755,root,root) %{_bindir}/dvi2fax
 %attr(755,root,root) %{_bindir}/dvicopy
 %attr(755,root,root) %{_bindir}/dvipdfm
 %attr(755,root,root) %{_bindir}/dvipdft
 %attr(755,root,root) %{_bindir}/dvips
-%attr(755,root,root) %{_bindir}/dvired
 %attr(755,root,root) %{_bindir}/dvitomp
 %attr(755,root,root) %{_bindir}/dvisvgm
 %attr(755,root,root) %{_bindir}/dvitype
@@ -2657,13 +2235,11 @@ fi
 %{_mandir}/man1/dvired.1*
 %{_mandir}/man1/dvitomp.1*
 %{_mandir}/man1/dvitype.1*
-%dir %{texmfdist}/dvips
-%{texmfdist}/dvips/base
-%{texmfdist}/dvips/config
-%{texmfdist}/dvips/gsftopk
-%{texmfdist}/fonts/enc/dvips/base
-%attr(755,root,root) %{texmfdist}/scripts/texlive/dvi2fax.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/dvired.sh
+%{_mandir}/man1/dvipdfm.1*
+%{_mandir}/man1/dvipdfmx.1*
+%{_mandir}/man1/dvipdft.1*
+%{_mandir}/man1/dvisvgm.1*
+%{_mandir}/man1/extractbb.1*
 
 %files dvilj
 %defattr(644,root,root,755)
@@ -2684,114 +2260,19 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/makeindex
 %attr(755,root,root) %{_bindir}/mkindex
-%attr(755,root,root) %{_bindir}/mkgrkindex
-%attr(755,root,root) %{_bindir}/rumakeindex
-%attr(755,root,root) %{_bindir}/splitindex
-%dir %{texmfdist}/scripts/splitindex
-%attr(755,root,root) %{texmfdist}/scripts/splitindex/splitindex.pl
-%attr(755,root,root) %{texmfdist}/scripts/texlive/rumakeindex.sh
-%dir %{texmfdist}/scripts/mkgrkindex
-%attr(755,root,root) %{texmfdist}/scripts/mkgrkindex/mkgrkindex
 %{_mandir}/man1/makeindex.1*
 %{_mandir}/man1/mkindex.1*
 %{_mandir}/man1/rumakeindex.1*
 
-%files tlmgr
-%defattr(644,root,root,755)
-%dir %{texmfdist}/scripts/texlive
-
-#FIXME: this 2 file are probably in wrong subpackage
-%attr(755,root,root) %{texmfdist}/scripts/texlive/e2pall.pl
-#%attr(755,root,root) %{texmfdist}/scripts/texlive/udpmap.pl
-
-%attr(755,root,root) %{texmfdist}/scripts/texlive/tlmgr.pl
-%attr(755,root,root) %{_bindir}/tlmgr
-
 %files scripts
 %defattr(644,root,root,755)
-# %dir %{texmfdist}/scripts/bengali
-%dir %{texmfdist}/scripts/glossaries
-%dir %{texmfdist}/scripts/perltex
-# %dir %{texmfdist}/scripts/pgfplots
-%dir %{texmfdist}/scripts/pst2pdf
-# %dir %{texmfdist}/scripts/shipunov
-%dir %{texmfdist}/scripts/texcount
-%dir %{texmfdist}/scripts/vpe
-%dir %{texmfdist}/scripts/a2ping
-# %dir %{texmf}/scripts/pkfix
-%dir %{texmfdist}/scripts/simpdftex
-#%dir %{texmf}/scripts/tetex
-# %attr(755,root,root) %{texmfdist}/scripts/bengali/*
-%attr(755,root,root) %{texmfdist}/scripts/glossaries/*
-%attr(755,root,root) %{texmfdist}/scripts/perltex/perltex*
-# %attr(755,root,root) %{texmfdist}/scripts/pgfplots/*
-%attr(755,root,root) %{texmfdist}/scripts/pst2pdf/pst2pdf*
-# %attr(755,root,root) %{texmfdist}/scripts/shipunov/*
-%attr(755,root,root) %{texmfdist}/scripts/texcount/*
-%attr(755,root,root) %{texmfdist}/scripts/vpe/vpe.pl
-%attr(755,root,root) %{texmfdist}/scripts/a2ping/a2ping*
-# %attr(755,root,root) %{texmf}/scripts/pkfix/pkfix*
-%attr(755,root,root) %{texmfdist}/scripts/simpdftex/simpdftex*
-#%attr(755,root,root) %{texmf}/scripts/tetex/*
-%attr(755,root,root) %{_bindir}/a2ping
-%attr(755,root,root) %{_bindir}/e2pall
-%dir %{texmfdist}/scripts/findhyph
-%attr(755,root,root) %{texmfdist}/scripts/findhyph/findhyph
-%attr(755,root,root) %{_bindir}/findhyph
-%dir %{texmfdist}/scripts/listings-ext
-%attr(755,root,root) %{texmfdist}/scripts/listings-ext/listings-ext.sh
-%attr(755,root,root) %{_bindir}/listings-ext.sh
-%dir %{texmfdist}/scripts/texdirflatten
-%attr(755,root,root) %{texmfdist}/scripts/texdirflatten/texdirflatten
-%attr(755,root,root) %{_bindir}/texdirflatten
 %{_mandir}/man1/e2pall.1*
-# %dir %{texmf}/texdoc
-# %doc %{texmf}/doc/texdoc
-# %config(noreplace) %verify(not md5 mtime size) %{texmf}/texdoc/texdoc.cnf
 
 %files metapost
 %defattr(644,root,root,755)
-# %dir %{texmfdist}/metapost
-# %doc %{texmfdist}/doc/metapost
 %attr(755,root,root) %{_bindir}/mpost
-# %attr(755,root,root) %{_bindir}/mpto
-# %{texmfdist}/metapost/base
-# %{texmfdist}/metapost/config
-# %{texmfdist}/metapost/mfpic
-# %{texmfdist}/metapost/misc
-# %{texmfdist}/metapost/support
-# %{texmfdist}/source/metapost
 %{_mandir}/man1/mpost.1*
-# %{_mandir}/man1/mpto.1*
-# %{texmf}/fmtutil/format.metapost.cnf
 
-%files mptopdf
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/mptopdf
-#%{_mandir}/man1/mptopdf.1*
-# %{texmfdist}/tex/mptopdf
-#%{fmtdir}/pdftex/mptopdf.fmt
-# %{fmtdir}/mptopdf
-
-%files texdoctk
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/texdoctk
-# %{texmf}/texdoctk
-%{_mandir}/man1/texdoctk.1*
-
-%files -n texconfig
-%defattr(644,root,root,755)
-%dir %{texmfdist}/texconfig
-%attr(755,root,root) %{_bindir}/texconfig
-%attr(755,root,root) %{_bindir}/texconfig-dialog
-%attr(755,root,root) %{_bindir}/texconfig-sys
-%attr(755,root,root) %{texmfdist}/texconfig/tcfmgr
-%attr(755,root,root) %{texmfdist}/scripts/texlive/texconfig-dialog.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/texconfig-sys.sh
-%attr(755,root,root) %{texmfdist}/scripts/texlive/texconfig.sh
-%{_mandir}/man1/texconfig.1*
-%{_mandir}/man1/texconfig-sys.1*
-%{texmfdist}/texconfig/tcfmgr.map
 
 %if %{with xindy}
 %files -n xindy
@@ -3002,142 +2483,34 @@ fi
 
 %files pdftex
 %defattr(644,root,root,755)
-%dir %{texmfdist}/scripts/pdfcrop
-%attr(755,root,root) %{texmfdist}/scripts/pdfcrop/pdfcrop.pl
-%attr(755,root,root) %{_bindir}/pdfcrop
-%attr(755,root,root) %{_bindir}/rpdfcrop
 %attr(755,root,root) %{_bindir}/pdftex
 %attr(755,root,root) %{_bindir}/tpic2pdftex
 %dir %{fmtdir}/pdftex
 %{_mandir}/man1/pdftex.1*
 %{_mandir}/man1/tpic2pdftex.1*
 
-%files omega-basic
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/aleph
-%attr(755,root,root) %{_bindir}/mkocp
-%attr(755,root,root) %{_bindir}/mkofm
-%attr(755,root,root) %{_bindir}/odvicopy
-%attr(755,root,root) %{_bindir}/odvitype
-%attr(755,root,root) %{_bindir}/omfonts
-%attr(755,root,root) %{_bindir}/opl2ofm
-%attr(755,root,root) %{_bindir}/otangle
-%attr(755,root,root) %{_bindir}/otp2ocp
-%attr(755,root,root) %{_bindir}/outocp
-%attr(755,root,root) %{_bindir}/ovf2ovp
-%attr(755,root,root) %{_bindir}/ovp2ovf
-%{_mandir}/man1/aleph.1*
-%{_mandir}/man1/mkocp.1*
-%{_mandir}/man1/mkofm.1*
-%{_mandir}/man1/odvicopy.1*
-%{_mandir}/man1/odvitype.1*
-%{_mandir}/man1/ofm2opl.1*
-%{_mandir}/man1/opl2ofm.1*
-%{_mandir}/man1/otp2ocp.1*
-%{_mandir}/man1/outocp.1*
-%{_mandir}/man1/ovf2ovp.1*
-%{_mandir}/man1/ovp2ovf.1*
-
-%files context
-%defattr(644,root,root,755)
-%dir %{texmfdist}/scripts/context
-%attr(755,root,root) %{_bindir}/context
-%attr(755,root,root) %{_bindir}/ctxtools
-%attr(755,root,root) %{_bindir}/convbkmk
-%attr(755,root,root) %{_bindir}/mtxrun
-%attr(755,root,root) %{_bindir}/mtxtools
-%attr(755,root,root) %{_bindir}/pdftools
-%attr(755,root,root) %{_bindir}/pdftrimwhite
-%attr(755,root,root) %{_bindir}/pstopdf
-%attr(755,root,root) %{_bindir}/rlxtools
-%attr(755,root,root) %{_bindir}/runtools
-%attr(755,root,root) %{_bindir}/texexec
-%attr(755,root,root) %{_bindir}/texfind
-%attr(755,root,root) %{_bindir}/texfont
-%attr(755,root,root) %{_bindir}/texmfstart
-%attr(755,root,root) %{_bindir}/texshow
-%attr(755,root,root) %{_bindir}/textools
-%attr(755,root,root) %{_bindir}/texutil
-%attr(755,root,root) %{_bindir}/tmftools
-%attr(755,root,root) %{_bindir}/xmltools
-
 %files latex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/lacheck
 %attr(755,root,root) %{_bindir}/latex
-%attr(755,root,root) %{_bindir}/latexfileversion
-%dir %{texmfdist}/scripts/latexfileversion
-%attr(755,root,root) %{texmfdist}/scripts/latexfileversion/latexfileversion
-%attr(755,root,root) %{_bindir}/latexdiff-vc
-%dir %{texmfdist}/scripts/latexdiff
-%attr(755,root,root) %{texmfdist}/scripts/latexdiff/latexdiff-vc.pl
-%attr(755,root,root) %{_bindir}/latexdiff
-%attr(755,root,root) %{texmfdist}/scripts/latexdiff/latexdiff.pl
-%attr(755,root,root) %{_bindir}/latexrevise
-%attr(755,root,root) %{texmfdist}/scripts/latexdiff/latexrevise.pl
 
-%attr(755,root,root) %{_bindir}/pslatex
-%attr(755,root,root) %{texmfdist}/scripts/texlive/pslatex.sh
-
-# make new spec for latexmk (http://users.phys.psu.edu/~collins/software/latexmk-jcc/)
-%dir %{texmfdist}/scripts/latexmk
-%attr(755,root,root) %{texmfdist}/scripts/latexmk/latexmk.pl
-
-%attr(755,root,root) %{_bindir}/latexmk
-%dir %{texmfdist}/scripts/latex2man
-%attr(755,root,root) %{texmfdist}/scripts/latex2man/latex2man
-%attr(755,root,root) %{_bindir}/latex2man
-%dir %{texmfdist}/scripts/svn-multi
-%attr(755,root,root) %{texmfdist}/scripts/svn-multi/svn-multi.pl
-%attr(755,root,root) %{_bindir}/svn-multi
-%dir %{texmfdist}/scripts/texloganalyser
-%attr(755,root,root) %{texmfdist}/scripts/texloganalyser/texloganalyser
-%attr(755,root,root) %{_bindir}/texloganalyser
-%dir %{texmfdist}/scripts/fig4latex
-%attr(755,root,root) %{texmfdist}/scripts/fig4latex/fig4latex
-%attr(755,root,root) %{_bindir}/fig4latex
 %{_mandir}/man1/lacheck.1*
 %{_mandir}/man1/latex.1*
 %{_mandir}/man1/pslatex.1*
 
 %files latex-bibtex
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/listbib
-%dir %{texmfdist}/bibtex
-%dir %{texmfdist}/bibtex/csf
-%doc %{texmfdist}/doc/bibtex8
 %{_mandir}/man1/bibtex.1*
 %{_mandir}/man1/rubibtex.1*
 
-%attr(755,root,root) %{_bindir}/authorindex
-#%attr(755,root,root) %{_bindir}/biber
-%attr(755,root,root) %{_bindir}/bibexport
 %attr(755,root,root) %{_bindir}/bibtex
 %attr(755,root,root) %{_bindir}/bibtexu
-%attr(755,root,root) %{_bindir}/checkcites
-%attr(755,root,root) %{_bindir}/rubibtex
-%attr(755,root,root) %{texmfdist}/scripts/texlive/rubibtex.sh
-%{texmfdist}/bibtex/csf/base
  
-%files latex-presentation-bin
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/ppower4
-%attr(755,root,root) %{_bindir}/pdfthumb
-
 %files format-pdflatex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pdflatex
 %{_mandir}/man1/pdflatex.1*
  
-%files tex-thumbpdf
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/thumbpdf
-%{texmfdist}/scripts/thumbpdf
-
-%files fonts-other
-%defattr(644,root,root,755)
-%{texmfdist}/fonts/map/glyphlist
-
 %files bbox
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/bbox
@@ -3150,12 +2523,10 @@ fi
 
 %files dviutils
 %defattr(644,root,root,755)
-%dir %{texmfdist}/scripts/dviasm
 %attr(755,root,root) %{_bindir}/disdvi
 %attr(755,root,root) %{_bindir}/dt2dv
 %attr(755,root,root) %{_bindir}/dv2dt
 %attr(755,root,root) %{_bindir}/dvi2tty
-%attr(755,root,root) %{_bindir}/dviasm
 %attr(755,root,root) %{_bindir}/dvibook
 %attr(755,root,root) %{_bindir}/dviconcat
 %attr(755,root,root) %{_bindir}/dvidvi
@@ -3164,9 +2535,6 @@ fi
 %attr(755,root,root) %{_bindir}/dvipos
 %attr(755,root,root) %{_bindir}/dviselect
 %attr(755,root,root) %{_bindir}/dvitodvi
-%attr(755,root,root) %{texmfdist}/scripts/dviasm/dviasm*
-%ghost /usr/lib64/libptexenc.so.1
-%attr(755,root,root) /usr/lib64/libptexenc.so.1.3.2
 %{_mandir}/man1/dt2dv*
 %{_mandir}/man1/dv2dt*
 %{_mandir}/man1/dvi2tty*
@@ -3177,56 +2545,26 @@ fi
 %{_mandir}/man1/dvipos*
 %{_mandir}/man1/dviselect*
 %{_mandir}/man1/dvitodvi*
-%{texmfdist}/dvipdfmx
-%{texmfdist}/fonts/cmap/dvipdfmx
-%{texmfdist}/fonts/map/dvipdfmx
 
 %files psutils
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/epsffit
-%attr(755,root,root) %{_bindir}/epspdf
-%attr(755,root,root) %{_bindir}/epspdftk
-%attr(755,root,root) %{_bindir}/extractres
-%dir %{texmfdist}/scripts/fragmaster
-%attr(755,root,root) %{texmfdist}/scripts/fragmaster/fragmaster.pl
-%attr(755,root,root) %{_bindir}/fragmaster
-#%attr(755,root,root) %{_bindir}/fix*
-#%attr(755,root,root) %{_bindir}/getafm
-%attr(755,root,root) %{_bindir}/includeres
-%attr(755,root,root) %{_bindir}/ps2eps
 %attr(755,root,root) %{_bindir}/psbook
-%attr(755,root,root) %{_bindir}/psjoin
-%dir %{texmfdist}/scripts/psutils
-%attr(755,root,root) %{texmfdist}/scripts/psutils/*
-#%attr(755,root,root) %{_bindir}/psmerge
 %attr(755,root,root) %{_bindir}/psnup
 %attr(755,root,root) %{_bindir}/psresize
 %attr(755,root,root) %{_bindir}/psselect
-%attr(755,root,root) %{_bindir}/pst2pdf
 %attr(755,root,root) %{_bindir}/pstops
-#%attr(755,root,root) %{_bindir}/showchar
-%dir %{texmfdist}/scripts/epstopdf
-%attr(755,root,root) %{texmfdist}/scripts/epstopdf/epstopdf.pl
-%attr(755,root,root) %{_bindir}/epstopdf
-%dir %{texmfdist}/scripts/purifyeps
-%attr(755,root,root) %{texmfdist}/scripts/purifyeps/purifyeps
-%attr(755,root,root) %{_bindir}/purifyeps
-%attr(755,root,root) %{texmfdist}/scripts/ps2eps/ps2eps*
 %{_mandir}/man1/epsffit*
 %{_mandir}/man1/extractres*
-#%{_mandir}/man1/fix*
-#%{_mandir}/man1/getafm*
 %{_mandir}/man1/includeres*
 %{_mandir}/man1/ps2eps.1*
 %{_mandir}/man1/psbook*
 %{_mandir}/man1/psjoin*
-#%{_mandir}/man1/psmerge*
 %{_mandir}/man1/psnup*
 %{_mandir}/man1/psresize*
 %{_mandir}/man1/psselect*
 %{_mandir}/man1/pstops*
 %{_mandir}/man1/psutils*
-%{texmfdist}/scripts/epspdf
 
 %files uncategorized-utils
 %defattr(644,root,root,755)
@@ -3234,46 +2572,29 @@ fi
 
 %files tex4ht
 %defattr(644,root,root,755)
-%dir %{texmfdist}/scripts/tex4ht
-%attr(755,root,root) %{_bindir}/ht
-%attr(755,root,root) %{_bindir}/htcontext
-%attr(755,root,root) %{_bindir}/htlatex
-%attr(755,root,root) %{_bindir}/htmex
-%attr(755,root,root) %{_bindir}/httex
-%attr(755,root,root) %{_bindir}/httexi
-%attr(755,root,root) %{_bindir}/htxelatex
-%attr(755,root,root) %{_bindir}/htxetex
-%attr(755,root,root) %{_bindir}/mk4ht
+# htcontext removed in TL 2026
 %attr(755,root,root) %{_bindir}/t4ht
 %attr(755,root,root) %{_bindir}/tex4ht
-%attr(755,root,root) %{texmfdist}/scripts/tex4ht/ht.sh
-%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htcontext.sh
-%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htlatex.sh
-%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htmex.sh
-%attr(755,root,root) %{texmfdist}/scripts/tex4ht/httex.sh
-%attr(755,root,root) %{texmfdist}/scripts/tex4ht/httexi.sh
-%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxelatex.sh
-%attr(755,root,root) %{texmfdist}/scripts/tex4ht/htxetex.sh
-%attr(755,root,root) %{texmfdist}/scripts/tex4ht/mk4ht.pl
+# htcontext.sh removed in TL 2026
 
 %files xetex
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/xdvipdfmx
 %attr(755,root,root) %{_bindir}/xelatex
 %attr(755,root,root) %{_bindir}/xetex
+%{_mandir}/man1/xdvipdfmx.1*
+%{_mandir}/man1/xetex.1*
+%{_mandir}/man1/xelatex-dev.1*
 
 %files luatex
-%defattr(755,root,root,644)
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/luatex
+%attr(755,root,root) %{_bindir}/luahbtex
 %attr(755,root,root) %{_bindir}/texlua
 %attr(755,root,root) %{_bindir}/texluac
-%attr(755,root,root) %{texmfdist}/scripts/cachepic/cachepic.tlu
-%attr(755,root,root) %{_bindir}/cachepic
-%attr(755,root,root) %{_bindir}/luatools
-%attr(755,root,root) %{texmfdist}/scripts/texlive/rungs.tlu
-%attr(755,root,root) %{_bindir}/rungs
-%attr(755,root,root) %{_bindir}/texdoc
-%attr(755,root,root) %{texmfdist}/scripts/texdoc/texdoc.tlu
+%attr(755,root,root) %{_bindir}/lualatex
 %{_mandir}/man1/luatex.1*
+%{_mandir}/man1/luahbtex.1*
 %{_mandir}/man1/texlua.1*
 %{_mandir}/man1/texluac.1*
+%{_mandir}/man1/dviluatex.1*
